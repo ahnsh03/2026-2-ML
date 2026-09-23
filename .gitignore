@@ -1,0 +1,27 @@
+# 원본 데이터와 그 파생물(영상·마스크·feature), 체크포인트는 올리지 않는다.
+# 근거: README.md "데이터 원칙"
+outputs/
+data/
+*.pt
+*.pth
+*.onnx
+*.npz
+*.parquet
+*.bag
+*.png
+*.jpg
+*.jpeg
+!docs/**/*.png
+!docs/**/*.jpg
+
+# 개인 PC 경로·이미지 이름 (예시는 config/local.env.example)
+config/local.env
+
+# 로컬 환경
+.env
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+*:Zone.Identifier
