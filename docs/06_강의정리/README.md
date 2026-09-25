@@ -15,33 +15,36 @@
 |---|---|---|---|---|---|
 | [L01](./L01_머신러닝_소개.md) | 머신러닝 소개 | 1 | 2026 | 있음 | 프로젝트 평가 기준 |
 | [L02](./L02_데이터_전처리.md) | 데이터 전처리·분할·분포 이동·지표 | 2 | 2026 | 있음 (2편) | ◎ 분할·지표·OOD 정의 |
-| [L03](./L03_선형_로지스틱_회귀.md) | 선형·로지스틱 회귀, MLE, GLM | 3 | 2026 | 있음 | ○ 계단 1단계 |
+| [L03](./L03_선형_로지스틱_회귀.md) | 선형·로지스틱 회귀, MLE, GLM | 3 | 2026 | 있음 | ◎ Q1 분해·Q2 기준 경보기 |
 | [L04](./L04_최적화_경사하강법.md) | 최적화, 볼록성, 경사하강법·옵티마이저 | 4 | 2026 | 있음 | △ 배경 |
 | [L05](./L05_차원축소_PCA.md) | 차원 축소, PCA, kernel PCA | 6 | 2025 | **녹화본 없음** | ◎ 고유 오류맵 |
-| [L06](./L06_SVM.md) | SVM, 커널 | 7 | 2025 | 있음 | ○ 계단 2단계 |
-| [L07](./L07_군집화.md) | K-means, 계층 군집, K 선택 | 9 (온라인) | 2025 | 있음 | ◎ 군집 기준선·검증 |
-| [L09](./L09_결정트리_앙상블.md) | 결정트리, bagging·RF, boosting | 11 | 2025 | 있음 | ◎ 주력 모델·앙상블 |
-| [L11](./L11_불확실성_가우시안프로세스.md) | 불확실성, BLR, GP, BO | 12 | 2025 | 있음 | ◎ GP·calibration·OOD |
-| [L12](./L12_GMM_EM.md) | GMM, EM, BIC | 13 | 2025 | 있음 | ◎ 실패 유형 군집 |
+| [L06](./L06_SVM.md) | SVM, 커널 | 7 | 2025 | 있음 | 보류 (v2) |
+| [L07](./L07_군집화.md) | K-means, 계층 군집, K 선택 | 9 (온라인) | 2025 | 있음 | ○ K-means 대조·군집 검증 |
+| [L09](./L09_결정트리_앙상블.md) | 결정트리, bagging·RF, boosting | 11 | 2025 | 있음 | ◎ Q2 주 경보기 |
+| [L11](./L11_불확실성_가우시안프로세스.md) | 불확실성, BLR, GP, BO | 12 | 2025 | 있음 | ◎ Q1 위험 곡선·Q3 보정 |
+| [L12](./L12_GMM_EM.md) | GMM, EM, BIC | 13 | 2025 | 있음 | ◎ Q2 실패 유형 |
 | [L13](./L13_하이퍼파라미터_무경사최적화.md) | 하이퍼파라미터 튜닝, 무경사 최적화 | 14 | 2025 | 있음 | ◎ random vs grid |
 | [L14](./L14_MDP_강화학습.md) | MDP, 강화학습 기초 | **올해 없음** | 2025 (대학원 과목 슬라이드) | 있음 | ✗ 쓰지 않음 |
 
 작년 번호와 올해 주차가 다르다(올해는 5주차 proposal, 8주차 중간고사, 10주차 milestone이 끼어 있다). 작년 L8·L10은 원래 강의가 없는 주였다.
 
-## A1 구현 단계 ↔ 강의
+## A1 구현 단계 ↔ 강의 (구현 계획 v2 기준)
+
+구현 계획 v2는 질문 3개(Q1 장소 vs 조건, Q2 조용한 실패, Q3 처음 보는 날씨)와 기법 6개로 좁혔다.
 
 | 구현 계획 | 쓰는 강의 | 핵심 |
 |---|---|---|
-| §3·§8.1 데이터 분할·누수 방지 | L02 | train/val/test 분리, run 단위 분할, 분포 이동 용어(covariate shift·OOD) |
-| §4 라벨·τ, §8.2 지표 | L02, L03 | 불균형 → accuracy 대신 PR-AUC·재현율, 로지스틱 출력의 확률 해석 |
-| §5 feature 스케일링 | L02, L04 | train fold에서만 fit한 `StandardScaler`, 로그 변환·클리핑 |
-| §6 고유 오류맵 PCA | L05 | 설명분산, 주성분을 이미지로 복원, 스케일링 여부 |
-| §6 군집·검증 | L07, L12 | K-means 기준선, GMM + BIC, 초기화, soft assignment, 군집 평가 |
-| §7 단계 0~1 | L03 | 임계값 기준선 → 로지스틱 회귀 |
-| §7 단계 2 | L06 | linear vs RBF SVM, C·γ |
-| §7 단계 3~4 | L09 | RF·HistGradientBoosting, feature importance, 앙상블 |
-| §7 단계 5, §8.2 보정 | L11 | GP 회귀, aleatoric/epistemic 분해, calibration, OOD 분산 |
-| §7 단계 6 | L13 | 같은 예산의 random vs grid search, test로 튜닝 금지 |
+| §3·§8.1 데이터 분할·누수 방지 | L02 | run 단위 분할(leave-one-run-out), covariate shift(Q3의 cloudy) |
+| §4 라벨·τ, §8.2 지표 | L02, L03 | 불균형 → accuracy 대신 PR-AUC·오경보율 고정 재현율 |
+| §1.1 Q1 설명력 분해 | L03 | one-hot 선형회귀의 R² 증가분으로 장소·조건·상호작용 분해 |
+| §1.1 Q1 경로 위험 곡선 | L11 | 1차원 GP(`IoU ~ station`), WhiteKernel = aleatoric, 사후분산 = epistemic |
+| §6 고유 오류맵 PCA | L05 | 표준화하지 않음, "크기" vs "모양" 정규화, 주성분을 이미지로 |
+| §6 실패 유형 | L12 (L07은 대조) | GMM + BIC, soft 할당. K-means는 같은 K로 한 번만 |
+| §7 단계 0a·1 | L03 | 확신 임계값 → 로지스틱 회귀(S) |
+| §7 단계 3·3′·3″ | L09 | HistGradientBoosting(S → +T+I → +장소 사전확률), permutation importance |
+| §7 단계 6 | L13 | 같은 예산의 random vs grid, L·O 묶음으로 튜닝 금지 |
+| §1.3 Q3 보정 | L11 | reliability diagram, ECE, 임계값 유지 여부 |
+| (보류) | L06, L04, L14 | SVM은 v2에서 뺐다. 최적화·RL은 배경 지식 |
 
 ## 정리하면서 확인한 구현 주의점
 
@@ -58,7 +61,7 @@
 | 7 | 군집 번호는 임의라 사람 분류와 비교할 때는 **라벨 순서와 무관한 ARI·NMI**를 쓰고, 사람끼리의 κ를 먼저 구한다 | L07 |
 | 8 | impurity 기반 feature importance는 치우칠 수 있어 **permutation importance**를 함께 본다. "앙상블은 항상 좋아진다"는 발언은 슬라이드의 한계 설명과 함께 조심해서 인용한다 | L09 |
 | 9 | scikit-learn GP에 `WhiteKernel`을 넣으면 `return_std`에 **잡음이 포함**된다. epistemic 분산은 `std² − noise_level·ystd²`(normalize_y 사용 시)로 따로 계산한다 | L11 |
-| 10 | GP에서 feature별 length scale(ARD)을 쓰면 n = 3,000·d = 40일 때 gradient 메모리가 수 GB다. 커널 탐색은 1k로 하고 최종 적합만 3k로 한다 | L11 |
+| 10 | GP에서 feature별 length scale(ARD)을 쓰면 n = 3,000·d = 40일 때 gradient 메모리가 수 GB다. 커널 탐색은 1k로 하고 최종 적합만 3k로 한다. v2는 1차원 GP라 해당이 적다 | L11 |
 | 11 | IoU는 [0, 1] 범위라 가우시안 예측 구간이 벗어날 수 있다. logit(IoU) 적합과 비교한다 | L11 |
 | 12 | `HistGradientBoosting`은 sample이 1만 개를 넘으면 **early stopping이 자동으로 켜지고, 검증 분할이 run을 무시**한다. `early_stopping=False`로 두거나 run 단위로 직접 나눈다 | L13 |
 | 13 | **τ와 하이퍼파라미터를 test(O·L 묶음)로 고르지 않는다.** 교수님: "테스트 데이터에 대해서는 우리가 튜닝을 하면 안 됩니다" | L13 |
