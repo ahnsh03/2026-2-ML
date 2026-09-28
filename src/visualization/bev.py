@@ -1,4 +1,4 @@
-"""인지 코드 레포 ``drivable_bev``의 지면 투영·3카메라 융합을 오프라인 프레임에 적용한다.
+"""``drivable_bev``(``src/drivable_bev``)의 지면 투영·3카메라 융합을 오프라인 프레임에 적용한다.
 
 좌표계는 ``drivable_bev`` 규약을 따른다: base_link = 후륜축 중심, x 전방 +, y 좌측 +,
 노면 z = -0.35 m. BEV 화면은 위가 전방, 왼쪽이 차량 좌측이다.
@@ -35,7 +35,7 @@ class BevLayers:
 
 
 class BevScene:
-    def __init__(self, perception_repo: Path, grid_name: str = "dev", views: Sequence[str] = ("front", "left", "right")) -> None:
+    def __init__(self, repo_root: Path, grid_name: str = "dev", views: Sequence[str] = ("front", "left", "right")) -> None:
         from drivable_bev.calibration import load_calibration_snapshot, validate_sensor_set_snapshot
         from drivable_bev.fusion import CameraBevFusion, build_quality_maps
         from drivable_bev.grid import BevGridSpec
@@ -43,12 +43,12 @@ class BevScene:
 
         if grid_name not in GRID_FILES:
             raise ValueError("grid must be one of {}".format(sorted(GRID_FILES)))
-        config_dir = Path(perception_repo) / "src" / "perception" / "drivable_bev" / "config"
+        config_dir = Path(repo_root) / "config" / "bev"
         self.calibration_path = config_dir / "cameras_v2.yaml"
         snapshot, cameras = load_calibration_snapshot(self.calibration_path)
         self.calibration_warning = None
         try:
-            validate_sensor_set_snapshot(snapshot, cameras, Path(perception_repo) / str(snapshot["source_sensor_set"]))
+            validate_sensor_set_snapshot(snapshot, cameras, Path(repo_root) / str(snapshot["source_sensor_set"]))
         except ValueError as exc:  # 시각화는 계속하되 기록한다
             self.calibration_warning = str(exc)
 

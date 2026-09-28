@@ -1,0 +1,57 @@
+source_sensor_set: config/morai/sensor_set_v2.json
+source_sha256: 0fa5c92f1e94903be03ff50916155b3d6f49d990658d1e87a0e05c50f37a7428
+
+# MORAI mounts are expressed from the rear-axle-centre vehicle reference.
+# LiDAR ground fits measured z=-0.354 m in a 3.0 m lane and z=-0.346 m in
+# the GPS-shadow corridor.  Keep camera poses untouched and model the road
+# surface explicitly; pitch/roll dynamics remain a later IMU correction.
+ground_plane:
+  frame_id: base_link
+  model: plane
+  z_at_origin_m: -0.35
+  dz_dx: 0.0
+  dz_dy: 0.0
+  source: lidar_ground_fit_20260911
+
+# Intrinsics are derived from native image size and horizontal FOV. The
+# sensor-set focalLengthpixel field is intentionally not used because it does
+# not agree with the exported resolution/FOV for every view.
+cameras:
+  front:
+    sensor_id: 1
+    width: 1280
+    height: 720
+    horizontal_fov_deg: 90.0
+    translation_m: [1.90, 0.00, 1.20]
+    rotation_deg: [0.0, 2.0, 0.0]
+    topics:
+      image: /image_jpeg/compressed
+      drivable: /perception/camera/front/drivable/probability
+      road_marking: /perception/camera/front/road_marking/class_id
+      road_marking_confidence: /perception/camera/front/road_marking/confidence
+
+  left:
+    sensor_id: 2
+    width: 640
+    height: 480
+    horizontal_fov_deg: 130.0
+    translation_m: [1.15, 0.65, 1.20]
+    rotation_deg: [0.0, 10.0, 70.0]
+    topics:
+      image: /cam_left/image_jpeg/compressed
+      drivable: /perception/camera/left/drivable/probability
+      road_marking: /perception/camera/left/road_marking/class_id
+      road_marking_confidence: /perception/camera/left/road_marking/confidence
+
+  right:
+    sensor_id: 3
+    width: 640
+    height: 480
+    horizontal_fov_deg: 130.0
+    translation_m: [1.15, -0.65, 1.20]
+    rotation_deg: [0.0, 10.0, -70.0]
+    topics:
+      image: /cam_right/image_jpeg/compressed
+      drivable: /perception/camera/right/drivable/probability
+      road_marking: /perception/camera/right/road_marking/class_id
+      road_marking_confidence: /perception/camera/right/road_marking/confidence

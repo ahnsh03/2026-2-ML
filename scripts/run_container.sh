@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# 인지 모델 학습 이미지에서 이 레포의 코드를 실행한다.
+# 인지 모델 학습 이미지에서 이 레포의 코드를 실행한다 (추론·시각화·export).
+# 인지 모듈과 TwinLiteNet+ 원본(서브모듈)은 이 레포 안에 있다. 데이터·체크포인트만 밖에서 마운트한다.
 #
 # 사용 예:
 #   scripts/run_container.sh python3 -m visualization.visualize_inference --help
@@ -27,7 +28,7 @@ if [[ $# -eq 0 ]]; then
 fi
 
 missing=()
-for name in PERCEPTION_REPO PERCEPTION_DATA PERCEPTION_CKPT_ROOT TWINLITE_SOURCE PERCEPTION_IMAGE; do
+for name in PERCEPTION_DATA PERCEPTION_CKPT_ROOT PERCEPTION_IMAGE; do
   if [[ -z "${!name:-}" ]]; then
     missing+=("$name")
   fi
@@ -37,7 +38,11 @@ if ((${#missing[@]})); then
   echo "        config/local.env.example을 config/local.env로 복사해 채우세요" >&2
   exit 1
 fi
-for path in "$PERCEPTION_REPO" "$PERCEPTION_DATA" "$PERCEPTION_CKPT_ROOT" "$TWINLITE_SOURCE"; do
+if [[ ! -f "$ML_REPO/third_party/TwinLiteNetPlus/model/model.py" ]]; then
+  echo "[ERROR] TwinLiteNet+ 서브모듈이 없습니다: git submodule update --init third_party/TwinLiteNetPlus" >&2
+  exit 1
+fi
+for path in "$PERCEPTION_DATA" "$PERCEPTION_CKPT_ROOT"; do
   if [[ ! -e "$path" ]]; then
     echo "[ERROR] 경로가 없습니다: $path" >&2
     exit 1
@@ -45,7 +50,6 @@ for path in "$PERCEPTION_REPO" "$PERCEPTION_DATA" "$PERCEPTION_CKPT_ROOT" "$TWIN
 done
 mkdir -p "$ML_OUTPUT_ROOT"
 
-echo "[REPO]   $PERCEPTION_REPO -> /perception (ro)" >&2
 echo "[DATA]   $PERCEPTION_DATA -> /data (ro)" >&2
 echo "[CKPT]   $PERCEPTION_CKPT_ROOT -> /ckpt (ro)" >&2
 echo "[OUTPUT] $ML_OUTPUT_ROOT -> /outputs (rw)" >&2
@@ -62,14 +66,10 @@ exec docker run --rm "${tty_flags[@]}" --gpus all --shm-size 8g \
   -e HOME=/tmp \
   -v "$ML_REPO":/ml:ro \
   -v "$ML_OUTPUT_ROOT":/outputs \
-  -v "$PERCEPTION_REPO":/perception:ro \
   -v "$PERCEPTION_DATA":/data:ro \
-  -v "$TWINLITE_SOURCE":/opt/baselines/TwinLiteNetPlus:ro \
   -v "$PERCEPTION_CKPT_ROOT":/ckpt:ro \
-  -e PERCEPTION_REPO=/perception \
   -e PERCEPTION_DATA=/data \
   -e PERCEPTION_CKPT_ROOT=/ckpt \
-  -e TWINLITE_ROOT=/opt/baselines/TwinLiteNetPlus \
   -e ML_OUTPUT_ROOT=/outputs \
   -e PYTHONPATH=/ml/src \
   -e PYTHONDONTWRITEBYTECODE=1 \

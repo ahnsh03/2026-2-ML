@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>data_collection</name>
+  <version>0.1.0</version>
+  <description>MORAI Capture Mode collector and UDP bridge (data root: $ML_DATA_ROOT)</description>
+  <maintainer email="ml@todo.todo">2026-2-ML</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>std_srvs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>diagnostic_msgs</depend>
+  <depend>morai_msgs</depend>
+  <depend>message_filters</depend>
+  <depend>rosbag</depend>
+  <depend>rosgraph</depend>
+  <depend>rospkg</depend>
+
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>python3-grpcio</exec_depend>
+  <exec_depend>python3-protobuf</exec_depend>
+  <exec_depend>python3-psutil</exec_depend>
+</package>

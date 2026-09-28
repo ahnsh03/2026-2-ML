@@ -18,21 +18,29 @@ MORAI 시뮬레이터(K-City)에서 직접 수집한 데이터로, 미리 학습
 
 ```text
 2026-2-ML/
-├── docs/                   과목 정보, 주제 후보, 팀 운영, 일정, 구현 계획
-├── config/
-│   └── local.env.example   각자 PC의 경로·이미지 설정 예시 (local.env는 Git 제외)
+├── docs/                   과목 정보, 주제 후보, 팀 운영, 일정, 구현 계획, 발표
+├── config/                 local.env 예시, bake 정책, BEV 보정(bev/), MORAI 센서셋·네트워크 설정(morai/)
+├── docker/ros-noetic/      수집 컨테이너 이미지 정의
+├── ros/src/                catkin 워크스페이스 — data_collection(수집 노드·UDP 브리지), morai_msgs(서브모듈)
 ├── scripts/
-│   └── run_container.sh    인지 모델 학습 이미지에서 이 레포 코드를 실행
-└── src/
-    ├── common/             외부 인지 코드·대상 모델 연결부
-    └── visualization/      추론 결과 시각화 (카메라별·BEV)
+│   ├── run_container.sh    추론 이미지에서 이 레포 코드를 실행 (추론·시각화·export)
+│   ├── run_ros.sh          수집 컨테이너 (catkin 빌드, 수집, 가공)
+│   └── *.py                동기화·Semantic 감사·정차 선별·마스크 bake·dataset version
+├── src/
+│   ├── twinlite_morai/     TwinLiteNet+ 로더와 MORAI dataset
+│   ├── drivable_bev/       카메라 → BEV 투영·융합
+│   ├── camera_semantic_perception/  letterbox 기하·원본 해상도 복원
+│   ├── common/             대상 모델 로딩·공통 유틸
+│   └── visualization/      추론 결과 시각화 (카메라별·BEV)
+└── third_party/TwinLiteNetPlus  공식 TwinLiteNet+ (서브모듈, MIT)
 ```
 
-인지 모델 코드는 이 레포에 복사하지 않는다. 각자 가진 인지 코드 레포 클론을 읽기 전용으로 마운트해 import한다.
+**이 레포는 다른 레포 없이 돈다.** 인지 모듈과 수집 코드는 기존 인지 코드 레포에서 옮겨 왔다 → [이관 기록](./docs/05_구현계획/외부코드_선별.md)
 
 ## 빠른 시작 — 추론 결과 시각화
 
 ```bash
+git submodule update --init                     # 처음 한 번 (TwinLiteNet+, morai_msgs)
 cp config/local.env.example config/local.env    # 처음 한 번, 자기 PC 경로로 채운다
 scripts/run_container.sh python3 -m visualization.visualize_inference --split val --name v5b_val
 ```
@@ -53,7 +61,7 @@ scripts/run_container.sh python3 -m visualization.visualize_inference --split va
 | 문서 전체 인덱스 | [docs/README.md](./docs/README.md) |
 | **구현 계획** | [A1 구현 계획](./docs/05_구현계획/A1_구현계획.md) |
 | 개발 환경·실행 방법 | [개발 환경](./docs/05_구현계획/개발환경.md) |
-| 가져다 쓰는 외부 코드 | [외부 코드 선별](./docs/05_구현계획/외부코드_선별.md) |
+| 옮겨 온 외부 코드 | [외부 코드 이관 기록](./docs/05_구현계획/외부코드_선별.md) |
 | 주제 후보 비교 (재검토용) | [주제 후보 인덱스](./docs/02_주제후보/README.md) |
 | 교수님이 요구한 조건 | [교수님 프로젝트 요구사항](./docs/01_강의정보/교수님_프로젝트_요구사항.md) |
 

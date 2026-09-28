@@ -1,0 +1,44 @@
+<launch>
+  <!-- Shared packet/runtime profile for supported MORAI simulator releases. -->
+  <arg name="runtime_profile" default="morai_udp"/>
+  <arg name="transport_profile" default="local"/>
+  <arg name="stream_profile" default="competition"/>
+  <arg name="enable_ego_status" default="true"/>
+  <arg name="enable_competition_status" default="true"/>
+  <arg name="competition_status_required" default="false"/>
+  <arg name="enable_object" default="$(eval arg('stream_profile') == 'development')"/>
+  <arg name="enable_collision" default="true"/>
+  <!-- config/morai/network_set_local.json 기준 포트 (PC마다 Cmd 등 일부 포트가 다를 수 있다) -->
+  <arg name="ego_port"       default="9099"/>   <!-- Ego Vehicle Status Dest -->
+  <arg name="competition_port" default="9798"/> <!-- Competition Vehicle Status Dest -->
+  <arg name="object_port"    default="7505"/>   <!-- Object Info Dest -->
+  <arg name="collision_port" default="9092"/>   <!-- Collision Data Dest -->
+  <arg name="cmd_ip"         default="127.0.0.1"/>
+  <arg name="cmd_port"       default="9093"/>   <!-- Ego Ctrl Cmd Host (SIM listen) -->
+  <arg name="max_steer_deg"  default="40.0"/>
+  <arg name="timestamp_mode" default="receive"/>
+
+  <node pkg="data_collection" type="morai_udp_bridge.py"
+        name="morai_udp_bridge" output="screen">
+    <param name="runtime_profile" value="$(arg runtime_profile)"/>
+    <param name="transport_profile" value="$(arg transport_profile)"/>
+    <param name="stream_profile" value="$(arg stream_profile)"/>
+    <param name="enable_ego_status" value="$(arg enable_ego_status)"/>
+    <param name="enable_competition_status" value="$(arg enable_competition_status)"/>
+    <param name="competition_status_required" value="$(arg competition_status_required)"/>
+    <param name="enable_object" value="$(arg enable_object)"/>
+    <param name="enable_collision" value="$(arg enable_collision)"/>
+    <param name="ego_port"           value="$(arg ego_port)"/>
+    <param name="competition_port"   value="$(arg competition_port)"/>
+    <param name="object_port"        value="$(arg object_port)"/>
+    <param name="collision_port"     value="$(arg collision_port)"/>
+    <param name="cmd_ip"             value="$(arg cmd_ip)"/>
+    <param name="cmd_port"           value="$(arg cmd_port)"/>
+    <param name="max_steer_deg"      value="$(arg max_steer_deg)"/>
+    <param name="timestamp_mode"     value="$(arg timestamp_mode)"/>
+    <param name="cmd_payload_bytes"  value="23"/>
+    <param name="invert_steer"       value="false"/>
+    <param name="ego_velocity_in_ms" value="true"/>
+    <param name="frame_id"           value="base_link"/>
+  </node>
+</launch>

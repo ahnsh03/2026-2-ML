@@ -1,0 +1,37 @@
+<launch>
+  <!-- Safe default based on measured 0.50-0.57 s completion time for 23 files. -->
+  <arg name="capture_hz" default="1.0"/>
+  <arg name="max_captures" default="0"/>
+  <arg name="run_id" default=""/>
+  <arg name="data_root" default=""/>
+  <!-- auto: gRPC acknowledgement first, then native ROS /SaveSensorData fallback. -->
+  <arg name="backend" default="auto"/>
+  <arg name="grpc_address" default="127.0.0.1"/>
+  <arg name="grpc_port" default="7789"/>
+  <arg name="save_topic" default="/SaveSensorData"/>
+  <!-- Windows path interpreted by MORAI. Empty means MORAI's SensorData default. -->
+  <arg name="morai_file_dir" default=""/>
+  <arg name="only_when_moving" default="false"/>
+  <arg name="min_speed_mps" default="0.2"/>
+  <arg name="require_ego" default="false"/>
+  <arg name="dry_run" default="false"/>
+
+  <node pkg="data_collection"
+        type="capture_mode_collector_node.py"
+        name="capture_mode_collector"
+        output="screen">
+    <param name="capture_hz" value="$(arg capture_hz)"/>
+    <param name="max_captures" value="$(arg max_captures)"/>
+    <param name="run_id" value="$(arg run_id)"/>
+    <param name="data_root" value="$(arg data_root)"/>
+    <param name="backend" value="$(arg backend)"/>
+    <param name="grpc_address" value="$(arg grpc_address)"/>
+    <param name="grpc_port" value="$(arg grpc_port)"/>
+    <param name="save_topic" value="$(arg save_topic)"/>
+    <param name="morai_file_dir" value="$(arg morai_file_dir)"/>
+    <param name="only_when_moving" value="$(arg only_when_moving)"/>
+    <param name="min_speed_mps" value="$(arg min_speed_mps)"/>
+    <param name="require_ego" value="$(arg require_ego)"/>
+    <param name="dry_run" value="$(arg dry_run)"/>
+  </node>
+</launch>

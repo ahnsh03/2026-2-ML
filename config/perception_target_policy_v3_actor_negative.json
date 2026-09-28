@@ -1,0 +1,126 @@
+{
+  "schema_version": "morai-perception-target-policy-2.0.0",
+  "policy_id": "kcity_actor_negative_marking_all_views_v3",
+  "status": "frozen",
+  "frozen_at_utc": "2026-09-06T12:58:07Z",
+  "evidence": {
+    "audit_scope": "all accepted synchronized runs, including frames excluded by later curation",
+    "audit_report": "data/capture_batches/20260906_all_accepted_runs_road_marking_audit.json",
+    "audit_report_sha256": "2ac8fcce949070efb9723787434a0849ad608869b6aa9ee3d1bbe7f4a9959948",
+    "frames": 10030,
+    "samples": 30090,
+    "pixels": 15406080000,
+    "unknown_semantic_pixels": 0,
+    "white_lane_pixels": 178339989,
+    "yellow_lane_pixels": 92393623,
+    "blue_lane_pixels": 0,
+    "stopline_pixels": 12923384,
+    "stopline_positive_samples_by_view": {
+      "front": 7245,
+      "left": 5680,
+      "right": 5730
+    },
+    "actor_positive_samples": 10266,
+    "actor_pixels": 29768972
+  },
+  "views": [
+    "front",
+    "left",
+    "right"
+  ],
+  "audit_constraints": {
+    "zero_pixel_classes": [
+      "blue_lane"
+    ]
+  },
+  "targets": {
+    "lane": {
+      "positive_classes": [
+        "white_lane",
+        "yellow_lane"
+      ],
+      "occlusion_policy": "visible_only",
+      "valid_policy": "geometric_valid",
+      "purpose": "Backward-compatible binary lane-boundary target; excludes stopline"
+    },
+    "road_marking": {
+      "class_values": {
+        "background": 0,
+        "white_lane": 1,
+        "yellow_lane": 2,
+        "stopline": 3
+      },
+      "occlusion_policy": "visible_only",
+      "valid_policy": "geometric_valid",
+      "valid_views": [
+        "front",
+        "left",
+        "right"
+      ],
+      "derived_outputs": {
+        "lane_boundary_presence": "white_lane OR yellow_lane",
+        "road_marking_presence": "white_lane OR yellow_lane OR stopline"
+      }
+    },
+    "drivable": {
+      "positive_classes": [
+        "asphalt",
+        "white_lane",
+        "yellow_lane",
+        "crosswalk",
+        "stopline",
+        "road_sign"
+      ],
+      "ignore_classes": [],
+      "valid_policy": "geometric_valid",
+      "ab_role": "B candidate; visible actor pixels are valid non-drivable negatives"
+    },
+    "stopline": {
+      "positive_classes": [
+        "stopline"
+      ],
+      "occlusion_policy": "visible_only",
+      "valid_policy": "geometric_valid",
+      "valid_views": [
+        "front",
+        "left",
+        "right"
+      ],
+      "purpose": "Backward-compatible binary target and all-view QA"
+    },
+    "actor_occupancy_gt": {
+      "positive_classes": [
+        "vehicle",
+        "sedan",
+        "suv",
+        "truck",
+        "bus",
+        "van",
+        "wagon",
+        "mpv",
+        "pedestrian",
+        "obstacle"
+      ],
+      "training_target": false,
+      "purpose": "Drivable A/B evaluation and future camera-LiDAR fusion evaluation"
+    }
+  },
+  "explicit_background_classes": [
+    "sidewalk",
+    "standing_object",
+    "building",
+    "road_edge",
+    "sky",
+    "etc",
+    "ego_vehicle"
+  ],
+  "class_notes": {
+    "background": "Head-local road-marking background: every valid pixel that is not white_lane, yellow_lane, or stopline.",
+    "blue_lane": "Zero pixels in the full accepted-run audit. It is excluded from competition targets and baking fails if it appears later.",
+    "stopline": "Positive in all three views; all-view supervision is retained for later calibrated BEV fusion.",
+    "standing_object": "Permanent roadside/tunnel structures; keep as non-road background, not transient actor occupancy.",
+    "obstacle": "Spawned cones and hazard/fire props; train as non-drivable in B while retaining actor occupancy GT.",
+    "ego_vehicle": "Visible ego hood/body is non-road background, not transient actor occupancy."
+  },
+  "palette_source": "MORAI 26.R1 Semantic camera official RGB palette encoded in data_collection.mask_baker.OFFICIAL_PALETTE_RGB"
+}

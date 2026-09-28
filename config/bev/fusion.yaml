@@ -1,0 +1,19 @@
+views: [front, left, right]
+max_timestamp_skew_ms: 35.0
+sync_queue_size: 12
+max_fused_hz: 10.0
+
+# Static overlap quality.  Geometry remains the primary seam owner and model
+# confidence only refines a geometrically plausible choice.
+edge_taper_fraction: 0.12
+forward_fade_start_m: 15.0
+lateral_fade_start_m: 6.0
+rear_fade_start_m: -4.0
+boundary_weight: 0.20
+
+view_ids:
+  front: 1
+  left: 2
+  right: 3
+
+diagnostics_interval_sec: 2.0

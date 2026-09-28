@@ -1,0 +1,7 @@
+[submodule "third_party/TwinLiteNetPlus"]
+	path = third_party/TwinLiteNetPlus
+	url = https://github.com/chequanghuy/TwinLiteNetPlus.git
+[submodule "ros/src/morai_msgs"]
+	path = ros/src/morai_msgs
+	url = https://github.com/MORAI-Autonomous/MORAI-ROS_morai_msgs.git
+	branch = beta_drive

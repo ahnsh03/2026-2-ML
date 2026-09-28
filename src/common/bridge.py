@@ -1,7 +1,7 @@
-"""외부 인지 코드 레포(읽기 전용 클론)와 대상 인지 모델을 이 레포에서 쓰기 위한 연결부.
+"""대상 인지 모델 로딩과 공통 유틸.
 
-외부 코드는 수정하지 않고 ``sys.path``로 불러온다. 선별 근거는
-``docs/05_구현계획/외부코드_선별.md``에 있다.
+인지 모듈(``twinlite_morai``, ``drivable_bev``, ``camera_semantic_perception``)은 이 레포 ``src/``에 있다.
+이관 기록은 ``docs/05_구현계획/외부코드_선별.md``에 있다.
 """
 
 from __future__ import annotations
@@ -9,7 +9,6 @@ from __future__ import annotations
 import hashlib
 import os
 import re
-import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Optional
@@ -20,32 +19,6 @@ DEFAULT_CHECKPOINT_RELPATH = (
 )
 DEFAULT_DATASET_VERSION = "twinlite_morai_v5_marking_actor_negative"
 VIEWS = ("front", "left", "right")
-
-_IMPORT_ROOTS = (
-    "src/perception",  # twinlite_morai
-    "src/perception/drivable_bev/src",  # drivable_bev
-    "src/perception/camera_semantic_perception/src",  # camera_semantic_perception
-)
-
-
-def resolve_perception_repo(value: Optional[str] = None) -> Path:
-    root = Path(value or os.environ.get("PERCEPTION_REPO", "")).expanduser()
-    if not (root / "src" / "perception" / "twinlite_morai").is_dir():
-        raise RuntimeError(
-            "인지 코드 레포를 찾을 수 없습니다: {!r}. --perception-repo 또는 PERCEPTION_REPO를 지정하세요".format(
-                str(root)
-            )
-        )
-    return root.resolve()
-
-
-def add_perception_import_paths(repo: Path) -> Path:
-    """외부 인지 패키지를 import할 수 있도록 경로를 추가한다."""
-    for relative in _IMPORT_ROOTS:
-        path = str(repo / relative)
-        if path not in sys.path:
-            sys.path.insert(0, path)
-    return repo
 
 
 def sha256_file(path: Path) -> str:

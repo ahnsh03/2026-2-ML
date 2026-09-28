@@ -25,3 +25,9 @@ __pycache__/
 .ipynb_checkpoints/
 .DS_Store
 *:Zone.Identifier
+
+# catkin 빌드 산출물 (scripts/run_ros.sh build)
+ros/build/
+ros/devel/
+ros/install/
+ros/.catkin_workspace

@@ -28,17 +28,16 @@ import numpy as np
 from common.bridge import (
     DEFAULT_DATASET_VERSION,
     VIEWS,
-    add_perception_import_paths,
     git_head,
     load_target_model,
     parse_condition,
-    resolve_perception_repo,
     resolve_checkpoint,
     sha256_file,
 )
 from visualization import camera as cam
 from visualization.bev import BevScene
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
 NATIVE_TARGET_DIR = "perception_targets_native_v3_actor_negative"
 LETTERBOX_KEYS = ("original_hw", "target_hw", "resized_hw", "pad_ltrb", "scale_xy")
 
@@ -52,8 +51,8 @@ def parse_args():
     parser.add_argument("--every-n", type=int, default=1, help="run마다 N frame 간격으로 선택")
     parser.add_argument("--max-frames-per-run", type=int, default=0, help="run마다 고르게 최대 N frame (0 = 전부)")
     parser.add_argument("--checkpoint", help="기본: $PERCEPTION_CKPT_ROOT/<고정 대상 모델>")
-    parser.add_argument("--twinlite-root", default=os.environ.get("TWINLITE_ROOT"))
-    parser.add_argument("--perception-repo", default=os.environ.get("PERCEPTION_REPO"))
+    parser.add_argument("--twinlite-root", default=os.environ.get("TWINLITE_ROOT"),
+                        help="기본: 이 레포 third_party/TwinLiteNetPlus (서브모듈)")
     parser.add_argument("--output-root", default=os.environ.get("ML_OUTPUT_ROOT", "outputs"))
     parser.add_argument("--name", help="출력 폴더 이름 (기본: <split>)")
     parser.add_argument("--grid", default="dev", choices=("dev", "pilot"), help="BEV 격자 (drivable_bev 설정)")
@@ -375,7 +374,7 @@ README_TEMPLATE = """# 추론 시각화 — {name}
 
 IoU는 팀 평가(`evaluate_twinlite.py`)와 같이 384×640 letterbox 공간·valid mask 기준이며,
 union이 0이면 `nan`이다. 마스크 이미지는 확률을 원본 해상도로 복원한 뒤 임계값 {lane_th}/{drv_th}로 이진화했다.
-BEV는 인지 코드 레포의 `drivable_bev` 설정 `cameras_v2.yaml`(노면 z = {ground} m)과 융합 규칙을 그대로 사용했다.
+BEV는 이 레포의 `config/bev/cameras_v2.yaml`(노면 z = {ground} m)과 `drivable_bev` 융합 규칙을 그대로 사용했다.
 """
 
 
@@ -426,7 +425,6 @@ def write_csv(path: Path, rows: List[dict]) -> None:
 # ---------------------------------------------------------------------- main
 def main():
     args = parse_args()
-    perception_repo = add_perception_import_paths(resolve_perception_repo(args.perception_repo))
 
     import torch
     from torch.utils.data import DataLoader, Dataset
@@ -456,7 +454,7 @@ def main():
 
     checkpoint = resolve_checkpoint(args.checkpoint)
     loaded = load_target_model(checkpoint, device, twinlite_root=args.twinlite_root)
-    bev = BevScene(perception_repo, grid_name=args.grid)
+    bev = BevScene(REPO_ROOT, grid_name=args.grid)
     if bev.calibration_warning:
         print("[WARN] calibration: " + bev.calibration_warning, flush=True)
 
@@ -556,8 +554,7 @@ def main():
             "split_manifest_sha256": sha256_file(split_manifest),
         },
         "code": {
-            "perception_repo_commit": git_head(perception_repo),
-            "ml_repo_commit": git_head(Path(__file__).resolve().parents[2]),
+            "ml_repo_commit": git_head(REPO_ROOT),
         },
         "bev": bev.describe(),
         "device": str(device),

@@ -1,0 +1,17 @@
+# Development-only exploration grid.  This deliberately includes regions
+# outside the currently validated camera range so degradation can be inspected
+# in rqt.  Do not treat the full rectangle as a planning-valid ODD.
+frame_id: base_link
+
+x_min_m: -5.0
+x_max_m: 30.0
+y_min_m: -12.0
+y_max_m: 12.0
+resolution_m: 0.10
+
+# Per-view projection stays above the model output rate.  Fusion owns the
+# deployment-facing 10 Hz throttle.
+max_publish_hz: 20.0
+max_ground_range_m: 35.0
+min_camera_depth_m: 0.10
+diagnostics_interval_sec: 2.0

@@ -1,0 +1,5 @@
+# 링크·노드 기반 BEV 정적 레이어 베이커 의존성 (수집에는 쓰지 않지만 원본 이미지와 같게 유지한다)
+# numpy / scipy / opencv / PyYAML 은 Dockerfile 이 이미 설치한다.
+# Python 3.8 (Ubuntu 20.04) 기준으로 마지막 지원 버전을 고정한다.
+h5py==3.11.0          # 베이크 결과 H5 읽기·쓰기 (없으면 베이크·조회 자체가 안 됨)
+pyproj==3.5.0         # GPS 위경도 <-> UTM52N 변환 (live_check --source gps)

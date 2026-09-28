@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# Stable Qt/ROS GUI launcher for Docker Desktop + WSLg/X11.
+set -euo pipefail
+
+# Sourced catkin setup scripts inspect the caller's positional parameters.
+# Preserve GUI arguments so options such as --help or RViz flags cannot be
+# mistaken for catkin setup options.
+gui_args=("$@")
+set --
+source /opt/ros/noetic/setup.bash
+if [[ -f /root/ws/devel/setup.bash ]]; then
+  source /root/ws/devel/setup.bash
+fi
+set -- "${gui_args[@]}"
+
+export XDG_RUNTIME_DIR=/tmp/ros-xdg-runtime
+export QT_X11_NO_MITSHM=1
+export XCURSOR_PATH=/usr/share/icons
+export XCURSOR_THEME=DMZ-White
+install -d -m 700 "$XDG_RUNTIME_DIR"
+
+usage() {
+  cat <<'EOF'
+Usage:
+  ros-gui rqt-image [base-image-topic]
+  ros-gui rviz [rviz options]
+
+rqt-image strips a trailing /compressed and selects compressed transport.
+Both modes use a fresh Qt settings directory so stale multi-monitor geometry
+cannot place the window off-screen. User RViz .rviz files are not modified.
+EOF
+}
+
+mode="${1:-}"
+if [[ -z "$mode" ]]; then
+  usage
+  exit 2
+fi
+shift
+
+case "$mode" in
+  rqt-image)
+    export XDG_CONFIG_HOME
+    XDG_CONFIG_HOME="$(mktemp -d /tmp/ros-rqt-image.XXXXXX)"
+    if [[ $# -eq 0 ]]; then
+      exec rqt_image_view --clear-config
+    fi
+    topic="${1%/compressed}"
+    shift
+    exec rqt_image_view --clear-config "$topic" _image_transport:=compressed "$@"
+    ;;
+  rviz)
+    export XDG_CONFIG_HOME
+    XDG_CONFIG_HOME="$(mktemp -d /tmp/ros-rviz.XXXXXX)"
+    exec rviz "$@"
+    ;;
+  -h|--help|help)
+    usage
+    ;;
+  *)
+    echo "Unknown GUI mode: $mode" >&2
+    usage >&2
+    exit 2
+    ;;
+esac
