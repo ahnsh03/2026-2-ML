@@ -1,0 +1,39 @@
+{
+  "schema_version": "ml-roi-profile-1",
+  "status": "template_not_usable_until_reviewed",
+  "camera_id": "front",
+  "normalized_xy": true,
+  "original_hw_reference": [
+    720,
+    1280
+  ],
+  "sensor_config_sha256": null,
+  "calibration_sha256": null,
+  "regions": {
+    "upper_context": {
+      "polygon_xy": null
+    },
+    "ego_body": {
+      "polygon_xy": null
+    },
+    "road_left": {
+      "polygon_xy": null
+    },
+    "road_center": {
+      "polygon_xy": null
+    },
+    "road_right": {
+      "polygon_xy": null
+    },
+    "road_all": {
+      "operation": "union",
+      "members": [
+        "road_left",
+        "road_center",
+        "road_right"
+      ]
+    }
+  },
+  "reviewed": false,
+  "freeze_sha256": null
+}

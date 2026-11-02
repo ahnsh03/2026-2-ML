@@ -1,0 +1,339 @@
+{
+  "schema_version": "ml-port-inventory-1",
+  "date": "2026-11-03",
+  "status": "plan_only_no_source_ported",
+  "source_revision": "f80f89a991aad16470367ca32596b4a9b93194ce",
+  "source_alias_binding": "private local map outside public repository",
+  "entries": [
+    {
+      "id": "D01",
+      "owner": "A",
+      "phase": "P0",
+      "source": "src/data_collection/src/data_collection/capture_mode.py",
+      "source_sha256": "dd1e2c409ad161af716ec150135f5cc432c6be9e0ab3162f6f4a97037407c94a",
+      "destination": "ros/src/data_collection/src/data_collection/capture_mode.py",
+      "action": "diff_existing_then_selectively_update",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D02",
+      "owner": "A",
+      "phase": "P0",
+      "source": "src/data_collection/src/data_collection/capture_grpc.py",
+      "source_sha256": "e256342c775f327843f4e71348b1d6edb410b47b07d31d24a81012099def89ba",
+      "destination": "ros/src/data_collection/src/data_collection/capture_grpc.py",
+      "action": "diff_existing_then_selectively_update",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D03",
+      "owner": "A",
+      "phase": "P0",
+      "source": "src/data_collection/src/data_collection/capture_sync.py",
+      "source_sha256": "a4821b01621a855ff7ed038237cc9327e4d0464fbd78ad29ee0308e197a262c9",
+      "destination": "ros/src/data_collection/src/data_collection/capture_sync.py",
+      "action": "diff_existing_then_selectively_update",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D04",
+      "owner": "A",
+      "phase": "P0",
+      "source": "src/data_collection/src/data_collection/mask_baker.py",
+      "source_sha256": "9ce334f4818cdb09189d28425e03e32a298e107c5709276e5ac8d80eda72d1eb",
+      "destination": "ros/src/data_collection/src/data_collection/mask_baker.py",
+      "action": "diff_existing_then_selectively_update",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D05",
+      "owner": "A",
+      "phase": "P0",
+      "source": "src/data_collection/src/data_collection/perception_dataset.py",
+      "source_sha256": "0d9fd4169b599a7c0a4c7c3412e7ab406e1c4a98a761bf5554c84a8f78ed3ef7",
+      "destination": "ros/src/data_collection/src/data_collection/perception_dataset.py",
+      "action": "diff_existing_then_selectively_update",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D06",
+      "owner": "A",
+      "phase": "P0",
+      "source": "src/data_collection/scripts/capture_mode_collector_node.py",
+      "source_sha256": "2c9bd791649c0393fa68d336f5b844989a9181bb1222092ad6c195df0f35b655",
+      "destination": "ros/src/data_collection/scripts/capture_mode_collector_node.py",
+      "action": "diff_existing_then_selectively_update",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D07",
+      "owner": "A",
+      "phase": "P0",
+      "source": "src/data_collection/launch/capture_mode_collector.launch",
+      "source_sha256": "f692dd5f3d31c07cce4ec5c725fe2a128a4f744314ceaa1fccb523e2c87c4f6e",
+      "destination": "ros/src/data_collection/launch/capture_mode_collector.launch",
+      "action": "diff_existing_then_selectively_update",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D08",
+      "owner": "A",
+      "phase": "P0",
+      "source": "scripts/sync_capture_mode_data.py",
+      "source_sha256": "3fe3c0dc64564be8a52149ba231c1fb713a8f4c334715c24d17c92aea9db9d05",
+      "destination": "scripts/sync_capture_mode_data.py",
+      "action": "diff_existing_then_selectively_update",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D09",
+      "owner": "A",
+      "phase": "P0",
+      "source": "scripts/audit_semantic_capture.py",
+      "source_sha256": "c56157bf444c7d473fbcc230be59710bec30d76f1d4bfa5ce32046984025b7b7",
+      "destination": "scripts/audit_semantic_capture.py",
+      "action": "diff_existing_then_selectively_update",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D10",
+      "owner": "A",
+      "phase": "P0",
+      "source": "scripts/bake_perception_masks.py",
+      "source_sha256": "62570e67e8a31520a1d8943951e0238c7d65308aa013c8a911b9cd653c415f66",
+      "destination": "scripts/bake_perception_masks.py",
+      "action": "diff_existing_then_selectively_update",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D11",
+      "owner": "A",
+      "phase": "P0",
+      "source": "scripts/build_perception_dataset.py",
+      "source_sha256": "4eda607bb8181af25c2efaa9dea846cb0a993b6ecff939787fe1222db2ef7597",
+      "destination": "scripts/build_perception_dataset.py",
+      "action": "diff_existing_then_selectively_update",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D12",
+      "owner": "A",
+      "phase": "P0",
+      "source": "config/perception_target_policy_v3_actor_negative.json",
+      "source_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+      "destination": "config/perception_target_policy_v3_actor_negative.json",
+      "action": "reuse_frozen_policy_do_not_silently_upgrade",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D13",
+      "owner": "A",
+      "phase": "P0",
+      "source": "tools/perception/capture_rgb_quality.py",
+      "source_sha256": "e87845d672c9fba0417e9d81463d0611392efaa0fe31788faaf0187bddca8c22",
+      "destination": "src/twinlite_morai/capture_quality.py",
+      "action": "adapt_rgb_integrity_checks_only_not_gt_free_model_features",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D14",
+      "owner": "A",
+      "phase": "P0",
+      "source": "src/data_collection/src/data_collection/data_locations.py",
+      "source_sha256": "2e8461944a2b54f41883caaedac523abc77d6510e4c867808a2de5a3e33457eb",
+      "destination": "ML path adapter (new minimal implementation)",
+      "action": "extract_needed_interfaces_replace_private_defaults",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D15",
+      "owner": "A",
+      "phase": "P0",
+      "source": "src/data_collection/src/data_collection/storage_paths.py",
+      "source_sha256": "d9a6a29ea52da735f19ac0e916dd01ab4d47f13a6ec4b7e2a44f53b68bda0618",
+      "destination": "ML path adapter (new minimal implementation)",
+      "action": "extract_needed_interfaces_replace_private_defaults",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "D16",
+      "owner": "A",
+      "phase": "P1",
+      "source": "src/data_collection/src/data_collection/environment_grpc.py",
+      "source_sha256": "7fb4e126b1baa80f54669f3fc319eaf9c2c9743e8aac2b02593079e7a9329ecb",
+      "destination": "ros/src/data_collection/src/data_collection/environment_grpc.py",
+      "action": "optional_environment_control_adapt_proto_and_record_readback",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "M01",
+      "owner": "B",
+      "phase": "P0",
+      "source": "${SOURCE_CAMERA_PY}/training/twinlite/dataset.py",
+      "source_sha256": "1cfc3214b4c933585ad6eabcd3531d17757b5c7c67d8f2ff8ed193d6aca8330d",
+      "destination": "src/twinlite_morai/dataset.py",
+      "action": "diff_existing_preserve_binary_medium_contract",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "M02",
+      "owner": "B",
+      "phase": "P0",
+      "source": "${SOURCE_CAMERA_PY}/training/twinlite/external_model.py",
+      "source_sha256": "ff0203323e09b98d283d27eb17f24f9ea6004ae385daaf565257b08164efaa55",
+      "destination": "src/twinlite_morai/external_model.py",
+      "action": "diff_existing_preserve_binary_medium_contract",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "M03",
+      "owner": "B",
+      "phase": "P0",
+      "source": "${SOURCE_CAMERA_PY}/training/twinlite/tasks.py",
+      "source_sha256": "ff8e65a9a932992e9283fdcc8548e43f4ea0f5b8a4599276e49391f3421574d2",
+      "destination": "src/twinlite_morai/tasks.py",
+      "action": "diff_existing_preserve_binary_medium_contract",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "M04",
+      "owner": "B",
+      "phase": "P0",
+      "source": "${SOURCE_CAMERA_PY}/training/twinlite/losses.py",
+      "source_sha256": "00efda6cb56d93f091f577183b76c33250c148064b1c396d35c1319799d27ed7",
+      "destination": "src/twinlite_morai/losses.py",
+      "action": "diff_existing_preserve_binary_medium_contract",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "M05",
+      "owner": "B",
+      "phase": "P0",
+      "source": "${SOURCE_CAMERA_PY}/training/twinlite/training.py",
+      "source_sha256": "0a19594d7cab36cb70f83e3f2252c5719cdb7344e80086b451867383048bfef8",
+      "destination": "src/twinlite_morai/training.py",
+      "action": "diff_existing_preserve_binary_medium_contract",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "M06",
+      "owner": "B",
+      "phase": "P0",
+      "source": "${SOURCE_CAMERA_PY}/training/twinlite/__init__.py",
+      "source_sha256": "241ce3d268aa75a3ed444d1283cb7e5cf4e2c3f77126aa8da2314815b671bf36",
+      "destination": "src/twinlite_morai/__init__.py",
+      "action": "diff_existing_preserve_binary_medium_contract",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "M07",
+      "owner": "B",
+      "phase": "P1",
+      "source": "${SOURCE_CAMERA_PY}/training/twinlite/batching.py",
+      "source_sha256": "e03da66e73c86d2b7b0f786736af77095c2441b35106f392812fba997640aacb",
+      "destination": "src/twinlite_morai/batching.py",
+      "action": "optional_mixed_shapes_not_needed_fixed_medium",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "M08",
+      "owner": "B",
+      "phase": "P0",
+      "source": "${SOURCE_CAMERA_PY}/camera/geometry.py",
+      "source_sha256": "52b94532ceddedcb02ef7b7150633102c01b16279fd0bafee7da36bd2e6ec255",
+      "destination": "src/camera_semantic_perception/geometry.py",
+      "action": "diff_existing_geometry_parity",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "M09",
+      "owner": "B",
+      "phase": "P0",
+      "source": "scripts/evaluate_twinlite.py",
+      "source_sha256": "6d0a147610228c3672014069d4b839627e51abe723c898a47456913e1eea1d83",
+      "destination": "scripts/evaluate_twinlite.py",
+      "action": "adapt_standalone_pure_gt_evaluation",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "M10",
+      "owner": "B",
+      "phase": "P1",
+      "source": "scripts/train_twinlite.py",
+      "source_sha256": "13b5da46a24c859f0cdcc937f941e1b20bf366030eb5a35c880f8579c657aebf",
+      "destination": "scripts/train_twinlite.py",
+      "action": "adapt_after_primary_monitor_for_equal_budget_finetune",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "M11",
+      "owner": "B",
+      "phase": "P1",
+      "source": "scripts/render_twinlite_predictions.py",
+      "source_sha256": "28a30161f82a87c0ea238b63dde082d751ac18485138ffc8d00a5d38499baadf",
+      "destination": "existing src/visualization/visualize_inference.py",
+      "action": "reference_only_existing_visualizer_preferred",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "V01",
+      "owner": "C",
+      "phase": "P0",
+      "source": "src/data_collection/test/test_capture_mode.py",
+      "source_sha256": "983479d492a35caf7f8d0a1f2cf0dada81aef2ff348441226844e52cdc6e3834",
+      "destination": "ros/src/data_collection/test/test_capture_mode.py",
+      "action": "select_relevant_existing_tests_update_for_ported_behavior",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "V02",
+      "owner": "C",
+      "phase": "P0",
+      "source": "src/data_collection/test/test_capture_sync.py",
+      "source_sha256": "0e0adce51895dee30cc0c27c573ce2cfbd1430f9cda07c88d14799934348d353",
+      "destination": "ros/src/data_collection/test/test_capture_sync.py",
+      "action": "select_relevant_existing_tests_update_for_ported_behavior",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "V03",
+      "owner": "C",
+      "phase": "P0",
+      "source": "src/data_collection/test/test_mask_baker.py",
+      "source_sha256": "f7fb624a7ab1c0c17d40b97fd8844b75d07ec39fe0074b2837baae9ccd9f8195",
+      "destination": "ros/src/data_collection/test/test_mask_baker.py",
+      "action": "select_relevant_existing_tests_update_for_ported_behavior",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "V04",
+      "owner": "C",
+      "phase": "P0",
+      "source": "src/data_collection/test/test_perception_dataset.py",
+      "source_sha256": "a32dbfd79786cc440d1e4879c6536b4f1b8f1d3a041d608596d192fab0ed3b44",
+      "destination": "ros/src/data_collection/test/test_perception_dataset.py",
+      "action": "select_relevant_existing_tests_update_for_ported_behavior",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "V05",
+      "owner": "C",
+      "phase": "P0",
+      "source": "${SOURCE_CAMERA_TEST}/training/test_dataset_loss.py",
+      "source_sha256": "8b29941a8cb58017e6242feaea3ee2a5a3e0f8f368e2a69ab531474b306b5b11",
+      "destination": "tests/test_dataset_loss.py",
+      "action": "adapt_binary_data_loss_metric_contract_cases",
+      "implementation_status": "planned_not_ported"
+    },
+    {
+      "id": "V06",
+      "owner": "C",
+      "phase": "P0",
+      "source": "${SOURCE_CAMERA_TEST}/training/test_capture_dataset.py",
+      "source_sha256": "1951f80ebe1c4653b79ea01cff07f58f58b60e8a15e3f4c4177f3b76cc70bdc5",
+      "destination": "tests/test_capture_dataset.py",
+      "action": "adapt_geometry_manifest_invariants",
+      "implementation_status": "planned_not_ported"
+    }
+  ]
+}

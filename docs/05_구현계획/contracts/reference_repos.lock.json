@@ -1,0 +1,72 @@
+{
+  "schema_version": "ml-reference-repos-1",
+  "verified_on": "2026-11-03",
+  "repositories": [
+    {
+      "name": "MetaSeg",
+      "url": "https://github.com/mrottmann/MetaSeg.git",
+      "commit": "8104eab8c252ec2d6964c7338f9b1c53b847c446",
+      "branch_at_clone": "master",
+      "clone_type": "depth_1",
+      "role": "output feature and meta-regression reference",
+      "license": "MIT",
+      "license_files": [
+        "LICENSE"
+      ],
+      "execution_status": "cloned_and_source_inspected_not_installed_or_reproduced"
+    },
+    {
+      "name": "tcsr-monitor",
+      "url": "https://github.com/dinhieufam/tcsr-monitor.git",
+      "commit": "dda43b4b0f88ce24b02ded596ca49494bb9ec426",
+      "branch_at_clone": "master",
+      "clone_type": "depth_1",
+      "role": "observable features and held-out condition evaluation",
+      "license": "MIT",
+      "license_files": [
+        "LICENSE"
+      ],
+      "execution_status": "cloned_and_source_inspected_not_installed_or_reproduced"
+    },
+    {
+      "name": "segmentation_failures_benchmark",
+      "url": "https://github.com/MIC-DKFZ/segmentation_failures_benchmark.git",
+      "commit": "a1af98be0f93c2bdc30ffe5bb6eda531c485d87d",
+      "branch_at_clone": "main",
+      "clone_type": "depth_1",
+      "role": "risk-coverage evaluation reference",
+      "license": "Apache-2.0",
+      "license_files": [
+        "LICENSE"
+      ],
+      "execution_status": "cloned_and_source_inspected_not_installed_or_reproduced"
+    },
+    {
+      "name": "TwinLiteNetPlus",
+      "url": "https://github.com/chequanghuy/TwinLiteNetPlus.git",
+      "commit": "90f1b8695ae311d5123b05f8534b2e11e42499d2",
+      "branch_at_clone": "main",
+      "clone_type": "depth_1",
+      "role": "frozen perception architecture reference; runtime uses in-repo submodule",
+      "license": "MIT",
+      "license_files": [
+        "LICENSE"
+      ],
+      "execution_status": "cloned_and_source_inspected_not_installed_or_reproduced"
+    }
+  ],
+  "paper_only": [
+    {
+      "name": "Kuechler2024",
+      "url": "https://arxiv.org/abs/2401.09245",
+      "code_status": "official_repository_not_verified_after_search",
+      "implementation": "paper_inspired_adaptation_not_exact_reproduction"
+    },
+    {
+      "name": "SEE2026",
+      "url": "https://epapers2.org/iscas2026/ESR/paper_details.php?paper_id=2485",
+      "code_status": "official_repository_not_verified_after_search",
+      "implementation": "paper_inspired_output_only_regression_not_exact_reproduction"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": "ml-medium-historical-evidence-1",
+  "verified_on": "2026-11-03",
+  "status": "historical_development_evidence_not_new_quality_model_results",
+  "checkpoint_sha256": "5d233b525d95d45fc05dbf5469e92419401771a2f4b97b86be7f79fa3b9e762d",
+  "training": {
+    "config": "medium",
+    "batch_size": 12,
+    "epochs": 18,
+    "lr": 0.0002,
+    "weight_decay": 0.0005,
+    "seed": 2026,
+    "ema_decay": 0.9999,
+    "no_amp": false,
+    "no_ema": false,
+    "num_workers": 2,
+    "augmentation": "none (first MORAI baseline)",
+    "spatial_weighting": "uniform within valid_mask; padding weight zero",
+    "model_parameters": 478876,
+    "train_samples": 26001,
+    "val_samples": 1404,
+    "torch_version": "2.1.2+cu118",
+    "upstream_commit": "90f1b8695ae311d5123b05f8534b2e11e42499d2"
+  },
+  "initialization": {
+    "mode": "checkpoint_weights_only",
+    "checkpoint_epoch": 10,
+    "weights": "ema_state_dict",
+    "sha256": "a88794304c149160be239e9dafe0f54d00808ab9358224e3c4c933c1ccc0d94d",
+    "optimizer_reset": true,
+    "scheduler_reset": true,
+    "ema_reset_from_loaded_model": true
+  },
+  "historical_result_best_fields": {
+    "drivable": 0.9836429932404085,
+    "lane": 0.8933225183507637,
+    "mean": 0.9384827557955862
+  },
+  "epochs_completed": 18,
+  "source_file_sha256": {
+    "config.json": "c14697ef97c10e14f52d5db5bc2790d6a5589cccfe5f4f27479736c3c8c06bee",
+    "result.json": "21686e00b5296cde22783808db9b4dcdcd1009385ca3acc6a2e93f12ea1d13b2",
+    "history.jsonl": "1387b161ee033f827113d808e41d08144814d195e8c5ca56f8b2e771d71c7f58"
+  },
+  "visualization": {
+    "export_id": "v5b_val",
+    "frames": 468,
+    "views": 3,
+    "front_failures_at_iou_lt_0_7_from_rounded_csv": 89,
+    "csv_iou_precision_decimal_places": 3,
+    "new_precision_evaluation_required": true
+  }
+}
