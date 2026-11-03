@@ -1,0 +1,85 @@
+{
+  "verified_on": "2026-11-03",
+  "model_id": "twinlite_medium_v6_road_marking_best_mean_ema",
+  "checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+  "checkpoint_epoch": 11,
+  "epochs_completed": 18,
+  "task_spec": {
+    "class_counts": {
+      "drivable": 2,
+      "road_marking": 4
+    },
+    "class_names": {
+      "drivable": [
+        "background",
+        "drivable"
+      ],
+      "road_marking": [
+        "background",
+        "white_lane",
+        "yellow_lane",
+        "stopline"
+      ]
+    },
+    "heads": [
+      "drivable",
+      "road_marking"
+    ],
+    "name": "drivable_road_marking_4class"
+  },
+  "training": {
+    "train_samples": 26001,
+    "val_samples": 1404,
+    "batch_size": 12,
+    "lr": 0.0002,
+    "weight_decay": 0.0005,
+    "seed": 2026,
+    "ema_decay": 0.9999,
+    "model_parameters": 479060
+  },
+  "dataset_provenance": {
+    "dataset_metadata_sha256": "1debe749d4a7eb7e5c0faf979f0e2a383bd46654956b52813fe11ded6647a9cc",
+    "dataset_version": "twinlite_morai_v6_road_marking_actor_negative",
+    "split_manifest_sha256": {
+      "train": "277f9161f39a0df0c99aaf9f23b07043b8d62af368bda1d425a5ea52c7ac8d85",
+      "val": "4add24d993fabacb4a99f9d36caaee7c7d4ffc7c391e33d4c5d087a4d64092d4"
+    }
+  },
+  "historical_validation": {
+    "scope": "Original training validation, pooled intersections/unions per view; not independent final test or frame-IoU mean",
+    "selected_epoch": 11,
+    "head_scores": {
+      "drivable": 0.9834311987251595,
+      "road_marking": 0.8955530611483308
+    },
+    "mean_head_iou": 0.9394921299367451,
+    "per_view_class_iou": {
+      "all": {
+        "background": 0.9925532002041918,
+        "drivable": 0.9834311987251595,
+        "stopline": 0.8752764823160384,
+        "white_lane": 0.8786139005844709,
+        "yellow_lane": 0.9327688005444832
+      },
+      "front": {
+        "background": 0.9911902869220056,
+        "drivable": 0.9775082201029568,
+        "stopline": 0.8731754751784425,
+        "white_lane": 0.7768933163400544,
+        "yellow_lane": 0.8618660023892663
+      }
+    }
+  },
+  "sources": {
+    "config.json": {
+      "sha256": "c939a6a103218e3da3bb756e88e5b748b4bf174d794065f9377923007997fbda"
+    },
+    "history.jsonl": {
+      "sha256": "28156f1782a78d4c9fbe0538d1c80d47ab99b324bb498581401bbb77bca3e878"
+    },
+    "result.json": {
+      "sha256": "3653228d04f57b2193edc49c99d720fdec911c61b30fa39d739f80e912d8f3a3"
+    }
+  },
+  "status": "Existing perception model verified; new quality estimator not trained; v6-specific ML schema pending"
+}
