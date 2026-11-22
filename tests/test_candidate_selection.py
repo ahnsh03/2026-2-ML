@@ -50,6 +50,33 @@ class CandidateSelectionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"risk_pool_sha256"):
             validate_adaptation_selection(entries,"RiskPoolRandom",42,.25)
 
+    def test_predicted_area_bands_fill_shared_quota_and_honor_boundaries(self):
+        rows = [dict(sample_id=str(i), frame_id=i, run_id="r", preregistered_quality_role="candidate_pool") for i in range(6)]
+        pred = [dict(sample_id=str(i), pixel_sha256=str(i), rgb_sha256=str(i), risk_score=1-i/6) for i in range(6)]
+        X = np.zeros((6, 56), dtype=np.float32)
+        X[:, 2] = [0, .001, .003, .01, .02, .5]
+        risk, random = plan_selection(rows, pred, X, [.75], [4], area_stratified=True)["selections"][-2:]
+        self.assertEqual(risk["indices"], [0, 1, 3, 2, 4])
+        self.assertEqual(risk["area_pool_counts"], [1, 2, 3])
+        self.assertEqual(risk["selected_area_bands"], random["selected_area_bands"])
+        self.assertEqual(risk["area_pool_sha256"], random["area_pool_sha256"])
+        entries = [dict(selection=dict(random, rank=i+1, predicted_area_band=band,
+                        inference_run_sha256="a"*64, model_run_sha256="b"*64))
+                   for i, band in enumerate(random["selected_area_bands"])]
+        validate_adaptation_selection(entries, "AreaStratifiedRandom", 100, .75)
+        entries[1]["selection"]["predicted_area_band"] = 2
+        with self.assertRaisesRegex(ValueError, "area admission order"):
+            validate_adaptation_selection(entries, "AreaStratifiedRandom", 100, .75)
+
+    def test_area_stratified_budget_works_with_empty_bands(self):
+        rows, pred, X = self.inputs()
+        X[:, 2] = 0
+        risk = plan_selection(rows, pred, X, [.34], [4], area_stratified=True)["selections"][-2]
+        self.assertEqual(risk["selected_area_bands"], [0, 0])
+        X[:, 2] = 1.2
+        with self.assertRaisesRegex(ValueError, "predicted lane fraction"):
+            plan_selection(rows, pred, X, [.34], [4], area_stratified=True)
+
     def test_reencoded_pixel_identity_is_required_and_score_ties_are_stable(self):
         rows,predictions,X=self.inputs()
         for item in predictions:item['risk_score']=.5

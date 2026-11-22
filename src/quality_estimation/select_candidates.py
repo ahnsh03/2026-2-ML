@@ -5,6 +5,7 @@ import argparse
 from collections import Counter
 import hashlib
 import json
+from itertools import islice, zip_longest
 import math
 from pathlib import Path
 
@@ -42,7 +43,33 @@ def risk_pool_selections(order, ids, risk, X, count, budget, seeds, factor):
                  scores=risk[indices].tolist(), **evidence) for method, seed, indices in groups]
 
 
-def plan_selection(rows, predictions, X, budgets, seeds, risk_pool_factor=None):
+def area_stratified_selections(order, ids, risk, X, count, budget, seeds):
+    """Allocate equal opportunities to small, medium and large predicted lane masks."""
+    area = X[:, FEATURE_NAMES.index("global.lane_area_fraction")]
+    require(((area[order] >= 0) & (area[order] <= 1)).all(), "invalid predicted lane fraction")
+    edges = np.asarray([.001, .01], dtype=area.dtype)
+    bands = np.searchsorted(edges, area, side="right")
+    groups = [order[bands[order] == k] for k in range(3)]
+    members = [[str(ids[i]) for i in group] for group in groups]
+    digest = hashlib.sha256(json.dumps(members, ensure_ascii=False, separators=(",", ":")).encode()).hexdigest()
+    selections = []
+    for seed in [None, *seeds]:
+        queues = groups
+        if seed is not None:
+            rng = np.random.default_rng(seed)
+            queues = [rng.permutation(g) for g in groups]
+        interleaved = (i for cycle in zip_longest(*queues) for i in cycle if i is not None)
+        ids_in_order = [int(i) for i in islice(interleaved, count)]
+        selected_bands = bands[ids_in_order].tolist()
+        selections.append(dict(method="AreaStratifiedRisk" if seed is None else "AreaStratifiedRandom",
+                               seed=seed, budget=budget, selected_count=count, indices=ids_in_order,
+                               scores=risk[ids_in_order].tolist(), area_pool_sha256=digest,
+                               area_pool_counts=[len(g) for g in groups], area_band_edges=[.001, .01],
+                               selected_area_bands=selected_bands))
+    return selections
+
+
+def plan_selection(rows, predictions, X, budgets, seeds, risk_pool_factor=None, area_stratified=False):
     require(bool(rows) and [r["sample_id"] for r in rows]==[r["sample_id"] for r in predictions],"selection row order differs")
     require(len({r["sample_id"] for r in rows})==len(rows),"duplicate selection IDs")
     require(all(r.get("preregistered_quality_role")=="candidate_pool" for r in rows),"only reserved candidate rows may be admitted")
@@ -75,6 +102,9 @@ def plan_selection(rows, predictions, X, budgets, seeds, risk_pool_factor=None):
         if risk_pool_factor is not None:
             selections.extend(risk_pool_selections(rankings["FrozenQualityRank"], ids, risk, X, count,
                                                    budget, seeds, risk_pool_factor))
+        if area_stratified:
+            selections.extend(area_stratified_selections(rankings["FrozenQualityRank"], ids, risk, X,
+                                                         count, budget, seeds))
     return dict(pool_rows=len(pool),eligible=eligible,reasons=reasons,selections=selections,
                 thinning=dict(minimum_elapsed_seconds=1.,minimum_displacement_m=5.,heading_change_degrees=10.,uses_GT=False),
                 budget_rounding="ceil",score_ties="sample_id ascending",uses_GT=False)
@@ -87,6 +117,7 @@ def main():
     p.add_argument("--budget",type=float,action="append")
     p.add_argument("--random-seed",type=int,action="append")
     p.add_argument("--risk-pool-factor", type=int, help="also compare uniform and farthest-first sampling within this multiple of the risk budget")
+    p.add_argument("--area-stratified", action="store_true", help="also rank or sample within three predicted lane-area bands")
     p.add_argument("--output-dir",type=Path,required=True)
     a=p.parse_args();require(not a.output_dir.exists(),"selection output already exists")
     root=a.inference_dir.resolve();metadata=json.loads((root/"run.json").read_text())
@@ -104,7 +135,7 @@ def main():
     predictions=[json.loads(s) for s in (root/"predictions.jsonl").read_text().splitlines() if s.strip()]
     require(json.loads((root/"sample_ids.json").read_text())==[r["sample_id"] for r in rows],"selection IDs differ")
     result=plan_selection(rows,predictions,np.load(root/"X.npy",allow_pickle=False),a.budget or [.05,.1,.2],
-                          a.random_seed or [20261116], a.risk_pool_factor)
+                          a.random_seed or [20261116], a.risk_pool_factor, a.area_stratified)
     out=a.output_dir;out.mkdir(parents=True,exist_ok=False)
     write_json(out/"pool.json",[dict(sample_id=row["sample_id"],eligible=keep,reason=reason)
                for row,keep,reason in zip(rows,result["eligible"],result["reasons"])])
@@ -113,11 +144,13 @@ def main():
         fraction=format(selection["budget"],".12g").replace('.','p')
         suffix="_seed"+str(selection["seed"]) if selection["seed"] is not None else ""
         name=selection["method"]+"_budget"+fraction+suffix+".jsonl"
-        pool_evidence = {k:v for k,v in selection.items() if k.startswith("risk_pool_")}
+        pool_evidence = {k:v for k,v in selection.items() if k.startswith(("risk_pool_", "area_"))}
         with (out/name).open("x") as stream:
             for rank,(index,score) in enumerate(zip(selection["indices"],selection["scores"]),start=1):
                 row=dict(rows[index],selection=dict(method=selection["method"],budget=selection["budget"],rank=rank,score=score,seed=selection["seed"],
                          inference_run_sha256=sha256_file(root/"run.json"),model_run_sha256=metadata["model_run_sha256"], **pool_evidence))
+                if "selected_area_bands" in selection:
+                    row["selection"]["predicted_area_band"] = selection["selected_area_bands"][rank - 1]
                 stream.write(json.dumps(row,allow_nan=False)+"\n")
         files.append(dict(file=name,method=selection["method"],budget=selection["budget"],seed=selection["seed"],selected_rows=selection["selected_count"], **pool_evidence))
     report=dict(status="complete",schema_version="ml-quality-selection-1",source_rows=len(rows),pool_rows=result["pool_rows"],uses_GT=False,

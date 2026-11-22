@@ -59,7 +59,8 @@ def validate_adaptation_roles(new_rows, replay_rows, replay_only=False):
             "new and replay parent groups overlap")
 
 
-SELECTION_ARMS = ("Random", "FrozenQualityRank", "Confidence", "Entropy", "EnvironmentAudit", "RiskPoolDiverse", "RiskPoolRandom")
+SELECTION_ARMS = ("Random", "FrozenQualityRank", "Confidence", "Entropy", "EnvironmentAudit", "RiskPoolDiverse", "RiskPoolRandom",
+                  "AreaStratifiedRisk", "AreaStratifiedRandom")
 
 
 def validate_adaptation_selection(new_rows, arm, seed, budget):
@@ -72,9 +73,9 @@ def validate_adaptation_selection(new_rows, arm, seed, budget):
     selections = [row.get("selection", {}) for row in new_rows]
     require(all(s.get("method") == arm for s in selections), "admission method differs from training arm")
     require(all(s.get("budget") == budget for s in selections), "admission budget differs from protocol")
-    if arm == "RiskPoolRandom":
+    if arm in ("RiskPoolRandom", "AreaStratifiedRandom"):
         seeds = {s.get("seed") for s in selections}
-        require(len(seeds) == 1 and all(type(s) is int for s in seeds), "inconsistent risk-pool admission seed")
+        require(len(seeds) == 1 and all(type(s) is int for s in seeds), "inconsistent stratified or risk-pool admission seed")
     else:
         require(all(s.get("seed") == (seed if arm == "Random" else None) for s in selections),
                 "admission seed differs from training arm")
@@ -88,6 +89,24 @@ def validate_adaptation_selection(new_rows, arm, seed, budget):
             require(len(values) == 1 and all(type(v) is int and v >= 1 for v in values), "inconsistent " + key)
         require(len(selections) <= selections[0]["risk_pool_rows"] <= len(selections) * selections[0]["risk_pool_factor"],
                 "risk pool size differs from label budget")
+    if arm in ("AreaStratifiedRisk", "AreaStratifiedRandom"):
+        fields.append("area_pool_sha256")
+        sizes = selections[0].get("area_pool_counts")
+        require(isinstance(sizes, list) and len(sizes) == 3 and all(type(n) is int and n >= 0 for n in sizes),
+                "invalid predicted area pool counts")
+        require(all(s.get("area_pool_counts") == sizes and s.get("area_band_edges") == [.001, .01] for s in selections),
+                "inconsistent predicted area strata")
+        require(len(selections) == int(np.ceil(sum(sizes) * budget)), "predicted area counts differ from admission budget")
+        # Reconstruct the round-robin allocation, including exhausted or empty bands.
+        remaining = sizes.copy()
+        expected = []
+        while len(expected) < len(selections):
+            for band in range(3):
+                if remaining[band] and len(expected) < len(selections):
+                    expected.append(band)
+                    remaining[band] -= 1
+        require(all(type(s.get("predicted_area_band")) is int for s in selections)
+                and [s["predicted_area_band"] for s in selections] == expected, "predicted area admission order differs")
     if arm == "EnvironmentAudit":
         fields.extend(["queue_run_sha256", "environment_centers_sha256"])
         seed_values = {s.get("review_seed") for s in selections}
