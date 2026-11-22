@@ -45,3 +45,20 @@ class ReviewQueueTests(unittest.TestCase):
         self.assertEqual(len({row["sample_id"] for row, _ in queue}), 5)
         with self.assertRaisesRegex(ValueError, "environment cluster"):
             choose_for_review(self.rows(), 3, priority_policy="cluster_round_robin")
+
+    def test_gp_exploration_uses_remaining_uncertainty_and_separate_audit(self):
+        rows = self.rows()
+        for i, row in enumerate(rows):
+            row["prediction_std"] = float(i)
+        ranked = sorted(rows, key=lambda r: (r["estimated_iou"], r["sample_id"]))
+        expected_risk = [row["sample_id"] for row in ranked[:4]]
+        expected_exploration = sorted(ranked[4:], key=lambda r: (-r["prediction_std"], r["sample_id"]))[:2]
+        queue, policy = choose_for_review(rows, 8, .25, 77, priority_policy="quality_uncertainty")
+        self.assertEqual([row["sample_id"] for row, _ in queue[:4]], expected_risk)
+        self.assertEqual(queue[4:6], [(r, "high_prediction_std") for r in expected_exploration])
+        self.assertEqual(policy["uncertainty_count"], 2)
+        self.assertEqual(policy["audit_count"], 2)
+        self.assertEqual(len({r["sample_id"] for r, _ in queue}), 8)
+        rows[0]["prediction_std"] = float("nan")
+        with self.assertRaisesRegex(ValueError, "standard deviation"):
+            choose_for_review(rows, 8, priority_policy="quality_uncertainty")
