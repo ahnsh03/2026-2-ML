@@ -82,16 +82,25 @@ def load_external_twinlite(
 
     existing = sys.modules.get("model")
     if existing is not None:
-        existing_file = Path(getattr(existing, "__file__", "") or "/").resolve()
-        try:
-            existing_file.relative_to(source_root)
-        except ValueError as exc:
+        # The pinned upstream uses a namespace package: model/__init__.py is
+        # absent, so a legitimate second load has __file__ == None. Validate
+        # its search locations instead of treating that absence as filesystem /.
+        expected_package = source_root / "model"
+        locations = [Path(value).resolve() for value in getattr(existing, "__path__", ())]
+        existing_file = getattr(existing, "__file__", None)
+        if (not locations or any(value != expected_package for value in locations)
+                or (existing_file is not None
+                    and Path(existing_file).resolve().parent != expected_package)):
             raise ExternalTwinLiteError(
-                f"Python module name 'model' is already owned by {existing_file}"
-            ) from exc
+                f"Python module name 'model' has foreign package locations: {locations}"
+            )
     if str(source_root) not in sys.path:
         sys.path.insert(0, str(source_root))
     module = importlib.import_module("model.model")
+    # An orphaned cached child may survive even when its parent was removed.
+    # Never instantiate it merely because the parent package looks legitimate.
+    if Path(getattr(module, "__file__", "") or "/").resolve() != model_path:
+        raise ExternalTwinLiteError("cached model.model is outside the pinned checkout")
     model_class = getattr(module, "TwinLiteNetPlus", None)
     if model_class is None:
         raise ExternalTwinLiteError(

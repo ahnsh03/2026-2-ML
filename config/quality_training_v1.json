@@ -1,0 +1,120 @@
+{
+  "schema_version": "ml-quality-training-protocol-1",
+  "selection_metric": "clipped_MAE",
+  "tie_tolerance": 1e-12,
+  "tie_order": [
+    "OLS",
+    "Ridge",
+    "RandomForest"
+  ],
+  "feature_sets": [
+    "full",
+    "output_only",
+    "rgb_only",
+    "global_only"
+  ],
+  "primary_feature_set": "full",
+  "seed": 20261116,
+  "n_jobs": 4,
+  "models": {
+    "OLS": [
+      {
+        "rcond": 1e-06
+      }
+    ],
+    "Ridge": [
+      {
+        "alpha": 0.01
+      },
+      {
+        "alpha": 0.1
+      },
+      {
+        "alpha": 1.0
+      },
+      {
+        "alpha": 10.0
+      },
+      {
+        "alpha": 100.0
+      },
+      {
+        "alpha": 1000.0
+      },
+      {
+        "alpha": 10000.0
+      }
+    ],
+    "RandomForest": [
+      {
+        "n_estimators": 300,
+        "max_depth": 8,
+        "min_samples_leaf": 2,
+        "max_features": 1.0
+      },
+      {
+        "n_estimators": 300,
+        "max_depth": 8,
+        "min_samples_leaf": 8,
+        "max_features": 1.0
+      },
+      {
+        "n_estimators": 300,
+        "max_depth": 8,
+        "min_samples_leaf": 32,
+        "max_features": 1.0
+      },
+      {
+        "n_estimators": 300,
+        "max_depth": 16,
+        "min_samples_leaf": 2,
+        "max_features": 1.0
+      },
+      {
+        "n_estimators": 300,
+        "max_depth": 16,
+        "min_samples_leaf": 8,
+        "max_features": 1.0
+      },
+      {
+        "n_estimators": 300,
+        "max_depth": 16,
+        "min_samples_leaf": 32,
+        "max_features": 1.0
+      },
+      {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 2,
+        "max_features": 1.0
+      },
+      {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 8,
+        "max_features": 1.0
+      },
+      {
+        "n_estimators": 300,
+        "max_depth": null,
+        "min_samples_leaf": 32,
+        "max_features": 1.0
+      }
+    ]
+  },
+  "reference_model": "training_mean",
+  "preprocessing": "drop train-constant columns; train-only StandardScaler for OLS/Ridge; no scaling for RandomForest",
+  "targets": "one frame white/yellow union IoU; undefined excluded only from supervised fitting/MAE, retained in selection pool",
+  "failure_threshold": 0.7,
+  "budget_fractions": [
+    0.05,
+    0.1,
+    0.2
+  ],
+  "budget_rounding": "ceil",
+  "random_repeats": 100,
+  "score_ties": "sample_id ascending",
+  "final_evaluation": "separate untouched source groups; no test tuning; MAE winner frozen on dev",
+  "numerical_revision": "OLS rank cutoff fixed at 1e-6 for float32 aggregate-feature redundancy; not tuned on development scores. Original plain OLS results retained.",
+  "inference_parallelism": "single job for stored RF prediction; fitting retains n_jobs=4; learned trees unchanged"
+}

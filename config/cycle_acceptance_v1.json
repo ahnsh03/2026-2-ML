@@ -1,0 +1,7 @@
+{
+  "schema_version": "ml-cycle-acceptance-1",
+  "minimum_new_lane_gain": 0.0,
+  "maximum_retention_lane_loss": 0.005,
+  "maximum_quality_mae_increase": 0.01,
+  "scope": "Predeclared research acceptance criteria, not driving-safety limits. Eligibility does not deploy a model."
+}

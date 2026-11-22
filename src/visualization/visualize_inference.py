@@ -1,9 +1,9 @@
 """대상 인지 모델의 추론 결과를 카메라별·BEV로 시각화하고 원본·마스크를 따로 저장한다.
 
-컨테이너에서 실행한다 (docs/05_구현계획/개발환경.md):
+컨테이너에서 실행한다 (docs/development/개발환경.md):
 
   scripts/run_container.sh python3 -m visualization.visualize_inference \\
-      --split val --name v5b_val
+      --split val --name m_v6_val
 
 결과 구조와 색 범례는 출력 폴더의 README.md에 함께 기록된다.
 """
@@ -54,10 +54,10 @@ def parse_args():
     parser.add_argument("--twinlite-root", default=os.environ.get("TWINLITE_ROOT"),
                         help="기본: 이 레포 third_party/TwinLiteNetPlus (서브모듈)")
     parser.add_argument("--output-root", default=os.environ.get("ML_OUTPUT_ROOT", "outputs"))
-    parser.add_argument("--name", help="출력 폴더 이름 (기본: <split>)")
+    parser.add_argument("--name", help="출력 폴더 이름 (기본: <dataset-version>_<split>)")
     parser.add_argument("--grid", default="dev", choices=("dev", "pilot"), help="BEV 격자 (drivable_bev 설정)")
     parser.add_argument("--bev-scale", type=int, default=2, help="BEV 이미지 확대 배율 (0.1 m/cell 기준)")
-    parser.add_argument("--lane-threshold", type=float, default=0.5)
+    parser.add_argument("--lane-threshold", type=float, default=0.5, help="v5 binary 전용; v6는 4클래스 argmax의 흰/노란 합집합")
     parser.add_argument("--drivable-threshold", type=float, default=0.5)
     parser.add_argument("--batch-size", type=int, default=12)
     parser.add_argument("--num-workers", type=int, default=4)
@@ -157,9 +157,39 @@ def fmt(value: float) -> str:
     return "nan" if value != value else "{:.3f}".format(value)
 
 
+def lane_union_mask(class_ids: np.ndarray) -> np.ndarray:
+    """White/yellow only; stopline class 3 is not a lane target."""
+    return (class_ids == 1) | (class_ids == 2)
+
+
+def summarize_prediction(probabilities, targets, valid, secondary_head, lane_threshold=0.5, drivable_threshold=0.5):
+    """Compute model-space IoU without conflating argmax and summed probability."""
+    entry = {"drivable_prob": probabilities["drivable"][1]}
+    if secondary_head == "road_marking":
+        marking = probabilities[secondary_head].argmax(axis=0).astype(np.uint8)
+        entry.update(marking_pred=marking, marking_gt=targets[secondary_head].astype(np.uint8),
+                     lane_prob=probabilities[secondary_head][1] + probabilities[secondary_head][2],
+                     drivable_gt=targets["drivable"].astype(np.uint8), lane_valid=valid[secondary_head])
+        lane_prediction = lane_union_mask(marking)
+        lane_target = lane_union_mask(targets[secondary_head])
+    else:
+        entry["lane_prob"] = probabilities[secondary_head][1]
+        lane_prediction = entry["lane_prob"] >= lane_threshold
+        lane_target = targets[secondary_head] > 0
+    for head, prediction, target, mask in (
+        ("lane", lane_prediction, lane_target, valid[secondary_head]),
+        ("drivable", entry["drivable_prob"] >= drivable_threshold, targets["drivable"] > 0, valid["drivable"]),
+    ):
+        value, target_px, pred_px = iou(prediction, target, mask)
+        entry[head + "_iou"] = value
+        if head == "lane":
+            entry["lane_target_px"], entry["lane_pred_px"] = target_px, pred_px
+    return entry
+
+
 # ---------------------------------------------------------------------- frame 처리
 def process_frame(ctx, run_id: str, frame_id: int, view_indices: Dict[str, int], results) -> Tuple[List[dict], dict]:
-    from camera_semantic_perception.geometry import LetterboxGeometry, restore_probability
+    from camera_semantic_perception.geometry import LetterboxGeometry, restore_class_ids, restore_probability
 
     data_root, out, writer, bev, args, split = ctx["data_root"], ctx["out"], ctx["writer"], ctx["bev"], ctx["args"], ctx["split"]
     condition = parse_condition(run_id)
@@ -175,13 +205,19 @@ def process_frame(ctx, run_id: str, frame_id: int, view_indices: Dict[str, int],
         geometry = LetterboxGeometry(**{key: tuple(row["geometry"][key]) for key in LETTERBOX_KEYS})
         lane_prob = restore_probability(result["lane_prob"], geometry)
         drivable_prob = restore_probability(result["drivable_prob"], geometry)
-        lane_mask = lane_prob >= args.lane_threshold
+        marking_pred = restore_class_ids(result["marking_pred"], geometry) if "marking_pred" in result else None
+        lane_mask = lane_union_mask(marking_pred) if marking_pred is not None else lane_prob >= args.lane_threshold
         drivable_mask = drivable_prob >= args.drivable_threshold
         image = cv2.imread(str(data_root / row["image"]), cv2.IMREAD_UNCHANGED)
         if image is None:
             raise RuntimeError("원본 영상을 읽을 수 없습니다: {}".format(row["image"]))
         bgr = np.ascontiguousarray(image[:, :, :3])
-        gt_lane, gt_drivable = read_native_gt(data_root, row)
+        if marking_pred is not None:
+            marking_gt = restore_class_ids(result["marking_gt"], geometry)
+            gt_lane = lane_union_mask(marking_gt)
+            gt_drivable = restore_class_ids(result["drivable_gt"], geometry) > 0
+        else:
+            gt_lane, gt_drivable = read_native_gt(data_root, row)
         view_dir = run_dir / view
 
         overlay_pred = cam.overlay_masks(bgr, drivable_mask, lane_mask)
@@ -203,11 +239,19 @@ def process_frame(ctx, run_id: str, frame_id: int, view_indices: Dict[str, int],
         writer.submit(paths["pred_layer_rgba"], cam.rgba_layer(drivable_mask, lane_mask))
         writer.submit(paths["overlay_pred"], overlay_pred)
         writer.submit(paths["lane_prob_heat"], cam.probability_heatmap(bgr, lane_prob))
+        if marking_pred is not None:
+            paths["pred_road_marking_mask"] = view_dir / "pred_road_marking_mask" / (stem + ".png")
+            paths["gt_road_marking_mask"] = view_dir / "gt_road_marking_mask" / (stem + ".png")
+            writer.submit(paths["pred_road_marking_mask"], marking_pred)
+            writer.submit(paths["gt_road_marking_mask"], marking_gt)
 
         label = "{} | lane IoU {} | drivable IoU {}".format(view, fmt(result["lane_iou"]), fmt(result["drivable_iou"]))
         if gt_lane is not None and gt_drivable is not None:
             overlay_gt = cam.overlay_masks(bgr, gt_drivable, gt_lane)
             error = cam.lane_error_image(bgr, lane_mask, gt_lane)
+            if marking_pred is not None:
+                valid_native = restore_class_ids(result["lane_valid"].astype(np.uint8), geometry) > 0
+                error[~valid_native] = bgr[~valid_native]
             paths.update({
                 "gt_lane_mask": view_dir / "gt_lane_mask" / (stem + ".png"),
                 "gt_drivable_mask": view_dir / "gt_drivable_mask" / (stem + ".png"),
@@ -330,7 +374,7 @@ README_TEMPLATE = """# 추론 시각화 — {name}
 데이터: `{dataset}` / split `{split}` · frame {frames}개 × 3뷰 · BEV 격자 `{grid}` ({x0}~{x1} m 전방, {y0}~{y1} m 좌우, {res} m/cell)
 
 > 원본 데이터에서 만든 파생 이미지다. **공개 저장소에 올리지 않는다.**
-> split이 `train`이면 대상 모델이 학습에 쓴 frame이라 성능이 부풀려져 보인다. 성능 주장에는 `val`/`test`만 쓴다.
+> 과거 validation은 개발·모델 선택에 사용된 자료다. 새 품질 추정기의 독립 test 성능으로 제시하지 않는다.
 
 ## 찾아보기
 
@@ -348,6 +392,7 @@ README_TEMPLATE = """# 추론 시각화 — {name}
 │   ├── pred_drivable_mask/  추론 주행가능영역 마스크 {{0,255}}
 │   ├── pred_lane_prob/      차선 확률 0~255 (회색조)
 │   ├── pred_drivable_prob/  주행가능영역 확률 0~255
+│   ├── pred_road_marking_mask/, gt_road_marking_mask/  v6 class ID {{0,1,2,3}} (정지선 보존)
 │   ├── pred_layer_rgba/     투명 배경 마스크 레이어 — 슬라이드에서 원본 위에 겹치기용
 │   ├── overlay_pred/        원본 + 추론
 │   ├── lane_prob_heat/      차선 확률 히트맵 (TURBO)
@@ -373,7 +418,9 @@ README_TEMPLATE = """# 추론 시각화 — {name}
 | BEV 흰 사각형 | 차량(Ioniq 5) 외곽, 삼각형이 전방. 격자 5 m |
 
 IoU는 팀 평가(`evaluate_twinlite.py`)와 같이 384×640 letterbox 공간·valid mask 기준이며,
-union이 0이면 `nan`이다. 마스크 이미지는 확률을 원본 해상도로 복원한 뒤 임계값 {lane_th}/{drv_th}로 이진화했다.
+union이 0이면 `nan`이다. 차선 정의: {lane_definition}.
+v6의 예측/GT class ID 이미지는 letterbox에서 padding 제거 후 최근접 보간으로 원본 크기로 복원한다.
+v5 lane과 drivable 시각화는 복원한 확률에 임계값 {lane_th}/{drv_th}를 적용한다. 확률 PNG는 시각화용이다.
 BEV는 이 레포의 `config/bev/cameras_v2.yaml`(노면 z = {ground} m)과 `drivable_bev` 융합 규칙을 그대로 사용했다.
 """
 
@@ -432,13 +479,31 @@ def main():
 
     device = torch.device(args.device or ("cuda" if torch.cuda.is_available() else "cpu"))
     data_root = Path(args.data_root).expanduser().resolve()
-    name = args.name or args.split
+    name = args.name or args.dataset_version + "_" + args.split
     out = Path(args.output_root).expanduser().resolve() / "inference_vis" / name
     out.mkdir(parents=True, exist_ok=True)
 
-    dataset = MoraiTwinLiteDataset(data_root=str(data_root), dataset_version=args.dataset_version, split=args.split)
-    if "lane" not in dataset.heads:
-        raise RuntimeError("binary lane head dataset이 필요합니다 (현재 heads={})".format(dataset.heads))
+    # Metadata is checked for the split; selected images/targets are decoded and
+    # validated by __getitem__. Avoid stat-ing every unselected frame on network disks.
+    dataset = MoraiTwinLiteDataset(data_root=str(data_root), dataset_version=args.dataset_version,
+                                  split=args.split, verify_files=False)
+    secondary_head = dataset.task_spec.secondary_head
+    if secondary_head == "road_marking" and args.lane_threshold != 0.5:
+        raise RuntimeError("v6 Lane 마스크는 argmax 합집합입니다. --lane-threshold는 v5 전용입니다")
+    previous_meta = None
+    if any(out.iterdir()):
+        if not args.skip_existing or not (out / "export_meta.json").is_file():
+            raise RuntimeError("결과 폴더가 비어 있지 않습니다. 새 --name을 사용하세요")
+        previous_meta = json.loads((out / "export_meta.json").read_text())
+        for key in ("dataset_version", "split", "lane_threshold", "drivable_threshold", "grid", "bev_scale"):
+            if previous_meta["args"].get(key) != getattr(args, key):
+                raise RuntimeError("기존 결과와 설정이 다릅니다: " + key)
+    checkpoint = resolve_checkpoint(args.checkpoint)
+    loaded = load_target_model(checkpoint, device, twinlite_root=args.twinlite_root)
+    if loaded.task_spec != dataset.task_spec:
+        raise RuntimeError("체크포인트와 dataset의 task가 다릅니다")
+    if previous_meta and previous_meta["model"]["checkpoint_sha256"] != loaded.checkpoint_sha256:
+        raise RuntimeError("기존 결과와 체크포인트가 다릅니다")
     selected = select_frames(dataset.rows, set(args.run_id), args.every_n, args.max_frames_per_run)
     if args.skip_existing:
         selected = [item for item in selected if not (out / item[0] / "mosaic" / "{:06d}.jpg".format(item[1])).is_file()]
@@ -452,8 +517,6 @@ def main():
             frame_of_index[views[view]] = (run_id, frame_id)
     print("frames={} samples={} -> {}".format(len(selected), len(order), out), flush=True)
 
-    checkpoint = resolve_checkpoint(args.checkpoint)
-    loaded = load_target_model(checkpoint, device, twinlite_root=args.twinlite_root)
     bev = BevScene(REPO_ROOT, grid_name=args.grid)
     if bev.calibration_warning:
         print("[WARN] calibration: " + bev.calibration_warning, flush=True)
@@ -470,8 +533,8 @@ def main():
         return (
             [item[0] for item in batch],
             torch.stack([item[1]["image"] for item in batch]),
-            {head: torch.stack([item[1]["targets"][head] for item in batch]) for head in ("lane", "drivable")},
-            {head: torch.stack([item[1]["valid_masks"][head] for item in batch]) for head in ("lane", "drivable")},
+            {head: torch.stack([item[1]["targets"][head] for item in batch]) for head in dataset.heads},
+            {head: torch.stack([item[1]["valid_masks"][head] for item in batch]) for head in dataset.heads},
         )
 
     loader = DataLoader(Indexed(), batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers,
@@ -489,20 +552,15 @@ def main():
         for batch_index, (indices, images, targets, valid) in enumerate(loader, 1):
             images = images.to(device, non_blocking=True)
             with torch.cuda.amp.autocast(enabled=device.type == "cuda"):
-                outputs = adapt_twinlite_outputs(loaded.model(images))
-            probabilities = {head: torch.softmax(outputs[head].float(), dim=1)[:, 1] for head in ("lane", "drivable")}
+                outputs = adapt_twinlite_outputs(loaded.model(images), secondary_head)
+            probabilities = {head: torch.softmax(outputs[head].float(), dim=1) for head in dataset.heads}
             for position, index in enumerate(indices):
-                entry = {}
-                for head in ("lane", "drivable"):
-                    probability = probabilities[head][position]
-                    prediction = (probability >= 0.5).cpu().numpy()
-                    target = targets[head][position].numpy() > 0
-                    mask = valid[head][position].numpy()
-                    value, target_px, pred_px = iou(prediction, target, mask)
-                    entry[head + "_iou"] = value
-                    entry[head + "_prob"] = probability.cpu().numpy().astype(np.float32)
-                    if head == "lane":
-                        entry["lane_target_px"], entry["lane_pred_px"] = target_px, pred_px
+                entry = summarize_prediction(
+                    {head: probabilities[head][position].cpu().numpy() for head in dataset.heads},
+                    {head: targets[head][position].numpy() for head in dataset.heads},
+                    {head: valid[head][position].numpy() for head in dataset.heads},
+                    secondary_head, args.lane_threshold, args.drivable_threshold,
+                )
                 results[index] = entry
                 key = frame_of_index[index]
                 remaining[key].discard(index)
@@ -547,6 +605,7 @@ def main():
             "epoch": loaded.epoch,
             "weights": loaded.weights,
             "upstream_commit": loaded.upstream_commit,
+            "task_spec": loaded.task_spec.as_dict(),
         },
         "dataset": {
             "version": args.dataset_version,
@@ -555,9 +614,17 @@ def main():
         },
         "code": {
             "ml_repo_commit": git_head(REPO_ROOT),
+            "source_sha256": {
+                name: sha256_file(REPO_ROOT / name) for name in (
+                    "src/common/bridge.py", "src/visualization/visualize_inference.py",
+                    "src/twinlite_morai/tasks.py", "src/twinlite_morai/dataset.py",
+                )
+            },
         },
         "bev": bev.describe(),
         "device": str(device),
+        "lane_definition": "argmax_white_yellow_union_excludes_stopline" if secondary_head == "road_marking" else "binary_lane_threshold",
+        "metric_space": "letterbox_with_head_valid_mask",
     }
     (out / "export_meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     (out / "README.md").write_text(README_TEMPLATE.format(
@@ -566,7 +633,7 @@ def main():
         dataset=args.dataset_version, split=args.split, frames=len(frame_rows), grid=args.grid,
         x0=bev.grid.x_min_m, x1=bev.grid.x_max_m, y0=bev.grid.y_min_m, y1=bev.grid.y_max_m,
         res=bev.grid.resolution_m, lane_th=args.lane_threshold, drv_th=args.drivable_threshold,
-        ground=bev.ground_z_m), encoding="utf-8")
+        ground=bev.ground_z_m, lane_definition=meta["lane_definition"]), encoding="utf-8")
     print("done: {} frames, {} images, {:.1f}s -> {}".format(len(frame_rows), writer.count, time.perf_counter() - started, out), flush=True)
 
 

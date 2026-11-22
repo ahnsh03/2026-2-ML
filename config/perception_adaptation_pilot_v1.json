@@ -1,0 +1,23 @@
+{
+  "schema_version": "perception-adaptation-pilot-1",
+  "purpose": "Equal-budget development pilot from frozen Medium v6; copy and register before running",
+  "selection_arms": ["Random", "FrozenQualityRank"],
+  "seeds": [20261116, 20261117],
+  "new_budget_fraction": 0.1,
+  "budget_rounding": "ceil",
+  "optimizer": "AdamW",
+  "learning_rate": 0.00001,
+  "weight_decay": 0.0001,
+  "steps": 240,
+  "batch_size": 8,
+  "new_per_batch": 4,
+  "replay_per_batch": 4,
+  "gradient_clip_norm": 10.0,
+  "augmentation": "none; native RGB letterbox unchanged",
+  "normalization": "BatchNorm running statistics frozen; affine parameters trainable",
+  "loss": "MaskedTwinLiteLoss ROAD_MARKING_TASK, unchanged two-head defaults",
+  "precision": "FP32, TF32 off, deterministic cuDNN",
+  "allowed_nondeterministic_operations": ["adaptive_avg_pool2d_backward_cuda"],
+  "checkpoint_selection": "fixed optimizer-step endpoint, no final-data model selection",
+  "interpretation": "A small controlled pilot, not a converged training recipe. Report every seed and compare to replay-only continuation. The quality regressor remains tied to f0."
+}

@@ -1,7 +1,7 @@
 """대상 인지 모델 로딩과 공통 유틸.
 
 인지 모듈(``twinlite_morai``, ``drivable_bev``, ``camera_semantic_perception``)은 이 레포 ``src/``에 있다.
-이관 기록은 ``docs/05_구현계획/외부코드_선별.md``에 있다.
+이관 기록은 ``docs/development/외부코드_선별.md``에 있다.
 """
 
 from __future__ import annotations
@@ -13,11 +13,12 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Optional
 
-# 프로젝트 전 기간 동안 고정하는 대상 모델 (구현 계획 §2)
+# 최신 ML 발표의 고정 대상: Medium v6 best_mean EMA (epoch 11).
 DEFAULT_CHECKPOINT_RELPATH = (
-    "twinlite_medium_morai_v5_actor_negative_init_ema_b12_e18_20260906/best_mean.pt"
+    "twinlite_medium_morai_v6_road_marking_init_b_b12_e18_20260908/best_mean.pt"
 )
-DEFAULT_DATASET_VERSION = "twinlite_morai_v5_marking_actor_negative"
+DEFAULT_CHECKPOINT_SHA256 = "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b"
+DEFAULT_DATASET_VERSION = "twinlite_morai_v6_road_marking_actor_negative"
 VIEWS = ("front", "left", "right")
 
 
@@ -74,6 +75,8 @@ def resolve_checkpoint(value: Optional[str] = None) -> Path:
         path = root / DEFAULT_CHECKPOINT_RELPATH
     if not path.is_file():
         raise RuntimeError("체크포인트가 없습니다: {}".format(path))
+    if value is None and sha256_file(path) != DEFAULT_CHECKPOINT_SHA256:
+        raise RuntimeError("기본 M v6 체크포인트 SHA-256이 검증 근거와 다릅니다")
     return path.resolve()
 
 
@@ -85,6 +88,7 @@ class LoadedModel:
     epoch: Optional[int]
     weights: str
     upstream_commit: str
+    task_spec: object
 
 
 def load_target_model(
@@ -100,7 +104,7 @@ def load_target_model(
     다르면 중단한다.
     """
     import torch
-    from twinlite_morai import load_external_twinlite
+    from twinlite_morai import configure_twinlite_task, load_external_twinlite, task_from_checkpoint
 
     state = torch.load(str(checkpoint), map_location="cpu")
     use_ema = weights == "ema" or (weights == "auto" and state.get("ema_state_dict") is not None)
@@ -111,6 +115,8 @@ def load_target_model(
     model, upstream_commit = load_external_twinlite(config=config, root=twinlite_root)
     if state.get("upstream_commit") != upstream_commit:
         raise RuntimeError("체크포인트와 TwinLiteNet+ 소스의 upstream 커밋이 다릅니다")
+    task_spec = task_from_checkpoint(state)
+    configure_twinlite_task(model, task_spec)
     model.load_state_dict(state[state_key])
     model = model.to(device).eval()
     return LoadedModel(
@@ -120,4 +126,5 @@ def load_target_model(
         epoch=state.get("epoch"),
         weights=state_key,
         upstream_commit=upstream_commit,
+        task_spec=task_spec,
     )
