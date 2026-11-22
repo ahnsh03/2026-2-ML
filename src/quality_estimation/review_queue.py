@@ -1,6 +1,7 @@
 """Build a GT-free review queue with priority ranking and a random remainder audit."""
 import argparse
 import csv
+from collections import Counter
 from datetime import datetime, timezone
 import json
 import math
@@ -13,7 +14,8 @@ from .cycle_gate import completed_run
 from .dataset_io import require
 
 
-def choose_for_review(predictions, budget, audit_fraction=.2, seed=20261116):
+def choose_for_review(predictions, budget, audit_fraction=.2, seed=20261116, *, priority_policy="quality"):
+    require(priority_policy in ("quality", "cluster_round_robin"), "unknown review priority policy")
     require(isinstance(budget,int) and budget > 0, "review budget must be a positive integer")
     require(math.isfinite(audit_fraction) and 0 <= audit_fraction <= 1, "invalid audit fraction")
     require(bool(predictions), "empty RGB predictions")
@@ -23,18 +25,35 @@ def choose_for_review(predictions, budget, audit_fraction=.2, seed=20261116):
         ids.add(sid)
         require(isinstance(row['pixel_sha256'],str) and len(row['pixel_sha256'])==64,"missing decoded RGB identity")
         require(math.isfinite(row['estimated_iou']) and 0 <= row['estimated_iou'] <= 1,"invalid estimated IoU")
+        if priority_policy == "cluster_round_robin":
+            group = row.get("environment_cluster")
+            require(type(group) is int and group >= 0, "expected a nonnegative environment cluster on every row")
         pixels.setdefault(row['pixel_sha256'],row)
     pool=sorted(pixels.values(),key=lambda r:(r['estimated_iou'],r['sample_id']))
     require(budget <= len(pool),"review budget exceeds pixel-deduplicated pool")
     audit_count=min(budget,math.ceil(budget*audit_fraction))
     priority_count=budget-audit_count
+    priority_reason = "low_estimated_iou"
+    priority_order = "estimated_iou ascending, then sample_id"
+    if priority_policy == "cluster_round_robin":
+        # The pool is risk-sorted. A stable sort by within-cluster rank takes
+        # one available head from each cluster before taking any second row.
+        seen = Counter()
+        within_cluster = {}
+        for row in pool:
+            group = row["environment_cluster"]
+            within_cluster[row["sample_id"]] = seen[group]
+            seen[group] += 1
+        pool.sort(key=lambda row: within_cluster[row["sample_id"]])
+        priority_reason = "environment_round_robin"
+        priority_order = "within-cluster rank, then estimated_iou, then sample_id"
     priority=pool[:priority_count]
     remainder=sorted(pool[priority_count:],key=lambda r:r['sample_id'])
     audit=random.Random(seed).sample(remainder,audit_count)
-    return ([(r,'low_estimated_iou') for r in priority]+[(r,'random_remainder_audit') for r in audit],
+    return ([(r,priority_reason) for r in priority]+[(r,'random_remainder_audit') for r in audit],
             dict(raw_rows=len(predictions),pixel_unique_rows=len(pool),budget=budget,
                  priority_count=priority_count,audit_count=audit_count,audit_fraction=audit_fraction,
-                 seed=seed,priority_order='estimated_iou ascending, then sample_id',
+                 seed=seed,priority_order=priority_order,
                  duplicate_policy='exact decoded RGB pixels; lexicographically first sample ID',
                  audit_scope='uniform without replacement from remaining unique pixels, not the whole pool'))
 
@@ -46,6 +65,7 @@ def main():
     p.add_argument('--budget',type=int,required=True)
     p.add_argument('--audit-fraction',type=float,default=.2)
     p.add_argument('--seed',type=int,default=20261116)
+    p.add_argument('--priority-policy', choices=('quality', 'cluster_round_robin'), default='quality')
     p.add_argument('--purpose',choices=('candidate_pool','demonstration_only'),required=True,
                    help='Never admit held-out evaluation frames to training; use demonstration_only for them')
     p.add_argument('--output-dir',type=Path,required=True)
@@ -63,18 +83,26 @@ def main():
         expected=src.get('expected_sha256',{})
         require(set(expected).issubset({'rgb'}),'review manifest includes non-RGB hashes')
         require(not expected or expected['rgb']==row['rgb_sha256'],'review RGB hash differs')
-    chosen,policy=choose_for_review(predictions,a.budget,a.audit_fraction,a.seed)
+    if a.priority_policy == "cluster_round_robin":
+        require(bool(run.get("environment_centers_sha256")), "environment-aware review requires frozen centers in inference")
+    chosen,policy=choose_for_review(predictions,a.budget,a.audit_fraction,a.seed,priority_policy=a.priority_policy)
+    if a.priority_policy == "cluster_round_robin":
+        policy["environment_centers_sha256"] = run["environment_centers_sha256"]
     by_id={r['sample_id']:r for r in source};queue=[]
     for rank,(row,reason) in enumerate(chosen,1):
         src=by_id[row['sample_id']]
         queue.append(dict(queue_index=rank,sample_id=row['sample_id'],view='front',image=src['image'],
                           expected_sha256={'rgb':row['rgb_sha256']},pixel_sha256=row['pixel_sha256'],
                           estimated_iou=row['estimated_iou'],review_reason=reason,purpose=a.purpose))
+        if a.priority_policy == "cluster_round_robin":
+            queue[-1]["environment_cluster"] = row["environment_cluster"]
     a.output_dir.mkdir()
     with (a.output_dir/'queue.jsonl').open('w') as f:
         for row in queue:f.write(json.dumps(row,allow_nan=False)+'\n')
     with (a.output_dir/'queue.csv').open('w') as f:
         fields=['queue_index','sample_id','image','estimated_iou','review_reason','purpose']
+        if a.priority_policy == "cluster_round_robin":
+            fields.append("environment_cluster")
         writer=csv.DictWriter(f,fieldnames=fields,extrasaction='ignore');writer.writeheader();writer.writerows(queue)
     write_json(a.output_dir/'policy.json',policy)
     (a.output_dir/'source.py').write_bytes(Path(__file__).read_bytes())

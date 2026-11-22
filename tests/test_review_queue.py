@@ -34,3 +34,14 @@ class ReviewQueueTests(unittest.TestCase):
     def test_invalid_budget_or_fraction_is_rejected(self):
         for budget,fraction in [(0,.2),(2,-.1),(2,1.1),(2,float('nan'))]:
             with self.assertRaises(ValueError):choose_for_review(self.rows(),budget,fraction)
+
+    def test_cluster_rounds_rank_by_quality_and_keep_random_audit_separate(self):
+        rows = self.rows()
+        for row, group in zip(rows, [2, 2, 3, 3, 3, 3, 5, 5, 5, 5]):
+            row["environment_cluster"] = group
+        queue, _ = choose_for_review(rows, 5, .2, 123, priority_policy="cluster_round_robin")
+        self.assertEqual([row["sample_id"] for row, _ in queue[:4]], ["0", "2", "6", "1"])
+        self.assertEqual(queue[-1][1], "random_remainder_audit")
+        self.assertEqual(len({row["sample_id"] for row, _ in queue}), 5)
+        with self.assertRaisesRegex(ValueError, "environment cluster"):
+            choose_for_review(self.rows(), 3, priority_policy="cluster_round_robin")
