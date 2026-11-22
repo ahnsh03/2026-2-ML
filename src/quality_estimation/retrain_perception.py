@@ -32,7 +32,7 @@ def main():
     p.add_argument("--data-root", type=Path, required=True)
     p.add_argument("--protocol", type=Path, required=True)
     p.add_argument("--seed", type=int, required=True)
-    p.add_argument("--arm", choices=("Random","FrozenQualityRank","Confidence","Entropy","ReplayOnly"), required=True)
+    p.add_argument("--arm", choices=("Random","FrozenQualityRank","Confidence","Entropy","EnvironmentAudit","ReplayOnly"), required=True)
     p.add_argument("--output-dir", type=Path, required=True)
     p.add_argument("--checkpoint")
     a = p.parse_args()

@@ -64,7 +64,7 @@ def validate_adaptation_selection(new_rows, arm, seed, budget):
     if arm == "ReplayOnly":
         require(not new_rows, "replay-only control cannot contain new admissions")
         return
-    require(arm in ("Random", "FrozenQualityRank", "Confidence", "Entropy") and bool(new_rows),
+    require(arm in ("Random", "FrozenQualityRank", "Confidence", "Entropy", "EnvironmentAudit") and bool(new_rows),
             "unknown or empty selection arm")
     selections = [row.get("selection", {}) for row in new_rows]
     require(all(s.get("method") == arm for s in selections), "admission method differs from training arm")
@@ -73,7 +73,15 @@ def validate_adaptation_selection(new_rows, arm, seed, budget):
             "admission seed differs from training arm")
     require([s.get("rank") for s in selections] == list(range(1, len(selections)+1)),
             "admission ranks must be complete and ordered")
-    for field in ("inference_run_sha256", "model_run_sha256"):
+    fields = ["inference_run_sha256", "model_run_sha256"]
+    if arm == "EnvironmentAudit":
+        fields.extend(["queue_run_sha256", "environment_centers_sha256"])
+        seed_values = {s.get("review_seed") for s in selections}
+        require(len(seed_values) == 1 and all(type(seed) is int for seed in seed_values), "inconsistent review seed")
+        require(all(type(s.get("environment_cluster")) is int and s["environment_cluster"] >= 0 and
+                    s.get("review_reason") in ("environment_round_robin", "random_remainder_audit") for s in selections),
+                "environment review evidence is incomplete")
+    for field in fields:
         values = {s.get(field) for s in selections}
         require(len(values) == 1 and all(isinstance(v, str) and len(v) == 64
                                        and all(c in "0123456789abcdef" for c in v) for v in values),
