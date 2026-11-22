@@ -1,86 +1,98 @@
-# 2026-2 기계학습 팀 프로젝트 — GT 없는 분할 품질 추정과 검수 우선순위 선정
+# 기계학습 기반 인지 품질 추정을 통한 딥러닝 인지모델 개선 데이터 플라이휠 구축
 
-인하대 스마트모빌리티공학과 · 기계학습(SME3006-001) · 담당 장준우 교수 · 2026학년도 2학기
-팀: 안승현, 손재호, 장원태 (3인)
+인하대 스마트모빌리티공학과 · 2026학년도 2학기
 
-## 주제 `[확정]`
+기계학습·캡스톤디자인은 개발 결과를 공유하는 통합 프로젝트다.
+기계학습 팀원은 안승현·손재호·장원태, 캡스톤 팀원은 안승현·장원태다.
+이 저장소는 공통 코드·개발 환경·설계·입출력 규약·베이스라인을 관리한다.
 
-> **"고정된 인지 모델의 출력만으로 분할 품질을 추정하고, 검수가 필요한 장면을 먼저 고를 수 있을까"**
+## 목표와 현재 상태
 
-MORAI Capture의 RGB·Semantic GT를 활용해 **TwinLiteNet+ Medium을 고정**하고,
-출력 확률·형태·카메라 ROI 특징으로 전체·영역별 IoU를 추정한다. 선형 회귀부터 구현하고 Ridge/Random Forest와 비교할 계획이다.
-GT는 정답 생성·평가에만 사용한다. 같은 검수 예산의 실패 발견율과 조건별 한계를 검증하고,
-시간이 허용되면 동일 예산 추가학습을 비교한다. 군집화·DINO·실제 fail-safe 연결은 필수가 아니다.
+**2026-11-22 문서·코드 검토. 실험 수치의 기준일은 2026-11-16이다.**
+[현재 개발 현황과 다음 작업](./docs/project/개발현황.md)을 먼저 확인한다.
+현재 범위는 오프라인 한 주기이며, 갱신 후보는 기존 성능 유지 기준 미달로 채택을 보류했다. 기본 f0/g0를 유지한다.
 
-**2026-11-03 상태:** 목표·TwinLiteNet+·전방 카메라 사용 합의, 기존 M 체크포인트·추론 시각화 확보.
-기술 세부 초안은 [3분할 설계와 11/4 취합 공지](./docs/03_팀운영/중간발표_3분할과취합공지_20261103.md)에 따라 각자 구체화한다.
-새 품질 추정기는 구현 예정이며 현재 기술 문서는 [프로젝트 설계](./docs/05_구현계획/프로젝트_확정설계_20261103.md)다.
+고정된 TwinLiteNet+ Medium v6의 출력과 원본 RGB 특징으로 전방 프레임의 차선 IoU를 추정하고,
+검수가 필요한 장면을 우선 선별하고, 정답 확보·동일 예산 재학습·기존 성능 유지 검증으로 다음 모델을 평가한다.
+GT는 학습 정답 생성과 평가에 사용하며, 품질 추정·선별 시에는 요구하지 않는다.
 
-**중간발표 자료 작성 시작점:** [GPT 웹 인계·문서 읽는 순서](./docs/07_발표/GPT웹_발표자료_인계_20261103.md).
-정지선을 학습한 [M v6 기록](./docs/05_구현계획/M_v6_정지선_재확인_20261103.md)을 재확인했다.
-아래 빠른 시작과 기존 binary/78개 특징 규약은 v5 기반이며, v6 로더·특징 계약 이식은 아직 완료하지 않았다.
+**설계 출발점: 2026-11-04 중간발표의 슬라이드·발표자 노트.**
+이후 구현·실험으로 확장한 현재 상태는 개발 현황과 결과 문서를 따른다.
+2026-11-16 사용자 확인을 반영했다. 전체 영상 + **3행×2열 ROI**의 출력·RGB 특징을 사용하고,
+흰·노란 차선 합집합 IoU 하나를 Least Squares(OLS)·Ridge·Random Forest로 추정한다.
+동일 검증 자료의 [0,1] 제한 MAE로 모델을 선택하고, 중복 제거 후보의 5/10/20% 선별 Recall을 비교한다.
 
-**왜 필요한가**: 실제 차에는 GT가 없어서 인지 결과를 고치려면 사람이 라벨을 달아야 하는데, 데이터는 한 시간에 수십만 장씩 쌓이고 대부분은 이미 잘 맞는 frame이다. **GT 없이 신뢰도를 매겨 사람이 봐야 할 실패 frame만 골라내면**, 같은 라벨링 예산으로 훨씬 많은 실패 사례를 분석·개선에 쓸 수 있다.
-→ [입출력 규약](./docs/05_구현계획/품질추정_입출력규약.md) · [코드 이식·분담](./docs/05_구현계획/코드이식_분담계획.md) · [8분 중간발표](./docs/07_발표/중간발표_설계와근거_20261103.md)
-
-## 레포 구조
-
-```text
-2026-2-ML/
-├── docs/                   과목 정보, 주제 후보, 팀 운영, 일정, 구현 계획, 발표
-├── config/                 local.env 예시, bake 정책, BEV 보정(bev/), MORAI 센서셋·네트워크 설정(morai/)
-├── docker/ros-noetic/      수집 컨테이너 이미지 정의
-├── ros/src/                catkin 워크스페이스 — data_collection(수집 노드·UDP 브리지), morai_msgs(서브모듈)
-├── scripts/
-│   ├── run_container.sh    추론 이미지에서 이 레포 코드를 실행 (추론·시각화·export)
-│   ├── run_ros.sh          수집 컨테이너 (catkin 빌드, 수집, 가공)
-│   └── *.py                동기화·Semantic 감사·정차 선별·마스크 bake·dataset version
-├── src/
-│   ├── twinlite_morai/     TwinLiteNet+ 로더와 MORAI dataset
-│   ├── drivable_bev/       카메라 → BEV 투영·융합
-│   ├── camera_semantic_perception/  letterbox 기하·원본 해상도 복원
-│   ├── common/             대상 모델 로딩·공통 유틸
-│   └── visualization/      추론 결과 시각화 (카메라별·BEV)
-└── third_party/TwinLiteNetPlus  공식 TwinLiteNet+ (서브모듈, MIT)
-```
-
-**이 레포는 다른 레포 없이 돈다.** 인지 모듈과 수집 코드는 기존 인지 코드 레포에서 옮겨 왔다 → [이관 기록](./docs/05_구현계획/외부코드_선별.md)
-
-## 빠른 시작 — 추론 결과 시각화
-
-```bash
-git submodule update --init                     # 처음 한 번 (TwinLiteNet+, morai_msgs)
-cp config/local.env.example config/local.env    # 처음 한 번, 자기 PC 경로로 채운다
-scripts/run_container.sh python3 -m visualization.visualize_inference --split val --name v5b_val
-```
-
-결과는 레포 밖 `<워크스페이스>/outputs/inference_vis/<name>/`에 생기고, 그 안의 `README.md`·`index.html`로 찾아본다.
-요구 사항과 설정은 [개발 환경](./docs/05_구현계획/개발환경.md)을 본다.
-
-## 데이터 원칙
-
-- **원본 데이터와 그 파생물(영상, 마스크, 시각화 이미지, feature), 체크포인트는 Git에 올리지 않는다.** `.gitignore`가 막고 있지만 커밋 전에 한 번 더 확인한다.
-- 결과물은 레포 밖 `outputs/`에 둔다. 발표 자료에 쓸 이미지는 팀 공유 드라이브로 주고받는다.
-- 개인 PC 경로와 이미지 이름은 `config/local.env`에만 적는다.
-
-## 먼저 볼 문서
+**56차원 X·단일 IoU y 생성, OLS/Ridge/Random Forest 학습, GT 없는 품질 추론과 예산별 선별 평가를 구현·실행했다.**
+부모 수집 묶음·원본 중복·인지 모델 노출 이력을 검사한다. 동일 예산의 인지 모델 재학습과 replay-only 대조군을 개발 자료와 예약한 정지·주행 자료에서 비교했다.
+새 조건의 개발 실험과 잠금 최종 평가를 구분하며, 취약 장면 선별 효율과 인지 모델 개선량을 각각 검증한다.
+기본 로더·시각화는 M v6 EMA와 v6 dataset을 사용한다. v6 Lane은 4클래스 argmax의 흰·노란 합집합이다.
+[계획 JSON v2](./docs/contracts/quality_plan_v2.json)는 비실행 계획 자료다.
+현재 X/y 정의는 [실행 스키마 v2](./docs/contracts/quality_xy_v2.json)에 고정했다. 기존 v1 계약·ROI 양식은 이전 설계 이력이다.
 
 | 목적 | 문서 |
 |---|---|
-| 문서 전체 인덱스 | [docs/README.md](./docs/README.md) |
-| **현재 구현 계획** | [확정 설계](./docs/05_구현계획/프로젝트_확정설계_20261103.md) |
-| 입출력·정답·특징 | [입출력 규약](./docs/05_구현계획/품질추정_입출력규약.md) |
-| 수집·평가·재학습 | [평가 계획](./docs/05_구현계획/평가_수집_재학습계획.md) |
-| 앞으로 이식할 코드·3인 분담 | [이식 계획](./docs/05_구현계획/코드이식_분담계획.md) |
-| 논문·외부 참고 코드 | [베이스라인](./docs/05_구현계획/참고논문_베이스라인.md) |
-| 남은 5주 | [마일스톤](./docs/04_실행/5주_마일스톤_20261103.md) |
-| 개발 환경·실행 방법 | [개발 환경](./docs/05_구현계획/개발환경.md) |
-| 이미 옮겨 온 코드 (9월) | [외부 코드 이관 기록](./docs/05_구현계획/외부코드_선별.md) |
-| 주제 후보 비교 (재검토용) | [주제 후보 인덱스](./docs/02_주제후보/README.md) |
-| 교수님이 요구한 조건 | [교수님 프로젝트 요구사항](./docs/01_강의정보/교수님_프로젝트_요구사항.md) |
+| 현재 구현·검증·다음 작업 | [개발 현황](./docs/project/개발현황.md) |
+| 전체 안내 | [팀 문서 인덱스](./docs/README.md) |
+| 오후 통합 주기 검증 | [새 주행 쌍 비교·경보·채택 판단](./docs/project/통합주기_검증결과_20261116.md) |
+| 통합 목표·단계별 근거·다음 개발 | [데이터 플라이휠 개발 현황](./docs/project/통합_데이터플라이휠_개발현황_20261116.md) |
+| 최신 목표·범위·진행 상태 | [프로젝트 설계](./docs/project/프로젝트_확정설계_20261103.md) |
+| 역할·인계·문서 관리 | [팀 운영](./docs/project/팀운영.md) |
+| 입력·정답·특징 계약 | [입출력 규약](./docs/contracts/품질추정_입출력규약.md) |
+| 수집·평가·추가학습 | [평가 계획](./docs/project/평가_수집_재학습계획.md) |
+| 구현 검증·측정 결과·한계 | [11월 16일 실험 결과](./docs/project/품질추정_실험결과_20261116.md) |
+| 고정 모델과 참고 방법 | [M v6 근거](./docs/baselines/M_v6_정지선_재확인_20261103.md) · [논문 베이스라인](./docs/baselines/참고논문_베이스라인.md) |
+| X/y 구현·실행·검증 | [X/y 데이터셋](./docs/development/X_y_데이터셋.md) |
+| 회귀·추론·선별 실행 | [회귀 학습·선별 평가](./docs/development/회귀학습_선별평가.md) |
+| 선별 자료 추가학습 | [f0/f1 비교·replay 대조군·최종 잠금](./docs/development/선별자료_인지모델_재학습.md) |
+| 개발·추가 이식 | [개발 환경](./docs/development/개발환경.md) · [코드 이식 계획](./docs/development/코드이식_분담계획.md) |
 
-## 표기 규칙
+## 저장소 구성
 
-- `[확정]` 강의자료·영상·규정 원문으로 검증된 사실
-- `[조사]` 조사했으나 추가 확인 필요
-- `[미확정]` 교수님/팀원 확인 대기
+```text
+docs/        project · development · baselines · contracts
+config/      환경변수 예시·데이터 정책·센서·BEV 설정
+docker/      수집 컨테이너 정의
+tests/       데이터·모델 신원·학습/평가 누수·경보·선별의 회귀 검증
+ros/         데이터 수집·UDP 브리지·메시지 서브모듈
+scripts/     컨테이너 실행·동기화·감사·선별·가공
+src/         모델 로더·기하 처리·시각화·품질 특징/정답·회귀·선별
+third_party/ TwinLiteNet+ 서브모듈
+```
+
+## 빠른 시작 — M v6 추론 결과 시각화
+
+인지 모델 추론·시각화의 기본값은 M v6다. X/y 생성·회귀 학습·RGB 단독 품질 추론 CLI도 사용할 수 있다.
+
+```bash
+git submodule update --init
+cp config/local.env.example config/local.env
+# local.env에 자기 환경의 데이터·체크포인트·이미지를 설정한다.
+scripts/run_container.sh python3 -m visualization.visualize_inference --split val --name m_v6_val
+```
+
+결과는 기본적으로 레포 상위 `outputs/inference_vis/<name>/`에 생성된다.
+데이터·가중치·외부 제공 proto의 준비 조건과 수집 명령은 [개발 환경](./docs/development/개발환경.md)을 따른다.
+이 코드는 다른 프로젝트 저장소를 import하거나 경유하지 않는다.
+
+## X/y 데이터셋 생성
+
+`ML_OUTPUT_ROOT`를 용량이 충분한 외부 출력 볼륨으로 설정하고 실행한다. 기존 출력 폴더는 덮어쓰지 않는다.
+
+```bash
+scripts/run_container.sh python3 -m quality_estimation.build_dataset \
+  --output-dir /outputs/quality_front
+scripts/run_container.sh python3 -m quality_estimation.verify_dataset \
+  --dataset-dir /outputs/quality_front --report /outputs/reports/quality_front_validation.json
+```
+
+X에는 GT가 들어가지 않으며 y와 sample_id로 대응한다. 기존 인지 train/val 노출 역할을 보존하고
+품질 회귀 split은 별도로 정해야 한다. 세부 정의·산출물은 [X/y 데이터셋](./docs/development/X_y_데이터셋.md)을 따른다.
+
+## 문서와 데이터 관리
+
+- 공통 설계·평가·역할·개발 방법은 이 저장소의 `docs/`에 둔다. 미확정 설계와 측정된 결과를 구분한다.
+- 강의 원문·개인 분석·과목별 발표 준비는 저장소 밖 로컬 워크스페이스에서 관리한다.
+  팀 개발에 필요한 결론은 공통 문서에 반영해 로컬 자료 없이도 읽을 수 있게 한다.
+- 원본 데이터·영상·마스크·feature·체크포인트·실험 출력은 Git에 올리지 않는다.
+- 개인 경로와 컨테이너 이미지 이름은 Git에서 제외한 `config/local.env`에 기록한다.
+- 코드 출처·revision과 공개 가능한 재현 근거는 [이관 기록](./docs/development/외부코드_선별.md)에 남긴다.

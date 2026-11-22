@@ -9,7 +9,7 @@
 #
 # 이미지는 config/local.env 의 ROS_IMAGE 를 그대로 쓴다 (docker/ros-noetic/Dockerfile 로 만든 이미지).
 # 이 레포(/ml)와 ML 데이터 루트(/data)만 마운트한다. 다른 프로젝트 폴더는 마운트하지 않는다.
-# 자세한 설명은 docs/05_구현계획/개발환경.md 를 본다.
+# 자세한 설명은 docs/development/개발환경.md 를 본다.
 set -euo pipefail
 
 ML_REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

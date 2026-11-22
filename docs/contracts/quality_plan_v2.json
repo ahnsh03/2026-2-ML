@@ -1,0 +1,414 @@
+{
+  "schema_version": "ml-quality-plan-2",
+  "date": "2026-11-16",
+  "status": "planning_reference_not_executable_contract",
+  "implementation_status": "offline_single_cycle_version_pair_alarm_review_queue_acceptance_and_new_route_evaluation_complete",
+  "authority": {
+    "presentation": "5_IsTrue_v2.pptx",
+    "presented_on": "2026-11-04",
+    "sha256": "13e40f7bbd9a854d4c988f0a316c0cc024e73f937a7b502517314996b0942221",
+    "content": [
+      "slides",
+      "speaker_notes"
+    ],
+    "user_confirmed_latest_on": "2026-11-16",
+    "progress_clarification": "Initial user clarification marked X/y planned. Subsequent explicit development requests on 2026-11-16 implemented X/y, regression, GT-free inference/selection, fixed-budget perception updates, frozen primary/retention/rain evaluations, and development-only quality refitting for f1. Independent-environment validation and ROS integration remain outstanding."
+  },
+  "perception": {
+    "model_id": "twinlite_medium_v6_road_marking_best_mean_ema",
+    "checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "checkpoint_epoch": 11,
+    "epochs_completed": 18,
+    "input_shape": [
+      "B",
+      3,
+      384,
+      640
+    ],
+    "class_names": {
+      "drivable": [
+        "background",
+        "drivable"
+      ],
+      "road_marking": [
+        "background",
+        "white_lane",
+        "yellow_lane",
+        "stopline"
+      ]
+    },
+    "weights": "ema_state_dict",
+    "view_for_quality_model": "front",
+    "baseline_evidence": "../baselines/medium_v6_baseline_evidence.json",
+    "repo_v6_runtime_parity_verified": false,
+    "repo_v6_default_connected": true,
+    "runtime_smoke_verification": {
+      "date": "2026-11-16",
+      "frames": 6,
+      "camera_samples": 18,
+      "historical_validation_only": true,
+      "quality_training_performed": false,
+      "scope": "Historical initial implementation check; training booleans describe that check only, not current project completion."
+    },
+    "quality_xy_validation": {
+      "date": "2026-11-16",
+      "front_frames": 9135,
+      "source_runs": 18,
+      "raw_semantic_cache_parity_frames": 9135,
+      "independent_fixtures": 18,
+      "feature_count": 56,
+      "f0_train": 8667,
+      "historical_dev": 468,
+      "quality_split_assigned": false,
+      "regression_training_performed": false,
+      "scope": "Historical initial implementation check; training booleans describe that check only, not current project completion."
+    },
+    "repo_v6_runtime_parity_scope": "This false flag does not assert a mismatch: full equivalence against the original external training runtime has not been separately certified. ML pipeline target/feature consistency checks below are complete.",
+    "quality_pipeline_consistency_verified": {
+      "date": "2026-11-16",
+      "rgb_only_vs_paired_features_bitwise_equal_rows": 296,
+      "reserved_raw_xy_validation_rows": 3762,
+      "reserved_eligible_f0_evaluator_count_parity_rows": 3687,
+      "legacy_semantic_cache_parity_rows": 9135,
+      "scope": "Same fixed f0 within ML implementation; does not certify equivalence to every historical external runtime.",
+      "secondary_rain_raw_xy_validation_rows": 759,
+      "secondary_rain_eligible_f0_evaluator_count_parity_rows": 744,
+      "unit_tests_passed": 57,
+      "namespace_reload_diagnostic_first_run_X_y_predictions_byte_equal": true
+    }
+  },
+  "features": {
+    "sources": [
+      "frozen_model_outputs",
+      "original_rgb",
+      "gt_independent_geometry"
+    ],
+    "output_families": [
+      "lane_probability_confidence",
+      "entropy",
+      "lane_area_fraction",
+      "connected_component_count"
+    ],
+    "rgb_families": [
+      "mean_brightness",
+      "dark_pixel_fraction",
+      "brightness_contrast",
+      "edge_density"
+    ],
+    "regions": {
+      "include_global": true,
+      "kind": "fixed_grid",
+      "rows": 3,
+      "cols": 2,
+      "roi_count": 6,
+      "coordinate_and_rounding_rules": {
+        "rows": 3,
+        "cols": 2,
+        "order": [
+          "global",
+          "r1c1",
+          "r1c2",
+          "r2c1",
+          "r2c2",
+          "r3c1",
+          "r3c2"
+        ],
+        "bounds": "half-open floor(k*size/n); no overlap; no padding",
+        "output_space": "resized image crop inside model letterbox",
+        "rgb_space": "original RGB; same normalized grid, independently rounded"
+      }
+    },
+    "ordered_features": [
+      "global.lane_confidence",
+      "global.marking_entropy",
+      "global.lane_area_fraction",
+      "global.lane_components",
+      "global.brightness_mean",
+      "global.dark_fraction",
+      "global.brightness_std",
+      "global.edge_density",
+      "r1c1.lane_confidence",
+      "r1c1.marking_entropy",
+      "r1c1.lane_area_fraction",
+      "r1c1.lane_components",
+      "r1c1.brightness_mean",
+      "r1c1.dark_fraction",
+      "r1c1.brightness_std",
+      "r1c1.edge_density",
+      "r1c2.lane_confidence",
+      "r1c2.marking_entropy",
+      "r1c2.lane_area_fraction",
+      "r1c2.lane_components",
+      "r1c2.brightness_mean",
+      "r1c2.dark_fraction",
+      "r1c2.brightness_std",
+      "r1c2.edge_density",
+      "r2c1.lane_confidence",
+      "r2c1.marking_entropy",
+      "r2c1.lane_area_fraction",
+      "r2c1.lane_components",
+      "r2c1.brightness_mean",
+      "r2c1.dark_fraction",
+      "r2c1.brightness_std",
+      "r2c1.edge_density",
+      "r2c2.lane_confidence",
+      "r2c2.marking_entropy",
+      "r2c2.lane_area_fraction",
+      "r2c2.lane_components",
+      "r2c2.brightness_mean",
+      "r2c2.dark_fraction",
+      "r2c2.brightness_std",
+      "r2c2.edge_density",
+      "r3c1.lane_confidence",
+      "r3c1.marking_entropy",
+      "r3c1.lane_area_fraction",
+      "r3c1.lane_components",
+      "r3c1.brightness_mean",
+      "r3c1.dark_fraction",
+      "r3c1.brightness_std",
+      "r3c1.edge_density",
+      "r3c2.lane_confidence",
+      "r3c2.marking_entropy",
+      "r3c2.lane_area_fraction",
+      "r3c2.lane_components",
+      "r3c2.brightness_mean",
+      "r3c2.dark_fraction",
+      "r3c2.brightness_std",
+      "r3c2.edge_density"
+    ],
+    "feature_count": 56,
+    "forbidden_inputs": [
+      "GT",
+      "IoU",
+      "FP",
+      "FN",
+      "weather",
+      "time_of_day",
+      "pose",
+      "run_id",
+      "GT_support",
+      "GT_ignore_mask"
+    ],
+    "implementation_contract": "quality_xy_v2.json"
+  },
+  "quality_target": {
+    "semantic_id": "lane_union_iou",
+    "scope": "full_front_frame",
+    "foreground_classes": [
+      "white_lane",
+      "yellow_lane"
+    ],
+    "background_classes": [
+      "background",
+      "stopline"
+    ],
+    "prediction_mask": "isin(argmax(road_marking_logits), [1,2])",
+    "gt_mask": "isin(validated_road_marking_gt, [1,2])",
+    "formula": "TP/(TP+FP+FN)",
+    "regression_target_count": 1,
+    "roi_targets_required": false,
+    "undefined_union_zero": "null_with_label_defined_false",
+    "failure_threshold_example": 0.7,
+    "failure_threshold_final": 0.7,
+    "failure_operator": "<",
+    "output_column": "lane_iou",
+    "failure_threshold_scope": "Preregistered exploratory low-IoU cutoff for this study, not a driving safety threshold."
+  },
+  "regression": {
+    "candidates": [
+      "LeastSquares",
+      "Ridge",
+      "RandomForest"
+    ],
+    "same_training_and_validation_rows": true,
+    "preprocessing_fit": "training_only",
+    "model_selection_split": "meta_dev",
+    "model_selection_metric": "MAE",
+    "prediction_clip": [
+      0,
+      1
+    ],
+    "hyperparameters": {
+      "implementation_protocol": "../../config/quality_training_v1.json",
+      "development_selected_full56": {
+        "OLS": {
+          "rcond": 1e-06
+        },
+        "Ridge": {
+          "alpha": 100
+        },
+        "RandomForest": {
+          "n_estimators": 300,
+          "min_samples_leaf": 2,
+          "max_depth": null,
+          "max_features": 1.0
+        }
+      },
+      "selection_scope": "Fixed on development; frozen before candidate labels and primary final evaluation. Never reselected on final outcomes."
+    }
+  },
+  "selection": {
+    "candidate_pool": "same_deduplicated_front_frames",
+    "score_order": "ascending_estimated_lane_union_iou",
+    "budget_fractions": [
+      0.05,
+      0.1,
+      0.2
+    ],
+    "methods": [
+      "Random",
+      "Confidence",
+      "Entropy",
+      "ProposedML"
+    ],
+    "primary_metric": "Recall@budget",
+    "recall_definition": "selected_actual_failures / all_actual_failures_in_candidate_pool",
+    "failure_labels_available_at_selection": false,
+    "duplicate_policy": "Exact decoded-pixel duplicates excluded across roles; within moving parent groups use GT-free time and distance/heading eligibility. Same physical simulator session and nearby geometry remain explicit limitations.",
+    "rounding_and_tie_policy": "ceil(N*fraction); ascending score, then sample_id; seeded random nested budgets."
+  },
+  "evaluation": {
+    "required": [
+      "clipped_MAE_by_regressor",
+      "predicted_vs_actual_IoU",
+      "Recall_by_budget_and_method",
+      "weather_and_time_analysis",
+      "overconfidence_cases"
+    ],
+    "data_roles": [
+      "f0_train",
+      "historical_dev",
+      "meta_train",
+      "meta_dev",
+      "candidate_pool",
+      "final_test"
+    ],
+    "split_unit": "parent_capture_session",
+    "independent_test_used_for_tuning": false,
+    "parent_group_caveat": "Fresh layout/route groups share a single physical simulator session; group labels alone do not establish independent environments."
+  },
+  "retraining": {
+    "in_pipeline": true,
+    "schedule": "W13",
+    "execution_condition": "after_quality_and_selection_validation_as_part_of_integrated_flywheel",
+    "comparison": "same_initial_f0_new_frame_budget_training_budget_and_final_test",
+    "revalidate_quality_estimator_after_f0_update": true,
+    "schedule_scope": "Historical W13 plan, not a constraint on current development"
+  },
+  "future_extension": [
+    "real_time_degradation_monitoring_and_response_after_latency_validation"
+  ],
+  "presented_schedule": {
+    "W10": "regressor_training",
+    "W11": "model_comparison_and_selection",
+    "W12": "performance_validation",
+    "W13": "data_selection_and_perception_retraining",
+    "W14": "result_analysis",
+    "status": "presentation_plan_not_completion_record"
+  },
+  "legacy_artifacts": [
+    {
+      "path": "quality_contract_v1.json",
+      "status": "historical_v5_draft_not_current",
+      "do_not_inherit": [
+        "checkpoint",
+        "binary_heads",
+        "feature_count_78",
+        "output_only_inputs",
+        "camera_semantic_rois",
+        "four_targets",
+        "grid_rows_2_cols_3"
+      ]
+    },
+    {
+      "path": "roi_profile_template.json",
+      "status": "historical_semantic_polygon_template_not_current_grid"
+    },
+    {
+      "path": "../development/port_inventory_v1.json",
+      "status": "historical_source_snapshot_and_actions",
+      "current_porting_guidance": "../development/코드이식_분담계획.md"
+    }
+  ],
+  "implementation_pending": [
+    "independent_map_and_date_generalization",
+    "retention_preserving_update_validation",
+    "alarm_false_positive_rate_transfer_under_distribution_shift",
+    "26R1_ROS_integration_and_end_to_end_latency",
+    "accepted_parent_model_lineage_for_f2_and_later_cycles"
+  ],
+  "slide_mapping": {
+    "goal": [
+      4
+    ],
+    "pipeline": [
+      5
+    ],
+    "baseline": [
+      7,
+      9
+    ],
+    "features": [
+      10
+    ],
+    "target": [
+      11
+    ],
+    "regression": [
+      13,
+      14
+    ],
+    "selection": [
+      15,
+      16
+    ],
+    "schedule": [
+      17
+    ]
+  },
+  "implementation_evidence": [
+    "../development/X_y_데이터셋.md",
+    "../development/회귀학습_선별평가.md",
+    "../development/선별자료_인지모델_재학습.md"
+  ],
+  "execution_protocol": "../../config/quality_training_v1.json",
+  "current_results": "../project/품질추정_실험결과_20261116.md",
+  "integrated_objective": "기계학습 기반 인지 품질 추정을 통한 딥러닝 인지모델 개선 데이터 플라이휠 구축",
+  "integrated_course_scope": "One shared ML/Capstone project; historical presentation scope is not a ceiling on subsequent authorized development.",
+  "current_integrated_roadmap": "../project/통합_데이터플라이휠_개발현황_20261116.md",
+  "versioned_update": {
+    "explicit_adaptation_run_required": true,
+    "checkpoint_and_target_policy_hash_bound": true,
+    "legacy_f0_default_preserved": true,
+    "alarm_fit_role": "meta_dev",
+    "alarm_maximum_empirical_normal_fpr": 0.1,
+    "alarm_cutoff_distinct_from_target_iou": true,
+    "acceptance_policy": "../../config/cycle_acceptance_v1.json",
+    "deployment_automatic": false
+  },
+  "current_cycle_results": "../project/통합주기_검증결과_20261116.md",
+  "current_integration_validation": {
+    "date": "2026-11-16",
+    "unit_tests_passed": 90,
+    "source_snapshot_tests_passed": 90,
+    "new_cycle_raw_pairs": 1384,
+    "new_cycle_evaluation_rows": 1371,
+    "rgb_only_vs_paired_features_and_predictions_exact_for_each_version": true,
+    "all_new_raw_rgb_semantic_files_rehashed": 2768,
+    "wrong_quality_and_alarm_pair_rejected_by_actual_cli": true,
+    "cpu_source_isolation_prediction_parity_rows_per_pair": 355,
+    "model_promoted": false,
+    "failed_acceptance_check": "historical_retention",
+    "new_map_or_date_independence": false,
+    "additional_prospective_raw_pairs": 664,
+    "additional_prospective_evaluation_rows": 661,
+    "additional_compared_pairs": [
+      "f0_g0",
+      "original_first_quality_f1_g1",
+      "fixed_replay_distillation_first_quality_f1_gKD"
+    ],
+    "additional_freeze_before_capture_verified": true,
+    "all_evaluated_update_candidates_held": true
+  },
+  "additional_cycle_results": "../project/출력유지_제약모델_추가검증_20261116.md"
+}

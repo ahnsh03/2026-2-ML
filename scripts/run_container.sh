@@ -7,7 +7,7 @@
 #
 # 경로와 이미지 이름은 config/local.env(Git 제외)에서 읽는다.
 # 처음 한 번 config/local.env.example을 복사해 자기 PC 경로로 채운다.
-# 자세한 설명은 docs/05_구현계획/개발환경.md 를 본다.
+# 자세한 설명은 docs/development/개발환경.md 를 본다.
 set -euo pipefail
 
 ML_REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

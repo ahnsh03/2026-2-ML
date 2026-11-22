@@ -6,6 +6,7 @@ data/
 *.pth
 *.onnx
 *.npz
+*.npy
 *.parquet
 *.bag
 *.png
