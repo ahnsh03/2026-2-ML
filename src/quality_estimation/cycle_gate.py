@@ -127,6 +127,36 @@ def condition_deltas(incumbent, candidate):
     return result
 
 
+
+def head_support_diagnostics(incumbent, candidate):
+    """Describe per-class side effects on identical, already checked RGB and GT rows."""
+    result = {}
+    for head in next(iter(incumbent.values()))["metrics"]:
+        left = [row["metrics"][head] for row in incumbent.values()]
+        right = [candidate[sid]["metrics"][head] for sid in incumbent]
+        present = [i for i, counts in enumerate(left) if counts["tp"] + counts["fn"] > 0]
+        absent = [i for i, counts in enumerate(left) if counts["tp"] + counts["fn"] == 0]
+        entry = {
+            "gt_present_frames": len(present),
+            "gt_absent_frames": len(absent),
+            "new_false_positive_frames": sum(left[i]["fp"] == 0 and right[i]["fp"] > 0 for i in absent),
+            "resolved_false_positive_frames": sum(right[i]["fp"] == 0 and left[i]["fp"] > 0 for i in absent),
+        }
+        for name, rows in (("incumbent", left), ("candidate", right)):
+            tp = sum(row["tp"] for row in rows)
+            fp = sum(row["fp"] for row in rows)
+            fn = sum(row["fn"] for row in rows)
+            entry[name] = {
+                "gt_present_mean_iou": math.fsum(rows[i]["iou"] for i in present) / len(present) if present else None,
+                "gt_absent_fp_frames": sum(rows[i]["fp"] > 0 for i in absent),
+                "gt_absent_fp_pixels": sum(rows[i]["fp"] for i in absent),
+                "pixel_precision": tp / (tp + fp) if tp + fp else None,
+                "pixel_recall": tp / (tp + fn) if tp + fn else None,
+                "pooled_pixel_iou": tp / (tp + fp + fn) if tp + fp + fn else None,
+            }
+        result[head] = entry
+    return result
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ("incumbent-new-perception","candidate-new-perception","incumbent-retention","candidate-retention",
@@ -163,6 +193,8 @@ def main():
     (a.output_dir/"policy.json").write_bytes(a.policy.read_bytes())
     report=dict(created_utc=datetime.now(timezone.utc).isoformat(),status="complete",decision=decision,
                 incumbent=incumbent,candidate=candidate,new_rows=len(left),retention_rows=len(oldleft),
+                head_diagnostics={"new": head_support_diagnostics(left, right),
+                                  "retention": head_support_diagnostics(oldleft, oldright)},
                 new_condition_deltas=condition_deltas(left,right),
                 retention_condition_deltas=condition_deltas(oldleft,oldright),
                 candidate_perception_identity=identity,evidence_run_sha256=evidence,paired_inputs_and_gt_verified=True,

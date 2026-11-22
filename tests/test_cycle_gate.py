@@ -1,7 +1,7 @@
 import copy
 import unittest
 
-from quality_estimation.cycle_gate import assess_update, check_paired, condition_deltas
+from quality_estimation.cycle_gate import assess_update, check_paired, condition_deltas, head_support_diagnostics
 
 
 class CycleGateTests(unittest.TestCase):
@@ -71,3 +71,28 @@ class CycleGateTests(unittest.TestCase):
         result=next(iter(condition_deltas(left,copy.deepcopy(left)).values()))
         self.assertEqual(result['defined_rows'],0)
         self.assertIsNone(result['delta'])
+
+
+    def test_present_frame_iou_cannot_hide_new_predictions_on_absent_ground_truth(self):
+        def scene(tp, fp, fn):
+            union = tp + fp + fn
+            return {"metrics": {"stopline": {"tp": tp, "fp": fp, "fn": fn, "iou": tp / union if union else None}}}
+        left = {"present": scene(3, 1, 1), "added": scene(0, 0, 0), "removed": scene(0, 5, 0)}
+        right = {"present": scene(4, 0, 0), "added": scene(0, 2, 0), "removed": scene(0, 0, 0)}
+        head = head_support_diagnostics(left, right)["stopline"]
+        self.assertEqual((head["gt_present_frames"], head["gt_absent_frames"]), (1, 2))
+        self.assertEqual((head["new_false_positive_frames"], head["resolved_false_positive_frames"]), (1, 1))
+        self.assertAlmostEqual(head["incumbent"]["gt_present_mean_iou"], .6)
+        self.assertEqual(head["candidate"]["gt_present_mean_iou"], 1.)
+        self.assertEqual(head["candidate"]["gt_absent_fp_pixels"], 2)
+        self.assertAlmostEqual(head["candidate"]["pixel_precision"], 4 / 6)
+        self.assertEqual(head["candidate"]["pixel_recall"], 1.)
+
+    def test_empty_class_support_has_no_pixel_recall_or_frame_mean(self):
+        empty = {"a": {"metrics": {"yellow": {"tp": 0, "fp": 0, "fn": 0, "iou": None}}}}
+        head = head_support_diagnostics(empty, empty)["yellow"]
+        self.assertEqual(head["gt_absent_frames"], 1)
+        self.assertIsNone(head["candidate"]["gt_present_mean_iou"])
+        self.assertIsNone(head["candidate"]["pixel_recall"])
+        self.assertIsNone(head["candidate"]["pixel_precision"])
+        self.assertIsNone(head["candidate"]["pooled_pixel_iou"])
