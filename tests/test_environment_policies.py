@@ -25,3 +25,13 @@ class EnvironmentPolicyTests(unittest.TestCase):
         spec["features"].reverse()
         with self.assertRaises(ValueError):
             assign_environment_clusters(spec, x)
+
+    def test_group_cutoffs_respect_the_total_budget_when_sparse_normals_trigger_fallback(self):
+        scores = np.r_[np.linspace(.50, .98, 25), [.1, .2, .3, .4], np.full(11, .95)]
+        groups = np.r_[np.zeros(25, int), np.ones(15, int)]
+        y = np.full(40, .8, dtype=np.float32)
+        policy = fit_group_cutoffs(y, scores, groups, min_normals=20)
+        self.assertEqual(policy["combined_false_positives_before_cap"], 6)
+        self.assertEqual(policy["combined_false_positives"], 4)
+        self.assertEqual(int((scores < group_alarm_thresholds(policy, groups)).sum()), 4)
+        self.assertEqual(group_alarm_thresholds(policy, [1, 12]).tolist(), [.5, .5])

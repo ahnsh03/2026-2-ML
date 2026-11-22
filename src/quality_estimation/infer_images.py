@@ -26,6 +26,7 @@ from .models import predict_array
 from .native import decoded_pixel_sha256
 from .perception_identity import resolve_quality_perception
 from .alarm import load_alarm_calibration
+from .calibration import group_alarm_thresholds
 
 
 class RGBSamples(Dataset):
@@ -75,9 +76,15 @@ def main():
     alarm = load_alarm_calibration(a.alarm_calibration, a.model_run, bundle) if a.alarm_calibration else None
     centers = None
     centers_digest = None
-    if a.environment_centers:
-        raw_centers = a.environment_centers.read_bytes()
+    grouped_alarm = alarm.get("group_policy") if alarm else None
+    centers_path = a.environment_centers
+    if grouped_alarm and centers_path is None:
+        centers_path = a.alarm_calibration / "environment_centers.json"
+    if centers_path:
+        raw_centers = centers_path.read_bytes()
         centers_digest = hashlib.sha256(raw_centers).hexdigest()
+        if grouped_alarm:
+            require(centers_digest == alarm["centers_sha256"], "environment centers differ from alarm calibration")
         centers = json.loads(raw_centers)
         assign_environment_clusters(centers, np.empty((0, len(ENVIRONMENT_NAMES))))
     cv2.setNumThreads(1); torch.set_num_threads(2); torch.manual_seed(20261116)
@@ -112,6 +119,8 @@ def main():
                     descriptors = np.stack([extract_environment(item["rgb"]) for item in items])
                     assignments = assign_environment_clusters(centers, descriptors)
                     environment_rows.append(descriptors)
+                    if grouped_alarm:
+                        cutoffs = group_alarm_thresholds(grouped_alarm, assignments)
                 for i, item in enumerate(items):
                     result = dict(sample_id=ids[item["index"]], rgb_sha256=item["sha256"],pixel_sha256=item["pixel_sha256"],
                                   geometry=asdict(item["geometry"]),
@@ -119,7 +128,10 @@ def main():
                     if centers is not None:
                         result["environment_cluster"] = int(assignments[i])
                     if alarm:
-                        cutoff = alarm["policy"]["alarm_threshold"]
+                        cutoff = float(cutoffs[i]) if grouped_alarm else alarm["policy"]["alarm_threshold"]
+                        if grouped_alarm:
+                            result["alarm_cutoff_source"] = ("environment_group" if str(assignments[i]) in
+                                                           grouped_alarm["group_thresholds"] else "global_fallback")
                         result.update(low_quality_alarm=bool(predictions["estimated_iou"][i] < cutoff),
                                       alarm_threshold=cutoff, quality_target_iou=alarm["policy"]["target_iou"])
                     stream.write(json.dumps(result, allow_nan=False) + "\n")

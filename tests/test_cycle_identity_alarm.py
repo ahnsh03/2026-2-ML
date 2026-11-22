@@ -6,7 +6,7 @@ import unittest
 import numpy as np
 
 from common.bridge import DEFAULT_CHECKPOINT_SHA256, sha256_file
-from quality_estimation.alarm import fit_alarm_cutoff
+from quality_estimation.alarm import development_environment_rows, fit_alarm_cutoff
 from quality_estimation.metrics import failure_detection_metrics
 from quality_estimation.perception_identity import (baseline_identity, identity_from_adaptation,
     load_adaptation, require_matching_identity, TARGET_POLICY_SHA256, validate_identity)
@@ -89,3 +89,28 @@ class AlarmTests(unittest.TestCase):
         m=failure_detection_metrics(y,estimate,.7,.4)
         self.assertEqual((m['tp'],m['fp'],m['fn'],m['tn']),(0,0,1,1))
         self.assertEqual(m['auroc'],.5)
+
+    def test_grouped_calibration_rejects_another_pixel_for_the_same_id(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            model = root / "model"
+            model.mkdir()
+            (model / "run.json").write_text("{}")
+            d = root / "inference"
+            d.mkdir()
+            (d / "environment_centers.json").write_text("{}")
+            row = dict(sample_id="a", pixel_sha256="original", estimated_iou=.3, environment_cluster=2)
+            (d / "predictions.jsonl").write_text(json.dumps(row))
+            artifacts = {p.name: sha256_file(p) for p in d.iterdir()}
+            record = dict(status="complete", artifact_sha256=artifacts, model_run_sha256=sha256_file(model / "run.json"),
+                          uses_ground_truth=False, checkpoint_sha256="ck", model="RF",
+                          environment_centers_sha256=artifacts["environment_centers.json"])
+            (d / "run.json").write_text(json.dumps(record))
+            (d / "_SUCCESS").write_text(sha256_file(d / "run.json"))
+            bundle = {"model": "RF", "checkpoint_sha256": "ck"}
+            groups, _ = development_environment_rows(d, [row], [.3], model, bundle)
+            self.assertEqual(groups.tolist(), [2])
+            with self.assertRaisesRegex(ValueError, "pixels"):
+                development_environment_rows(d, [dict(row, pixel_sha256="other")], [.3], model, bundle)
+            with self.assertRaisesRegex(ValueError, "development IDs"):
+                development_environment_rows(d, [dict(row, sample_id="other")], [.3], model, bundle)

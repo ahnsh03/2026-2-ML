@@ -53,7 +53,27 @@ def fit_group_cutoffs(y, estimated_iou, groups, *, min_normals=20, maximum_fpr=.
         if normals >= min_normals:
             entry = fit_alarm_cutoff(y[mask], estimates[mask], maximum_fpr, target_iou, min_normals)
             by_group[str(label)] = entry["alarm_threshold"]
-    return {"global": policy, "group_thresholds": by_group, "min_normals": min_normals}
+    estimates = np.clip(estimates.astype(np.float64), 0, 1)
+    normal = np.isfinite(y) & (y >= np.asarray(target_iou, dtype=y.dtype))
+    limits = np.array([by_group.get(str(g), policy["alarm_threshold"]) for g in groups])
+    false_alarms = normal & (estimates < limits)
+    before = int(false_alarms.sum())
+    excess = before - policy["allowed_false_positives"]
+    if excess > 0:
+        # Sparse groups keep the global fallback. Tighten supported groups at
+        # the closest normal scores to their own thresholds. Strict comparison
+        # keeps tied scores together and can remove more false alarms than needed.
+        adjustable = [i for i in np.flatnonzero(false_alarms) if str(groups[i]) in by_group]
+        closest = sorted(adjustable, key=lambda i: (limits[i] - estimates[i], groups[i], estimates[i]))
+        for i in closest[:excess]:
+            label = str(groups[i])
+            by_group[label] = min(by_group[label], float(estimates[i]))
+    result = {"global": policy, "group_thresholds": by_group, "min_normals": min_normals,
+              "combined_false_positives_before_cap": before}
+    after = int((normal & (estimates < group_alarm_thresholds(result, groups))).sum())
+    _require(after <= policy["allowed_false_positives"], "combined calibration budget exceeded")
+    result["combined_false_positives"] = after
+    return result
 
 
 def group_alarm_thresholds(policy, groups):
