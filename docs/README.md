@@ -22,6 +22,7 @@
 | 코드 출처 | [9월 이관 기록](./development/외부코드_선별.md) · [11/3 source inventory 이력](./development/port_inventory_v1.json) |
 | 모델 근거 | [M v6 재확인](./baselines/M_v6_정지선_재확인_20261103.md) · [v6 JSON](./baselines/medium_v6_baseline_evidence.json) · [v5 JSON](./baselines/medium_baseline_evidence.json) |
 | 참고 방법 | [논문·베이스라인](./baselines/참고논문_베이스라인.md) · [reference lock](./baselines/reference_repos.lock.json) |
+| 재학습 설정 탐색 | [실측 개발 격자와 모델 해시](./baselines/adaptation_search_surface_20261123.json) · [탐색 예산별 결과](./project/환경_ROI와_품질추정_20261123.md) |
 | X/y 구현·검증 | [실행법·검증 범위](./development/X_y_데이터셋.md) · [56차원 실행 스키마](./contracts/quality_xy_v2.json) |
 | 회귀·추론·선별 | [실행법·분할·모델 보존](./development/회귀학습_선별평가.md) |
 | 선별 후 인지 모델 갱신 | [동일 예산 재학습·대조군·잠금 평가](./development/선별자료_인지모델_재학습.md) |
