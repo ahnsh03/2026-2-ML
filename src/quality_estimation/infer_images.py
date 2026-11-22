@@ -19,7 +19,7 @@ from .artifacts import write_json
 from .build_dataset import collate, worker_init
 from .image_io import color_channels, decoded_pixel_sha256, read_image
 from .dataset_io import require
-from .environment_clusters import assign_environment_clusters
+from .environment_clusters import assign_environment_clusters, environment_assignment_distances
 from .environment_features import NAMES as ENVIRONMENT_NAMES, extract_environment
 from .features import FEATURE_NAMES, extract_features, feature_schema
 from .model_io import load_model_run
@@ -99,7 +99,7 @@ class RGBQualityScorer:
         descriptors = None
         if self.centers is not None:
             descriptors = np.stack([extract_environment(item["rgb"]) for item in items])
-            assignments = assign_environment_clusters(self.centers, descriptors)
+            assignments, distances, gaps = environment_assignment_distances(self.centers, descriptors)
             if self.grouped_alarm:
                 cutoffs = group_alarm_thresholds(self.grouped_alarm, assignments)
         results = []
@@ -109,6 +109,8 @@ class RGBQualityScorer:
                           **{name: float(values[index]) for name, values in predictions.items()})
             if self.centers is not None:
                 result["environment_cluster"] = int(assignments[index])
+                result["environment_center_distance"] = float(distances[index])
+                result["environment_runner_up_gap"] = float(gaps[index])
             if self.alarm:
                 cutoff = float(cutoffs[index]) if self.grouped_alarm else self.alarm["policy"]["alarm_threshold"]
                 if self.grouped_alarm:

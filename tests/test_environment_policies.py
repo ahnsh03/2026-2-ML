@@ -4,11 +4,26 @@ import unittest
 import numpy as np
 
 from quality_estimation.calibration import fit_group_cutoffs, group_alarm_thresholds
-from quality_estimation.environment_clusters import assign_environment_clusters, fit_environment_clusters
+from quality_estimation.environment_clusters import (
+    assign_environment_clusters, environment_assignment_distances, fit_environment_clusters,
+)
 from quality_estimation.environment_features import NAMES
 
 
 class EnvironmentPolicyTests(unittest.TestCase):
+    def test_nearest_distance_and_runner_up_gap_follow_frozen_scaling(self):
+        x = np.zeros((4, len(NAMES)))
+        x[:, 0] = [0, 0, 4, 4]
+        spec = fit_environment_clusters(x, 2)
+        probes = x[:3].copy()
+        probes[:, 0] = [4, 2, 7]
+        labels, nearest, gap = environment_assignment_distances(spec, probes)
+        np.testing.assert_array_equal(labels, assign_environment_clusters(spec, probes))
+        np.testing.assert_allclose(nearest, [0, 1, 1.5])
+        np.testing.assert_allclose(gap, [2, 0, 2])
+        self.assertEqual(labels[1], 0)
+        self.assertTrue(all(a.shape == (0,) for a in environment_assignment_distances(spec, x[:0])))
+
     def test_unseen_and_sparse_groups_use_global(self):
         y = np.array([.8, .8, .9, .85, .8, .2, np.nan], np.float32)
         pred = [.8, .9, .9, .6, .7, .3, .1]

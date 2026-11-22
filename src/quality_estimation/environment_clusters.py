@@ -34,7 +34,7 @@ def fit_environment_clusters(values, k, *, method="kmeans", seed=0):
                 mean=scaler.mean_.tolist(), scale=scaler.scale_.tolist(), centers=centers.tolist())
 
 
-def assign_environment_clusters(spec, values):
+def _squared_distances(spec, values):
     x = _descriptors(values)
     if spec["profile"] != PROFILE or spec["features"] != list(NAMES):
         raise ValueError("environment feature profile or column order differs")
@@ -45,5 +45,16 @@ def assign_environment_clusters(spec, values):
             or mean.shape != (len(NAMES),) or scale.shape != mean.shape or np.any(scale <= 0)
             or not all(np.isfinite(param).all() for param in (mean, scale, centers))):
         raise ValueError("invalid centroid or scaling parameters")
-    distances = cdist((x-mean)/scale, centers, metric="sqeuclidean")
-    return np.argmin(distances, axis=1)
+    return cdist((x-mean)/scale, centers, metric="sqeuclidean")
+
+
+def assign_environment_clusters(spec, values):
+    return np.argmin(_squared_distances(spec, values), axis=1)
+
+
+def environment_assignment_distances(spec, values):
+    """Return cluster ID, standardized Euclidean distance, and runner-up minus nearest distance."""
+    squared = _squared_distances(spec, values)
+    labels = np.argmin(squared, axis=1)
+    closest = np.sqrt(np.partition(squared, 1, axis=1)[:, :2])
+    return labels, closest[:, 0], closest[:, 1] - closest[:, 0]
