@@ -1,5 +1,5 @@
 import unittest
-from quality_estimation.review_queue import choose_for_review
+from quality_estimation.review_queue import choose_for_review, review_windows
 
 
 class ReviewQueueTests(unittest.TestCase):
@@ -62,3 +62,27 @@ class ReviewQueueTests(unittest.TestCase):
         rows[0]["prediction_std"] = float("nan")
         with self.assertRaisesRegex(ValueError, "standard deviation"):
             choose_for_review(rows, 8, priority_policy="quality_uncertainty")
+
+    def test_window_decisions_are_causal_and_budget_rounding_carries_across_windows(self):
+        rows = self.rows()
+        rows.insert(4, dict(rows[0], sample_id="pixel_copy"))
+        consumed = []
+
+        def stream():
+            for row in rows:
+                consumed.append(row["sample_id"])
+                yield row
+
+        it = review_windows(stream(), 4, 30, .2, 17)
+        first, info = next(it)
+        self.assertEqual(consumed, ["0", "1", "2", "3"])
+        self.assertEqual((info["budget"], info["audit_count"]), (2, 1))
+        tail = list(it)
+        selected = first + [v for choice, _ in tail for v in choice]
+        self.assertEqual([v["budget"] for _, v in tail], [1, 0])
+        self.assertEqual([v["frames"] for _, v in tail], [4, 2])
+        self.assertEqual(len(selected), 3)
+        self.assertEqual(sum(reason == "random_remainder_audit" for _, reason in selected), 1)
+        self.assertNotIn("pixel_copy", [r["sample_id"] for r, _ in selected])
+        with self.assertRaises(ValueError):
+            list(review_windows(rows, 0, 10))

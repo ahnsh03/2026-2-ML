@@ -3,6 +3,7 @@ import argparse
 import csv
 from collections import Counter
 from datetime import datetime, timezone
+from fractions import Fraction
 import json
 import math
 from pathlib import Path
@@ -17,7 +18,19 @@ from .dataset_io import require
 PRIORITY_POLICIES = ("quality", "cluster_round_robin", "quality_uncertainty")
 
 
-def choose_for_review(predictions, budget, audit_fraction=.2, seed=20261116, *, priority_policy="quality"):
+def _validate_scores(row, priority_policy):
+    require(isinstance(row['pixel_sha256'],str) and len(row['pixel_sha256'])==64,"missing decoded RGB identity")
+    require(math.isfinite(row['estimated_iou']) and 0 <= row['estimated_iou'] <= 1,"invalid estimated IoU")
+    if priority_policy == "cluster_round_robin":
+        group = row.get("environment_cluster")
+        require(type(group) is int and group >= 0, "expected a nonnegative environment cluster on every row")
+    if priority_policy == "quality_uncertainty":
+        sigma = row.get("prediction_std")
+        require(type(sigma) in (int, float) and math.isfinite(sigma) and sigma >= 0,
+                "expected a finite nonnegative IoU standard deviation")
+
+
+def choose_for_review(predictions, budget, audit_fraction=.2, seed=20261116, *, priority_policy="quality", audit_slots=None):
     require(priority_policy in PRIORITY_POLICIES, "unknown review priority policy")
     require(isinstance(budget,int) and budget > 0, "review budget must be a positive integer")
     require(math.isfinite(audit_fraction) and 0 <= audit_fraction <= 1, "invalid audit fraction")
@@ -26,19 +39,15 @@ def choose_for_review(predictions, budget, audit_fraction=.2, seed=20261116, *, 
     for row in sorted(predictions,key=lambda r:r['sample_id']):
         sid=row['sample_id'];require(isinstance(sid,str) and sid and sid not in ids,"duplicate or invalid sample ID")
         ids.add(sid)
-        require(isinstance(row['pixel_sha256'],str) and len(row['pixel_sha256'])==64,"missing decoded RGB identity")
-        require(math.isfinite(row['estimated_iou']) and 0 <= row['estimated_iou'] <= 1,"invalid estimated IoU")
-        if priority_policy == "cluster_round_robin":
-            group = row.get("environment_cluster")
-            require(type(group) is int and group >= 0, "expected a nonnegative environment cluster on every row")
-        if priority_policy == "quality_uncertainty":
-            sigma = row.get("prediction_std")
-            require(type(sigma) in (int, float) and math.isfinite(sigma) and sigma >= 0,
-                    "expected a finite nonnegative IoU standard deviation")
+        _validate_scores(row, priority_policy)
         pixels.setdefault(row['pixel_sha256'],row)
     pool=sorted(pixels.values(),key=lambda r:(r['estimated_iou'],r['sample_id']))
     require(budget <= len(pool),"review budget exceeds pixel-deduplicated pool")
-    audit_count=min(budget,math.ceil(budget*audit_fraction))
+    if audit_slots is None:
+        audit_count = min(budget, math.ceil(budget*audit_fraction))
+    else:
+        require(type(audit_slots) is int and 0 <= audit_slots <= budget, "invalid explicit audit slots")
+        audit_count = audit_slots
     priority_count=budget-audit_count
     priority_reason = "low_estimated_iou"
     priority_order = "estimated_iou ascending, then sample_id"
@@ -75,11 +84,57 @@ def choose_for_review(predictions, budget, audit_fraction=.2, seed=20261116, *, 
                  audit_scope='uniform without replacement from remaining unique pixels, not the whole pool'))
 
 
+def review_windows(predictions, window_frames, budget_percent, audit_fraction=.2, seed=20261116, *,
+                   priority_policy="quality"):
+    """Yield each closed window before consuming future rows; within a session the first pixel copy wins."""
+    require(type(window_frames) is int and window_frames > 0, "window size must be a positive frame count")
+    require(type(budget_percent) is int and 1 <= budget_percent <= 100, "review percentage must be in 1..100")
+    require(math.isfinite(audit_fraction) and 0 <= audit_fraction <= 1, "invalid audit fraction")
+    require(priority_policy in PRIORITY_POLICIES, "unknown review priority policy")
+    audit_ratio = Fraction(str(audit_fraction))
+    ids, pixels = set(), set()
+    window = []
+    number = 0
+
+    def close(rows, unique_seen, number):
+        previous = (budget_percent * (unique_seen - len(rows)) + 99) // 100
+        total = (budget_percent * unique_seen + 99) // 100
+        slots = total - previous
+        audits = math.ceil(total * audit_ratio) - math.ceil(previous * audit_ratio)
+        chosen = []
+        if slots:
+            chosen, _ = choose_for_review(rows, slots, audit_fraction, seed + number,
+                                          priority_policy=priority_policy, audit_slots=audits)
+        return chosen, dict(window=number, frames=len(rows), unique_seen=unique_seen, budget=slots,
+                            audit_count=audits, seed=seed + number, first_id=rows[0]["sample_id"],
+                            last_id=rows[-1]["sample_id"])
+
+    for row in predictions:
+        sid = row["sample_id"]
+        require(isinstance(sid, str) and sid and sid not in ids, "duplicate or invalid sample ID")
+        ids.add(sid)
+        _validate_scores(row, priority_policy)
+        digest = row["pixel_sha256"]
+        if digest in pixels:
+            continue
+        pixels.add(digest)
+        window.append(row)
+        if len(window) == window_frames:
+            yield close(window, len(pixels), number)
+            number += 1
+            window = []
+    if window:
+        yield close(window, len(pixels), number)
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--inference-run',type=Path,required=True)
     p.add_argument('--rgb-manifest',type=Path,required=True)
-    p.add_argument('--budget',type=int,required=True)
+    size = p.add_mutually_exclusive_group(required=True)
+    size.add_argument('--budget',type=int)
+    size.add_argument('--budget-percent',type=int,help='Cumulative review allocation for chronological windows (1..100)')
+    p.add_argument('--window-frames',type=int,help='Close a window after this many eligible unique RGB frames')
     p.add_argument('--audit-fraction',type=float,default=.2)
     p.add_argument('--seed',type=int,default=20261116)
     p.add_argument('--priority-policy', choices=PRIORITY_POLICIES, default='quality')
@@ -104,7 +159,27 @@ def main():
         require(bool(run.get("environment_centers_sha256")), "environment-aware review requires frozen centers in inference")
     if a.priority_policy == "quality_uncertainty":
         require(run.get("model") == "GaussianProcess", "uncertainty review requires a frozen GP inference run")
-    chosen,policy=choose_for_review(predictions,a.budget,a.audit_fraction,a.seed,priority_policy=a.priority_policy)
+    require((a.window_frames is None) == (a.budget_percent is None),
+            "provide --window-frames and --budget-percent together")
+    window_records = []
+    selected_window = {}
+    if a.window_frames is None:
+        chosen,policy=choose_for_review(predictions,a.budget,a.audit_fraction,a.seed,priority_policy=a.priority_policy)
+    else:
+        require(bool(predictions), "empty RGB predictions")
+        chosen = []
+        for selected, record in review_windows(predictions, a.window_frames, a.budget_percent,
+                                                a.audit_fraction, a.seed, priority_policy=a.priority_policy):
+            window_records.append(record)
+            chosen.extend(selected)
+            selected_window.update((row["sample_id"], record["window"]) for row, _ in selected)
+        audit_count = sum(w["audit_count"] for w in window_records)
+        policy = dict(raw_rows=len(predictions), pixel_unique_rows=window_records[-1]["unique_seen"],
+                      budget=len(chosen), priority_count=len(chosen)-audit_count, audit_count=audit_count,
+                      audit_fraction=a.audit_fraction, seed=a.seed, window_frames=a.window_frames,
+                      budget_percent=a.budget_percent, priority_policy=a.priority_policy,
+                      allocation="cumulative ceil percentages at each close; seed + zero-based window",
+                      duplicate_policy="first occurrence in manifest order across the session")
     if a.priority_policy == "cluster_round_robin":
         policy["environment_centers_sha256"] = run["environment_centers_sha256"]
     by_id={r['sample_id']:r for r in source};queue=[]
@@ -113,11 +188,15 @@ def main():
         queue.append(dict(queue_index=rank,sample_id=row['sample_id'],view='front',image=src['image'],
                           expected_sha256={'rgb':row['rgb_sha256']},pixel_sha256=row['pixel_sha256'],
                           estimated_iou=row['estimated_iou'],review_reason=reason,purpose=a.purpose))
+        if window_records:
+            queue[-1]["window"] = selected_window[row["sample_id"]]
         if a.priority_policy == "cluster_round_robin":
             queue[-1]["environment_cluster"] = row["environment_cluster"]
         if a.priority_policy == "quality_uncertainty":
             queue[-1]["prediction_std"] = row["prediction_std"]
     a.output_dir.mkdir()
+    if window_records:
+        write_json(a.output_dir / "windows.json", window_records)
     with (a.output_dir/'queue.jsonl').open('w') as f:
         for row in queue:f.write(json.dumps(row,allow_nan=False)+'\n')
     with (a.output_dir/'queue.csv').open('w') as f:
@@ -126,6 +205,8 @@ def main():
             fields.append("environment_cluster")
         if a.priority_policy == "quality_uncertainty":
             fields.append("prediction_std")
+        if window_records:
+            fields.append("window")
         writer=csv.DictWriter(f,fieldnames=fields,extrasaction='ignore');writer.writeheader();writer.writerows(queue)
     write_json(a.output_dir/'policy.json',policy)
     (a.output_dir/'source.py').write_bytes(Path(__file__).read_bytes())
