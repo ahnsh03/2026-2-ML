@@ -1,7 +1,6 @@
 """Explicit paired native RGB/Semantic input; no legacy target-cache dependency."""
 from __future__ import annotations
 
-import hashlib
 from pathlib import Path
 
 import cv2
@@ -9,13 +8,9 @@ import numpy as np
 from torch.utils.data import Dataset
 
 from camera_semantic_perception.geometry import letterbox_bgr
-from .build_dataset import color_channels, native_marking, read_image
+from .build_dataset import native_marking
+from .image_io import color_channels, decoded_pixel_sha256, read_image
 from .features import geometric_valid
-
-
-def decoded_pixel_sha256(rgb):
-    """Hash decoded RGB pixels, independent of PNG compression or alpha storage."""
-    return hashlib.sha256(np.asarray(rgb.shape, dtype=np.int64).tobytes() + np.ascontiguousarray(rgb).tobytes()).hexdigest()
 
 
 def perceptual_fingerprint(rgb):

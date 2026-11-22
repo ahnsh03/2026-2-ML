@@ -6,7 +6,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import json
 import os
 import shutil
@@ -28,6 +27,7 @@ from common.bridge import (DEFAULT_CHECKPOINT_SHA256, DEFAULT_DATASET_VERSION,
 from twinlite_morai import MoraiTwinLiteDataset, ROAD_MARKING_TASK
 from .features import FEATURE_NAMES, extract_features, feature_schema, geometric_valid
 from .labels import build_label
+from .image_io import color_channels, read_image, resolve_input
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 # Reuse the ML repository's pure-Python capture palette helper, without ROS runtime.
@@ -37,33 +37,6 @@ from data_collection.mask_baker import semantic_unknown_colors  # noqa: E402
 
 def write_json(path, value):
     Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2, allow_nan=False) + "\n", encoding="utf-8")
-
-
-def resolve_input(root: Path, relative: str) -> Path:
-    if Path(relative).is_absolute():
-        raise ValueError("input manifest paths must be relative")
-    path = (root / relative).resolve()
-    try:
-        path.relative_to(root.resolve())
-    except ValueError as exc:
-        raise ValueError("input path escapes data root: " + relative) from exc
-    return path
-
-
-def read_image(root, relative, flags):
-    path = resolve_input(root, relative)
-    data = path.read_bytes()
-    image = cv2.imdecode(np.frombuffer(data, dtype=np.uint8), flags)
-    if image is None:
-        raise ValueError("image cannot be decoded: " + relative)
-    return image, hashlib.sha256(data).hexdigest()
-
-
-def color_channels(image, label):
-    """Match the original training loader's BGR/BGRA policy; alpha is not an input."""
-    if image.dtype != np.uint8 or image.ndim != 3 or image.shape[2] not in (3, 4):
-        raise ValueError(label + " must be a BGR/BGRA uint8 image")
-    return image[:, :, :3]
 
 
 def native_marking(semantic_bgr):
