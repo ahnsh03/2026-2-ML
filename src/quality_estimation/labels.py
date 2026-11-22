@@ -43,3 +43,25 @@ def lane_iou_bands(prediction, target, geometric_valid, annotation_valid, *, spl
     for name, region in (("upper", slice(None, boundary)), ("lower", slice(boundary, None))):
         result[name] = build_label(prediction[region], target[region], geometric_valid[region], annotation_valid[region])
     return result
+
+
+def lane_iou_by_depth_code(prediction, target, geometric_valid, annotation_valid, depth, *, cutoffs):
+    """Partition offline lane counts by aligned uint8 camera depth codes, without assuming metric units."""
+    if depth.shape != prediction.shape or depth.dtype != np.uint8:
+        raise ValueError("depth must be an aligned uint8 code image")
+    lower, upper = cutoffs
+    if (any(type(v) is bool or not isinstance(v, (int, np.integer)) for v in (lower, upper))
+            or not 1 <= lower < upper < 254):
+        raise ValueError("expected two increasing integer cutoffs in 1..253")
+    full = build_label(prediction, target, geometric_valid, annotation_valid)
+    regions = {
+        "zero": depth == 0,
+        "low": (depth > 0) & (depth <= lower),
+        "middle": (depth > lower) & (depth <= upper),
+        "high": (depth > upper) & (depth < 255),
+        "saturated": depth == 255,
+    }
+    result = {"full": full}
+    for name, region in regions.items():
+        result[name] = build_label(prediction, target, geometric_valid, annotation_valid & region)
+    return result
