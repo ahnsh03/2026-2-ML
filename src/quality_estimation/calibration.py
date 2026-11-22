@@ -38,19 +38,30 @@ def fit_alarm_cutoff(y, estimated_iou, max_false_positive_rate=.1, target_iou=.7
                 guarantee_scope="empirical development constraint only; held-out FPR can increase")
 
 
-def fit_group_cutoffs(y, estimated_iou, groups, *, min_normals=20, maximum_fpr=.1, target_iou=.7):
-    """Fit cutoffs on disjoint calibration rows. A sparse or unseen group uses the global cutoff."""
+def fit_group_cutoffs(y, estimated_iou, groups, *, min_normals=20, maximum_fpr=.1, target_iou=.7,
+                      source_groups=None, min_source_groups=2):
+    """Fit group cutoffs, requiring normal support across source groups when supplied."""
     y = np.asarray(y)
     estimates = np.asarray(estimated_iou)
     groups = np.asarray(groups)
     _require(groups.ndim == 1 and groups.shape == y.shape and groups.dtype.kind in "iu",
              "expected integer environment assignments for every calibration row")
     policy = fit_alarm_cutoff(y, estimates, maximum_fpr, target_iou, min_normals)
+    if source_groups is not None:
+        source_groups = np.asarray(source_groups)
+        _require(source_groups.shape == groups.shape and source_groups.dtype.kind in "iuU"
+                 and (source_groups.dtype.kind != "U" or np.all(source_groups != "")),
+                 "expected one integer or nonempty string source group per calibration row")
+        _require(type(min_source_groups) is int and min_source_groups > 0, "invalid minimum source groups")
     by_group = {}
+    support = {}
     for label in np.unique(groups):
         mask = groups == label
-        normals = int(np.count_nonzero(y[mask] >= np.asarray(target_iou, dtype=y.dtype)))
-        if normals >= min_normals:
+        normal_mask = mask & (y >= np.asarray(target_iou, dtype=y.dtype))
+        normals = int(normal_mask.sum())
+        sources = None if source_groups is None else len(np.unique(source_groups[normal_mask]))
+        support[str(label)] = {"normal_rows": normals, "normal_source_groups": sources}
+        if normals >= min_normals and (sources is None or sources >= min_source_groups):
             entry = fit_alarm_cutoff(y[mask], estimates[mask], maximum_fpr, target_iou, min_normals)
             by_group[str(label)] = entry["alarm_threshold"]
     estimates = np.clip(estimates.astype(np.float64), 0, 1)
@@ -69,7 +80,8 @@ def fit_group_cutoffs(y, estimated_iou, groups, *, min_normals=20, maximum_fpr=.
             label = str(groups[i])
             by_group[label] = min(by_group[label], float(estimates[i]))
     result = {"global": policy, "group_thresholds": by_group, "min_normals": min_normals,
-              "combined_false_positives_before_cap": before}
+              "combined_false_positives_before_cap": before, "group_support": support,
+              "min_source_groups": min_source_groups if source_groups is not None else None}
     after = int((normal & (estimates < group_alarm_thresholds(result, groups))).sum())
     _require(after <= policy["allowed_false_positives"], "combined calibration budget exceeded")
     result["combined_false_positives"] = after

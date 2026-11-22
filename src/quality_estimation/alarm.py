@@ -119,7 +119,12 @@ def main():
     group_values = None
     if a.environment_inference:
         groups, raw_centers = development_environment_rows(a.environment_inference, selected, estimate, a.model_run, bundle)
-        grouped = fit_group_cutoffs(data.y[ix], estimate, groups, maximum_fpr=a.maximum_fpr, target_iou=a.target_iou)
+        missing_anchors = {r["parent_session_id"] for r in selected if r.get("anchor_id") is None}
+        sources = [json.dumps([r["parent_session_id"], None if r["parent_session_id"] in missing_anchors
+                               else r["anchor_id"]]) for r in selected]
+        grouped = fit_group_cutoffs(data.y[ix], estimate, groups, maximum_fpr=a.maximum_fpr,
+                                    target_iou=a.target_iou, source_groups=sources)
+        grouped["source_definition"] = "parent and anchor; whole parent for runs with missing anchors"
         thresholds = group_alarm_thresholds(grouped, groups)
         group_values = list(zip(groups.tolist(), thresholds.tolist()))
         truth = data.y[ix] < np.asarray(a.target_iou, dtype=data.y.dtype)

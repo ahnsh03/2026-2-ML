@@ -35,3 +35,13 @@ class EnvironmentPolicyTests(unittest.TestCase):
         self.assertEqual(policy["combined_false_positives"], 4)
         self.assertEqual(int((scores < group_alarm_thresholds(policy, groups)).sum()), 4)
         self.assertEqual(group_alarm_thresholds(policy, [1, 12]).tolist(), [.5, .5])
+
+    def test_a_single_pose_with_many_normals_cannot_fit_its_own_cutoff(self):
+        y = np.full(8, .9, dtype=np.float32)
+        scores = np.arange(1, 9) / 10
+        groups = [0, 0, 0, 0, 1, 1, 1, 1]
+        p = fit_group_cutoffs(y, scores, groups, min_normals=3,
+                              source_groups=["a", "a", "a", "a", "b", "b", "c", "c"])
+        self.assertEqual(p["group_support"]["0"], {"normal_rows": 4, "normal_source_groups": 1})
+        self.assertEqual(set(p["group_thresholds"]), {"1"})
+        np.testing.assert_allclose(group_alarm_thresholds(p, [0, 1]), [.1, .5])
