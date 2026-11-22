@@ -21,7 +21,7 @@ from .artifacts import write_json
 from .build_dataset import REPO_ROOT
 from .dataset_io import require
 from .distillation import distillation_settings, masked_replay_distillation
-from .perception_data import (NativePerceptionSamples, POLICY_SHA256, perception_batch,
+from .perception_data import (NativePerceptionSamples, POLICY_SHA256, SELECTION_ARMS, perception_batch,
                               validate_adaptation_roles, validate_adaptation_selection)
 
 
@@ -32,7 +32,7 @@ def main():
     p.add_argument("--data-root", type=Path, required=True)
     p.add_argument("--protocol", type=Path, required=True)
     p.add_argument("--seed", type=int, required=True)
-    p.add_argument("--arm", choices=("Random","FrozenQualityRank","Confidence","Entropy","EnvironmentAudit","ReplayOnly"), required=True)
+    p.add_argument("--arm", choices=(*SELECTION_ARMS, "ReplayOnly"), required=True)
     p.add_argument("--output-dir", type=Path, required=True)
     p.add_argument("--checkpoint")
     a = p.parse_args()

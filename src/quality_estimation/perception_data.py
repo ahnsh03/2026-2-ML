@@ -59,21 +59,35 @@ def validate_adaptation_roles(new_rows, replay_rows, replay_only=False):
             "new and replay parent groups overlap")
 
 
+SELECTION_ARMS = ("Random", "FrozenQualityRank", "Confidence", "Entropy", "EnvironmentAudit", "RiskPoolDiverse", "RiskPoolRandom")
+
+
 def validate_adaptation_selection(new_rows, arm, seed, budget):
     """Prevent a declared experiment arm from silently using another admission list."""
     if arm == "ReplayOnly":
         require(not new_rows, "replay-only control cannot contain new admissions")
         return
-    require(arm in ("Random", "FrozenQualityRank", "Confidence", "Entropy", "EnvironmentAudit") and bool(new_rows),
+    require(arm in SELECTION_ARMS and bool(new_rows),
             "unknown or empty selection arm")
     selections = [row.get("selection", {}) for row in new_rows]
     require(all(s.get("method") == arm for s in selections), "admission method differs from training arm")
     require(all(s.get("budget") == budget for s in selections), "admission budget differs from protocol")
-    require(all(s.get("seed") == (seed if arm == "Random" else None) for s in selections),
-            "admission seed differs from training arm")
+    if arm == "RiskPoolRandom":
+        seeds = {s.get("seed") for s in selections}
+        require(len(seeds) == 1 and all(type(s) is int for s in seeds), "inconsistent risk-pool admission seed")
+    else:
+        require(all(s.get("seed") == (seed if arm == "Random" else None) for s in selections),
+                "admission seed differs from training arm")
     require([s.get("rank") for s in selections] == list(range(1, len(selections)+1)),
             "admission ranks must be complete and ordered")
     fields = ["inference_run_sha256", "model_run_sha256"]
+    if arm in ("RiskPoolDiverse", "RiskPoolRandom"):
+        fields.append("risk_pool_sha256")
+        for key in ("risk_pool_factor", "risk_pool_rows"):
+            values = {s.get(key) for s in selections}
+            require(len(values) == 1 and all(type(v) is int and v >= 1 for v in values), "inconsistent " + key)
+        require(len(selections) <= selections[0]["risk_pool_rows"] <= len(selections) * selections[0]["risk_pool_factor"],
+                "risk pool size differs from label budget")
     if arm == "EnvironmentAudit":
         fields.extend(["queue_run_sha256", "environment_centers_sha256"])
         seed_values = {s.get("review_seed") for s in selections}

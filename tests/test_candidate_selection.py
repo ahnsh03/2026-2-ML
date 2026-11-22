@@ -4,6 +4,7 @@ import unittest
 import numpy as np
 
 from quality_estimation.select_candidates import plan_selection
+from quality_estimation.perception_data import validate_adaptation_selection
 
 
 class CandidateSelectionTests(unittest.TestCase):
@@ -29,6 +30,25 @@ class CandidateSelectionTests(unittest.TestCase):
         rows,predictions,X=self.inputs();rows[0]['preregistered_quality_role']='final_test'
         with self.assertRaisesRegex(ValueError,'reserved candidate'):
             plan_selection(rows,predictions,X,[.1],[0])
+
+    def test_diversity_and_uniform_draw_share_only_the_high_risk_subset(self):
+        rows=[dict(sample_id=str(i),frame_id=i,run_id="r",preregistered_quality_role="candidate_pool") for i in range(8)]
+        pred=[dict(sample_id=str(i),pixel_sha256=str(i),rgb_sha256=str(i),risk_score=1-i/8) for i in range(8)]
+        X=np.zeros((8,56)); X[:,0]=[0,.1,.3,8,99,100,101,102]
+        plan=plan_selection(rows,pred,X,[.25],[4],2)
+        diverse,uniform=plan["selections"][-2:]
+        self.assertEqual(diverse["indices"],[0,3])
+        self.assertTrue(set(uniform["indices"]) <= set(range(4)))
+        self.assertEqual(diverse["risk_pool_sha256"],uniform["risk_pool_sha256"])
+        self.assertEqual(uniform["risk_pool_rows"],4)
+        X[:]=0
+        tied=plan_selection(rows,pred,X,[.25],[4],2)["selections"][-2]
+        self.assertEqual(tied["indices"],[0,1])
+        entries=[dict(selection=dict(uniform,rank=i+1,inference_run_sha256="a"*64,model_run_sha256="b"*64)) for i in range(2)]
+        validate_adaptation_selection(entries,"RiskPoolRandom",42,.25)
+        entries[0]["selection"]["risk_pool_sha256"]="d"*64
+        with self.assertRaisesRegex(ValueError,"risk_pool_sha256"):
+            validate_adaptation_selection(entries,"RiskPoolRandom",42,.25)
 
     def test_reencoded_pixel_identity_is_required_and_score_ties_are_stable(self):
         rows,predictions,X=self.inputs()
