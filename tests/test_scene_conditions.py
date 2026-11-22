@@ -1,6 +1,9 @@
 import unittest
 
-from quality_estimation.evaluate_scene_conditions import check_holdout, condition_label, scores
+from pathlib import Path
+from tempfile import TemporaryDirectory
+
+from quality_estimation.evaluate_scene_conditions import check_holdout, condition_label, descriptors, scores
 
 
 class SceneConditionTests(unittest.TestCase):
@@ -11,6 +14,13 @@ class SceneConditionTests(unittest.TestCase):
         for value in (True, -1, 24, 1.0):
             with self.assertRaises(ValueError):
                 condition_label(value, "hour")
+
+    def test_protected_roles_are_rejected_before_reading_a_training_rgb(self):
+        with TemporaryDirectory() as tmp:
+            path = Path(tmp) / "manifest.jsonl"
+            path.write_text('{"preregistered_quality_role":"final_test"}\n')
+            with self.assertRaisesRegex(ValueError, "protected"):
+                descriptors(path, Path(tmp), training=True)
 
     def test_cross_split_leakage_is_rejected_for_each_identity(self):
         train = dict(sample_id="a", parent_session_id="first", pixel_sha256="abc")

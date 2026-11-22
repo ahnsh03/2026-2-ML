@@ -23,7 +23,9 @@ def condition_label(value, target):
     if value is None or (isinstance(value, str) and value.strip().lower() in {"", "unknown"}):
         return None
     if target == "weather" and isinstance(value, str):
-        value = value.upper().replace("WEATHER_TYPE_", "", 1)
+        value = value.strip().upper()
+        if value.startswith("WEATHER_TYPE_"):
+            value = value[len("WEATHER_TYPE_"):]
         if value in WEATHER:
             return WEATHER.index(value)
     if isinstance(value, str) and value.isdecimal():
@@ -34,7 +36,7 @@ def condition_label(value, target):
     return value
 
 
-def descriptors(manifest, root):
+def descriptors(manifest, root, training=False):
     content = manifest.read_bytes()
     rows, features = [], []
     seen_ids, seen_pixels = set(), set()
@@ -42,6 +44,8 @@ def descriptors(manifest, root):
         if not line.strip():
             continue
         row = json.loads(line)
+        if training and row.get("preregistered_quality_role") not in (None, "meta_train"):
+            raise ValueError("protected sample in scene training manifest")
         sid, parent = row["sample_id"], row["parent_session_id"]
         if not all(isinstance(s, str) and s.strip() for s in (sid, parent)) or row.get("view") != "front":
             raise ValueError("expected a sample ID, parent session and front camera")
@@ -93,7 +97,7 @@ def evaluate(train_manifest, eval_manifest, root, output):
     if output.exists():
         raise FileExistsError(output)
     cv2.setNumThreads(1)
-    training, X, train_digest = descriptors(train_manifest, root)
+    training, X, train_digest = descriptors(train_manifest, root, training=True)
     models = {}
     for target in TARGETS:
         kept = [i for i, r in enumerate(training) if r[target] is not None]
