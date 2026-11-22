@@ -17,7 +17,7 @@ from .evaluate_models import reject_training_overlap
 from .features import feature_schema
 from .metrics import failure_detection_metrics
 from .model_io import load_model_run
-from .models import predict_array
+from .models import QUALITY_MODELS, predict_array
 from .perception_identity import baseline_identity, identity_from_adaptation
 from .splits import read_split
 
@@ -90,7 +90,7 @@ def main():
     p.add_argument("--dataset-dir", type=Path, required=True)
     p.add_argument("--split", type=Path, required=True)
     p.add_argument("--model-run", type=Path, required=True)
-    p.add_argument("--model", choices=("selected", "OLS", "Ridge", "RandomForest"), default="selected")
+    p.add_argument("--model", choices=("selected", *QUALITY_MODELS), default="selected")
     p.add_argument("--adaptation-run", type=Path)
     p.add_argument("--environment-inference", type=Path, help="RGB-only centroid assignments for precisely the eligible development rows")
     p.add_argument("--maximum-fpr", type=float, default=.1)

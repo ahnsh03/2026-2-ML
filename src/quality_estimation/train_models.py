@@ -1,8 +1,7 @@
-"""Fit OLS/Ridge/RF on explicit groups; choose by held-out development MAE only."""
+"""Fit configured quality regressors on explicit groups; choose by held-out development MAE only."""
 from __future__ import annotations
 
 import argparse
-import csv
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -21,7 +20,8 @@ from .build_dataset import REPO_ROOT
 from .dataset_io import load_dataset, require
 from .features import FEATURE_NAMES, feature_schema
 from .metrics import regression_metrics, selection_metrics
-from .models import feature_indices, make_estimator, predict_array
+from .model_io import write_prediction_csv
+from .models import BASE_MODELS, QUALITY_MODELS, feature_indices, make_estimator, predict_array
 from .splits import read_split
 from .perception_identity import baseline_identity, identity_from_adaptation
 
@@ -42,7 +42,8 @@ def main():
     split = read_split(args.split, data)
     protocol = json.loads(args.protocol.read_text())
     require(protocol["selection_metric"] == "clipped_MAE", "unsupported model-selection metric")
-    require(protocol["tie_order"] == ["OLS", "Ridge", "RandomForest"], "unsupported tie order")
+    require(tuple(protocol["tie_order"]) in (BASE_MODELS, QUALITY_MODELS), "unsupported tie order")
+    require(all(protocol["models"].get(kind) for kind in protocol["tie_order"]), "missing model grid")
     assignments = split["assignments"]
     roles = np.array([a["role"] for a in assignments])
     eligible = np.array([a["eligible"] for a in assignments], bool)
@@ -137,12 +138,7 @@ def main():
                           elapsed_seconds=time.perf_counter()-started, final_test_accessed=False)
             write_json(out / "comparison.json", report)
             write_json(out / "candidates.json", candidates)
-            with (out / "development_predictions.csv").open("w", newline="") as stream:
-                writer = csv.writer(stream)
-                writer.writerow(["sample_id", "actual_iou", *[k+s for k in predictions for s in ("_raw", "_clipped")]])
-                for i, sid in enumerate(dev_ids):
-                    writer.writerow([sid, float(labels[i]) if np.isfinite(labels[i]) else "",
-                        *[float(v[key][i]) for v in predictions.values() for key in ("raw_estimate", "estimated_iou")]])
+            write_prediction_csv(out / "development_predictions.csv", dev_ids, labels, predictions)
             artifacts = {str(f.relative_to(out)): sha256_file(f) for f in out.rglob("*") if f.is_file() and f.name != "run.json"}
             write_json(out / "run.json", dict(status="complete", selected_model=winner, artifact_sha256=artifacts))
             (out / "_SUCCESS").write_text(sha256_file(out / "run.json") + "\n")

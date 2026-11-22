@@ -11,6 +11,10 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.utils.validation import check_X_y, check_array, check_is_fitted
 
 from .features import FEATURE_NAMES, feature_schema
+from .gaussian_process import QualityGaussianProcess
+
+BASE_MODELS = ("OLS", "Ridge", "RandomForest")
+QUALITY_MODELS = (*BASE_MODELS, "GaussianProcess")
 
 
 class RankStableOLS(RegressorMixin, BaseEstimator):
@@ -55,6 +59,10 @@ def feature_indices(kind):
 
 
 def make_estimator(kind, params, seed, n_jobs=4):
+    if kind == "GaussianProcess":
+        if not set(params).issubset({"length_multiplier", "noise_variance"}):
+            raise ValueError("unsupported GaussianProcess parameter")
+        return QualityGaussianProcess(**params)
     steps = [("nonconstant", VarianceThreshold(threshold=0))]
     if kind == "OLS":
         if set(params) not in (set(), {"rcond"}):
@@ -84,8 +92,16 @@ def predict_array(bundle, X, ordered_features=FEATURE_NAMES):
     X = np.asarray(X)
     if X.ndim != 2 or X.shape[1] != len(FEATURE_NAMES) or not np.isfinite(X).all():
         raise ValueError("expected finite N x 56 X")
-    raw = bundle["estimator"].predict(X[:, bundle["column_indices"]].astype(np.float64))
+    features = X[:, bundle["column_indices"]].astype(np.float64)
+    extras = {}
+    if bundle.get("model") == "GaussianProcess":
+        raw, sigma = bundle["estimator"].predict(features, return_std=True)
+        if not np.isfinite(sigma).all() or np.any(sigma < 0):
+            raise ValueError("invalid IoU prediction standard deviation")
+        extras["prediction_std"] = sigma
+    else:
+        raw = bundle["estimator"].predict(features)
     if not np.isfinite(raw).all():
         raise ValueError("quality predictions are non-finite")
     estimate = np.clip(raw, 0, 1)
-    return {"raw_estimate": raw, "estimated_iou": estimate, "risk_score": 1-estimate}
+    return {"raw_estimate": raw, "estimated_iou": estimate, "risk_score": 1-estimate, **extras}

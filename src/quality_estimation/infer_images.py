@@ -22,7 +22,7 @@ from .environment_clusters import assign_environment_clusters
 from .environment_features import NAMES as ENVIRONMENT_NAMES, extract_environment
 from .features import FEATURE_NAMES, extract_features, feature_schema
 from .model_io import load_model_run
-from .models import predict_array
+from .models import QUALITY_MODELS, predict_array
 from .native import decoded_pixel_sha256
 from .perception_identity import resolve_quality_perception
 from .alarm import load_alarm_calibration
@@ -54,7 +54,7 @@ def main():
     p.add_argument("--manifest", type=Path, required=True, help="JSONL: sample_id, view=front, image relative to data root")
     p.add_argument("--data-root", type=Path, required=True)
     p.add_argument("--model-run", type=Path, required=True)
-    p.add_argument("--model", default="selected", choices=("selected", "OLS", "Ridge", "RandomForest"))
+    p.add_argument("--model", default="selected", choices=("selected", *QUALITY_MODELS))
     p.add_argument("--output-dir", type=Path, required=True)
     p.add_argument("--checkpoint")
     p.add_argument("--adaptation-run", type=Path)

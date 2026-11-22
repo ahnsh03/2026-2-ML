@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import argparse
-import csv
 from datetime import datetime, timezone
 import json
 from pathlib import Path
@@ -13,8 +12,8 @@ from common.bridge import sha256_file
 from .artifacts import write_json
 from .dataset_io import load_dataset, require
 from .metrics import regression_metrics, selection_metrics
-from .model_io import load_model_run
-from .models import predict_array
+from .model_io import load_model_run, write_prediction_csv
+from .models import BASE_MODELS, QUALITY_MODELS, predict_array
 from .splits import read_split
 from .perception_identity import identity_from_adaptation, require_matching_identity
 
@@ -77,7 +76,10 @@ def main():
     require(pool.any(), "requested role has no eligible rows")
     requested_samples = [r for i, r in enumerate(data.samples) if requested[i]]
     freeze = validate_freeze(a.freeze, a.model_run, a.role, data, requested_samples) if a.freeze else None
-    bundles = {kind: load_model_run(a.model_run, kind, perception_identity=identity)[0] for kind in ("OLS", "Ridge", "RandomForest")}
+    protocol = json.loads((a.model_run / "protocol.json").read_text())
+    kinds = tuple(protocol["tie_order"])
+    require(kinds in (BASE_MODELS, QUALITY_MODELS), "unsupported evaluation model grid")
+    bundles = {kind: load_model_run(a.model_run, kind, perception_identity=identity)[0] for kind in kinds}
     membership = json.loads((a.model_run / "train_membership.json").read_text())
     selection_path = a.model_run / "selection_membership.json"
     selection_membership = None
@@ -87,7 +89,6 @@ def main():
         selection_membership = json.loads(selection_path.read_text())
     for bundle in bundles.values():
         reject_training_overlap(bundle, membership, requested_samples, a.role == "final_test", selection_membership)
-    protocol = json.loads((a.model_run / "protocol.json").read_text())
     out = a.output_dir; out.mkdir(parents=True, exist_ok=False)
     metadata = dict(status="running", role=a.role, created_utc=datetime.now(timezone.utc).isoformat(),
                     model_run_sha256=sha256_file(a.model_run / "run.json"),
@@ -120,12 +121,7 @@ def main():
                       model_ranking_is_evaluation_only=True, no_post_evaluation_retuning_required=a.role == "final_test")
         write_json(out / "evaluation.json", report)
         write_json(out / "selection.json", selection)
-        with (out / "predictions.csv").open("w", newline="") as stream:
-            writer = csv.writer(stream)
-            writer.writerow(["sample_id", "actual_iou", *[kind+suffix for kind in predictions for suffix in ("_raw", "_clipped")]])
-            for i, sid in enumerate(ids):
-                writer.writerow([sid, float(labels[i]) if np.isfinite(labels[i]) else "",
-                                 *[float(v[key][i]) for v in predictions.values() for key in ("raw_estimate", "estimated_iou")]])
+        write_prediction_csv(out / "predictions.csv", ids, labels, predictions)
         hashes = {str(path.relative_to(out)): sha256_file(path) for path in out.iterdir()
                   if path.is_file() and path.name != "run.json"}
         write_json(out / "run.json", dict(metadata, status="complete", artifact_sha256=hashes))

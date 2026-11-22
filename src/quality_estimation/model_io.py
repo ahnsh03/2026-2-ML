@@ -1,15 +1,17 @@
 """Load locally trained, completed model bundles with their artifact checks."""
 from __future__ import annotations
 
+import csv
 import json
 from pathlib import Path
 
 import joblib
+import numpy as np
 
 from common.bridge import DEFAULT_CHECKPOINT_SHA256, sha256_file
 from .dataset_io import require
 from .features import FEATURE_NAMES, feature_schema
-from .models import feature_indices
+from .models import QUALITY_MODELS, feature_indices
 from .perception_identity import require_matching_identity
 
 
@@ -23,7 +25,7 @@ def load_model_run(directory, model="selected", inference_jobs=1, perception_ide
             "model completion hash mismatch")
     if model == "selected":
         model = run["selected_model"]
-    require(model in ("OLS", "Ridge", "RandomForest"), "unknown model")
+    require(model in QUALITY_MODELS, "unknown model")
     required = {"models/" + model + ".joblib", "comparison.json", "protocol.json", "train_membership.json"}
     require(required.issubset(run["artifact_sha256"]), "model artifact inventory is incomplete")
     for name, digest in run["artifact_sha256"].items():
@@ -46,3 +48,17 @@ def load_model_run(directory, model="selected", inference_jobs=1, perception_ide
         bundle["estimator"].set_params(regressor__n_jobs=inference_jobs)
     bundle["runtime_inference_jobs"] = inference_jobs
     return bundle, run
+
+
+def write_prediction_csv(path, ids, labels, predictions):
+    """Preserve existing point-estimate columns and append IoU standard deviations when available."""
+    columns = [(name + suffix, values[key]) for name, values in predictions.items()
+               for suffix, key in (("_raw", "raw_estimate"), ("_clipped", "estimated_iou"))]
+    columns.extend((name + "_std", values["prediction_std"]) for name, values in predictions.items()
+                   if "prediction_std" in values)
+    with path.open("w", newline="") as stream:
+        writer = csv.writer(stream)
+        writer.writerow(["sample_id", "actual_iou", *[header for header, _ in columns]])
+        for index, sid in enumerate(ids):
+            writer.writerow([sid, float(labels[index]) if np.isfinite(labels[index]) else "",
+                             *[float(values[index]) for _, values in columns]])
