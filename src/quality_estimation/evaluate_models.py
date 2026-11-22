@@ -23,11 +23,12 @@ def reject_training_overlap(bundle, training_membership, samples, final_test=Fal
     forbidden_membership = list(training_membership)
     if final_test:
         require(selection_membership is not None, "final_test requires model-selection membership")
+    if selection_membership is not None:
         forbidden_membership += selection_membership
     trained_ids = {r["sample_id"] for r in forbidden_membership}
     trained_pixels = {r.get("pixel_sha256") or r["rgb_sha256"] for r in forbidden_membership}
     forbidden_parents = set(bundle["train_parent_groups"])
-    if final_test:
+    if selection_membership is not None:
         forbidden_parents.update(bundle["selection_parent_groups"])
     for row in samples:
         require(row["sample_id"] not in trained_ids, "evaluation sample was used for training or selection")

@@ -109,6 +109,8 @@ class LearningTests(unittest.TestCase):
             data=QualityDataset(p,np.zeros((1,56)),np.zeros(1),np.ones(1,bool),['one'],[sample],{},list(FEATURE_NAMES))
             with self.assertRaisesRegex(ValueError,'final_test'):
                 build_split(data,{'seen':'final_test'},allow_exposed=True)
+            with self.assertRaisesRegex(ValueError,'meta_calibration'):
+                build_split(data,{'seen':'meta_calibration'},allow_exposed=True)
 
     def test_thinning_uses_motion_without_labels(self):
         with tempfile.TemporaryDirectory() as temp:

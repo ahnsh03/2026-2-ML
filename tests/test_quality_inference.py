@@ -27,6 +27,8 @@ class InferenceTests(unittest.TestCase):
         sample=dict(sample_id='renamed',pixel_sha256='devpixels',parent_session_id='final',input_sha256={'rgb':'different_file_encoding'})
         with self.assertRaisesRegex(ValueError,'pixels'):
             reject_training_overlap(bundle,membership,[sample],True,selected)
+        with self.assertRaisesRegex(ValueError,'pixels'):
+            reject_training_overlap(bundle,membership,[sample],selection_membership=selected)
         sample.update(pixel_sha256='newpixels',parent_session_id='dev')
         with self.assertRaisesRegex(ValueError,'parent'):
             reject_training_overlap(bundle,membership,[sample],True,selected)

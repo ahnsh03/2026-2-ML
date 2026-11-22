@@ -13,7 +13,7 @@ from .artifacts import write_json
 from .dataset_io import load_dataset, require
 from .perception_identity import identity_from_adaptation
 
-ROLES = {"meta_train", "meta_dev", "candidate_pool", "final_test", "diagnostic_only"}
+ROLES = {"meta_train", "meta_dev", "meta_calibration", "candidate_pool", "final_test", "diagnostic_only"}
 
 
 def _time(sample):
@@ -81,8 +81,8 @@ def build_split(data, group_roles, min_distance=5., min_time=1., min_heading=10.
     for row in data.samples:
         planned = row.get("preregistered_quality_role")
         assigned = group_roles[row["parent_session_id"]]
-        require(assigned != "final_test" or row["source_role"] == "after_f0_training",
-                "final_test cannot use exposed or unknown-source data")
+        require(assigned not in ("meta_calibration", "final_test") or row["source_role"] == "after_f0_training",
+                assigned + " cannot use exposed or unknown-source data")
         if planned is not None:
             require(assigned == planned or (assigned == "diagnostic_only" and planned != "final_test"),
                     "assigned role differs from preregistered collection role")
@@ -125,8 +125,8 @@ def read_split(path, data):
         require(assignment["role"] in ROLES and isinstance(assignment["eligible"], bool), "invalid split assignment")
         require(assignment["role"] == split["group_roles"][sample["parent_session_id"]], "assignment differs from group map")
         planned = sample.get("preregistered_quality_role")
-        require(assignment["role"] != "final_test" or sample["source_role"] == "after_f0_training",
-                "final_test cannot use exposed or unknown-source data")
+        require(assignment["role"] not in ("meta_calibration", "final_test") or sample["source_role"] == "after_f0_training",
+                assignment["role"] + " cannot use exposed or unknown-source data")
         if planned is not None:
             require(assignment["role"] == planned or (assignment["role"] == "diagnostic_only" and planned != "final_test"),
                     "split differs from preregistered collection role")

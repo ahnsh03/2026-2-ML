@@ -1,4 +1,4 @@
-"""Fit a deterministic alarm cutoff on development normals, then bind its model."""
+"""Fit an alarm cutoff on development or separately reserved calibration rows."""
 import argparse
 import csv
 from datetime import datetime, timezone
@@ -21,6 +21,8 @@ from .models import QUALITY_MODELS, predict_array
 from .perception_identity import baseline_identity, identity_from_adaptation
 from .splits import read_split
 
+FIT_ROLES = ("meta_dev", "meta_calibration")
+
 
 def load_alarm_calibration(directory, model_run, bundle):
     directory = Path(directory).resolve()
@@ -37,13 +39,17 @@ def load_alarm_calibration(directory, model_run, bundle):
             raise ValueError("alarm artifact escapes run") from exc
         require(sha256_file(path) == digest, "alarm calibration artifact changed")
     value = json.loads((directory/"calibration.json").read_text())
-    require(value["schema_version"] in ("ml-quality-alarm-1", "ml-quality-alarm-2-grouped") and value["fit_role"] == "meta_dev",
+    require(value["schema_version"] in ("ml-quality-alarm-1", "ml-quality-alarm-2-grouped") and value["fit_role"] in FIT_ROLES,
             "alarm calibration role/schema differs")
     require(value["model_run_sha256"] == sha256_file(Path(model_run)/"run.json")
             and value["model"] == bundle["model"]
             and value["checkpoint_sha256"] == bundle["checkpoint_sha256"]
             and value["perception_identity"] == bundle.get("perception_identity", baseline_identity())
             and value["feature_schema"] == feature_schema(), "alarm calibration model identity mismatch")
+    if value["fit_role"] == "meta_calibration":
+        require(value["selection_membership_sha256"] == sha256_file(Path(model_run)/"selection_membership.json")
+                and bool(value["calibration_parent_groups"]),
+                "independent calibration lineage differs")
     policy = value["policy"]
     require(policy["operator"] == "<" and 0 <= policy["alarm_threshold"] <= 1
             and 0 < policy["target_iou"] <= 1, "invalid saved alarm policy")
@@ -92,6 +98,8 @@ def main():
     p.add_argument("--model-run", type=Path, required=True)
     p.add_argument("--model", choices=("selected", *QUALITY_MODELS), default="selected")
     p.add_argument("--adaptation-run", type=Path)
+    p.add_argument("--fit-role", choices=FIT_ROLES, default="meta_dev",
+                   help="meta_calibration also excludes every parent, ID and image used in model selection")
     p.add_argument("--environment-inference", type=Path, help="RGB-only centroid assignments for precisely the eligible development rows")
     p.add_argument("--maximum-fpr", type=float, default=.1)
     p.add_argument("--target-iou", type=float, default=.7)
@@ -101,21 +109,30 @@ def main():
     identity = identity_from_adaptation(a.adaptation_run) if a.adaptation_run else baseline_identity()
     data = load_dataset(a.dataset_dir, perception_identity=identity)
     split = read_split(a.split, data)
-    bundle, _ = load_model_run(a.model_run, a.model, perception_identity=identity)
-    ix = np.array([r["role"] == "meta_dev" and r["eligible"] for r in split["assignments"]])
-    require(ix.any(), "no development rows for alarm calibration")
+    bundle, model_record = load_model_run(a.model_run, a.model, perception_identity=identity)
+    reserved = np.array([r["role"] == a.fit_role for r in split["assignments"]])
+    ix = reserved & np.array([r["eligible"] for r in split["assignments"]])
+    require(ix.any(), "no eligible rows for the requested calibration role")
     selected = [r for i,r in enumerate(data.samples) if ix[i]]
     membership = json.loads((a.model_run/"train_membership.json").read_text())
-    reject_training_overlap(bundle, membership, selected)
+    selection_membership = None
+    if a.fit_role == "meta_calibration":
+        require("selection_membership.json" in model_record["artifact_sha256"],
+                "separate calibration requires hashed model-selection membership")
+        selection_membership = json.loads((a.model_run/"selection_membership.json").read_text())
+    overlap_rows = [r for r, use in zip(data.samples, reserved) if use] if a.fit_role == "meta_calibration" else selected
+    reject_training_overlap(bundle, membership, overlap_rows, selection_membership=selection_membership)
     estimate = predict_array(bundle, data.X[ix])["estimated_iou"]
     policy = fit_alarm_cutoff(data.y[ix], estimate, a.maximum_fpr, a.target_iou)
     value = dict(schema_version="ml-quality-alarm-1", created_utc=datetime.now(timezone.utc).isoformat(),
                  model_run_sha256=sha256_file(a.model_run/"run.json"), model=bundle["model"],
                  checkpoint_sha256=bundle["checkpoint_sha256"], perception_identity=identity,
-                 feature_schema=feature_schema(), fit_role="meta_dev", policy=policy,
+                 feature_schema=feature_schema(), fit_role=a.fit_role, policy=policy,
                  dataset_metadata_sha256=sha256_file(data.path/"dataset.json"), split_sha256=sha256_file(a.split),
-                 development_metrics=failure_detection_metrics(data.y[ix], estimate, a.target_iou, policy["alarm_threshold"]),
                  final_data_read=False)
+    label = "calibration" if a.fit_role == "meta_calibration" else "development"
+    metrics_key = label + "_metrics"
+    value[metrics_key] = failure_detection_metrics(data.y[ix], estimate, a.target_iou, policy["alarm_threshold"])
     group_values = None
     if a.environment_inference:
         groups, raw_centers = development_environment_rows(a.environment_inference, selected, estimate, a.model_run, bundle)
@@ -130,18 +147,21 @@ def main():
         truth = data.y[ix] < np.asarray(a.target_iou, dtype=data.y.dtype)
         valid = np.isfinite(data.y[ix])
         flagged = estimate < thresholds
-        value["global_development_metrics"] = value.pop("development_metrics")
+        value["global_" + metrics_key] = value.pop(metrics_key)
         value.update(schema_version="ml-quality-alarm-2-grouped", group_policy=grouped,
                      centers_sha256=hashlib.sha256(raw_centers).hexdigest(),
-                     environment_inference_run_sha256=sha256_file(a.environment_inference / "run.json"),
-                     group_development_confusion={k: int((valid & mask).sum()) for k, mask in (
-                         ("tp", truth & flagged), ("fp", ~truth & flagged), ("fn", truth & ~flagged), ("tn", ~truth & ~flagged))})
+                     environment_inference_run_sha256=sha256_file(a.environment_inference / "run.json"))
+        value["group_" + label + "_confusion"] = {k: int((valid & mask).sum()) for k, mask in (
+            ("tp", truth & flagged), ("fp", ~truth & flagged), ("fn", truth & ~flagged), ("tn", ~truth & ~flagged))}
     a.output_dir.mkdir(parents=True)
     if group_values is not None:
         (a.output_dir / "environment_centers.json").write_bytes(raw_centers)
+    if a.fit_role == "meta_calibration":
+        value["selection_membership_sha256"] = model_record["artifact_sha256"]["selection_membership.json"]
+        value["calibration_parent_groups"] = sorted({row["parent_session_id"] for row in selected})
     write_json(a.output_dir/"calibration.json", value)
     (a.output_dir/"source.py").write_bytes(Path(__file__).read_bytes())
-    with (a.output_dir/"development_predictions.csv").open("x", newline="") as f:
+    with (a.output_dir/(label + "_predictions.csv")).open("x", newline="") as f:
         w = csv.writer(f); w.writerow(["sample_id", "actual_iou", "estimated_iou", "alarm"] + (["environment_cluster", "alarm_threshold"] if group_values is not None else []))
         for i, (sid, y, pred) in enumerate(zip(np.asarray(data.ids)[ix], data.y[ix], estimate)):
             cutoff = group_values[i][1] if group_values is not None else policy["alarm_threshold"]

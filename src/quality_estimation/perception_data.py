@@ -51,7 +51,7 @@ def validate_adaptation_roles(new_rows, replay_rows, replay_only=False):
             "replay-only control requires empty new data; other arms require new and replay data")
     require(all(r.get("preregistered_quality_role") == "candidate_pool" for r in new_rows),
             "new adaptation labels must come from the reserved candidate pool")
-    require(all(r.get("source_role") == "f0_train" and r.get("preregistered_quality_role") not in ("meta_dev","final_test")
+    require(all(r.get("source_role") == "f0_train" and r.get("preregistered_quality_role") not in ("meta_dev","meta_calibration","final_test")
                 for r in replay_rows), "replay must be known f0 training data")
     ids = [r["sample_id"] for r in new_rows + replay_rows]
     require(len(set(ids)) == len(ids), "adaptation sample IDs overlap")
