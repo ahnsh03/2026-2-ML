@@ -1,0 +1,34 @@
+{
+  "version": "roi10-front-v1",
+  "camera": {
+    "width": 1280,
+    "height": 720,
+    "horizontal_fov_deg": 90,
+    "pitch_deg": 2,
+    "height_m": 1.2
+  },
+  "horizon_y": 338,
+  "native_region_pixels": [
+    144326,
+    144326,
+    143988,
+    44644,
+    34870,
+    44560,
+    88803,
+    69247,
+    88637,
+    118199
+  ],
+  "regions_sha256": "bbfca0413a9c2b72e4f84cec6a3fce00153b8309dc3dca5abdcf8cf958e8666e",
+  "sky_tree_sha256": "c1cc76f5e35f290501bdc96476b3eb339d5c33c20eadd51fe00fc0b11bc3a024",
+  "hood_calibration": "Pixelwise strict majority of ego mask at 24 historical training locations. Includes the vehicle silhouette gaps.",
+  "sky_training": {
+    "front_rgb_images": 348,
+    "upper_pixels": 89088,
+    "source_locations": 36,
+    "max_depth": 8,
+    "min_leaf": 48
+  },
+  "projection": "nearest-neighbor labels on a 320 by 180 working grid; source RGB scaled with area averaging"
+}

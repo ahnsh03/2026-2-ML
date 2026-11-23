@@ -11,6 +11,7 @@ import time
 import torch
 
 from common.bridge import sha256_file
+from .environment_clusters import ROI10_HAZE
 from .artifacts import write_json
 from .build_dataset import collate
 from .dataset_io import require
@@ -49,6 +50,8 @@ def run_stream(lines, scorer, data_root, out, window_frames, budget_percent,
     record["source_sha256"] = {name: sha256_file(Path(__file__).with_name(name)) for name in
                                ("stream_review.py", "infer_images.py", "review_queue.py", "features.py",
                                 "environment_features.py", "environment_clusters.py", "calibration.py", "image_io.py")}
+    if scorer.metadata.get("environment_profile") == ROI10_HAZE:
+        record["source_sha256"]["roi10.py"] = sha256_file(Path(__file__).with_name("roi10.py"))
     if environment_reference is not None:
         record["environment_reference_sha256"] = sha256_file(environment_reference / "run.json")
         record["source_sha256"]["environment_reference.py"] = sha256_file(Path(__file__).with_name("environment_reference.py"))

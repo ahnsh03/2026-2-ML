@@ -12,6 +12,7 @@ data/
 *.png
 *.jpg
 *.jpeg
+!config/roi10_front_v1/regions.png
 !docs/**/*.png
 !docs/**/*.jpg
 

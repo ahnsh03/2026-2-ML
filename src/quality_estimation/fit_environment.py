@@ -10,12 +10,12 @@ from threadpoolctl import threadpool_limits
 from common.bridge import sha256_file
 from .artifacts import write_json
 from .dataset_io import require
-from .environment_clusters import fit_environment_clusters
-from .environment_features import extract_environment
+from .environment_clusters import ROI10_HAZE, fit_environment_clusters, rgb_extractor
+from .environment_features import PROFILE, extract_environment
 from .image_io import color_channels, decoded_pixel_sha256, read_image
 
 
-def training_descriptors(model_run, manifest, root):
+def training_descriptors(model_run, manifest, root, *, extractor=extract_environment):
     """Read only training images, in frozen membership order, one row per unique RGB."""
     run_path = model_run / "run.json"
     membership_path = model_run / "train_membership.json"
@@ -48,7 +48,7 @@ def training_descriptors(model_run, manifest, root):
         pixels = decoded_pixel_sha256(rgb)
         require(member.get("pixel_sha256") in (None, pixels), "training RGB pixels differ")
         if pixels not in seen:
-            features.append(extract_environment(rgb))
+            features.append(extractor(rgb))
             kept.append(dict(sample_id=sid, rgb_sha256=file_digest, pixel_sha256=pixels))
             seen.add(pixels)
     evidence = dict(fit_role="meta_train", model_run_sha256=sha256_file(run_path),
@@ -66,14 +66,16 @@ def main():
     parser.add_argument("--clusters", type=int, required=True)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--profile", choices=(PROFILE, ROI10_HAZE), default=PROFILE)
     args = parser.parse_args()
     out = args.output_dir
     if out.exists():
         raise FileExistsError(out)
     cv2.setNumThreads(1)
-    features, members, source = training_descriptors(args.model_run, args.manifest, args.data_root)
+    features, members, source = training_descriptors(args.model_run, args.manifest, args.data_root,
+                                                   extractor=rgb_extractor(args.profile))
     with threadpool_limits(limits=1):
-        centers = fit_environment_clusters(features, args.clusters, method=args.method, seed=args.seed)
+        centers = fit_environment_clusters(features, args.clusters, method=args.method, seed=args.seed, profile=args.profile)
     out.mkdir(parents=True, exist_ok=False)
     np.save(out / "environment_features.npy", features, allow_pickle=False)
     write_json(out / "training_rows.json", members)

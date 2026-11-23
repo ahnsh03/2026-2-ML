@@ -19,8 +19,8 @@ from .artifacts import write_json
 from .build_dataset import collate, worker_init
 from .image_io import color_channels, decoded_pixel_sha256, read_image
 from .dataset_io import require
-from .environment_clusters import assign_environment_clusters, environment_assignment_distances
-from .environment_features import NAMES as ENVIRONMENT_NAMES, extract_environment
+from .environment_clusters import (assign_environment_clusters, column_names, environment_assignment_distances,
+                                   rgb_extractor)
 from .features import FEATURE_NAMES, extract_features, feature_schema
 from .model_io import load_model_run
 from .models import QUALITY_MODELS, predict_array
@@ -78,7 +78,9 @@ class RGBQualityScorer:
             if self.grouped_alarm:
                 require(digest == self.alarm["centers_sha256"], "environment centers differ from alarm calibration")
             self.centers = json.loads(self.centers_bytes)
-            assign_environment_clusters(self.centers, np.empty((0, len(ENVIRONMENT_NAMES))))
+            profile = self.centers["profile"]
+            assign_environment_clusters(self.centers, np.empty((0, len(column_names(profile)))))
+            self.environment_extractor = rgb_extractor(profile)
             self.metadata.update(environment_centers_sha256=digest, environment_profile=self.centers["profile"])
         cv2.setNumThreads(1)
         torch.set_num_threads(2)
@@ -98,7 +100,7 @@ class RGBQualityScorer:
         predictions = predict_array(self.bundle, features)
         descriptors = None
         if self.centers is not None:
-            descriptors = np.stack([extract_environment(item["rgb"]) for item in items])
+            descriptors = np.stack([self.environment_extractor(item["rgb"]) for item in items])
             assignments, distances, gaps = environment_assignment_distances(self.centers, descriptors)
             if self.grouped_alarm:
                 cutoffs = group_alarm_thresholds(self.grouped_alarm, assignments)
