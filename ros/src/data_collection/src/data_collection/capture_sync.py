@@ -9,6 +9,7 @@ It intentionally has no ROS dependency so it can run directly from WSL.
 
 from __future__ import print_function
 
+import fcntl
 import json
 import os
 import shutil
@@ -17,8 +18,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
+from .session_archive import file_sha, frame_media, json_rows, session_context, write_receipt
 
-SYNC_SCHEMA_VERSION = "capture-sync-1.0.0"
+SYNC_SCHEMA_VERSION = "capture-sync-1.1.0"
 
 CAMERAS = (
     ("CAMERA_1", "front", (720, 1280)),
@@ -64,6 +66,8 @@ def load_successful_records(manifest_path):
                 continue
             sequence = int(record["sequence"])
             custom_name = str(record["custom_name"])
+            if Path(custom_name).name != custom_name or custom_name in ("", ".", "..") or sequence < 0:
+                raise CaptureSyncError("invalid capture name or sequence")
             if sequence in sequences:
                 raise CaptureSyncError("duplicate sequence: {}".format(sequence))
             if custom_name in names:
@@ -188,15 +192,21 @@ def _destination_path(run_root, sequence, entry):
     return run_root / "state" / entry["name"] / (stem + ".txt")
 
 
-def _copy_atomic(source, destination):
-    if destination.exists() and destination.stat().st_size == source.stat().st_size:
-        return "skipped", source.stat().st_size
+def _copy_atomic(source, destination, expected_digest=None):
+    size = source.stat().st_size
+    digest = expected_digest if expected_digest is not None else file_sha(source)
+    if destination.exists() and destination.stat().st_size == size and file_sha(destination) == digest:
+        return "skipped", size, digest
     temporary = destination.with_name(destination.name + ".part")
-    if temporary.exists():
-        temporary.unlink()
-    shutil.copy2(str(source), str(temporary))
-    os.replace(str(temporary), str(destination))
-    return "copied", source.stat().st_size
+    try:
+        shutil.copy2(str(source), str(temporary))
+        if file_sha(temporary) != digest:
+            raise CaptureSyncError("file changed during copy: {}".format(source))
+        os.replace(str(temporary), str(destination))
+    finally:
+        if temporary.exists():
+            temporary.unlink()
+    return "copied", size, digest
 
 
 def _write_json_atomic(path, value):
@@ -225,7 +235,17 @@ def sync_run(
     excluded_sequences=None,
 ):
     """Preflight and resumably copy one run. Source files are never deleted."""
-    capture_dir = Path(capture_root) / run_id
+    if Path(run_id).name != run_id or run_id in ("", ".", ".."):
+        raise CaptureSyncError("expected a single run directory name")
+    run_root = Path(dataset_root) / run_id
+    run_root.mkdir(parents=True, exist_ok=True)
+    with (run_root / ".sync.lock").open("a") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        return _sync_locked(sensor_root, Path(capture_root) / run_id, run_root, run_id, jobs,
+                            validate_png, excluded_sequences)
+
+
+def _sync_locked(sensor_root, capture_dir, run_root, run_id, jobs, validate_png, excluded_sequences):
     source_manifest = capture_dir / "capture_manifest.jsonl"
     source_summary = capture_dir / "summary.json"
     if not source_manifest.is_file():
@@ -233,6 +253,8 @@ def sync_run(
     if not source_summary.is_file():
         raise CaptureSyncError("capture summary not found: {}".format(source_summary))
 
+    lineage_hashes = {name: file_sha(capture_dir / name) for name in
+                      ("summary.json", "capture_manifest.jsonl", "meta.json") if (capture_dir / name).is_file()}
     source_records = load_successful_records(source_manifest)
     with source_summary.open("r", encoding="utf-8") as stream:
         summary = json.load(stream)
@@ -248,11 +270,19 @@ def sync_run(
         source_records, excluded_sequences=excluded_sequences
     )
     frames, total_bytes = preflight_run(sensor_root, records, validate_png=validate_png)
-    run_root = Path(dataset_root) / run_id
-    run_root.mkdir(parents=True, exist_ok=True)
+    meta_path = capture_dir / "meta.json"
+    context = session_context(json.loads(meta_path.read_text()).get("collection_context")
+                              if meta_path.is_file() else None)
+    prior = {}
+    dataset_path = run_root / "dataset.json"
+    previous_dataset = json.loads(dataset_path.read_text()) if dataset_path.is_file() else {}
+    if (run_root / "manifest.jsonl").exists():
+        for existing in json_rows(run_root / "manifest.jsonl"):
+            prior.update(existing.get("file_sha256", {}))
 
     tasks = []
     manifest_rows = []
+    hashes = {}
     directories = set()
     for record, entries in frames:
         sequence = int(record["sequence"])
@@ -313,13 +343,29 @@ def sync_run(
             )
         )
 
+    # A changed upstream file is a different recording. Preserve the last sealed dataset.
+    registered = [(source, prior[dest.relative_to(run_root).as_posix()]) for source, dest in tasks
+                  if dest.relative_to(run_root).as_posix() in prior]
+    with ThreadPoolExecutor(max_workers=max(1, int(jobs))) as executor:
+        for (source, expected), actual in zip(registered, executor.map(file_sha, (s for s, _ in registered))):
+            if actual != expected:
+                raise CaptureSyncError("source differs from the previously registered file: {}".format(source))
+
+    # Readers accept only a sealed run. If a repair stops midway it can be retried.
+    marker = run_root / "_SUCCESS"
+    if marker.exists():
+        marker.unlink()
     copied_files = 0
     skipped_files = 0
     copied_bytes = 0
     with ThreadPoolExecutor(max_workers=max(1, int(jobs))) as executor:
-        futures = [executor.submit(_copy_atomic, source, destination) for source, destination in tasks]
+        futures = {}
+        for source, destination in tasks:
+            relative = destination.relative_to(run_root).as_posix()
+            futures[executor.submit(_copy_atomic, source, destination, prior.get(relative))] = relative
         for index, future in enumerate(as_completed(futures), 1):
-            status, size = future.result()
+            status, size, digest = future.result()
+            hashes[futures[future]] = digest
             if status == "copied":
                 copied_files += 1
                 copied_bytes += size
@@ -330,16 +376,18 @@ def sync_run(
 
     lineage_dir = run_root / "lineage"
     lineage_dir.mkdir(parents=True, exist_ok=True)
-    for name in ("meta.json", "summary.json", "capture_manifest.jsonl"):
-        source = capture_dir / name
-        if source.is_file():
-            _copy_atomic(source, lineage_dir / name)
+    for name, expected in lineage_hashes.items():
+        if file_sha(capture_dir / name) != expected:
+            raise CaptureSyncError("source lineage changed during sync: " + name)
+        _copy_atomic(capture_dir / name, lineage_dir / name, expected)
 
+    for row in manifest_rows:
+        row["file_sha256"] = {path: hashes[path] for views in row["paths"].values() for path in views.values()}
     _write_jsonl_atomic(run_root / "manifest.jsonl", manifest_rows)
     dataset_meta = {
         "schema_version": SYNC_SCHEMA_VERSION,
         "run_id": run_id,
-        "created_at_utc": _utc_now_iso(),
+        "created_at_utc": previous_dataset.get("created_at_utc") or _utc_now_iso(),
         "source_sensor_root": str(Path(sensor_root)),
         "source_capture_root": str(capture_dir),
         "frame_count": len(frames),
@@ -365,12 +413,20 @@ def sync_run(
         "source_deleted": False,
     }
     _write_json_atomic(run_root / "dataset.json", dataset_meta)
+    lineage = ["lineage/" + name for name in lineage_hashes]
+    _, media = frame_media(manifest_rows[0], "capture_sync")
+    seal = write_receipt(run_root, session_id=run_id, source="capture_sync", context=context,
+                         rows="manifest.jsonl", frames=len(frames), channels=media,
+                         manifests=["manifest.jsonl", "dataset.json"] + lineage,
+                         retention="synchronized_successes_after_explicit_exclusions",
+                         clock="see_per_frame_request_ros_and_simulator_times")
     _write_json_atomic(
         run_root / "_SUCCESS",
         {
             "completed_at_utc": _utc_now_iso(),
             "frame_count": len(frames),
             "file_count": len(tasks),
+            "session_sha256": seal,
         },
     )
     return {

@@ -5,8 +5,10 @@ import json
 import struct
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
+from data_collection.session_archive import completed_receipt, verified_frames
 from data_collection.capture_sync import (
     CAMERAS,
     MODALITIES,
@@ -80,6 +82,42 @@ class CaptureSyncTest(unittest.TestCase):
             self.assertTrue((run_root / "_SUCCESS").is_file())
             self.assertTrue((run_root / "frames/intensity/front/000000.png").is_file())
             self.assertTrue((run_root / "state/gps/000000.txt").is_file())
+
+    def test_retry_checks_same_size_files_and_rejects_changed_source(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            sensor, data, source_dir = self.make_run(Path(tmp))
+            (source_dir / "meta.json").write_text(json.dumps({
+                "collection_context": {"road_id": "road", "split_role": "calibration"}}))
+            args = (sensor, data / "capture_runs", data / "datasets", "run_001")
+            sync_run(*args)
+            run = data / "datasets/run_001"
+            self.assertEqual(completed_receipt(run)["context"]["road_id"], "road")
+            original_receipt = (run / "capture_session.json").read_bytes()
+            dest = run / "state/gps/000000.txt"
+            dest.write_bytes(b"xxxxx\n")
+            self.assertEqual(sync_run(*args)["copied_files"], 1)
+            self.assertEqual((run / "capture_session.json").read_bytes(), original_receipt)
+            self.assertEqual(dest.read_bytes(), b"state\n")
+            frames = list(verified_frames(run))
+            self.assertEqual(len(frames[0][1]), 18)
+            (sensor / "GPS_6/run_001_000000.txt").write_bytes(b"other\n")
+            with self.assertRaises(CaptureSyncError):
+                sync_run(*args)
+            self.assertEqual(len(list(verified_frames(run))), 1)
+            self.assertEqual(dest.read_bytes(), b"state\n")
+
+    def test_interrupted_refresh_has_no_success_marker_and_can_resume(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            sensor, data, _ = self.make_run(Path(tmp))
+            args = (sensor, data / "capture_runs", data / "datasets", "run_001")
+            sync_run(*args)
+            with patch("data_collection.capture_sync._copy_atomic", side_effect=OSError("write interrupted")):
+                with self.assertRaises(OSError):
+                    sync_run(*args)
+            run = data / "datasets/run_001"
+            self.assertFalse((run / "_SUCCESS").exists())
+            sync_run(*args)
+            self.assertEqual(len(list(verified_frames(run))), 1)
 
     def test_preflight_rejects_missing_file(self):
         with tempfile.TemporaryDirectory() as tmp:

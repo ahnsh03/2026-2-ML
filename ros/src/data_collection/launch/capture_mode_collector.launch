@@ -3,6 +3,7 @@
   <arg name="capture_hz" default="1.0"/>
   <arg name="max_captures" default="0"/>
   <arg name="run_id" default=""/>
+  <arg name="session_context" default=""/>
   <arg name="data_root" default=""/>
   <!-- auto: gRPC acknowledgement first, then native ROS /SaveSensorData fallback. -->
   <arg name="backend" default="auto"/>
@@ -23,6 +24,7 @@
     <param name="capture_hz" value="$(arg capture_hz)"/>
     <param name="max_captures" value="$(arg max_captures)"/>
     <param name="run_id" value="$(arg run_id)"/>
+    <param name="session_context" type="str" value="$(arg session_context)"/>
     <param name="data_root" value="$(arg data_root)"/>
     <param name="backend" value="$(arg backend)"/>
     <param name="grpc_address" value="$(arg grpc_address)"/>

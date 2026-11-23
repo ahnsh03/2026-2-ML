@@ -1,6 +1,6 @@
 # 팀 공통 개발 문서
 
-> 2026-11-23 정오 기준 · 주행 중 검수, 환경 ROI, 품질 회귀, 인지모델 갱신 검증
+> 2026-11-23 기준 · 주행 중 검수, 전방 10영역, 품질 회귀, 인지모델 갱신 검증
 
 팀원이 개발·재현·검토할 때 필요한 문서의 정본이다. 개인 연구 과정과 교과목 발표 준비는 로컬에서 관리한다.
 
@@ -23,6 +23,8 @@
 | 코드 출처 | [9월 이관 기록](./development/외부코드_선별.md) · [11/3 source inventory 이력](./development/port_inventory_v1.json) |
 | 모델 근거 | [M v6 재확인](./baselines/M_v6_정지선_재확인_20261103.md) · [v6 JSON](./baselines/medium_v6_baseline_evidence.json) · [v5 JSON](./baselines/medium_baseline_evidence.json) |
 | 참고 방법 | [논문·베이스라인](./baselines/참고논문_베이스라인.md) · [reference lock](./baselines/reference_repos.lock.json) |
+| 수집기·오프라인 원본 등록 | [세션 등록·복원·GT 연결](./development/수집세션_등록과_오프라인_재가공.md) |
+| 다음 수집 전 점검 | [원본으로 다시 만들 수 있는 것과 초기 논문 6편의 활용 순서](./project/수집데이터_재가공과_논문활용_20261123.md) |
 | 재학습 설정 탐색 | [실측 개발 격자와 모델 해시](./baselines/adaptation_search_surface_20261123.json) · [탐색 예산별 결과](./project/환경_ROI와_품질추정_20261123.md) |
 | X/y 구현·검증 | [실행법·검증 범위](./development/X_y_데이터셋.md) · [56차원 실행 스키마](./contracts/quality_xy_v2.json) |
 | 회귀·추론·선별 | [실행법·분할·모델 보존](./development/회귀학습_선별평가.md) |
@@ -34,7 +36,7 @@
 
 ## 해석 기준
 
-- 현재 실행 정의는 M v6, 출력+RGB 특징, 전체+3행×2열 ROI, 단일 통합 Lane IoU, OLS/Ridge/RF 비교다.
+- X56 기준선은 M v6, 전체+3행×2열의 출력·RGB 특징, 단일 통합 Lane IoU, OLS/Ridge/RF 비교다. 전방 10영역 품질 추정기는 같은 인지모델과 정답을 사용해 이 기준선과 비교한다.
 - v1의 v5 binary/78개 특징·2행×3열·의미 영역 ROI·4개 target은 이전 초안이다. 현재 구현 기본값으로 사용하지 않는다.
 - v6 모델의 학습 이력과 새 품질 추정기의 개발 상태는 구분한다. X/y 생성·검증, 회귀 학습·RGB 단독 추론·선별 평가를 구현했다. 개발 결과와 최종 평가, 인지 모델 재학습 효과는 구분한다.
 - 기본 인지 로더·시각화는 M v6로 연결했다. X/y 생성은 같은 v6 모델을 사용하며 실행 범위는 X/y 데이터셋 문서를 따른다.

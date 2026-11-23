@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Forward a ROS 1 front CompressedImage topic to GT-free RGB quality inference."""
 import argparse
+import json
 from contextlib import ExitStack
 from pathlib import Path
 import stat
@@ -18,18 +19,20 @@ def main():
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--fifo", type=Path, help="Existing named pipe for a live stream_review reader")
     parser.add_argument("--limit", type=int, help="End after this many messages during a finite replay")
+    parser.add_argument("--session-context", type=Path, help="JSON with the purpose, physical session, road and split role")
     args = parser.parse_args(rospy.myargv()[1:])
     if args.limit is not None and args.limit < 1:
         parser.error("--limit must be positive")
     if args.fifo is not None and not stat.S_ISFIFO(args.fifo.stat().st_mode):
         parser.error("--fifo must refer to a named pipe")
+    context = json.loads(args.session_context.read_text()) if args.session_context else None
     rospy.init_node("quality_front_rgb", anonymous=True)
     lock = threading.Lock()
     stopped = threading.Event()
     errors = []
     with ExitStack() as resources:
         stream = resources.enter_context(args.fifo.open("w")) if args.fifo is not None else None
-        writer = resources.enter_context(CompressedRGBSession(args.output_dir, rospy.resolve_name(args.topic)))
+        writer = resources.enter_context(CompressedRGBSession(args.output_dir, rospy.resolve_name(args.topic), context))
 
         def on_frame(message):
             with lock:

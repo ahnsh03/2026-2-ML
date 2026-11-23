@@ -10,6 +10,7 @@ an MPC node publishes /ctrl_cmd or while MORAI is in Game Wheel/Keyboard mode.
 from __future__ import print_function
 
 import copy
+import json
 import os
 import threading
 import time
@@ -23,6 +24,7 @@ from data_collection.capture_grpc import (
     MoraiCaptureClient,
     resolve_proto_root,
 )
+from data_collection.session_archive import session_context
 from data_collection.capture_mode import (
     CaptureRunWriter,
     CaptureSchedule,
@@ -129,6 +131,10 @@ class CaptureModeCollector(object):
             "control_independent": True,
             "notes": "Capture Mode GT lives in MORAI SensorData; this run stores trigger/state lineage.",
         }
+        context_path = rospy.get_param("~session_context", "")
+        if context_path:
+            with open(context_path, encoding="utf-8") as stream:
+                metadata["collection_context"] = session_context(json.load(stream))
         self.writer = CaptureRunWriter(data_root, self.run_id, metadata)
         self.schedule = CaptureSchedule(self.hz, self.start_delay_sec)
         self.client = None
