@@ -139,7 +139,10 @@ def _region_histograms(rgb, profile):
         weights = saturation.ravel() if index == 3 else None
         counts = np.bincount(bucket.ravel(), weights=weights, minlength=100).reshape(10, 10)
         histograms.append(counts / np.maximum(counts.sum(1, keepdims=True), 1e-12))
-    h = np.stack(histograms, axis=1).astype(np.float32)
+    return np.stack(histograms, axis=1).astype(np.float32)
+
+
+def _hour_histograms(h):
     return np.concatenate([h[:3, 3:5].ravel(), h[3:6, 0].ravel(), h[3:6, 2].ravel(),
                            h[6:9, 1].ravel(), h[9, 0]])
 
@@ -198,8 +201,27 @@ def extract_region_rgb(rgb, profile):
         "haze30": nodes[:, [1, 3, 4]].ravel(),
         "sky27": sky27,
         "weather100": np.concatenate([sky27, extract_environment(rgb)]),
-        "hour187": np.concatenate([sky27, _region_histograms(rgb, profile)]),
+        "hour187": np.concatenate([sky27, _hour_histograms(_region_histograms(rgb, profile))]),
     }
+
+
+def weather_region_views(rgb, drivable_map, profile):
+    """Ten 67-value views from RGB and the unpadded f0 drivable output, with no scene metadata."""
+    _require_rgb(rgb)
+    if drivable_map.shape != (180, 320) or drivable_map.dtype != np.uint8:
+        raise ValueError("expected a 320x180 byte drivable map")
+    thumb = cv2.resize(rgb, (320, 180), interpolation=cv2.INTER_AREA)
+    fields = _image_fields(thumb)
+    sky = predicted_sky(thumb, profile)
+    road = drivable_map >= 128
+    histograms = _region_histograms(rgb, profile)
+    views = []
+    for i in range(len(REGIONS)):
+        mask = profile.small == i
+        material = mask & sky if i < 3 else (mask & road if i < 9 else mask)
+        views.append(np.concatenate([_summarize(fields, mask), _summarize(fields, material),
+                                     [material.sum() / mask.sum()], histograms[i].ravel()]))
+    return np.asarray(views, np.float32)
 
 
 def summarize_head_maps(maps, profile):

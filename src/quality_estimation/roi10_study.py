@@ -10,7 +10,7 @@ from tempfile import TemporaryDirectory
 import joblib
 import numpy as np
 
-from .roi10 import FrontProfile, PROFILE_DIR, extract_region_nodes, reduce_heads, summarize_head_maps
+from .roi10 import FrontProfile, PROFILE_DIR, extract_region_nodes, reduce_heads, summarize_head_maps, weather_region_views
 from .roi10_quality import RegionalQualityModel, label_counts, local_inputs
 
 
@@ -85,6 +85,7 @@ def build(args):
     loader = DataLoader(RGBSamples(args.data_root, rows), batch_size=args.batch_size, num_workers=args.workers,
                         collate_fn=collate, worker_init_fn=worker_init)
     xs, nodes, heads, predicted, gt, pixels = [], [], [], [], [], []
+    weather_views = []
     with torch.inference_mode():
         for images, items in loader:
             da, mark = model(images.to(device))
@@ -105,7 +106,10 @@ def build(args):
                 pixels.append(item["pixel_sha256"])
                 xs.append(extract_features(rgb, q, geometry))
                 nodes.append(extract_region_nodes(rgb, profile))
-                heads.append(summarize_head_maps(reduce_heads(drivable, q, geometry), profile))
+                maps = reduce_heads(drivable, q, geometry)
+                heads.append(summarize_head_maps(maps, profile))
+                if args.weather_views:
+                    weather_views.append(weather_region_views(rgb, maps[0], profile))
                 cls = q[:, 12:372].argmax(0)
                 lane = (cls == 1) | (cls == 2)
                 predicted.append(np.bincount(regions[lane], minlength=10))
@@ -119,6 +123,12 @@ def build(args):
                     gt.append(label_counts(lane, (classes == 1) | (classes == 2), regions))
     pack = dict(ids=ids, pixel_sha256=pixels, x56=xs, nodes=nodes, heads=heads,
                 predicted_pixels=predicted, region_pixels=region_pixels)
+    if args.weather_views:
+        pack["weather_views"] = weather_views
+        if args.purpose == "training":
+            from .evaluate_scene_conditions import condition_label
+            labels = [condition_label((r.get("condition") or {}).get("weather"), "weather") for r in rows]
+            pack["weather"] = [-1 if label is None else label for label in labels]
     if has_groups:
         pack["split_group"] = split_groups
     if args.paired:
@@ -178,6 +188,68 @@ def fit_centers(args):
                                training_rows=len(features), training_pack_sha256=spec["sha256"]["rows.npz"]), [dest])
 
 
+def _check_membership(z, tr, purpose):
+    overlap = int(np.count_nonzero(np.isin(z["ids"], tr["ids"]) |
+                                   np.isin(z["pixel_sha256"], tr["pixel_sha256"])))
+    independent = purpose in ("development", "calibration", "evaluation")
+    if independent and overlap:
+        raise ValueError("independent scoring pack overlaps training IDs or pixels")
+    if independent and "split_group" in tr:
+        if "split_group" not in z:
+            raise ValueError("training used split groups; the independent scoring pack also needs groups")
+        if np.intersect1d(tr["split_group"], z["split_group"]).size:
+            raise ValueError("independent scoring pack overlaps training split groups")
+    return overlap
+
+
+def fit_weather(args):
+    from .roi10_weather import BandWeatherModel
+
+    spec = _completed(args.data, "rows.npz")
+    if spec["purpose"] != "training":
+        raise ValueError("fit-weather needs a training pack")
+    with np.load(args.data / "rows.npz", allow_pickle=False) as z:
+        if not {"weather_views", "weather", "split_group"}.issubset(z.files):
+            raise ValueError("build a training pack with --weather-views, condition.weather and split_group")
+        if len(np.unique(z["pixel_sha256"])) != len(z["ids"]):
+            raise ValueError("duplicate decoded training pixels")
+        labels = z["weather"]
+        keep = labels >= 0
+        model = BandWeatherModel.fit(z["weather_views"][keep], labels[keep], z["split_group"][keep],
+                                     jobs=args.jobs)
+        membership = dict(ids=z["ids"], pixel_sha256=z["pixel_sha256"], split_group=np.unique(z["split_group"]))
+    args.output.mkdir(parents=True, exist_ok=False)
+    output, members = args.output / "weather.joblib", args.output / "training.npz"
+    joblib.dump(model, output, compress=2)
+    np.savez_compressed(members, **membership)
+    import sklearn
+    _publish(args.output, dict(**_schema(), labeled_training_rows=int(keep.sum()), sklearn=sklearn.__version__,
+                               training_pack_sha256=spec["sha256"]["rows.npz"]), [output, members])
+
+
+def score_weather(args):
+    fitted = _completed(args.model, "weather.joblib")
+    _completed(args.model, "training.npz")
+    data = _completed(args.data, "rows.npz")
+    model = joblib.load(args.model / "weather.joblib")
+    with np.load(args.data / "rows.npz", allow_pickle=False) as z, np.load(
+            args.model / "training.npz", allow_pickle=False) as training:
+        if "weather_views" not in z:
+            raise ValueError("build the input pack with --weather-views")
+        overlap = _check_membership(z, training, data["purpose"])
+        probabilities = model.predict_proba(z["weather_views"])
+        classes = model.combiner.classes_
+        out = dict(ids=z["ids"], pixel_sha256=z["pixel_sha256"], classes=classes,
+                   probabilities=probabilities, predicted_weather=classes[probabilities.argmax(1)])
+    args.output.mkdir(parents=True, exist_ok=False)
+    output = args.output / "weather_scores.npz"
+    np.savez_compressed(output, **out)
+    _publish(args.output, dict(**_schema(), uses_weather_label_for_prediction=False,
+                               uses_gt_for_prediction=False, overlapping_training_rows=overlap,
+                               input_sha256=data["sha256"]["rows.npz"], model_sha256=fitted["sha256"]["weather.joblib"]),
+             [output])
+
+
 def score(args):
     fit_run = _completed(args.model, "model.joblib")
     _completed(args.model, "training.npz")
@@ -186,16 +258,7 @@ def score(args):
     model = joblib.load(args.model / "model.joblib")
     with np.load(args.data / "rows.npz", allow_pickle=False) as z:
         with np.load(args.model / "training.npz", allow_pickle=False) as tr:
-            overlap = int(np.count_nonzero(np.isin(z["ids"], tr["ids"]) |
-                                           np.isin(z["pixel_sha256"], tr["pixel_sha256"])))
-            independent = data["purpose"] in ("development", "calibration", "evaluation")
-            if independent and overlap:
-                raise ValueError("independent scoring pack overlaps training IDs or pixels")
-            if independent and "split_group" in tr:
-                if "split_group" not in z:
-                    raise ValueError("training used split groups; the independent scoring pack also needs groups")
-                if np.intersect1d(tr["split_group"], z["split_group"]).size:
-                    raise ValueError("independent scoring pack overlaps training split groups")
+            overlap = _check_membership(z, tr, data["purpose"])
         out = model.predict(_inputs(z), z["predicted_pixels"], z["region_pixels"])
         out.update(ids=z["ids"], pixel_sha256=z["pixel_sha256"])
     args.output.mkdir(parents=True, exist_ok=False)
@@ -285,6 +348,7 @@ def main():
     b.add_argument("--data-root", required=True, type=Path)
     b.add_argument("--purpose", required=True, choices=("training", "development", "calibration", "evaluation", "inference"))
     b.add_argument("--paired", action="store_true", help="Read Semantic labels under the existing v6 target policy")
+    b.add_argument("--weather-views", action="store_true", help="Also extract ten views for the band weather model")
     b.add_argument("--checkpoint")
     b.add_argument("--device", default="cuda")
     b.add_argument("--batch-size", default=4, type=int)
@@ -300,11 +364,17 @@ def main():
     centers.add_argument("--method", choices=("emeans", "kmeans"), required=True)
     centers.add_argument("--clusters", type=int, default=8)
     centers.add_argument("--seed", type=int, default=0)
+    fw = sub.add_parser("fit-weather")
+    fw.add_argument("--data", type=Path, required=True)
+    fw.add_argument("--jobs", type=int, default=1)
+    sw = sub.add_parser("score-weather")
+    sw.add_argument("--data", type=Path, required=True)
+    sw.add_argument("--model", type=Path, required=True)
     ev = sub.add_parser("evaluate")
     ev.add_argument("--scores", type=Path, required=True)
     ev.add_argument("--data", type=Path, required=True)
     ev.add_argument("--alarm-cutoff", type=float)
-    for step in (b, f, s, centers, ev):
+    for step in (b, f, s, centers, fw, sw, ev):
         step.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     destination = args.output
@@ -313,7 +383,8 @@ def main():
     destination.parent.mkdir(parents=True, exist_ok=True)
     with TemporaryDirectory(dir=destination.parent, prefix=".roi10-") as work:
         args.output = Path(work) / "artifact"
-        {"build": build, "fit": fit, "score": score, "fit-centers": fit_centers, "evaluate": evaluate}[args.command](args)
+        {"build": build, "fit": fit, "score": score, "fit-centers": fit_centers,
+         "fit-weather": fit_weather, "score-weather": score_weather, "evaluate": evaluate}[args.command](args)
         args.output.rename(destination)
 
 

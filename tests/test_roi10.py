@@ -67,6 +67,29 @@ class RegionTenTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             assign_environment_clusters(centers, np.zeros((1, 73)))
 
+    def test_weather_views_keep_empty_material_support_and_whole_hood(self):
+        from quality_estimation.roi10 import weather_region_views
+        rgb = np.full((720, 1280, 3), [75, 100, 125], dtype=np.uint8)
+        road = np.zeros((180, 320), np.uint8)
+        views = weather_region_views(rgb, road, self.profile)
+        self.assertEqual(views.shape, (10, 67))
+        np.testing.assert_array_equal(views[3:9, 8:17], 0.)
+        np.testing.assert_array_equal(views[9, :8], views[9, 8:16])
+        self.assertEqual(views[9, 16], 1.)
+        drivable = weather_region_views(rgb, np.full_like(road, 255), self.profile)
+        np.testing.assert_array_equal(drivable[3:9, 16], 1.)
+        np.testing.assert_array_equal(drivable[:, 17:], views[:, 17:])
+
+    def test_weather_fold_cannot_lose_a_class_and_band_identity_is_preserved(self):
+        from quality_estimation.roi10_weather import BandWeatherModel, band_evidence
+        views = np.zeros((6, 10, 67), np.float32)
+        groups = np.repeat(["one", "two", "three"], 2)
+        labels = np.asarray([0, 0, 0, 0, 1, 1])
+        with self.assertRaisesRegex(ValueError, "each held-group fold"):
+            BandWeatherModel.fit(views, labels, groups)
+        probs = np.arange(60).reshape(1, 10, 6)
+        np.testing.assert_array_equal(band_evidence(probs), probs[:, [2, 5, 8, 9]].reshape(1, 24))
+
     def test_native_heads_exclude_padding_and_stopline(self):
         geometry = compute_letterbox_geometry((720, 1280), (384, 640))
         q = np.zeros((4, 384, 640), np.float32)
