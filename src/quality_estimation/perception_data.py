@@ -59,7 +59,7 @@ def validate_adaptation_roles(new_rows, replay_rows, replay_only=False):
             "new and replay parent groups overlap")
 
 
-SELECTION_ARMS = ("Random", "FrozenQualityRank", "Confidence", "Entropy", "EnvironmentAudit", "RiskPoolDiverse", "RiskPoolRandom",
+SELECTION_ARMS = ("QualityRankAudit", "Random", "FrozenQualityRank", "Confidence", "Entropy", "EnvironmentAudit", "RiskPoolDiverse", "RiskPoolRandom",
                   "AreaStratifiedRisk", "AreaStratifiedRandom")
 
 
@@ -77,11 +77,24 @@ def validate_adaptation_selection(new_rows, arm, seed, budget):
         seeds = {s.get("seed") for s in selections}
         require(len(seeds) == 1 and all(type(s) is int for s in seeds), "inconsistent stratified or risk-pool admission seed")
     else:
-        require(all(s.get("seed") == (seed if arm == "Random" else None) for s in selections),
+        require(all(s.get("seed") == (seed if arm in ("Random", "QualityRankAudit") else None) for s in selections),
                 "admission seed differs from training arm")
     require([s.get("rank") for s in selections] == list(range(1, len(selections)+1)),
             "admission ranks must be complete and ordered")
     fields = ["inference_run_sha256", "model_run_sha256"]
+    if arm == "QualityRankAudit":
+        require(all(s.get("sample_id") == r["sample_id"] and s.get("pixel_sha256") == r.get("pixel_sha256")
+                    and r.get("pixel_sha256") for s, r in zip(selections, new_rows)),
+                "priority/audit decision refers to different candidate pixels")
+        population = selections[0].get("population")
+        require(type(population) is int and population > 0 and len(selections) == int(np.ceil(population * budget)),
+                "audit budget differs from population")
+        core = len(selections) // 2
+        for index, selection in enumerate(selections):
+            priority = index < core
+            probability = 1.0 if priority else (len(selections) - core) / (population - core)
+            require(selection.get("population") == population and selection.get("reason") == ("priority" if priority else "audit")
+                    and selection.get("inclusion_probability") == probability, "invalid priority/audit evidence")
     if arm in ("RiskPoolDiverse", "RiskPoolRandom"):
         fields.append("risk_pool_sha256")
         for key in ("risk_pool_factor", "risk_pool_rows"):

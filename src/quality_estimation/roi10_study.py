@@ -14,10 +14,23 @@ from .roi10 import FrontProfile, PROFILE_DIR, extract_region_nodes, reduce_heads
 from .roi10_quality import RegionalQualityModel, label_counts, local_inputs
 
 
-def _schema():
+def _schema(identity=None):
     from common.bridge import DEFAULT_CHECKPOINT_SHA256
-    return {"schema": "f0-roi10-regional-v1", "checkpoint_sha256": DEFAULT_CHECKPOINT_SHA256,
-            "profile_sha256": hashlib.sha256((PROFILE_DIR / "profile.json").read_bytes()).hexdigest()}
+    spec = {
+        "schema": "f0-roi10-regional-v1", "checkpoint_sha256": DEFAULT_CHECKPOINT_SHA256,
+        "profile_sha256": hashlib.sha256((PROFILE_DIR / "profile.json").read_bytes()).hexdigest(),
+    }
+    if identity is not None and identity["kind"] == "adaptation":
+        from .perception_identity import validate_identity
+        spec.update(schema="adapted-roi10-regional-v1", perception_identity=validate_identity(identity),
+                    checkpoint_sha256=identity["checkpoint_sha256"])
+    return spec
+
+
+def _requested_identity(args):
+    from .perception_identity import identity_from_adaptation
+    run = getattr(args, "adaptation_run", None)
+    return identity_from_adaptation(run) if run else None
 
 
 def _publish(folder, record, files):
@@ -27,12 +40,12 @@ def _publish(folder, record, files):
     (folder / "_SUCCESS").write_text(hashlib.sha256(run.read_bytes()).hexdigest() + "\n")
 
 
-def _completed(folder, filename):
+def _completed(folder, filename, identity=None):
     run = folder / "run.json"
     if (folder / "_SUCCESS").read_text().strip() != hashlib.sha256(run.read_bytes()).hexdigest():
         raise ValueError("incomplete ROI10 artifact")
     meta = json.loads(run.read_text())
-    if any(meta.get(k) != v for k, v in _schema().items()):
+    if any(meta.get(k) != v for k, v in _schema(identity).items()):
         raise ValueError("ROI10 extractor or perception identity differs")
     if hashlib.sha256((folder / filename).read_bytes()).hexdigest() != meta["sha256"][filename]:
         raise ValueError("ROI10 artifact checksum mismatch")
@@ -55,7 +68,19 @@ def build(args):
     cv2.setNumThreads(1)
     torch.set_num_threads(1)
     rows = [json.loads(line) for line in args.manifest.read_text().splitlines() if line.strip()]
+    checkpoint, identity, membership = resolve_quality_perception(getattr(args, "adaptation_run", None), args.checkpoint)
+    used_ids = {r["sample_id"] for r in membership}
+    used_parents = {r["parent_session_id"] for r in membership}
+    used_pixels = {r["pixel_sha256"] for r in membership}
     for row in rows:
+        if identity["kind"] == "adaptation":
+            parent = row.get("parent_session_id")
+            if not isinstance(parent, str) or not parent.strip():
+                raise ValueError("adapted ROI10 packs require a physical parent_session_id")
+            if row["sample_id"] in used_ids or parent in used_parents:
+                raise ValueError("ROI10 input overlaps perception adaptation IDs or physical sessions")
+            if args.purpose == "training" and row.get("preregistered_quality_role") != "meta_train":
+                raise ValueError("adapted quality training requires a preregistered meta_train role")
         if "input_sha256" in row:
             if "expected_sha256" in row and row["expected_sha256"] != row["input_sha256"]:
                 raise ValueError("conflicting source hashes")
@@ -75,7 +100,6 @@ def build(args):
     profile = FrontProfile.load()
     regions = profile.native[::2, ::2]
     region_pixels = np.bincount(regions.ravel(), minlength=10)
-    checkpoint, _, _ = resolve_quality_perception(checkpoint=args.checkpoint)
     device = torch.device(args.device)
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
@@ -103,6 +127,8 @@ def build(args):
                     source_hash = item["pixel_sha256"] if order == "RGB" else decoded_pixel_sha256(rgb[:, :, ::-1])
                     if source_hash != row["expected_pixel_sha256"]:
                         raise ValueError("original decoded pixel digest differs")
+                if item["pixel_sha256"] in used_pixels:
+                    raise ValueError("ROI10 input overlaps perception adaptation pixels")
                 pixels.append(item["pixel_sha256"])
                 xs.append(extract_features(rgb, q, geometry))
                 nodes.append(extract_region_nodes(rgb, profile))
@@ -129,13 +155,15 @@ def build(args):
             from .evaluate_scene_conditions import condition_label
             labels = [condition_label((r.get("condition") or {}).get("weather"), "weather") for r in rows]
             pack["weather"] = [-1 if label is None else label for label in labels]
+    if identity["kind"] == "adaptation":
+        pack["parent_session_id"] = [r["parent_session_id"] for r in rows]
     if has_groups:
         pack["split_group"] = split_groups
     if args.paired:
         pack["counts"] = gt
     output = args.output / "rows.npz"
     np.savez_compressed(output, **pack)
-    _publish(args.output, dict(**_schema(), purpose=args.purpose, paired=args.paired, rows=len(ids),
+    _publish(args.output, dict(**_schema(identity), purpose=args.purpose, paired=args.paired, rows=len(ids),
                                manifest_sha256=hashlib.sha256(args.manifest.read_bytes()).hexdigest()), [output])
 
 
@@ -144,27 +172,51 @@ def _inputs(z):
 
 
 def fit(args):
-    spec = _completed(args.data, "rows.npz")
-    if spec["purpose"] != "training" or not spec["paired"]:
-        raise ValueError("fit needs a paired training pack")
-    with np.load(args.data / "rows.npz", allow_pickle=False) as z:
-        if len(np.unique(z["pixel_sha256"])) != len(z["ids"]):
-            raise ValueError("duplicate decoded training pixels")
-        all_counts = z["counts"]
-        valid = all_counts.sum((1, 2)) > 0
-        model = RegionalQualityModel.fit(_inputs(z)[valid], z["predicted_pixels"][valid], z["region_pixels"],
-                                         all_counts[valid], jobs=args.jobs)
-        membership = {"ids": z["ids"], "pixel_sha256": z["pixel_sha256"]}
-        if "split_group" in z:
-            membership["split_group"] = np.unique(z["split_group"])
+    identity = _requested_identity(args)
+    folders = [args.data, *getattr(args, "additional_training", [])]
+    columns = ("ids", "pixel_sha256", "predicted_pixels", "counts")
+    chunks = {key: [] for key in columns}
+    inputs, digests = [], []
+    groups = None
+    region_pixels = None
+    for folder in folders:
+        spec = _completed(folder, "rows.npz", identity)
+        if spec["purpose"] != "training" or not spec["paired"]:
+            raise ValueError("fit needs paired training packs")
+        digests.append(spec["sha256"]["rows.npz"])
+        with np.load(folder / "rows.npz", allow_pickle=False) as z:
+            present = {key for key in ("parent_session_id", "split_group") if key in z}
+            if groups is None:
+                groups = {key: [] for key in sorted(present)}
+                region_pixels = z["region_pixels"]
+            if set(groups) != present or not np.array_equal(z["region_pixels"], region_pixels):
+                raise ValueError("training packs differ in grouping or regional geometry")
+            for key in columns:
+                chunks[key].append(z[key])
+            for key in groups:
+                groups[key].append(z[key])
+            inputs.append(_inputs(z))
+    data = {key: np.concatenate(parts) for key, parts in chunks.items()}
+    membership = {key: data[key] for key in ("ids", "pixel_sha256")}
+    if any(np.unique(v).size != len(v) for v in membership.values()):
+        raise ValueError("duplicate training frame IDs or decoded pixels")
+    membership.update({key: np.unique(np.concatenate(parts)) for key, parts in groups.items()})
+    counts = data["counts"]
+    valid = counts.sum((1, 2)) > 0
+    model = RegionalQualityModel.fit(np.concatenate(inputs)[valid], data["predicted_pixels"][valid], region_pixels,
+                                     counts[valid], jobs=args.jobs)
     args.output.mkdir(parents=True, exist_ok=False)
     output = args.output / "model.joblib"
     joblib.dump(model, output, compress=2)
     members = args.output / "training.npz"
     np.savez_compressed(members, **membership)
     import sklearn
-    _publish(args.output, dict(**_schema(), fit_rows=int(valid.sum()), sklearn=sklearn.__version__,
-                               training_pack_sha256=spec["sha256"]["rows.npz"]), [output, members])
+    lineage = {"training_pack_sha256": digests[0]}
+    if len(digests) > 1:
+        lineage.update(training_pack_sha256s=digests,
+                       training_pack_sha256=hashlib.sha256("\n".join(digests).encode("ascii")).hexdigest())
+    _publish(args.output, dict(**_schema(identity), fit_rows=int(valid.sum()), sklearn=sklearn.__version__,
+                               **lineage), [output, members])
 
 
 def fit_centers(args):
@@ -194,6 +246,9 @@ def _check_membership(z, tr, purpose):
     independent = purpose in ("development", "calibration", "evaluation")
     if independent and overlap:
         raise ValueError("independent scoring pack overlaps training IDs or pixels")
+    if independent and "parent_session_id" in tr:
+        if "parent_session_id" not in z or np.intersect1d(tr["parent_session_id"], z["parent_session_id"]).size:
+            raise ValueError("independent scoring requires disjoint physical sessions")
     if independent and "split_group" in tr:
         if "split_group" not in z:
             raise ValueError("training used split groups; the independent scoring pack also needs groups")
@@ -251,9 +306,10 @@ def score_weather(args):
 
 
 def score(args):
-    fit_run = _completed(args.model, "model.joblib")
-    _completed(args.model, "training.npz")
-    data = _completed(args.data, "rows.npz")
+    identity = _requested_identity(args)
+    fit_run = _completed(args.model, "model.joblib", identity)
+    _completed(args.model, "training.npz", identity)
+    data = _completed(args.data, "rows.npz", identity)
     # Trained bundles are trusted local scikit-learn artifacts. The numeric data packs disable pickle.
     model = joblib.load(args.model / "model.joblib")
     with np.load(args.data / "rows.npz", allow_pickle=False) as z:
@@ -264,8 +320,10 @@ def score(args):
     args.output.mkdir(parents=True, exist_ok=False)
     dest = args.output / "scores.npz"
     np.savez_compressed(dest, **out)
-    _publish(args.output, dict(**_schema(), uses_gt_for_prediction=False, overlapping_training_rows=overlap,
-                               input_sha256=data["sha256"]["rows.npz"], model_sha256=fit_run["sha256"]["model.joblib"],
+    _publish(args.output, dict(**_schema(identity), uses_gt_for_prediction=False, overlapping_training_rows=overlap,
+                               input_sha256=data["sha256"]["rows.npz"], input_paired=data["paired"],
+                               model_sha256=fit_run["sha256"]["model.joblib"],
+                               model_run_sha256=hashlib.sha256((args.model / "run.json").read_bytes()).hexdigest(),
                                training_pack_sha256=fit_run["training_pack_sha256"]), [dest])
 
 
@@ -324,10 +382,11 @@ def evaluate_paired_scores(labels, scores, alarm_cutoff=None):
 
 
 def evaluate(args):
-    label_meta = _completed(args.data, "rows.npz")
+    identity = _requested_identity(args)
+    label_meta = _completed(args.data, "rows.npz", identity)
     if not label_meta["paired"]:
         raise ValueError("evaluation needs a paired Semantic pack")
-    score_meta = _completed(args.scores, "scores.npz")
+    score_meta = _completed(args.scores, "scores.npz", identity)
     if score_meta.get("uses_gt_for_prediction") is not False:
         raise ValueError("the scores have no record of ground-truth-free prediction")
     with np.load(args.data / "rows.npz", allow_pickle=False) as labels, np.load(
@@ -336,7 +395,7 @@ def evaluate(args):
     args.output.mkdir(parents=True, exist_ok=False)
     metrics = args.output / "metrics.json"
     metrics.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
-    _publish(args.output, dict(**_schema(), score_sha256=score_meta["sha256"]["scores.npz"],
+    _publish(args.output, dict(**_schema(identity), score_sha256=score_meta["sha256"]["scores.npz"],
                                paired_pack_sha256=label_meta["sha256"]["rows.npz"]), [metrics])
 
 
@@ -356,6 +415,8 @@ def main():
     f = sub.add_parser("fit")
     f.add_argument("--data", type=Path, required=True)
     f.add_argument("--jobs", type=int, default=1)
+    f.add_argument("--additional-training", type=Path, action="append", default=[],
+                   help="Additional sealed paired training pack for the same perception version")
     s = sub.add_parser("score")
     s.add_argument("--data", type=Path, required=True)
     s.add_argument("--model", type=Path, required=True)
@@ -374,6 +435,8 @@ def main():
     ev.add_argument("--scores", type=Path, required=True)
     ev.add_argument("--data", type=Path, required=True)
     ev.add_argument("--alarm-cutoff", type=float)
+    for step in (b, f, s, ev):
+        step.add_argument("--adaptation-run", type=Path, help="Verified perception update that produced these features and targets")
     for step in (b, f, s, centers, fw, sw, ev):
         step.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
