@@ -1,0 +1,440 @@
+{
+  "schema_version": "moving-flywheel-evidence-v1",
+  "date": "2026-11-23",
+  "perception": "TwinLiteNet+ Medium v6 EMA",
+  "scope": "One simulator, one front camera and one circuit; six weather presets, 13h and 20h, two laps per condition. Shared physical collection session. Separate exploratory diagnostics and named frozen model pairs.",
+  "training_and_evaluation": {
+    "perception_target": "Frame-level union IoU for valid white and yellow lane pixels.",
+    "primary_quality": "Spatial RF with 56 frame features; no GT in operational prediction. GP comparison used the configured additional hood features.",
+    "alarm_truth": "actual IoU < 0.7",
+    "motion": {
+      "capture": "native simulated RGB/semantic/instance/depth",
+      "transport": "native gRPC",
+      "unit": "eligible frames after temporal/spatial thinning"
+    },
+    "prospective_gate": "Second repetition, with independent ordered input and GT hash checks against pre-frozen candidates. Existing 1613 retention frames from seven historical drives."
+  },
+  "motion": {
+    "completed_laps": 24,
+    "raw": 11544,
+    "files": 46176,
+    "km": 52.213615367190286,
+    "quality_by_hour": {
+      "13": {
+        "rows": 3005,
+        "laps": 12,
+        "low": 697,
+        "normal": 2308,
+        "tp": 441,
+        "fp": 238,
+        "actual_iou": 0.7348725818159576,
+        "rf_mae": 0.07285904388219855,
+        "gp_mae": 0.07717968093069469,
+        "weather_correct": 0.9480865224625624,
+        "hour_correct": 0.8469217970049917,
+        "day_or_night_correct": 0.9793677204658902
+      },
+      "20": {
+        "rows": 2997,
+        "laps": 12,
+        "low": 2997,
+        "normal": 0,
+        "tp": 2992,
+        "fp": 0,
+        "actual_iou": 0.24660077252545515,
+        "rf_mae": 0.0615780586060077,
+        "gp_mae": 0.071160537290906,
+        "weather_correct": 0.9115782449115782,
+        "hour_correct": 0.9172505839172506,
+        "day_or_night_correct": 0.9883216549883217
+      },
+      "all": {
+        "rows": 6002,
+        "laps": 24,
+        "low": 3694,
+        "normal": 2308,
+        "tp": 3433,
+        "fp": 238,
+        "actual_iou": 0.4910620832415431,
+        "rf_mae": 0.06722606939490365,
+        "gp_mae": 0.0741741205360851,
+        "weather_correct": 0.9298567144285238,
+        "hour_correct": 0.8820393202265912,
+        "day_or_night_correct": 0.9838387204265245
+      }
+    }
+  },
+  "raw_verified": {
+    "png_files": 46176,
+    "bytes": 12836701446
+  },
+  "paired_gates": [
+    {
+      "incumbent_quality": "historical_RF_824",
+      "admission": "quality_rank_58",
+      "candidate_quality": "f1_RF_824",
+      "new_n": 1004,
+      "retention_n": 1613,
+      "incumbent": {
+        "new_lane_iou": 0.49675182955893366,
+        "retention_lane_iou": 0.8011343393000493,
+        "quality_mae": 0.09473025368470908
+      },
+      "candidate": {
+        "new_lane_iou": 0.5341572258469353,
+        "retention_lane_iou": 0.7883164594287662,
+        "quality_mae": 0.1094902478694615
+      },
+      "decision": {
+        "promotion_eligible": false,
+        "checks": {
+          "new_lane_improvement": true,
+          "historical_retention": false,
+          "matched_quality_accuracy": false
+        },
+        "delta": {
+          "new_lane_iou": 0.0374053962880016,
+          "retention_lane_iou": -0.012817879871283133,
+          "quality_mae": 0.01475999418475242
+        },
+        "failed_checks": [
+          "historical_retention",
+          "matched_quality_accuracy"
+        ],
+        "deployment_performed": false
+      },
+      "policy_sha256": "5b685d286c939b572911e711fe229f090e376109391ae470ea934de1e800b59a",
+      "evaluator_sha256": "d1c581605eb933bf514ddb935db31b7d2cecfd991e33c168daed1ef32d0c9199",
+      "report_sha256": "90a744f4cd0acb36037ec22dcc0421d7a607ea249ccf7d3649f1224e9fa7f280",
+      "candidate_checkpoint_sha256": "c527031a154cd865eff7ad478eb865149d50bfb9ce416c9139aa3e03e398e24e"
+    },
+    {
+      "incumbent_quality": "historical_RF_824",
+      "admission": "quality_rank_116",
+      "candidate_quality": "f1_RF_824",
+      "new_n": 1004,
+      "retention_n": 1613,
+      "incumbent": {
+        "new_lane_iou": 0.49675182955893366,
+        "retention_lane_iou": 0.8011343393000493,
+        "quality_mae": 0.09473025368470908
+      },
+      "candidate": {
+        "new_lane_iou": 0.5572389696500419,
+        "retention_lane_iou": 0.7962825360452576,
+        "quality_mae": 0.11759123498491982
+      },
+      "decision": {
+        "promotion_eligible": false,
+        "checks": {
+          "new_lane_improvement": true,
+          "historical_retention": true,
+          "matched_quality_accuracy": false
+        },
+        "delta": {
+          "new_lane_iou": 0.06048714009110828,
+          "retention_lane_iou": -0.004851803254791731,
+          "quality_mae": 0.022860981300210734
+        },
+        "failed_checks": [
+          "matched_quality_accuracy"
+        ],
+        "deployment_performed": false
+      },
+      "policy_sha256": "5b685d286c939b572911e711fe229f090e376109391ae470ea934de1e800b59a",
+      "evaluator_sha256": "d1c581605eb933bf514ddb935db31b7d2cecfd991e33c168daed1ef32d0c9199",
+      "report_sha256": "527fe5633edd287b903ef521e559d2f96e5d7abe552059ec20f84301af0775d1",
+      "candidate_checkpoint_sha256": "02a0f94152ea3e1e15e09140b27fe7a914f9931079b0cd9f0966fd62e1d7ac5e"
+    },
+    {
+      "incumbent_quality": "pooled_RF_2552",
+      "admission": "quality_rank_116",
+      "candidate_quality": "f1_RF_824",
+      "new_n": 1004,
+      "retention_n": 1613,
+      "incumbent": {
+        "new_lane_iou": 0.49675182955893366,
+        "retention_lane_iou": 0.8011343393000493,
+        "quality_mae": 0.06772039252203789
+      },
+      "candidate": {
+        "new_lane_iou": 0.5572389696500419,
+        "retention_lane_iou": 0.7962825360452576,
+        "quality_mae": 0.11759123498491982
+      },
+      "decision": {
+        "promotion_eligible": false,
+        "checks": {
+          "new_lane_improvement": true,
+          "historical_retention": true,
+          "matched_quality_accuracy": false
+        },
+        "delta": {
+          "new_lane_iou": 0.06048714009110828,
+          "retention_lane_iou": -0.004851803254791731,
+          "quality_mae": 0.049870842462881926
+        },
+        "failed_checks": [
+          "matched_quality_accuracy"
+        ],
+        "deployment_performed": false
+      },
+      "policy_sha256": "5b685d286c939b572911e711fe229f090e376109391ae470ea934de1e800b59a",
+      "evaluator_sha256": "d1c581605eb933bf514ddb935db31b7d2cecfd991e33c168daed1ef32d0c9199",
+      "report_sha256": "30657525fe7b9f108a3f1ea0001d0ce85167a73e3802d68a6cecc873de28f002",
+      "candidate_checkpoint_sha256": "02a0f94152ea3e1e15e09140b27fe7a914f9931079b0cd9f0966fd62e1d7ac5e"
+    }
+  ],
+  "live_review": [
+    {
+      "weather": "snowy",
+      "hour": 20,
+      "scorer": "historical_RF_824",
+      "candidates": 482,
+      "actual_low_iou": 482,
+      "reviewed": 49,
+      "selected_low_iou": 49,
+      "uniform_expected": 48.999999999999986,
+      "confidence_rank_low_iou": 49,
+      "service_p95_ms": 199.75922672310844,
+      "decision_wait_p95_seconds": 79.93462495803831,
+      "all_rgb_bytes": 559945506,
+      "selected_rgb_bytes": 56786355
+    },
+    {
+      "weather": "foggy",
+      "hour": 20,
+      "scorer": "historical_RF_824",
+      "candidates": 483,
+      "actual_low_iou": 483,
+      "reviewed": 49,
+      "selected_low_iou": 49,
+      "uniform_expected": 48.999999999999986,
+      "confidence_rank_low_iou": 49,
+      "service_p95_ms": 197.7466786862351,
+      "decision_wait_p95_seconds": 72.9942642211914,
+      "all_rgb_bytes": 386520545,
+      "selected_rgb_bytes": 38800282
+    },
+    {
+      "weather": "foggy",
+      "hour": 13,
+      "scorer": "historical_RF_824",
+      "candidates": 485,
+      "actual_low_iou": 80,
+      "reviewed": 49,
+      "selected_low_iou": 25,
+      "uniform_expected": 8.140625,
+      "confidence_rank_low_iou": 24,
+      "service_p95_ms": 198.21738342288882,
+      "decision_wait_p95_seconds": 76.04608807563781,
+      "all_rgb_bytes": 447408143,
+      "selected_rgb_bytes": 45051218
+    },
+    {
+      "weather": "snowy",
+      "hour": 13,
+      "scorer": "historical_RF_824",
+      "candidates": 483,
+      "actual_low_iou": 148,
+      "reviewed": 49,
+      "selected_low_iou": 34,
+      "uniform_expected": 15.107589285714273,
+      "confidence_rank_low_iou": 37,
+      "service_p95_ms": 202.8102056705393,
+      "decision_wait_p95_seconds": 76.4458574295044,
+      "all_rgb_bytes": 603526416,
+      "selected_rgb_bytes": 61150404
+    },
+    {
+      "weather": "rainy",
+      "hour": 20,
+      "scorer": "pooled_RF_2552",
+      "candidates": 477,
+      "actual_low_iou": 477,
+      "reviewed": 48,
+      "selected_low_iou": 48,
+      "uniform_expected": 47.99999999999998,
+      "confidence_rank_low_iou": 48,
+      "service_p95_ms": 200.78331485856324,
+      "decision_wait_p95_seconds": 80.51323236227036,
+      "all_rgb_bytes": 379589324,
+      "selected_rgb_bytes": 37779051
+    },
+    {
+      "weather": "cloudy",
+      "hour": 13,
+      "scorer": "pooled_RF_2552",
+      "candidates": 484,
+      "actual_low_iou": 58,
+      "reviewed": 49,
+      "selected_low_iou": 24,
+      "uniform_expected": 5.8125,
+      "confidence_rank_low_iou": 25,
+      "service_p95_ms": 202.6051085209474,
+      "decision_wait_p95_seconds": 79.33567423820494,
+      "all_rgb_bytes": 632752875,
+      "selected_rgb_bytes": 63851080
+    }
+  ],
+  "roi_sensitivity": [
+    {
+      "arm": "all",
+      "target": "weather",
+      "rows": 6002,
+      "balanced_accuracy": 0.9300754755784895,
+      "changed_accuracy_ci_same_100m_blocks": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "arm": "only_hood",
+      "target": "weather",
+      "rows": 6002,
+      "balanced_accuracy": 0.6215780165236994,
+      "changed_accuracy_ci_same_100m_blocks": [
+        -0.34230574101261296,
+        -0.2734811168708057
+      ]
+    },
+    {
+      "arm": "only_road",
+      "target": "weather",
+      "rows": 6002,
+      "balanced_accuracy": 0.7410106311777667,
+      "changed_accuracy_ci_same_100m_blocks": [
+        -0.21614686291260565,
+        -0.15919268159784197
+      ]
+    },
+    {
+      "arm": "only_sky",
+      "target": "weather",
+      "rows": 6002,
+      "balanced_accuracy": 0.9233435747846181,
+      "changed_accuracy_ci_same_100m_blocks": [
+        -0.032585202469344564,
+        0.013914471360358375
+      ]
+    },
+    {
+      "arm": "without_hood",
+      "target": "weather",
+      "rows": 6002,
+      "balanced_accuracy": 0.9345380983856639,
+      "changed_accuracy_ci_same_100m_blocks": [
+        -0.005967752834338402,
+        0.01672091983583919
+      ]
+    },
+    {
+      "arm": "all",
+      "target": "hour",
+      "rows": 6002,
+      "balanced_accuracy": 0.8820861904611211,
+      "changed_accuracy_ci_same_100m_blocks": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "arm": "only_hood",
+      "target": "hour",
+      "rows": 6002,
+      "balanced_accuracy": 0.694229615083747,
+      "changed_accuracy_ci_same_100m_blocks": [
+        -0.23030777239609182,
+        -0.15049761177563625
+      ]
+    },
+    {
+      "arm": "only_road",
+      "target": "hour",
+      "rows": 6002,
+      "balanced_accuracy": 0.6018397210299595,
+      "changed_accuracy_ci_same_100m_blocks": [
+        -0.3201371975633867,
+        -0.2406148463924765
+      ]
+    },
+    {
+      "arm": "only_sky",
+      "target": "hour",
+      "rows": 6002,
+      "balanced_accuracy": 0.7399828558453073,
+      "changed_accuracy_ci_same_100m_blocks": [
+        -0.17000270819228167,
+        -0.10982227697642717
+      ]
+    },
+    {
+      "arm": "without_hood",
+      "target": "hour",
+      "rows": 6002,
+      "balanced_accuracy": 0.8354896216238423,
+      "changed_accuracy_ci_same_100m_blocks": [
+        -0.07901792595365413,
+        -0.012357010840506413
+      ]
+    }
+  ],
+  "fixed_center_motion": {
+    "emeans": {
+      "second_repetition_laps": 12,
+      "mean_changes_per_km": 3.5466408454190614,
+      "fraction_beyond_calibration_95pct_distance": 0.08066666666666666
+    },
+    "kmeans": {
+      "second_repetition_laps": 12,
+      "mean_changes_per_km": 4.548597124452658,
+      "fraction_beyond_calibration_95pct_distance": 0.07633333333333334
+    }
+  },
+  "factorial_new_lane_iou_delta_per_lap": {
+    "FrozenQualityRank/58/240": {
+      "laps": 12,
+      "mean_of_laps": 0.03743635161335644
+    },
+    "Random/58/240": {
+      "laps": 12,
+      "mean_of_laps": 0.035951724306605766
+    },
+    "FrozenQualityRank/116/240": {
+      "laps": 12,
+      "mean_of_laps": 0.060533022042267376
+    },
+    "Random/116/240": {
+      "laps": 12,
+      "mean_of_laps": 0.049440291221545335
+    },
+    "FrozenQualityRank/58/1200": {
+      "laps": 12,
+      "mean_of_laps": 0.07486061584614027
+    },
+    "Random/58/1200": {
+      "laps": 12,
+      "mean_of_laps": 0.0802053116259041
+    },
+    "FrozenQualityRank/116/1200": {
+      "laps": 12,
+      "mean_of_laps": 0.07835195965260072
+    },
+    "Random/116/1200": {
+      "laps": 12,
+      "mean_of_laps": 0.08239071163878821
+    }
+  },
+  "evidence_sha256": {
+    "moving_capture_integrity.json": "1488c3f5be6d33acc0709e082c497e6d327db64f605f8a4afd13b64873bbdfd7",
+    "moving_environment_quality.csv": "ee40d3392b4808c4c9cff0221a0c684e0037c91ee6689b58ba02251d22dc5939",
+    "matched_cycle_gate.json": "2bb81395b97e348146f16955e1c65ddd6405980ba3de8f6f87cfe32cd9feefc5",
+    "expanded_admission_cycle_gate.json": "727d8dbaa5a2df2e5ca580d6f2d6010b1f7672c2065b459358ca14bb8759dc24",
+    "current_incumbent_cycle_gate.json": "26e74ea1776b05bc1357db253835ba8cded952f63817b491fd5e3cd59401488b",
+    "live_motion_audit.json": "a4c1615e02c0348623362b67edb473864da54c43390591baf58f42e585c2ad59",
+    "pooled_live_audit.json": "282e8cbdec4461ad62de5a8eec98627052417bdecfbac1fc8661fb65df60bb6f",
+    "live_review_storage.csv": "8f3b8f946bb85ee804db957f7485410445cd1dbb950effc31482a0ca104c1abf",
+    "live_review_controls.csv": "88950c9e6a1c16641f0df77cd44bea4c817956c5d957c21c6c367f4ed379e6bc",
+    "moving_roi_ablation_full.csv": "4c047ec81c82c74b39c0693c2972146b0760b1ae4994170f819682d2b9b63bba"
+  }
+}
