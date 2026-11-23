@@ -325,9 +325,9 @@
       "status": "historical_semantic_polygon_template_not_current_grid"
     },
     {
-      "path": "../development/port_inventory_v1.json",
+      "path": "../baselines/port_inventory_v1.json",
       "status": "historical_source_snapshot_and_actions",
-      "current_porting_guidance": "../development/코드이식_분담계획.md"
+      "current_porting_guidance": "../archive/코드이식_분담계획.md"
     }
   ],
   "implementation_pending": [
@@ -367,15 +367,15 @@
     ]
   },
   "implementation_evidence": [
-    "../development/X_y_데이터셋.md",
-    "../development/회귀학습_선별평가.md",
-    "../development/선별자료_인지모델_재학습.md"
+    "../archive/X_y_데이터셋.md",
+    "../archive/회귀학습_선별평가.md",
+    "../archive/선별자료_인지모델_재학습.md"
   ],
   "execution_protocol": "../../config/quality_training_v1.json",
-  "current_results": "../project/품질추정_실험결과_20261116.md",
+  "current_results": "../experiments/품질추정_실험결과_20261116.md",
   "integrated_objective": "기계학습 기반 인지 품질 추정을 통한 딥러닝 인지모델 개선 데이터 플라이휠 구축",
   "integrated_course_scope": "One shared ML/Capstone project; historical presentation scope is not a ceiling on subsequent authorized development.",
-  "current_integrated_roadmap": "../project/통합_데이터플라이휠_개발현황_20261116.md",
+  "current_integrated_roadmap": "../archive/통합_데이터플라이휠_개발현황_20261116.md",
   "versioned_update": {
     "explicit_adaptation_run_required": true,
     "checkpoint_and_target_policy_hash_bound": true,
@@ -386,7 +386,7 @@
     "acceptance_policy": "../../config/cycle_acceptance_v1.json",
     "deployment_automatic": false
   },
-  "current_cycle_results": "../project/통합주기_검증결과_20261116.md",
+  "current_cycle_results": "../experiments/통합주기_검증결과_20261116.md",
   "current_integration_validation": {
     "date": "2026-11-16",
     "unit_tests_passed": 90,
@@ -410,5 +410,5 @@
     "additional_freeze_before_capture_verified": true,
     "all_evaluated_update_candidates_held": true
   },
-  "additional_cycle_results": "../project/출력유지_제약모델_추가검증_20261116.md"
+  "additional_cycle_results": "../experiments/출력유지_제약모델_추가검증_20261116.md"
 }

@@ -1,6 +1,6 @@
 """대상 인지 모델의 추론 결과를 카메라별·BEV로 시각화하고 원본·마스크를 따로 저장한다.
 
-컨테이너에서 실행한다 (docs/development/개발환경.md):
+컨테이너에서 실행한다 (docs/guides/개발환경.md):
 
   scripts/run_container.sh python3 -m visualization.visualize_inference \\
       --split val --name m_v6_val

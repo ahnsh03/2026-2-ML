@@ -1,7 +1,7 @@
 """대상 인지 모델 로딩과 공통 유틸.
 
 인지 모듈(``twinlite_morai``, ``drivable_bev``, ``camera_semantic_perception``)은 이 레포 ``src/``에 있다.
-이관 기록은 ``docs/development/외부코드_선별.md``에 있다.
+이관 기록은 ``docs/archive/외부코드_선별.md``에 있다.
 """
 
 from __future__ import annotations
