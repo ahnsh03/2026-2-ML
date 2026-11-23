@@ -14,6 +14,7 @@ from common.bridge import sha256_file
 from .artifacts import write_json
 from .build_dataset import collate
 from .dataset_io import require
+from .environment_reference import load_reference, with_shortfall
 from .image_io import resolve_input
 from .infer_images import RGBQualityScorer, load_rgb_row
 from .models import QUALITY_MODELS
@@ -30,12 +31,15 @@ def append(stream, value):
 
 
 def run_stream(lines, scorer, data_root, out, window_frames, budget_percent,
-               audit_fraction=.2, seed=20261116, priority_policy="quality"):
+               audit_fraction=.2, seed=20261116, priority_policy="quality", environment_reference=None):
     """Consume one chronological session. Source RGBs must be available until their window closes."""
     require(priority_policy != "cluster_round_robin" or scorer.centers is not None,
             "environment-aware review requires frozen centers")
     require(priority_policy != "quality_uncertainty" or scorer.metadata["model"] == "GaussianProcess",
             "uncertainty review requires a frozen GP")
+    require((environment_reference is not None) == (priority_policy == "environment_relative"),
+            "supply a frozen environment reference with environment_relative")
+    reference = load_reference(environment_reference, scorer.metadata) if environment_reference is not None else None
     out.mkdir(parents=True, exist_ok=False)
     copies = out / "selected_rgb"
     copies.mkdir()
@@ -45,6 +49,10 @@ def run_stream(lines, scorer, data_root, out, window_frames, budget_percent,
     record["source_sha256"] = {name: sha256_file(Path(__file__).with_name(name)) for name in
                                ("stream_review.py", "infer_images.py", "review_queue.py", "features.py",
                                 "environment_features.py", "environment_clusters.py", "calibration.py", "image_io.py")}
+    if environment_reference is not None:
+        record["environment_reference_sha256"] = sha256_file(environment_reference / "run.json")
+        record["source_sha256"]["environment_reference.py"] = sha256_file(Path(__file__).with_name("environment_reference.py"))
+        write_json(out / "environment_reference.json", reference)
     write_json(out / "run.json", record)
     if scorer.centers_bytes is not None:
         (out / "environment_centers.json").write_bytes(scorer.centers_bytes)
@@ -66,6 +74,8 @@ def run_stream(lines, scorer, data_root, out, window_frames, budget_percent,
             results, _, _ = scorer.score(*collate([item]))
             result = dict(results[0], image=row["image"], received_utc=received,
                           scored_utc=utc(), service_seconds=time.perf_counter()-start)
+            if reference is not None:
+                result = with_shortfall(result, reference)
             manifest_digest.update((json.dumps(row, sort_keys=True, separators=(",", ":")) + "\n").encode())
             counts["input_rows"] += 1
             append(score_log, result)
@@ -114,13 +124,14 @@ def main():
     parser.add_argument("--audit-fraction", default=.2, type=float)
     parser.add_argument("--seed", default=20261116, type=int)
     parser.add_argument("--priority-policy", choices=PRIORITY_POLICIES, default="quality")
+    parser.add_argument("--environment-reference", type=Path, help="Frozen lower-quintile IoU reference")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     args = parser.parse_args()
     scorer = RGBQualityScorer(args.model_run, args.model, args.device, adaptation_run=args.adaptation_run,
                               checkpoint=args.checkpoint, alarm_calibration=args.alarm_calibration,
                               environment_centers=args.environment_centers)
     counts = run_stream(sys.stdin, scorer, args.data_root, args.output_dir, args.window_frames,
-                        args.budget_percent, args.audit_fraction, args.seed, args.priority_policy)
+                        args.budget_percent, args.audit_fraction, args.seed, args.priority_policy, args.environment_reference)
     print(json.dumps(counts), flush=True)
 
 

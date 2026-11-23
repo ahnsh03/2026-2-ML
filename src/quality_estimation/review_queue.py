@@ -13,9 +13,10 @@ from common.bridge import sha256_file
 from .artifacts import write_json
 from .cycle_gate import completed_run
 from .dataset_io import require
+from .environment_reference import load_reference, with_shortfall
 
 
-PRIORITY_POLICIES = ("quality", "cluster_round_robin", "quality_uncertainty")
+PRIORITY_POLICIES = ("quality", "cluster_round_robin", "quality_uncertainty", "environment_relative")
 
 
 def _validate_scores(row, priority_policy):
@@ -24,6 +25,11 @@ def _validate_scores(row, priority_policy):
     if priority_policy == "cluster_round_robin":
         group = row.get("environment_cluster")
         require(type(group) is int and group >= 0, "expected a nonnegative environment cluster on every row")
+    if priority_policy == "environment_relative":
+        reference = row.get("environment_reference_iou")
+        shortfall = row.get("estimated_iou_shortfall")
+        require(type(reference) in (int, float) and 0 <= reference <= 1 and
+                shortfall == reference - row["estimated_iou"], "expected a model-bound environment IoU shortfall")
     if priority_policy == "quality_uncertainty":
         sigma = row.get("prediction_std")
         require(type(sigma) in (int, float) and math.isfinite(sigma) and sigma >= 0,
@@ -63,6 +69,10 @@ def choose_for_review(predictions, budget, audit_fraction=.2, seed=20261116, *, 
         pool.sort(key=lambda row: within_cluster[row["sample_id"]])
         priority_reason = "environment_round_robin"
         priority_order = "within-cluster rank, then estimated_iou, then sample_id"
+    if priority_policy == "environment_relative":
+        pool.sort(key=lambda row: (-row["estimated_iou_shortfall"], row["sample_id"]))
+        priority_reason = "largest_environment_shortfall"
+        priority_order = "training cluster IoU lower quintile minus estimated_iou descending, then sample_id"
     priority = [(row, priority_reason) for row in pool[:priority_count]]
     details = {}
     if priority_policy == "quality_uncertainty":
@@ -138,6 +148,7 @@ def main():
     p.add_argument('--audit-fraction',type=float,default=.2)
     p.add_argument('--seed',type=int,default=20261116)
     p.add_argument('--priority-policy', choices=PRIORITY_POLICIES, default='quality')
+    p.add_argument('--environment-reference',type=Path,help='Frozen training reference required by environment_relative')
     p.add_argument('--purpose',choices=('candidate_pool','demonstration_only'),required=True,
                    help='Never admit held-out evaluation frames to training; use demonstration_only for them')
     p.add_argument('--output-dir',type=Path,required=True)
@@ -157,6 +168,11 @@ def main():
         require(not expected or expected['rgb']==row['rgb_sha256'],'review RGB hash differs')
     if a.priority_policy == "cluster_round_robin":
         require(bool(run.get("environment_centers_sha256")), "environment-aware review requires frozen centers in inference")
+    require((a.environment_reference is not None) == (a.priority_policy == "environment_relative"),
+            "supply a frozen environment reference with environment_relative")
+    if a.environment_reference is not None:
+        reference = load_reference(a.environment_reference, run)
+        predictions = [with_shortfall(row, reference) for row in predictions]
     if a.priority_policy == "quality_uncertainty":
         require(run.get("model") == "GaussianProcess", "uncertainty review requires a frozen GP inference run")
     require((a.window_frames is None) == (a.budget_percent is None),
@@ -182,6 +198,10 @@ def main():
                       duplicate_policy="first occurrence in manifest order across the session")
     if a.priority_policy == "cluster_round_robin":
         policy["environment_centers_sha256"] = run["environment_centers_sha256"]
+    if a.environment_reference is not None:
+        policy["priority_policy"] = a.priority_policy
+        policy["environment_reference_sha256"] = sha256_file(a.environment_reference / "run.json")
+        policy["environment_centers_sha256"] = run["environment_centers_sha256"]
     by_id={r['sample_id']:r for r in source};queue=[]
     for rank,(row,reason) in enumerate(chosen,1):
         src=by_id[row['sample_id']]
@@ -190,6 +210,9 @@ def main():
                           estimated_iou=row['estimated_iou'],review_reason=reason,purpose=a.purpose))
         if window_records:
             queue[-1]["window"] = selected_window[row["sample_id"]]
+        if a.environment_reference is not None:
+            queue[-1].update({key: row[key] for key in
+                             ("environment_cluster", "environment_reference_iou", "estimated_iou_shortfall")})
         if a.priority_policy == "cluster_round_robin":
             queue[-1]["environment_cluster"] = row["environment_cluster"]
         if a.priority_policy == "quality_uncertainty":
@@ -205,6 +228,8 @@ def main():
             fields.append("environment_cluster")
         if a.priority_policy == "quality_uncertainty":
             fields.append("prediction_std")
+        if a.environment_reference is not None:
+            fields.extend(["environment_cluster", "environment_reference_iou", "estimated_iou_shortfall"])
         if window_records:
             fields.append("window")
         writer=csv.DictWriter(f,fieldnames=fields,extrasaction='ignore');writer.writeheader();writer.writerows(queue)
