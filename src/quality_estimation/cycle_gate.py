@@ -81,7 +81,8 @@ def check_paired(incumbent, candidate):
                 "cycle lane denominators differ")
 
 
-def quality_mae(directories, model_run, model, perception):
+def quality_errors(directories, model_run, model, perception):
+    """Validate the quality predictions and retain errors keyed by defined frame ID."""
     predictions = {}
     for directory in directories:
         directory=Path(directory);run=completed_run(directory)
@@ -92,7 +93,7 @@ def quality_mae(directories, model_run, model, perception):
                 sid=row["sample_id"];require(sid not in predictions,"duplicate cycle quality row")
                 predictions[sid]=row
     require(list(predictions) == list(perception), "quality/perception evaluation rows differ")
-    errors=[]
+    errors={}
     for sid,row in predictions.items():
         target=perception[sid]["metrics"]["lane"]["iou"]
         require(bool(row["actual_iou"]) == (target is not None), "quality target defined mask differs")
@@ -100,9 +101,14 @@ def quality_mae(directories, model_run, model, perception):
             require(abs(float(row["actual_iou"])-target)<=3e-8, "quality target differs from perception")
             prediction=float(row[model+"_clipped"])
             require(math.isfinite(prediction) and 0 <= prediction <= 1,"invalid quality estimate")
-            errors.append(abs(prediction-float(row["actual_iou"])))
+            errors[sid] = abs(prediction - float(row["actual_iou"]))
     require(bool(errors),"no defined quality targets")
-    return math.fsum(errors)/len(errors)
+    return errors
+
+
+def quality_mae(directories, model_run, model, perception):
+    errors = quality_errors(directories, model_run, model, perception)
+    return math.fsum(errors.values()) / len(errors)
 
 
 def lane_mean(records):
@@ -111,7 +117,7 @@ def lane_mean(records):
     return math.fsum(values)/len(values)
 
 
-def condition_deltas(incumbent, candidate):
+def condition_deltas(incumbent, candidate, *, paired_quality_errors=None):
     """Expose subgroup regressions even when the pooled acceptance metric improves."""
     groups={}
     for sid,row in incumbent.items():
@@ -124,6 +130,12 @@ def condition_deltas(incumbent, candidate):
         right=lane_mean({sid:candidate[sid] for sid in defined}) if defined else None
         result[key]=dict(rows=len(ids),defined_rows=len(defined),incumbent_lane_iou=left,candidate_lane_iou=right,
                          delta=right-left if defined else None)
+        if paired_quality_errors is not None:
+            old_errors, new_errors = paired_quality_errors
+            old_mae = math.fsum(old_errors[sid] for sid in defined) / len(defined) if defined else None
+            new_mae = math.fsum(new_errors[sid] for sid in defined) / len(defined) if defined else None
+            result[key].update(incumbent_quality_mae=old_mae, candidate_quality_mae=new_mae,
+                               quality_mae_delta=new_mae - old_mae if defined else None)
     return result
 
 
@@ -179,10 +191,12 @@ def main():
     require(not set(left).intersection(oldleft), "new/retention evaluation IDs overlap")
     require(not {r["pixel_sha256"] for r in left.values()}.intersection(
                 r["pixel_sha256"] for r in oldleft.values()), "new/retention RGB pixels overlap")
+    old_errors = quality_errors(a.incumbent_quality_evaluation, a.incumbent_model_run, base["model"], left)
+    new_errors = quality_errors(a.candidate_quality_evaluation, a.candidate_model_run, updated["model"], right)
     incumbent=dict(new_lane_iou=lane_mean(left),retention_lane_iou=lane_mean(oldleft),
-                   quality_mae=quality_mae(a.incumbent_quality_evaluation,a.incumbent_model_run,base["model"],left))
+                   quality_mae=math.fsum(old_errors.values()) / len(old_errors))
     candidate=dict(new_lane_iou=lane_mean(right),retention_lane_iou=lane_mean(oldright),
-                   quality_mae=quality_mae(a.candidate_quality_evaluation,a.candidate_model_run,updated["model"],right))
+                   quality_mae=math.fsum(new_errors.values()) / len(new_errors))
     policy=json.loads(a.policy.read_text());decision=assess_update(incumbent,candidate,policy)
     evidence={}
     for values in vars(a).values():
@@ -195,7 +209,7 @@ def main():
                 incumbent=incumbent,candidate=candidate,new_rows=len(left),retention_rows=len(oldleft),
                 head_diagnostics={"new": head_support_diagnostics(left, right),
                                   "retention": head_support_diagnostics(oldleft, oldright)},
-                new_condition_deltas=condition_deltas(left,right),
+                new_condition_deltas=condition_deltas(left, right, paired_quality_errors=(old_errors, new_errors)),
                 retention_condition_deltas=condition_deltas(oldleft,oldright),
                 candidate_perception_identity=identity,evidence_run_sha256=evidence,paired_inputs_and_gt_verified=True,
                 limitations=["Acceptance bounds are research policy, not statistical significance or safety certification.",

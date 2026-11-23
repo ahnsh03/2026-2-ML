@@ -73,6 +73,22 @@ class CycleGateTests(unittest.TestCase):
         self.assertIsNone(result['delta'])
 
 
+    def test_quality_mae_by_condition_uses_each_versions_defined_frames(self):
+        rows = {}
+        for sid, hour, iou in [("a", 13, .7), ("b", 13, .6), ("c", 23, .4), ("d", 5, None)]:
+            rows[sid] = {"condition": {"hour": hour}, "metrics": {"lane": {"iou": iou}}}
+        old = {"a": .03, "b": .01, "c": .10}
+        new = {"a": .07, "b": .05, "c": .02}
+        groups = condition_deltas(rows, rows, paired_quality_errors=(old, new))
+        day = groups['{"hour": 13}']
+        self.assertAlmostEqual(day["incumbent_quality_mae"], .02)
+        self.assertAlmostEqual(day["candidate_quality_mae"], .06)
+        self.assertAlmostEqual(day["quality_mae_delta"], .04)
+        self.assertAlmostEqual(groups['{"hour": 23}']["quality_mae_delta"], -.08)
+        self.assertIsNone(groups['{"hour": 5}']["candidate_quality_mae"])
+        self.assertIsNone(groups['{"hour": 5}']["quality_mae_delta"])
+        self.assertNotIn("quality_mae_delta", condition_deltas(rows, rows)['{"hour": 13}'])
+
     def test_present_frame_iou_cannot_hide_new_predictions_on_absent_ground_truth(self):
         def scene(tp, fp, fn):
             union = tp + fp + fn
