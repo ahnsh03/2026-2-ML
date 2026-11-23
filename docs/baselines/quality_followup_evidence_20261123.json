@@ -4831,6 +4831,129 @@
       }
     ]
   },
+  "cluster_within_pose_shuffle": {
+    "input_sha256": "b098eab3f0bb24b51bb179eeb1a275cf2b2670ace687c7dea9e62e76781365de",
+    "draws": 5000,
+    "seed": 20261123,
+    "rows": 144,
+    "poses": 12,
+    "post_hoc": true,
+    "method": "Permute frozen assignments among the 12 conditions separately at each pose. The same draws are used for both methods. This retains per-pose center counts and breaks their association with the paired weather/hour labels. Quantiles describe the shuffle null and are not cross-map uncertainty.",
+    "results": [
+      {
+        "method": "emeans",
+        "largest_cluster_rows": 78,
+        "occupied": 7,
+        "effective_clusters_inverse_simpson": 2.9922077922077928,
+        "contrasts": [
+          {
+            "contrast": "same_weather_hour_different_pose",
+            "pairs": 360,
+            "observed": 340,
+            "null_mean_count": 127.9012,
+            "null_count_quantiles_025_975": [
+              115.0,
+              143.02499999999964
+            ]
+          },
+          {
+            "contrast": "only_weather_changed_same_pose",
+            "pairs": 144,
+            "observed": 95,
+            "null_mean_count": 100.6102,
+            "null_count_quantiles_025_975": [
+              93.0,
+              107.0
+            ]
+          },
+          {
+            "contrast": "only_hour_changed_same_pose",
+            "pairs": 216,
+            "observed": 123,
+            "null_mean_count": 150.7216,
+            "null_count_quantiles_025_975": [
+              142.0,
+              158.0
+            ]
+          }
+        ]
+      },
+      {
+        "method": "kmeans",
+        "largest_cluster_rows": 66,
+        "occupied": 7,
+        "effective_clusters_inverse_simpson": 3.728155339805826,
+        "contrasts": [
+          {
+            "contrast": "same_weather_hour_different_pose",
+            "pairs": 360,
+            "observed": 307,
+            "null_mean_count": 104.5224,
+            "null_count_quantiles_025_975": [
+              92.0,
+              120.0
+            ]
+          },
+          {
+            "contrast": "only_weather_changed_same_pose",
+            "pairs": 144,
+            "observed": 107,
+            "null_mean_count": 108.275,
+            "null_count_quantiles_025_975": [
+              100.0,
+              115.0
+            ]
+          },
+          {
+            "contrast": "only_hour_changed_same_pose",
+            "pairs": 216,
+            "observed": 128,
+            "null_mean_count": 162.208,
+            "null_count_quantiles_025_975": [
+              153.0,
+              170.0
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cluster_within_pose_exact_expectation": {
+    "emeans": {
+      "same_weather_hour_different_pose": {
+        "pairs": 360,
+        "observed": 340,
+        "shuffled_expected": 127.91666666666607
+      },
+      "only_weather_changed_same_pose": {
+        "pairs": 144,
+        "observed": 95,
+        "shuffled_expected": 100.54545454545476
+      },
+      "only_hour_changed_same_pose": {
+        "pairs": 216,
+        "observed": 123,
+        "shuffled_expected": 150.81818181818198
+      }
+    },
+    "kmeans": {
+      "same_weather_hour_different_pose": {
+        "pairs": 360,
+        "observed": 307,
+        "shuffled_expected": 104.50000000000011
+      },
+      "only_weather_changed_same_pose": {
+        "pairs": 144,
+        "observed": 107,
+        "shuffled_expected": 108.18181818181843
+      },
+      "only_hour_changed_same_pose": {
+        "pairs": 216,
+        "observed": 128,
+        "shuffled_expected": 162.27272727272728
+      }
+    }
+  },
   "straight_road_signed_examples": {
     "rule": "Show the most over- and under-estimated straight poses in the fixed 13h study under common sunny weather.",
     "condition": "sunny 13h",
@@ -5299,6 +5422,8 @@
     "refreshed_gp_transfer.json": "6261db7971d0e5cf3377ae9b70a932e2d88b2ca9d17149d859a3ee8ad051771f",
     "mixed_gate_spatial_sensitivity.json": "0520e21408d3929ffadc13dbe68a71828dac3f82fbbc6a14d77011edeabfbd7a",
     "mixed_quality_transition_response.json": "53dc2c12845af6687963ebed100ea184e8c3343168a82b28be1a9fe221105ed8",
+    "cluster_pose_permutation.json": "c81b313baa12b5c8cd17f6e11e7d626d01b4cbc1bf7090ad4275993b6e2974ec",
+    "cluster_pose_exact_null.json": "83af9504dcf72f84507057a8182301f551cb1f72c04f8c8272e835003e433b41",
     "road_shape_counterexamples.json": "91eced6f24d4e1dbdcefac1a4cfa3c49412ebc1f1e062511a1f211a1a2c61f00",
     "road_shape_fp_material.json": "b86cc1ce9388563db85ad4d4a8e9f1d9126b8026922b65edad765d9d6702ca11",
     "crosswalk_marking_errors.json": "2e1e2bc5f8406f5d4fa9711c1668c6257f6957dd2e601727ac5f81b3521c2e89",
