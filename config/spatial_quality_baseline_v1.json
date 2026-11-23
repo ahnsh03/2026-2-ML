@@ -1,0 +1,25 @@
+{
+  "version": "spatial-quality-baseline-20261124",
+  "roi_profile": "roi7_front_v1",
+  "profile_version": "roi7-front-v1",
+  "regions_sha256": "b226b0f7082ef57048a80297e605ff76b5a39c09022563be0a55b3a0d7a6962d",
+  "feature_set": "base12",
+  "include_global": true,
+  "dimensions": 96,
+  "target": "one whole-frame white+yellow lane IoU",
+  "perception_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+  "reference_model": "RF",
+  "rf_parameters": {
+    "n_estimators": 128,
+    "min_samples_leaf": 8,
+    "max_features": 0.5,
+    "max_depth": null
+  },
+  "comparison_model": "GP",
+  "gp_parameters": {
+    "length_multiplier": 1.0,
+    "noise_variance": 0.15
+  },
+  "status": "ROI baseline selected; final feature subset, quality model, environment policy and online bundle remain under development",
+  "evidence": "docs/experiments/ROI_7\uc601\uc5ed_10\uc601\uc5ed_\ube44\uad50_20261124.md"
+}

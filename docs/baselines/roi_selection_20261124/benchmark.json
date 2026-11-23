@@ -1,0 +1,107 @@
+{
+  "source_sha256": "c2a523e936256b8d18de485ec450334128390fc001063d989b18376abf552e9a",
+  "environment": {
+    "python": "3.12.13",
+    "numpy": "2.5.5",
+    "scipy": "1.18.1",
+    "sklearn": "1.9.1",
+    "opencv": "5.1.0",
+    "processor": "",
+    "cpu_model": "Intel(R) Core(TM) i5-14600K"
+  },
+  "method": "40 identical fresh RGB arrays, 3 passes, alternating ROI order; warm-up excluded; CPU one thread; excludes disk IO and perception inference.",
+  "features": {
+    "base12": {
+      "7": {
+        "n": 120,
+        "mean_ms": 4.919066093862057,
+        "median_ms": 4.857591004110873,
+        "p95_ms": 5.3422627504915
+      },
+      "10": {
+        "n": 120,
+        "mean_ms": 5.209649142731602,
+        "median_ms": 5.15009748050943,
+        "p95_ms": 5.555675370851532
+      }
+    },
+    "base12_global": {
+      "7": {
+        "n": 120,
+        "mean_ms": 5.328354798257351,
+        "median_ms": 5.265269486699253,
+        "p95_ms": 5.731111031491309
+      },
+      "10": {
+        "n": 120,
+        "mean_ms": 5.653558881992164,
+        "median_ms": 5.604898964520544,
+        "p95_ms": 6.0931608255486935
+      }
+    },
+    "robust17": {
+      "7": {
+        "n": 120,
+        "mean_ms": 5.774594695928196,
+        "median_ms": 5.731124023441225,
+        "p95_ms": 6.180117407348007
+      },
+      "10": {
+        "n": 120,
+        "mean_ms": 6.31056437365866,
+        "median_ms": 6.23191602062434,
+        "p95_ms": 6.77522363839671
+      }
+    }
+  },
+  "prediction": {
+    "7_RF": {
+      "arm": "base12_global",
+      "dimensions": 96,
+      "n": 120,
+      "mean_ms": 2.9600379338565594,
+      "median_ms": 2.940520003903657,
+      "p95_ms": 3.1609796569682658
+    },
+    "7_GP": {
+      "arm": "base12_global",
+      "dimensions": 96,
+      "n": 120,
+      "mean_ms": 0.3123192611383274,
+      "median_ms": 0.3060380113311112,
+      "p95_ms": 0.35206469474360347
+    },
+    "7_GP_std": {
+      "arm": "base12_global",
+      "dimensions": 96,
+      "n": 120,
+      "mean_ms": 0.6743762496626005,
+      "median_ms": 0.6573775317519903,
+      "p95_ms": 0.8143002283759415
+    },
+    "10_RF": {
+      "arm": "base12_global",
+      "dimensions": 132,
+      "n": 120,
+      "mean_ms": 3.0757814733078703,
+      "median_ms": 3.031091415323317,
+      "p95_ms": 3.4494695195462555
+    },
+    "10_GP": {
+      "arm": "robust17",
+      "dimensions": 170,
+      "n": 120,
+      "mean_ms": 0.42550762203366804,
+      "median_ms": 0.41343801422044635,
+      "p95_ms": 0.49224059330299486
+    },
+    "10_GP_std": {
+      "arm": "robust17",
+      "dimensions": 170,
+      "n": 120,
+      "mean_ms": 0.8767098644360279,
+      "median_ms": 0.8443364640697837,
+      "p95_ms": 1.188002951676026
+    }
+  }
+}

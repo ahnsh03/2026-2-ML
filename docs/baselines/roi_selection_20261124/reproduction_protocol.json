@@ -1,0 +1,147 @@
+{
+  "schema": "roi-comparison-1",
+  "training_keys": [
+    "z00",
+    "z02",
+    "z06",
+    "z08",
+    "z11",
+    "z14"
+  ],
+  "development_keys": [
+    "z05",
+    "z10"
+  ],
+  "seed": 23411,
+  "feature_arms": [
+    "base12",
+    "base12_global",
+    "robust17"
+  ],
+  "parameters": {
+    "RF": [
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 1.0,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 1.0,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 1.0,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 1.0,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 1.0,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 1.0,
+        "max_depth": null
+      }
+    ],
+    "GP": [
+      {
+        "length_multiplier": 0.5,
+        "noise_variance": 0.01
+      },
+      {
+        "length_multiplier": 0.5,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 0.5,
+        "noise_variance": 0.15
+      },
+      {
+        "length_multiplier": 0.5,
+        "noise_variance": 0.35
+      },
+      {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.01
+      },
+      {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.15
+      },
+      {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.35
+      },
+      {
+        "length_multiplier": 2.0,
+        "noise_variance": 0.01
+      },
+      {
+        "length_multiplier": 2.0,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 2.0,
+        "noise_variance": 0.15
+      },
+      {
+        "length_multiplier": 2.0,
+        "noise_variance": 0.35
+      }
+    ]
+  }
+}

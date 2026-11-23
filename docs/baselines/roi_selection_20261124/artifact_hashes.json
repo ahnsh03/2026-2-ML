@@ -1,0 +1,15 @@
+{
+  "selected_schema.json": "b2f95fd331e427fc5e7369b6005a3c4859cc6b733e94e24350c7f0bf48e96f08",
+  "benchmark.json": "bc5786dcfa1cc43ca9bc32bf9996428e3971079495c4cf2448821975813387f0",
+  "README.md": "c26a82a6296fe37b9e10a1a153248de9421f7f549b96f9ccd06b7da30e409b00",
+  "02_paired_uncertainty.png": "b4d971458437ea466ce481302605f7097da7bf1cabc8f6ca2051611f868eb2fd",
+  "support_sensitivity.json": "8ba15f386f5e25a2c4257f402b8eed4b145265eca4847a5366c6d8ad2c0c75cf",
+  "verification.json": "72e0446911535a6e930944df322b09cde9b80c20482e18b39a7c7bc494362c97",
+  "reproduction_protocol.json": "8f79d743bc737806551c0bb869f7fce8fe19cc737cb484eb46134e2fa1e4b0d8",
+  "results.json": "1f3e43ec29201d69f622942c8ccc8204c8711ed896bcb46cb1c95ff516401fc2",
+  "protocol.json": "83e14901e780bc0b8286621c83f87eba4d249355dc050e455ea3c0f4839ade7d",
+  "development.json": "44db98f91626c39c68b20138f235ab08e558c7316bed85bd1d191c6edf15694e",
+  "04_roi_geometry.png": "9ffdd20a4b91eefe44b75096615af07ab2f8d36bf55fc1818717ae9914978abd",
+  "01_paired_mae.png": "5c67fea3dcc6c90bff8694405f7822c8e2212a5e72076c95cddf305dd4aae098",
+  "05_exact_gt_pair.png": "1605d4144ffa458abbb8ed20fdf27b9501e68fecd65dd23391532a4070866383"
+}

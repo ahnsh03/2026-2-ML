@@ -1,0 +1,122 @@
+{
+  "created_utc": "2026-11-23T13:54:56.108784+00:00",
+  "deadline_kst": "2026-11-24T04:00:00+09:00",
+  "objective": "Select a 7- or 10-region fixed front-camera feature representation for direct whole-frame lane-IoU regression.",
+  "perception": "TwinLiteNet+ Medium v6 fixed; reuse paired RGB and saved four-channel f0 head maps.",
+  "feature_arms": [
+    "base12",
+    "base12_global",
+    "robust17"
+  ],
+  "robust_added_rgb": [
+    "dark_fraction",
+    "intensity_p10",
+    "intensity_median",
+    "intensity_p90_minus_p10",
+    "saturation_median"
+  ],
+  "training": "original six static groups, 1728 frames",
+  "development": "original two static groups, 576 frames",
+  "inner_cv": "3 folds of original six training zones; fit all preprocessing on inner training only.",
+  "model_selection": "tune equal 12 settings per RF/GP and ROI/feature arm on training group-CV; choose the feature arm on original development, separately for each model and ROI.",
+  "primary_diagnostics": [
+    "test18",
+    "geography40",
+    "prospective_known",
+    "stream_new",
+    "other_road"
+  ],
+  "secondary_diagnostics": [
+    "prospective_unseen",
+    "night_challenge",
+    "motion",
+    "switch"
+  ],
+  "primary_budget": 0.1,
+  "secondary_budgets": [
+    0.05,
+    0.2
+  ],
+  "label": "whole-frame white+yellow lane IoU; actual IoU < .7 is low; undefined IoU stays in review budget.",
+  "same_inputs": "identical raw RGB, f0 maps, targets, split membership, inner CV folds, random seeds and review windows for paired ROI comparisons.",
+  "review": "global lowest-score 10 percent and matched 64-frame windows, exact sample-ID tie rule. Report normal denominator and cohort low prevalence.",
+  "decision": "prefer 7 if paired diagnostics show MAE loss <= .003 and Recall@10% loss <= .02 against 10 for the selected practical model, with no repeated missed failure category; otherwise select 10. Report cohort and grouped paired-bootstrap sensitivity instead of counting adjacent frames as independent.",
+  "rf_seeds": [
+    23411,
+    23412,
+    23413
+  ],
+  "bootstrap_seed": 23411,
+  "bootstrap_repetitions": 2000,
+  "integrity": "verify source RGB hashes, cached map IDs/checkpoint, cached target IDs; check duplicate pixels and spatial/group overlap.",
+  "scope_note": "All initial diagnostic images have been examined in previous research with other estimators. This is a paired ROI representation comparison on existing data. Independent future generalization requires a new held road.",
+  "prospective_captures": {
+    "fresh": {
+      "created_utc": "2026-11-23T14:11:12.688960+00:00",
+      "sites": 8,
+      "weather_settings": 6,
+      "hours": [
+        8,
+        13,
+        18,
+        23
+      ],
+      "frames": 192,
+      "minimum_prior_m": 64.92781246516832,
+      "minimum_between_m": 29.99589103916096,
+      "selection": "Map geometry only; new link per site, at least 20m from all 14331 existing analysis frames, at least 25m between sites. Alternate straight and curved when available.",
+      "scope": "Prospective paired camera data scored once by already frozen models. No feature or hyperparameter refit from this collection.",
+      "complete_utc": "2026-11-23T14:25:37.227742+00:00",
+      "integrity": {
+        "sha256": "7245a003ef48a589af9b76d2c6581a5efe6b57875be1e4b74f549f15a4f8a4ce",
+        "n": 192,
+        "defined": 192,
+        "sites": 8,
+        "min_prior_xy_m": 64.9278112425665,
+        "max_requested_actual_xy_m": 7.553016402843822e-05,
+        "all_four_channel_files_hash_verified": true,
+        "decoded_pixel_overlap": 0,
+        "frozen_models_sha256": "2799ebe036a1b5a70de1be600c8e408209ea0181836613e2cf68c055379263c1",
+        "collection_protocol_sha256": "26d8e3f189db4c67294996b7f29d141916bd129425a814f96c8c1f7e42d11cde",
+        "manifest_sha256": "ab825347c1ad7928187f781a4308b4f23ff77d62d7ec86028529140e51645f1e",
+        "inference_sha256": "4ee387c28389976cd4c294ea78941b0d0bc0545cbf3d46d7bc4eedbdd3c2d912",
+        "extractor_sha256": "de415372f79fa38f9e0618fc2e7a1f5ef5caa735ba95d06a9bf54161cbf2979e"
+      },
+      "simulator_settings_restored": true
+    },
+    "fresh_marked": {
+      "created_utc": "2026-11-23T14:29:32.930105+00:00",
+      "sites": 12,
+      "weather_settings": 6,
+      "hours": [
+        8,
+        13,
+        18,
+        23
+      ],
+      "frames": 288,
+      "minimum_prior_m": 53.16421112234409,
+      "minimum_between_m": 48.55638983683708,
+      "selection": "Supplementary geometry-and-map-metadata selection after reviewing sparse marking in the first cohort: both left/right lane_mark references must be nonempty. New link per site, >=20m from all existing archived and first prospective frames, >=25m between sites. Alternating straight/curved where available. No camera frame, target, or prediction used to rank these locations.",
+      "scope": "Second prospective paired cohort for marked-road coverage, prompted by data-quality audit. Score once by the same already frozen models; no feature or hyperparameter refit. Keep the first cohort fully reported, including sparse lane scenes.",
+      "complete_utc": "2026-11-23T14:48:23.314357+00:00",
+      "integrity": {
+        "sha256": "f615425657e0595a0c89e9bf247ca395a8054886cc10e6005f3fdd9924ed840f",
+        "n": 288,
+        "defined": 288,
+        "sites": 12,
+        "min_prior_xy_m": 53.16412818625091,
+        "max_requested_actual_xy_m": 0.0009011256614392021,
+        "all_four_channel_files_hash_verified": true,
+        "decoded_pixel_overlap": 0,
+        "frozen_models_sha256": "2799ebe036a1b5a70de1be600c8e408209ea0181836613e2cf68c055379263c1",
+        "collection_protocol_sha256": "2257f33a6de997cbbbc3e91b51872db79f1ca91e279bd37f893d3b3de385fb72",
+        "manifest_sha256": "1494db4d0d02dc499812271c3dcb4ada92279feb9088886eb84f1a914076f987",
+        "inference_sha256": "03b75a6112887f176e80a4aef89dc331ff5739f1d79c1ac272cca5387e24e7f8",
+        "extractor_sha256": "59209335d3a2f37a65256a063b9516e9dbf8d8fc94a17578cc1c01f3df5a0e14"
+      },
+      "simulator_settings_restored": true
+    }
+  },
+  "interpretation": "The original margin statement did not prescribe an aggregation level or formal noninferiority test. Report both macro and frame-weighted summaries, cohort regressions and spatial-group intervals. The selected ROI is a practical baseline decision, not a universal dominance claim."
+}

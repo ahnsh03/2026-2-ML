@@ -1,0 +1,1472 @@
+{
+  "policy": "Retain all-frame primary outcomes. Support cutoffs are post-hoc diagnostic slices, not online signals or a changed IoU contract.",
+  "cohorts": {
+    "fresh": {
+      "n": 192,
+      "defined": 192,
+      "site_support": {
+        "roi24_fresh_0": {
+          "min": 2871,
+          "max": 2871
+        },
+        "roi24_fresh_1": {
+          "min": 46,
+          "max": 46
+        },
+        "roi24_fresh_2": {
+          "min": 2919,
+          "max": 2919
+        },
+        "roi24_fresh_3": {
+          "min": 39,
+          "max": 41
+        },
+        "roi24_fresh_4": {
+          "min": 2042,
+          "max": 2043
+        },
+        "roi24_fresh_5": {
+          "min": 2152,
+          "max": 2153
+        },
+        "roi24_fresh_6": {
+          "min": 2192,
+          "max": 2194
+        },
+        "roi24_fresh_7": {
+          "min": 8,
+          "max": 8
+        }
+      },
+      "slices": {
+        "256": {
+          "sparse": {
+            "n": 72,
+            "sites": 3,
+            "low": 72,
+            "models": {
+              "7_RF": {
+                "mae": 0.10131422958606559,
+                "review10": {
+                  "budget": 8,
+                  "found": 8,
+                  "recall": 0.1111111111111111,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 8.0
+                }
+              },
+              "10_RF": {
+                "mae": 0.11433665553595034,
+                "review10": {
+                  "budget": 8,
+                  "found": 8,
+                  "recall": 0.1111111111111111,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 8.0
+                }
+              },
+              "7_GP": {
+                "mae": 0.3972069614631136,
+                "review10": {
+                  "budget": 8,
+                  "found": 8,
+                  "recall": 0.1111111111111111,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 8.0
+                }
+              },
+              "10_GP": {
+                "mae": 0.40558954584697404,
+                "review10": {
+                  "budget": 8,
+                  "found": 8,
+                  "recall": 0.1111111111111111,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 8.0
+                }
+              }
+            },
+            "paired": {
+              "RF": {
+                "mae_7_minus_10": -0.01302242594988474,
+                "mae_delta_group_bootstrap95": [
+                  -0.01573910810161312,
+                  -0.011286139843780171
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "GP": {
+                "mae_7_minus_10": -0.008382584383860461,
+                "mae_delta_group_bootstrap95": [
+                  -0.019925847280666525,
+                  0.010878777832205297
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              }
+            },
+            "same_arm": {
+              "base12_RF": {
+                "mae_7_minus_10": -0.09939444916613623,
+                "mae_delta_group_bootstrap95": [
+                  -0.11218535211089518,
+                  -0.07514852465716622
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_RF": {
+                "mae_7_minus_10": -0.01302242594988474,
+                "mae_delta_group_bootstrap95": [
+                  -0.01573910810161312,
+                  -0.011286139843780171
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_RF": {
+                "mae_7_minus_10": -0.12715278972095856,
+                "mae_delta_group_bootstrap95": [
+                  -0.14304900511512672,
+                  -0.11627332310898107
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_GP": {
+                "mae_7_minus_10": 0.07433779174145205,
+                "mae_delta_group_bootstrap95": [
+                  0.06020552024606554,
+                  0.09632116774865275
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_GP": {
+                "mae_7_minus_10": 0.05794499445020465,
+                "mae_delta_group_bootstrap95": [
+                  0.04364363138878592,
+                  0.08093193777007131
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_GP": {
+                "mae_7_minus_10": 0.05480369879775381,
+                "mae_delta_group_bootstrap95": [
+                  0.02990660188709076,
+                  0.0903543115759256
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              }
+            }
+          },
+          "substantial": {
+            "n": 120,
+            "sites": 5,
+            "low": 71,
+            "models": {
+              "7_RF": {
+                "mae": 0.056132589753526384,
+                "review10": {
+                  "budget": 12,
+                  "found": 12,
+                  "recall": 0.16901408450704225,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 7.1
+                }
+              },
+              "10_RF": {
+                "mae": 0.06229018201901861,
+                "review10": {
+                  "budget": 12,
+                  "found": 12,
+                  "recall": 0.16901408450704225,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 7.1
+                }
+              },
+              "7_GP": {
+                "mae": 0.057769195649039935,
+                "review10": {
+                  "budget": 12,
+                  "found": 12,
+                  "recall": 0.16901408450704225,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 7.1
+                }
+              },
+              "10_GP": {
+                "mae": 0.07144216536433944,
+                "review10": {
+                  "budget": 12,
+                  "found": 12,
+                  "recall": 0.16901408450704225,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 7.1
+                }
+              }
+            },
+            "paired": {
+              "RF": {
+                "mae_7_minus_10": -0.006157592265492231,
+                "mae_delta_group_bootstrap95": [
+                  -0.011424620707436774,
+                  -0.00017420707826461406
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "GP": {
+                "mae_7_minus_10": -0.013672969715299514,
+                "mae_delta_group_bootstrap95": [
+                  -0.036401790337841564,
+                  0.008467561973681557
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              }
+            },
+            "same_arm": {
+              "base12_RF": {
+                "mae_7_minus_10": -0.001954594193125513,
+                "mae_delta_group_bootstrap95": [
+                  -0.012112463327344907,
+                  0.010970261622886335
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_RF": {
+                "mae_7_minus_10": -0.006157592265492231,
+                "mae_delta_group_bootstrap95": [
+                  -0.011424620707436774,
+                  -0.00017420707826461406
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_RF": {
+                "mae_7_minus_10": -0.009623585284174648,
+                "mae_delta_group_bootstrap95": [
+                  -0.014205072250559335,
+                  -0.001233930584662258
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_GP": {
+                "mae_7_minus_10": 0.0011692658578367201,
+                "mae_delta_group_bootstrap95": [
+                  -0.020816682736645376,
+                  0.021441707150349744
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_GP": {
+                "mae_7_minus_10": 0.0007102746093971227,
+                "mae_delta_group_bootstrap95": [
+                  -0.018541176799704448,
+                  0.019194700447317373
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_GP": {
+                "mae_7_minus_10": -0.003089556823909433,
+                "mae_delta_group_bootstrap95": [
+                  -0.030154002201146037,
+                  0.02005670655543168
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              }
+            }
+          }
+        },
+        "512": {
+          "sparse": {
+            "n": 72,
+            "sites": 3,
+            "low": 72,
+            "models": {
+              "7_RF": {
+                "mae": 0.10131422958606559,
+                "review10": {
+                  "budget": 8,
+                  "found": 8,
+                  "recall": 0.1111111111111111,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 8.0
+                }
+              },
+              "10_RF": {
+                "mae": 0.11433665553595034,
+                "review10": {
+                  "budget": 8,
+                  "found": 8,
+                  "recall": 0.1111111111111111,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 8.0
+                }
+              },
+              "7_GP": {
+                "mae": 0.3972069614631136,
+                "review10": {
+                  "budget": 8,
+                  "found": 8,
+                  "recall": 0.1111111111111111,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 8.0
+                }
+              },
+              "10_GP": {
+                "mae": 0.40558954584697404,
+                "review10": {
+                  "budget": 8,
+                  "found": 8,
+                  "recall": 0.1111111111111111,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 8.0
+                }
+              }
+            },
+            "paired": {
+              "RF": {
+                "mae_7_minus_10": -0.01302242594988474,
+                "mae_delta_group_bootstrap95": [
+                  -0.01573910810161312,
+                  -0.011286139843780171
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "GP": {
+                "mae_7_minus_10": -0.008382584383860461,
+                "mae_delta_group_bootstrap95": [
+                  -0.019925847280666525,
+                  0.010878777832205297
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              }
+            },
+            "same_arm": {
+              "base12_RF": {
+                "mae_7_minus_10": -0.09939444916613623,
+                "mae_delta_group_bootstrap95": [
+                  -0.11218535211089518,
+                  -0.07514852465716622
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_RF": {
+                "mae_7_minus_10": -0.01302242594988474,
+                "mae_delta_group_bootstrap95": [
+                  -0.01573910810161312,
+                  -0.011286139843780171
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_RF": {
+                "mae_7_minus_10": -0.12715278972095856,
+                "mae_delta_group_bootstrap95": [
+                  -0.14304900511512672,
+                  -0.11627332310898107
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_GP": {
+                "mae_7_minus_10": 0.07433779174145205,
+                "mae_delta_group_bootstrap95": [
+                  0.06020552024606554,
+                  0.09632116774865275
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_GP": {
+                "mae_7_minus_10": 0.05794499445020465,
+                "mae_delta_group_bootstrap95": [
+                  0.04364363138878592,
+                  0.08093193777007131
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_GP": {
+                "mae_7_minus_10": 0.05480369879775381,
+                "mae_delta_group_bootstrap95": [
+                  0.02990660188709076,
+                  0.0903543115759256
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              }
+            }
+          },
+          "substantial": {
+            "n": 120,
+            "sites": 5,
+            "low": 71,
+            "models": {
+              "7_RF": {
+                "mae": 0.056132589753526384,
+                "review10": {
+                  "budget": 12,
+                  "found": 12,
+                  "recall": 0.16901408450704225,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 7.1
+                }
+              },
+              "10_RF": {
+                "mae": 0.06229018201901861,
+                "review10": {
+                  "budget": 12,
+                  "found": 12,
+                  "recall": 0.16901408450704225,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 7.1
+                }
+              },
+              "7_GP": {
+                "mae": 0.057769195649039935,
+                "review10": {
+                  "budget": 12,
+                  "found": 12,
+                  "recall": 0.16901408450704225,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 7.1
+                }
+              },
+              "10_GP": {
+                "mae": 0.07144216536433944,
+                "review10": {
+                  "budget": 12,
+                  "found": 12,
+                  "recall": 0.16901408450704225,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 7.1
+                }
+              }
+            },
+            "paired": {
+              "RF": {
+                "mae_7_minus_10": -0.006157592265492231,
+                "mae_delta_group_bootstrap95": [
+                  -0.011424620707436774,
+                  -0.00017420707826461406
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "GP": {
+                "mae_7_minus_10": -0.013672969715299514,
+                "mae_delta_group_bootstrap95": [
+                  -0.036401790337841564,
+                  0.008467561973681557
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              }
+            },
+            "same_arm": {
+              "base12_RF": {
+                "mae_7_minus_10": -0.001954594193125513,
+                "mae_delta_group_bootstrap95": [
+                  -0.012112463327344907,
+                  0.010970261622886335
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_RF": {
+                "mae_7_minus_10": -0.006157592265492231,
+                "mae_delta_group_bootstrap95": [
+                  -0.011424620707436774,
+                  -0.00017420707826461406
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_RF": {
+                "mae_7_minus_10": -0.009623585284174648,
+                "mae_delta_group_bootstrap95": [
+                  -0.014205072250559335,
+                  -0.001233930584662258
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_GP": {
+                "mae_7_minus_10": 0.0011692658578367201,
+                "mae_delta_group_bootstrap95": [
+                  -0.020816682736645376,
+                  0.021441707150349744
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_GP": {
+                "mae_7_minus_10": 0.0007102746093971227,
+                "mae_delta_group_bootstrap95": [
+                  -0.018541176799704448,
+                  0.019194700447317373
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_GP": {
+                "mae_7_minus_10": -0.003089556823909433,
+                "mae_delta_group_bootstrap95": [
+                  -0.030154002201146037,
+                  0.02005670655543168
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              }
+            }
+          }
+        },
+        "1024": {
+          "sparse": {
+            "n": 72,
+            "sites": 3,
+            "low": 72,
+            "models": {
+              "7_RF": {
+                "mae": 0.10131422958606559,
+                "review10": {
+                  "budget": 8,
+                  "found": 8,
+                  "recall": 0.1111111111111111,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 8.0
+                }
+              },
+              "10_RF": {
+                "mae": 0.11433665553595034,
+                "review10": {
+                  "budget": 8,
+                  "found": 8,
+                  "recall": 0.1111111111111111,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 8.0
+                }
+              },
+              "7_GP": {
+                "mae": 0.3972069614631136,
+                "review10": {
+                  "budget": 8,
+                  "found": 8,
+                  "recall": 0.1111111111111111,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 8.0
+                }
+              },
+              "10_GP": {
+                "mae": 0.40558954584697404,
+                "review10": {
+                  "budget": 8,
+                  "found": 8,
+                  "recall": 0.1111111111111111,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 8.0
+                }
+              }
+            },
+            "paired": {
+              "RF": {
+                "mae_7_minus_10": -0.01302242594988474,
+                "mae_delta_group_bootstrap95": [
+                  -0.01573910810161312,
+                  -0.011286139843780171
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "GP": {
+                "mae_7_minus_10": -0.008382584383860461,
+                "mae_delta_group_bootstrap95": [
+                  -0.019925847280666525,
+                  0.010878777832205297
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              }
+            },
+            "same_arm": {
+              "base12_RF": {
+                "mae_7_minus_10": -0.09939444916613623,
+                "mae_delta_group_bootstrap95": [
+                  -0.11218535211089518,
+                  -0.07514852465716622
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_RF": {
+                "mae_7_minus_10": -0.01302242594988474,
+                "mae_delta_group_bootstrap95": [
+                  -0.01573910810161312,
+                  -0.011286139843780171
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_RF": {
+                "mae_7_minus_10": -0.12715278972095856,
+                "mae_delta_group_bootstrap95": [
+                  -0.14304900511512672,
+                  -0.11627332310898107
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_GP": {
+                "mae_7_minus_10": 0.07433779174145205,
+                "mae_delta_group_bootstrap95": [
+                  0.06020552024606554,
+                  0.09632116774865275
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_GP": {
+                "mae_7_minus_10": 0.05794499445020465,
+                "mae_delta_group_bootstrap95": [
+                  0.04364363138878592,
+                  0.08093193777007131
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_GP": {
+                "mae_7_minus_10": 0.05480369879775381,
+                "mae_delta_group_bootstrap95": [
+                  0.02990660188709076,
+                  0.0903543115759256
+                ],
+                "groups": 3,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 8,
+                "found_10": 8,
+                "recall_7_minus_10": 0.0
+              }
+            }
+          },
+          "substantial": {
+            "n": 120,
+            "sites": 5,
+            "low": 71,
+            "models": {
+              "7_RF": {
+                "mae": 0.056132589753526384,
+                "review10": {
+                  "budget": 12,
+                  "found": 12,
+                  "recall": 0.16901408450704225,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 7.1
+                }
+              },
+              "10_RF": {
+                "mae": 0.06229018201901861,
+                "review10": {
+                  "budget": 12,
+                  "found": 12,
+                  "recall": 0.16901408450704225,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 7.1
+                }
+              },
+              "7_GP": {
+                "mae": 0.057769195649039935,
+                "review10": {
+                  "budget": 12,
+                  "found": 12,
+                  "recall": 0.16901408450704225,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 7.1
+                }
+              },
+              "10_GP": {
+                "mae": 0.07144216536433944,
+                "review10": {
+                  "budget": 12,
+                  "found": 12,
+                  "recall": 0.16901408450704225,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 7.1
+                }
+              }
+            },
+            "paired": {
+              "RF": {
+                "mae_7_minus_10": -0.006157592265492231,
+                "mae_delta_group_bootstrap95": [
+                  -0.011424620707436774,
+                  -0.00017420707826461406
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "GP": {
+                "mae_7_minus_10": -0.013672969715299514,
+                "mae_delta_group_bootstrap95": [
+                  -0.036401790337841564,
+                  0.008467561973681557
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              }
+            },
+            "same_arm": {
+              "base12_RF": {
+                "mae_7_minus_10": -0.001954594193125513,
+                "mae_delta_group_bootstrap95": [
+                  -0.012112463327344907,
+                  0.010970261622886335
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_RF": {
+                "mae_7_minus_10": -0.006157592265492231,
+                "mae_delta_group_bootstrap95": [
+                  -0.011424620707436774,
+                  -0.00017420707826461406
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_RF": {
+                "mae_7_minus_10": -0.009623585284174648,
+                "mae_delta_group_bootstrap95": [
+                  -0.014205072250559335,
+                  -0.001233930584662258
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_GP": {
+                "mae_7_minus_10": 0.0011692658578367201,
+                "mae_delta_group_bootstrap95": [
+                  -0.020816682736645376,
+                  0.021441707150349744
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_GP": {
+                "mae_7_minus_10": 0.0007102746093971227,
+                "mae_delta_group_bootstrap95": [
+                  -0.018541176799704448,
+                  0.019194700447317373
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_GP": {
+                "mae_7_minus_10": -0.003089556823909433,
+                "mae_delta_group_bootstrap95": [
+                  -0.030154002201146037,
+                  0.02005670655543168
+                ],
+                "groups": 5,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 12,
+                "found_10": 12,
+                "recall_7_minus_10": 0.0
+              }
+            }
+          }
+        }
+      }
+    },
+    "fresh_marked": {
+      "n": 288,
+      "defined": 288,
+      "site_support": {
+        "roi24_marked_0": {
+          "min": 2888,
+          "max": 2888
+        },
+        "roi24_marked_1": {
+          "min": 1540,
+          "max": 1543
+        },
+        "roi24_marked_10": {
+          "min": 2392,
+          "max": 2393
+        },
+        "roi24_marked_11": {
+          "min": 1689,
+          "max": 1690
+        },
+        "roi24_marked_2": {
+          "min": 3916,
+          "max": 3918
+        },
+        "roi24_marked_3": {
+          "min": 1947,
+          "max": 1947
+        },
+        "roi24_marked_4": {
+          "min": 3730,
+          "max": 3730
+        },
+        "roi24_marked_5": {
+          "min": 2014,
+          "max": 2015
+        },
+        "roi24_marked_6": {
+          "min": 1622,
+          "max": 1622
+        },
+        "roi24_marked_7": {
+          "min": 2869,
+          "max": 2869
+        },
+        "roi24_marked_8": {
+          "min": 2141,
+          "max": 2141
+        },
+        "roi24_marked_9": {
+          "min": 2887,
+          "max": 2888
+        }
+      },
+      "slices": {
+        "256": {
+          "substantial": {
+            "n": 288,
+            "sites": 12,
+            "low": 154,
+            "models": {
+              "7_RF": {
+                "mae": 0.07051356628718347,
+                "review10": {
+                  "budget": 29,
+                  "found": 29,
+                  "recall": 0.18831168831168832,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 15.506944444444445
+                }
+              },
+              "10_RF": {
+                "mae": 0.07459932287533483,
+                "review10": {
+                  "budget": 29,
+                  "found": 29,
+                  "recall": 0.18831168831168832,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 15.506944444444445
+                }
+              },
+              "7_GP": {
+                "mae": 0.07631466181228393,
+                "review10": {
+                  "budget": 29,
+                  "found": 29,
+                  "recall": 0.18831168831168832,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 15.506944444444445
+                }
+              },
+              "10_GP": {
+                "mae": 0.07858603403945363,
+                "review10": {
+                  "budget": 29,
+                  "found": 29,
+                  "recall": 0.18831168831168832,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 15.506944444444445
+                }
+              }
+            },
+            "paired": {
+              "RF": {
+                "mae_7_minus_10": -0.004085756588151357,
+                "mae_delta_group_bootstrap95": [
+                  -0.015523385129086471,
+                  0.010239015788239627
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "GP": {
+                "mae_7_minus_10": -0.0022713722271696965,
+                "mae_delta_group_bootstrap95": [
+                  -0.014057746262246906,
+                  0.00993119822229192
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              }
+            },
+            "same_arm": {
+              "base12_RF": {
+                "mae_7_minus_10": -0.000123406223425809,
+                "mae_delta_group_bootstrap95": [
+                  -0.020449841546583924,
+                  0.02786450650962486
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_RF": {
+                "mae_7_minus_10": -0.004085756588151357,
+                "mae_delta_group_bootstrap95": [
+                  -0.015523385129086471,
+                  0.010239015788239627
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_RF": {
+                "mae_7_minus_10": 0.0010423949490733244,
+                "mae_delta_group_bootstrap95": [
+                  -0.023948984243355762,
+                  0.03324458433738378
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_GP": {
+                "mae_7_minus_10": -0.004271705442523195,
+                "mae_delta_group_bootstrap95": [
+                  -0.01814895078832697,
+                  0.009657075931134762
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_GP": {
+                "mae_7_minus_10": -0.005513222755376676,
+                "mae_delta_group_bootstrap95": [
+                  -0.019506773118816052,
+                  0.009004706077119843
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_GP": {
+                "mae_7_minus_10": 0.0036583185278755486,
+                "mae_delta_group_bootstrap95": [
+                  -0.008409617946763868,
+                  0.016741494857630962
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              }
+            }
+          }
+        },
+        "512": {
+          "substantial": {
+            "n": 288,
+            "sites": 12,
+            "low": 154,
+            "models": {
+              "7_RF": {
+                "mae": 0.07051356628718347,
+                "review10": {
+                  "budget": 29,
+                  "found": 29,
+                  "recall": 0.18831168831168832,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 15.506944444444445
+                }
+              },
+              "10_RF": {
+                "mae": 0.07459932287533483,
+                "review10": {
+                  "budget": 29,
+                  "found": 29,
+                  "recall": 0.18831168831168832,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 15.506944444444445
+                }
+              },
+              "7_GP": {
+                "mae": 0.07631466181228393,
+                "review10": {
+                  "budget": 29,
+                  "found": 29,
+                  "recall": 0.18831168831168832,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 15.506944444444445
+                }
+              },
+              "10_GP": {
+                "mae": 0.07858603403945363,
+                "review10": {
+                  "budget": 29,
+                  "found": 29,
+                  "recall": 0.18831168831168832,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 15.506944444444445
+                }
+              }
+            },
+            "paired": {
+              "RF": {
+                "mae_7_minus_10": -0.004085756588151357,
+                "mae_delta_group_bootstrap95": [
+                  -0.015523385129086471,
+                  0.010239015788239627
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "GP": {
+                "mae_7_minus_10": -0.0022713722271696965,
+                "mae_delta_group_bootstrap95": [
+                  -0.014057746262246906,
+                  0.00993119822229192
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              }
+            },
+            "same_arm": {
+              "base12_RF": {
+                "mae_7_minus_10": -0.000123406223425809,
+                "mae_delta_group_bootstrap95": [
+                  -0.020449841546583924,
+                  0.02786450650962486
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_RF": {
+                "mae_7_minus_10": -0.004085756588151357,
+                "mae_delta_group_bootstrap95": [
+                  -0.015523385129086471,
+                  0.010239015788239627
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_RF": {
+                "mae_7_minus_10": 0.0010423949490733244,
+                "mae_delta_group_bootstrap95": [
+                  -0.023948984243355762,
+                  0.03324458433738378
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_GP": {
+                "mae_7_minus_10": -0.004271705442523195,
+                "mae_delta_group_bootstrap95": [
+                  -0.01814895078832697,
+                  0.009657075931134762
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_GP": {
+                "mae_7_minus_10": -0.005513222755376676,
+                "mae_delta_group_bootstrap95": [
+                  -0.019506773118816052,
+                  0.009004706077119843
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_GP": {
+                "mae_7_minus_10": 0.0036583185278755486,
+                "mae_delta_group_bootstrap95": [
+                  -0.008409617946763868,
+                  0.016741494857630962
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              }
+            }
+          }
+        },
+        "1024": {
+          "substantial": {
+            "n": 288,
+            "sites": 12,
+            "low": 154,
+            "models": {
+              "7_RF": {
+                "mae": 0.07051356628718347,
+                "review10": {
+                  "budget": 29,
+                  "found": 29,
+                  "recall": 0.18831168831168832,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 15.506944444444445
+                }
+              },
+              "10_RF": {
+                "mae": 0.07459932287533483,
+                "review10": {
+                  "budget": 29,
+                  "found": 29,
+                  "recall": 0.18831168831168832,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 15.506944444444445
+                }
+              },
+              "7_GP": {
+                "mae": 0.07631466181228393,
+                "review10": {
+                  "budget": 29,
+                  "found": 29,
+                  "recall": 0.18831168831168832,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 15.506944444444445
+                }
+              },
+              "10_GP": {
+                "mae": 0.07858603403945363,
+                "review10": {
+                  "budget": 29,
+                  "found": 29,
+                  "recall": 0.18831168831168832,
+                  "precision": 1.0,
+                  "unknown": 0,
+                  "random_expected": 15.506944444444445
+                }
+              }
+            },
+            "paired": {
+              "RF": {
+                "mae_7_minus_10": -0.004085756588151357,
+                "mae_delta_group_bootstrap95": [
+                  -0.015523385129086471,
+                  0.010239015788239627
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "GP": {
+                "mae_7_minus_10": -0.0022713722271696965,
+                "mae_delta_group_bootstrap95": [
+                  -0.014057746262246906,
+                  0.00993119822229192
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              }
+            },
+            "same_arm": {
+              "base12_RF": {
+                "mae_7_minus_10": -0.000123406223425809,
+                "mae_delta_group_bootstrap95": [
+                  -0.020449841546583924,
+                  0.02786450650962486
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_RF": {
+                "mae_7_minus_10": -0.004085756588151357,
+                "mae_delta_group_bootstrap95": [
+                  -0.015523385129086471,
+                  0.010239015788239627
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_RF": {
+                "mae_7_minus_10": 0.0010423949490733244,
+                "mae_delta_group_bootstrap95": [
+                  -0.023948984243355762,
+                  0.03324458433738378
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_GP": {
+                "mae_7_minus_10": -0.004271705442523195,
+                "mae_delta_group_bootstrap95": [
+                  -0.01814895078832697,
+                  0.009657075931134762
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "base12_global_GP": {
+                "mae_7_minus_10": -0.005513222755376676,
+                "mae_delta_group_bootstrap95": [
+                  -0.019506773118816052,
+                  0.009004706077119843
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              },
+              "robust17_GP": {
+                "mae_7_minus_10": 0.0036583185278755486,
+                "mae_delta_group_bootstrap95": [
+                  -0.008409617946763868,
+                  0.016741494857630962
+                ],
+                "groups": 12,
+                "group_definition": "50m spatial cell for motion, physical pose for static",
+                "found_7": 29,
+                "found_10": 29,
+                "recall_7_minus_10": 0.0
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

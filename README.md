@@ -10,12 +10,14 @@
 
 전방 RGB와 TwinLiteNet+ Medium v6 출력으로 전체 차선 IoU를 추정하고 취약 장면을 검수·재학습하는 데이터 플라이휠을 개발한다. 팀원의 시작점은 [팀 문서 목차](docs/README.md), 내부 마감과 인계는 [일정과 역할](docs/guides/일정과_역할.md)이다. 11월 24일 ROI 결정, 27일 첫 결합, 30일 오프라인 판정 후 12월 4일에 영상·영어 발표·공개 사이트를 완성한다.
 
+**기본 ROI는 7영역이며**, 전체 화면 통계를 더한 96열에서 특징 축소·관계 추가·영역 통합을 비교한다. [선택 근거와 구현](docs/experiments/ROI_7영역_10영역_비교_20261124.md)을 확인한다.
+
 검수·동일 예산 재학습과 조건부 갱신 후보의 관측 결과는 [실험 결과](docs/experiments/README.md), 현재 실행·추가 구현은 [팀 가이드](docs/README.md#작업별-가이드)에서 확인한다.
 
 ## 저장소 구성
 
 ```text
-docs/        project · development · baselines · contracts
+docs/        guides · experiments · archive · baselines · contracts
 config/      환경변수 예시·데이터 정책·센서·BEV 설정
 docker/      수집 컨테이너 정의
 tests/       데이터·모델 신원·학습/평가 누수·경보·선별의 회귀 검증
@@ -37,7 +39,7 @@ scripts/run_container.sh python3 -m visualization.visualize_inference --split va
 ```
 
 결과는 기본적으로 레포 상위 `outputs/inference_vis/<name>/`에 생성된다.
-데이터·가중치·외부 제공 proto의 준비 조건과 수집 명령은 [개발 환경](docs/archive/개발환경.md)을 따른다.
+데이터·가중치·외부 제공 proto의 준비 조건과 수집 명령은 [개발 환경](docs/guides/개발환경.md)을 따른다.
 이 코드는 다른 프로젝트 저장소를 import하거나 경유하지 않는다.
 
 ## X/y 데이터셋 생성

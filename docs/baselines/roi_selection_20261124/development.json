@@ -1,0 +1,251 @@
+{
+  "primary_model_family": "RF",
+  "mean_development_mae": {
+    "RF": 0.0458360379539973,
+    "GP": 0.05872939942516946
+  },
+  "winners": [
+    {
+      "roi": 7,
+      "arm": "base12_global",
+      "model": "RF",
+      "parameters": {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      "dimension": 96,
+      "cv_mae": 0.0959971526242886,
+      "development_mae": 0.04686853503736791,
+      "model_sha256": "a0d23c90ad53ba0cda5de232b3b242116fb95240be216731c4a7ede839a514ce",
+      "prediction_sha256": "311394d8a400891b6bd9456733e6293e511bbf4c9a1979d3e93d709d8e12f68c"
+    },
+    {
+      "roi": 7,
+      "arm": "base12_global",
+      "model": "GP",
+      "parameters": {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.15
+      },
+      "dimension": 96,
+      "cv_mae": 0.08946274935757519,
+      "development_mae": 0.06416222187519328,
+      "model_sha256": "937837710558e0e6a25e0df2c849d69d57d3d338339b8c8d3a1ee430986c5c4d",
+      "prediction_sha256": "e3cc4daee03ac21f8d73ea8bb44b675e90bf87dd35c6bc0fe60ba73da32a0f07"
+    },
+    {
+      "roi": 10,
+      "arm": "base12_global",
+      "model": "RF",
+      "parameters": {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      "dimension": 132,
+      "cv_mae": 0.0887608514724733,
+      "development_mae": 0.04480354087062669,
+      "model_sha256": "3ee293e8f383e9548928e74bb2765c61ce6892819574c12835194ada1dd165fb",
+      "prediction_sha256": "31f6780cf7059c0420a728f066887ea918ed4d5a5adc1b699256dafc2b5eea44"
+    },
+    {
+      "roi": 10,
+      "arm": "robust17",
+      "model": "GP",
+      "parameters": {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.35
+      },
+      "dimension": 170,
+      "cv_mae": 0.08234034891557948,
+      "development_mae": 0.05329657697514562,
+      "model_sha256": "5110e701dab30e40d6221a0b65abeb6b312fc27bb17ce9ef9ee9e833663bc06e",
+      "prediction_sha256": "7f766ddee568d0fa07e930b0c2685deb74acc42480aed6891733d9263bcc33ce"
+    }
+  ],
+  "all_variants": [
+    {
+      "roi": 7,
+      "arm": "base12",
+      "model": "RF",
+      "parameters": {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      "dimension": 84,
+      "cv_mae": 0.09660242579849564,
+      "development_mae": 0.05388801936506444,
+      "model_sha256": "2434a6070773048932059ee1f0ca426603b5f3e5a2589b554cb82ab57cfd3283",
+      "prediction_sha256": "43da052afbcfb2825377d9bbd14536442b23bf46fa494dd01183582d2ff59898"
+    },
+    {
+      "roi": 7,
+      "arm": "base12",
+      "model": "GP",
+      "parameters": {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.35
+      },
+      "dimension": 84,
+      "cv_mae": 0.09408057871037949,
+      "development_mae": 0.06503788178463193,
+      "model_sha256": "18c6efc1627fd4402d7819e492cf7db87a79091bad0c314331444619eb865116",
+      "prediction_sha256": "482be751dd6b65e4978eb0348bda71e84f8650fd0b1e5e6d64425e1a470a5208"
+    },
+    {
+      "roi": 7,
+      "arm": "base12_global",
+      "model": "RF",
+      "parameters": {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      "dimension": 96,
+      "cv_mae": 0.0959971526242886,
+      "development_mae": 0.04686853503736791,
+      "model_sha256": "a0d23c90ad53ba0cda5de232b3b242116fb95240be216731c4a7ede839a514ce",
+      "prediction_sha256": "311394d8a400891b6bd9456733e6293e511bbf4c9a1979d3e93d709d8e12f68c"
+    },
+    {
+      "roi": 7,
+      "arm": "base12_global",
+      "model": "GP",
+      "parameters": {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.15
+      },
+      "dimension": 96,
+      "cv_mae": 0.08946274935757519,
+      "development_mae": 0.06416222187519328,
+      "model_sha256": "937837710558e0e6a25e0df2c849d69d57d3d338339b8c8d3a1ee430986c5c4d",
+      "prediction_sha256": "e3cc4daee03ac21f8d73ea8bb44b675e90bf87dd35c6bc0fe60ba73da32a0f07"
+    },
+    {
+      "roi": 7,
+      "arm": "robust17",
+      "model": "RF",
+      "parameters": {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      "dimension": 119,
+      "cv_mae": 0.09575791403046591,
+      "development_mae": 0.05614955866270613,
+      "model_sha256": "5e4f8868cfabd1a183fd50512df95c2a45eb312f7ce0193f778c26918344d560",
+      "prediction_sha256": "5646c55272bc13e37b551f65fc9ac78d62523769b8e2244d7f364c109daae49e"
+    },
+    {
+      "roi": 7,
+      "arm": "robust17",
+      "model": "GP",
+      "parameters": {
+        "length_multiplier": 0.5,
+        "noise_variance": 0.01
+      },
+      "dimension": 119,
+      "cv_mae": 0.09326282489789521,
+      "development_mae": 0.07453884249880309,
+      "model_sha256": "74a2392faed539f3f888a52e494da00efc34d974ab8089b91450222912bf9dae",
+      "prediction_sha256": "0e7638570b7e4b5314cf9472fd65206a041a1efabee28e2ae763762dd929ba56"
+    },
+    {
+      "roi": 10,
+      "arm": "base12",
+      "model": "RF",
+      "parameters": {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      "dimension": 120,
+      "cv_mae": 0.09361405742313032,
+      "development_mae": 0.04903850689162025,
+      "model_sha256": "83ac76d8194e3cb29f45ac1d8d72eb3e4f02fe8fe5d5f05b9cae9bec32cfdce0",
+      "prediction_sha256": "9de56472b2bb195532335097ea3b3f6c1f274a48e40501746bcf56a0275a077c"
+    },
+    {
+      "roi": 10,
+      "arm": "base12",
+      "model": "GP",
+      "parameters": {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.15
+      },
+      "dimension": 120,
+      "cv_mae": 0.08220351879340775,
+      "development_mae": 0.055320026303269154,
+      "model_sha256": "a6d52611d640a90991eeedcef9e67aa1f492533c8bc4d09010f1eedf08596bce",
+      "prediction_sha256": "be1375d7605d7ca8ef539b1a540ab4de29a284698088d59759a402a7df13646e"
+    },
+    {
+      "roi": 10,
+      "arm": "base12_global",
+      "model": "RF",
+      "parameters": {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      "dimension": 132,
+      "cv_mae": 0.0887608514724733,
+      "development_mae": 0.04480354087062669,
+      "model_sha256": "3ee293e8f383e9548928e74bb2765c61ce6892819574c12835194ada1dd165fb",
+      "prediction_sha256": "31f6780cf7059c0420a728f066887ea918ed4d5a5adc1b699256dafc2b5eea44"
+    },
+    {
+      "roi": 10,
+      "arm": "base12_global",
+      "model": "GP",
+      "parameters": {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.15
+      },
+      "dimension": 132,
+      "cv_mae": 0.0797613027557474,
+      "development_mae": 0.053832866624772414,
+      "model_sha256": "e60a1b09acdc4f4d7e64ac3f22a69b59c38eeb2d47b8f17c516f09395bfdad8d",
+      "prediction_sha256": "4da681896e534928028d10cef41c044ead2ed57c96a0da1a037445d364cdb661"
+    },
+    {
+      "roi": 10,
+      "arm": "robust17",
+      "model": "RF",
+      "parameters": {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 1.0,
+        "max_depth": null
+      },
+      "dimension": 170,
+      "cv_mae": 0.09236984756774214,
+      "development_mae": 0.0570162409003909,
+      "model_sha256": "be2912622b659aae90041a925d01a065a49cf45e5c13f0ee730e63db65345a4c",
+      "prediction_sha256": "1d132d3938ae5dbebb631a5f16d09769baf67a50e1fdfb7a4578d6070ab1ae12"
+    },
+    {
+      "roi": 10,
+      "arm": "robust17",
+      "model": "GP",
+      "parameters": {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.35
+      },
+      "dimension": 170,
+      "cv_mae": 0.08234034891557948,
+      "development_mae": 0.05329657697514562,
+      "model_sha256": "5110e701dab30e40d6221a0b65abeb6b312fc27bb17ce9ef9ee9e833663bc06e",
+      "prediction_sha256": "7f766ddee568d0fa07e930b0c2685deb74acc42480aed6891733d9263bcc33ce"
+    }
+  ]
+}
