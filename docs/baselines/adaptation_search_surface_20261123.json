@@ -51,6 +51,28 @@
         1,
         4
       ]
+    },
+    "full": {
+      "lr": [
+        1e-06,
+        2e-06,
+        4e-06,
+        7e-06,
+        1e-05,
+        1.7e-05,
+        3e-05
+      ],
+      "replay": [
+        2,
+        4,
+        6
+      ],
+      "lam": [
+        0,
+        0.25,
+        1,
+        4
+      ]
     }
   },
   "observations": [
@@ -64,6 +86,17 @@
       "retention_loss": -0.003841170782215131,
       "checkpoint_sha256": "abbe326d42cc236ee1fdf1c85feea20b2a764a38cf328c05bf366786f18a4f65",
       "run_sha256": "e74e98e0253fc8e048b56c8aa3914013166987264f433ffe958336851e579910"
+    },
+    {
+      "settings": [
+        1e-06,
+        2,
+        0.25
+      ],
+      "new_gain": 0.015315009529097146,
+      "retention_loss": -0.003835299130666714,
+      "checkpoint_sha256": "615deb04f84f67ec366a0ef91381150d89a9cbf912e8d5e7b5174fdb31459913",
+      "run_sha256": "0c689eb1ea1ed35ca77ad2271a7c893fb9af7aa5eb35499cd8a6081c7f226b88"
     },
     {
       "settings": [
@@ -102,6 +135,17 @@
       "settings": [
         1e-06,
         4,
+        0.25
+      ],
+      "new_gain": 0.004828993155780226,
+      "retention_loss": 0.005520001413349407,
+      "checkpoint_sha256": "e0f0f2e1bad34b3fae7cab64ea1ae052f02f6a09e1c680c29849194ff272e1e8",
+      "run_sha256": "9717002dd19bb3ad2a03d2047f72c29c32cea4c80281a2fef095ede9ee0e4f4f"
+    },
+    {
+      "settings": [
+        1e-06,
+        4,
         1
       ],
       "new_gain": 0.005549121558883319,
@@ -135,6 +179,17 @@
       "settings": [
         1e-06,
         6,
+        0.25
+      ],
+      "new_gain": -0.005244346642844455,
+      "retention_loss": 0.0100499904040533,
+      "checkpoint_sha256": "56fc65e6fc081833e4cd8b47c95fd9c3bd80feba1314289f0cdfeea689ed1673",
+      "run_sha256": "0caf33787332d5dc39788025155e7590c63e9a28f4f700b7922a24732ed30da1"
+    },
+    {
+      "settings": [
+        1e-06,
+        6,
         1
       ],
       "new_gain": -0.004054992928353096,
@@ -155,6 +210,138 @@
     },
     {
       "settings": [
+        2e-06,
+        2,
+        0
+      ],
+      "new_gain": 0.024432198927128446,
+      "retention_loss": -0.0011847340909592052,
+      "checkpoint_sha256": "2e3f54751abbe8e20108f328130932654ca57a86e3ec239b09f35e70b1d139e4",
+      "run_sha256": "00c80622c67736a060309459bb4ce5865c3580a601de375e8c2933c31745efb3"
+    },
+    {
+      "settings": [
+        2e-06,
+        2,
+        0.25
+      ],
+      "new_gain": 0.024241186495979505,
+      "retention_loss": -0.000986691965102815,
+      "checkpoint_sha256": "5a7f2fb50c747445cfcc164afdd744618d73ce4106a6775e366f1d7a04685f13",
+      "run_sha256": "8ac2308324e954213076cf86c1cfd30fcbac6de63da1b0af28e81663ffb34ce0"
+    },
+    {
+      "settings": [
+        2e-06,
+        2,
+        1
+      ],
+      "new_gain": 0.023816428233949805,
+      "retention_loss": -0.000569646958418546,
+      "checkpoint_sha256": "8000cbeff1b44a0b6721dda3d094d35c6068187b8eb16de88f70b92330c6b909",
+      "run_sha256": "f5137cd0192c1f4a0ccdef95bfa210ca5665d80b29f01f9538776714ccf1c390"
+    },
+    {
+      "settings": [
+        2e-06,
+        2,
+        4
+      ],
+      "new_gain": 0.02258093562771568,
+      "retention_loss": 0.0004912019877840734,
+      "checkpoint_sha256": "509897a605aaf0d3764fcf55bc1bd986a01d56942c068b763c18a2f91dfe27f3",
+      "run_sha256": "2197747e946be14a59e7c3628506b8fbe54ed821fe1c7afff411208430f39ba9"
+    },
+    {
+      "settings": [
+        2e-06,
+        4,
+        0
+      ],
+      "new_gain": 0.016509980225628773,
+      "retention_loss": 0.0058812684682004734,
+      "checkpoint_sha256": "bf85eae371eb348ddeeed0306c737c9694bc3162c55b66377df3adef0fa8d212",
+      "run_sha256": "17661df350b0eb1d72ae4071072154f347f38a7de68cce0d282aca696dfe3a08"
+    },
+    {
+      "settings": [
+        2e-06,
+        4,
+        0.25
+      ],
+      "new_gain": 0.016583269298183212,
+      "retention_loss": 0.005771499597389429,
+      "checkpoint_sha256": "88b879f24441b0920d0f688c7b9e20c6505e5b695a8a9266f21df1f7ed39e7fa",
+      "run_sha256": "5f4a21416b91e178c9aa166dea684927c502d1ce51b80d73f7dd1ffb4f88df4c"
+    },
+    {
+      "settings": [
+        2e-06,
+        4,
+        1
+      ],
+      "new_gain": 0.016689604369099165,
+      "retention_loss": 0.005601205240899576,
+      "checkpoint_sha256": "5867af7b3eba973d0ce5413e021f583fe189cbef31b5a0f884c15db4a0e7ef1e",
+      "run_sha256": "8ce4f2732f9651ce783877de7579ecf86d876836792b41cd6816cdbfa886fa42"
+    },
+    {
+      "settings": [
+        2e-06,
+        4,
+        4
+      ],
+      "new_gain": 0.01679277413884317,
+      "retention_loss": 0.005107855205992329,
+      "checkpoint_sha256": "a54a012e8254169bd1a901d0b3a09301668bc6d67fd4c2a03542f956ab53a4a0",
+      "run_sha256": "ffb13e254767d26d0a3b0b3594ddfd8fd3fceef5c31a227ddb0e6624699550f0"
+    },
+    {
+      "settings": [
+        2e-06,
+        6,
+        0
+      ],
+      "new_gain": 0.005767780086081142,
+      "retention_loss": 0.009018641729457655,
+      "checkpoint_sha256": "21b51ccf10cd8648523b072c57b89d31937c708d88aea6266ef183eaa966d2e4",
+      "run_sha256": "548c26c044ead351c1ca16c3252e80e7c2f7488af626b47fe31b17a985a01bf9"
+    },
+    {
+      "settings": [
+        2e-06,
+        6,
+        0.25
+      ],
+      "new_gain": 0.0061312385473772935,
+      "retention_loss": 0.008679710572044419,
+      "checkpoint_sha256": "95444e90b587d14f9e14271b5889a0928f79912c5ec53dc92bf940d064dcd5ae",
+      "run_sha256": "7226525a83261fa095921835d782c852838969678cf2cdf75dcc3511ee6a0684"
+    },
+    {
+      "settings": [
+        2e-06,
+        6,
+        1
+      ],
+      "new_gain": 0.007028786985468827,
+      "retention_loss": 0.007788082113313388,
+      "checkpoint_sha256": "cbe9d13a40c4390aceb564a129973725d6b09c16d890ffd3c30c0d88696a22b4",
+      "run_sha256": "735d58f5b4b75b3c7827d4fb2130beb2067faac1743f1934f47fb0a26ccec464"
+    },
+    {
+      "settings": [
+        2e-06,
+        6,
+        4
+      ],
+      "new_gain": 0.009310367902437,
+      "retention_loss": 0.005511801701095442,
+      "checkpoint_sha256": "782a1cb76a8c1a003015bcb34015ce2547e2a41310e3bf1bf3304f46c35f655f",
+      "run_sha256": "d05d5ce87c798d71daa67c47306131f3c1ac8190f324de27847c8388e53286a4"
+    },
+    {
+      "settings": [
         4e-06,
         2,
         0
@@ -163,6 +350,17 @@
       "retention_loss": 0.011754743025995551,
       "checkpoint_sha256": "d07d221d7e749d944673222cce456426676a4d8041590cf70d67af16fd33dda3",
       "run_sha256": "9a5c0c1174022eace1716e909724607c9db62829e5ccc9fb091c6f3f0e95e771"
+    },
+    {
+      "settings": [
+        4e-06,
+        2,
+        0.25
+      ],
+      "new_gain": 0.039627538653283056,
+      "retention_loss": 0.011839075546934197,
+      "checkpoint_sha256": "1c99cd68e4e6683e1cbc10e2e69d2fbe9578e7c82bbd1131e34f0df7ed15cdc1",
+      "run_sha256": "17785ef1042ccfadafb1a63ba9780d2af3249ef535bea516004cfe05ce6c419c"
     },
     {
       "settings": [
@@ -201,6 +399,17 @@
       "settings": [
         4e-06,
         4,
+        0.25
+      ],
+      "new_gain": 0.02597214521693536,
+      "retention_loss": 0.017647020217668064,
+      "checkpoint_sha256": "62ae62bc882dbf24b189f55ce1ef2b0894d0d785cd5bb00905041e4566bbf5c7",
+      "run_sha256": "8b1029e5f61bc0ae4e44315442341f5b97335ff15366e8f173307c23c4f8af74"
+    },
+    {
+      "settings": [
+        4e-06,
+        4,
         1
       ],
       "new_gain": 0.026398988175905247,
@@ -234,6 +443,17 @@
       "settings": [
         4e-06,
         6,
+        0.25
+      ],
+      "new_gain": 0.014123424642210503,
+      "retention_loss": 0.013601453280310816,
+      "checkpoint_sha256": "45502d2ab672fdd4a1990b84e0d99e66d739c34e9626ee4d8cd3018105563494",
+      "run_sha256": "52046422addc35d17b9191b0eaa008e97e9aae32a840825f3af00fe6e30ed910"
+    },
+    {
+      "settings": [
+        4e-06,
+        6,
         1
       ],
       "new_gain": 0.015033566566553636,
@@ -254,6 +474,270 @@
     },
     {
       "settings": [
+        7e-06,
+        2,
+        0
+      ],
+      "new_gain": 0.04957695588092259,
+      "retention_loss": 0.025771629931952922,
+      "checkpoint_sha256": "4ac1d5fc293e0868a675c84b822add300e7497b6dd9cd09039bdc4328f692016",
+      "run_sha256": "c6b55da3e5679ea7e4664bef9c8b18af37c36d6a1f807ee087ca75a4ade65da3"
+    },
+    {
+      "settings": [
+        7e-06,
+        2,
+        0.25
+      ],
+      "new_gain": 0.051074753346322055,
+      "retention_loss": 0.024382107788073593,
+      "checkpoint_sha256": "05b1b8061ed6b36d5a171971552330734a7ae39de51348de57b35e7ea1ef2fc9",
+      "run_sha256": "d76b5891999ed136179bd17c03a4a52c2782a3556f46cbbffa310973e733ab5c"
+    },
+    {
+      "settings": [
+        7e-06,
+        2,
+        1
+      ],
+      "new_gain": 0.054438053904858896,
+      "retention_loss": 0.020510030301208237,
+      "checkpoint_sha256": "22e2067200f48313c58f346625d2b2a3f7827b0f8fafb9525eed2ff66c7e097c",
+      "run_sha256": "cf710920afe92e0ef9ebcb446bda8611351e183aa0b714b182d8b115d3eefd96"
+    },
+    {
+      "settings": [
+        7e-06,
+        2,
+        4
+      ],
+      "new_gain": 0.06099902399830026,
+      "retention_loss": 0.012013629013006843,
+      "checkpoint_sha256": "db278be5ba39d74f53908a506c3b857e3b8fadc511bbe3141810059b14cd769e",
+      "run_sha256": "c5eb92ffcb453984574312b9a735a490debd3a4436ea5de2a6e9bfed05d662c1"
+    },
+    {
+      "settings": [
+        7e-06,
+        4,
+        0
+      ],
+      "new_gain": 0.045571196830859195,
+      "retention_loss": 0.024119118971505316,
+      "checkpoint_sha256": "cd0ed214bfef44826d20a270c8267fa2b556985696b2439bb64f8b54b2a759d4",
+      "run_sha256": "dfeef673977fda8c5df664727b93c9fa3d503c5a944016b2a2bd64050e549a04"
+    },
+    {
+      "settings": [
+        7e-06,
+        4,
+        0.25
+      ],
+      "new_gain": 0.04655915451297066,
+      "retention_loss": 0.023182165484283423,
+      "checkpoint_sha256": "3b39132d82d8a30b864daab75e7eff77e5db9a97050bcbc6bc73577b869b6c79",
+      "run_sha256": "75de9839b145b9ad11eaca69f0196dc2fda25e67b37ee55fdd6bb2b34ae9aed1"
+    },
+    {
+      "settings": [
+        7e-06,
+        4,
+        1
+      ],
+      "new_gain": 0.048893301218113194,
+      "retention_loss": 0.020311546080013843,
+      "checkpoint_sha256": "59573eb32c594da873e7633a801f930842190e181eec5d95285f0999350f3a89",
+      "run_sha256": "f6a54b95b11ce2ac45104b67b0245e94760e4b7a63ea553171b7f08aeaf0c61b"
+    },
+    {
+      "settings": [
+        7e-06,
+        4,
+        4
+      ],
+      "new_gain": 0.052095561968074744,
+      "retention_loss": 0.014470465121562137,
+      "checkpoint_sha256": "11d75f185f3ed15a8677b4f80672a7bd555d86602cf30f6500fda4bcf78bf947",
+      "run_sha256": "d572c98926eb79f3c55f6e45fc7ff6bc689b1e32673084e37f19e19b8d8f78f0"
+    },
+    {
+      "settings": [
+        7e-06,
+        6,
+        0
+      ],
+      "new_gain": 0.02939859023178626,
+      "retention_loss": 0.017926367813199562,
+      "checkpoint_sha256": "8b476d7de59389ca705fbe7b7a6a4bb1c166448f9b8512af7f4d1070543f8c80",
+      "run_sha256": "a239b30843c4824cd65030a0221a460e806873c164ef5baaf947e12d77c10ec2"
+    },
+    {
+      "settings": [
+        7e-06,
+        6,
+        0.25
+      ],
+      "new_gain": 0.030350068533075425,
+      "retention_loss": 0.01669716494118645,
+      "checkpoint_sha256": "134b496adf131adeeb32ae520fb379e2e8229525fc2b1f95ec3885efb3dedafa",
+      "run_sha256": "44f7ce5026f65af574246b5f6d8321ef388acc76db3b57ef03fcf3166caff503"
+    },
+    {
+      "settings": [
+        7e-06,
+        6,
+        1
+      ],
+      "new_gain": 0.03250453107523854,
+      "retention_loss": 0.013550738106296034,
+      "checkpoint_sha256": "8d55226e7dc1f01ef53e7e556146d20c25bd4636d1f43eb7913da48e014558fe",
+      "run_sha256": "bb37475422f1e9ef856adeb4a3e2ee0c20c924da0c0d687800dce1cec1fdd59e"
+    },
+    {
+      "settings": [
+        7e-06,
+        6,
+        4
+      ],
+      "new_gain": 0.035899862495790025,
+      "retention_loss": 0.0072461203116744866,
+      "checkpoint_sha256": "4dcb403db3ec417f5d7fdea22e65841c542bfa5cecee191798954db637c47007",
+      "run_sha256": "29e2b659365ffc57c522ca9ddccc988bb70cf7516f62eadf5cdbfe76f468c95c"
+    },
+    {
+      "settings": [
+        1e-05,
+        2,
+        0
+      ],
+      "new_gain": 0.04834279709729705,
+      "retention_loss": 0.027366019116826346,
+      "checkpoint_sha256": "b64994365f3ed2a841476b4190da9977558e3cc822fb619536442fdc939565f1",
+      "run_sha256": "53a2254b08cf8c131e9558ad13569115a1cd5d8cea386861fb3731df58b02596"
+    },
+    {
+      "settings": [
+        1e-05,
+        2,
+        0.25
+      ],
+      "new_gain": 0.0504539443362374,
+      "retention_loss": 0.025544473869873352,
+      "checkpoint_sha256": "98a2ca9952cfb101875e329947cd39a8061c2d33c666ff7caa3b8f559fdc02e3",
+      "run_sha256": "3d6ed42b17da7b4789007a3a851890ab70c45533705abe5137ebd7dc0f2d98db"
+    },
+    {
+      "settings": [
+        1e-05,
+        2,
+        1
+      ],
+      "new_gain": 0.05495199659316907,
+      "retention_loss": 0.02109120409605736,
+      "checkpoint_sha256": "ca8813be2e88c2e2c44e81b7a3d70056e2b4def06eac467cc8e25b6721f72ef3",
+      "run_sha256": "8dfebb21b38f516745cc89b9aa1f0cc04217ab0cf5c60304e28d9b9601a894d3"
+    },
+    {
+      "settings": [
+        1e-05,
+        2,
+        4
+      ],
+      "new_gain": 0.061149009166549195,
+      "retention_loss": 0.012528193955139377,
+      "checkpoint_sha256": "42a7cb19a9a48182f113fe183716d8f8a325f4bd07b84feda4f6d541f35faa6b",
+      "run_sha256": "c20fc000a49cc8203c1f97983a7c1a89e91d595cbfc4c80b6e90c94b7cbfc7a8"
+    },
+    {
+      "settings": [
+        1e-05,
+        4,
+        0
+      ],
+      "new_gain": 0.04611962158927918,
+      "retention_loss": 0.02677927712011874,
+      "checkpoint_sha256": "e9a8968cd573117cc07c7b96f883c100646183461138ecf433a36293c9b621e1",
+      "run_sha256": "bcf08c142d370e0c09885fca3f822a14fa78d1a6ea10d4224d95197b42a91337"
+    },
+    {
+      "settings": [
+        1e-05,
+        4,
+        0.25
+      ],
+      "new_gain": 0.04730525972471722,
+      "retention_loss": 0.02540580699164907,
+      "checkpoint_sha256": "78562dfb068f1ddcf8f149c4c744747b59c72ad8b91c1eb8f5569a0b6605f3ef",
+      "run_sha256": "2cb374983bcd321b3bba5f50cc21f82ffa0dc8293c8180859f879ab339a99072"
+    },
+    {
+      "settings": [
+        1e-05,
+        4,
+        1
+      ],
+      "new_gain": 0.05006756939121659,
+      "retention_loss": 0.02258995778243411,
+      "checkpoint_sha256": "3246150c0945c49ff12d4c8b3f3492d8b4f144bfae2641b193a7471c0f2cc99b",
+      "run_sha256": "e3d01c56ae82850d341ef3dfb6586565d068743022e1ffa808939ceb9320413d"
+    },
+    {
+      "settings": [
+        1e-05,
+        4,
+        4
+      ],
+      "new_gain": 0.0547033600289748,
+      "retention_loss": 0.016440742741818837,
+      "checkpoint_sha256": "a3d3abcdb84b4017be631365fdc6e0e5a3174f12785038cec8debd4494f5d759",
+      "run_sha256": "99c2cba4a9bac8609446e61d9f5910cb9272271118edf2c896927f54d533ac4b"
+    },
+    {
+      "settings": [
+        1e-05,
+        6,
+        0
+      ],
+      "new_gain": 0.04202174706255668,
+      "retention_loss": 0.01791758033765889,
+      "checkpoint_sha256": "23e32a8342b1f402db9b5e9931bbf1e8e0081b4e80fae274b6642ca65da0c404",
+      "run_sha256": "e78fa789de233586528d0a2e8ea4d5bae217b6a174ba34ae065fd8e49ab58a61"
+    },
+    {
+      "settings": [
+        1e-05,
+        6,
+        0.25
+      ],
+      "new_gain": 0.04280962673967337,
+      "retention_loss": 0.016891688610424338,
+      "checkpoint_sha256": "864a9112f5066e2c5c722036c26b2f3f1754da601bf23bd1767d1115c30a4b89",
+      "run_sha256": "09b61be17d6ff770c1b5ceba5441b61eaef37e88dee89f45424ee58803402a67"
+    },
+    {
+      "settings": [
+        1e-05,
+        6,
+        1
+      ],
+      "new_gain": 0.04458484931226436,
+      "retention_loss": 0.014417489358429902,
+      "checkpoint_sha256": "49d951c8990a29374f686297a83b1144f335727abcd60c48855107bdb0a6ca1e",
+      "run_sha256": "7b48af213af52dcb0c2d247949613a616e4e197b1d2b19193b9255f4a2de87a0"
+    },
+    {
+      "settings": [
+        1e-05,
+        6,
+        4
+      ],
+      "new_gain": 0.04577562062473706,
+      "retention_loss": 0.009480497871805382,
+      "checkpoint_sha256": "83db9b94112d32115abd46af894db703ae6cf04340a0e6d7bf0188e8c38e3f11",
+      "run_sha256": "1503893b79cc09341ccc206e8be356e7e7d7d5e66d94aaf3b343d86b6226a1b9"
+    },
+    {
+      "settings": [
         1.7e-05,
         2,
         0
@@ -262,6 +746,17 @@
       "retention_loss": 0.027589315037648943,
       "checkpoint_sha256": "637365de9e3263e71c3b3e82d726f0734cd4ec9fef5fba26b04e344578398652",
       "run_sha256": "883d17f656d2d4e348dde6a5652a3dc472b97b7e72cb6b98ffc18ed9408f1080"
+    },
+    {
+      "settings": [
+        1.7e-05,
+        2,
+        0.25
+      ],
+      "new_gain": 0.053235078079115095,
+      "retention_loss": 0.02479834283042126,
+      "checkpoint_sha256": "38d117b866eb18ef50a1107b0574154b1164f81b6c96016e245d9681c6cccf8a",
+      "run_sha256": "0351b500913b3fa891ecc7551f720107ff56f060f6df232e6c9ac0c027ec88d7"
     },
     {
       "settings": [
@@ -300,6 +795,17 @@
       "settings": [
         1.7e-05,
         4,
+        0.25
+      ],
+      "new_gain": 0.043132553141138286,
+      "retention_loss": 0.02758579596042965,
+      "checkpoint_sha256": "21214762fa0a8a1087f0018810c944742d4c4f24a6026a742062cfe77befb930",
+      "run_sha256": "e881baa19112d1595d266986d0547d98c32db887bc4ddfa87a59354eef6741db"
+    },
+    {
+      "settings": [
+        1.7e-05,
+        4,
         1
       ],
       "new_gain": 0.04684576957643227,
@@ -328,6 +834,17 @@
       "retention_loss": 0.021318144171233455,
       "checkpoint_sha256": "7943d7363ce75fcdce3b0da5b6e77e5fc3074a385cf4f8449f516c2a6442f093",
       "run_sha256": "abea572203e649dd18b4c27ae9238dd1f180027b7116b6351fd476fde440b928"
+    },
+    {
+      "settings": [
+        1.7e-05,
+        6,
+        0.25
+      ],
+      "new_gain": 0.04572892220178615,
+      "retention_loss": 0.019873089509571118,
+      "checkpoint_sha256": "5d3c48dd243836757072812627c6541c43e83c39787013fde7bb5fc5122fd1ce",
+      "run_sha256": "02ee66c5d95ec487ed90bb46b721b6d8573e8edd1003f3729706a2bbb757564f"
     },
     {
       "settings": [
@@ -366,6 +883,17 @@
       "settings": [
         3e-05,
         2,
+        0.25
+      ],
+      "new_gain": 0.06143868640006378,
+      "retention_loss": 0.019076769640751667,
+      "checkpoint_sha256": "1aa2a2c7a24cbbfc1b2ea77cdf2333f79a6a1451b44c2254b1ca6cd21729eea1",
+      "run_sha256": "32b51a48c3af4d48eb87d43f083b78c2256280ff5fb3987f531efc5a92a1fa16"
+    },
+    {
+      "settings": [
+        3e-05,
+        2,
         1
       ],
       "new_gain": 0.06599129771639833,
@@ -399,6 +927,17 @@
       "settings": [
         3e-05,
         4,
+        0.25
+      ],
+      "new_gain": 0.041417652750912914,
+      "retention_loss": 0.027772782911350546,
+      "checkpoint_sha256": "431499fcad331a9dc8b10b46da4a255333b19b02b86c0029756c498a23b389a8",
+      "run_sha256": "6f9ec2871bdc28b32458d3744644c8209905a208a758c6fda51563fd900549f9"
+    },
+    {
+      "settings": [
+        3e-05,
+        4,
         1
       ],
       "new_gain": 0.04582678651791994,
@@ -427,6 +966,17 @@
       "retention_loss": 0.024645485379416243,
       "checkpoint_sha256": "709d096937a403291f2f4abba9326841ed8db2573be285e5019cbe4a9af22cb3",
       "run_sha256": "a5760a95a1a2f5c1c54529a4300bdff8e7544f841fe6d70aae7289a0d5cbbe4e"
+    },
+    {
+      "settings": [
+        3e-05,
+        6,
+        0.25
+      ],
+      "new_gain": 0.05099800819747258,
+      "retention_loss": 0.018489492836571086,
+      "checkpoint_sha256": "6a2a2aed63443a33c3128f05ede99bf7d95b4d6722df7d3506c4f1d0812b0e20",
+      "run_sha256": "84e5291e55109ae628745a51f56215bf4c7450f6931d35b3ee9693b8994e8b2a"
     },
     {
       "settings": [
