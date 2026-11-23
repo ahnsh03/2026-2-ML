@@ -4831,6 +4831,149 @@
       }
     ]
   },
+  "uniform_review_distribution_and_oracle": {
+    "post_hoc": true,
+    "meaning": "The hindsight maximum uses each observed window budget and the unavailable GT. Uniform sampling is independent between windows and without replacement within each window. Quantiles describe rerandomization of these recorded frames.",
+    "by_lap": [
+      {
+        "frames": 484,
+        "reviewed": 49,
+        "observed": 40,
+        "oracle_max": 45,
+        "exact_mean": 21.265625,
+        "windows": [
+          {
+            "frames": 64,
+            "budget": 7,
+            "actual_low": 16,
+            "maximum": 7,
+            "minimum": 0
+          },
+          {
+            "frames": 64,
+            "budget": 6,
+            "actual_low": 19,
+            "maximum": 6,
+            "minimum": 0
+          },
+          {
+            "frames": 64,
+            "budget": 7,
+            "actual_low": 17,
+            "maximum": 7,
+            "minimum": 0
+          },
+          {
+            "frames": 64,
+            "budget": 6,
+            "actual_low": 28,
+            "maximum": 6,
+            "minimum": 0
+          },
+          {
+            "frames": 64,
+            "budget": 6,
+            "actual_low": 61,
+            "maximum": 6,
+            "minimum": 3
+          },
+          {
+            "frames": 64,
+            "budget": 7,
+            "actual_low": 62,
+            "maximum": 7,
+            "minimum": 5
+          },
+          {
+            "frames": 64,
+            "budget": 6,
+            "actual_low": 8,
+            "maximum": 6,
+            "minimum": 0
+          },
+          {
+            "frames": 36,
+            "budget": 4,
+            "actual_low": 0,
+            "maximum": 0,
+            "minimum": 0
+          }
+        ]
+      },
+      {
+        "frames": 484,
+        "reviewed": 49,
+        "observed": 30,
+        "oracle_max": 36,
+        "exact_mean": 16.562500000000007,
+        "windows": [
+          {
+            "frames": 64,
+            "budget": 7,
+            "actual_low": 16,
+            "maximum": 7,
+            "minimum": 0
+          },
+          {
+            "frames": 64,
+            "budget": 6,
+            "actual_low": 35,
+            "maximum": 6,
+            "minimum": 0
+          },
+          {
+            "frames": 64,
+            "budget": 7,
+            "actual_low": 59,
+            "maximum": 7,
+            "minimum": 2
+          },
+          {
+            "frames": 64,
+            "budget": 6,
+            "actual_low": 44,
+            "maximum": 6,
+            "minimum": 0
+          },
+          {
+            "frames": 64,
+            "budget": 6,
+            "actual_low": 3,
+            "maximum": 3,
+            "minimum": 0
+          },
+          {
+            "frames": 64,
+            "budget": 7,
+            "actual_low": 1,
+            "maximum": 1,
+            "minimum": 0
+          },
+          {
+            "frames": 64,
+            "budget": 6,
+            "actual_low": 6,
+            "maximum": 6,
+            "minimum": 0
+          },
+          {
+            "frames": 36,
+            "budget": 4,
+            "actual_low": 0,
+            "maximum": 0,
+            "minimum": 0
+          }
+        ]
+      }
+    ],
+    "observed": 70,
+    "oracle_max": 81,
+    "uniform_mean": 37.82812500000001,
+    "uniform_middle_95": [
+      31,
+      44
+    ]
+  },
   "cluster_within_pose_shuffle": {
     "input_sha256": "b098eab3f0bb24b51bb179eeb1a275cf2b2670ace687c7dea9e62e76781365de",
     "draws": 5000,
@@ -5422,6 +5565,7 @@
     "refreshed_gp_transfer.json": "6261db7971d0e5cf3377ae9b70a932e2d88b2ca9d17149d859a3ee8ad051771f",
     "mixed_gate_spatial_sensitivity.json": "0520e21408d3929ffadc13dbe68a71828dac3f82fbbc6a14d77011edeabfbd7a",
     "mixed_quality_transition_response.json": "53dc2c12845af6687963ebed100ea184e8c3343168a82b28be1a9fe221105ed8",
+    "mixed_review_budget_bounds.json": "a0e09ae9135f449b05c9e005be96f87bbe0e06b5b657227d5722add0699f4afb",
     "cluster_pose_permutation.json": "c81b313baa12b5c8cd17f6e11e7d626d01b4cbc1bf7090ad4275993b6e2974ec",
     "cluster_pose_exact_null.json": "83af9504dcf72f84507057a8182301f551cb1f72c04f8c8272e835003e433b41",
     "road_shape_counterexamples.json": "91eced6f24d4e1dbdcefac1a4cfa3c49412ebc1f1e062511a1f211a1a2c61f00",
