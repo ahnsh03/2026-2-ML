@@ -7857,6 +7857,204 @@
       }
     }
   },
+  "review_truth_sensitivity": {
+    "interpretation": "Retrospective label-only sensitivity on the exact same pre-existing selected frame IDs; no refit or changing online alerts. Prospective static uses a globally pooled 10% budget; the drives retain 64-frame chronological windows and reserved uniform audit.",
+    "cohorts": {
+      "prospective_known": {
+        "0.6": {
+          "low_in_pool": 272,
+          "defined_in_pool": 576,
+          "held_review_budget": 58,
+          "confirmed": {
+            "local": 58,
+            "base56": 58
+          }
+        },
+        "0.65": {
+          "low_in_pool": 299,
+          "defined_in_pool": 576,
+          "held_review_budget": 58,
+          "confirmed": {
+            "local": 58,
+            "base56": 58
+          }
+        },
+        "0.7": {
+          "low_in_pool": 325,
+          "defined_in_pool": 576,
+          "held_review_budget": 58,
+          "confirmed": {
+            "local": 58,
+            "base56": 58
+          }
+        },
+        "0.75": {
+          "low_in_pool": 365,
+          "defined_in_pool": 576,
+          "held_review_budget": 58,
+          "confirmed": {
+            "local": 58,
+            "base56": 58
+          }
+        },
+        "0.8": {
+          "low_in_pool": 426,
+          "defined_in_pool": 576,
+          "held_review_budget": 58,
+          "confirmed": {
+            "local": 58,
+            "base56": 58
+          }
+        }
+      },
+      "stream_new": {
+        "0.6": {
+          "low_in_pool": 1123,
+          "defined_in_pool": 1448,
+          "held_review_budget": 147,
+          "confirmed": {
+            "local": 128,
+            "base56": 127,
+            "confidence": 128
+          }
+        },
+        "0.65": {
+          "low_in_pool": 1165,
+          "defined_in_pool": 1448,
+          "held_review_budget": 147,
+          "confirmed": {
+            "local": 134,
+            "base56": 131,
+            "confidence": 136
+          }
+        },
+        "0.7": {
+          "low_in_pool": 1211,
+          "defined_in_pool": 1448,
+          "held_review_budget": 147,
+          "confirmed": {
+            "local": 139,
+            "base56": 136,
+            "confidence": 138
+          }
+        },
+        "0.75": {
+          "low_in_pool": 1261,
+          "defined_in_pool": 1448,
+          "held_review_budget": 147,
+          "confirmed": {
+            "local": 142,
+            "base56": 139,
+            "confidence": 141
+          }
+        },
+        "0.8": {
+          "low_in_pool": 1317,
+          "defined_in_pool": 1448,
+          "held_review_budget": 147,
+          "confirmed": {
+            "local": 143,
+            "base56": 141,
+            "confidence": 144
+          }
+        }
+      },
+      "roi10_other_road_a": {
+        "0.6": {
+          "low_in_pool": 94,
+          "defined_in_pool": 137,
+          "held_review_budget": 14,
+          "confirmed": {
+            "local": 12,
+            "base56": 12
+          }
+        },
+        "0.65": {
+          "low_in_pool": 94,
+          "defined_in_pool": 137,
+          "held_review_budget": 14,
+          "confirmed": {
+            "local": 12,
+            "base56": 12
+          }
+        },
+        "0.7": {
+          "low_in_pool": 94,
+          "defined_in_pool": 137,
+          "held_review_budget": 14,
+          "confirmed": {
+            "local": 12,
+            "base56": 12
+          }
+        },
+        "0.75": {
+          "low_in_pool": 96,
+          "defined_in_pool": 137,
+          "held_review_budget": 14,
+          "confirmed": {
+            "local": 12,
+            "base56": 12
+          }
+        },
+        "0.8": {
+          "low_in_pool": 108,
+          "defined_in_pool": 137,
+          "held_review_budget": 14,
+          "confirmed": {
+            "local": 12,
+            "base56": 12
+          }
+        }
+      },
+      "roi10_other_road_b": {
+        "0.6": {
+          "low_in_pool": 105,
+          "defined_in_pool": 136,
+          "held_review_budget": 14,
+          "confirmed": {
+            "local": 13,
+            "base56": 13
+          }
+        },
+        "0.65": {
+          "low_in_pool": 109,
+          "defined_in_pool": 136,
+          "held_review_budget": 14,
+          "confirmed": {
+            "local": 13,
+            "base56": 13
+          }
+        },
+        "0.7": {
+          "low_in_pool": 110,
+          "defined_in_pool": 136,
+          "held_review_budget": 14,
+          "confirmed": {
+            "local": 13,
+            "base56": 13
+          }
+        },
+        "0.75": {
+          "low_in_pool": 110,
+          "defined_in_pool": 136,
+          "held_review_budget": 14,
+          "confirmed": {
+            "local": 13,
+            "base56": 13
+          }
+        },
+        "0.8": {
+          "low_in_pool": 112,
+          "defined_in_pool": 136,
+          "held_review_budget": 14,
+          "confirmed": {
+            "local": 13,
+            "base56": 13
+          }
+        }
+      }
+    }
+  },
   "per_lap_native_histograms": {
     "nov23_roi10_run_a": {
       "weather": {
