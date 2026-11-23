@@ -21,6 +21,8 @@
   <depend>rospkg</depend>
 
   <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-opencv</exec_depend>
   <exec_depend>python3-grpcio</exec_depend>
   <exec_depend>python3-protobuf</exec_depend>
   <exec_depend>python3-psutil</exec_depend>

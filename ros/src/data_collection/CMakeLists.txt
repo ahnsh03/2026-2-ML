@@ -21,6 +21,7 @@ catkin_package()
 if(CATKIN_ENABLE_TESTING)
   catkin_add_nosetests(test/test_capture_mode.py)
   catkin_add_nosetests(test/test_capture_sync.py)
+  catkin_add_nosetests(test/test_compressed_rgb.py)
   catkin_add_nosetests(test/test_mask_baker.py)
   catkin_add_nosetests(test/test_perception_curation.py)
   catkin_add_nosetests(test/test_perception_dataset.py)
@@ -29,6 +30,7 @@ endif()
 catkin_install_python(PROGRAMS
   scripts/capture_mode_collector_node.py
   scripts/morai_udp_bridge.py
+  scripts/stream_front_rgb.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
