@@ -30,6 +30,8 @@
 | 현재 입출력 계획 | [입출력 규약](./contracts/품질추정_입출력규약.md) · [비실행 계획 JSON v2](./contracts/quality_plan_v2.json) |
 | 이전 계약 이력 | [v5 계약 v1](./contracts/quality_contract_v1.json) · [이전 의미 영역 ROI 양식](./contracts/roi_profile_template.json) |
 
+전방 10영역의 분할, 영역별 특징, 검수 결과와 환경별 경보 판단은 11월 23일 오후 실험에 정리했다. [연구 결과](project/전방_10영역_특징과_품질추정_20261123.md) · [실행법](development/전방_10영역_실험_재현.md) · [수치와 실험 식별자](baselines/roi10_study_20261123.json)
+
 ## 해석 기준
 
 - 현재 실행 정의는 M v6, 출력+RGB 특징, 전체+3행×2열 ROI, 단일 통합 Lane IoU, OLS/Ridge/RF 비교다.
