@@ -1,18 +1,19 @@
+import json
+from pathlib import Path
 import unittest
 
 import numpy as np
 
 from quality_estimation.roi10 import FrontProfile, extract_region_nodes, summarize_head_maps
 from quality_estimation.spatial_features import (
-    SpatialProfile, extract_spatial_features, spatial_feature_schema,
+    SpatialProfile, extract_roi7_iou_features, extract_spatial_features,
+    roi7_iou_feature_schema, spatial_feature_schema,
 )
 
 
 class SpatialFeatureTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        from pathlib import Path
-
         cls.root = Path(__file__).resolve().parents[1]
         cls.seven = SpatialProfile.load(cls.root / "config/roi7_front_v1")
         cls.ten = SpatialProfile.load(cls.root / "config/roi10_front_v1")
@@ -86,3 +87,23 @@ class SpatialFeatureTests(unittest.TestCase):
             extract_spatial_features(rgb[::2], maps, self.seven)
         with self.assertRaises(ValueError):
             spatial_feature_schema(self.ten, feature_set="missing")
+
+
+    def test_selected_schema_and_padding(self):
+        rgb = np.zeros((720, 1280, 3), np.uint8)
+        maps = np.zeros((4, 180, 320), np.uint8)
+        p = np.zeros((4, 384, 640), np.float32)
+        p[1] = .75
+        p[0] = .25
+        p[:, :12] = .25
+        p[:, 372:] = .25
+        selected = json.loads((self.root / "docs/baselines/roi7_final_20261124/selected_features.json").read_text())
+        self.assertEqual(roi7_iou_feature_schema(self.seven)["ordered_features"], selected["ordered_features"])
+        values = extract_roi7_iou_features(rgb, maps, p, self.seven)
+        expected_entropy = -(.75 * np.log(.75) + .25 * np.log(.25)) / np.log(4)
+        np.testing.assert_array_equal(values[:96], extract_spatial_features(rgb, maps, self.seven, include_global=True))
+        np.testing.assert_allclose(values[-3:], [expected_entropy, expected_entropy, .5], atol=1e-6)
+        p[[0, 1]] = p[[1, 0]]
+        self.assertEqual(extract_roi7_iou_features(rgb, maps, p, self.seven)[-1], 0.)
+        with self.assertRaises(ValueError):
+            extract_roi7_iou_features(rgb, maps, p, self.ten)

@@ -1,0 +1,2175 @@
+{
+  "selected": "99",
+  "registered_rows": 7851,
+  "prior_frames": 14907,
+  "static_telemetry": {
+    "extra_cal": {
+      "source_sha": "5dd12e35dcbebe8d069228b7b0130d3ae3702cb42fb68226807eb4ecb566d4fa",
+      "different_requested_actual": 12
+    },
+    "newroads": {
+      "source_sha": "5638a4c60639e5b4b1ba048bd28a34448f68cf7d9377f4c0633b7220c09e6e21",
+      "different_requested_actual": 12
+    },
+    "shapes": {
+      "source_sha": "157f737344611ea1dad5f509f712f7299edfa93ea3e792daa379fdf3a7d98a27",
+      "different_requested_actual": 0
+    }
+  },
+  "superiority": {
+    "96": {
+      "max_delta": 0.01449489585346557,
+      "min_review_delta": -51,
+      "superior": false
+    },
+    "97": {
+      "max_delta": 0.0034514806461805603,
+      "min_review_delta": -4,
+      "superior": false
+    },
+    "102": {
+      "max_delta": -0.0003940731836805378,
+      "min_review_delta": -6,
+      "superior": false
+    },
+    "98patch": {
+      "max_delta": 0.0034161973783491117,
+      "min_review_delta": -7,
+      "superior": false
+    }
+  },
+  "spatial_harm": false,
+  "smaller": {
+    "97": false,
+    "98patch": false
+  },
+  "fallback_order": [
+    "97",
+    "98patch"
+  ],
+  "development": {
+    "97": {
+      "cv": 0.09067562786485373,
+      "dev": 0.041997815950600044
+    },
+    "99": {
+      "cv": 0.09049701443832264,
+      "dev": 0.042508366061358376
+    },
+    "98top": {
+      "cv": 0.08912473062821868,
+      "dev": 0.04185429252554424
+    },
+    "98patch": {
+      "cv": 0.08952802173518287,
+      "dev": 0.04121997749330058
+    }
+  },
+  "label_check": {
+    "max_abs": 0.0007173421564198312,
+    "rows_over_float_tolerance": 10,
+    "failure_class_changed": 0
+  },
+  "cutoffs": {
+    "96_23411": 0.6919062752578867,
+    "96_23412": 0.6691997759165744,
+    "96_23413": 0.6808606542478075,
+    "97_23411": 0.7037622141547347,
+    "97_23412": 0.6990718343071597,
+    "97_23413": 0.7002206655910476,
+    "99_23411": 0.7003829383629979,
+    "99_23412": 0.6964236069980946,
+    "99_23413": 0.7017672645065924,
+    "102_23411": 0.7007667812978757,
+    "102_23412": 0.7068393050529072,
+    "102_23413": 0.70779394635485,
+    "98top_23411": 0.7006434498868578,
+    "98top_23412": 0.7048779624013595,
+    "98top_23413": 0.700009035241781,
+    "98patch_23411": 0.700657540759422,
+    "98patch_23412": 0.7059744914471902,
+    "98patch_23413": 0.7020701683714812
+  },
+  "cohorts": {
+    "links": {
+      "n": 164,
+      "defined": 164,
+      "failures": 140,
+      "groups": 16,
+      "boundary": 15,
+      "boundary_groups": 8,
+      "min_position_m": 33.63137192512938,
+      "min_link_m": 25.290016033822862,
+      "diff": {
+        "96": {
+          "macro": {
+            "groups": 16,
+            "point": 0.01047141566938067,
+            "ci": [
+              0.004547729633404848,
+              0.01707598344342247
+            ],
+            "upper_adjusted": 0.01796248786494148
+          },
+          "location_weighted": {
+            "groups": 16,
+            "point": 0.010127329692079455,
+            "ci": [
+              0.005222717663779424,
+              0.01598478013101981
+            ],
+            "upper_adjusted": 0.017120388738454322
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 5,
+              "groups": 4,
+              "delta": 0.2,
+              "ci": [
+                0.0,
+                0.75
+              ]
+            },
+            "false_positive": {
+              "denominator": 10,
+              "groups": 6,
+              "delta": 0.1,
+              "ci": [
+                0.0,
+                0.375
+              ]
+            }
+          }
+        },
+        "97": {
+          "macro": {
+            "groups": 16,
+            "point": 0.0019966136729634874,
+            "ci": [
+              -0.00019712921426107106,
+              0.00421235867925719
+            ],
+            "upper_adjusted": 0.004458230424910219
+          },
+          "location_weighted": {
+            "groups": 16,
+            "point": 0.0015281119774255315,
+            "ci": [
+              -0.00042491380468117815,
+              0.003645373226590999
+            ],
+            "upper_adjusted": 0.0038384556343156115
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 5,
+              "groups": 4,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 10,
+              "groups": 6,
+              "delta": 0.1,
+              "ci": [
+                0.0,
+                0.25
+              ]
+            }
+          }
+        },
+        "99": {
+          "macro": {
+            "groups": 16,
+            "point": 0.0,
+            "ci": [
+              0.0,
+              0.0
+            ],
+            "upper_adjusted": 0.0
+          },
+          "location_weighted": {
+            "groups": 16,
+            "point": 0.0,
+            "ci": [
+              0.0,
+              0.0
+            ],
+            "upper_adjusted": 0.0
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 5,
+              "groups": 4,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 10,
+              "groups": 6,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "102": {
+          "macro": {
+            "groups": 16,
+            "point": -0.00387784368503622,
+            "ci": [
+              -0.009524758072095614,
+              0.001124803676467539
+            ],
+            "upper_adjusted": 0.0017776064253143182
+          },
+          "location_weighted": {
+            "groups": 16,
+            "point": -0.0017254191012246777,
+            "ci": [
+              -0.00609803804543335,
+              0.002158622490768524
+            ],
+            "upper_adjusted": 0.002729429110407106
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 5,
+              "groups": 4,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 10,
+              "groups": 6,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "98top": {
+          "macro": {
+            "groups": 16,
+            "point": 0.0041684817153895375,
+            "ci": [
+              0.00012448312902454888,
+              0.009040813761847467
+            ],
+            "upper_adjusted": 0.009751901860223225
+          },
+          "location_weighted": {
+            "groups": 16,
+            "point": 0.002311412820904204,
+            "ci": [
+              -0.0005035170886768036,
+              0.005991285181079091
+            ],
+            "upper_adjusted": 0.00641036471560894
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 5,
+              "groups": 4,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 10,
+              "groups": 6,
+              "delta": 0.1,
+              "ci": [
+                0.0,
+                0.25
+              ]
+            }
+          }
+        },
+        "98patch": {
+          "macro": {
+            "groups": 16,
+            "point": 0.0034161973783490996,
+            "ci": [
+              0.00022568940146041285,
+              0.006914869560073869
+            ],
+            "upper_adjusted": 0.007414244687716702
+          },
+          "location_weighted": {
+            "groups": 16,
+            "point": 0.0025368962480354263,
+            "ci": [
+              -0.00014724341269835935,
+              0.005557090184901152
+            ],
+            "upper_adjusted": 0.00590647469650001
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 5,
+              "groups": 4,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 10,
+              "groups": 6,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      },
+      "models": {
+        "96": {
+          "mean_macro": 0.12262979525125021,
+          "per_seed_macro": [
+            0.12135478760789549,
+            0.12476849390045976,
+            0.12176610424539538
+          ],
+          "reference": {
+            "macro": 0.12135478760789549,
+            "mae": 0.10915840390271571,
+            "review": {
+              "found": 17,
+              "slots": 17,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.18899956760468592,
+            "fixed": {
+              "fn": 7,
+              "failures": 140,
+              "fp": 13,
+              "normals": 24
+            },
+            "calibrated": {
+              "fn": 8,
+              "failures": 140,
+              "fp": 13,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            },
+            "boundary_calibrated": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          }
+        },
+        "97": {
+          "mean_macro": 0.11237319901440268,
+          "per_seed_macro": [
+            0.1128799856114783,
+            0.11372507869317475,
+            0.11051453273855502
+          ],
+          "reference": {
+            "macro": 0.1128799856114783,
+            "mae": 0.10055918618806177,
+            "review": {
+              "found": 17,
+              "slots": 17,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.15576603168419428,
+            "fixed": {
+              "fn": 4,
+              "failures": 140,
+              "fp": 12,
+              "normals": 24
+            },
+            "calibrated": {
+              "fn": 4,
+              "failures": 140,
+              "fp": 12,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            },
+            "boundary_calibrated": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          }
+        },
+        "99": {
+          "mean_macro": 0.10999963676681225,
+          "per_seed_macro": [
+            0.11088337193851482,
+            0.11027359804699419,
+            0.10884194031492778
+          ],
+          "reference": {
+            "macro": 0.11088337193851482,
+            "mae": 0.09903107421063626,
+            "review": {
+              "found": 17,
+              "slots": 17,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.1472022286579012,
+            "fixed": {
+              "fn": 5,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "calibrated": {
+              "fn": 5,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            },
+            "boundary_calibrated": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          }
+        },
+        "102": {
+          "mean_macro": 0.10794717746118143,
+          "per_seed_macro": [
+            0.10700552825347859,
+            0.10838813699881843,
+            0.10844786713124724
+          ],
+          "reference": {
+            "macro": 0.10700552825347859,
+            "mae": 0.09730565510941158,
+            "review": {
+              "found": 17,
+              "slots": 17,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.1316180770766694,
+            "fixed": {
+              "fn": 5,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "calibrated": {
+              "fn": 5,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            },
+            "boundary_calibrated": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          }
+        },
+        "98top": {
+          "mean_macro": 0.11275054319694972,
+          "per_seed_macro": [
+            0.11505185365390436,
+            0.1101848728718231,
+            0.1130149030651217
+          ],
+          "reference": {
+            "macro": 0.11505185365390436,
+            "mae": 0.10134248703154045,
+            "review": {
+              "found": 17,
+              "slots": 17,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.17297948499145702,
+            "fixed": {
+              "fn": 4,
+              "failures": 140,
+              "fp": 12,
+              "normals": 24
+            },
+            "calibrated": {
+              "fn": 4,
+              "failures": 140,
+              "fp": 12,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            },
+            "boundary_calibrated": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          }
+        },
+        "98patch": {
+          "mean_macro": 0.11313082202377156,
+          "per_seed_macro": [
+            0.11429956931686393,
+            0.11291796684527967,
+            0.11217492990917109
+          ],
+          "reference": {
+            "macro": 0.11429956931686393,
+            "mae": 0.10156797045867168,
+            "review": {
+              "found": 17,
+              "slots": 17,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.16248041405919877,
+            "fixed": {
+              "fn": 6,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "calibrated": {
+              "fn": 6,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            },
+            "boundary_calibrated": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          }
+        }
+      }
+    },
+    "far_links": {
+      "n": 94,
+      "defined": 94,
+      "failures": 80,
+      "groups": 9,
+      "boundary": 12,
+      "boundary_groups": 5,
+      "min_position_m": 51.249878340994066,
+      "min_link_m": 28.677868268272718,
+      "diff": {
+        "96": {
+          "macro": {
+            "groups": 9,
+            "point": 0.015213249903017596,
+            "ci": [
+              0.006527111596764997,
+              0.024245504016153996
+            ],
+            "upper_adjusted": 0.025669590058426624
+          },
+          "location_weighted": {
+            "groups": 9,
+            "point": 0.013200556669055584,
+            "ci": [
+              0.0052978872642047035,
+              0.022712078278191664
+            ],
+            "upper_adjusted": 0.024467248010016998
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 4,
+              "groups": 3,
+              "delta": 0.25,
+              "ci": [
+                0.0,
+                1.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 8,
+              "groups": 4,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "97": {
+          "macro": {
+            "groups": 9,
+            "point": 0.004360385872795162,
+            "ci": [
+              0.0017777555101127585,
+              0.0069039348675823935
+            ],
+            "upper_adjusted": 0.007414758947344622
+          },
+          "location_weighted": {
+            "groups": 9,
+            "point": 0.0035787624580396944,
+            "ci": [
+              0.001309742424367961,
+              0.006071739214552861
+            ],
+            "upper_adjusted": 0.006506379505583376
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 4,
+              "groups": 3,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 8,
+              "groups": 4,
+              "delta": 0.125,
+              "ci": [
+                0.0,
+                0.3
+              ]
+            }
+          }
+        },
+        "99": {
+          "macro": {
+            "groups": 9,
+            "point": 0.0,
+            "ci": [
+              0.0,
+              0.0
+            ],
+            "upper_adjusted": 0.0
+          },
+          "location_weighted": {
+            "groups": 9,
+            "point": 0.0,
+            "ci": [
+              0.0,
+              0.0
+            ],
+            "upper_adjusted": 0.0
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 4,
+              "groups": 3,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 8,
+              "groups": 4,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "102": {
+          "macro": {
+            "groups": 9,
+            "point": -0.0035841416588097163,
+            "ci": [
+              -0.013119561658146461,
+              0.004645136441588664
+            ],
+            "upper_adjusted": 0.005240795701483338
+          },
+          "location_weighted": {
+            "groups": 9,
+            "point": -0.000270805617728725,
+            "ci": [
+              -0.007418406812822351,
+              0.005200149505869266
+            ],
+            "upper_adjusted": 0.005676518993549425
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 4,
+              "groups": 3,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 8,
+              "groups": 4,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "98top": {
+          "macro": {
+            "groups": 9,
+            "point": 0.007922952102512724,
+            "ci": [
+              0.0017049819098093725,
+              0.014749223065465162
+            ],
+            "upper_adjusted": 0.01596920332236421
+          },
+          "location_weighted": {
+            "groups": 9,
+            "point": 0.005227185092641945,
+            "ci": [
+              0.0013597118786181168,
+              0.010441566984612278
+            ],
+            "upper_adjusted": 0.011330699094277846
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 4,
+              "groups": 3,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 8,
+              "groups": 4,
+              "delta": 0.125,
+              "ci": [
+                0.0,
+                0.3
+              ]
+            }
+          }
+        },
+        "98patch": {
+          "macro": {
+            "groups": 9,
+            "point": 0.006565317147588075,
+            "ci": [
+              0.002459888803462762,
+              0.011073531310040897
+            ],
+            "upper_adjusted": 0.011641683690069996
+          },
+          "location_weighted": {
+            "groups": 9,
+            "point": 0.004989713357255248,
+            "ci": [
+              0.0018719180166175318,
+              0.00872465974582539
+            ],
+            "upper_adjusted": 0.009440260292784207
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 4,
+              "groups": 3,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 8,
+              "groups": 4,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      },
+      "models": {
+        "96": {
+          "mean_macro": 0.1276533370276779,
+          "per_seed_macro": [
+            0.12606361990110337,
+            0.12981617558620515,
+            0.12708021559572516
+          ],
+          "reference": {
+            "macro": 0.12606361990110337,
+            "mae": 0.10898114917352497,
+            "review": {
+              "found": 10,
+              "slots": 10,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.18900566677994415,
+            "fixed": {
+              "fn": 2,
+              "failures": 80,
+              "fp": 8,
+              "normals": 14
+            },
+            "calibrated": {
+              "fn": 2,
+              "failures": 80,
+              "fp": 8,
+              "normals": 14
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 4,
+              "fp": 5,
+              "normals": 8
+            },
+            "boundary_calibrated": {
+              "fn": 1,
+              "failures": 4,
+              "fp": 5,
+              "normals": 8
+            }
+          }
+        },
+        "97": {
+          "mean_macro": 0.11488431987897423,
+          "per_seed_macro": [
+            0.11521075587088093,
+            0.11723339478821686,
+            0.11220880897782487
+          ],
+          "reference": {
+            "macro": 0.11521075587088093,
+            "mae": 0.09935935496250908,
+            "review": {
+              "found": 10,
+              "slots": 10,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.15832623903336518,
+            "fixed": {
+              "fn": 1,
+              "failures": 80,
+              "fp": 9,
+              "normals": 14
+            },
+            "calibrated": {
+              "fn": 1,
+              "failures": 80,
+              "fp": 9,
+              "normals": 14
+            },
+            "boundary": {
+              "fn": 0,
+              "failures": 4,
+              "fp": 6,
+              "normals": 8
+            },
+            "boundary_calibrated": {
+              "fn": 0,
+              "failures": 4,
+              "fp": 6,
+              "normals": 8
+            }
+          }
+        },
+        "99": {
+          "mean_macro": 0.11035005451663338,
+          "per_seed_macro": [
+            0.11085036999808577,
+            0.11250286544299175,
+            0.10769692810882263
+          ],
+          "reference": {
+            "macro": 0.11085036999808577,
+            "mae": 0.0957805925044694,
+            "review": {
+              "found": 10,
+              "slots": 10,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.1477671790412677,
+            "fixed": {
+              "fn": 1,
+              "failures": 80,
+              "fp": 8,
+              "normals": 14
+            },
+            "calibrated": {
+              "fn": 1,
+              "failures": 80,
+              "fp": 8,
+              "normals": 14
+            },
+            "boundary": {
+              "fn": 0,
+              "failures": 4,
+              "fp": 5,
+              "normals": 8
+            },
+            "boundary_calibrated": {
+              "fn": 0,
+              "failures": 4,
+              "fp": 5,
+              "normals": 8
+            }
+          }
+        },
+        "102": {
+          "mean_macro": 0.1090145377882858,
+          "per_seed_macro": [
+            0.10726622833927606,
+            0.10960974975386337,
+            0.11016763527171804
+          ],
+          "reference": {
+            "macro": 0.10726622833927606,
+            "mae": 0.0955097868867407,
+            "review": {
+              "found": 10,
+              "slots": 10,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.1276927555348768,
+            "fixed": {
+              "fn": 1,
+              "failures": 80,
+              "fp": 8,
+              "normals": 14
+            },
+            "calibrated": {
+              "fn": 1,
+              "failures": 80,
+              "fp": 8,
+              "normals": 14
+            },
+            "boundary": {
+              "fn": 0,
+              "failures": 4,
+              "fp": 5,
+              "normals": 8
+            },
+            "boundary_calibrated": {
+              "fn": 0,
+              "failures": 4,
+              "fp": 5,
+              "normals": 8
+            }
+          }
+        },
+        "98top": {
+          "mean_macro": 0.11462505535738299,
+          "per_seed_macro": [
+            0.11877332210059849,
+            0.1107485166883193,
+            0.11435332728323114
+          ],
+          "reference": {
+            "macro": 0.11877332210059849,
+            "mae": 0.10100777759711133,
+            "review": {
+              "found": 10,
+              "slots": 10,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.17738690133053073,
+            "fixed": {
+              "fn": 1,
+              "failures": 80,
+              "fp": 9,
+              "normals": 14
+            },
+            "calibrated": {
+              "fn": 1,
+              "failures": 80,
+              "fp": 9,
+              "normals": 14
+            },
+            "boundary": {
+              "fn": 0,
+              "failures": 4,
+              "fp": 6,
+              "normals": 8
+            },
+            "boundary_calibrated": {
+              "fn": 0,
+              "failures": 4,
+              "fp": 6,
+              "normals": 8
+            }
+          }
+        },
+        "98patch": {
+          "mean_macro": 0.11564094104189339,
+          "per_seed_macro": [
+            0.11741568714567384,
+            0.11594548220395286,
+            0.11356165377605347
+          ],
+          "reference": {
+            "macro": 0.11741568714567384,
+            "mae": 0.10077030586172465,
+            "review": {
+              "found": 10,
+              "slots": 10,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.16558426772189824,
+            "fixed": {
+              "fn": 1,
+              "failures": 80,
+              "fp": 8,
+              "normals": 14
+            },
+            "calibrated": {
+              "fn": 1,
+              "failures": 80,
+              "fp": 8,
+              "normals": 14
+            },
+            "boundary": {
+              "fn": 0,
+              "failures": 4,
+              "fp": 5,
+              "normals": 8
+            },
+            "boundary_calibrated": {
+              "fn": 0,
+              "failures": 4,
+              "fp": 5,
+              "normals": 8
+            }
+          }
+        }
+      }
+    },
+    "all_static": {
+      "n": 512,
+      "defined": 512,
+      "failures": 390,
+      "groups": 52,
+      "boundary": 49,
+      "boundary_groups": 23,
+      "min_position_m": 0.1983848044684864,
+      "min_link_m": 1.2021754028347995e-07,
+      "diff": {
+        "96": {
+          "macro": {
+            "groups": 52,
+            "point": 0.005437004913139252,
+            "ci": [
+              0.0021315907652717505,
+              0.008804819127788186
+            ],
+            "upper_adjusted": 0.00947389301219035
+          },
+          "location_weighted": {
+            "groups": 52,
+            "point": 0.005304155793389688,
+            "ci": [
+              0.00240824433227725,
+              0.00850429291890458
+            ],
+            "upper_adjusted": 0.009089685854912296
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 19,
+              "groups": 14,
+              "delta": 0.10526315789473684,
+              "ci": [
+                0.0,
+                0.2777777777777778
+              ]
+            },
+            "false_positive": {
+              "denominator": 30,
+              "groups": 17,
+              "delta": 0.0,
+              "ci": [
+                -0.09090909090909091,
+                0.10714285714285714
+              ]
+            }
+          }
+        },
+        "97": {
+          "macro": {
+            "groups": 52,
+            "point": 0.0005492433341434037,
+            "ci": [
+              -0.0008270994695893899,
+              0.002132402403486752
+            ],
+            "upper_adjusted": 0.0023524494193843132
+          },
+          "location_weighted": {
+            "groups": 52,
+            "point": 0.0004898466034375511,
+            "ci": [
+              -0.0005917006480318053,
+              0.001707721361928828
+            ],
+            "upper_adjusted": 0.0018889189135036983
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 19,
+              "groups": 14,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 30,
+              "groups": 17,
+              "delta": 0.06666666666666667,
+              "ci": [
+                0.0,
+                0.14285714285714285
+              ]
+            }
+          }
+        },
+        "99": {
+          "macro": {
+            "groups": 52,
+            "point": 0.0,
+            "ci": [
+              0.0,
+              0.0
+            ],
+            "upper_adjusted": 0.0
+          },
+          "location_weighted": {
+            "groups": 52,
+            "point": 0.0,
+            "ci": [
+              0.0,
+              0.0
+            ],
+            "upper_adjusted": 0.0
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 19,
+              "groups": 14,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 30,
+              "groups": 17,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "102": {
+          "macro": {
+            "groups": 52,
+            "point": -0.0024875208687067706,
+            "ci": [
+              -0.004707339594275638,
+              -0.00046606747214330044
+            ],
+            "upper_adjusted": -9.367003269608552e-05
+          },
+          "location_weighted": {
+            "groups": 52,
+            "point": -0.0020695263803010063,
+            "ci": [
+              -0.004028445026596366,
+              -0.00013601075151328977
+            ],
+            "upper_adjusted": 9.614632295332163e-05
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 19,
+              "groups": 14,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 30,
+              "groups": 17,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "98top": {
+          "macro": {
+            "groups": 52,
+            "point": 0.0013781124085635427,
+            "ci": [
+              -0.0003978192482822757,
+              0.0033325882186651446
+            ],
+            "upper_adjusted": 0.0037088706464800357
+          },
+          "location_weighted": {
+            "groups": 52,
+            "point": 0.0010039442488360526,
+            "ci": [
+              -0.0003836359419147143,
+              0.002454251823685154
+            ],
+            "upper_adjusted": 0.002646460898502922
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 19,
+              "groups": 14,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 30,
+              "groups": 17,
+              "delta": 0.06666666666666667,
+              "ci": [
+                0.0,
+                0.14285714285714285
+              ]
+            }
+          }
+        },
+        "98patch": {
+          "macro": {
+            "groups": 52,
+            "point": 0.0008138326485352819,
+            "ci": [
+              -0.0005589556315771768,
+              0.0023551715468384856
+            ],
+            "upper_adjusted": 0.0025947245962063105
+          },
+          "location_weighted": {
+            "groups": 52,
+            "point": 0.0005428531220805072,
+            "ci": [
+              -0.0007173734935123008,
+              0.0018977680977879695
+            ],
+            "upper_adjusted": 0.0021441952961226383
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 19,
+              "groups": 14,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 30,
+              "groups": 17,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        }
+      },
+      "models": {
+        "96": {
+          "mean_macro": 0.10018800994675009,
+          "per_seed_macro": [
+            0.09926103788300358,
+            0.10101643214610105,
+            0.10028655981114563
+          ],
+          "reference": {
+            "macro": 0.09926103788300358,
+            "mae": 0.0921944876750599,
+            "review": {
+              "found": 52,
+              "slots": 52,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.13452747088327593,
+            "fixed": {
+              "fn": 16,
+              "failures": 390,
+              "fp": 33,
+              "normals": 122
+            },
+            "calibrated": {
+              "fn": 17,
+              "failures": 390,
+              "fp": 33,
+              "normals": 122
+            },
+            "boundary": {
+              "fn": 7,
+              "failures": 19,
+              "fp": 15,
+              "normals": 30
+            },
+            "boundary_calibrated": {
+              "fn": 7,
+              "failures": 19,
+              "fp": 15,
+              "normals": 30
+            }
+          }
+        },
+        "97": {
+          "mean_macro": 0.09472631524430479,
+          "per_seed_macro": [
+            0.09437327630400773,
+            0.09560880585298176,
+            0.09419686357592488
+          ],
+          "reference": {
+            "macro": 0.09437327630400773,
+            "mae": 0.08738017848510776,
+            "review": {
+              "found": 52,
+              "slots": 52,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.12158019434605714,
+            "fixed": {
+              "fn": 13,
+              "failures": 390,
+              "fp": 34,
+              "normals": 122
+            },
+            "calibrated": {
+              "fn": 12,
+              "failures": 390,
+              "fp": 34,
+              "normals": 122
+            },
+            "boundary": {
+              "fn": 5,
+              "failures": 19,
+              "fp": 17,
+              "normals": 30
+            },
+            "boundary_calibrated": {
+              "fn": 5,
+              "failures": 19,
+              "fp": 17,
+              "normals": 30
+            }
+          }
+        },
+        "99": {
+          "mean_macro": 0.09375916647674835,
+          "per_seed_macro": [
+            0.09382403296986436,
+            0.09409009245273986,
+            0.09336337400764085
+          ],
+          "reference": {
+            "macro": 0.09382403296986436,
+            "mae": 0.08689033188167022,
+            "review": {
+              "found": 52,
+              "slots": 52,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.11819702900357978,
+            "fixed": {
+              "fn": 12,
+              "failures": 390,
+              "fp": 32,
+              "normals": 122
+            },
+            "calibrated": {
+              "fn": 12,
+              "failures": 390,
+              "fp": 32,
+              "normals": 122
+            },
+            "boundary": {
+              "fn": 5,
+              "failures": 19,
+              "fp": 15,
+              "normals": 30
+            },
+            "boundary_calibrated": {
+              "fn": 5,
+              "failures": 19,
+              "fp": 15,
+              "normals": 30
+            }
+          }
+        },
+        "102": {
+          "mean_macro": 0.09184232964883998,
+          "per_seed_macro": [
+            0.09133651210115755,
+            0.09193303714469182,
+            0.09225743970067056
+          ],
+          "reference": {
+            "macro": 0.09133651210115755,
+            "mae": 0.0848208055013692,
+            "review": {
+              "found": 52,
+              "slots": 52,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.11289761290613179,
+            "fixed": {
+              "fn": 12,
+              "failures": 390,
+              "fp": 32,
+              "normals": 122
+            },
+            "calibrated": {
+              "fn": 12,
+              "failures": 390,
+              "fp": 32,
+              "normals": 122
+            },
+            "boundary": {
+              "fn": 5,
+              "failures": 19,
+              "fp": 15,
+              "normals": 30
+            },
+            "boundary_calibrated": {
+              "fn": 5,
+              "failures": 19,
+              "fp": 15,
+              "normals": 30
+            }
+          }
+        },
+        "98top": {
+          "mean_macro": 0.09468732004209655,
+          "per_seed_macro": [
+            0.09520214537842787,
+            0.0937618119646796,
+            0.09509800278318217
+          ],
+          "reference": {
+            "macro": 0.09520214537842787,
+            "mae": 0.08789427613050627,
+            "review": {
+              "found": 52,
+              "slots": 52,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.12444541167179929,
+            "fixed": {
+              "fn": 11,
+              "failures": 390,
+              "fp": 34,
+              "normals": 122
+            },
+            "calibrated": {
+              "fn": 11,
+              "failures": 390,
+              "fp": 34,
+              "normals": 122
+            },
+            "boundary": {
+              "fn": 5,
+              "failures": 19,
+              "fp": 17,
+              "normals": 30
+            },
+            "boundary_calibrated": {
+              "fn": 5,
+              "failures": 19,
+              "fp": 17,
+              "normals": 30
+            }
+          }
+        },
+        "98patch": {
+          "mean_macro": 0.09485395538943682,
+          "per_seed_macro": [
+            0.09463786561839961,
+            0.09522689554202751,
+            0.09469710500788339
+          ],
+          "reference": {
+            "macro": 0.09463786561839961,
+            "mae": 0.08743318500375072,
+            "review": {
+              "found": 52,
+              "slots": 52,
+              "unknown": 0
+            },
+            "window": null,
+            "boundary_mae": 0.12284668393896332,
+            "fixed": {
+              "fn": 13,
+              "failures": 390,
+              "fp": 32,
+              "normals": 122
+            },
+            "calibrated": {
+              "fn": 13,
+              "failures": 390,
+              "fp": 32,
+              "normals": 122
+            },
+            "boundary": {
+              "fn": 5,
+              "failures": 19,
+              "fp": 15,
+              "normals": 30
+            },
+            "boundary_calibrated": {
+              "fn": 5,
+              "failures": 19,
+              "fp": 15,
+              "normals": 30
+            }
+          }
+        }
+      }
+    },
+    "repeat": {
+      "n": 7339,
+      "defined": 7339,
+      "failures": 3144,
+      "groups": 20,
+      "boundary": 1097,
+      "boundary_groups": 17,
+      "min_position_m": 0.0,
+      "min_link_m": null,
+      "diff": {
+        "96": {
+          "macro": {
+            "groups": 20,
+            "point": 0.00976335912794688,
+            "ci": [
+              0.007106970156832346,
+              0.01278271162873037
+            ],
+            "upper_adjusted": 0.013298584957670691
+          },
+          "location_weighted": {
+            "groups": 51,
+            "point": 0.009839826641747486,
+            "ci": [
+              0.007471825801253761,
+              0.012493698238876185
+            ],
+            "upper_adjusted": 0.013002524724345016
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 410,
+              "groups": 45,
+              "delta": 0.11707317073170732,
+              "ci": [
+                0.06830069528608791,
+                0.18120264503172206
+              ]
+            },
+            "false_positive": {
+              "denominator": 687,
+              "groups": 45,
+              "delta": -0.002911208151382824,
+              "ci": [
+                -0.027166149522861657,
+                0.022393329960367622
+              ]
+            }
+          }
+        },
+        "97": {
+          "macro": {
+            "groups": 20,
+            "point": 0.000896699625895396,
+            "ci": [
+              0.00048056470658765146,
+              0.0012695447624603566
+            ],
+            "upper_adjusted": 0.0013172758475338893
+          },
+          "location_weighted": {
+            "groups": 51,
+            "point": 0.0008932413381056914,
+            "ci": [
+              0.0004541115898580406,
+              0.001364754984981231
+            ],
+            "upper_adjusted": 0.0014371318468339954
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 410,
+              "groups": 45,
+              "delta": -0.004878048780487805,
+              "ci": [
+                -0.02325732015905531,
+                0.016288198173410602
+              ]
+            },
+            "false_positive": {
+              "denominator": 687,
+              "groups": 45,
+              "delta": 0.01455604075691412,
+              "ci": [
+                -0.0015485343935144908,
+                0.030259460791748825
+              ]
+            }
+          }
+        },
+        "99": {
+          "macro": {
+            "groups": 20,
+            "point": 0.0,
+            "ci": [
+              0.0,
+              0.0
+            ],
+            "upper_adjusted": 0.0
+          },
+          "location_weighted": {
+            "groups": 51,
+            "point": 0.0,
+            "ci": [
+              0.0,
+              0.0
+            ],
+            "upper_adjusted": 0.0
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 410,
+              "groups": 45,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            },
+            "false_positive": {
+              "denominator": 687,
+              "groups": 45,
+              "delta": 0.0,
+              "ci": [
+                0.0,
+                0.0
+              ]
+            }
+          }
+        },
+        "102": {
+          "macro": {
+            "groups": 20,
+            "point": -0.0006916332051137367,
+            "ci": [
+              -0.0009941869053971344,
+              -0.0003611095958766889
+            ],
+            "upper_adjusted": -0.00028983693006878514
+          },
+          "location_weighted": {
+            "groups": 51,
+            "point": -0.0006726175513713717,
+            "ci": [
+              -0.0014915609944376803,
+              3.546270898640114e-05
+            ],
+            "upper_adjusted": 0.00010620406652466105
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 410,
+              "groups": 45,
+              "delta": -0.012195121951219513,
+              "ci": [
+                -0.03526782728873632,
+                0.0055248618784530384
+              ]
+            },
+            "false_positive": {
+              "denominator": 687,
+              "groups": 45,
+              "delta": 0.020378457059679767,
+              "ci": [
+                0.0028685259773777545,
+                0.04276735964339238
+              ]
+            }
+          }
+        },
+        "98top": {
+          "macro": {
+            "groups": 20,
+            "point": 0.0017647109768418104,
+            "ci": [
+              0.0011833428672756914,
+              0.00226053387666506
+            ],
+            "upper_adjusted": 0.002325750704796109
+          },
+          "location_weighted": {
+            "groups": 51,
+            "point": 0.0017934277062451984,
+            "ci": [
+              0.0009815792623434284,
+              0.002723003254441537
+            ],
+            "upper_adjusted": 0.0028613193669266785
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 410,
+              "groups": 45,
+              "delta": 0.0024390243902439024,
+              "ci": [
+                -0.020725687065733866,
+                0.022678463790579508
+              ]
+            },
+            "false_positive": {
+              "denominator": 687,
+              "groups": 45,
+              "delta": 0.017467248908296942,
+              "ci": [
+                0.0024582759094288874,
+                0.03328630004823926
+              ]
+            }
+          }
+        },
+        "98patch": {
+          "macro": {
+            "groups": 20,
+            "point": 0.0009032146568809305,
+            "ci": [
+              0.0006093363028981578,
+              0.001222114092459301
+            ],
+            "upper_adjusted": 0.0012730876294609105
+          },
+          "location_weighted": {
+            "groups": 51,
+            "point": 0.0009175358618157163,
+            "ci": [
+              0.00024625196064279227,
+              0.0017186143492042335
+            ],
+            "upper_adjusted": 0.0017992341213939227
+          },
+          "boundary_rates": {
+            "false_negative": {
+              "denominator": 410,
+              "groups": 45,
+              "delta": -0.012195121951219513,
+              "ci": [
+                -0.03218021398914085,
+                0.0041937585597085335
+              ]
+            },
+            "false_positive": {
+              "denominator": 687,
+              "groups": 45,
+              "delta": 0.021834061135371178,
+              "ci": [
+                0.00441713504252953,
+                0.04348481867663449
+              ]
+            }
+          }
+        }
+      },
+      "models": {
+        "96": {
+          "mean_macro": 0.07784681584997943,
+          "per_seed_macro": [
+            0.07718573586304574,
+            0.07869957428717486,
+            0.07765513739971767
+          ],
+          "reference": {
+            "macro": 0.07718573586304574,
+            "mae": 0.0772039323490482,
+            "review": {
+              "found": 733,
+              "slots": 734,
+              "unknown": 0
+            },
+            "window": {
+              "found": 565,
+              "slots": 805,
+              "unknown": 0
+            },
+            "boundary_mae": 0.077067804569166,
+            "fixed": {
+              "fn": 630,
+              "failures": 3144,
+              "fp": 570,
+              "normals": 4195
+            },
+            "calibrated": {
+              "fn": 657,
+              "failures": 3144,
+              "fp": 525,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 236,
+              "failures": 410,
+              "fp": 170,
+              "normals": 687
+            },
+            "boundary_calibrated": {
+              "fn": 245,
+              "failures": 410,
+              "fp": 158,
+              "normals": 687
+            }
+          }
+        },
+        "97": {
+          "mean_macro": 0.06896442855579625,
+          "per_seed_macro": [
+            0.06831907636099424,
+            0.06937790230368136,
+            0.06919630700271312
+          ],
+          "reference": {
+            "macro": 0.06831907636099424,
+            "mae": 0.0682573470454064,
+            "review": {
+              "found": 733,
+              "slots": 734,
+              "unknown": 0
+            },
+            "window": {
+              "found": 607,
+              "slots": 805,
+              "unknown": 0
+            },
+            "boundary_mae": 0.06480640705574642,
+            "fixed": {
+              "fn": 427,
+              "failures": 3144,
+              "fp": 379,
+              "normals": 4195
+            },
+            "calibrated": {
+              "fn": 408,
+              "failures": 3144,
+              "fp": 403,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 186,
+              "failures": 410,
+              "fp": 182,
+              "normals": 687
+            },
+            "boundary_calibrated": {
+              "fn": 178,
+              "failures": 410,
+              "fp": 196,
+              "normals": 687
+            }
+          }
+        },
+        "99": {
+          "mean_macro": 0.06776028402335955,
+          "per_seed_macro": [
+            0.06742237673509886,
+            0.06834951059776252,
+            0.0675089647372173
+          ],
+          "reference": {
+            "macro": 0.06742237673509886,
+            "mae": 0.0673641057073007,
+            "review": {
+              "found": 734,
+              "slots": 734,
+              "unknown": 0
+            },
+            "window": {
+              "found": 610,
+              "slots": 805,
+              "unknown": 0
+            },
+            "boundary_mae": 0.06353774599881556,
+            "fixed": {
+              "fn": 440,
+              "failures": 3144,
+              "fp": 363,
+              "normals": 4195
+            },
+            "calibrated": {
+              "fn": 440,
+              "failures": 3144,
+              "fp": 366,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 188,
+              "failures": 410,
+              "fp": 172,
+              "normals": 687
+            },
+            "boundary_calibrated": {
+              "fn": 188,
+              "failures": 410,
+              "fp": 174,
+              "normals": 687
+            }
+          }
+        },
+        "102": {
+          "mean_macro": 0.06688731577046227,
+          "per_seed_macro": [
+            0.0667307435299851,
+            0.06740747746939844,
+            0.06652372631200326
+          ],
+          "reference": {
+            "macro": 0.0667307435299851,
+            "mae": 0.06669148815592933,
+            "review": {
+              "found": 734,
+              "slots": 734,
+              "unknown": 0
+            },
+            "window": {
+              "found": 612,
+              "slots": 805,
+              "unknown": 0
+            },
+            "boundary_mae": 0.06172158899378849,
+            "fixed": {
+              "fn": 417,
+              "failures": 3144,
+              "fp": 380,
+              "normals": 4195
+            },
+            "calibrated": {
+              "fn": 417,
+              "failures": 3144,
+              "fp": 382,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 183,
+              "failures": 410,
+              "fp": 186,
+              "normals": 687
+            },
+            "boundary_calibrated": {
+              "fn": 183,
+              "failures": 410,
+              "fp": 186,
+              "normals": 687
+            }
+          }
+        },
+        "98top": {
+          "mean_macro": 0.06911061787581181,
+          "per_seed_macro": [
+            0.06918708771194065,
+            0.06886670123227001,
+            0.06927806468322477
+          ],
+          "reference": {
+            "macro": 0.06918708771194065,
+            "mae": 0.0691575334135459,
+            "review": {
+              "found": 734,
+              "slots": 734,
+              "unknown": 0
+            },
+            "window": {
+              "found": 600,
+              "slots": 805,
+              "unknown": 0
+            },
+            "boundary_mae": 0.067062331856578,
+            "fixed": {
+              "fn": 438,
+              "failures": 3144,
+              "fp": 388,
+              "normals": 4195
+            },
+            "calibrated": {
+              "fn": 438,
+              "failures": 3144,
+              "fp": 392,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 189,
+              "failures": 410,
+              "fp": 184,
+              "normals": 687
+            },
+            "boundary_calibrated": {
+              "fn": 189,
+              "failures": 410,
+              "fp": 185,
+              "normals": 687
+            }
+          }
+        },
+        "98patch": {
+          "mean_macro": 0.06833258765233462,
+          "per_seed_macro": [
+            0.06832559139197977,
+            0.06868667440892719,
+            0.06798549715609689
+          ],
+          "reference": {
+            "macro": 0.06832559139197977,
+            "mae": 0.06828164156911642,
+            "review": {
+              "found": 734,
+              "slots": 734,
+              "unknown": 0
+            },
+            "window": {
+              "found": 608,
+              "slots": 805,
+              "unknown": 0
+            },
+            "boundary_mae": 0.06598837523186667,
+            "fixed": {
+              "fn": 417,
+              "failures": 3144,
+              "fp": 395,
+              "normals": 4195
+            },
+            "calibrated": {
+              "fn": 414,
+              "failures": 3144,
+              "fp": 399,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 183,
+              "failures": 410,
+              "fp": 187,
+              "normals": 687
+            },
+            "boundary_calibrated": {
+              "fn": 182,
+              "failures": 410,
+              "fp": 188,
+              "normals": 687
+            }
+          }
+        }
+      }
+    }
+  },
+  "evidence_hashes": {
+    "lock.json": "b7781b415377873a5d6429edc71703f432a5aad8d68bec9c45ec3f85f90bf2d9",
+    "pairs_lock.json": "549e698f1b6d1b4635e698fcca6d708595d88c57525216c4c3573581ccd2c3b0",
+    "fallback_lock.json": "1c51550ec4091d363d0a8f91ed8cc3742c450c46941ed68279557a1167539862",
+    "features.json": "e386273d54e4cc6bf7ea6de00252620b19c734af291e0fb53ed9168c2bd734b0",
+    "results.json": "8b1ebeb81ca30d48c587166f2c999ee70f1be6ed43e2e2d3caa68949d6e80173",
+    "predictions.npz": "fb04ee82026577ab5338da0e4b19bec92c871e0e81ca17a218302b7359905c80"
+  }
+}

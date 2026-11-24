@@ -1,0 +1,5 @@
+{
+  "trigger":"On original development data both 98-column variants pass eligibility. The 97-column arm was nominated by size. Before evaluating archive predictions, specify how to decide if 97 cannot replace 99.",
+  "order":"If 97 fails, test the eligible 98 with lower original development MAE using the same noninferiority, three-seed and review-hit criteria. Other 98 is descriptive. For both nominated candidates additionally require upper endpoint of a 97.5% paired bootstrap interval <=.001 in both domains (two candidate checks).",
+  "status":"Secondary engineering minimality decision, unchanged original four-way primary comparison. Archive outcomes may not be used to reorder candidates."
+}

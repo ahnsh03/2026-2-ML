@@ -1,0 +1,7 @@
+{
+  "purpose":"Close the two missing pairs in the three-feature uncertainty ablation. Frozen before any current archive outcome was scored. Original 96/97/99/102 decision remains the primary analysis.",
+  "pairs":{"98top":["global.top_entropy","global.lane_margin"],"98patch":["global.patch_entropy","global.lane_margin"]},
+  "nomination":"Compare the two new 98s, and previously fitted 97 margin, to 99 on the original development and original group CV. Use only those within .001 of 99 for BOTH three-seed mean development and three-seed mean group CV MAE. Nominate fewest features then lowest mean dev; disclose both 98 variants as diagnostic even if not nominated.",
+  "simplification":"If 99 survives the primary gate, prefer nominee only if on both registered domains, for each of three seeds, its macro MAE is <=99+.001, and the upper endpoint of the 95% paired interval for macro MAE difference is <=+.001 at the reference seed. Require no loss in 10% link-set global hits and repeat-drive window hits per seed. A precision failure means the data do not establish equivalence.",
+  "macro_interval":"Equal link means on isolated links; equal session means across dated drives. Also report spatial cell sensitivity on drives."
+}
