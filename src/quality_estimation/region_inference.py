@@ -19,6 +19,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--image", required=True, type=Path)
     parser.add_argument("--head-maps", type=Path)
+    parser.add_argument("--marking-probability", type=Path)
     parser.add_argument("--recipe", required=True, type=Path)
     parser.add_argument("--task", required=True)
     parser.add_argument("--model", type=Path)
@@ -38,13 +39,17 @@ def main():
     rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
     maps = np.load(args.head_maps, allow_pickle=False) if args.head_maps else None
     columns = recipe["ordered_features"]
-    vector = extract_selected_features(rgb, maps, profile, columns)
+    probability = np.load(args.marking_probability, allow_pickle=False) if args.marking_probability else None
+    vector = extract_selected_features(rgb, maps, profile, columns, marking_probability=probability)
     result = dict(task=args.task, profile=profile.version, regions_sha256=profile.regions_sha256,
                   ordered_features=columns, values=vector.tolist(),
                   recipe_sha256=hashlib.sha256(args.recipe.read_bytes()).hexdigest(),
                   rgb_sha256=hashlib.sha256(args.image.read_bytes()).hexdigest())
     if args.head_maps:
         result["head_maps_sha256"] = hashlib.sha256(args.head_maps.read_bytes()).hexdigest()
+    if args.marking_probability:
+        result["marking_probability_sha256"] = hashlib.sha256(args.marking_probability.read_bytes()).hexdigest()
+    if args.head_maps or args.marking_probability:
         result["perception_checkpoint_expected_sha256"] = specification["checkpoint_sha256"]
     if args.model:
         digest = hashlib.sha256(args.model.read_bytes()).hexdigest()

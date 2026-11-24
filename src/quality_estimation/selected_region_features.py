@@ -9,14 +9,16 @@ from .region_candidates import (
     candidate_schema, native_histograms,
 )
 from .roi10 import _image_fields, _require_rgb
+from .spatial_features import UNCERTAINTY_FEATURES, extract_global_uncertainty
 
 
-def extract_selected_features(rgb, head_maps, profile, ordered_features):
+def extract_selected_features(rgb, head_maps, profile, ordered_features, *, marking_probability=None):
     """Compute only needed region summaries. RGB environment recipes accept head_maps=None."""
     _require_rgb(rgb)
     schema = candidate_schema(profile)
     locations = {name: kind for kind in ("rgb", "output", "relations", "histograms")
                  for name in schema[kind]}
+    locations.update({name: "uncertainty" for name in UNCERTAINTY_FEATURES})
     if not ordered_features or len(set(ordered_features)) != len(ordered_features):
         raise ValueError("expected a nonempty unique ordered feature list")
     if any(name not in locations for name in ordered_features):
@@ -63,6 +65,11 @@ def extract_selected_features(rgb, head_maps, profile, ordered_features):
     histogram_columns = [name for name in ordered_features if locations[name] == "histograms"]
     if histogram_columns:
         nodes.update(zip(histogram_columns, native_histograms(rgb, profile, histogram_columns)))
+    if any(locations[name] == "uncertainty" for name in ordered_features):
+        if marking_probability is None or marking_probability.shape != (4, 384, 640):
+            raise ValueError("raw uncertainty features require float32 four-class 384x640 softmax")
+        values = extract_global_uncertainty(marking_probability[:, 12:372])
+        nodes.update(zip(UNCERTAINTY_FEATURES, values))
     result = []
     for name in ordered_features:
         if locations[name] == "relations":

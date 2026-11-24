@@ -14,7 +14,7 @@ import numpy as np
 
 from quality_estimation.image_io import decoded_pixel_sha256
 from quality_estimation.region_candidates import candidate_schema, extract_candidates
-from quality_estimation.spatial_features import SpatialProfile
+from quality_estimation.spatial_features import SpatialProfile, UNCERTAINTY_FEATURES
 
 
 def sha256(path):
@@ -29,11 +29,15 @@ def main():
     parser.add_argument("--output-dir", required=True, type=Path)
     parser.add_argument("--keys", nargs="+")
     parser.add_argument("--workers", type=int, default=4)
+    parser.add_argument("--uncertainty-packs", type=Path)
     args = parser.parse_args()
     cv2.setNumThreads(1)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     profile = SpatialProfile.load()
     schema = candidate_schema(profile)
+    if args.uncertainty_packs:
+        schema["version"] = "region-candidates-v2-raw-uncertainty"
+        schema["uncertainty"] = list(UNCERTAINTY_FEATURES)
     schema_path = args.output_dir / "schema.json"
     encoded_schema = json.dumps(schema, indent=2)+"\n"
     if schema_path.exists() and schema_path.read_text() != encoded_schema:
@@ -99,6 +103,23 @@ def main():
         arrays = {name: np.stack([record[name] for record in extracted]) for name in extracted[0]}
         # Scene metadata and labels are attached after RGB/map-only extraction.
         arrays.update(metadata)
+        uncertainty_sha256 = None
+        if args.uncertainty_packs:
+            extra_path = args.uncertainty_packs/(key+".npz")
+            extra_receipt = json.loads(extra_path.with_suffix(".json").read_text())
+            uncertainty_sha256 = sha256(extra_path)
+            if uncertainty_sha256 != extra_receipt["sha256"]:
+                raise ValueError("raw uncertainty checksum differs")
+            with np.load(extra_path, allow_pickle=False) as extra:
+                if (not np.array_equal(extra["ids"], metadata["ids"])
+                        or extra["ordered_features"].tolist() != list(UNCERTAINTY_FEATURES)
+                        or str(extra["checkpoint_sha"]) != "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b"):
+                    raise ValueError("raw uncertainty sample, column or checkpoint identity differs")
+                values = extra["values"]
+                if (values.dtype != np.float32 or values.shape != (len(rows), 3)
+                        or not np.isfinite(values).all()):
+                    raise ValueError("invalid raw uncertainty summary values")
+                arrays["uncertainty"] = values
         temporary = destination.with_suffix(".tmp.npz")
         np.savez_compressed(temporary, **arrays)
         temporary.replace(destination)
@@ -106,6 +127,7 @@ def main():
                       sha256=sha256(destination), reference_sha256=sha256(reference),
                       manifest_sha256=sha256(manifest), maps=sources,
                       schema_sha256=sha256(schema_path), extractor_sha256=sha256(code_path),
+                      raw_uncertainty_sha256=uncertainty_sha256,
                       elapsed_seconds=time.perf_counter()-start)
         destination.with_suffix(".json").write_text(json.dumps(result, indent=2)+"\n")
         print(key, len(rows), round(result["elapsed_seconds"], 2), flush=True)

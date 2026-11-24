@@ -1,0 +1,355 @@
+{
+  "created_utc": "2026-11-24T04:40:10.732908+00:00",
+  "deadline_kst": "2026-11-24T21:00:00+09:00",
+  "training_keys": [
+    "z00",
+    "z02",
+    "z06",
+    "z08",
+    "z11",
+    "z14"
+  ],
+  "development_keys": [
+    "z05",
+    "z10"
+  ],
+  "seed": 23411,
+  "roi": "roi9-front-v1; upper split y169",
+  "target": "one whole-frame white+yellow lane IoU",
+  "selection": "Training spatial group CV primary, development confirmation. Reused test and driving cohorts are diagnostic only. Select and hash finalists before diagnostic evaluation.",
+  "parameters": {
+    "RF": [
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 1.0,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 1.0,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 1.0,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 1.0,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 1.0,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 1.0,
+        "max_depth": null
+      }
+    ],
+    "GP": [
+      {
+        "length_multiplier": 0.35,
+        "noise_variance": 0.01
+      },
+      {
+        "length_multiplier": 0.35,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 0.35,
+        "noise_variance": 0.15
+      },
+      {
+        "length_multiplier": 0.7,
+        "noise_variance": 0.01
+      },
+      {
+        "length_multiplier": 0.7,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 0.7,
+        "noise_variance": 0.15
+      },
+      {
+        "length_multiplier": 1.4,
+        "noise_variance": 0.01
+      },
+      {
+        "length_multiplier": 1.4,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 1.4,
+        "noise_variance": 0.15
+      },
+      {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.01
+      },
+      {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.15
+      }
+    ],
+    "SceneRF": [
+      {
+        "n_estimators": 160,
+        "min_samples_leaf": 2,
+        "max_features": 0.5
+      },
+      {
+        "n_estimators": 160,
+        "min_samples_leaf": 4,
+        "max_features": 1.0
+      }
+    ]
+  },
+  "quality_views": [
+    "uncertainty_only",
+    "base120_uncertainty",
+    "road_output_uncertainty"
+  ],
+  "environment_views": [
+    "top_hood_rgb",
+    "top_hood_hist",
+    "upper_hood_rgb",
+    "upper_hood_hist",
+    "road_rgb",
+    "road_hist",
+    "all_rgb",
+    "all_hist",
+    "role_rgb",
+    "top_hood_rgb_light",
+    "upper_hood_rgb_light"
+  ],
+  "limits": "weather/hour are offline classification targets only, never regressor inputs. All original diagnostic cohorts were previously examined. New claims require prospective data. A lower IoU is not an environment-normality judgment.",
+  "purpose": "Bounded output-information ablations after teammate merge, fixed nine-region camera definition; same twelve settings per RF and GP.",
+  "extra_views": {
+    "uncertainty_only": [
+      "global.top_entropy",
+      "global.patch_entropy",
+      "global.lane_margin"
+    ],
+    "base120_uncertainty": [
+      "upper_top_left.intensity",
+      "upper_top_left.chroma",
+      "upper_top_left.intensity_std",
+      "upper_top_left.dark_channel",
+      "upper_top_left.local_contrast",
+      "upper_top_left.sharpness",
+      "upper_top_left.glare_fraction",
+      "upper_top_left.median_residual",
+      "upper_top_right.intensity",
+      "upper_top_right.chroma",
+      "upper_top_right.intensity_std",
+      "upper_top_right.dark_channel",
+      "upper_top_right.local_contrast",
+      "upper_top_right.sharpness",
+      "upper_top_right.glare_fraction",
+      "upper_top_right.median_residual",
+      "upper_bottom_left.intensity",
+      "upper_bottom_left.chroma",
+      "upper_bottom_left.intensity_std",
+      "upper_bottom_left.dark_channel",
+      "upper_bottom_left.local_contrast",
+      "upper_bottom_left.sharpness",
+      "upper_bottom_left.glare_fraction",
+      "upper_bottom_left.median_residual",
+      "upper_bottom_right.intensity",
+      "upper_bottom_right.chroma",
+      "upper_bottom_right.intensity_std",
+      "upper_bottom_right.dark_channel",
+      "upper_bottom_right.local_contrast",
+      "upper_bottom_right.sharpness",
+      "upper_bottom_right.glare_fraction",
+      "upper_bottom_right.median_residual",
+      "far_left.intensity",
+      "far_left.chroma",
+      "far_left.intensity_std",
+      "far_left.dark_channel",
+      "far_left.local_contrast",
+      "far_left.sharpness",
+      "far_left.glare_fraction",
+      "far_left.median_residual",
+      "far_right.intensity",
+      "far_right.chroma",
+      "far_right.intensity_std",
+      "far_right.dark_channel",
+      "far_right.local_contrast",
+      "far_right.sharpness",
+      "far_right.glare_fraction",
+      "far_right.median_residual",
+      "near_left.intensity",
+      "near_left.chroma",
+      "near_left.intensity_std",
+      "near_left.dark_channel",
+      "near_left.local_contrast",
+      "near_left.sharpness",
+      "near_left.glare_fraction",
+      "near_left.median_residual",
+      "near_right.intensity",
+      "near_right.chroma",
+      "near_right.intensity_std",
+      "near_right.dark_channel",
+      "near_right.local_contrast",
+      "near_right.sharpness",
+      "near_right.glare_fraction",
+      "near_right.median_residual",
+      "hood.intensity",
+      "hood.chroma",
+      "hood.intensity_std",
+      "hood.dark_channel",
+      "hood.local_contrast",
+      "hood.sharpness",
+      "hood.glare_fraction",
+      "hood.median_residual",
+      "global.intensity",
+      "global.chroma",
+      "global.intensity_std",
+      "global.dark_channel",
+      "global.local_contrast",
+      "global.sharpness",
+      "global.glare_fraction",
+      "global.median_residual",
+      "upper_top_left.drivable_fraction",
+      "upper_top_left.lane_fraction",
+      "upper_top_left.lane_probability",
+      "upper_top_left.marking_entropy",
+      "upper_top_right.drivable_fraction",
+      "upper_top_right.lane_fraction",
+      "upper_top_right.lane_probability",
+      "upper_top_right.marking_entropy",
+      "upper_bottom_left.drivable_fraction",
+      "upper_bottom_left.lane_fraction",
+      "upper_bottom_left.lane_probability",
+      "upper_bottom_left.marking_entropy",
+      "upper_bottom_right.drivable_fraction",
+      "upper_bottom_right.lane_fraction",
+      "upper_bottom_right.lane_probability",
+      "upper_bottom_right.marking_entropy",
+      "far_left.drivable_fraction",
+      "far_left.lane_fraction",
+      "far_left.lane_probability",
+      "far_left.marking_entropy",
+      "far_right.drivable_fraction",
+      "far_right.lane_fraction",
+      "far_right.lane_probability",
+      "far_right.marking_entropy",
+      "near_left.drivable_fraction",
+      "near_left.lane_fraction",
+      "near_left.lane_probability",
+      "near_left.marking_entropy",
+      "near_right.drivable_fraction",
+      "near_right.lane_fraction",
+      "near_right.lane_probability",
+      "near_right.marking_entropy",
+      "hood.drivable_fraction",
+      "hood.lane_fraction",
+      "hood.lane_probability",
+      "hood.marking_entropy",
+      "global.drivable_fraction",
+      "global.lane_fraction",
+      "global.lane_probability",
+      "global.marking_entropy",
+      "global.top_entropy",
+      "global.patch_entropy",
+      "global.lane_margin"
+    ],
+    "road_output_uncertainty": [
+      "far_left.drivable_fraction",
+      "far_left.lane_fraction",
+      "far_left.lane_probability",
+      "far_left.marking_entropy",
+      "far_left.lane_weighted_entropy",
+      "far_left.lane_weighted_probability",
+      "far_left.lane_drivable_disagreement",
+      "far_left.lane_present",
+      "far_right.drivable_fraction",
+      "far_right.lane_fraction",
+      "far_right.lane_probability",
+      "far_right.marking_entropy",
+      "far_right.lane_weighted_entropy",
+      "far_right.lane_weighted_probability",
+      "far_right.lane_drivable_disagreement",
+      "far_right.lane_present",
+      "near_left.drivable_fraction",
+      "near_left.lane_fraction",
+      "near_left.lane_probability",
+      "near_left.marking_entropy",
+      "near_left.lane_weighted_entropy",
+      "near_left.lane_weighted_probability",
+      "near_left.lane_drivable_disagreement",
+      "near_left.lane_present",
+      "near_right.drivable_fraction",
+      "near_right.lane_fraction",
+      "near_right.lane_probability",
+      "near_right.marking_entropy",
+      "near_right.lane_weighted_entropy",
+      "near_right.lane_weighted_probability",
+      "near_right.lane_drivable_disagreement",
+      "near_right.lane_present",
+      "global.drivable_fraction",
+      "global.lane_fraction",
+      "global.lane_probability",
+      "global.marking_entropy",
+      "global.lane_weighted_entropy",
+      "global.lane_weighted_probability",
+      "global.lane_drivable_disagreement",
+      "global.lane_present",
+      "global.top_entropy",
+      "global.patch_entropy",
+      "global.lane_margin"
+    ]
+  }
+}

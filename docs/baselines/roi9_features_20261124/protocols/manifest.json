@@ -1,0 +1,53 @@
+{
+  "note": "Unedited experimental configurations. The inherited created_utc refers to the initial base protocol; actual candidate freeze and evaluation chronology are in followup_summary.json. Data keys identify supplied research packs. Later coverage-control exclusions are post-inspection diagnostics.",
+  "files": [
+    {
+      "file": "protocol.json",
+      "sha256": "09fc518964633cd5a7490dee5e32c8c05e6e48ab802af69f68debc249aa28c66"
+    },
+    {
+      "file": "matched_budget_protocol.json",
+      "sha256": "950757a2a19a64c4195acb389b734731441492678bd2b26ad6c51b6d7b5640bb"
+    },
+    {
+      "file": "output_controls_protocol.json",
+      "sha256": "b323a45036d5bccaf73de638d56a23c77cef9f24ab676580840f02b7fe7fe24a"
+    },
+    {
+      "file": "reduction_protocol.json",
+      "sha256": "f41f85106b289b09a0d1621cc2e3d6e971b4401908040fcc6db5df74a56af351"
+    },
+    {
+      "file": "reduction_controls_protocol.json",
+      "sha256": "8db951536af3541a863217905e903c165f1f2b94fc8ee652bac55deb9796b689"
+    },
+    {
+      "file": "relations_protocol.json",
+      "sha256": "bc49c89a9573354bed9de1740020c2efaba7711b57aba781049c8b68ff9a45d0"
+    },
+    {
+      "file": "environment_focus_protocol.json",
+      "sha256": "9cb9afb23c856bed02c5226967dfccf4926c5ff884370b8efdd0f197a3e23de4"
+    },
+    {
+      "file": "environment_reduction_protocol.json",
+      "sha256": "b43fac96c3e874796fc0960232aec0bffcd0a2d24fa9adef571d4ee8693300de"
+    },
+    {
+      "file": "cluster_protocol.json",
+      "sha256": "a46961122f6615600f1aca00838122f486f03d83f1f41a35a71abe41c7f8bf02"
+    },
+    {
+      "file": "raw_uncertainty_protocol.json",
+      "sha256": "6477d58cc5c337d75662962c8f9a08f6b71eda16f670fc91215c731419a2346a"
+    },
+    {
+      "file": "uncertainty_context_protocol.json",
+      "sha256": "c350f7c437f6ba3f06d47d2c22aee71b2f5f0d0fb57e8bf1f73321d2bde677b8"
+    },
+    {
+      "file": "coverage_controls_protocol.json",
+      "sha256": "527553567331fd540817229ee59df2581b86b4e9b8c01ddb40cb42dcb2abdf7b"
+    }
+  ]
+}

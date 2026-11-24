@@ -15,6 +15,14 @@ from reduce_region_candidates import ranking
 from quality_estimation.region_feature_views import feature_matrix, quality_views
 
 
+def selected_indices(rank, k, columns, excluded_statistics):
+    selected = np.sort(rank[:k])
+    selected = np.asarray([i for i in selected if columns[i].split(".")[1] not in excluded_statistics], dtype=int)
+    if not len(selected):
+        raise ValueError("feature exclusions removed the entire input")
+    return selected
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--packs", type=Path, required=True)
@@ -43,9 +51,10 @@ def main():
         dx = feature_matrix(dev, schema, columns)
         y = train["y"]
         k, method = reduction["k"], reduction["ranking"]
+        excluded = set(reduction.get("exclude_statistics", []))
         fold_ranks = [ranking(x[~h], y[~h], method, protocol["seed"], args.jobs)[0] for h in folds]
         full_rank, _ = ranking(x, y, method, protocol["seed"], args.jobs)
-        selected = np.sort(full_rank[:k])
+        selected = selected_indices(full_rank, k, columns, excluded)
         for arm, relation_columns in protocol["relation_arms"].items():
             relation_x = feature_matrix(train, schema, relation_columns) if relation_columns else np.empty((len(y), 0))
             relation_dx = feature_matrix(dev, schema, relation_columns) if relation_columns else np.empty((len(dx), 0))
@@ -59,13 +68,14 @@ def main():
                     if key not in done:
                         errors = []
                         for hold, ranks in zip(folds, fold_ranks):
-                            subset = np.sort(ranks[:k])
+                            subset = selected_indices(ranks, k, columns, excluded)
                             fold_x = np.column_stack([x[:, subset], relation_x])
                             model = fit(kind, fold_x[~hold], y[~hold], parameters, protocol["seed"], args.jobs)
                             predicted = np.clip(model.predict(fold_x[hold]), 0, 1)
                             errors.append(float(np.mean(abs(predicted-y[hold]))))
                         row = dict(name=name, view=reduction["view"], ranking=method, k=k,
                                    relation_arm=arm, model=kind, candidate=candidate,
+                                   excluded_statistics=sorted(excluded),
                                    parameters=parameters, fold_loss=errors, cv_loss=float(np.mean(errors)))
                         progress.append(row)
                         done[key] = row

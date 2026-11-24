@@ -71,6 +71,21 @@ class RegionCandidateTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             extract_selected_features(rgb, None, self.profile, ["near_minus_far.marking_entropy"])
 
+    def test_raw_uncertainty_on_nine_regions_reuses_the_shared_unpadded_definition(self):
+        rgb = np.zeros((720, 1280, 3), np.uint8)
+        probability = np.zeros((4, 384, 640), np.float32)
+        probability[0] = .25
+        probability[1] = .75
+        probability[:, :12] = .25
+        probability[:, 372:] = .25
+        columns = ["global.top_entropy", "global.patch_entropy", "global.lane_margin"]
+        result = extract_selected_features(rgb, None, self.profile, columns,
+                                           marking_probability=probability)
+        expected = -(.75*np.log(.75)+.25*np.log(.25))/np.log(4)
+        np.testing.assert_allclose(result, [expected, expected, .5], atol=1e-6)
+        with self.assertRaises(ValueError):
+            extract_selected_features(rgb, None, self.profile, columns)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,485 @@
+{
+  "scope": "Post-inspection development ablations. These exclusions were trained after opening the three-link challenge.",
+  "rows": [
+    {
+      "cohort": "fresh",
+      "name": "no_drivable_raw3_RF",
+      "n": 384,
+      "dimensions": 25,
+      "mae": 0.059271653892420596,
+      "bias": -0.03618687278868551
+    },
+    {
+      "cohort": "fresh",
+      "name": "no_drivable_raw3_GP",
+      "n": 384,
+      "dimensions": 25,
+      "mae": 0.06232566886139294,
+      "bias": -0.03909563171596701
+    },
+    {
+      "cohort": "fresh",
+      "name": "no_coverage_raw3_RF",
+      "n": 384,
+      "dimensions": 19,
+      "mae": 0.06391551622636672,
+      "bias": -0.04399977064151875
+    },
+    {
+      "cohort": "fresh",
+      "name": "no_coverage_raw3_GP",
+      "n": 384,
+      "dimensions": 19,
+      "mae": 0.0676745641563447,
+      "bias": -0.04829416395707428
+    },
+    {
+      "cohort": "fresh_clock_supplement",
+      "name": "no_drivable_raw3_RF",
+      "n": 96,
+      "dimensions": 25,
+      "mae": 0.0653529001518062,
+      "bias": -0.010106856845547577
+    },
+    {
+      "cohort": "fresh_clock_supplement",
+      "name": "no_drivable_raw3_GP",
+      "n": 96,
+      "dimensions": 25,
+      "mae": 0.05399962993972394,
+      "bias": -0.017472575386244676
+    },
+    {
+      "cohort": "fresh_clock_supplement",
+      "name": "no_coverage_raw3_RF",
+      "n": 96,
+      "dimensions": 19,
+      "mae": 0.061792530753163356,
+      "bias": -0.011290791240230476
+    },
+    {
+      "cohort": "fresh_clock_supplement",
+      "name": "no_coverage_raw3_GP",
+      "n": 96,
+      "dimensions": 19,
+      "mae": 0.05853510048311603,
+      "bias": -0.024910376257748723
+    },
+    {
+      "cohort": "fresh_uncertainty",
+      "name": "no_drivable_raw3_RF",
+      "n": 144,
+      "dimensions": 25,
+      "mae": 0.16461429871371652,
+      "bias": -0.15694830075539634
+    },
+    {
+      "cohort": "fresh_uncertainty",
+      "name": "no_drivable_raw3_GP",
+      "n": 144,
+      "dimensions": 25,
+      "mae": 0.16853697397466602,
+      "bias": -0.1575084768120202
+    },
+    {
+      "cohort": "fresh_uncertainty",
+      "name": "no_coverage_raw3_RF",
+      "n": 144,
+      "dimensions": 19,
+      "mae": 0.12590358383986033,
+      "bias": -0.08593961730136146
+    },
+    {
+      "cohort": "fresh_uncertainty",
+      "name": "no_coverage_raw3_GP",
+      "n": 144,
+      "dimensions": 19,
+      "mae": 0.17084670102651398,
+      "bias": -0.15345436905724535
+    },
+    {
+      "cohort": "geography40",
+      "name": "no_drivable_raw3_RF",
+      "n": 960,
+      "dimensions": 25,
+      "mae": 0.07775395052970284,
+      "bias": -0.011797874505065854
+    },
+    {
+      "cohort": "geography40",
+      "name": "no_drivable_raw3_GP",
+      "n": 960,
+      "dimensions": 25,
+      "mae": 0.06612929855958431,
+      "bias": -0.015448623947047602
+    },
+    {
+      "cohort": "geography40",
+      "name": "no_coverage_raw3_RF",
+      "n": 960,
+      "dimensions": 19,
+      "mae": 0.08771095092063738,
+      "bias": -0.012069337169369731
+    },
+    {
+      "cohort": "geography40",
+      "name": "no_coverage_raw3_GP",
+      "n": 960,
+      "dimensions": 19,
+      "mae": 0.07593368739002686,
+      "bias": -0.026717020638305736
+    },
+    {
+      "cohort": "switch",
+      "name": "no_drivable_raw3_RF",
+      "n": 968,
+      "dimensions": 25,
+      "mae": 0.06129312397084437,
+      "bias": 0.007657089835827612
+    },
+    {
+      "cohort": "switch",
+      "name": "no_drivable_raw3_GP",
+      "n": 968,
+      "dimensions": 25,
+      "mae": 0.06009401709050451,
+      "bias": 0.010519616114272549
+    },
+    {
+      "cohort": "switch",
+      "name": "no_coverage_raw3_RF",
+      "n": 968,
+      "dimensions": 19,
+      "mae": 0.07237890498384983,
+      "bias": 0.019054688032092433
+    },
+    {
+      "cohort": "switch",
+      "name": "no_coverage_raw3_GP",
+      "n": 968,
+      "dimensions": 19,
+      "mae": 0.07394260959842078,
+      "bias": 0.012602441775918651
+    },
+    {
+      "cohort": "night_challenge",
+      "name": "no_drivable_raw3_RF",
+      "n": 288,
+      "dimensions": 25,
+      "mae": 0.07862167225088879,
+      "bias": -0.02521144224825725
+    },
+    {
+      "cohort": "night_challenge",
+      "name": "no_drivable_raw3_GP",
+      "n": 288,
+      "dimensions": 25,
+      "mae": 0.07741905111170116,
+      "bias": -0.03639590271472451
+    },
+    {
+      "cohort": "night_challenge",
+      "name": "no_coverage_raw3_RF",
+      "n": 288,
+      "dimensions": 19,
+      "mae": 0.08955448590547915,
+      "bias": -0.017342568415672024
+    },
+    {
+      "cohort": "night_challenge",
+      "name": "no_coverage_raw3_GP",
+      "n": 288,
+      "dimensions": 19,
+      "mae": 0.08592782187250704,
+      "bias": -0.03372919902206414
+    },
+    {
+      "cohort": "motion",
+      "name": "no_drivable_raw3_RF",
+      "n": 6002,
+      "dimensions": 25,
+      "mae": 0.0624203132477954,
+      "bias": 0.018362712428238778
+    },
+    {
+      "cohort": "motion",
+      "name": "no_drivable_raw3_GP",
+      "n": 6002,
+      "dimensions": 25,
+      "mae": 0.06508368332852306,
+      "bias": 0.013107197338206528
+    },
+    {
+      "cohort": "motion",
+      "name": "no_coverage_raw3_RF",
+      "n": 6002,
+      "dimensions": 19,
+      "mae": 0.07514830835009487,
+      "bias": 0.0286443142358326
+    },
+    {
+      "cohort": "motion",
+      "name": "no_coverage_raw3_GP",
+      "n": 6002,
+      "dimensions": 19,
+      "mae": 0.07483867871951272,
+      "bias": 0.023506815577700436
+    },
+    {
+      "cohort": "prospective_known",
+      "name": "no_drivable_raw3_RF",
+      "n": 576,
+      "dimensions": 25,
+      "mae": 0.08526191997095714,
+      "bias": -0.04220624309272715
+    },
+    {
+      "cohort": "prospective_known",
+      "name": "no_drivable_raw3_GP",
+      "n": 576,
+      "dimensions": 25,
+      "mae": 0.0887732658753214,
+      "bias": -0.049048687595117255
+    },
+    {
+      "cohort": "prospective_known",
+      "name": "no_coverage_raw3_RF",
+      "n": 576,
+      "dimensions": 19,
+      "mae": 0.09346656871366135,
+      "bias": -0.035296874265697324
+    },
+    {
+      "cohort": "prospective_known",
+      "name": "no_coverage_raw3_GP",
+      "n": 576,
+      "dimensions": 19,
+      "mae": 0.08752326538383093,
+      "bias": -0.045361453776288654
+    },
+    {
+      "cohort": "prospective_unseen",
+      "name": "no_drivable_raw3_RF",
+      "n": 72,
+      "dimensions": 25,
+      "mae": 0.09148770357369057,
+      "bias": -0.03490853313044576
+    },
+    {
+      "cohort": "prospective_unseen",
+      "name": "no_drivable_raw3_GP",
+      "n": 72,
+      "dimensions": 25,
+      "mae": 0.09290955133521375,
+      "bias": -0.041431528887991356
+    },
+    {
+      "cohort": "prospective_unseen",
+      "name": "no_coverage_raw3_RF",
+      "n": 72,
+      "dimensions": 19,
+      "mae": 0.09644133658946161,
+      "bias": -0.03432343574031618
+    },
+    {
+      "cohort": "prospective_unseen",
+      "name": "no_coverage_raw3_GP",
+      "n": 72,
+      "dimensions": 19,
+      "mae": 0.09783660202773446,
+      "bias": -0.04305630487064961
+    },
+    {
+      "cohort": "other_road",
+      "name": "no_drivable_raw3_RF",
+      "n": 273,
+      "dimensions": 25,
+      "mae": 0.05363801838551741,
+      "bias": -0.041985051838112276
+    },
+    {
+      "cohort": "other_road",
+      "name": "no_drivable_raw3_GP",
+      "n": 273,
+      "dimensions": 25,
+      "mae": 0.06089180337432191,
+      "bias": -0.04840319602903354
+    },
+    {
+      "cohort": "other_road",
+      "name": "no_coverage_raw3_RF",
+      "n": 273,
+      "dimensions": 19,
+      "mae": 0.06303335226476295,
+      "bias": 0.008592428537465108
+    },
+    {
+      "cohort": "other_road",
+      "name": "no_coverage_raw3_GP",
+      "n": 273,
+      "dimensions": 19,
+      "mae": 0.055146496685672446,
+      "bias": -0.04216543861855246
+    },
+    {
+      "cohort": "stream_new",
+      "name": "no_drivable_raw3_RF",
+      "n": 1448,
+      "dimensions": 25,
+      "mae": 0.06636189170152826,
+      "bias": 0.02108726423643122
+    },
+    {
+      "cohort": "stream_new",
+      "name": "no_drivable_raw3_GP",
+      "n": 1448,
+      "dimensions": 25,
+      "mae": 0.06339143905016492,
+      "bias": 0.013360733874927965
+    },
+    {
+      "cohort": "stream_new",
+      "name": "no_coverage_raw3_RF",
+      "n": 1448,
+      "dimensions": 19,
+      "mae": 0.07996472632254012,
+      "bias": 0.03483667643504694
+    },
+    {
+      "cohort": "stream_new",
+      "name": "no_coverage_raw3_GP",
+      "n": 1448,
+      "dimensions": 19,
+      "mae": 0.07579591385903565,
+      "bias": 0.02325546902825778
+    },
+    {
+      "cohort": "train",
+      "name": "no_drivable_raw3_RF",
+      "n": 1728,
+      "dimensions": 25,
+      "mae": 0.01809048663902442,
+      "bias": 0.00039520538941854763
+    },
+    {
+      "cohort": "train",
+      "name": "no_drivable_raw3_GP",
+      "n": 1728,
+      "dimensions": 25,
+      "mae": 0.03325050462376873,
+      "bias": 4.365470449200174e-05
+    },
+    {
+      "cohort": "train",
+      "name": "no_coverage_raw3_RF",
+      "n": 1728,
+      "dimensions": 19,
+      "mae": 0.01680209525950805,
+      "bias": 0.0005402672090396492
+    },
+    {
+      "cohort": "train",
+      "name": "no_coverage_raw3_GP",
+      "n": 1728,
+      "dimensions": 19,
+      "mae": 0.04091112789741523,
+      "bias": 4.472931388398109e-05
+    },
+    {
+      "cohort": "calibration",
+      "name": "no_drivable_raw3_RF",
+      "n": 576,
+      "dimensions": 25,
+      "mae": 0.09814283280820736,
+      "bias": 0.050324937549746956
+    },
+    {
+      "cohort": "calibration",
+      "name": "no_drivable_raw3_GP",
+      "n": 576,
+      "dimensions": 25,
+      "mae": 0.09235520765649616,
+      "bias": 0.047710219230691846
+    },
+    {
+      "cohort": "calibration",
+      "name": "no_coverage_raw3_RF",
+      "n": 576,
+      "dimensions": 19,
+      "mae": 0.1123345656761922,
+      "bias": 0.06428340745649429
+    },
+    {
+      "cohort": "calibration",
+      "name": "no_coverage_raw3_GP",
+      "n": 576,
+      "dimensions": 19,
+      "mae": 0.11168761664082669,
+      "bias": 0.06194093321597966
+    },
+    {
+      "cohort": "test18",
+      "name": "no_drivable_raw3_RF",
+      "n": 864,
+      "dimensions": 25,
+      "mae": 0.06804417571169138,
+      "bias": 0.00494107413356371
+    },
+    {
+      "cohort": "test18",
+      "name": "no_drivable_raw3_GP",
+      "n": 864,
+      "dimensions": 25,
+      "mae": 0.06358559924662782,
+      "bias": 0.0044766427781529694
+    },
+    {
+      "cohort": "test18",
+      "name": "no_coverage_raw3_RF",
+      "n": 864,
+      "dimensions": 19,
+      "mae": 0.08789682014571293,
+      "bias": 0.009582913408314696
+    },
+    {
+      "cohort": "test18",
+      "name": "no_coverage_raw3_GP",
+      "n": 864,
+      "dimensions": 19,
+      "mae": 0.07665988359603391,
+      "bias": 0.001329769469207491
+    },
+    {
+      "cohort": "development",
+      "name": "no_drivable_raw3_RF",
+      "n": 576,
+      "dimensions": 25,
+      "mae": 0.0447362411594827,
+      "bias": 0.010612171147178572
+    },
+    {
+      "cohort": "development",
+      "name": "no_drivable_raw3_GP",
+      "n": 576,
+      "dimensions": 25,
+      "mae": 0.04222360326959508,
+      "bias": 0.0027653311138153883
+    },
+    {
+      "cohort": "development",
+      "name": "no_coverage_raw3_RF",
+      "n": 576,
+      "dimensions": 19,
+      "mae": 0.0531232296804866,
+      "bias": 0.022693386186064708
+    },
+    {
+      "cohort": "development",
+      "name": "no_coverage_raw3_GP",
+      "n": 576,
+      "dimensions": 19,
+      "mae": 0.05252446294683016,
+      "bias": 0.008203070188515961
+    }
+  ]
+}

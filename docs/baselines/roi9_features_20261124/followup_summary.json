@@ -1,0 +1,427 @@
+{
+  "status": "27-column working feature baseline for Nov 27 integration; offline adoption and policy calibration pending",
+  "roi": "roi9-front-v1",
+  "new_unique_frames": 624,
+  "new_original_channel_files": 2496,
+  "new_positions": 11,
+  "cohorts": {
+    "first_eight_positions": 480,
+    "additional_three_links": 144
+  },
+  "candidate_models_frozen_utc": "2026-11-24T05:54:54.353010+00:00",
+  "additional_inference_started_utc": "2026-11-24T06:03:31.968853+00:00",
+  "feature_recipe_recorded_utc": "2026-11-24T06:03:57.568615+00:00",
+  "additional_comparison_written_utc": "2026-11-24T06:04:16.782124+00:00",
+  "selection_scope": "Candidate weights and columns were frozen before additional-link inference. The 27-column recipe was recorded after additional ground-truth processing and before its aggregate comparison. It is an exploratory feature-study baseline, not an unbiased final test claim. Later coverage exclusions and seed repeats are post-inspection development diagnostics.",
+  "feature_dimensions": {
+    "quality_rf": 27,
+    "quality_gp": 27,
+    "weather": 80,
+    "hour": 160,
+    "environment": 54
+  },
+  "recipe_sha256": "4fca30ab7180140fcae8ca4c92af1985ebde56e4b7ad1033798352019a94cbfc",
+  "model_sha256": {
+    "quality_rf": "7cb7d019ccc0b74cbcba25778aae4a6ae2f761f02c2c2e97dae74712d7174340",
+    "quality_gp": "7656086af629a660e2a56285d3addc202c8872acaaf773b7a40a0c7559792514",
+    "weather": "e1d8f28f0a5aa4155cb7fb14221bc03ab18d4e31e6eda44f02df84f0bd470bae",
+    "hour": "834622167eece09dfb93b7d297be2e259972a65b5b5e39fd53daf6cb02181640",
+    "environment": "4b320a39f7169dfa05f97072a7be19455fbf19cac861cf3cb18aa737e27ce2e8"
+  },
+  "additional_environment_metrics": [
+    {
+      "name": "weather",
+      "dimensions": 80,
+      "n_evaluable": 144,
+      "n_unknown_target": 0,
+      "balanced_accuracy": 0.9652777777777778,
+      "accuracy": 0.9652777777777778,
+      "class_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "confusion": [
+        [
+          24,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          24,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          23,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          22,
+          1
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          22
+        ]
+      ]
+    },
+    {
+      "name": "hour",
+      "dimensions": 160,
+      "n_evaluable": 144,
+      "n_unknown_target": 0,
+      "balanced_accuracy": 0.7152777777777778,
+      "accuracy": 0.7152777777777778,
+      "class_order": [
+        5,
+        8,
+        11,
+        13,
+        16,
+        18,
+        20,
+        23
+      ],
+      "confusion": [
+        [
+          10,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          7
+        ],
+        [
+          0,
+          7,
+          0,
+          0,
+          11,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          15,
+          3,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          7,
+          11,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          7,
+          0,
+          0,
+          10,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          17,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          17,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          16
+        ]
+      ]
+    }
+  ],
+  "benchmark": {
+    "definition": "Warm CPU single-frame calls, one aligned original image/map/raw-softmax example x72 repetitions, 5 warmups. Excludes loading, perception inference, communication and startup. OpenCV, forest prediction and BLAS one thread. This is a microbenchmark, not end-to-end latency.",
+    "hardware": {
+      "cpu": "Intel(R) Core(TM) i5-14600K",
+      "python": "3.12.13",
+      "numpy": "2.5.5",
+      "sklearn": "1.9.1"
+    },
+    "timings": {
+      "quality_rf_extract": {
+        "n": 72,
+        "median_ms": 14.790334505960345,
+        "p95_ms": 20.2486826106906
+      },
+      "quality_rf_predict": {
+        "n": 72,
+        "median_ms": 2.9482084792107344,
+        "p95_ms": 3.168703755363822
+      },
+      "quality_gp_extract": {
+        "n": 72,
+        "median_ms": 11.376479640603065,
+        "p95_ms": 12.317898869514465
+      },
+      "quality_gp_predict": {
+        "n": 72,
+        "median_ms": 0.23745500948280096,
+        "p95_ms": 0.33020704286172986
+      },
+      "quality_gp_predict_mean_std": {
+        "n": 72,
+        "median_ms": 0.55620854254812,
+        "p95_ms": 0.7282649748958647
+      },
+      "weather_extract": {
+        "n": 72,
+        "median_ms": 22.283832542598248,
+        "p95_ms": 23.606694967020303
+      },
+      "weather_predict": {
+        "n": 72,
+        "median_ms": 3.5216850228607655,
+        "p95_ms": 4.051179508678615
+      },
+      "hour_extract": {
+        "n": 72,
+        "median_ms": 16.930635552853346,
+        "p95_ms": 17.99026462249458
+      },
+      "hour_predict": {
+        "n": 72,
+        "median_ms": 3.446183050982654,
+        "p95_ms": 3.842638758942485
+      },
+      "environment_extract": {
+        "n": 72,
+        "median_ms": 5.099987611174583,
+        "p95_ms": 5.3326057037338614
+      }
+    }
+  },
+  "reproduction": {
+    "n": 288,
+    "all_arrays_within_atol": 2e-08,
+    "quality_27_weather_hour_columns_exact_equal": true,
+    "roundoff": "Only unselected quality sharpness and its relations differ, max 1.49e-8. RGB54 cluster input includes sharpness with max 1.86e-9 roundoff. Output maps, histograms, raw uncertainty, labels and metadata match exactly.",
+    "arrays": [
+      {
+        "array": "rgb",
+        "shape": [
+          288,
+          180
+        ],
+        "max_abs_difference": 1.4901161193847656e-08,
+        "exact_equal": false
+      },
+      {
+        "array": "output",
+        "shape": [
+          288,
+          80
+        ],
+        "max_abs_difference": 0.0,
+        "exact_equal": true
+      },
+      {
+        "array": "relations",
+        "shape": [
+          288,
+          88
+        ],
+        "max_abs_difference": 1.4901161193847656e-08,
+        "exact_equal": false
+      },
+      {
+        "array": "histograms",
+        "shape": [
+          288,
+          500
+        ],
+        "max_abs_difference": 0.0,
+        "exact_equal": true
+      },
+      {
+        "array": "y",
+        "shape": [
+          288
+        ],
+        "max_abs_difference": 0.0,
+        "exact_equal": true
+      },
+      {
+        "array": "ids",
+        "shape": [
+          288
+        ],
+        "exact_equal": true
+      },
+      {
+        "array": "pixel_sha256",
+        "shape": [
+          288
+        ],
+        "exact_equal": true
+      },
+      {
+        "array": "group",
+        "shape": [
+          288
+        ],
+        "exact_equal": true
+      },
+      {
+        "array": "site",
+        "shape": [
+          288
+        ],
+        "exact_equal": true
+      },
+      {
+        "array": "cohort",
+        "shape": [
+          288
+        ],
+        "exact_equal": true
+      },
+      {
+        "array": "weather",
+        "shape": [
+          288
+        ],
+        "exact_equal": true
+      },
+      {
+        "array": "hour",
+        "shape": [
+          288
+        ],
+        "exact_equal": true
+      },
+      {
+        "array": "xy",
+        "shape": [
+          288,
+          2
+        ],
+        "max_abs_difference": 0.0,
+        "exact_equal": true
+      },
+      {
+        "array": "uncertainty",
+        "shape": [
+          288,
+          3
+        ],
+        "max_abs_difference": 0.0,
+        "exact_equal": true
+      }
+    ],
+    "selected": [
+      {
+        "task": "quality_rf",
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "task": "quality_gp",
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "task": "weather",
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "task": "hour",
+        "exact_equal": true,
+        "max_abs_difference": 0.0
+      },
+      {
+        "task": "environment",
+        "exact_equal": false,
+        "max_abs_difference": 1.862645149230957e-09
+      }
+    ]
+  },
+  "raw_probability_prediction_parity": [
+    {
+      "task": "quality_rf",
+      "feature_max_delta": 0.0,
+      "prediction_max_delta": 0.0
+    },
+    {
+      "task": "quality_gp",
+      "feature_max_delta": 0.0,
+      "prediction_max_delta": 0.0
+    }
+  ],
+  "limitations": [
+    "One simulator and fixed camera; 11 new positions with only 3 additional isolated links",
+    "Low MAE on the first 8 positions does not transfer to all road geometry",
+    "Uncalibrated GP observation intervals under-cover after context shift",
+    "Weather recognition is distinct from driving-scene coverage and normal/abnormal review policy",
+    "Exact hour classes and simulator weather labels are diagnostics, not universal real-world categories"
+  ],
+  "additional_capture_protocol_created_utc": "2026-11-24T05:54:05.970209+00:00",
+  "additional_first_frame_recorded_utc": "2026-11-24T05:54:11.074739+00:00"
+}

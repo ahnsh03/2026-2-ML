@@ -1,0 +1,62 @@
+[
+  {
+    "a": "raw_C24_global3_RF",
+    "b": "quality_rf",
+    "mae_delta_a_minus_b": -0.0029108539122112836,
+    "group_bootstrap_95": [
+      -0.0047779228783264354,
+      -0.0012375755012944412
+    ],
+    "groups": 8,
+    "repetitions": 4000,
+    "unit": "Physical position, 60 weather-hour observations each; already-open development-transfer diagnostics for this follow-up"
+  },
+  {
+    "a": "raw_C24_global3_GP",
+    "b": "quality_gp",
+    "mae_delta_a_minus_b": -0.007753930804036116,
+    "group_bootstrap_95": [
+      -0.010561423881344656,
+      -0.005174579819289722
+    ],
+    "groups": 8,
+    "repetitions": 4000,
+    "unit": "Physical position, 60 weather-hour observations each; already-open development-transfer diagnostics for this follow-up"
+  },
+  {
+    "a": "raw_C24_global3_RF",
+    "b": "base120_matched_RF",
+    "mae_delta_a_minus_b": -0.011809649632497839,
+    "group_bootstrap_95": [
+      -0.02173086093223477,
+      -0.0020904710697683525
+    ],
+    "groups": 8,
+    "repetitions": 4000,
+    "unit": "Physical position, 60 weather-hour observations each; already-open development-transfer diagnostics for this follow-up"
+  },
+  {
+    "a": "raw_C24_global3_GP",
+    "b": "base120_matched_GP",
+    "mae_delta_a_minus_b": -0.011947469084418811,
+    "group_bootstrap_95": [
+      -0.01942229888680272,
+      -0.004688765960300336
+    ],
+    "groups": 8,
+    "repetitions": 4000,
+    "unit": "Physical position, 60 weather-hour observations each; already-open development-transfer diagnostics for this follow-up"
+  },
+  {
+    "a": "raw_C24_global3_GP",
+    "b": "raw_C24_global3_RF",
+    "mae_delta_a_minus_b": 0.0008948295072478444,
+    "group_bootstrap_95": [
+      -0.009020550230827817,
+      0.009960976647455627
+    ],
+    "groups": 8,
+    "repetitions": 4000,
+    "unit": "Physical position, 60 weather-hour observations each; already-open development-transfer diagnostics for this follow-up"
+  }
+]

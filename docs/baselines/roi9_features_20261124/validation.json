@@ -1,0 +1,97 @@
+{
+  "changed_files": 97,
+  "json_parsed": 44,
+  "python_parsed": 27,
+  "local_links_checked": 188,
+  "link_failures": [],
+  "privacy_findings": [],
+  "recipes_and_artifact_hashes_valid": true,
+  "capture_registration": [
+    {
+      "capture": "fresh",
+      "frames": 384,
+      "files": 1536,
+      "restored": true
+    },
+    {
+      "capture": "fresh_clock_supplement",
+      "frames": 96,
+      "files": 384,
+      "restored": true
+    },
+    {
+      "capture": "fresh_uncertainty",
+      "frames": 144,
+      "files": 576,
+      "restored": true
+    }
+  ],
+  "identity_overlap": {
+    "packs": 56,
+    "rows": 14955,
+    "unique_sample_ids": 14955,
+    "unique_decoded_pixel_hashes": 14955,
+    "training_development_pixel_overlap": 0,
+    "training_new_capture_pixel_overlap": 0,
+    "development_new_capture_pixel_overlap": 0
+  },
+  "targeted_tests": {
+    "total": 30,
+    "passed": 30,
+    "suites": [
+      "test_region_candidates.py",
+      "test_spatial_features.py",
+      "test_gaussian_process.py",
+      "test_roi10.py",
+      "test_failure_detection.py"
+    ]
+  },
+  "final_single_image_cli": {
+    "recipe_sha256": "4fca30ab7180140fcae8ca4c92af1985ebde56e4b7ad1033798352019a94cbfc",
+    "checks": [
+      {
+        "task": "quality_rf",
+        "dimensions": 27,
+        "feature_max_abs_difference": 0.0,
+        "prediction_or_cluster_matches": true,
+        "model_sha256": "7cb7d019ccc0b74cbcba25778aae4a6ae2f761f02c2c2e97dae74712d7174340"
+      },
+      {
+        "task": "quality_gp",
+        "dimensions": 27,
+        "feature_max_abs_difference": 0.0,
+        "prediction_or_cluster_matches": true,
+        "model_sha256": "7656086af629a660e2a56285d3addc202c8872acaaf773b7a40a0c7559792514"
+      },
+      {
+        "task": "weather",
+        "dimensions": 80,
+        "feature_max_abs_difference": 0.0,
+        "prediction_or_cluster_matches": true,
+        "model_sha256": "e1d8f28f0a5aa4155cb7fb14221bc03ab18d4e31e6eda44f02df84f0bd470bae"
+      },
+      {
+        "task": "hour",
+        "dimensions": 160,
+        "feature_max_abs_difference": 0.0,
+        "prediction_or_cluster_matches": true,
+        "model_sha256": "834622167eece09dfb93b7d297be2e259972a65b5b5e39fd53daf6cb02181640"
+      },
+      {
+        "task": "environment",
+        "dimensions": 54,
+        "feature_max_abs_difference": 0.0,
+        "prediction_or_cluster_matches": true,
+        "model_sha256": "4b320a39f7169dfa05f97072a7be19455fbf19cac861cf3cb18aa737e27ce2e8"
+      }
+    ]
+  },
+  "raw_map_recomputation": {
+    "packs": 56,
+    "n": 14955,
+    "affected_packs": 19,
+    "differing_byte_values": 27,
+    "max_byte_delta": 1,
+    "note": "Raw-softmax recomputation uses the same checkpoint and preprocessing. Archived byte maps and y stay fixed; 27 cached map entries differ by 1/255 across GPU recomputation. Do not claim bitwise identity for every archived map."
+  }
+}

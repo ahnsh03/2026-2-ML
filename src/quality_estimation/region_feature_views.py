@@ -117,7 +117,8 @@ def environment_views(schema):
 
 def feature_matrix(pack, schema, ordered_features):
     """Materialize exactly the requested ordered columns from a reusable candidate pack."""
-    locations = {name: (kind, i) for kind in ("rgb", "output", "relations", "histograms")
+    kinds = ("rgb", "output", "relations", "histograms", "uncertainty")
+    locations = {name: (kind, i) for kind in kinds if kind in schema
                  for i, name in enumerate(schema[kind])}
     if len(set(ordered_features)) != len(ordered_features):
         raise ValueError("duplicate requested feature columns")

@@ -1,0 +1,114 @@
+{
+  "created_utc": "2026-11-24T04:40:10.732908+00:00",
+  "deadline_kst": "2026-11-24T21:00:00+09:00",
+  "training_keys": [
+    "z00",
+    "z02",
+    "z06",
+    "z08",
+    "z11",
+    "z14"
+  ],
+  "development_keys": [
+    "z05",
+    "z10"
+  ],
+  "seed": 23411,
+  "roi": "roi9-front-v1; upper split y169",
+  "target": "one whole-frame white+yellow lane IoU",
+  "selection": "Training spatial group CV primary, development confirmation. Reused test and driving cohorts are diagnostic only. Select and hash finalists before diagnostic evaluation.",
+  "parameters": {
+    "RF": [
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 1.0,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 1.0,
+        "max_depth": null
+      }
+    ],
+    "GP": [
+      {
+        "length_multiplier": 0.5,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 0.5,
+        "noise_variance": 0.15
+      },
+      {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 1.0,
+        "noise_variance": 0.15
+      }
+    ],
+    "SceneRF": [
+      {
+        "n_estimators": 160,
+        "min_samples_leaf": 2,
+        "max_features": 0.5
+      },
+      {
+        "n_estimators": 160,
+        "min_samples_leaf": 4,
+        "max_features": 1.0
+      }
+    ]
+  },
+  "quality_views": [
+    "base120",
+    "robust170",
+    "color220",
+    "conditional260",
+    "rgb_only180",
+    "output_only80",
+    "color_road_outputs",
+    "color_offroad_lane",
+    "role_all_outputs",
+    "role_road_outputs",
+    "role_offroad_lane",
+    "role_conditional_outputs",
+    "role_no_top",
+    "role_no_bottom",
+    "role_no_hood",
+    "role_no_global",
+    "role_rel_distance",
+    "role_rel_light",
+    "role_rel_sides",
+    "role_rel_all"
+  ],
+  "environment_views": [
+    "top_only_rgb",
+    "hood_only_rgb",
+    "top_hood_photometric",
+    "weather_context_hist",
+    "hour_context_hist",
+    "weather_context_far_hist",
+    "all_hist_no_minimum_intensity",
+    "all_hist_no_contrast",
+    "all_hist_no_sharpness",
+    "all_hist_no_hue",
+    "all_hist_no_saturation"
+  ],
+  "limits": "weather/hour are offline classification targets only, never regressor inputs. All original diagnostic cohorts were previously examined. New claims require prospective data. A lower IoU is not an environment-normality judgment."
+}

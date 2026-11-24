@@ -1,0 +1,273 @@
+{
+  "created_utc": "2026-11-24T04:40:10.732908+00:00",
+  "deadline_kst": "2026-11-24T21:00:00+09:00",
+  "training_keys": [
+    "z00",
+    "z02",
+    "z06",
+    "z08",
+    "z11",
+    "z14"
+  ],
+  "development_keys": [
+    "z05",
+    "z10"
+  ],
+  "seed": 23411,
+  "roi": "roi9-front-v1; upper split y169",
+  "target": "one whole-frame white+yellow lane IoU",
+  "selection": "Training spatial group CV primary, development confirmation. Reused test and driving cohorts are diagnostic only. Select and hash finalists before diagnostic evaluation.",
+  "parameters": {
+    "RF": [
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 1.0,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 1.0,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 1.0,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 4,
+        "max_features": 1.0,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 0.5,
+        "max_depth": null
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 1.0,
+        "max_depth": 12
+      },
+      {
+        "n_estimators": 128,
+        "min_samples_leaf": 8,
+        "max_features": 1.0,
+        "max_depth": null
+      }
+    ],
+    "GP": [
+      {
+        "length_multiplier": 0.35,
+        "noise_variance": 0.01
+      },
+      {
+        "length_multiplier": 0.35,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 0.35,
+        "noise_variance": 0.15
+      },
+      {
+        "length_multiplier": 0.7,
+        "noise_variance": 0.01
+      },
+      {
+        "length_multiplier": 0.7,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 0.7,
+        "noise_variance": 0.15
+      },
+      {
+        "length_multiplier": 1.4,
+        "noise_variance": 0.01
+      },
+      {
+        "length_multiplier": 1.4,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 1.4,
+        "noise_variance": 0.15
+      },
+      {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.01
+      },
+      {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05
+      },
+      {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.15
+      }
+    ],
+    "SceneRF": [
+      {
+        "n_estimators": 160,
+        "min_samples_leaf": 2,
+        "max_features": 0.5
+      },
+      {
+        "n_estimators": 160,
+        "min_samples_leaf": 4,
+        "max_features": 1.0
+      }
+    ]
+  },
+  "quality_views": [
+    "base120",
+    "robust170",
+    "color220",
+    "conditional260",
+    "rgb_only180",
+    "output_only80",
+    "color_road_outputs",
+    "color_offroad_lane",
+    "role_all_outputs",
+    "role_road_outputs",
+    "role_offroad_lane",
+    "role_conditional_outputs",
+    "role_no_top",
+    "role_no_bottom",
+    "role_no_hood",
+    "role_no_global",
+    "role_rel_distance",
+    "role_rel_light",
+    "role_rel_sides",
+    "role_rel_all"
+  ],
+  "environment_views": [
+    "top_hood_rgb",
+    "top_hood_hist",
+    "upper_hood_rgb",
+    "upper_hood_hist",
+    "road_rgb",
+    "road_hist",
+    "all_rgb",
+    "all_hist",
+    "role_rgb",
+    "top_hood_rgb_light",
+    "upper_hood_rgb_light"
+  ],
+  "limits": "weather/hour are offline classification targets only, never regressor inputs. All original diagnostic cohorts were previously examined. New claims require prospective data. A lower IoU is not an environment-normality judgment.",
+  "relation_arms": {
+    "none": [],
+    "distance_output": [
+      "near_minus_far.lane_fraction",
+      "near_minus_far.lane_probability",
+      "near_minus_far.marking_entropy",
+      "near_minus_far.lane_weighted_entropy",
+      "near_minus_far.lane_drivable_disagreement"
+    ],
+    "distance_all": [
+      "near_minus_far.intensity",
+      "near_minus_far.dark_channel",
+      "near_minus_far.local_contrast",
+      "near_minus_far.sharpness",
+      "near_minus_far.intensity_p90_minus_p10",
+      "near_minus_far.saturation_median",
+      "near_minus_far.lane_fraction",
+      "near_minus_far.lane_probability",
+      "near_minus_far.marking_entropy",
+      "near_minus_far.lane_weighted_entropy",
+      "near_minus_far.lane_drivable_disagreement"
+    ],
+    "illumination": [
+      "upper_bottom_minus_top.intensity",
+      "upper_bottom_minus_top.dark_channel",
+      "upper_bottom_minus_top.local_contrast",
+      "upper_bottom_minus_top.sharpness",
+      "upper_bottom_minus_top.intensity_p90_minus_p10",
+      "upper_bottom_minus_top.saturation_median",
+      "hood_minus_upper_top.intensity",
+      "hood_minus_upper_top.dark_channel",
+      "hood_minus_upper_top.local_contrast",
+      "hood_minus_upper_top.sharpness",
+      "hood_minus_upper_top.intensity_p90_minus_p10",
+      "hood_minus_upper_top.saturation_median",
+      "hood_minus_near.intensity",
+      "hood_minus_near.dark_channel",
+      "hood_minus_near.local_contrast",
+      "hood_minus_near.sharpness",
+      "hood_minus_near.intensity_p90_minus_p10",
+      "hood_minus_near.saturation_median"
+    ],
+    "side_output": [
+      "upper_top_left_minus_right.lane_fraction",
+      "upper_top_left_minus_right.lane_probability",
+      "upper_top_left_minus_right.marking_entropy",
+      "upper_top_left_minus_right.lane_weighted_entropy",
+      "upper_top_left_minus_right.lane_drivable_disagreement",
+      "upper_bottom_left_minus_right.lane_fraction",
+      "upper_bottom_left_minus_right.lane_probability",
+      "upper_bottom_left_minus_right.marking_entropy",
+      "upper_bottom_left_minus_right.lane_weighted_entropy",
+      "upper_bottom_left_minus_right.lane_drivable_disagreement",
+      "far_left_minus_right.lane_fraction",
+      "far_left_minus_right.lane_probability",
+      "far_left_minus_right.marking_entropy",
+      "far_left_minus_right.lane_weighted_entropy",
+      "far_left_minus_right.lane_drivable_disagreement",
+      "near_left_minus_right.lane_fraction",
+      "near_left_minus_right.lane_probability",
+      "near_left_minus_right.marking_entropy",
+      "near_left_minus_right.lane_weighted_entropy",
+      "near_left_minus_right.lane_drivable_disagreement"
+    ]
+  },
+  "reductions": [
+    {
+      "name": "RF24",
+      "view": "conditional260",
+      "ranking": "RF",
+      "k": 24
+    },
+    {
+      "name": "MI64",
+      "view": "conditional260",
+      "ranking": "MI",
+      "k": 64
+    }
+  ]
+}

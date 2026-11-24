@@ -1,0 +1,37 @@
+{
+  "protocol": "Fixed 27 columns and hyperparameters, five training seeds. Exported primary model remains seed 23411; no seed selection. Extra-link labels already inspected before these stability repeats.",
+  "rows": [
+    {
+      "cohort": "fresh_all",
+      "seeds": 5,
+      "mean": 0.05942500147331109,
+      "std": 0.0005233410795022824,
+      "min": 0.058666812013380344,
+      "max": 0.06014771269291527
+    },
+    {
+      "cohort": "fresh_uncertainty",
+      "seeds": 5,
+      "mean": 0.16157681439990884,
+      "std": 0.003386193147511259,
+      "min": 0.1561919661623085,
+      "max": 0.166250640895135
+    },
+    {
+      "cohort": "geography40",
+      "seeds": 5,
+      "mean": 0.07870851611367137,
+      "std": 0.001116981768456402,
+      "min": 0.07667541188617974,
+      "max": 0.08005994728385067
+    },
+    {
+      "cohort": "motion",
+      "seeds": 5,
+      "mean": 0.061192292629940914,
+      "std": 0.00022016167933234805,
+      "min": 0.06093744762821968,
+      "max": 0.061551211596989154
+    }
+  ]
+}
