@@ -1,0 +1,6752 @@
+[
+  {
+    "view": "base120",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 120,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10514232546357047,
+      0.09451138845451285,
+      0.09568963670557361
+    ],
+    "cv_loss": 0.09844778354121897,
+    "seconds": 1.0085297441110015,
+    "development_mae": 0.04731994466660147,
+    "stage": "quality"
+  },
+  {
+    "view": "base120",
+    "target": "y",
+    "model": "GP",
+    "candidate": 0,
+    "dimensions": 120,
+    "parameters": {
+      "length_multiplier": 0.5,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.07297370299353395,
+      0.09029384944688387,
+      0.11226024068846534
+    ],
+    "cv_loss": 0.09184259770962772,
+    "seconds": 0.4712518008891493,
+    "development_mae": 0.06375572752420577,
+    "stage": "quality"
+  },
+  {
+    "view": "robust170",
+    "target": "y",
+    "model": "RF",
+    "candidate": 0,
+    "dimensions": 170,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10682682498113545,
+      0.09663002077190315,
+      0.0922235610884878
+    ],
+    "cv_loss": 0.09856013561384214,
+    "seconds": 1.5177613939158618,
+    "development_mae": 0.048610198577620355,
+    "stage": "quality"
+  },
+  {
+    "view": "robust170",
+    "target": "y",
+    "model": "GP",
+    "candidate": 0,
+    "dimensions": 170,
+    "parameters": {
+      "length_multiplier": 0.5,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.07016844371641981,
+      0.091936590377944,
+      0.11020374787468018
+    ],
+    "cv_loss": 0.09076959398968132,
+    "seconds": 0.5996055430732667,
+    "development_mae": 0.06548591231458131,
+    "stage": "quality"
+  },
+  {
+    "view": "color220",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 220,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10726942729007513,
+      0.09757398950128832,
+      0.09444384840399435
+    ],
+    "cv_loss": 0.09976242173178594,
+    "seconds": 1.7186419339850545,
+    "development_mae": 0.04715338219682034,
+    "stage": "quality"
+  },
+  {
+    "view": "color220",
+    "target": "y",
+    "model": "GP",
+    "candidate": 0,
+    "dimensions": 220,
+    "parameters": {
+      "length_multiplier": 0.5,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.07183494470105561,
+      0.09214156274605954,
+      0.11096970892889721
+    ],
+    "cv_loss": 0.09164873879200412,
+    "seconds": 0.7479201729875058,
+    "development_mae": 0.06606832824211921,
+    "stage": "quality"
+  },
+  {
+    "view": "conditional260",
+    "target": "y",
+    "model": "RF",
+    "candidate": 0,
+    "dimensions": 260,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06963567007311186,
+      0.07953036962223242,
+      0.08076228555044054
+    ],
+    "cv_loss": 0.07664277508192828,
+    "seconds": 2.092664171010256,
+    "development_mae": 0.04461645003914483,
+    "stage": "quality"
+  },
+  {
+    "view": "conditional260",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 260,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06947326327696329,
+      0.08600674905024218,
+      0.0941423248133158
+    ],
+    "cv_loss": 0.08320744571350709,
+    "seconds": 0.812482224078849,
+    "development_mae": 0.06285436026985664,
+    "stage": "quality"
+  },
+  {
+    "view": "rgb_only180",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 180,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.07519642700824035,
+      0.11125190675032844,
+      0.11098663508931171
+    ],
+    "cv_loss": 0.09914498961596017,
+    "seconds": 1.5252310109790415,
+    "development_mae": 0.0715224294487782,
+    "stage": "quality"
+  },
+  {
+    "view": "rgb_only180",
+    "target": "y",
+    "model": "GP",
+    "candidate": 1,
+    "dimensions": 180,
+    "parameters": {
+      "length_multiplier": 0.5,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.07843918052269643,
+      0.10927206998823674,
+      0.1267113763094617
+    ],
+    "cv_loss": 0.10480754227346496,
+    "seconds": 0.6085948359686881,
+    "development_mae": 0.08918243829008785,
+    "stage": "quality"
+  },
+  {
+    "view": "output_only80",
+    "target": "y",
+    "model": "RF",
+    "candidate": 0,
+    "dimensions": 80,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.07598452365158773,
+      0.0826656884141852,
+      0.08911924972081114
+    ],
+    "cv_loss": 0.08258982059552802,
+    "seconds": 0.6347663810010999,
+    "development_mae": 0.05073347283137792,
+    "stage": "quality"
+  },
+  {
+    "view": "output_only80",
+    "target": "y",
+    "model": "GP",
+    "candidate": 2,
+    "dimensions": 80,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.07178235633929535,
+      0.0824424846517043,
+      0.12099665813617902
+    ],
+    "cv_loss": 0.09174049970905955,
+    "seconds": 0.3081381660886109,
+    "development_mae": 0.06489150172979995,
+    "stage": "quality"
+  },
+  {
+    "view": "color_road_outputs",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 200,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10802590995866303,
+      0.0967251926864629,
+      0.09457275090366621
+    ],
+    "cv_loss": 0.09977461784959736,
+    "seconds": 1.7264532090630382,
+    "development_mae": 0.04773051427778331,
+    "stage": "quality"
+  },
+  {
+    "view": "color_road_outputs",
+    "target": "y",
+    "model": "GP",
+    "candidate": 0,
+    "dimensions": 200,
+    "parameters": {
+      "length_multiplier": 0.5,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.06759174114312765,
+      0.08960567818250433,
+      0.1078668408828632
+    ],
+    "cv_loss": 0.08835475340283172,
+    "seconds": 0.6752938309218735,
+    "development_mae": 0.0646731168221079,
+    "stage": "quality"
+  },
+  {
+    "view": "color_offroad_lane",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 205,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10541023059241215,
+      0.09773956905067917,
+      0.09463862373235869
+    ],
+    "cv_loss": 0.09926280779181668,
+    "seconds": 1.8792866540607065,
+    "development_mae": 0.04835740949894861,
+    "stage": "quality"
+  },
+  {
+    "view": "color_offroad_lane",
+    "target": "y",
+    "model": "GP",
+    "candidate": 0,
+    "dimensions": 205,
+    "parameters": {
+      "length_multiplier": 0.5,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.06860323480441043,
+      0.08864490698966397,
+      0.1097043781582003
+    ],
+    "cv_loss": 0.0889841733174249,
+    "seconds": 0.770640105009079,
+    "development_mae": 0.06479415229311108,
+    "stage": "quality"
+  },
+  {
+    "view": "role_all_outputs",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 120,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10040486554794407,
+      0.09746379279574727,
+      0.09489308752015234
+    ],
+    "cv_loss": 0.09758724862128122,
+    "seconds": 1.0400465340353549,
+    "development_mae": 0.0455288996839908,
+    "stage": "quality"
+  },
+  {
+    "view": "role_all_outputs",
+    "target": "y",
+    "model": "GP",
+    "candidate": 0,
+    "dimensions": 120,
+    "parameters": {
+      "length_multiplier": 0.5,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.07020379275597669,
+      0.09494320869436249,
+      0.11353770710839194
+    ],
+    "cv_loss": 0.09289490285291037,
+    "seconds": 0.4762102118693292,
+    "development_mae": 0.06768128569330273,
+    "stage": "quality"
+  },
+  {
+    "view": "role_road_outputs",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 100,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10568979551492722,
+      0.09604796569747397,
+      0.09677782916952499
+    ],
+    "cv_loss": 0.09950519679397539,
+    "seconds": 0.9902911500539631,
+    "development_mae": 0.04625757716430566,
+    "stage": "quality"
+  },
+  {
+    "view": "role_road_outputs",
+    "target": "y",
+    "model": "GP",
+    "candidate": 0,
+    "dimensions": 100,
+    "parameters": {
+      "length_multiplier": 0.5,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.06566898046347465,
+      0.09226040820951237,
+      0.11132857113028896
+    ],
+    "cv_loss": 0.08975265326775865,
+    "seconds": 0.41681114793755114,
+    "development_mae": 0.0664823023740203,
+    "stage": "quality"
+  },
+  {
+    "view": "role_offroad_lane",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 105,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10263090523960358,
+      0.09596044521779548,
+      0.09696207466085786
+    ],
+    "cv_loss": 0.09851780837275231,
+    "seconds": 0.9582643550820649,
+    "development_mae": 0.04588943605581505,
+    "stage": "quality"
+  },
+  {
+    "view": "role_offroad_lane",
+    "target": "y",
+    "model": "GP",
+    "candidate": 0,
+    "dimensions": 105,
+    "parameters": {
+      "length_multiplier": 0.5,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.06557210224572443,
+      0.09107983229686775,
+      0.11404004384356455
+    ],
+    "cv_loss": 0.09023065946205223,
+    "seconds": 0.4092793199233711,
+    "development_mae": 0.06617832889625815,
+    "stage": "quality"
+  },
+  {
+    "view": "role_conditional_outputs",
+    "target": "y",
+    "model": "RF",
+    "candidate": 0,
+    "dimensions": 160,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.0680048912213009,
+      0.07844388148570362,
+      0.08175712572993316
+    ],
+    "cv_loss": 0.07606863281231256,
+    "seconds": 1.1990437640342861,
+    "development_mae": 0.04585013512053804,
+    "stage": "quality"
+  },
+  {
+    "view": "role_conditional_outputs",
+    "target": "y",
+    "model": "GP",
+    "candidate": 2,
+    "dimensions": 160,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.06690060973429685,
+      0.0847156216170073,
+      0.10145246352302924
+    ],
+    "cv_loss": 0.08435623162477779,
+    "seconds": 0.554276913870126,
+    "development_mae": 0.06479163625893875,
+    "stage": "quality"
+  },
+  {
+    "view": "role_no_top",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 94,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10501768613673701,
+      0.09808276825014345,
+      0.09730842736059414
+    ],
+    "cv_loss": 0.10013629391582486,
+    "seconds": 0.8743032061029226,
+    "development_mae": 0.045200304822212996,
+    "stage": "quality"
+  },
+  {
+    "view": "role_no_top",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 94,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.07195830012881396,
+      0.09217902861029877,
+      0.11099898672009997
+    ],
+    "cv_loss": 0.09171210515307089,
+    "seconds": 0.38191836094483733,
+    "development_mae": 0.06992741560191917,
+    "stage": "quality"
+  },
+  {
+    "view": "role_no_bottom",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 98,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10620999893987151,
+      0.09699452665452545,
+      0.09680239820219244
+    ],
+    "cv_loss": 0.10000230793219646,
+    "seconds": 0.910150608047843,
+    "development_mae": 0.04479649072277778,
+    "stage": "quality"
+  },
+  {
+    "view": "role_no_bottom",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 98,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.0720273923248975,
+      0.09414738854523003,
+      0.10995546171753189
+    ],
+    "cv_loss": 0.09204341419588646,
+    "seconds": 0.37123539415188134,
+    "development_mae": 0.06959670307308997,
+    "stage": "quality"
+  },
+  {
+    "view": "role_no_hood",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 109,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.0921451267590481,
+      0.09268374245058997,
+      0.10672891132173996
+    ],
+    "cv_loss": 0.09718592684379268,
+    "seconds": 0.9754358420614153,
+    "development_mae": 0.04926090303357519,
+    "stage": "quality"
+  },
+  {
+    "view": "role_no_hood",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 109,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.07555368866222759,
+      0.09582211746339134,
+      0.10907374717996902
+    ],
+    "cv_loss": 0.09348318443519599,
+    "seconds": 0.4203892678488046,
+    "development_mae": 0.07279274704360192,
+    "stage": "quality"
+  },
+  {
+    "view": "role_no_global",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 111,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10427071058505925,
+      0.09732010022310972,
+      0.09424996626974193
+    ],
+    "cv_loss": 0.09861359235930363,
+    "seconds": 0.9612785270437598,
+    "development_mae": 0.05399757204748009,
+    "stage": "quality"
+  },
+  {
+    "view": "role_no_global",
+    "target": "y",
+    "model": "GP",
+    "candidate": 0,
+    "dimensions": 111,
+    "parameters": {
+      "length_multiplier": 0.5,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.07484153430252742,
+      0.09840834013144914,
+      0.11621365249979115
+    ],
+    "cv_loss": 0.0964878423112559,
+    "seconds": 0.43932947097346187,
+    "development_mae": 0.07087495199730831,
+    "stage": "quality"
+  },
+  {
+    "view": "role_rel_distance",
+    "target": "y",
+    "model": "RF",
+    "candidate": 0,
+    "dimensions": 131,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.09384581323788181,
+      0.09607647867742299,
+      0.0897144671232804
+    ],
+    "cv_loss": 0.09321225301286173,
+    "seconds": 1.2060320561286062,
+    "development_mae": 0.047439900267497524,
+    "stage": "quality"
+  },
+  {
+    "view": "role_rel_distance",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 131,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06870800014384304,
+      0.0917141966062318,
+      0.10810822392845688
+    ],
+    "cv_loss": 0.08951014022617725,
+    "seconds": 0.5069743110798299,
+    "development_mae": 0.06743739659817491,
+    "stage": "quality"
+  },
+  {
+    "view": "role_rel_light",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 138,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10471498314209153,
+      0.09779690653394378,
+      0.09654425615889989
+    ],
+    "cv_loss": 0.0996853819449784,
+    "seconds": 1.2579602159094065,
+    "development_mae": 0.04521798377897682,
+    "stage": "quality"
+  },
+  {
+    "view": "role_rel_light",
+    "target": "y",
+    "model": "GP",
+    "candidate": 0,
+    "dimensions": 138,
+    "parameters": {
+      "length_multiplier": 0.5,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.06906860433806676,
+      0.09692520645985954,
+      0.11141931494297506
+    ],
+    "cv_loss": 0.0924710419136338,
+    "seconds": 0.5232777481433004,
+    "development_mae": 0.07228466685561669,
+    "stage": "quality"
+  },
+  {
+    "view": "role_rel_sides",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 164,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.09927530612660536,
+      0.09508261357382532,
+      0.09574445830112971
+    ],
+    "cv_loss": 0.09670079266718679,
+    "seconds": 1.3442906579002738,
+    "development_mae": 0.04833843276100532,
+    "stage": "quality"
+  },
+  {
+    "view": "role_rel_sides",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 164,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.07978135872215782,
+      0.10198683438560686,
+      0.12060690691436407
+    ],
+    "cv_loss": 0.10079170000737625,
+    "seconds": 0.5876270909793675,
+    "development_mae": 0.08012177339140353,
+    "stage": "quality"
+  },
+  {
+    "view": "role_rel_all",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 208,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.0804731870247417,
+      0.09287932391469514,
+      0.09033336313795763
+    ],
+    "cv_loss": 0.08789529135913149,
+    "seconds": 1.5959749170579016,
+    "development_mae": 0.047319373518077634,
+    "stage": "quality"
+  },
+  {
+    "view": "role_rel_all",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 208,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.0695869325337455,
+      0.09337123149198569,
+      0.11204947207775444
+    ],
+    "cv_loss": 0.0916692120344952,
+    "seconds": 0.6999310171231627,
+    "development_mae": 0.07784131384419789,
+    "stage": "quality"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "RF",
+    "k": 24,
+    "model": "RF",
+    "candidate": 2,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10251545658817467,
+      0.09643996950486057,
+      0.09700245141681878
+    ],
+    "cv_loss": 0.098652625836618,
+    "name": "role_all_outputs_RF_k24",
+    "dimensions": 24,
+    "development_mae": 0.04306598158933827,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "RF",
+    "k": 24,
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06635907151968377,
+      0.0827179350446718,
+      0.11059086007563695
+    ],
+    "cv_loss": 0.08655595554666418,
+    "name": "role_all_outputs_RF_k24",
+    "dimensions": 24,
+    "development_mae": 0.04546892748064305,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "RF",
+    "k": 40,
+    "model": "RF",
+    "candidate": 2,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.1044465284722178,
+      0.09629298789770081,
+      0.09726140722446429
+    ],
+    "cv_loss": 0.09933364119812764,
+    "name": "role_all_outputs_RF_k40",
+    "dimensions": 40,
+    "development_mae": 0.042836215231229505,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "RF",
+    "k": 40,
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.0672918928508955,
+      0.07836972472082639,
+      0.11350458477071326
+    ],
+    "cv_loss": 0.08638873411414505,
+    "name": "role_all_outputs_RF_k40",
+    "dimensions": 40,
+    "development_mae": 0.06065179417366541,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "RF",
+    "k": 64,
+    "model": "RF",
+    "candidate": 2,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.1050289397436524,
+      0.09812116195402187,
+      0.09931089007105069
+    ],
+    "cv_loss": 0.100820330589575,
+    "name": "role_all_outputs_RF_k64",
+    "dimensions": 64,
+    "development_mae": 0.043911504623487654,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "RF",
+    "k": 64,
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06585677759340727,
+      0.08483774720151196,
+      0.11280262985599077
+    ],
+    "cv_loss": 0.08783238488363666,
+    "name": "role_all_outputs_RF_k64",
+    "dimensions": 64,
+    "development_mae": 0.07148311222533499,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "RF",
+    "k": 96,
+    "model": "RF",
+    "candidate": 2,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10737779330034133,
+      0.0963897325147735,
+      0.0964419778260672
+    ],
+    "cv_loss": 0.10006983454706068,
+    "name": "role_all_outputs_RF_k96",
+    "dimensions": 96,
+    "development_mae": 0.045346581139029514,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "RF",
+    "k": 96,
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.07288902678190283,
+      0.09444142765170765,
+      0.10957939683662424
+    ],
+    "cv_loss": 0.0923032837567449,
+    "name": "role_all_outputs_RF_k96",
+    "dimensions": 96,
+    "development_mae": 0.06676112494505518,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "MI",
+    "k": 24,
+    "model": "RF",
+    "candidate": 2,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.1142860617284645,
+      0.09860789127080498,
+      0.09984185772829265
+    ],
+    "cv_loss": 0.10424527024252073,
+    "name": "role_all_outputs_MI_k24",
+    "dimensions": 24,
+    "development_mae": 0.048670861004581706,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "MI",
+    "k": 24,
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.07666211337819265,
+      0.0869274917285691,
+      0.1245094504616964
+    ],
+    "cv_loss": 0.09603301852281938,
+    "name": "role_all_outputs_MI_k24",
+    "dimensions": 24,
+    "development_mae": 0.06208812380373289,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "MI",
+    "k": 40,
+    "model": "RF",
+    "candidate": 2,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10637500465280054,
+      0.0984600459636804,
+      0.09797985140526308
+    ],
+    "cv_loss": 0.10093830067391467,
+    "name": "role_all_outputs_MI_k40",
+    "dimensions": 40,
+    "development_mae": 0.04549430340353279,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "MI",
+    "k": 40,
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06553940799941221,
+      0.08837216118034154,
+      0.12290845970650856
+    ],
+    "cv_loss": 0.09227334296208743,
+    "name": "role_all_outputs_MI_k40",
+    "dimensions": 40,
+    "development_mae": 0.0511922550977719,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "MI",
+    "k": 64,
+    "model": "RF",
+    "candidate": 2,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10247070206410319,
+      0.09700697446963108,
+      0.09610049528873828
+    ],
+    "cv_loss": 0.09852605727415752,
+    "name": "role_all_outputs_MI_k64",
+    "dimensions": 64,
+    "development_mae": 0.04529514522845127,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "MI",
+    "k": 64,
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06436440923777571,
+      0.07813979285697766,
+      0.10864592268241588
+    ],
+    "cv_loss": 0.08371670825905642,
+    "name": "role_all_outputs_MI_k64",
+    "dimensions": 64,
+    "development_mae": 0.04898450097377794,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "MI",
+    "k": 96,
+    "model": "RF",
+    "candidate": 2,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10681097927102302,
+      0.09591853948330642,
+      0.09674726886067186
+    ],
+    "cv_loss": 0.0998255958716671,
+    "name": "role_all_outputs_MI_k96",
+    "dimensions": 96,
+    "development_mae": 0.04443721595243533,
+    "stage": "reduction"
+  },
+  {
+    "view": "role_all_outputs",
+    "ranking": "MI",
+    "k": 96,
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06975599006462056,
+      0.09199244957933418,
+      0.1068315988726541
+    ],
+    "cv_loss": 0.08952667950553628,
+    "name": "role_all_outputs_MI_k96",
+    "dimensions": 96,
+    "development_mae": 0.06753468924579305,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 24,
+    "model": "RF",
+    "candidate": 1,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 1.0,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06351128456176638,
+      0.07970724710531549,
+      0.07872568151659967
+    ],
+    "cv_loss": 0.07398140439456051,
+    "name": "conditional260_RF_k24",
+    "dimensions": 24,
+    "development_mae": 0.044731935033940656,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 24,
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.061553694083180566,
+      0.07740003436892698,
+      0.11477559801877252
+    ],
+    "cv_loss": 0.08457644215696003,
+    "name": "conditional260_RF_k24",
+    "dimensions": 24,
+    "development_mae": 0.04847346418342867,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 40,
+    "model": "RF",
+    "candidate": 0,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06665765618251308,
+      0.07784357863767598,
+      0.08001603080997394
+    ],
+    "cv_loss": 0.07483908854338767,
+    "name": "conditional260_RF_k40",
+    "dimensions": 40,
+    "development_mae": 0.04388148493986478,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 40,
+    "model": "GP",
+    "candidate": 2,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.05269926652812432,
+      0.07369799820975129,
+      0.1090390063856574
+    ],
+    "cv_loss": 0.07847875704117767,
+    "name": "conditional260_RF_k40",
+    "dimensions": 40,
+    "development_mae": 0.04687968737334709,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 64,
+    "model": "RF",
+    "candidate": 0,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06621253013065782,
+      0.07820213362857704,
+      0.082580665679617
+    ],
+    "cv_loss": 0.07566510981295062,
+    "name": "conditional260_RF_k64",
+    "dimensions": 64,
+    "development_mae": 0.043534428461782924,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 64,
+    "model": "GP",
+    "candidate": 2,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.06293849390697018,
+      0.07533027243443373,
+      0.10698885400405987
+    ],
+    "cv_loss": 0.08175254011515459,
+    "name": "conditional260_RF_k64",
+    "dimensions": 64,
+    "development_mae": 0.047923557978282766,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 96,
+    "model": "RF",
+    "candidate": 0,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06835890492410075,
+      0.07914729353487734,
+      0.0806383495606983
+    ],
+    "cv_loss": 0.07604818267322548,
+    "name": "conditional260_RF_k96",
+    "dimensions": 96,
+    "development_mae": 0.04260525135226023,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 96,
+    "model": "GP",
+    "candidate": 2,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.06114765704063401,
+      0.07760106697614087,
+      0.10449637601199223
+    ],
+    "cv_loss": 0.08108170000958903,
+    "name": "conditional260_RF_k96",
+    "dimensions": 96,
+    "development_mae": 0.06008278738476158,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 24,
+    "model": "RF",
+    "candidate": 1,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 1.0,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06471746650762017,
+      0.07944283079114015,
+      0.0790466833644105
+    ],
+    "cv_loss": 0.0744023268877236,
+    "name": "conditional260_MI_k24",
+    "dimensions": 24,
+    "development_mae": 0.045762746957083746,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 24,
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06456370831285158,
+      0.07630122298712202,
+      0.11291617250010061
+    ],
+    "cv_loss": 0.08459370126669141,
+    "name": "conditional260_MI_k24",
+    "dimensions": 24,
+    "development_mae": 0.05743348777912563,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 40,
+    "model": "RF",
+    "candidate": 0,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06884569925778772,
+      0.07771245115983944,
+      0.078991521054491
+    ],
+    "cv_loss": 0.07518322382403939,
+    "name": "conditional260_MI_k40",
+    "dimensions": 40,
+    "development_mae": 0.045009333204034815,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 40,
+    "model": "GP",
+    "candidate": 2,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.058914482063443,
+      0.06736722171517819,
+      0.10971871594235597
+    ],
+    "cv_loss": 0.07866680657365906,
+    "name": "conditional260_MI_k40",
+    "dimensions": 40,
+    "development_mae": 0.05783515269882992,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 64,
+    "model": "RF",
+    "candidate": 1,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 1.0,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06893548275288544,
+      0.07699443775068507,
+      0.07687903245034422
+    ],
+    "cv_loss": 0.07426965098463824,
+    "name": "conditional260_MI_k64",
+    "dimensions": 64,
+    "development_mae": 0.04369262675459588,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 64,
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.05757624724247158,
+      0.07043013170723575,
+      0.10032305462892573
+    ],
+    "cv_loss": 0.07610981119287769,
+    "name": "conditional260_MI_k64",
+    "dimensions": 64,
+    "development_mae": 0.05006624013067928,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 96,
+    "model": "RF",
+    "candidate": 1,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 1.0,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.07033391811651174,
+      0.0788355309813353,
+      0.07786501120552144
+    ],
+    "cv_loss": 0.07567815343445616,
+    "name": "conditional260_MI_k96",
+    "dimensions": 96,
+    "development_mae": 0.044060126214535186,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 96,
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06020904677663419,
+      0.07045931503890966,
+      0.10083208135658966
+    ],
+    "cv_loss": 0.07716681439071117,
+    "name": "conditional260_MI_k96",
+    "dimensions": 96,
+    "development_mae": 0.04772491172213208,
+    "stage": "reduction"
+  },
+  {
+    "view": "conditional_road",
+    "target": "y",
+    "model": "RF",
+    "candidate": 0,
+    "dimensions": 220,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06615526841972517,
+      0.0791409977942685,
+      0.07959062926123107
+    ],
+    "cv_loss": 0.07496229849174157,
+    "seconds": 2.366386572131887,
+    "development_mae": 0.04491563119744718,
+    "stage": "output_controls"
+  },
+  {
+    "view": "conditional_road",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 220,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06551196900621242,
+      0.08417161916743755,
+      0.0920102634017029
+    ],
+    "cv_loss": 0.08056461719178429,
+    "seconds": 0.7478056270629168,
+    "development_mae": 0.06146212583438012,
+    "stage": "output_controls"
+  },
+  {
+    "view": "conditional_offroad_lane",
+    "target": "y",
+    "model": "RF",
+    "candidate": 0,
+    "dimensions": 225,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.07135521599628392,
+      0.07776249100336763,
+      0.0799249569489449
+    ],
+    "cv_loss": 0.07634755464953215,
+    "seconds": 2.3927652679849416,
+    "development_mae": 0.04356446292845945,
+    "stage": "output_controls"
+  },
+  {
+    "view": "conditional_offroad_lane",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 225,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06593412361704515,
+      0.08373084594909214,
+      0.09336055004370701
+    ],
+    "cv_loss": 0.08100850653661477,
+    "seconds": 0.741019997978583,
+    "development_mae": 0.06168445596250327,
+    "stage": "output_controls"
+  },
+  {
+    "view": "conditional_offroad_alerts",
+    "target": "y",
+    "model": "RF",
+    "candidate": 0,
+    "dimensions": 235,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06962979132820016,
+      0.08014378713959741,
+      0.07875746523879676
+    ],
+    "cv_loss": 0.07617701456886478,
+    "seconds": 2.334802903002128,
+    "development_mae": 0.04422068145714577,
+    "stage": "output_controls"
+  },
+  {
+    "view": "conditional_offroad_alerts",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 235,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06681581129329905,
+      0.08365817056738284,
+      0.09300001785219998
+    ],
+    "cv_loss": 0.08115799990429395,
+    "seconds": 0.7567518330179155,
+    "development_mae": 0.06204976935097828,
+    "stage": "output_controls"
+  },
+  {
+    "view": "conditional_no_global",
+    "target": "y",
+    "model": "RF",
+    "candidate": 1,
+    "dimensions": 234,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 1.0,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.05417251703805766,
+      0.07791397865198015,
+      0.07404653374879053
+    ],
+    "cv_loss": 0.06871100981294277,
+    "seconds": 4.151042561046779,
+    "development_mae": 0.057550587028097976,
+    "stage": "output_controls"
+  },
+  {
+    "view": "conditional_no_global",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 234,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.07229691396816415,
+      0.0901199069332335,
+      0.09512142051306838
+    ],
+    "cv_loss": 0.08584608047148867,
+    "seconds": 0.7393387230113149,
+    "development_mae": 0.06766806401231457,
+    "stage": "output_controls"
+  },
+  {
+    "view": "conditional_road_rgb",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 170,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06607623705755922,
+      0.0778731472251371,
+      0.08755172384822016
+    ],
+    "cv_loss": 0.07716703604363882,
+    "seconds": 1.4277081689797342,
+    "development_mae": 0.04444339460066912,
+    "stage": "output_controls"
+  },
+  {
+    "view": "conditional_road_rgb",
+    "target": "y",
+    "model": "GP",
+    "candidate": 2,
+    "dimensions": 170,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.07127169978776017,
+      0.08160125442849066,
+      0.10068852028133855
+    ],
+    "cv_loss": 0.08452049149919645,
+    "seconds": 0.5758261880837381,
+    "development_mae": 0.06928816263262084,
+    "stage": "output_controls"
+  },
+  {
+    "view": "hist_quality",
+    "target": "y",
+    "model": "RF",
+    "candidate": 2,
+    "dimensions": 540,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.09449593149895248,
+      0.09344265077205455,
+      0.10114232490996379
+    ],
+    "cv_loss": 0.09636030239365694,
+    "seconds": 3.1749524439219385,
+    "development_mae": 0.04583789320807183,
+    "stage": "output_controls"
+  },
+  {
+    "view": "hist_quality",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 540,
+    "parameters": {
+      "length_multiplier": 1.0,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.08024872496380873,
+      0.11268381805515894,
+      0.1261285274495318
+    ],
+    "cv_loss": 0.10635369015616648,
+    "seconds": 1.5474336680490524,
+    "development_mae": 0.14039181153704294,
+    "stage": "output_controls"
+  },
+  {
+    "name": "RF24_none",
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 24,
+    "relation_arm": "none",
+    "model": "RF",
+    "candidate": 7,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 1.0,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.0635112845617664,
+      0.07970724710531549,
+      0.07872568151659967
+    ],
+    "cv_loss": 0.07398140439456051,
+    "dimensions": 24,
+    "development_mae": 0.044731935033940656,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "RF24_none",
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 24,
+    "relation_arm": "none",
+    "model": "GP",
+    "candidate": 11,
+    "parameters": {
+      "length_multiplier": 2.8,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.0590870453159699,
+      0.07445293815140563,
+      0.10007518585565456
+    ],
+    "cv_loss": 0.07787172310767669,
+    "dimensions": 24,
+    "development_mae": 0.0446397190981876,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "RF24_distance_output",
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 24,
+    "relation_arm": "distance_output",
+    "model": "RF",
+    "candidate": 5,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.061604005941841074,
+      0.08222127463227331,
+      0.07752355741833113
+    ],
+    "cv_loss": 0.07378294599748185,
+    "dimensions": 29,
+    "development_mae": 0.048332889338818,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "RF24_distance_output",
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 24,
+    "relation_arm": "distance_output",
+    "model": "GP",
+    "candidate": 11,
+    "parameters": {
+      "length_multiplier": 2.8,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.055197286036752446,
+      0.07322951120557424,
+      0.09862930625545739
+    ],
+    "cv_loss": 0.0756853678325947,
+    "dimensions": 29,
+    "development_mae": 0.04551931465102957,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "RF24_distance_all",
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 24,
+    "relation_arm": "distance_all",
+    "model": "RF",
+    "candidate": 4,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": 12
+    },
+    "fold_loss": [
+      0.06270487450475942,
+      0.08241882571283833,
+      0.07746013693938002
+    ],
+    "cv_loss": 0.07419461238565926,
+    "dimensions": 35,
+    "development_mae": 0.0474926715127973,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "RF24_distance_all",
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 24,
+    "relation_arm": "distance_all",
+    "model": "GP",
+    "candidate": 11,
+    "parameters": {
+      "length_multiplier": 2.8,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.05361145892356475,
+      0.07625375226196018,
+      0.10147808448075739
+    ],
+    "cv_loss": 0.07711443188876077,
+    "dimensions": 35,
+    "development_mae": 0.048019433182124524,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "RF24_illumination",
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 24,
+    "relation_arm": "illumination",
+    "model": "RF",
+    "candidate": 2,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 2,
+      "max_features": 1.0,
+      "max_depth": 12
+    },
+    "fold_loss": [
+      0.0631192690039045,
+      0.0780640896446829,
+      0.07917997670425535
+    ],
+    "cv_loss": 0.07345444511761424,
+    "dimensions": 42,
+    "development_mae": 0.043307503280591575,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "RF24_illumination",
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 24,
+    "relation_arm": "illumination",
+    "model": "GP",
+    "candidate": 10,
+    "parameters": {
+      "length_multiplier": 2.8,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.054539226954969815,
+      0.06680696385187078,
+      0.10567441090144127
+    ],
+    "cv_loss": 0.07567353390276062,
+    "dimensions": 42,
+    "development_mae": 0.05006008610380671,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "RF24_side_output",
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 24,
+    "relation_arm": "side_output",
+    "model": "RF",
+    "candidate": 4,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 4,
+      "max_features": 0.5,
+      "max_depth": 12
+    },
+    "fold_loss": [
+      0.06326444592937759,
+      0.07993904951367431,
+      0.08171856138390278
+    ],
+    "cv_loss": 0.07497401894231821,
+    "dimensions": 44,
+    "development_mae": 0.04387681005048748,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "RF24_side_output",
+    "view": "conditional260",
+    "ranking": "RF",
+    "k": 24,
+    "relation_arm": "side_output",
+    "model": "GP",
+    "candidate": 11,
+    "parameters": {
+      "length_multiplier": 2.8,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.06608553737441641,
+      0.08350228447251681,
+      0.10077547398345803
+    ],
+    "cv_loss": 0.08345443194346375,
+    "dimensions": 44,
+    "development_mae": 0.05161688344478571,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "MI64_none",
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 64,
+    "relation_arm": "none",
+    "model": "RF",
+    "candidate": 0,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 2,
+      "max_features": 0.5,
+      "max_depth": 12
+    },
+    "fold_loss": [
+      0.06819554863909444,
+      0.07745374055358772,
+      0.07630173535717916
+    ],
+    "cv_loss": 0.07398367484995377,
+    "dimensions": 64,
+    "development_mae": 0.04383799862556083,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "MI64_none",
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 64,
+    "relation_arm": "none",
+    "model": "GP",
+    "candidate": 8,
+    "parameters": {
+      "length_multiplier": 1.4,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.057222662986569,
+      0.0734811086692938,
+      0.09825148267220116
+    ],
+    "cv_loss": 0.07631841810935465,
+    "dimensions": 64,
+    "development_mae": 0.050591781699910396,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "MI64_distance_output",
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 64,
+    "relation_arm": "distance_output",
+    "model": "RF",
+    "candidate": 0,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 2,
+      "max_features": 0.5,
+      "max_depth": 12
+    },
+    "fold_loss": [
+      0.06737555362094401,
+      0.07989544540787613,
+      0.07608070953352475
+    ],
+    "cv_loss": 0.07445056952078162,
+    "dimensions": 69,
+    "development_mae": 0.044460686667818036,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "MI64_distance_output",
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 64,
+    "relation_arm": "distance_output",
+    "model": "GP",
+    "candidate": 8,
+    "parameters": {
+      "length_multiplier": 1.4,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.05612056072637972,
+      0.0704146188227557,
+      0.09792107087997612
+    ],
+    "cv_loss": 0.07481875014303717,
+    "dimensions": 69,
+    "development_mae": 0.051790736847224926,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "MI64_distance_all",
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 64,
+    "relation_arm": "distance_all",
+    "model": "RF",
+    "candidate": 0,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 2,
+      "max_features": 0.5,
+      "max_depth": 12
+    },
+    "fold_loss": [
+      0.06511901766976728,
+      0.08107118720748753,
+      0.07520758144697977
+    ],
+    "cv_loss": 0.07379926210807819,
+    "dimensions": 75,
+    "development_mae": 0.046558284949943865,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "MI64_distance_all",
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 64,
+    "relation_arm": "distance_all",
+    "model": "GP",
+    "candidate": 10,
+    "parameters": {
+      "length_multiplier": 2.8,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.05556646582952412,
+      0.07453960004134105,
+      0.09758069571153268
+    ],
+    "cv_loss": 0.07589558719413263,
+    "dimensions": 75,
+    "development_mae": 0.055527009001817326,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "MI64_illumination",
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 64,
+    "relation_arm": "illumination",
+    "model": "RF",
+    "candidate": 1,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 2,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06552285801953303,
+      0.07840098422175996,
+      0.07620601263910476
+    ],
+    "cv_loss": 0.07337661829346592,
+    "dimensions": 82,
+    "development_mae": 0.04240906873388913,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "MI64_illumination",
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 64,
+    "relation_arm": "illumination",
+    "model": "GP",
+    "candidate": 3,
+    "parameters": {
+      "length_multiplier": 0.7,
+      "noise_variance": 0.01
+    },
+    "fold_loss": [
+      0.05307330258080751,
+      0.0699995601947076,
+      0.10138359165443586
+    ],
+    "cv_loss": 0.07481881814331699,
+    "dimensions": 82,
+    "development_mae": 0.05910417616210807,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "MI64_side_output",
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 64,
+    "relation_arm": "side_output",
+    "model": "RF",
+    "candidate": 1,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 2,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.0717984328726465,
+      0.08009473069111422,
+      0.07620036868646125
+    ],
+    "cv_loss": 0.07603117741674066,
+    "dimensions": 84,
+    "development_mae": 0.044139834101944476,
+    "stage": "compact_relations"
+  },
+  {
+    "name": "MI64_side_output",
+    "view": "conditional260",
+    "ranking": "MI",
+    "k": 64,
+    "relation_arm": "side_output",
+    "model": "GP",
+    "candidate": 7,
+    "parameters": {
+      "length_multiplier": 1.4,
+      "noise_variance": 0.05
+    },
+    "fold_loss": [
+      0.06412684293651948,
+      0.0718262259022498,
+      0.10307206702876243
+    ],
+    "cv_loss": 0.07967504528917724,
+    "dimensions": 84,
+    "development_mae": 0.0548098904847741,
+    "stage": "compact_relations"
+  },
+  {
+    "view": "base120",
+    "target": "y",
+    "model": "RF",
+    "candidate": 9,
+    "dimensions": 120,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10514232546357045,
+      0.09451138845451285,
+      0.0956896367055736
+    ],
+    "cv_loss": 0.09844778354121897,
+    "seconds": 0.9333227418828756,
+    "development_mae": 0.04731994466660147,
+    "stage": "matched_budget"
+  },
+  {
+    "view": "base120",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 120,
+    "parameters": {
+      "length_multiplier": 0.7,
+      "noise_variance": 0.01
+    },
+    "fold_loss": [
+      0.07223018869762392,
+      0.08922978002853107,
+      0.10635189210707197
+    ],
+    "cv_loss": 0.08927062027774231,
+    "seconds": 0.46977611095644534,
+    "development_mae": 0.06829822688869804,
+    "stage": "matched_budget"
+  },
+  {
+    "view": "conditional260",
+    "target": "y",
+    "model": "RF",
+    "candidate": 1,
+    "dimensions": 260,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 2,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.06732367494932577,
+      0.07906955974106007,
+      0.08147434469135413
+    ],
+    "cv_loss": 0.07595585979391332,
+    "seconds": 2.1377546910662204,
+    "development_mae": 0.04330697715076372,
+    "stage": "matched_budget"
+  },
+  {
+    "view": "conditional260",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 260,
+    "parameters": {
+      "length_multiplier": 0.7,
+      "noise_variance": 0.01
+    },
+    "fold_loss": [
+      0.0670374632833136,
+      0.0829661827787162,
+      0.09909074737482133
+    ],
+    "cv_loss": 0.08303146447895038,
+    "seconds": 0.8184557368513197,
+    "development_mae": 0.06539037551020734,
+    "stage": "matched_budget"
+  },
+  {
+    "view": "role_conditional_outputs",
+    "target": "y",
+    "model": "RF",
+    "candidate": 0,
+    "dimensions": 160,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 2,
+      "max_features": 0.5,
+      "max_depth": 12
+    },
+    "fold_loss": [
+      0.06308670839726879,
+      0.07782911131659803,
+      0.081815367223142
+    ],
+    "cv_loss": 0.07424372897900294,
+    "seconds": 1.2769530480727553,
+    "development_mae": 0.045171469607959425,
+    "stage": "matched_budget"
+  },
+  {
+    "view": "role_conditional_outputs",
+    "target": "y",
+    "model": "GP",
+    "candidate": 3,
+    "dimensions": 160,
+    "parameters": {
+      "length_multiplier": 0.7,
+      "noise_variance": 0.01
+    },
+    "fold_loss": [
+      0.06443161111369552,
+      0.08506849090980644,
+      0.10608249552182776
+    ],
+    "cv_loss": 0.08519419918177656,
+    "seconds": 0.5546912669669837,
+    "development_mae": 0.06460807148570308,
+    "stage": "matched_budget"
+  },
+  {
+    "view": "color_road_outputs",
+    "target": "y",
+    "model": "RF",
+    "candidate": 9,
+    "dimensions": 200,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10802590995866301,
+      0.0967251926864629,
+      0.09457275090366621
+    ],
+    "cv_loss": 0.09977461784959736,
+    "seconds": 1.5175182728562504,
+    "development_mae": 0.04773051427778331,
+    "stage": "matched_budget"
+  },
+  {
+    "view": "color_road_outputs",
+    "target": "y",
+    "model": "GP",
+    "candidate": 5,
+    "dimensions": 200,
+    "parameters": {
+      "length_multiplier": 0.7,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.07204572177411839,
+      0.08737300667312328,
+      0.10580469776333322
+    ],
+    "cv_loss": 0.08840780873685829,
+    "seconds": 0.6579871471039951,
+    "development_mae": 0.06307569440929535,
+    "stage": "matched_budget"
+  },
+  {
+    "view": "color_offroad_lane",
+    "target": "y",
+    "model": "RF",
+    "candidate": 9,
+    "dimensions": 205,
+    "parameters": {
+      "n_estimators": 128,
+      "min_samples_leaf": 8,
+      "max_features": 0.5,
+      "max_depth": null
+    },
+    "fold_loss": [
+      0.10541023059241214,
+      0.09773956905067917,
+      0.09463862373235869
+    ],
+    "cv_loss": 0.09926280779181668,
+    "seconds": 1.5076805499847978,
+    "development_mae": 0.0483574094989486,
+    "stage": "matched_budget"
+  },
+  {
+    "view": "color_offroad_lane",
+    "target": "y",
+    "model": "GP",
+    "candidate": 5,
+    "dimensions": 205,
+    "parameters": {
+      "length_multiplier": 0.7,
+      "noise_variance": 0.15
+    },
+    "fold_loss": [
+      0.07280607842343866,
+      0.08664487076349475,
+      0.10727772653003578
+    ],
+    "cv_loss": 0.08890955857232308,
+    "seconds": 0.6801983038894832,
+    "development_mae": 0.06344854287575309,
+    "stage": "matched_budget"
+  },
+  {
+    "view": "top_hood_rgb",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 54,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.008680555555555691,
+      0.06423611111111116,
+      0.03298611111111105
+    ],
+    "cv_loss": 0.035300925925925965,
+    "seconds": 0.9515053629875183,
+    "development_balanced_accuracy": 0.9930555555555557,
+    "development_macro_f1": 0.993036568230285,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        95,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        93,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "top_hood_rgb",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 54,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.06076388888888884,
+      0.046875,
+      0.22569444444444442
+    ],
+    "cv_loss": 0.11111111111111109,
+    "seconds": 1.0113060539588332,
+    "development_balanced_accuracy": 0.9461805555555556,
+    "development_macro_f1": 0.9460958017762204,
+    "development_confusion": [
+      [
+        65,
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        0
+      ],
+      [
+        0,
+        69,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        65,
+        7,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        6,
+        66,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        0,
+        68,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        72,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        68,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "top_hood_hist",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 150,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.012152777777777679,
+      0.04340277777777779,
+      0.02777777777777768
+    ],
+    "cv_loss": 0.027777777777777717,
+    "seconds": 1.0222444548271596,
+    "development_balanced_accuracy": 0.9947916666666666,
+    "development_macro_f1": 0.9947727264377016,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        96,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        2,
+        93,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "top_hood_hist",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 150,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.08333333333333326,
+      0.07465277777777779,
+      0.20138888888888884
+    ],
+    "cv_loss": 0.11979166666666663,
+    "seconds": 1.0973687779624015,
+    "development_balanced_accuracy": 0.9513888888888888,
+    "development_macro_f1": 0.951321115573629,
+    "development_confusion": [
+      [
+        71,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        67,
+        0,
+        0,
+        5,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        65,
+        6,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        5,
+        67,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        0,
+        0,
+        68,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        67,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "upper_hood_rgb",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 90,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.00868055555555547,
+      0.07118055555555569,
+      0.02256944444444453
+    ],
+    "cv_loss": 0.034143518518518566,
+    "seconds": 1.1554834810085595,
+    "development_balanced_accuracy": 0.9947916666666666,
+    "development_macro_f1": 0.9947727264377016,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        96,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        93,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "upper_hood_rgb",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 90,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.06944444444444442,
+      0.07465277777777768,
+      0.22048611111111116
+    ],
+    "cv_loss": 0.12152777777777775,
+    "seconds": 1.2974716289900243,
+    "development_balanced_accuracy": 0.9444444444444444,
+    "development_macro_f1": 0.9443542904424869,
+    "development_confusion": [
+      [
+        65,
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        0
+      ],
+      [
+        0,
+        70,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        63,
+        9,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        6,
+        66,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        69,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        72,
+        0,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        67,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "upper_hood_hist",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 250,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.00868055555555547,
+      0.05381944444444431,
+      0.03472222222222221
+    ],
+    "cv_loss": 0.03240740740740733,
+    "seconds": 1.3442337769083679,
+    "development_balanced_accuracy": 0.9965277777777777,
+    "development_macro_f1": 0.9965274009766686,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        96,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        94,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "upper_hood_hist",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 250,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.07986111111111116,
+      0.06423611111111105,
+      0.18229166666666663
+    ],
+    "cv_loss": 0.10879629629629628,
+    "seconds": 1.4998905970714986,
+    "development_balanced_accuracy": 0.9548611111111112,
+    "development_macro_f1": 0.9548941086810097,
+    "development_confusion": [
+      [
+        68,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        0
+      ],
+      [
+        0,
+        71,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        64,
+        8,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        5,
+        67,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        0,
+        0,
+        68,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        69,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "road_rgb",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 72,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.22743055555555547,
+      0.23263888888888884,
+      0.2777777777777778
+    ],
+    "cv_loss": 0.24594907407407404,
+    "seconds": 1.2444735541939735,
+    "development_balanced_accuracy": 0.704861111111111,
+    "development_macro_f1": 0.7091462205405236,
+    "development_confusion": [
+      [
+        65,
+        24,
+        0,
+        1,
+        6,
+        0
+      ],
+      [
+        47,
+        44,
+        0,
+        0,
+        5,
+        0
+      ],
+      [
+        1,
+        0,
+        71,
+        0,
+        21,
+        3
+      ],
+      [
+        12,
+        2,
+        0,
+        70,
+        9,
+        3
+      ],
+      [
+        7,
+        2,
+        0,
+        9,
+        78,
+        0
+      ],
+      [
+        2,
+        0,
+        7,
+        8,
+        1,
+        78
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "road_rgb",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 72,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.2586805555555556,
+      0.18229166666666674,
+      0.37673611111111116
+    ],
+    "cv_loss": 0.2725694444444445,
+    "seconds": 1.2668611810076982,
+    "development_balanced_accuracy": 0.71875,
+    "development_macro_f1": 0.7167194937932709,
+    "development_confusion": [
+      [
+        62,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        7
+      ],
+      [
+        0,
+        45,
+        2,
+        3,
+        21,
+        1,
+        0,
+        0
+      ],
+      [
+        4,
+        1,
+        39,
+        26,
+        0,
+        0,
+        0,
+        2
+      ],
+      [
+        2,
+        2,
+        28,
+        38,
+        1,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        18,
+        3,
+        2,
+        48,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        11,
+        0,
+        0,
+        0,
+        0,
+        3,
+        57,
+        1
+      ],
+      [
+        9,
+        0,
+        0,
+        0,
+        0,
+        1,
+        8,
+        54
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "road_hist",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 200,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.15625,
+      0.16840277777777768,
+      0.22048611111111116
+    ],
+    "cv_loss": 0.18171296296296294,
+    "seconds": 1.768938820110634,
+    "development_balanced_accuracy": 0.7743055555555555,
+    "development_macro_f1": 0.7675049650764967,
+    "development_confusion": [
+      [
+        62,
+        26,
+        0,
+        0,
+        8,
+        0
+      ],
+      [
+        43,
+        43,
+        0,
+        0,
+        10,
+        0
+      ],
+      [
+        0,
+        0,
+        95,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        91,
+        2,
+        3
+      ],
+      [
+        0,
+        0,
+        0,
+        16,
+        75,
+        5
+      ],
+      [
+        0,
+        0,
+        10,
+        6,
+        0,
+        80
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "road_hist",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 200,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.21180555555555558,
+      0.26388888888888884,
+      0.3350694444444444
+    ],
+    "cv_loss": 0.2702546296296296,
+    "seconds": 1.8923576129600406,
+    "development_balanced_accuracy": 0.7586805555555556,
+    "development_macro_f1": 0.7552478030491865,
+    "development_confusion": [
+      [
+        65,
+        0,
+        0,
+        0,
+        0,
+        0,
+        4,
+        3
+      ],
+      [
+        0,
+        38,
+        3,
+        0,
+        31,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        37,
+        31,
+        2,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        23,
+        45,
+        0,
+        4,
+        0,
+        0
+      ],
+      [
+        0,
+        11,
+        1,
+        0,
+        60,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        7,
+        0,
+        0,
+        0,
+        0,
+        4,
+        61,
+        0
+      ],
+      [
+        12,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        60
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "all_rgb",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 180,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.00868055555555547,
+      0.07465277777777779,
+      0.02256944444444431
+    ],
+    "cv_loss": 0.035300925925925854,
+    "seconds": 1.9400289820041507,
+    "development_balanced_accuracy": 0.9913194444444443,
+    "development_macro_f1": 0.9912613563917384,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        96,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        91,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "all_rgb",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 180,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.05381944444444442,
+      0.08159722222222221,
+      0.21875
+    ],
+    "cv_loss": 0.11805555555555554,
+    "seconds": 2.2236243612132967,
+    "development_balanced_accuracy": 0.8871527777777777,
+    "development_macro_f1": 0.8862739730613758,
+    "development_confusion": [
+      [
+        64,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0
+      ],
+      [
+        0,
+        51,
+        0,
+        0,
+        21,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        54,
+        18,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        8,
+        64,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        0,
+        66,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        72,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        68,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "all_hist",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 500,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.00347222222222221,
+      0.03645833333333337,
+      0.015625
+    ],
+    "cv_loss": 0.018518518518518528,
+    "seconds": 2.935031744884327,
+    "development_balanced_accuracy": 0.9913194444444443,
+    "development_macro_f1": 0.9913184950041956,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        93,
+        0,
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        94,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "all_hist",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 500,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.07118055555555558,
+      0.06076388888888884,
+      0.17881944444444442
+    ],
+    "cv_loss": 0.10358796296296295,
+    "seconds": 2.912438889965415,
+    "development_balanced_accuracy": 0.9496527777777778,
+    "development_macro_f1": 0.9496054548698587,
+    "development_confusion": [
+      [
+        72,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        70,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        62,
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        8,
+        64,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        0,
+        0,
+        68,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        68,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "role_rgb",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 80,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.012152777777777679,
+      0.08854166666666652,
+      0.02604166666666663
+    ],
+    "cv_loss": 0.042245370370370273,
+    "seconds": 1.1886643369216472,
+    "development_balanced_accuracy": 0.9930555555555557,
+    "development_macro_f1": 0.9930542365829781,
+    "development_confusion": [
+      [
+        95,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        96,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        93,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "role_rgb",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 80,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.08159722222222221,
+      0.08506944444444442,
+      0.22916666666666663
+    ],
+    "cv_loss": 0.13194444444444442,
+    "seconds": 1.2027419230435044,
+    "development_balanced_accuracy": 0.8836805555555556,
+    "development_macro_f1": 0.8820984438072932,
+    "development_confusion": [
+      [
+        65,
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        0
+      ],
+      [
+        0,
+        52,
+        0,
+        0,
+        20,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        47,
+        25,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        5,
+        67,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        0,
+        67,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        72,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        67,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "top_hood_rgb_light",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 72,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.01041666666666663,
+      0.07638888888888895,
+      0.02083333333333337
+    ],
+    "cv_loss": 0.03587962962962965,
+    "seconds": 1.0476731590460986,
+    "development_balanced_accuracy": 0.9947916666666666,
+    "development_macro_f1": 0.9947727264377016,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        96,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        93,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "top_hood_rgb_light",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 72,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.07638888888888884,
+      0.09548611111111116,
+      0.24479166666666674
+    ],
+    "cv_loss": 0.13888888888888892,
+    "seconds": 1.204708645818755,
+    "development_balanced_accuracy": 0.9479166666666667,
+    "development_macro_f1": 0.9478026277139676,
+    "development_confusion": [
+      [
+        65,
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        0
+      ],
+      [
+        0,
+        69,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        64,
+        8,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        69,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        0,
+        68,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        72,
+        0,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        67,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "upper_hood_rgb_light",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 108,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.006944444444444309,
+      0.07986111111111116,
+      0.01736111111111116
+    ],
+    "cv_loss": 0.03472222222222221,
+    "seconds": 1.6889033820480108,
+    "development_balanced_accuracy": 0.9947916666666666,
+    "development_macro_f1": 0.9947727264377016,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        96,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        93,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "upper_hood_rgb_light",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 108,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.07118055555555558,
+      0.11111111111111105,
+      0.23784722222222232
+    ],
+    "cv_loss": 0.1400462962962963,
+    "seconds": 1.429879697971046,
+    "development_balanced_accuracy": 0.9375,
+    "development_macro_f1": 0.9373970224384864,
+    "development_confusion": [
+      [
+        65,
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        0
+      ],
+      [
+        0,
+        69,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        61,
+        11,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        7,
+        65,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        69,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        72,
+        0,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        67,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment"
+  },
+  {
+    "view": "top_only_rgb",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 36,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.00868055555555547,
+      0.06423611111111116,
+      0.02256944444444453
+    ],
+    "cv_loss": 0.03182870370370372,
+    "seconds": 1.0100337150506675,
+    "development_balanced_accuracy": 0.9913194444444445,
+    "development_macro_f1": 0.9912813163849646,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        95,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        92,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "top_only_rgb",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 36,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.05208333333333326,
+      0.10763888888888884,
+      0.27083333333333326
+    ],
+    "cv_loss": 0.14351851851851846,
+    "seconds": 1.1335650880355388,
+    "development_balanced_accuracy": 0.9600694444444444,
+    "development_macro_f1": 0.9600486816324959,
+    "development_confusion": [
+      [
+        65,
+        0,
+        0,
+        0,
+        0,
+        0,
+        6,
+        1
+      ],
+      [
+        0,
+        69,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        68,
+        4,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        69,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        70,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        72,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        69,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        71
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "hood_only_rgb",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 18,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.11458333333333337,
+      0.09895833333333337,
+      0.16493055555555547
+    ],
+    "cv_loss": 0.1261574074074074,
+    "seconds": 0.8421083181165159,
+    "development_balanced_accuracy": 0.9444444444444445,
+    "development_macro_f1": 0.9443691711015963,
+    "development_confusion": [
+      [
+        88,
+        5,
+        1,
+        1,
+        1,
+        0
+      ],
+      [
+        7,
+        87,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        95,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        2,
+        0,
+        89,
+        2,
+        2
+      ],
+      [
+        1,
+        1,
+        0,
+        3,
+        90,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        0,
+        0,
+        95
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "hood_only_rgb",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 18,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.17361111111111116,
+      0.13888888888888884,
+      0.29166666666666663
+    ],
+    "cv_loss": 0.20138888888888887,
+    "seconds": 0.9337176869157702,
+    "development_balanced_accuracy": 0.84375,
+    "development_macro_f1": 0.842132145932163,
+    "development_confusion": [
+      [
+        57,
+        0,
+        0,
+        0,
+        0,
+        1,
+        9,
+        5
+      ],
+      [
+        0,
+        59,
+        0,
+        0,
+        13,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        51,
+        20,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        15,
+        55,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        0,
+        0,
+        65,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        12,
+        0,
+        0,
+        0,
+        0,
+        2,
+        56,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "top_hood_photometric",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 27,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.00520833333333337,
+      0.07291666666666685,
+      0.05034722222222221
+    ],
+    "cv_loss": 0.042824074074074146,
+    "seconds": 1.0665655639022589,
+    "development_balanced_accuracy": 0.9930555555555557,
+    "development_macro_f1": 0.9930368568043395,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        95,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        93,
+        0,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "top_hood_photometric",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 27,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.05902777777777779,
+      0.07118055555555558,
+      0.2465277777777778
+    ],
+    "cv_loss": 0.12557870370370372,
+    "seconds": 1.1435566330328584,
+    "development_balanced_accuracy": 0.9392361111111112,
+    "development_macro_f1": 0.939180038984434,
+    "development_confusion": [
+      [
+        65,
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        0
+      ],
+      [
+        0,
+        70,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        63,
+        9,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        10,
+        62,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        70,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        72,
+        0,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        67,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "weather_context_hist",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 130,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.00347222222222221,
+      0.04166666666666663,
+      0.04513888888888884
+    ],
+    "cv_loss": 0.03009259259259256,
+    "seconds": 1.268185897031799,
+    "development_balanced_accuracy": 0.9965277777777777,
+    "development_macro_f1": 0.9965184983183347,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        96,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        94,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "weather_context_hist",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 130,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.10416666666666674,
+      0.08333333333333337,
+      0.19791666666666674
+    ],
+    "cv_loss": 0.1284722222222223,
+    "seconds": 1.5928830411285162,
+    "development_balanced_accuracy": 0.9409722222222223,
+    "development_macro_f1": 0.940986705901285,
+    "development_confusion": [
+      [
+        70,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        68,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        60,
+        12,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        10,
+        62,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        70,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        69,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "hour_context_hist",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 140,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.01041666666666663,
+      0.03645833333333337,
+      0.03298611111111116
+    ],
+    "cv_loss": 0.026620370370370388,
+    "seconds": 1.4076033439487219,
+    "development_balanced_accuracy": 0.9913194444444445,
+    "development_macro_f1": 0.9912724608229365,
+    "development_confusion": [
+      [
+        95,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        96,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        2,
+        92,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "hour_context_hist",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 140,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.10069444444444442,
+      0.11805555555555558,
+      0.22569444444444442
+    ],
+    "cv_loss": 0.14814814814814814,
+    "seconds": 1.3738855079282075,
+    "development_balanced_accuracy": 0.9305555555555556,
+    "development_macro_f1": 0.9303318757739404,
+    "development_confusion": [
+      [
+        69,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3
+      ],
+      [
+        0,
+        67,
+        0,
+        0,
+        5,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        64,
+        8,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        11,
+        61,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        0,
+        69,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        72,
+        0,
+        0
+      ],
+      [
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        62,
+        4
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "weather_context_far_hist",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 170,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.00347222222222221,
+      0.03298611111111105,
+      0.03993055555555547
+    ],
+    "cv_loss": 0.02546296296296291,
+    "seconds": 1.5634840109851211,
+    "development_balanced_accuracy": 0.9947916666666666,
+    "development_macro_f1": 0.9947823401109179,
+    "development_confusion": [
+      [
+        95,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        96,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        94,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "weather_context_far_hist",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 170,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.09722222222222221,
+      0.07118055555555558,
+      0.19618055555555558
+    ],
+    "cv_loss": 0.12152777777777779,
+    "seconds": 1.589331507915631,
+    "development_balanced_accuracy": 0.921875,
+    "development_macro_f1": 0.9218183305011747,
+    "development_confusion": [
+      [
+        70,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        63,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        60,
+        12,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        15,
+        57,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        0,
+        69,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        69,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "all_hist_no_minimum_intensity",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 400,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.006944444444444531,
+      0.06423611111111116,
+      0.03993055555555547
+    ],
+    "cv_loss": 0.037037037037037056,
+    "seconds": 2.9669642231892794,
+    "development_balanced_accuracy": 0.9895833333333334,
+    "development_macro_f1": 0.9895726318905279,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        96,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        94,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        4,
+        92,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "all_hist_no_minimum_intensity",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 400,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.08506944444444442,
+      0.12152777777777779,
+      0.17534722222222232
+    ],
+    "cv_loss": 0.12731481481481485,
+    "seconds": 3.0069932849146426,
+    "development_balanced_accuracy": 0.9357638888888888,
+    "development_macro_f1": 0.9355645297999349,
+    "development_confusion": [
+      [
+        71,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        58,
+        0,
+        0,
+        14,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        65,
+        7,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        8,
+        64,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        70,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        68,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "all_hist_no_contrast",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 400,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.00520833333333337,
+      0.02430555555555547,
+      0.01909722222222221
+    ],
+    "cv_loss": 0.016203703703703682,
+    "seconds": 2.5427178118843585,
+    "development_balanced_accuracy": 0.9774305555555555,
+    "development_macro_f1": 0.9775100057427547,
+    "development_confusion": [
+      [
+        90,
+        1,
+        0,
+        4,
+        0,
+        1
+      ],
+      [
+        0,
+        91,
+        0,
+        5,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        94,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "all_hist_no_contrast",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 400,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.08680555555555558,
+      0.06423611111111116,
+      0.1996527777777778
+    ],
+    "cv_loss": 0.11689814814814818,
+    "seconds": 2.7498863579239696,
+    "development_balanced_accuracy": 0.9479166666666667,
+    "development_macro_f1": 0.9478418022557862,
+    "development_confusion": [
+      [
+        70,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        70,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        61,
+        11,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        7,
+        65,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        70,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        67,
+        3
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "all_hist_no_sharpness",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 400,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.0017361111111110494,
+      0.03298611111111116,
+      0.015625
+    ],
+    "cv_loss": 0.016782407407407402,
+    "seconds": 3.1529972408898175,
+    "development_balanced_accuracy": 0.9913194444444443,
+    "development_macro_f1": 0.9913184950041956,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        93,
+        0,
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        94,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "all_hist_no_sharpness",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 400,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.06076388888888895,
+      0.0625,
+      0.16666666666666663
+    ],
+    "cv_loss": 0.09664351851851853,
+    "seconds": 3.3759481178130955,
+    "development_balanced_accuracy": 0.9583333333333333,
+    "development_macro_f1": 0.9582945583468814,
+    "development_confusion": [
+      [
+        71,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        71,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        62,
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        7,
+        65,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        72,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        68,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "all_hist_no_hue",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 400,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.0017361111111110494,
+      0.03645833333333315,
+      0.02256944444444431
+    ],
+    "cv_loss": 0.0202546296296295,
+    "seconds": 2.7016916018910706,
+    "development_balanced_accuracy": 0.9895833333333334,
+    "development_macro_f1": 0.9895643931043683,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        93,
+        0,
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        93,
+        0,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "all_hist_no_hue",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 400,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.10243055555555558,
+      0.125,
+      0.23263888888888884
+    ],
+    "cv_loss": 0.15335648148148148,
+    "seconds": 2.9642327239271253,
+    "development_balanced_accuracy": 0.8975694444444444,
+    "development_macro_f1": 0.8966257079041899,
+    "development_confusion": [
+      [
+        72,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        66,
+        0,
+        0,
+        6,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        47,
+        24,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        16,
+        54,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        0,
+        70,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        5,
+        0,
+        0,
+        0,
+        0,
+        1,
+        65,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "all_hist_no_saturation",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 400,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.00868055555555547,
+      0.06076388888888884,
+      0.03993055555555547
+    ],
+    "cv_loss": 0.03645833333333326,
+    "seconds": 2.7434916829224676,
+    "development_balanced_accuracy": 0.9913194444444443,
+    "development_macro_f1": 0.9913184950041956,
+    "development_confusion": [
+      [
+        96,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        93,
+        0,
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        96,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        94,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        96,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        96
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "view": "all_hist_no_saturation",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 400,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.08680555555555558,
+      0.07291666666666663,
+      0.21180555555555558
+    ],
+    "cv_loss": 0.1238425925925926,
+    "seconds": 2.8932409239932895,
+    "development_balanced_accuracy": 0.9392361111111112,
+    "development_macro_f1": 0.9392096102436165,
+    "development_confusion": [
+      [
+        70,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        70,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        59,
+        13,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        8,
+        64,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        0,
+        0,
+        67,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        71,
+        1,
+        0
+      ],
+      [
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        68,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "stage": "environment_focus"
+  },
+  {
+    "name": "top_hood_rgb_k12",
+    "view": "top_hood_rgb",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 12,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.012152777777777679,
+      0.08159722222222221,
+      0.02256944444444453
+    ],
+    "cv_loss": 0.03877314814814814,
+    "development_balanced_accuracy": 0.9913194444444445,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "top_hood_rgb_k24",
+    "view": "top_hood_rgb",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 24,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.006944444444444309,
+      0.06597222222222221,
+      0.01388888888888884
+    ],
+    "cv_loss": 0.02893518518518512,
+    "development_balanced_accuracy": 0.9913194444444445,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "top_hood_rgb_k40",
+    "view": "top_hood_rgb",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 40,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.015625,
+      0.06770833333333337,
+      0.03993055555555569
+    ],
+    "cv_loss": 0.04108796296296302,
+    "development_balanced_accuracy": 0.9913194444444445,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "top_hood_rgb_k12",
+    "view": "top_hood_rgb",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 12,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.09027777777777768,
+      0.09895833333333326,
+      0.24305555555555558
+    ],
+    "cv_loss": 0.14409722222222218,
+    "development_balanced_accuracy": 0.9027777777777777,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "top_hood_rgb_k24",
+    "view": "top_hood_rgb",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 24,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.07465277777777768,
+      0.0625,
+      0.234375
+    ],
+    "cv_loss": 0.12384259259259256,
+    "development_balanced_accuracy": 0.9409722222222223,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "top_hood_rgb_k40",
+    "view": "top_hood_rgb",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 40,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.06423611111111116,
+      0.05208333333333326,
+      0.24479166666666663
+    ],
+    "cv_loss": 0.12037037037037035,
+    "development_balanced_accuracy": 0.9479166666666667,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "all_hist_no_sharpness_k12",
+    "view": "all_hist_no_sharpness",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 12,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.02951388888888884,
+      0.06597222222222221,
+      0.06944444444444453
+    ],
+    "cv_loss": 0.05497685185185186,
+    "development_balanced_accuracy": 0.9756944444444445,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "all_hist_no_sharpness_k24",
+    "view": "all_hist_no_sharpness",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 24,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.01736111111111105,
+      0.04513888888888884,
+      0.03819444444444453
+    ],
+    "cv_loss": 0.033564814814814804,
+    "development_balanced_accuracy": 0.9774305555555555,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "all_hist_no_sharpness_k40",
+    "view": "all_hist_no_sharpness",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 40,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.003472222222222321,
+      0.03993055555555569,
+      0.03125
+    ],
+    "cv_loss": 0.02488425925925934,
+    "development_balanced_accuracy": 0.9791666666666666,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "all_hist_no_sharpness_k80",
+    "view": "all_hist_no_sharpness",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 80,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.00347222222222221,
+      0.03298611111111116,
+      0.015625
+    ],
+    "cv_loss": 0.017361111111111122,
+    "development_balanced_accuracy": 0.9895833333333334,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "all_hist_no_sharpness_k160",
+    "view": "all_hist_no_sharpness",
+    "target": "weather",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 160,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.003472222222222321,
+      0.03645833333333348,
+      0.01388888888888895
+    ],
+    "cv_loss": 0.01793981481481492,
+    "development_balanced_accuracy": 0.9913194444444443,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "all_hist_no_sharpness_k12",
+    "view": "all_hist_no_sharpness",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 12,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.08854166666666663,
+      0.09375,
+      0.24826388888888895
+    ],
+    "cv_loss": 0.14351851851851852,
+    "development_balanced_accuracy": 0.9201388888888888,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "all_hist_no_sharpness_k24",
+    "view": "all_hist_no_sharpness",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 24,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.10069444444444442,
+      0.06944444444444442,
+      0.21354166666666663
+    ],
+    "cv_loss": 0.1278935185185185,
+    "development_balanced_accuracy": 0.9409722222222222,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "all_hist_no_sharpness_k40",
+    "view": "all_hist_no_sharpness",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 40,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.09548611111111116,
+      0.06944444444444442,
+      0.18576388888888884
+    ],
+    "cv_loss": 0.11689814814814814,
+    "development_balanced_accuracy": 0.9305555555555556,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "all_hist_no_sharpness_k80",
+    "view": "all_hist_no_sharpness",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 80,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.078125,
+      0.07118055555555558,
+      0.1875
+    ],
+    "cv_loss": 0.11226851851851853,
+    "development_balanced_accuracy": 0.9375000000000001,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "all_hist_no_sharpness_k160",
+    "view": "all_hist_no_sharpness",
+    "target": "hour",
+    "model": "SceneRF",
+    "candidate": 0,
+    "dimensions": 160,
+    "parameters": {
+      "n_estimators": 160,
+      "min_samples_leaf": 2,
+      "max_features": 0.5
+    },
+    "fold_loss": [
+      0.0590277777777779,
+      0.0625,
+      0.17708333333333326
+    ],
+    "cv_loss": 0.09953703703703705,
+    "development_balanced_accuracy": 0.9583333333333333,
+    "stage": "environment_reduction"
+  },
+  {
+    "name": "conditional260_RF_ARD24",
+    "view": "conditional260",
+    "model": "GP",
+    "kernel": "Matern1.5 ARD, maximum marginal likelihood, bounded 45 L-BFGS-B iterations per fit",
+    "ranking": "RF",
+    "k": 24,
+    "dimensions": 24,
+    "cv_loss": 0.11809687112820762,
+    "fold_loss": [
+      0.11373326065110072,
+      0.0946989271215212,
+      0.14585842561200096
+    ],
+    "development_mae": 0.08075041865943088,
+    "kernel_fitted": "Matern(length_scale=[83.5, 100, 59, 10.7, 100, 100, 6.22, 100, 100, 100, 4.83, 1.89, 2.75, 5.01, 1.44, 4.43, 2.3, 3.56, 7.33, 1.57, 7.23, 3.67, 12.7, 5.11], nu=1.5) + WhiteKernel(noise_level=0.001)",
+    "seconds": 89.98777105403133,
+    "stage": "ard"
+  },
+  {
+    "name": "conditional260_MI_ARD24",
+    "view": "conditional260",
+    "model": "GP",
+    "kernel": "Matern1.5 ARD, maximum marginal likelihood, bounded 45 L-BFGS-B iterations per fit",
+    "ranking": "MI",
+    "k": 24,
+    "dimensions": 24,
+    "cv_loss": 0.11085396862288527,
+    "fold_loss": [
+      0.10720889039015452,
+      0.10508505541622225,
+      0.12026796006227904
+    ],
+    "development_mae": 0.11211781513446277,
+    "kernel_fitted": "Matern(length_scale=[100, 100, 100, 100, 29.1, 100, 100, 100, 100, 100, 100, 12.7, 2.37, 2.21, 2.37, 2.01, 1.17, 1.2, 4.92, 0.839, 11.6, 2.14, 2.86, 6.19], nu=1.5) + WhiteKernel(noise_level=0.001)",
+    "seconds": 81.83935549785383,
+    "stage": "ard"
+  },
+  {
+    "name": "conditional_no_global_RF_ARD24",
+    "view": "conditional_no_global",
+    "model": "GP",
+    "kernel": "Matern1.5 ARD, maximum marginal likelihood, bounded 45 L-BFGS-B iterations per fit",
+    "ranking": "RF",
+    "k": 24,
+    "dimensions": 24,
+    "cv_loss": 0.10449965908483638,
+    "fold_loss": [
+      0.0925955096767644,
+      0.07868031628779186,
+      0.14222315128995286
+    ],
+    "development_mae": 0.07647941318320253,
+    "kernel_fitted": "Matern(length_scale=[25.8, 84, 12.4, 100, 100, 99.9, 100, 100, 4.14, 100, 100, 18.1, 100, 6.01, 1.62, 1.61, 4.4, 1.31, 1.59, 2.35, 5.83, 1.25, 11, 98.5], nu=1.5) + WhiteKernel(noise_level=0.001)",
+    "seconds": 79.98012220486999,
+    "stage": "ard"
+  },
+  {
+    "name": "conditional_no_global_MI_ARD24",
+    "view": "conditional_no_global",
+    "model": "GP",
+    "kernel": "Matern1.5 ARD, maximum marginal likelihood, bounded 45 L-BFGS-B iterations per fit",
+    "ranking": "MI",
+    "k": 24,
+    "dimensions": 24,
+    "cv_loss": 0.12075692764486794,
+    "fold_loss": [
+      0.1360343874064826,
+      0.10243799990165169,
+      0.1237983956264695
+    ],
+    "development_mae": 0.10704644948522422,
+    "kernel_fitted": "Matern(length_scale=[100, 64.8, 100, 100, 100, 45.5, 8.28, 100, 100, 100, 100, 29.4, 100, 100, 5.21, 100, 2.92, 1.47, 1.72, 2.27, 1.23, 1.31, 3.98, 0.818], nu=1.5) + WhiteKernel(noise_level=0.001)",
+    "seconds": 95.19970418512821,
+    "stage": "ard"
+  }
+]

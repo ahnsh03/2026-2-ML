@@ -14,6 +14,7 @@ data/
 *.jpeg
 !config/roi10_front_v1/regions.png
 !config/roi7_front_v1/regions.png
+!config/roi9_front_v1/regions.png
 !docs/**/*.png
 !docs/**/*.jpg
 

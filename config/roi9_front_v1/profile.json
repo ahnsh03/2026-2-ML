@@ -1,0 +1,40 @@
+{
+  "version": "roi9-front-v1",
+  "camera": {
+    "width": 1280,
+    "height": 720,
+    "horizontal_fov_deg": 90,
+    "pitch_deg": 2,
+    "height_m": 1.2
+  },
+  "horizon_y": 338,
+  "parent_profile": "../roi7_front_v1/profile.json",
+  "parent_regions_sha256": "b226b0f7082ef57048a80297e605ff76b5a39c09022563be0a55b3a0d7a6962d",
+  "region_names": [
+    "upper_top_left",
+    "upper_top_right",
+    "upper_bottom_left",
+    "upper_bottom_right",
+    "far_left",
+    "far_right",
+    "near_left",
+    "near_right",
+    "hood"
+  ],
+  "split_x": 640,
+  "definition": "Split the inherited upper band at native y=169 into two equal-height layers. Inherit far, near and hood pixel membership from roi7-front-v1. Non-hood layers are split at x=640.",
+  "native_region_pixels": [
+    108160,
+    108160,
+    108160,
+    108160,
+    62037,
+    62037,
+    123338,
+    123349,
+    118199
+  ],
+  "regions_sha256": "96871a98fc7ce4f268c4d9aacbc34603c720e4c7bf70964e5b238aa2375a9786",
+  "projection": "nearest-neighbor labels on a 320 by 180 working grid; source RGB scaled with area averaging",
+  "upper_split_y": 169
+}

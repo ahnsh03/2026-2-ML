@@ -1,0 +1,123 @@
+{
+  "roi": "roi9-front-v1; upper half at y169",
+  "training_frames": 1728,
+  "training_zones": 6,
+  "training_positions": 36,
+  "development_frames": 576,
+  "development_positions": 12,
+  "new_frames": 480,
+  "new_positions": 8,
+  "new_weather_settings": 6,
+  "new_hour_settings": 10,
+  "matched_known_hour_frames": 384,
+  "unseen_hour_frames": 96,
+  "hour_classes": [
+    5,
+    8,
+    11,
+    13,
+    16,
+    18,
+    20,
+    23
+  ],
+  "unseen_hours": [
+    15,
+    17
+  ],
+  "minimum_prior_position_distance_m": 45.47161074581046,
+  "new_original_files": 1920,
+  "feature_dimensions": {
+    "quality_rf": 24,
+    "quality_gp": 24,
+    "weather": 80,
+    "hour": 160,
+    "environment": 54
+  },
+  "selection": "Final feature and model freeze precedes first new-site inference. Supplemental 16/18-hour data correct missing known classes. The original 15/17-hour data remain included in all-frame IoU evaluation and separate unseen-hour diagnostics.",
+  "model_sha256": {
+    "quality_rf": "733cd5de8be704cc3551e1ffd92e6d00c9ba5d840b4e3d85f6dcb30dfc16f7d8",
+    "quality_gp": "b1f6d003c473454c0067d441d3558b2e7836fbf9ee399a1b576b764ad04e479c",
+    "weather": "e1d8f28f0a5aa4155cb7fb14221bc03ab18d4e31e6eda44f02df84f0bd470bae",
+    "hour": "834622167eece09dfb93b7d297be2e259972a65b5b5e39fd53daf6cb02181640",
+    "environment": "4b320a39f7169dfa05f97072a7be19455fbf19cac861cf3cb18aa737e27ce2e8"
+  },
+  "recipe_sha256": "071a56c5829f67e7919d96bc252bd7e046e2296c88bc94ca829db5fadf76581d",
+  "benchmark": {
+    "definition": "Warm CPU single-frame calls, 24 original development images x3 repetitions. Excludes image loading, perception inference, ROS and Python startup. OpenCV one thread, forest prediction one thread, BLAS one thread.",
+    "hardware": {
+      "cpu": "",
+      "python": "3.12.13",
+      "numpy": "2.5.5",
+      "sklearn": "1.9.1"
+    },
+    "timings": {
+      "base120_extract": {
+        "n": 72,
+        "median_ms": 5.906530423089862,
+        "p95_ms": 6.765714101493359
+      },
+      "full260_extract_no_hist": {
+        "n": 72,
+        "median_ms": 11.360589880496264,
+        "p95_ms": 12.192206783220172
+      },
+      "quality_rf_extract": {
+        "n": 72,
+        "median_ms": 5.943990428932011,
+        "p95_ms": 6.5744697116315365
+      },
+      "quality_rf_predict": {
+        "n": 72,
+        "median_ms": 3.024142934009433,
+        "p95_ms": 3.6242429516278216
+      },
+      "quality_gp_extract": {
+        "n": 72,
+        "median_ms": 5.729308468289673,
+        "p95_ms": 6.119952665176243
+      },
+      "quality_gp_predict": {
+        "n": 72,
+        "median_ms": 0.2190974773839116,
+        "p95_ms": 0.2525723073631525
+      },
+      "quality_gp_predict_mean_std": {
+        "n": 72,
+        "median_ms": 0.5709783872589469,
+        "p95_ms": 0.8710443973541261
+      },
+      "weather_extract": {
+        "n": 72,
+        "median_ms": 22.417557542212307,
+        "p95_ms": 23.325749521609396
+      },
+      "weather_predict": {
+        "n": 72,
+        "median_ms": 3.5190595081076026,
+        "p95_ms": 3.7829660228453577
+      },
+      "hour_extract": {
+        "n": 72,
+        "median_ms": 16.861487412825227,
+        "p95_ms": 17.990855395328254
+      },
+      "hour_predict": {
+        "n": 72,
+        "median_ms": 3.5672244848683476,
+        "p95_ms": 3.7444273475557566
+      },
+      "environment_extract": {
+        "n": 72,
+        "median_ms": 5.147258867509663,
+        "p95_ms": 5.543713038787246
+      }
+    }
+  },
+  "limitations": [
+    "One simulator and fixed camera; eight new spatial sites",
+    "Historical diagnostic cohorts were reused for development confirmation",
+    "Fixed IoU threshold is a comparison reference; environment-dependent review policy is pending",
+    "Exact time classification is evaluated on the eight trained clock classes; 15/17-hour labels are excluded only from that classification denominator"
+  ]
+}

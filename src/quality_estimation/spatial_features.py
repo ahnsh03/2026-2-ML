@@ -1,4 +1,4 @@
-"""GT-free whole-frame regression features on the fixed seven- or ten-region camera profile."""
+"""GT-free whole-frame regression features on the fixed front-camera region profiles."""
 from __future__ import annotations
 
 import argparse
@@ -13,7 +13,7 @@ import numpy as np
 from .roi10 import HEAD_FEATURES, NODE_FEATURES, REGIONS, _image_fields, _require_rgb, _summarize
 
 
-DEFAULT_PROFILE_DIR = Path(__file__).resolve().parents[2] / "config/roi7_front_v1"
+DEFAULT_PROFILE_DIR = Path(__file__).resolve().parents[2] / "config/roi9_front_v1"
 
 
 EXTRA_RGB_FEATURES = (
@@ -35,9 +35,10 @@ class SpatialProfile:
         directory = Path(directory) if directory is not None else DEFAULT_PROFILE_DIR
         spec = json.loads((directory / "profile.json").read_text())
         names = tuple(spec.get("region_names", REGIONS))
-        if spec["version"] not in ("roi7-front-v1", "roi10-front-v1"):
+        region_counts = {"roi7-front-v1": 7, "roi9-front-v1": 9, "roi10-front-v1": 10}
+        if spec["version"] not in region_counts:
             raise ValueError("unsupported spatial profile")
-        expected_regions = 7 if spec["version"] == "roi7-front-v1" else 10
+        expected_regions = region_counts[spec["version"]]
         if len(names) != expected_regions or len(set(names)) != expected_regions:
             raise ValueError("profile region names differ")
         path = directory / "regions.png"

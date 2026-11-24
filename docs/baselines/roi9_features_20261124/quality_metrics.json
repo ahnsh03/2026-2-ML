@@ -1,0 +1,2002 @@
+[
+  {
+    "cohort": "geography40",
+    "name": "quality_rf",
+    "dimensions": 24,
+    "n": 960,
+    "mae": 0.07893230252995885,
+    "rmse": 0.11237784835133796,
+    "aurc": 0.23662399523533278,
+    "normal": 410,
+    "fp": 73,
+    "low": 550,
+    "fn": 22,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 96,
+      "found_failures": 96,
+      "total_failures": 550,
+      "recall": 0.17454545454545456,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "geography40",
+    "name": "quality_gp",
+    "dimensions": 24,
+    "n": 960,
+    "mae": 0.08231276514266925,
+    "rmse": 0.11095632606015265,
+    "aurc": 0.23665704829332418,
+    "normal": 410,
+    "fp": 79,
+    "low": 550,
+    "fn": 19,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 96,
+      "found_failures": 96,
+      "total_failures": 550,
+      "recall": 0.17454545454545456,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9354166666666667,
+      "mean_width": 0.3827500767257863,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "geography40",
+    "name": "distance29_RF",
+    "dimensions": 29,
+    "n": 960,
+    "mae": 0.08198593179222481,
+    "rmse": 0.11575424634356225,
+    "aurc": 0.23650699909730774,
+    "normal": 410,
+    "fp": 73,
+    "low": 550,
+    "fn": 21,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 96,
+      "found_failures": 96,
+      "total_failures": 550,
+      "recall": 0.17454545454545456,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "geography40",
+    "name": "distance29_GP",
+    "dimensions": 29,
+    "n": 960,
+    "mae": 0.08663941591160823,
+    "rmse": 0.11358475756244081,
+    "aurc": 0.23758367644824382,
+    "normal": 410,
+    "fp": 77,
+    "low": 550,
+    "fn": 19,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 96,
+      "found_failures": 96,
+      "total_failures": 550,
+      "recall": 0.17454545454545456,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.934375,
+      "mean_width": 0.38366585472174225,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "geography40",
+    "name": "base120_matched_RF",
+    "dimensions": 120,
+    "n": 960,
+    "mae": 0.09286629720143849,
+    "rmse": 0.12442600806182084,
+    "aurc": 0.23873959383197357,
+    "normal": 410,
+    "fp": 73,
+    "low": 550,
+    "fn": 30,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 96,
+      "found_failures": 96,
+      "total_failures": 550,
+      "recall": 0.17454545454545456,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "geography40",
+    "name": "base120_matched_GP",
+    "dimensions": 120,
+    "n": 960,
+    "mae": 0.11432308221354916,
+    "rmse": 0.17249848822371674,
+    "aurc": 0.25034978160575516,
+    "normal": 410,
+    "fp": 89,
+    "low": 550,
+    "fn": 28,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 96,
+      "found_failures": 96,
+      "total_failures": 550,
+      "recall": 0.17454545454545456,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.8927083333333333,
+      "mean_width": 0.48307011734383054,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "geography40",
+    "name": "conditional260_matched_RF",
+    "dimensions": 260,
+    "n": 960,
+    "mae": 0.08358468071982898,
+    "rmse": 0.11706617695714068,
+    "aurc": 0.23616167167225663,
+    "normal": 410,
+    "fp": 67,
+    "low": 550,
+    "fn": 24,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 96,
+      "found_failures": 96,
+      "total_failures": 550,
+      "recall": 0.17454545454545456,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "geography40",
+    "name": "conditional260_matched_GP",
+    "dimensions": 260,
+    "n": 960,
+    "mae": 0.10924181342333718,
+    "rmse": 0.15143564647829433,
+    "aurc": 0.2438145362844839,
+    "normal": 410,
+    "fp": 93,
+    "low": 550,
+    "fn": 21,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 96,
+      "found_failures": 96,
+      "total_failures": 550,
+      "recall": 0.17454545454545456,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.975,
+      "mean_width": 0.5464921716295715,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "switch",
+    "name": "quality_rf",
+    "dimensions": 24,
+    "n": 968,
+    "mae": 0.06507228883272664,
+    "rmse": 0.11087735583283193,
+    "aurc": 0.19564861544246764,
+    "normal": 570,
+    "fp": 39,
+    "low": 398,
+    "fn": 37,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 97,
+      "found_failures": 97,
+      "total_failures": 398,
+      "recall": 0.24371859296482412,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "switch",
+    "name": "quality_gp",
+    "dimensions": 24,
+    "n": 968,
+    "mae": 0.0665976329302004,
+    "rmse": 0.10833902502135537,
+    "aurc": 0.19633200523724284,
+    "normal": 570,
+    "fp": 32,
+    "low": 398,
+    "fn": 42,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 97,
+      "found_failures": 97,
+      "total_failures": 398,
+      "recall": 0.24371859296482412,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9452479338842975,
+      "mean_width": 0.3742666139605173,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "switch",
+    "name": "distance29_RF",
+    "dimensions": 29,
+    "n": 968,
+    "mae": 0.06351942158337497,
+    "rmse": 0.10636091992669264,
+    "aurc": 0.1942772829669262,
+    "normal": 570,
+    "fp": 18,
+    "low": 398,
+    "fn": 43,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 97,
+      "found_failures": 97,
+      "total_failures": 398,
+      "recall": 0.24371859296482412,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "switch",
+    "name": "distance29_GP",
+    "dimensions": 29,
+    "n": 968,
+    "mae": 0.0672170507996029,
+    "rmse": 0.10755396509936621,
+    "aurc": 0.19670328674512944,
+    "normal": 570,
+    "fp": 41,
+    "low": 398,
+    "fn": 37,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 97,
+      "found_failures": 97,
+      "total_failures": 398,
+      "recall": 0.24371859296482412,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9493801652892562,
+      "mean_width": 0.3761430925190063,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "switch",
+    "name": "base120_matched_RF",
+    "dimensions": 120,
+    "n": 968,
+    "mae": 0.07675192085663321,
+    "rmse": 0.12144484150267357,
+    "aurc": 0.20065362325297847,
+    "normal": 570,
+    "fp": 66,
+    "low": 398,
+    "fn": 49,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 97,
+      "found_failures": 96,
+      "total_failures": 398,
+      "recall": 0.24120603015075376,
+      "precision": 0.9896907216494846,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "switch",
+    "name": "base120_matched_GP",
+    "dimensions": 120,
+    "n": 968,
+    "mae": 0.08962376439274525,
+    "rmse": 0.14506580102848105,
+    "aurc": 0.2046101004191044,
+    "normal": 570,
+    "fp": 151,
+    "low": 398,
+    "fn": 35,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 97,
+      "found_failures": 97,
+      "total_failures": 398,
+      "recall": 0.24371859296482412,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9628099173553719,
+      "mean_width": 0.501866245396404,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "switch",
+    "name": "conditional260_matched_RF",
+    "dimensions": 260,
+    "n": 968,
+    "mae": 0.06437720147661179,
+    "rmse": 0.11123639685632815,
+    "aurc": 0.19570473586219533,
+    "normal": 570,
+    "fp": 13,
+    "low": 398,
+    "fn": 45,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 97,
+      "found_failures": 97,
+      "total_failures": 398,
+      "recall": 0.24371859296482412,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "switch",
+    "name": "conditional260_matched_GP",
+    "dimensions": 260,
+    "n": 968,
+    "mae": 0.08562254608942128,
+    "rmse": 0.13855927335841914,
+    "aurc": 0.20240636152202363,
+    "normal": 570,
+    "fp": 125,
+    "low": 398,
+    "fn": 40,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 97,
+      "found_failures": 97,
+      "total_failures": 398,
+      "recall": 0.24371859296482412,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9638429752066116,
+      "mean_width": 0.5320980247079645,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "motion",
+    "name": "quality_rf",
+    "dimensions": 24,
+    "n": 6002,
+    "mae": 0.06165186742499491,
+    "rmse": 0.10117239262743222,
+    "aurc": 0.28448192008815987,
+    "normal": 2308,
+    "fp": 212,
+    "low": 3694,
+    "fn": 223,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 601,
+      "found_failures": 601,
+      "total_failures": 3694,
+      "recall": 0.16269626421223607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "motion",
+    "name": "quality_gp",
+    "dimensions": 24,
+    "n": 6002,
+    "mae": 0.06895803879599577,
+    "rmse": 0.10346966493783816,
+    "aurc": 0.2852087820299847,
+    "normal": 2308,
+    "fp": 233,
+    "low": 3694,
+    "fn": 223,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 601,
+      "found_failures": 601,
+      "total_failures": 3694,
+      "recall": 0.16269626421223607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9408530489836721,
+      "mean_width": 0.3762579742134398,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "motion",
+    "name": "distance29_RF",
+    "dimensions": 29,
+    "n": 6002,
+    "mae": 0.06231625250120715,
+    "rmse": 0.09945910784667308,
+    "aurc": 0.2838520033728633,
+    "normal": 2308,
+    "fp": 119,
+    "low": 3694,
+    "fn": 285,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 601,
+      "found_failures": 601,
+      "total_failures": 3694,
+      "recall": 0.16269626421223607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "motion",
+    "name": "distance29_GP",
+    "dimensions": 29,
+    "n": 6002,
+    "mae": 0.06937357761396033,
+    "rmse": 0.1036870333411437,
+    "aurc": 0.28553217291351496,
+    "normal": 2308,
+    "fp": 235,
+    "low": 3694,
+    "fn": 228,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 601,
+      "found_failures": 601,
+      "total_failures": 3694,
+      "recall": 0.16269626421223607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9375208263912029,
+      "mean_width": 0.3769375940375136,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "motion",
+    "name": "base120_matched_RF",
+    "dimensions": 120,
+    "n": 6002,
+    "mae": 0.07118515984521592,
+    "rmse": 0.10830604150206367,
+    "aurc": 0.28912442407987016,
+    "normal": 2308,
+    "fp": 162,
+    "low": 3694,
+    "fn": 424,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 601,
+      "found_failures": 601,
+      "total_failures": 3694,
+      "recall": 0.16269626421223607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "motion",
+    "name": "base120_matched_GP",
+    "dimensions": 120,
+    "n": 6002,
+    "mae": 0.07778934986580399,
+    "rmse": 0.1197536214087203,
+    "aurc": 0.28798557327104496,
+    "normal": 2308,
+    "fp": 692,
+    "low": 3694,
+    "fn": 128,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 601,
+      "found_failures": 601,
+      "total_failures": 3694,
+      "recall": 0.16269626421223607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.949516827724092,
+      "mean_width": 0.42633444707912715,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "motion",
+    "name": "conditional260_matched_RF",
+    "dimensions": 260,
+    "n": 6002,
+    "mae": 0.06361235008178442,
+    "rmse": 0.10389291908321041,
+    "aurc": 0.28440878967099087,
+    "normal": 2308,
+    "fp": 90,
+    "low": 3694,
+    "fn": 340,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 601,
+      "found_failures": 601,
+      "total_failures": 3694,
+      "recall": 0.16269626421223607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "motion",
+    "name": "conditional260_matched_GP",
+    "dimensions": 260,
+    "n": 6002,
+    "mae": 0.0758645750777028,
+    "rmse": 0.11684526239242424,
+    "aurc": 0.28667932460681894,
+    "normal": 2308,
+    "fp": 476,
+    "low": 3694,
+    "fn": 190,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 601,
+      "found_failures": 601,
+      "total_failures": 3694,
+      "recall": 0.16269626421223607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9585138287237588,
+      "mean_width": 0.46944959437824413,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "other_road",
+    "name": "quality_rf",
+    "dimensions": 24,
+    "n": 273,
+    "mae": 0.05465638219625359,
+    "rmse": 0.06903392499906637,
+    "aurc": 0.3695990334635405,
+    "normal": 69,
+    "fp": 9,
+    "low": 204,
+    "fn": 0,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 28,
+      "found_failures": 28,
+      "total_failures": 204,
+      "recall": 0.13725490196078433,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "other_road",
+    "name": "quality_gp",
+    "dimensions": 24,
+    "n": 273,
+    "mae": 0.0614440240770247,
+    "rmse": 0.07560480799298018,
+    "aurc": 0.3718783816365985,
+    "normal": 69,
+    "fp": 7,
+    "low": 204,
+    "fn": 0,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 28,
+      "found_failures": 28,
+      "total_failures": 204,
+      "recall": 0.13725490196078433,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9926739926739927,
+      "mean_width": 0.37448381181678525,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "other_road",
+    "name": "distance29_RF",
+    "dimensions": 29,
+    "n": 273,
+    "mae": 0.06667008902785093,
+    "rmse": 0.07968847785144109,
+    "aurc": 0.36964806613651363,
+    "normal": 69,
+    "fp": 15,
+    "low": 204,
+    "fn": 0,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 28,
+      "found_failures": 28,
+      "total_failures": 204,
+      "recall": 0.13725490196078433,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "other_road",
+    "name": "distance29_GP",
+    "dimensions": 29,
+    "n": 273,
+    "mae": 0.06572616745287162,
+    "rmse": 0.07970543177675526,
+    "aurc": 0.3716820330473347,
+    "normal": 69,
+    "fp": 10,
+    "low": 204,
+    "fn": 0,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 28,
+      "found_failures": 28,
+      "total_failures": 204,
+      "recall": 0.13725490196078433,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9926739926739927,
+      "mean_width": 0.37645148155805463,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "other_road",
+    "name": "base120_matched_RF",
+    "dimensions": 120,
+    "n": 273,
+    "mae": 0.06453585943547152,
+    "rmse": 0.09250283087927218,
+    "aurc": 0.37165384291481934,
+    "normal": 69,
+    "fp": 13,
+    "low": 204,
+    "fn": 0,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 28,
+      "found_failures": 28,
+      "total_failures": 204,
+      "recall": 0.13725490196078433,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "other_road",
+    "name": "base120_matched_GP",
+    "dimensions": 120,
+    "n": 273,
+    "mae": 0.07632467517744276,
+    "rmse": 0.09967387225843358,
+    "aurc": 0.37879495133965163,
+    "normal": 69,
+    "fp": 21,
+    "low": 204,
+    "fn": 0,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 28,
+      "found_failures": 28,
+      "total_failures": 204,
+      "recall": 0.13725490196078433,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9706959706959707,
+      "mean_width": 0.41388055025997844,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "other_road",
+    "name": "conditional260_matched_RF",
+    "dimensions": 260,
+    "n": 273,
+    "mae": 0.048402461726057375,
+    "rmse": 0.06205516575149163,
+    "aurc": 0.3694102565472902,
+    "normal": 69,
+    "fp": 4,
+    "low": 204,
+    "fn": 0,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 28,
+      "found_failures": 28,
+      "total_failures": 204,
+      "recall": 0.13725490196078433,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "other_road",
+    "name": "conditional260_matched_GP",
+    "dimensions": 260,
+    "n": 273,
+    "mae": 0.07700984475121529,
+    "rmse": 0.09771212010475117,
+    "aurc": 0.37848617121269457,
+    "normal": 69,
+    "fp": 10,
+    "low": 204,
+    "fn": 0,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 28,
+      "found_failures": 28,
+      "total_failures": 204,
+      "recall": 0.13725490196078433,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 1.0,
+      "mean_width": 0.5572912431016669,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "stream_new",
+    "name": "quality_rf",
+    "dimensions": 24,
+    "n": 1448,
+    "mae": 0.06472451611675785,
+    "rmse": 0.10072133184573367,
+    "aurc": 0.41097323995802587,
+    "normal": 237,
+    "fp": 28,
+    "low": 1211,
+    "fn": 27,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 145,
+      "found_failures": 145,
+      "total_failures": 1211,
+      "recall": 0.11973575557390587,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "stream_new",
+    "name": "quality_gp",
+    "dimensions": 24,
+    "n": 1448,
+    "mae": 0.0650776575439378,
+    "rmse": 0.09705624426121383,
+    "aurc": 0.41034042915827507,
+    "normal": 237,
+    "fp": 28,
+    "low": 1211,
+    "fn": 29,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 145,
+      "found_failures": 145,
+      "total_failures": 1211,
+      "recall": 0.11973575557390587,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9426795580110497,
+      "mean_width": 0.37294910439679185,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "stream_new",
+    "name": "distance29_RF",
+    "dimensions": 29,
+    "n": 1448,
+    "mae": 0.06619976052909733,
+    "rmse": 0.10022198777373036,
+    "aurc": 0.41119785298245803,
+    "normal": 237,
+    "fp": 24,
+    "low": 1211,
+    "fn": 30,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 145,
+      "found_failures": 145,
+      "total_failures": 1211,
+      "recall": 0.11973575557390587,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "stream_new",
+    "name": "distance29_GP",
+    "dimensions": 29,
+    "n": 1448,
+    "mae": 0.06767991714167156,
+    "rmse": 0.1001037277739995,
+    "aurc": 0.4113190030215106,
+    "normal": 237,
+    "fp": 25,
+    "low": 1211,
+    "fn": 37,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 145,
+      "found_failures": 145,
+      "total_failures": 1211,
+      "recall": 0.11973575557390587,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.93646408839779,
+      "mean_width": 0.37446523753765193,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "stream_new",
+    "name": "base120_matched_RF",
+    "dimensions": 120,
+    "n": 1448,
+    "mae": 0.07253665744429444,
+    "rmse": 0.10390169516341047,
+    "aurc": 0.41483451336597543,
+    "normal": 237,
+    "fp": 42,
+    "low": 1211,
+    "fn": 53,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 145,
+      "found_failures": 145,
+      "total_failures": 1211,
+      "recall": 0.11973575557390587,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "stream_new",
+    "name": "base120_matched_GP",
+    "dimensions": 120,
+    "n": 1448,
+    "mae": 0.08052602787799651,
+    "rmse": 0.11913350645408143,
+    "aurc": 0.41776567293180283,
+    "normal": 237,
+    "fp": 78,
+    "low": 1211,
+    "fn": 14,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 145,
+      "found_failures": 145,
+      "total_failures": 1211,
+      "recall": 0.11973575557390587,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9461325966850829,
+      "mean_width": 0.4241963511817865,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "stream_new",
+    "name": "conditional260_matched_RF",
+    "dimensions": 260,
+    "n": 1448,
+    "mae": 0.06657577227900806,
+    "rmse": 0.10240213469580847,
+    "aurc": 0.4115521075662218,
+    "normal": 237,
+    "fp": 22,
+    "low": 1211,
+    "fn": 39,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 145,
+      "found_failures": 145,
+      "total_failures": 1211,
+      "recall": 0.11973575557390587,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "stream_new",
+    "name": "conditional260_matched_GP",
+    "dimensions": 260,
+    "n": 1448,
+    "mae": 0.07829515563790543,
+    "rmse": 0.11758430727976171,
+    "aurc": 0.41452297964399476,
+    "normal": 237,
+    "fp": 56,
+    "low": 1211,
+    "fn": 12,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 145,
+      "found_failures": 145,
+      "total_failures": 1211,
+      "recall": 0.11973575557390587,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9633977900552486,
+      "mean_width": 0.5029000138860767,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "test18",
+    "name": "quality_rf",
+    "dimensions": 24,
+    "n": 864,
+    "mae": 0.06821750131641272,
+    "rmse": 0.10502749462187129,
+    "aurc": 0.2666798426970993,
+    "normal": 348,
+    "fp": 43,
+    "low": 516,
+    "fn": 29,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 87,
+      "found_failures": 87,
+      "total_failures": 516,
+      "recall": 0.1686046511627907,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "test18",
+    "name": "quality_gp",
+    "dimensions": 24,
+    "n": 864,
+    "mae": 0.06964840965746179,
+    "rmse": 0.09825936827705063,
+    "aurc": 0.26848740269399596,
+    "normal": 348,
+    "fp": 28,
+    "low": 516,
+    "fn": 21,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 87,
+      "found_failures": 87,
+      "total_failures": 516,
+      "recall": 0.1686046511627907,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9548611111111112,
+      "mean_width": 0.37012278864048404,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "test18",
+    "name": "distance29_RF",
+    "dimensions": 29,
+    "n": 864,
+    "mae": 0.06853665342971468,
+    "rmse": 0.10339749927275316,
+    "aurc": 0.26747736857334775,
+    "normal": 348,
+    "fp": 22,
+    "low": 516,
+    "fn": 36,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 87,
+      "found_failures": 87,
+      "total_failures": 516,
+      "recall": 0.1686046511627907,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "test18",
+    "name": "distance29_GP",
+    "dimensions": 29,
+    "n": 864,
+    "mae": 0.07061692094272302,
+    "rmse": 0.09788805272236263,
+    "aurc": 0.27001492487576473,
+    "normal": 348,
+    "fp": 27,
+    "low": 516,
+    "fn": 24,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 87,
+      "found_failures": 87,
+      "total_failures": 516,
+      "recall": 0.1686046511627907,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9548611111111112,
+      "mean_width": 0.3724072922812639,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "test18",
+    "name": "base120_matched_RF",
+    "dimensions": 120,
+    "n": 864,
+    "mae": 0.08588305349683359,
+    "rmse": 0.12558303621092237,
+    "aurc": 0.2757790169411216,
+    "normal": 348,
+    "fp": 78,
+    "low": 516,
+    "fn": 43,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 87,
+      "found_failures": 87,
+      "total_failures": 516,
+      "recall": 0.1686046511627907,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "test18",
+    "name": "base120_matched_GP",
+    "dimensions": 120,
+    "n": 864,
+    "mae": 0.09320344245339192,
+    "rmse": 0.1305427580443271,
+    "aurc": 0.27225872082831315,
+    "normal": 348,
+    "fp": 113,
+    "low": 516,
+    "fn": 14,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 87,
+      "found_failures": 87,
+      "total_failures": 516,
+      "recall": 0.1686046511627907,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9560185185185185,
+      "mean_width": 0.4619132226680576,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "test18",
+    "name": "conditional260_matched_RF",
+    "dimensions": 260,
+    "n": 864,
+    "mae": 0.07106448195872056,
+    "rmse": 0.10644803967312488,
+    "aurc": 0.2661644346338957,
+    "normal": 348,
+    "fp": 37,
+    "low": 516,
+    "fn": 39,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 87,
+      "found_failures": 87,
+      "total_failures": 516,
+      "recall": 0.1686046511627907,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "test18",
+    "name": "conditional260_matched_GP",
+    "dimensions": 260,
+    "n": 864,
+    "mae": 0.09236593513630086,
+    "rmse": 0.1270874920142195,
+    "aurc": 0.2710240271868977,
+    "normal": 348,
+    "fp": 96,
+    "low": 516,
+    "fn": 11,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 87,
+      "found_failures": 87,
+      "total_failures": 516,
+      "recall": 0.1686046511627907,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9710648148148148,
+      "mean_width": 0.5026295733701104,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "development",
+    "name": "quality_rf",
+    "dimensions": 24,
+    "n": 576,
+    "mae": 0.04473193503394066,
+    "rmse": 0.06301674625646121,
+    "aurc": 0.3025567502261822,
+    "normal": 213,
+    "fp": 24,
+    "low": 363,
+    "fn": 22,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 58,
+      "found_failures": 58,
+      "total_failures": 363,
+      "recall": 0.15977961432506887,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "development",
+    "name": "quality_gp",
+    "dimensions": 24,
+    "n": 576,
+    "mae": 0.04463972227687734,
+    "rmse": 0.05767412743881394,
+    "aurc": 0.3045595554421016,
+    "normal": 213,
+    "fp": 28,
+    "low": 363,
+    "fn": 19,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 58,
+      "found_failures": 58,
+      "total_failures": 363,
+      "recall": 0.15977961432506887,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9913194444444444,
+      "mean_width": 0.3733464887000849,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "development",
+    "name": "distance29_RF",
+    "dimensions": 29,
+    "n": 576,
+    "mae": 0.048332889338818,
+    "rmse": 0.06627517459248396,
+    "aurc": 0.30554281175682096,
+    "normal": 213,
+    "fp": 5,
+    "low": 363,
+    "fn": 32,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 58,
+      "found_failures": 58,
+      "total_failures": 363,
+      "recall": 0.15977961432506887,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "development",
+    "name": "distance29_GP",
+    "dimensions": 29,
+    "n": 576,
+    "mae": 0.04551931465102957,
+    "rmse": 0.05899369332509853,
+    "aurc": 0.3058227729077547,
+    "normal": 213,
+    "fp": 27,
+    "low": 363,
+    "fn": 18,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 58,
+      "found_failures": 58,
+      "total_failures": 363,
+      "recall": 0.15977961432506887,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9895833333333334,
+      "mean_width": 0.3739557867357735,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "development",
+    "name": "base120_matched_RF",
+    "dimensions": 120,
+    "n": 576,
+    "mae": 0.04731994466660147,
+    "rmse": 0.06109641436851191,
+    "aurc": 0.30648800265707565,
+    "normal": 213,
+    "fp": 13,
+    "low": 363,
+    "fn": 37,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 58,
+      "found_failures": 58,
+      "total_failures": 363,
+      "recall": 0.15977961432506887,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "development",
+    "name": "base120_matched_GP",
+    "dimensions": 120,
+    "n": 576,
+    "mae": 0.06829822688869804,
+    "rmse": 0.09074993583202759,
+    "aurc": 0.31245773906545565,
+    "normal": 213,
+    "fp": 123,
+    "low": 363,
+    "fn": 3,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 58,
+      "found_failures": 58,
+      "total_failures": 363,
+      "recall": 0.15977961432506887,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9861111111111112,
+      "mean_width": 0.4688661208912218,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "development",
+    "name": "conditional260_matched_RF",
+    "dimensions": 260,
+    "n": 576,
+    "mae": 0.04330697715076372,
+    "rmse": 0.06135124794199853,
+    "aurc": 0.3046415172819483,
+    "normal": 213,
+    "fp": 8,
+    "low": 363,
+    "fn": 35,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 58,
+      "found_failures": 58,
+      "total_failures": 363,
+      "recall": 0.15977961432506887,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "development",
+    "name": "conditional260_matched_GP",
+    "dimensions": 260,
+    "n": 576,
+    "mae": 0.06539037551020734,
+    "rmse": 0.08480949864859269,
+    "aurc": 0.3115806854917322,
+    "normal": 213,
+    "fp": 80,
+    "low": 363,
+    "fn": 7,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 58,
+      "found_failures": 58,
+      "total_failures": 363,
+      "recall": 0.15977961432506887,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9947916666666666,
+      "mean_width": 0.5048520034337552,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "fresh_all",
+    "name": "quality_rf",
+    "dimensions": 24,
+    "n": 480,
+    "mae": 0.061577665925591614,
+    "rmse": 0.08528333965704156,
+    "aurc": 0.19238923849837228,
+    "normal": 279,
+    "fp": 41,
+    "low": 201,
+    "fn": 2,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 48,
+      "found_failures": 48,
+      "total_failures": 201,
+      "recall": 0.23880597014925373,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "fresh_all",
+    "name": "quality_gp",
+    "dimensions": 24,
+    "n": 480,
+    "mae": 0.0673155723246643,
+    "rmse": 0.09262684862490472,
+    "aurc": 0.18808423151950096,
+    "normal": 279,
+    "fp": 58,
+    "low": 201,
+    "fn": 2,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 48,
+      "found_failures": 48,
+      "total_failures": 201,
+      "recall": 0.23880597014925373,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.95625,
+      "mean_width": 0.3701095284423049,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "fresh_all",
+    "name": "distance29_RF",
+    "dimensions": 29,
+    "n": 480,
+    "mae": 0.06120139465353677,
+    "rmse": 0.08359005317501587,
+    "aurc": 0.18948081961325425,
+    "normal": 279,
+    "fp": 34,
+    "low": 201,
+    "fn": 12,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 48,
+      "found_failures": 48,
+      "total_failures": 201,
+      "recall": 0.23880597014925373,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "fresh_all",
+    "name": "distance29_GP",
+    "dimensions": 29,
+    "n": 480,
+    "mae": 0.06735510721473413,
+    "rmse": 0.09074311400724729,
+    "aurc": 0.18825692002465128,
+    "normal": 279,
+    "fp": 59,
+    "low": 201,
+    "fn": 5,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 48,
+      "found_failures": 48,
+      "total_failures": 201,
+      "recall": 0.23880597014925373,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9604166666666667,
+      "mean_width": 0.3699838507407579,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "fresh_all",
+    "name": "base120_matched_RF",
+    "dimensions": 120,
+    "n": 480,
+    "mae": 0.07047646164587819,
+    "rmse": 0.09606240149305359,
+    "aurc": 0.19031225879724398,
+    "normal": 279,
+    "fp": 49,
+    "low": 201,
+    "fn": 15,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 48,
+      "found_failures": 48,
+      "total_failures": 201,
+      "recall": 0.23880597014925373,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "fresh_all",
+    "name": "base120_matched_GP",
+    "dimensions": 120,
+    "n": 480,
+    "mae": 0.071509110605047,
+    "rmse": 0.09679492530045995,
+    "aurc": 0.1948190775675541,
+    "normal": 279,
+    "fp": 47,
+    "low": 201,
+    "fn": 9,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 48,
+      "found_failures": 48,
+      "total_failures": 201,
+      "recall": 0.23880597014925373,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9416666666666667,
+      "mean_width": 0.4713809698960386,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "fresh_all",
+    "name": "conditional260_matched_RF",
+    "dimensions": 260,
+    "n": 480,
+    "mae": 0.06355356515761841,
+    "rmse": 0.0864235297583388,
+    "aurc": 0.18875953152519756,
+    "normal": 279,
+    "fp": 47,
+    "low": 201,
+    "fn": 3,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 48,
+      "found_failures": 48,
+      "total_failures": 201,
+      "recall": 0.23880597014925373,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "fresh_all",
+    "name": "conditional260_matched_GP",
+    "dimensions": 260,
+    "n": 480,
+    "mae": 0.06683838181719745,
+    "rmse": 0.09098690166103664,
+    "aurc": 0.19157807298239282,
+    "normal": 279,
+    "fp": 55,
+    "low": 201,
+    "fn": 10,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 48,
+      "found_failures": 48,
+      "total_failures": 201,
+      "recall": 0.23880597014925373,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.96875,
+      "mean_width": 0.49960667584185986,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "fresh_known_hours",
+    "name": "quality_rf",
+    "dimensions": 24,
+    "n": 384,
+    "mae": 0.06402857941314453,
+    "rmse": 0.08833828830351025,
+    "aurc": 0.20091673837001311,
+    "normal": 211,
+    "fp": 37,
+    "low": 173,
+    "fn": 0,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 39,
+      "found_failures": 39,
+      "total_failures": 173,
+      "recall": 0.2254335260115607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "fresh_known_hours",
+    "name": "quality_gp",
+    "dimensions": 24,
+    "n": 384,
+    "mae": 0.06718060177762632,
+    "rmse": 0.09231815784324579,
+    "aurc": 0.19631705017209491,
+    "normal": 211,
+    "fp": 46,
+    "low": 173,
+    "fn": 1,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 39,
+      "found_failures": 39,
+      "total_failures": 173,
+      "recall": 0.2254335260115607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.953125,
+      "mean_width": 0.3640460690847416,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "fresh_known_hours",
+    "name": "distance29_RF",
+    "dimensions": 29,
+    "n": 384,
+    "mae": 0.06432057647545064,
+    "rmse": 0.08770388859333642,
+    "aurc": 0.1984260349867931,
+    "normal": 211,
+    "fp": 31,
+    "low": 173,
+    "fn": 7,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 39,
+      "found_failures": 39,
+      "total_failures": 173,
+      "recall": 0.2254335260115607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "fresh_known_hours",
+    "name": "distance29_GP",
+    "dimensions": 29,
+    "n": 384,
+    "mae": 0.06820863843804037,
+    "rmse": 0.09145225402546799,
+    "aurc": 0.1964656257907533,
+    "normal": 211,
+    "fp": 45,
+    "low": 173,
+    "fn": 3,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 39,
+      "found_failures": 39,
+      "total_failures": 173,
+      "recall": 0.2254335260115607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9583333333333334,
+      "mean_width": 0.3644319409582198,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "fresh_known_hours",
+    "name": "base120_matched_RF",
+    "dimensions": 120,
+    "n": 384,
+    "mae": 0.07074841369326966,
+    "rmse": 0.09738746464115403,
+    "aurc": 0.19834225858735657,
+    "normal": 211,
+    "fp": 40,
+    "low": 173,
+    "fn": 8,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 39,
+      "found_failures": 39,
+      "total_failures": 173,
+      "recall": 0.2254335260115607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "fresh_known_hours",
+    "name": "base120_matched_GP",
+    "dimensions": 120,
+    "n": 384,
+    "mae": 0.06897662999595786,
+    "rmse": 0.09258078285035551,
+    "aurc": 0.2027669860361382,
+    "normal": 211,
+    "fp": 33,
+    "low": 173,
+    "fn": 6,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 39,
+      "found_failures": 39,
+      "total_failures": 173,
+      "recall": 0.2254335260115607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9322916666666666,
+      "mean_width": 0.45001240285676714,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "fresh_known_hours",
+    "name": "conditional260_matched_RF",
+    "dimensions": 260,
+    "n": 384,
+    "mae": 0.06456099612434413,
+    "rmse": 0.08857746250491913,
+    "aurc": 0.19822722308386895,
+    "normal": 211,
+    "fp": 36,
+    "low": 173,
+    "fn": 1,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 39,
+      "found_failures": 39,
+      "total_failures": 173,
+      "recall": 0.2254335260115607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "fresh_known_hours",
+    "name": "conditional260_matched_GP",
+    "dimensions": 260,
+    "n": 384,
+    "mae": 0.0633151733116298,
+    "rmse": 0.08571305716589694,
+    "aurc": 0.1998921763465663,
+    "normal": 211,
+    "fp": 35,
+    "low": 173,
+    "fn": 9,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 39,
+      "found_failures": 39,
+      "total_failures": 173,
+      "recall": 0.2254335260115607,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9635416666666666,
+      "mean_width": 0.47946810528882394,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "fresh_unseen_hours",
+    "name": "quality_rf",
+    "dimensions": 24,
+    "n": 96,
+    "mae": 0.05177401197537999,
+    "rmse": 0.07177483816571935,
+    "aurc": 0.16882881049416817,
+    "normal": 68,
+    "fp": 4,
+    "low": 28,
+    "fn": 2,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 10,
+      "found_failures": 10,
+      "total_failures": 28,
+      "recall": 0.35714285714285715,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "fresh_unseen_hours",
+    "name": "quality_gp",
+    "dimensions": 24,
+    "n": 96,
+    "mae": 0.06785545451281623,
+    "rmse": 0.09385145902234704,
+    "aurc": 0.165392442747122,
+    "normal": 68,
+    "fp": 12,
+    "low": 28,
+    "fn": 1,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 10,
+      "found_failures": 10,
+      "total_failures": 28,
+      "recall": 0.35714285714285715,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.96875,
+      "mean_width": 0.3943633658725578,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "fresh_unseen_hours",
+    "name": "distance29_RF",
+    "dimensions": 29,
+    "n": 96,
+    "mae": 0.04872466736588127,
+    "rmse": 0.06456467030381585,
+    "aurc": 0.16408787305086028,
+    "normal": 68,
+    "fp": 3,
+    "low": 28,
+    "fn": 5,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 10,
+      "found_failures": 10,
+      "total_failures": 28,
+      "recall": 0.35714285714285715,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "fresh_unseen_hours",
+    "name": "distance29_GP",
+    "dimensions": 29,
+    "n": 96,
+    "mae": 0.06394098232150919,
+    "rmse": 0.08784932915683813,
+    "aurc": 0.16594965156575173,
+    "normal": 68,
+    "fp": 14,
+    "low": 28,
+    "fn": 2,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 10,
+      "found_failures": 10,
+      "total_failures": 28,
+      "recall": 0.35714285714285715,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.96875,
+      "mean_width": 0.3921914898709104,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "fresh_unseen_hours",
+    "name": "base120_matched_RF",
+    "dimensions": 120,
+    "n": 96,
+    "mae": 0.06938865345631229,
+    "rmse": 0.09056849245811169,
+    "aurc": 0.17000790025653334,
+    "normal": 68,
+    "fp": 9,
+    "low": 28,
+    "fn": 7,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 10,
+      "found_failures": 10,
+      "total_failures": 28,
+      "recall": 0.35714285714285715,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "fresh_unseen_hours",
+    "name": "base120_matched_GP",
+    "dimensions": 120,
+    "n": 96,
+    "mae": 0.08163903304140356,
+    "rmse": 0.11207801928509173,
+    "aurc": 0.17313880025478098,
+    "normal": 68,
+    "fp": 14,
+    "low": 28,
+    "fn": 3,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 10,
+      "found_failures": 10,
+      "total_failures": 28,
+      "recall": 0.35714285714285715,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9791666666666666,
+      "mean_width": 0.5568552380531245,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  },
+  {
+    "cohort": "fresh_unseen_hours",
+    "name": "conditional260_matched_RF",
+    "dimensions": 260,
+    "n": 96,
+    "mae": 0.059523841290715584,
+    "rmse": 0.07720922887978443,
+    "aurc": 0.16148375812429752,
+    "normal": 68,
+    "fp": 11,
+    "low": 28,
+    "fn": 2,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 10,
+      "found_failures": 10,
+      "total_failures": 28,
+      "recall": 0.35714285714285715,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": null
+  },
+  {
+    "cohort": "fresh_unseen_hours",
+    "name": "conditional260_matched_GP",
+    "dimensions": 260,
+    "n": 96,
+    "mae": 0.08093121583946807,
+    "rmse": 0.10957266399279743,
+    "aurc": 0.16876560748307864,
+    "normal": 68,
+    "fp": 20,
+    "low": 28,
+    "fn": 1,
+    "review10": {
+      "budget_fraction": 0.1,
+      "selected": 10,
+      "found_failures": 10,
+      "total_failures": 28,
+      "recall": 0.35714285714285715,
+      "precision": 1.0,
+      "selected_undefined": 0
+    },
+    "gp90": {
+      "coverage": 0.9895833333333334,
+      "mean_width": 0.5801609580540037,
+      "note": "raw mean and model observation standard deviation; no calibration on this cohort"
+    }
+  }
+]

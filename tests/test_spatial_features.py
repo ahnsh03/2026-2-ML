@@ -15,12 +15,23 @@ class SpatialFeatureTests(unittest.TestCase):
 
         cls.root = Path(__file__).resolve().parents[1]
         cls.seven = SpatialProfile.load(cls.root / "config/roi7_front_v1")
+        cls.nine = SpatialProfile.load(cls.root / "config/roi9_front_v1")
         cls.ten = SpatialProfile.load(cls.root / "config/roi10_front_v1")
 
-    def test_default_profile_is_selected_seven_region_baseline(self):
+    def test_default_profile_is_requested_nine_region_profile(self):
         profile = SpatialProfile.load()
-        self.assertEqual(profile.version, "roi7-front-v1")
-        np.testing.assert_array_equal(profile.native, self.seven.native)
+        self.assertEqual(profile.version, "roi9-front-v1")
+        np.testing.assert_array_equal(profile.native, self.nine.native)
+
+    def test_nine_regions_split_only_the_upper_band_at_half_height(self):
+        native = self.nine.native
+        np.testing.assert_array_equal(native[:169], self.seven.native[:169])
+        np.testing.assert_array_equal(native[169:338], self.seven.native[169:338]+2)
+        np.testing.assert_array_equal(native[338:], self.seven.native[338:]+2)
+        self.assertEqual(native[168, 639], 0)
+        self.assertEqual(native[169, 639], 2)
+        self.assertEqual(native[169, 640], 3)
+        self.assertEqual((native < 2).sum(), ((native >= 2) & (native < 4)).sum())
 
     def test_ten_region_baseline_matches_existing_extractor(self):
         rng = np.random.default_rng(1701)
@@ -55,7 +66,7 @@ class SpatialFeatureTests(unittest.TestCase):
         rgb[:, 640:] = 255
         maps = np.zeros((4, 180, 320), np.uint8)
         maps[:, :, 160:] = 255
-        for profile in (self.seven, self.ten):
+        for profile in (self.seven, self.nine, self.ten):
             vector = extract_spatial_features(
                 rgb, maps, profile, feature_set="robust17", include_global=True,
             )
@@ -74,7 +85,7 @@ class SpatialFeatureTests(unittest.TestCase):
     def test_no_predictions_and_input_validation(self):
         rgb = np.zeros((720, 1280, 3), np.uint8)
         maps = np.zeros((4, 180, 320), np.uint8)
-        for profile in (self.seven, self.ten):
+        for profile in (self.seven, self.nine, self.ten):
             result = extract_spatial_features(rgb, maps, profile, feature_set="robust17")
             rows = result.reshape(len(profile.region_names), 17)
             np.testing.assert_array_equal(rows[:, :12], 0.)

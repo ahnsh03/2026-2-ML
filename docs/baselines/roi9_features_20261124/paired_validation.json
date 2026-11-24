@@ -1,0 +1,62 @@
+[
+  {
+    "a": "quality_rf",
+    "b": "base120_matched_RF",
+    "mae_delta_a_minus_b": -0.008898795720286566,
+    "group_bootstrap_95": [
+      -0.01830883334575828,
+      0.0003485457124675509
+    ],
+    "groups": 8,
+    "repetitions": 4000,
+    "unit": "physical position; 60 weather/hour observations per position"
+  },
+  {
+    "a": "quality_gp",
+    "b": "base120_matched_GP",
+    "mae_delta_a_minus_b": -0.004193538280382694,
+    "group_bootstrap_95": [
+      -0.012397000476599447,
+      0.0032482773743475963
+    ],
+    "groups": 8,
+    "repetitions": 4000,
+    "unit": "physical position; 60 weather/hour observations per position"
+  },
+  {
+    "a": "quality_gp",
+    "b": "quality_rf",
+    "mae_delta_a_minus_b": 0.005737906399072684,
+    "group_bootstrap_95": [
+      -0.003287991257407273,
+      0.014446801120934499
+    ],
+    "groups": 8,
+    "repetitions": 4000,
+    "unit": "physical position; 60 weather/hour observations per position"
+  },
+  {
+    "a": "distance29_RF",
+    "b": "quality_rf",
+    "mae_delta_a_minus_b": -0.0003762712720548491,
+    "group_bootstrap_95": [
+      -0.0038884641638940666,
+      0.00310799780494277
+    ],
+    "groups": 8,
+    "repetitions": 4000,
+    "unit": "physical position; 60 weather/hour observations per position"
+  },
+  {
+    "a": "distance29_GP",
+    "b": "quality_gp",
+    "mae_delta_a_minus_b": 3.953489006982165e-05,
+    "group_bootstrap_95": [
+      -0.004830053060983809,
+      0.004457682616340086
+    ],
+    "groups": 8,
+    "repetitions": 4000,
+    "unit": "physical position; 60 weather/hour observations per position"
+  }
+]

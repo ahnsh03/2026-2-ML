@@ -1,0 +1,134 @@
+[
+  {
+    "view": "all_hist_no_sharpness",
+    "method": "kmeans",
+    "k": 16,
+    "seeds": 3,
+    "dimensions": 400,
+    "weather_ami": 0.5008842917539259,
+    "hour_ami": 0.4969537917271289,
+    "site_ami": -0.04387733509987745,
+    "mean_pairwise_ari": 0.8269772353750414
+  },
+  {
+    "view": "all_hist_no_sharpness",
+    "method": "emeans",
+    "k": 16,
+    "seeds": 3,
+    "dimensions": 400,
+    "weather_ami": 0.5343911174288806,
+    "hour_ami": 0.4703485415126167,
+    "site_ami": -0.048958425487593,
+    "mean_pairwise_ari": 0.8168950229414489
+  },
+  {
+    "view": "all_rgb",
+    "method": "kmeans",
+    "k": 16,
+    "seeds": 3,
+    "dimensions": 180,
+    "weather_ami": 0.6041316197991149,
+    "hour_ami": 0.4265064275381301,
+    "site_ami": -0.04571014236140408,
+    "mean_pairwise_ari": 0.8928094657783358
+  },
+  {
+    "view": "all_rgb",
+    "method": "emeans",
+    "k": 16,
+    "seeds": 3,
+    "dimensions": 180,
+    "weather_ami": 0.5745076055479078,
+    "hour_ami": 0.38858238391065614,
+    "site_ami": -0.0016985000549897473,
+    "mean_pairwise_ari": 0.7979314783229969
+  },
+  {
+    "view": "top_hood_hist",
+    "method": "kmeans",
+    "k": 16,
+    "seeds": 3,
+    "dimensions": 150,
+    "weather_ami": 0.5229736071891365,
+    "hour_ami": 0.46671982696444586,
+    "site_ami": -0.05221852713922768,
+    "mean_pairwise_ari": 0.7707032897419698
+  },
+  {
+    "view": "top_hood_hist",
+    "method": "emeans",
+    "k": 16,
+    "seeds": 3,
+    "dimensions": 150,
+    "weather_ami": 0.5472052487131372,
+    "hour_ami": 0.45949036384701375,
+    "site_ami": -0.048123561465637815,
+    "mean_pairwise_ari": 0.7203652366227606
+  },
+  {
+    "view": "top_hood_photometric",
+    "method": "kmeans",
+    "k": 16,
+    "seeds": 3,
+    "dimensions": 27,
+    "weather_ami": 0.5082827664867806,
+    "hour_ami": 0.43050813257554593,
+    "site_ami": -0.046489802873829866,
+    "mean_pairwise_ari": 0.8701263491579447
+  },
+  {
+    "view": "top_hood_photometric",
+    "method": "emeans",
+    "k": 16,
+    "seeds": 3,
+    "dimensions": 27,
+    "weather_ami": 0.5032561203302676,
+    "hour_ami": 0.44136906261295666,
+    "site_ami": -0.04993391286127266,
+    "mean_pairwise_ari": 0.7816049273184237
+  },
+  {
+    "view": "top_hood_rgb",
+    "method": "kmeans",
+    "k": 16,
+    "seeds": 3,
+    "dimensions": 54,
+    "weather_ami": 0.5980235251997376,
+    "hour_ami": 0.40600618203722266,
+    "site_ami": -0.031650854432556275,
+    "mean_pairwise_ari": 0.8312697611025968
+  },
+  {
+    "view": "top_hood_rgb",
+    "method": "emeans",
+    "k": 16,
+    "seeds": 3,
+    "dimensions": 54,
+    "weather_ami": 0.6028171599871419,
+    "hour_ami": 0.4091320568633107,
+    "site_ami": -0.041951105693187773,
+    "mean_pairwise_ari": 0.7454539950534755
+  },
+  {
+    "view": "weather_context_far_hist",
+    "method": "kmeans",
+    "k": 16,
+    "seeds": 3,
+    "dimensions": 170,
+    "weather_ami": 0.5581013004711911,
+    "hour_ami": 0.43865705784429426,
+    "site_ami": -0.04262355029608585,
+    "mean_pairwise_ari": 0.8334485879653407
+  },
+  {
+    "view": "weather_context_far_hist",
+    "method": "emeans",
+    "k": 16,
+    "seeds": 3,
+    "dimensions": 170,
+    "weather_ami": 0.5676573304046176,
+    "hour_ami": 0.42472901141539426,
+    "site_ami": -0.03845795070138931,
+    "mean_pairwise_ari": 0.9012450827713723
+  }
+]
