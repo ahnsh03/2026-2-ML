@@ -1,0 +1,1103 @@
+{
+  "calibration_rows": 576,
+  "calibration_normals": 175,
+  "threshold_policy": "strictly below the score at floor(target normal FPR * n); ties may reduce realized FPR",
+  "models": {
+    "96": {
+      "23411": {
+        "fixed_0.70": {
+          "cutoff": 0.7,
+          "calibration": {
+            "all": {
+              "fn": 55,
+              "failures": 401,
+              "fp": 20,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 11,
+              "failures": 21,
+              "fp": 5,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 7,
+              "failures": 140,
+              "fp": 13,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 630,
+              "failures": 3144,
+              "fp": 570,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 236,
+              "failures": 410,
+              "fp": 170,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.05": {
+          "cutoff": 0.651399009929827,
+          "calibration": {
+            "all": {
+              "fn": 65,
+              "failures": 401,
+              "fp": 8,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 12,
+              "failures": 21,
+              "fp": 4,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 8,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 727,
+              "failures": 3144,
+              "fp": 296,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 262,
+              "failures": 410,
+              "fp": 135,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.10": {
+          "cutoff": 0.6919062752578867,
+          "calibration": {
+            "all": {
+              "fn": 61,
+              "failures": 401,
+              "fp": 17,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 12,
+              "failures": 21,
+              "fp": 5,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 8,
+              "failures": 140,
+              "fp": 13,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 657,
+              "failures": 3144,
+              "fp": 525,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 245,
+              "failures": 410,
+              "fp": 158,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.20": {
+          "cutoff": 0.7260444060490444,
+          "calibration": {
+            "all": {
+              "fn": 42,
+              "failures": 401,
+              "fp": 35,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 7,
+              "failures": 21,
+              "fp": 10,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 6,
+              "failures": 140,
+              "fp": 13,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 543,
+              "failures": 3144,
+              "fp": 740,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 201,
+              "failures": 410,
+              "fp": 228,
+              "normals": 687
+            }
+          }
+        }
+      },
+      "23412": {
+        "fixed_0.70": {
+          "cutoff": 0.7,
+          "calibration": {
+            "all": {
+              "fn": 54,
+              "failures": 401,
+              "fp": 29,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 11,
+              "failures": 21,
+              "fp": 6,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 7,
+              "failures": 140,
+              "fp": 13,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 625,
+              "failures": 3144,
+              "fp": 586,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 233,
+              "failures": 410,
+              "fp": 168,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.05": {
+          "cutoff": 0.63824600768001,
+          "calibration": {
+            "all": {
+              "fn": 69,
+              "failures": 401,
+              "fp": 8,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 13,
+              "failures": 21,
+              "fp": 3,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 8,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 739,
+              "failures": 3144,
+              "fp": 269,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 266,
+              "failures": 410,
+              "fp": 123,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.10": {
+          "cutoff": 0.6691997759165744,
+          "calibration": {
+            "all": {
+              "fn": 65,
+              "failures": 401,
+              "fp": 17,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 12,
+              "failures": 21,
+              "fp": 4,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 8,
+              "failures": 140,
+              "fp": 13,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 686,
+              "failures": 3144,
+              "fp": 505,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 255,
+              "failures": 410,
+              "fp": 144,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.20": {
+          "cutoff": 0.7302814845803104,
+          "calibration": {
+            "all": {
+              "fn": 45,
+              "failures": 401,
+              "fp": 35,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 7,
+              "failures": 21,
+              "fp": 8,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 5,
+              "failures": 140,
+              "fp": 14,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 8,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 520,
+              "failures": 3144,
+              "fp": 761,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 200,
+              "failures": 410,
+              "fp": 233,
+              "normals": 687
+            }
+          }
+        }
+      },
+      "23413": {
+        "fixed_0.70": {
+          "cutoff": 0.7,
+          "calibration": {
+            "all": {
+              "fn": 56,
+              "failures": 401,
+              "fp": 26,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 11,
+              "failures": 21,
+              "fp": 5,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 8,
+              "failures": 140,
+              "fp": 13,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 617,
+              "failures": 3144,
+              "fp": 587,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 233,
+              "failures": 410,
+              "fp": 175,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.05": {
+          "cutoff": 0.6458506861428424,
+          "calibration": {
+            "all": {
+              "fn": 67,
+              "failures": 401,
+              "fp": 8,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 13,
+              "failures": 21,
+              "fp": 3,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 8,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 731,
+              "failures": 3144,
+              "fp": 368,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 266,
+              "failures": 410,
+              "fp": 131,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.10": {
+          "cutoff": 0.6808606542478075,
+          "calibration": {
+            "all": {
+              "fn": 62,
+              "failures": 401,
+              "fp": 17,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 12,
+              "failures": 21,
+              "fp": 5,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 8,
+              "failures": 140,
+              "fp": 13,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 668,
+              "failures": 3144,
+              "fp": 520,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 249,
+              "failures": 410,
+              "fp": 152,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.20": {
+          "cutoff": 0.7274348395154184,
+          "calibration": {
+            "all": {
+              "fn": 45,
+              "failures": 401,
+              "fp": 35,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 7,
+              "failures": 21,
+              "fp": 9,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 6,
+              "failures": 140,
+              "fp": 13,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 504,
+              "failures": 3144,
+              "fp": 765,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 190,
+              "failures": 410,
+              "fp": 237,
+              "normals": 687
+            }
+          }
+        }
+      }
+    },
+    "99": {
+      "23411": {
+        "fixed_0.70": {
+          "cutoff": 0.7,
+          "calibration": {
+            "all": {
+              "fn": 28,
+              "failures": 401,
+              "fp": 17,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 8,
+              "failures": 21,
+              "fp": 10,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 5,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 440,
+              "failures": 3144,
+              "fp": 363,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 188,
+              "failures": 410,
+              "fp": 172,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.05": {
+          "cutoff": 0.6665985660123407,
+          "calibration": {
+            "all": {
+              "fn": 43,
+              "failures": 401,
+              "fp": 8,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 11,
+              "failures": 21,
+              "fp": 4,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 8,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 579,
+              "failures": 3144,
+              "fp": 287,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 243,
+              "failures": 410,
+              "fp": 140,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.10": {
+          "cutoff": 0.7003829383629979,
+          "calibration": {
+            "all": {
+              "fn": 28,
+              "failures": 401,
+              "fp": 17,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 8,
+              "failures": 21,
+              "fp": 10,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 5,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 440,
+              "failures": 3144,
+              "fp": 366,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 188,
+              "failures": 410,
+              "fp": 174,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.20": {
+          "cutoff": 0.7405743676149845,
+          "calibration": {
+            "all": {
+              "fn": 16,
+              "failures": 401,
+              "fp": 35,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 4,
+              "failures": 21,
+              "fp": 16,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 1,
+              "failures": 140,
+              "fp": 13,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 8,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 259,
+              "failures": 3144,
+              "fp": 730,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 109,
+              "failures": 410,
+              "fp": 344,
+              "normals": 687
+            }
+          }
+        }
+      },
+      "23412": {
+        "fixed_0.70": {
+          "cutoff": 0.7,
+          "calibration": {
+            "all": {
+              "fn": 26,
+              "failures": 401,
+              "fp": 18,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 8,
+              "failures": 21,
+              "fp": 11,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 5,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 417,
+              "failures": 3144,
+              "fp": 394,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 182,
+              "failures": 410,
+              "fp": 190,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.05": {
+          "cutoff": 0.6582960542140514,
+          "calibration": {
+            "all": {
+              "fn": 44,
+              "failures": 401,
+              "fp": 8,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 11,
+              "failures": 21,
+              "fp": 4,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 8,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 2,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 570,
+              "failures": 3144,
+              "fp": 268,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 238,
+              "failures": 410,
+              "fp": 132,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.10": {
+          "cutoff": 0.6964236069980946,
+          "calibration": {
+            "all": {
+              "fn": 29,
+              "failures": 401,
+              "fp": 17,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 8,
+              "failures": 21,
+              "fp": 10,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 6,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 425,
+              "failures": 3144,
+              "fp": 376,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 188,
+              "failures": 410,
+              "fp": 181,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.20": {
+          "cutoff": 0.7378502588282475,
+          "calibration": {
+            "all": {
+              "fn": 16,
+              "failures": 401,
+              "fp": 35,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 4,
+              "failures": 21,
+              "fp": 17,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 1,
+              "failures": 140,
+              "fp": 14,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 9,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 272,
+              "failures": 3144,
+              "fp": 730,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 119,
+              "failures": 410,
+              "fp": 327,
+              "normals": 687
+            }
+          }
+        }
+      },
+      "23413": {
+        "fixed_0.70": {
+          "cutoff": 0.7,
+          "calibration": {
+            "all": {
+              "fn": 28,
+              "failures": 401,
+              "fp": 17,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 9,
+              "failures": 21,
+              "fp": 9,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 5,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 429,
+              "failures": 3144,
+              "fp": 374,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 184,
+              "failures": 410,
+              "fp": 177,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.05": {
+          "cutoff": 0.6646388438106758,
+          "calibration": {
+            "all": {
+              "fn": 42,
+              "failures": 401,
+              "fp": 8,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 11,
+              "failures": 21,
+              "fp": 5,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 7,
+              "failures": 140,
+              "fp": 11,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 6,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 574,
+              "failures": 3144,
+              "fp": 266,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 240,
+              "failures": 410,
+              "fp": 131,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.10": {
+          "cutoff": 0.7017672645065924,
+          "calibration": {
+            "all": {
+              "fn": 26,
+              "failures": 401,
+              "fp": 17,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 8,
+              "failures": 21,
+              "fp": 9,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 4,
+              "failures": 140,
+              "fp": 12,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 427,
+              "failures": 3144,
+              "fp": 381,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 183,
+              "failures": 410,
+              "fp": 181,
+              "normals": 687
+            }
+          }
+        },
+        "calibration_0.20": {
+          "cutoff": 0.7384805489684075,
+          "calibration": {
+            "all": {
+              "fn": 17,
+              "failures": 401,
+              "fp": 35,
+              "normals": 175
+            },
+            "boundary": {
+              "fn": 4,
+              "failures": 21,
+              "fp": 16,
+              "normals": 21
+            }
+          },
+          "separate_links": {
+            "all": {
+              "fn": 2,
+              "failures": 140,
+              "fp": 12,
+              "normals": 24
+            },
+            "boundary": {
+              "fn": 1,
+              "failures": 5,
+              "fp": 7,
+              "normals": 10
+            }
+          },
+          "repeat_driving": {
+            "all": {
+              "fn": 262,
+              "failures": 3144,
+              "fp": 711,
+              "normals": 4195
+            },
+            "boundary": {
+              "fn": 110,
+              "failures": 410,
+              "fp": 331,
+              "normals": 687
+            }
+          }
+        }
+      }
+    }
+  }
+}

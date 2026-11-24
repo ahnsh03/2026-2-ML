@@ -1,0 +1,76 @@
+{
+  "links": {
+    "96": {
+      "leave_one_out_range_across_seeds": [
+        0.008695421648335934,
+        0.015765733291826758
+      ],
+      "archive_minus_native_delta_max_abs": 4.643994026137799e-10
+    },
+    "97": {
+      "leave_one_out_range_across_seeds": [
+        0.00042189278453064335,
+        0.003935590802713187
+      ],
+      "archive_minus_native_delta_max_abs": 2.4625855131119034e-10
+    },
+    "98top": {
+      "leave_one_out_range_across_seeds": [
+        -0.0008775735574897047,
+        0.005258349066743242
+      ],
+      "archive_minus_native_delta_max_abs": 4.490599472134482e-10
+    },
+    "98patch": {
+      "leave_one_out_range_across_seeds": [
+        0.0017168334636079843,
+        0.004541865498832832
+      ],
+      "archive_minus_native_delta_max_abs": 3.56134702457489e-10
+    },
+    "102": {
+      "leave_one_out_range_across_seeds": [
+        -0.004964426462678156,
+        0.0016438860619540922
+      ],
+      "archive_minus_native_delta_max_abs": 2.572544026760437e-10
+    }
+  },
+  "repeat": {
+    "96": {
+      "leave_one_out_range_across_seeds": [
+        0.00875751297504915,
+        0.010908190111916863
+      ],
+      "archive_minus_native_delta_max_abs": 7.792017514898775e-08
+    },
+    "97": {
+      "leave_one_out_range_across_seeds": [
+        0.0008244895092463497,
+        0.0017686132652656686
+      ],
+      "archive_minus_native_delta_max_abs": 6.94458772618721e-08
+    },
+    "98top": {
+      "leave_one_out_range_across_seeds": [
+        0.00035876289597895525,
+        0.00189056667670559
+      ],
+      "archive_minus_native_delta_max_abs": 6.937421189682352e-08
+    },
+    "98patch": {
+      "leave_one_out_range_across_seeds": [
+        0.00013695158917596817,
+        0.0009873692894151072
+      ],
+      "archive_minus_native_delta_max_abs": 6.939748090393312e-08
+    },
+    "102": {
+      "leave_one_out_range_across_seeds": [
+        -0.001085462864133834,
+        -0.0006173921579502666
+      ],
+      "archive_minus_native_delta_max_abs": 6.956684779060515e-08
+    }
+  }
+}

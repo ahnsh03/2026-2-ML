@@ -1,0 +1,8 @@
+{
+  "trigger":"Development scores showed lower MAE with three whole-frame uncertainty columns. Freeze this diagnostic before scoring road outcomes.",
+  "arms":{"entropy_top":[111],"entropy_patch":[112],"margin":[113],"entropy_pair":[111,112],"uncertainty_and_shape":[96,97,98,111,112,113]},
+  "reference":["base","uncertainty"],
+  "selection":"Nominate smallest within 0.001 of minimum three-seed mean dev MAE among these five variants and original uncertainty arm, then lowest dev MAE. Hold that choice fixed for retrospective comparison. To qualify as upgrade use same CV/development gain, all three seeds, five-cohort macro MAE gain >=.003, worst MAE loss <=.003, and no aggregate primary hit loss as primary addition gate.",
+  "models":"same RF, seeds and grouped folds as primary experiment",
+  "end":"If transfer conditions fail, keep the reference. No more feature tuning on these road results."
+}

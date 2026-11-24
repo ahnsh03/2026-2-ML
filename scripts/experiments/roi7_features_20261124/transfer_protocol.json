@@ -1,0 +1,9 @@
+{
+  "question":"After development and the planned diagnostic comparison, the 102-column model had a lower primary macro-MAE than the chosen 99-column model. Test the frozen models on both entire archived driving cohorts left out of this experiment.",
+  "groups":["motion","switch"],
+  "candidates":["base","margin","uncertainty","uncertainty_and_shape"],
+  "selection":"Use the 102-column model over the 99-column model only if it lowers MAE by at least .003 on BOTH reserved cohorts, with no lower global 10% or window 10% hit count in either cohort for every one of the original three seeds. Otherwise keep the 99-column choice. No refits or further feature searches.",
+  "limits":"Both collections have been studied by the team previously; these are transfer diagnostics, not prospective validation on an untouched map. Adjacent frames are correlated.",
+  "window":"64-frame consecutive bins reset per manifest, ceil 10% for each bin. Check frame number order against source IDs.",
+  "bootstrap":"50m spatial cells shared across passes, 2000 draws; seed 23411"
+}
