@@ -1,0 +1,26 @@
+{
+  "commit": "04368219860b4175e02223833060f936efa748a6",
+  "train": ["z00","z02","z06","z08","z11","z14"],
+  "dev": ["z05","z10"],
+  "cal": ["z03","z12"],
+  "cohorts": {
+    "test18":["z04","z07","z13"],
+    "geography40":["geo_block_00","geo_block_01","geo_block_02","geo_block_03","geo_block_04","geo_block_05","geo_block_06","geo_block_07"],
+    "known12":["prospective_known"],
+    "stream":["nov23_roi10_run_a","nov23_roi10_run_b","nov23_roi10_run_c"],
+    "other":["roi10_other_road_a","roi10_other_road_b"],
+    "unseen_hours":["prospective_unseen"],
+    "night":["night_challenge"]
+  },
+  "primary": ["test18","geography40","known12","stream","other"],
+  "seeds": [23411,23412,23413],
+  "primary_seed":23411,
+  "primary_failure_iou":0.7,
+  "review_fractions":[0.05,0.1,0.2],
+  "train_cv":"three folds withholding train[i::3]; original manifest order",
+  "arms":["base","global_shape","road_shape","all_shape","uncertainty","relations","only_rgb","only_heads","drop_hood","drop_upper","drop_global","global_only","road_global","coverage","gap","soft"],
+  "addition_selection":"Among additions including single-column variants, lower mean development MAE across seeds wins, breaking ties by column count. For promotion require improvements over base in dev and grouped CV; primary cohort macro improvement >=0.003, no primary cohort harm >0.003, and no aggregate primary 10% hit loss for each seed. Otherwise retain baseline.",
+  "pruning_selection":"Among reductions within 0.002 of base in both seed-mean CV and dev, choose fewest columns then lower dev MAE. Accept only if MAE harm <=0.003 in every primary cohort and no aggregate primary 10% hit loss for each seed. Otherwise retain baseline. If both gates pass prioritize qualifying addition; do not infer combination.",
+  "diagnostics":"GP cross-check base, global_shape and development-nominated arms with repository fixed GP; grouped paired bootstrap 2000 by pose or shared 50m XY cell for moving passes; descriptive 95% intervals, no multiplicity adjustment. Window review uses ceil(10% of each nonoverlapping session-specific block of 64), last partial included. Determine normal-score 10th-percentile alarm cutoff on calibration only. Split weather/hour at analysis only.",
+  "deployment":"Archived replay. Independent transfer and deployability require unused routes. Do not update the default model here."
+}

@@ -14,7 +14,11 @@ from .roi10 import HEAD_FEATURES, NODE_FEATURES, REGIONS, _image_fields, _requir
 
 
 DEFAULT_PROFILE_DIR = Path(__file__).resolve().parents[2] / "config/roi9_front_v1"
+ROI7_PROFILE_DIR = DEFAULT_PROFILE_DIR.parent / "roi7_front_v1"
 
+
+ROI7_IOU_FEATURE_SET = "roi7-iou99"
+UNCERTAINTY_FEATURES = ("global.top_entropy", "global.patch_entropy", "global.lane_margin")
 
 EXTRA_RGB_FEATURES = (
     "dark_fraction", "intensity_p10", "intensity_median",
@@ -109,28 +113,94 @@ def extract_spatial_features(rgb, head_maps, profile, *, feature_set="base12", i
     return vector
 
 
+def roi7_iou_feature_schema(profile):
+    """Describe the selected 99-column schema in the trained model's order."""
+    if profile.version != "roi7-front-v1":
+        raise ValueError("roi7-iou99 requires the fixed seven-region profile")
+    schema = spatial_feature_schema(profile, include_global=True)
+    return {
+        **schema,
+        "feature_set": ROI7_IOU_FEATURE_SET,
+        "ordered_features": schema["ordered_features"] + list(UNCERTAINTY_FEATURES),
+        "marking_probability": "float32 four-class softmax at 384x640; top/bottom 12px excluded",
+    }
+
+
+def extract_global_uncertainty(marking_probability):
+    """Summarize full-resolution softmax on the 360x640 unpadded model image."""
+    p = marking_probability
+    if (p.shape != (4, 360, 640) or p.dtype != np.float32 or not np.isfinite(p).all()
+            or p.min() < 0 or p.max() > 1 or not np.allclose(p.sum(0), 1., atol=2e-6, rtol=0)):
+        raise ValueError("expected unpadded float32 four-class softmax at 360x640")
+    entropy = -(p * np.log(np.maximum(p, np.finfo(np.float32).tiny))).sum(0) / np.log(4)
+    flat = entropy.ravel()
+    count = (flat.size + 9) // 10
+    top_entropy = np.partition(flat, flat.size - count)[-count:].mean()
+
+    window, stride = 32, 16
+    height, width = entropy.shape
+    # Include the final edge-aligned window when the regular grid misses it.
+    y = np.unique(np.r_[np.arange(0, height - window + 1, stride), height - window])[:, None]
+    x = np.unique(np.r_[np.arange(0, width - window + 1, stride), width - window])[None, :]
+    sums = cv2.integral(entropy, sdepth=cv2.CV_64F)
+    patch_entropy = (sums[y + window, x + window] - sums[y + window, x]
+                     - sums[y, x + window] + sums[y, x]).max() / window**2
+
+    lane = np.isin(p.argmax(axis=0), (1, 2))
+    margin = 0.
+    if lane.any():
+        top_two = np.partition(p[:, lane], 2, axis=0)[-2:]
+        margin = (top_two[1] - top_two[0]).mean()
+    return np.asarray([top_entropy, patch_entropy, margin], dtype=np.float32)
+
+
+def extract_roi7_iou_features(rgb, head_maps, marking_probability, profile):
+    """Compute the selected 99 columns given the matching f0 outputs for one frame."""
+    roi7_iou_feature_schema(profile)
+    if marking_probability.shape != (4, 384, 640):
+        raise ValueError("expected four softmax planes at model resolution 384x640")
+    base = extract_spatial_features(rgb, head_maps, profile, include_global=True)
+    return np.concatenate([base, extract_global_uncertainty(marking_probability[:, 12:372])])
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--image", required=True, type=Path)
     parser.add_argument("--head-maps", required=True, type=Path)
-    parser.add_argument("--roi-profile", type=Path, default=DEFAULT_PROFILE_DIR)
-    parser.add_argument("--features", choices=("base12", "robust17"), default="base12")
+    parser.add_argument("--roi-profile", type=Path)
+    parser.add_argument("--features", choices=("base12", "robust17", ROI7_IOU_FEATURE_SET), default="base12")
+    parser.add_argument("--marking-probability", type=Path,
+                        help="Matching float32 f0 softmax NPY, shape (4, 384, 640), for roi7-iou99")
     parser.add_argument("--include-global", action="store_true")
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
     bgr = cv2.imread(str(args.image), cv2.IMREAD_COLOR)
     if bgr is None:
         parser.error("could not decode RGB")
-    profile = SpatialProfile.load(args.roi_profile)
+    profile_directory = args.roi_profile
+    if profile_directory is None:
+        profile_directory = DEFAULT_PROFILE_DIR
+        if args.features == ROI7_IOU_FEATURE_SET:
+            profile_directory = ROI7_PROFILE_DIR
+    profile = SpatialProfile.load(profile_directory)
     rgb = cv2.cvtColor(bgr, cv2.COLOR_BGR2RGB)
-    values = extract_spatial_features(
-        rgb, np.load(args.head_maps, allow_pickle=False), profile,
-        feature_set=args.features, include_global=args.include_global,
-    )
-    record = dict(
-        schema=spatial_feature_schema(profile, feature_set=args.features, include_global=args.include_global),
-        values=values.tolist(),
-    )
+    head_maps = np.load(args.head_maps, allow_pickle=False)
+    if args.features == ROI7_IOU_FEATURE_SET:
+        if args.marking_probability is None:
+            parser.error("--marking-probability is required for roi7-iou99")
+        if profile.version != "roi7-front-v1":
+            parser.error("roi7-iou99 requires the fixed seven-region profile")
+        probability = np.load(args.marking_probability, allow_pickle=False)
+        values = extract_roi7_iou_features(rgb, head_maps, probability, profile)
+        schema = roi7_iou_feature_schema(profile)
+    else:
+        if args.marking_probability is not None:
+            parser.error("--marking-probability is only used with roi7-iou99")
+        values = extract_spatial_features(
+            rgb, head_maps, profile, feature_set=args.features, include_global=args.include_global,
+        )
+        schema = spatial_feature_schema(profile, feature_set=args.features, include_global=args.include_global)
+    record = dict(schema=schema, values=values.tolist())
     with args.output.open("x", encoding="utf-8") as dest:
         json.dump(record, dest, allow_nan=False, ensure_ascii=False, indent=2)
         dest.write("\n")
