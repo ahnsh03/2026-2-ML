@@ -1,0 +1,289 @@
+{
+  "coverage": [
+    {
+      "id": "GP_b0_9",
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.4
+      },
+      "balanced": false,
+      "cv": [
+        0.0701779565719861,
+        0.07386685057757741,
+        0.0681694766027056
+      ],
+      "folds": [
+        [
+          0.08097410259300018,
+          0.08404073053293412,
+          0.06525652340959545
+        ],
+        [
+          0.06380312390676098,
+          0.06532308228499308,
+          0.06670138094884584
+        ],
+        [
+          0.0657566432161971,
+          0.07223673891480503,
+          0.0725505254496755
+        ]
+      ],
+      "development": [
+        0.040240764028475935,
+        0.05023810065373674,
+        0.03604009733060581
+      ],
+      "seconds": 2.8896361119986977,
+      "name": "coverage_GP_b0_9",
+      "kind": "SpatialGP",
+      "rows": 2480,
+      "dimensions": 28,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "model_file": "models/GP_b0_9.npz",
+      "model_sha256": "79abd83829563ed41a4116ef6ed826f6451221526685bdf16a3f7eb2925a990c"
+    },
+    {
+      "id": "GP_b1_9",
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.4
+      },
+      "balanced": true,
+      "cv": [
+        0.06844260526467133,
+        0.07536313122555426,
+        0.06423816438893278
+      ],
+      "folds": [
+        [
+          0.07642400543861837,
+          0.08467997138708694,
+          0.061601266207553386
+        ],
+        [
+          0.06282235274793209,
+          0.06677857544983022,
+          0.06258764335288497
+        ],
+        [
+          0.06608145760746355,
+          0.0746308468397456,
+          0.06852558360635999
+        ]
+      ],
+      "development": [
+        0.04367599497411738,
+        0.05326146706295508,
+        0.03956945383630403
+      ],
+      "seconds": 2.8848890860008396,
+      "name": "coverage_GP_b1_9",
+      "kind": "SpatialGP",
+      "rows": 2480,
+      "dimensions": 28,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "model_file": "models/GP_b1_9.npz",
+      "model_sha256": "2503c1c0f243f65247c595ba18fd1dde6c340cbe87e68b10e17038f656fbcfeb"
+    },
+    {
+      "parameters": {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      "cv": 0.06570087564017994,
+      "folds": [
+        0.07498429876141098,
+        0.06019550463414468,
+        0.06192282352498419
+      ],
+      "development": 0.049232071455232944,
+      "name": "coverage_RF",
+      "kind": "RF",
+      "rows": 2480,
+      "dimensions": 28,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "model_file": "models/coverage_RF.joblib",
+      "model_sha256": "2fc1bb79a1b88bc02a1bfa50b7efdf2c2e6e0ed9a32f222073c2149dcd58514b"
+    },
+    {
+      "parameters": {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      "cv": 0.06570087564017994,
+      "folds": [
+        0.07498429876141098,
+        0.06019550463414468,
+        0.06192282352498419
+      ],
+      "development": 0.049232071455232944,
+      "name": "coverage_RFaux",
+      "kind": "RFaux",
+      "rows": 2480,
+      "dimensions": 28,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "model_file": "models/coverage_RFaux.joblib",
+      "model_sha256": "8f7c74fc94cf6296302884dc9cbb69fea4660f20fe74d143a1de9345293b1d98"
+    }
+  ],
+  "folds": {
+    "folds": [
+      {
+        "fold": 0,
+        "fit": 1666,
+        "held": 814,
+        "embargoed": 0,
+        "minimum_distance": 36.44832669712989
+      },
+      {
+        "fold": 1,
+        "fit": 1763,
+        "held": 717,
+        "embargoed": 0,
+        "minimum_distance": 26.006781655394203
+      },
+      {
+        "fold": 2,
+        "fit": 1531,
+        "held": 949,
+        "embargoed": 0,
+        "minimum_distance": 26.006781655394203
+      }
+    ],
+    "selection_sha256": "56cbb728b456a8bc4f785eb43a1b5413c824bfa6878e56d61e1443560879ed36"
+  },
+  "label_eligibility": {
+    "selected_rows": 2496,
+    "fit_rows": 2480,
+    "missing_by_task": [
+      0,
+      16,
+      0
+    ],
+    "reason": "Complete three-task GP needs defined near/far recall. Empty GT bands are undefined, never filled with zero. All compared quality models use the same eligible rows."
+  },
+  "feature_selection_scope": "Conditional grouped comparisons given previously selected24 fields; hyperparameters fit within folds. Development used for compact feature choice. Not a fully nested feature-selection estimate."
+}

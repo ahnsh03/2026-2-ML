@@ -1,0 +1,115 @@
+{
+  "all_prior_rtx50_parity": {
+    "created_utc": "2026-11-25T15:30:29.910343+00:00",
+    "rows": 14955,
+    "keys": 56,
+    "max_iou_delta": 0.000511467456817627,
+    "failure_threshold_changes": 0,
+    "feature_max_abs_delta": {
+      "rgb": 1.7881393432617188e-07,
+      "output": 0.021013975143432617,
+      "relations": 0.001319780945777893,
+      "uncertainty": 0.001667320728302002
+    }
+  },
+  "runtime_feature_impact": {
+    "rows": 14955,
+    "feature_max_abs_delta": 0.0014514923095703125,
+    "maximum_feature": "near_right.lane_weighted_probability",
+    "gp_prediction_max_abs_delta": 0.0005312244284334522,
+    "gp_prediction_mean_abs_delta": 7.768607219888857e-07,
+    "gp_threshold_changes": 0,
+    "rf_prediction_max_abs_delta": 0.00341898258073281,
+    "rf_prediction_mean_abs_delta": 1.6494385710237543e-06,
+    "rf_threshold_changes": 0,
+    "scope": "Same frozen new-runtime quality weights applied to old/new feature caches. Distinct from DL IoU target parity or a physical RTX40 GPU measurement."
+  },
+  "cross_profile_replay": {
+    "rows": 24,
+    "feature_max_abs_delta": 1.862645149230957e-08,
+    "point_prediction_max_abs_delta": 1.933494461203722e-07,
+    "comparison": "RTX50 profile GPU versus RTX40 profile CPU; not a physical RTX40 GPU benchmark"
+  },
+  "replay26_feature_parity": {
+    "rows": 144,
+    "max_feature_delta": 0.00011967122554779053,
+    "mean_feature_delta": 1.0022561980349565e-07,
+    "uses_ground_truth_in_replay": false,
+    "calibration_model_bound": true
+  },
+  "gpu50_training_smoke": {
+    "purpose": "Synthetic forward/backward/optimizer CUDA compatibility smoke, not a perception-training experiment",
+    "torch": "2.7.1+cu128",
+    "cudnn": 90701,
+    "gpu": "NVIDIA GeForce RTX 5070 Ti",
+    "capability": [
+      12,
+      0
+    ],
+    "finite_gradients": true,
+    "parameter_max_delta": 1.4957040548324585e-05,
+    "checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "checkpoint_unchanged": true,
+    "seconds": 16.279989597000167
+  },
+  "cross_profile26_summary": {
+    "rows": 144,
+    "comparison": "GP inference on identical stored28-feature vectors, 40-profile CPU vs50-profile GPU-stack environment. No physical40-series GPU was available.",
+    "max_abs_delta": {
+      "predicted_iou": 7.260303469536211e-13,
+      "posterior_mean": 8.062439604827887e-13,
+      "observation_std": 2.706168622523819e-15,
+      "posterior_covariance": 4.475586568020162e-16
+    }
+  },
+  "offline_integration_final": {
+    "rows": 144,
+    "input_columns": 28,
+    "status": "verified",
+    "simulator_release": "26.R1",
+    "gt_data_roots_mounted": false,
+    "mount_scope": "Repository code, fixed perception checkpoint, inference-only model/recipe/calibration, RGB-only144 directory and input manifest, empty output volume. GT packs and full study source data were not mounted.",
+    "replay_uses_ground_truth": false,
+    "recipe_sha256": "69b087c68e0296ff69e38c5cf55cde3cc0c76a24eba587bfd0874343ecc36c1c",
+    "model_sha256": "f802ab47b64608aa0c336c244eef390ae43d46f2548d6d74a66f9a6350c3b8b6",
+    "replay_run_sha256": "90ce0a4d86af92e79ce85c72ff0005954e937b93dd63f9863e204464cef2fa11",
+    "isolated_vs_previous_feature_max_delta": 0.0,
+    "functional_budget_fraction": 0.2,
+    "queues": {
+      "global": {
+        "selected": 30,
+        "uses_gt_at_selection": false,
+        "gt_join_rows": 30,
+        "admission_approved": false,
+        "reasons": {
+          "whole_frame_low_overlap_review": 30
+        },
+        "queue_run_sha256": "34afb8d6dac99630c86c73ad79dc5cb405751fed051090b180238962b037c86d",
+        "gt_run_sha256": "45985010fcf11fa007ee2b41e2a40ac0a162eec14d7c244beb957b52c27573b7"
+      },
+      "dual": {
+        "selected": 30,
+        "uses_gt_at_selection": false,
+        "gt_join_rows": 30,
+        "admission_approved": false,
+        "reasons": {
+          "whole_frame_low_overlap_review": 24,
+          "near_recall_good_far_recall_weak_diagnostic": 6
+        },
+        "queue_run_sha256": "3c364d9c4b4961b756f0e199b3f3ed6cfaa6cfa75181de23c50919b81beb0259",
+        "gt_run_sha256": "a4cc1e10f97218797110ec71f117721a7d1ec487845f83f497b7ea0656c58aa7"
+      }
+    },
+    "scientific_policy_scope": "Functional queue and delayed-GT proof, not a new independent policy effectiveness evaluation. The7339-frame/805-slot study is separate."
+  },
+  "bundle_verification_rtx40cpu": {
+    "status": "verified",
+    "dimensions": 28,
+    "training_rows": 2480,
+    "model_sha256": "f802ab47b64608aa0c336c244eef390ae43d46f2548d6d74a66f9a6350c3b8b6",
+    "recipe_sha256": "69b087c68e0296ff69e38c5cf55cde3cc0c76a24eba587bfd0874343ecc36c1c",
+    "declared_simulator_release": "26.R1",
+    "roles_disjoint": true,
+    "scope": "Artifact and membership integrity; this is not final model/policy adoption or a live ROS acceptance test."
+  }
+}

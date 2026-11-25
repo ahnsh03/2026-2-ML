@@ -1,0 +1,17 @@
+{
+  "version": "roi9-gp-bundle-1",
+  "created_utc": "2026-11-25T16:58:20.460146+00:00",
+  "artifact_sha256": {
+    "calibration_26r1.json": "f3e491e3e0858c30f5ef72cdd8ae47d136ca6d2159d418a7f8ec1ff73ebcee0d",
+    "calibration_legacy.json": "fb77b96c76372ebc31fbda0a1c72e1f5ccbd22fcf745dd78fef20952389edb4f",
+    "code_manifest.json": "a3231b9182c0a322ef8c1a34623e262a7067fb0b180b470e44c49d6d44ec30e2",
+    "feature_recipe.json": "69b087c68e0296ff69e38c5cf55cde3cc0c76a24eba587bfd0874343ecc36c1c",
+    "quality_rf.joblib": "2fc1bb79a1b88bc02a1bfa50b7efdf2c2e6e0ed9a32f222073c2149dcd58514b",
+    "quality_spatial_gp.npz": "f802ab47b64608aa0c336c244eef390ae43d46f2548d6d74a66f9a6350c3b8b6",
+    "split_roles.json": "2214a805c79104ca49105daebf1dfc5d4641816af8715b6168a70e2e187b6d12",
+    "training_membership.json": "5d0dead15ef9a9a630afa0fdd441eec6a3bcc99becd8866921dc2505134b337d"
+  },
+  "training_rows": 2480,
+  "training_reconstruction": "Stored standardized X and fitted target weights reconstructed from exact membership and source packs.",
+  "limitations": "Private membership/source data stay outside Git. GP NPZ portable inference verified; RF joblib requires the training scikit-learn version."
+}

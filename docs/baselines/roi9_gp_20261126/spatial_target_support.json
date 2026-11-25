@@ -1,0 +1,219 @@
+{
+  "scope": "Post-test explanation audit on already-open96 frames, not a new independent estimate or a causal explanation. No model, calibration or policy was changed.",
+  "targets": {
+    "training": {
+      "IoU": {
+        "rows": 2480,
+        "mean": 0.5606840697694063,
+        "quantiles": [
+          0.0,
+          0.10388024263083935,
+          0.6548758447170258,
+          0.8783799201250075,
+          0.9278407692909241
+        ],
+        "at_least_half": 1459,
+        "at_least_point8": 690
+      },
+      "near_recall": {
+        "rows": 2480,
+        "mean": 0.6531025750018546,
+        "quantiles": [
+          0.0,
+          0.12677944154534815,
+          0.7921799283571228,
+          0.959037711313394,
+          0.9817629179331308
+        ],
+        "at_least_half": 1633,
+        "at_least_point8": 1229
+      },
+      "far_recall": {
+        "rows": 2480,
+        "mean": 0.21066365338327137,
+        "quantiles": [
+          0.0,
+          0.0,
+          0.18448637316561844,
+          0.4948665297741273,
+          0.7180451127819549
+        ],
+        "at_least_half": 113,
+        "at_least_point8": 0
+      }
+    },
+    "old_calibration": {
+      "IoU": {
+        "rows": 576,
+        "mean": 0.46585721648746886,
+        "quantiles": [
+          0.0,
+          0.03152911365032196,
+          0.44913844764232635,
+          0.8775330930948257,
+          0.9116719365119934
+        ],
+        "at_least_half": 255,
+        "at_least_point8": 101
+      },
+      "near_recall": {
+        "rows": 576,
+        "mean": 0.590368880228252,
+        "quantiles": [
+          0.0,
+          0.03680304853590052,
+          0.6606516285286113,
+          0.9647533453887884,
+          0.9771604938271605
+        ],
+        "at_least_half": 333,
+        "at_least_point8": 227
+      },
+      "far_recall": {
+        "rows": 576,
+        "mean": 0.219348421588526,
+        "quantiles": [
+          0.0,
+          0.005168423424985264,
+          0.18272034513782748,
+          0.558498530176671,
+          0.6425992779783394
+        ],
+        "at_least_half": 41,
+        "at_least_point8": 0
+      }
+    },
+    "new26_calibration": {
+      "IoU": {
+        "rows": 96,
+        "mean": 0.44772792894703645,
+        "quantiles": [
+          0.02216312102973461,
+          0.04041450843214989,
+          0.3713129162788391,
+          0.8069692403078079,
+          0.8352839946746826
+        ],
+        "at_least_half": 45,
+        "at_least_point8": 7
+      },
+      "near_recall": {
+        "rows": 96,
+        "mean": 0.5654304305679733,
+        "quantiles": [
+          0.0,
+          0.0037960954446854666,
+          0.5530195856518596,
+          0.9577590975040815,
+          0.9660516605166052
+        ],
+        "at_least_half": 53,
+        "at_least_point8": 41
+      },
+      "far_recall": {
+        "rows": 96,
+        "mean": 0.19728467444521347,
+        "quantiles": [
+          0.030450669914738125,
+          0.03666386727300342,
+          0.16571693690337758,
+          0.4095634095634096,
+          0.45322245322245325
+        ],
+        "at_least_half": 0,
+        "at_least_point8": 0
+      }
+    },
+    "new26_test": {
+      "IoU": {
+        "rows": 96,
+        "mean": 0.6338414627437791,
+        "quantiles": [
+          0.07472880929708481,
+          0.21032939106225967,
+          0.8135673701763153,
+          0.9122746884822845,
+          0.9215575456619263
+        ],
+        "at_least_half": 58,
+        "at_least_point8": 51
+      },
+      "near_recall": {
+        "rows": 96,
+        "mean": 0.6982163927673609,
+        "quantiles": [
+          0.07801094890510948,
+          0.23326772144946928,
+          0.9208178438661709,
+          0.9709195163904676,
+          0.9751434034416826
+        ],
+        "at_least_half": 61,
+        "at_least_point8": 56
+      },
+      "far_recall": {
+        "rows": 96,
+        "mean": 0.3280869741076632,
+        "quantiles": [
+          0.0,
+          0.04377104377104377,
+          0.3031649831649832,
+          0.6442403932082216,
+          0.6866666666666666
+        ],
+        "at_least_half": 25,
+        "at_least_point8": 0
+      }
+    }
+  },
+  "new26_far_recall_bins": [
+    {
+      "true_far_recall_bin": [
+        0,
+        0.2
+      ],
+      "rows": 33,
+      "mean_truth": 0.10730603473559029,
+      "mean_prediction": 0.07157149588336305,
+      "mean_sigma": 0.04336449314802939,
+      "coverage90": 0.8181818181818182
+    },
+    {
+      "true_far_recall_bin": [
+        0.2,
+        0.5
+      ],
+      "rows": 38,
+      "mean_truth": 0.3483571276082333,
+      "mean_prediction": 0.23673842320319718,
+      "mean_sigma": 0.04457398530176946,
+      "coverage90": 0.2894736842105263
+    },
+    {
+      "true_far_recall_bin": [
+        0.5,
+        0.8
+      ],
+      "rows": 25,
+      "mean_truth": 0.5887071807579329,
+      "mean_prediction": 0.38195816544317707,
+      "mean_sigma": 0.04330000731163943,
+      "coverage90": 0.0
+    },
+    {
+      "true_far_recall_bin": [
+        0.8,
+        1
+      ],
+      "rows": 0,
+      "mean_truth": null,
+      "mean_prediction": null,
+      "mean_sigma": null,
+      "coverage90": null
+    }
+  ],
+  "far_gt_pixels_to_abs_error_spearman": -0.02039739645212332,
+  "prediction_sha256": "e62158ba837974881d95c91fc2d7d041f497d32306ebdeb40c448bf23a7b2c05",
+  "recipe_sha256": "69b087c68e0296ff69e38c5cf55cde3cc0c76a24eba587bfd0874343ecc36c1c",
+  "source_sha256": "54069ab668f5e63fb85295f192e260f43455f4ca4d029f87b8b3f8086abd6b80"
+}

@@ -1,0 +1,29 @@
+{
+  "archival_driving": {
+    "global_low_vs_normal_far_rows": 6510,
+    "global_low_positive": true,
+    "sigma_auc_global_low_vs_normal_far": 0.6132151102402562,
+    "negative_mean_auc_global_low_vs_normal_far": 0.9682440329050118,
+    "far_only_vs_both_recall_weak_rows": 6437,
+    "hypothesis_negative_sigma_auc_far_only": 0.5729492884335775,
+    "predicted_near_recall_auc_far_only": 0.969721813369524
+  },
+  "recreated_scenes": {
+    "global_low_vs_normal_far_rows": 139,
+    "global_low_positive": true,
+    "sigma_auc_global_low_vs_normal_far": 0.30381355932203397,
+    "negative_mean_auc_global_low_vs_normal_far": 0.9942796610169491,
+    "far_only_vs_both_recall_weak_rows": 140,
+    "hypothesis_negative_sigma_auc_far_only": 0.2795017482517483,
+    "predicted_near_recall_auc_far_only": 0.9868881118881119
+  },
+  "held_roads": {
+    "global_low_vs_normal_far_rows": 71,
+    "global_low_positive": true,
+    "sigma_auc_global_low_vs_normal_far": 0.41544715447154473,
+    "negative_mean_auc_global_low_vs_normal_far": 0.9910569105691057,
+    "far_only_vs_both_recall_weak_rows": 71,
+    "hypothesis_negative_sigma_auc_far_only": 0.4112903225806452,
+    "predicted_near_recall_auc_far_only": 0.9967741935483871
+  }
+}

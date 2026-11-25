@@ -1,0 +1,100 @@
+{
+  "created_utc": "2026-11-25T15:02:58.929906+00:00",
+  "deadline_kst": "2026-11-26T06:00:00+09:00",
+  "roi": "roi9-front-v1",
+  "target": "whole-frame white+yellow lane IoU",
+  "training_keys": [
+    "z00",
+    "z02",
+    "z06",
+    "z08",
+    "z11",
+    "z14"
+  ],
+  "development_keys": [
+    "z05",
+    "z10"
+  ],
+  "calibration_keys": [
+    "z03",
+    "z12"
+  ],
+  "seed": 23411,
+  "scope": "Offline feature selection and GP uncertainty/region-type study on archived Comp3 data. Active future simulator is 26R1; do not rewrite archived provenance.",
+  "auxiliary_targets": [
+    "near band lane recall",
+    "far band lane recall"
+  ],
+  "spatial_types": "Both bands require >=50 GT lane pixels. Spatial type 1: near recall<.8 and far recall<.5; type 2: near>=.8 and far<.5; type 3: near<.8 and far>=.5; type 0 both good. Whole-frame IoU<.7 remains a separate overlapping event.",
+  "selection": "28 input fields already frozen. Select 1152 original conditions +624 prior diagnostics +720 motion frames from RGB metadata. Exclude motion samples within25m of original dev/cal poses. Hyperparameters via three geographic folds with25m embargo and original development. This is a follow-up after opening prior external archive metrics, which now serve as diagnostics.",
+  "planned_feature_views": [
+    "current27",
+    "current27+global morphology3",
+    "current27+pooled far/near morphology6",
+    "current27+road quadrant morphology12",
+    "current27+global and quadrants morphology15",
+    "current27+near-far output relations5",
+    "common123",
+    "expanded263"
+  ],
+  "uncertainty_policies": [
+    "GP mean",
+    "GP sigma",
+    "calibrated Gaussian low-IoU probability",
+    "Gaussian expected shortfall",
+    "near-minus-far posterior contrast",
+    "joint global-low and far-only type probabilities"
+  ],
+  "index_sha256": "a7d0821dcfed5286605c0436d228e2b45f71cffd8ef2e11412858d8ff92ffcce",
+  "rows": 22806,
+  "keys": 79,
+  "new_external_rows": 7851,
+  "amendment": "v3 before external scores, after grouped feature screen",
+  "gp_kernel_variants": [
+    "isotropic Matern 3/2",
+    "group-balanced Matern 3/2, equal average squared-distance per appearance/prediction/confidence/structure group"
+  ],
+  "additional_policy": "risk-weighted anticipated conditional-variance reduction in a 64-frame candidate window, never using unselected GT",
+  "quality_training_variants": [
+    "base six zones 1728",
+    "base +192 uniformly sampled known diagnostic frames",
+    "base +192 GP posterior conditional-variance-selected known diagnostic frames",
+    "base +all624 previously diagnosed frames"
+  ],
+  "augmentation_pool": [
+    "fresh",
+    "fresh_clock_supplement",
+    "fresh_uncertainty"
+  ],
+  "augmentation_scope": "Promote these previously opened diagnostic data to quality-model training; do not report them as held-out afterward. Perception checkpoint remains frozen. Input-only selection IDs and hashes precede accessing augmentation labels in the training stage.",
+  "selection_seed": 23411,
+  "posterior_label_budget": 192,
+  "model_row_budget": 2500,
+  "motion_training_keys": [
+    "nov23_m0_w0_h13",
+    "nov23_m0_w0_h20",
+    "nov23_m0_w1_h13",
+    "nov23_m0_w1_h20",
+    "nov23_m0_w2_h13",
+    "nov23_m0_w2_h20",
+    "nov23_m0_w3_h13",
+    "nov23_m0_w3_h20",
+    "nov23_m0_w4_h13",
+    "nov23_m0_w4_h20",
+    "nov23_m0_w5_h13",
+    "nov23_m0_w5_h20",
+    "nov23_m1_w0_h13",
+    "nov23_m1_w0_h20",
+    "nov23_m1_w1_h13",
+    "nov23_m1_w1_h20",
+    "nov23_m1_w2_h13",
+    "nov23_m1_w2_h20",
+    "nov23_m1_w3_h13",
+    "nov23_m1_w3_h20",
+    "nov23_m1_w4_h13",
+    "nov23_m1_w4_h20",
+    "nov23_m1_w5_h13",
+    "nov23_m1_w5_h20"
+  ],
+  "coverage_primary_test": "26R1 paired version-transfer test remains score-closed. It is not new geography. Perception weights unchanged; quality training budget2496."
+}

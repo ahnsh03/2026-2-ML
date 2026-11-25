@@ -1,0 +1,438 @@
+[
+  {
+    "index": 340,
+    "parameters": {
+      "length_multiplier": 2.8,
+      "noise_variance": 0.15,
+      "task_correlation": 0.4,
+      "feature_groups": [
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction"
+      ],
+      "kernel_mode": "additive",
+      "kernel_group_weights": [
+        0.5,
+        0.5
+      ]
+    },
+    "cv": [
+      0.07208431846496917,
+      0.07778926963070337,
+      0.07348430916186854
+    ],
+    "folds": [
+      [
+        0.08617087900597786,
+        0.09098723420893846,
+        0.06607957081011415
+      ],
+      [
+        0.06208083744878207,
+        0.06818823022737448,
+        0.0767396425444682
+      ],
+      [
+        0.06800123894014758,
+        0.07419234445579716,
+        0.07763371413102327
+      ]
+    ],
+    "objective": 0.09477535528385496,
+    "development": [
+      0.04661219722038432,
+      0.05458273763511484,
+      0.03625206975589815
+    ],
+    "seconds": 3.090175196999553,
+    "name": "additive_bo",
+    "kind": "SpatialGP",
+    "rows": 2480,
+    "dimensions": 28,
+    "ordered_features": [
+      "near_left.chroma",
+      "near_left.blue_minus_red",
+      "near_left.edge_density",
+      "near_right.median_residual",
+      "hood.intensity",
+      "hood.dark_channel",
+      "hood.dark_fraction",
+      "hood.intensity_median",
+      "hood.blue_minus_red",
+      "hood.edge_density",
+      "near_left.drivable_fraction",
+      "near_left.lane_fraction",
+      "near_left.lane_probability",
+      "near_left.lane_weighted_entropy",
+      "near_left.lane_weighted_probability",
+      "near_right.drivable_fraction",
+      "near_right.lane_fraction",
+      "near_right.lane_probability",
+      "near_right.lane_weighted_entropy",
+      "near_right.lane_weighted_probability",
+      "global.lane_fraction",
+      "global.lane_probability",
+      "global.lane_weighted_entropy",
+      "global.lane_weighted_probability",
+      "global.top_entropy",
+      "near_minus_far.lane_fraction",
+      "near_minus_far.lane_probability",
+      "near_minus_far.lane_drivable_disagreement"
+    ],
+    "model_file": "models/additive_bo.npz",
+    "model_sha256": "2dca7e2e0760e8d14577339ba533f1c48871370b0559d0b38696a278f2834395",
+    "trace": [
+      {
+        "step": 0,
+        "index": 307,
+        "objective": 0.09608841110678656,
+        "best_objective": 0.09608841110678656
+      },
+      {
+        "step": 1,
+        "index": 126,
+        "objective": 0.09787710383817566,
+        "best_objective": 0.09608841110678656
+      },
+      {
+        "step": 2,
+        "index": 487,
+        "objective": 0.09545216480761133,
+        "best_objective": 0.09545216480761133
+      },
+      {
+        "step": 3,
+        "index": 340,
+        "objective": 0.09477535528385496,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 4,
+        "index": 289,
+        "objective": 0.09832226700093129,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 5,
+        "index": 419,
+        "objective": 0.09579397371908038,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 6,
+        "index": 520,
+        "objective": 0.0984199226010204,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 7,
+        "index": 160,
+        "objective": 0.09653348877804462,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 8,
+        "index": 251,
+        "objective": 0.0958363328486487,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 9,
+        "index": 313,
+        "objective": 0.09531887594362262,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 10,
+        "index": 299,
+        "objective": 0.09799581662742947,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 11,
+        "index": 343,
+        "objective": 0.09536978812752621,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 12,
+        "index": 575,
+        "objective": 0.0982508000051335,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 13,
+        "index": 269,
+        "objective": 0.09595717535179138,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 14,
+        "index": 387,
+        "objective": 0.0949232294652777,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 15,
+        "index": 552,
+        "objective": 0.09567295466559902,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 16,
+        "index": 312,
+        "objective": 0.09506305028056365,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 17,
+        "index": 192,
+        "objective": 0.09975458873331591,
+        "best_objective": 0.09477535528385496
+      }
+    ]
+  },
+  {
+    "index": 340,
+    "parameters": {
+      "length_multiplier": 2.8,
+      "noise_variance": 0.15,
+      "task_correlation": 0.4,
+      "feature_groups": [
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "appearance",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction",
+        "prediction"
+      ],
+      "kernel_mode": "additive",
+      "kernel_group_weights": [
+        0.5,
+        0.5
+      ]
+    },
+    "cv": [
+      0.07208431846496917,
+      0.07778926963070337,
+      0.07348430916186854
+    ],
+    "folds": [
+      [
+        0.08617087900597786,
+        0.09098723420893846,
+        0.06607957081011415
+      ],
+      [
+        0.06208083744878207,
+        0.06818823022737448,
+        0.0767396425444682
+      ],
+      [
+        0.06800123894014758,
+        0.07419234445579716,
+        0.07763371413102327
+      ]
+    ],
+    "objective": 0.09477535528385496,
+    "development": [
+      0.04661219722038432,
+      0.05458273763511484,
+      0.03625206975589815
+    ],
+    "seconds": 3.090175196999553,
+    "name": "additive_random",
+    "kind": "SpatialGP",
+    "rows": 2480,
+    "dimensions": 28,
+    "ordered_features": [
+      "near_left.chroma",
+      "near_left.blue_minus_red",
+      "near_left.edge_density",
+      "near_right.median_residual",
+      "hood.intensity",
+      "hood.dark_channel",
+      "hood.dark_fraction",
+      "hood.intensity_median",
+      "hood.blue_minus_red",
+      "hood.edge_density",
+      "near_left.drivable_fraction",
+      "near_left.lane_fraction",
+      "near_left.lane_probability",
+      "near_left.lane_weighted_entropy",
+      "near_left.lane_weighted_probability",
+      "near_right.drivable_fraction",
+      "near_right.lane_fraction",
+      "near_right.lane_probability",
+      "near_right.lane_weighted_entropy",
+      "near_right.lane_weighted_probability",
+      "global.lane_fraction",
+      "global.lane_probability",
+      "global.lane_weighted_entropy",
+      "global.lane_weighted_probability",
+      "global.top_entropy",
+      "near_minus_far.lane_fraction",
+      "near_minus_far.lane_probability",
+      "near_minus_far.lane_drivable_disagreement"
+    ],
+    "model_file": "models/additive_random.npz",
+    "model_sha256": "2dca7e2e0760e8d14577339ba533f1c48871370b0559d0b38696a278f2834395",
+    "trace": [
+      {
+        "step": 0,
+        "index": 307,
+        "objective": 0.09608841110678656,
+        "best_objective": 0.09608841110678656
+      },
+      {
+        "step": 1,
+        "index": 126,
+        "objective": 0.09787710383817566,
+        "best_objective": 0.09608841110678656
+      },
+      {
+        "step": 2,
+        "index": 487,
+        "objective": 0.09545216480761133,
+        "best_objective": 0.09545216480761133
+      },
+      {
+        "step": 3,
+        "index": 340,
+        "objective": 0.09477535528385496,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 4,
+        "index": 289,
+        "objective": 0.09832226700093129,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 5,
+        "index": 419,
+        "objective": 0.09579397371908038,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 6,
+        "index": 562,
+        "objective": 0.09561610511786436,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 7,
+        "index": 598,
+        "objective": 0.10107578552746331,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 8,
+        "index": 546,
+        "objective": 0.09525908641414685,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 9,
+        "index": 568,
+        "objective": 0.09614014963091608,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 10,
+        "index": 565,
+        "objective": 0.0954510343601793,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 11,
+        "index": 30,
+        "objective": 0.10022568448855741,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 12,
+        "index": 439,
+        "objective": 0.09900009182350203,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 13,
+        "index": 437,
+        "objective": 0.1009082562158035,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 14,
+        "index": 237,
+        "objective": 0.09553495797027006,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 15,
+        "index": 70,
+        "objective": 0.097878394260407,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 16,
+        "index": 528,
+        "objective": 0.10497308817061575,
+        "best_objective": 0.09477535528385496
+      },
+      {
+        "step": 17,
+        "index": 532,
+        "objective": 0.10153329294933566,
+        "best_objective": 0.09477535528385496
+      }
+    ]
+  }
+]

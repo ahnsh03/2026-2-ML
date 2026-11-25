@@ -1,0 +1,253 @@
+{
+  "rows": 7339,
+  "condition_oracle_mae": 0.1241938625531514,
+  "gp_mae": 0.056218905642385304,
+  "rf_mae": 0.059531426238859375,
+  "gp_minus_rf_session_macro_delta": -0.0033534476665882233,
+  "paired_session_bootstrap95": [
+    -0.00536185053682142,
+    -0.0012817135336457418
+  ],
+  "within_condition": [
+    {
+      "weather": 0,
+      "hour": 8,
+      "rows": 359,
+      "low": 46,
+      "gp_auc": 0.9445061814140854,
+      "rf_auc": 0.906792610084734,
+      "condition_oracle_auc": 0.5
+    },
+    {
+      "weather": 0,
+      "hour": 11,
+      "rows": 384,
+      "low": 42,
+      "gp_auc": 0.97270955165692,
+      "rf_auc": 0.9371345029239766,
+      "condition_oracle_auc": 0.5
+    },
+    {
+      "weather": 0,
+      "hour": 13,
+      "rows": 757,
+      "low": 91,
+      "gp_auc": 0.9287199287199287,
+      "rf_auc": 0.89001089001089,
+      "condition_oracle_auc": 0.5
+    },
+    {
+      "weather": 0,
+      "hour": 17,
+      "rows": 383,
+      "low": 206,
+      "gp_auc": 0.8454281169436674,
+      "rf_auc": 0.8632548955076518,
+      "condition_oracle_auc": 0.5
+    },
+    {
+      "weather": 0,
+      "hour": 20,
+      "rows": 692,
+      "low": 577,
+      "gp_auc": 0.9459874915228693,
+      "rf_auc": 0.9314746439605154,
+      "condition_oracle_auc": 0.5
+    },
+    {
+      "weather": 1,
+      "hour": 8,
+      "rows": 332,
+      "low": 46,
+      "gp_auc": 0.9195804195804196,
+      "rf_auc": 0.8588476740650655,
+      "condition_oracle_auc": 0.5
+    },
+    {
+      "weather": 1,
+      "hour": 13,
+      "rows": 720,
+      "low": 92,
+      "gp_auc": 0.9480580171697591,
+      "rf_auc": 0.9002527000830794,
+      "condition_oracle_auc": 0.5
+    },
+    {
+      "weather": 2,
+      "hour": 11,
+      "rows": 377,
+      "low": 48,
+      "gp_auc": 0.9569402228976698,
+      "rf_auc": 0.9070415400202635,
+      "condition_oracle_auc": 0.5
+    },
+    {
+      "weather": 2,
+      "hour": 13,
+      "rows": 376,
+      "low": 60,
+      "gp_auc": 0.9306962025316455,
+      "rf_auc": 0.8886075949367088,
+      "condition_oracle_auc": 0.5
+    },
+    {
+      "weather": 2,
+      "hour": 17,
+      "rows": 390,
+      "low": 219,
+      "gp_auc": 0.9310261956260515,
+      "rf_auc": 0.913695959838714,
+      "condition_oracle_auc": 0.5
+    },
+    {
+      "weather": 2,
+      "hour": 20,
+      "rows": 329,
+      "low": 258,
+      "gp_auc": 0.9553990610328639,
+      "rf_auc": 0.9315427448411397,
+      "condition_oracle_auc": 0.5
+    },
+    {
+      "weather": 4,
+      "hour": 13,
+      "rows": 374,
+      "low": 77,
+      "gp_auc": 0.9040185403821767,
+      "rf_auc": 0.8840788840788841,
+      "condition_oracle_auc": 0.5
+    },
+    {
+      "weather": 5,
+      "hour": 13,
+      "rows": 701,
+      "low": 217,
+      "gp_auc": 0.9280953650455117,
+      "rf_auc": 0.9080435693338917,
+      "condition_oracle_auc": 0.5
+    }
+  ],
+  "sessions": [
+    {
+      "group": "archive_cycle_replication_cloudy13_v1_rpc",
+      "gp_mae": 0.04135889816075075,
+      "rf_mae": 0.04387487457920781,
+      "condition_oracle_mae": 0.0852766272701258
+    },
+    {
+      "group": "archive_cycle_replication_snowy13_v1_rpc",
+      "gp_mae": 0.04569530747915315,
+      "rf_mae": 0.04988336288070312,
+      "condition_oracle_mae": 0.10553408589510668
+    },
+    {
+      "group": "archive_cycle_replication_sunny13_v1_rpc",
+      "gp_mae": 0.043910019870193606,
+      "rf_mae": 0.049201409639329,
+      "condition_oracle_mae": 0.08862906143048041
+    },
+    {
+      "group": "archive_cycle_replication_sunny20_v2_rpc",
+      "gp_mae": 0.08574548812115414,
+      "rf_mae": 0.07891616452656312,
+      "condition_oracle_mae": 0.26661412076791746
+    },
+    {
+      "group": "archive_extension_cloudy13_v1_rpc",
+      "gp_mae": 0.04163389292250344,
+      "rf_mae": 0.04709807795527126,
+      "condition_oracle_mae": 0.08855358701189385
+    },
+    {
+      "group": "archive_extension_snowy13_v1_rpc",
+      "gp_mae": 0.04741871788696084,
+      "rf_mae": 0.0529724879553861,
+      "condition_oracle_mae": 0.1082173104193827
+    },
+    {
+      "group": "archive_extension_sunny08_v1_rpc",
+      "gp_mae": 0.046787853724459684,
+      "rf_mae": 0.055005637821294945,
+      "condition_oracle_mae": 0.08356597212540157
+    },
+    {
+      "group": "archive_extension_sunny20_v1_rpc",
+      "gp_mae": 0.08202777931099091,
+      "rf_mae": 0.07680340663070294,
+      "condition_oracle_mae": 0.26709450379315636
+    },
+    {
+      "group": "archive_motion_final_01_rpc",
+      "gp_mae": 0.043348057632098425,
+      "rf_mae": 0.04604290510424221,
+      "condition_oracle_mae": 0.086643748210165
+    },
+    {
+      "group": "archive_motion_final_02_rpc",
+      "gp_mae": 0.061272781071401584,
+      "rf_mae": 0.060251919403572975,
+      "condition_oracle_mae": 0.11206976795715015
+    },
+    {
+      "group": "archive_motion_final_03_rpc",
+      "gp_mae": 0.05744961286909932,
+      "rf_mae": 0.06351355829644298,
+      "condition_oracle_mae": 0.11813376600508704
+    },
+    {
+      "group": "archive_motion_final_04_rpc",
+      "gp_mae": 0.07104030365271155,
+      "rf_mae": 0.07674068747666958,
+      "condition_oracle_mae": 0.1566472852638421
+    },
+    {
+      "group": "archive_motion_final_05_rpc",
+      "gp_mae": 0.042613651606217544,
+      "rf_mae": 0.04675524403229544,
+      "condition_oracle_mae": 0.08303733610713
+    },
+    {
+      "group": "archive_motion_final_06_rpc",
+      "gp_mae": 0.09774405308561893,
+      "rf_mae": 0.09479250072117879,
+      "condition_oracle_mae": 0.15798495112895217
+    },
+    {
+      "group": "archive_motion_final_07_rpc",
+      "gp_mae": 0.046619722790032035,
+      "rf_mae": 0.051615580894294126,
+      "condition_oracle_mae": 0.08456619235684487
+    },
+    {
+      "group": "archive_motion_final_08_rpc",
+      "gp_mae": 0.04345783776376434,
+      "rf_mae": 0.05014905350071468,
+      "condition_oracle_mae": 0.09183182549555143
+    },
+    {
+      "group": "archive_motion_shifted_01_rpc",
+      "gp_mae": 0.0558927584867699,
+      "rf_mae": 0.054715967199107436,
+      "condition_oracle_mae": 0.09582217941857515
+    },
+    {
+      "group": "archive_motion_shifted_02_rpc",
+      "gp_mae": 0.04954658819582887,
+      "rf_mae": 0.05177857959902828,
+      "condition_oracle_mae": 0.10586341928385475
+    },
+    {
+      "group": "archive_retention_validation_cloudy08_v1_rpc",
+      "gp_mae": 0.04550129458721026,
+      "rf_mae": 0.05329769240239906,
+      "condition_oracle_mae": 0.0880886574488986
+    },
+    {
+      "group": "archive_retention_validation_foggy20_v1_rpc",
+      "gp_mae": 0.07671260152243597,
+      "rf_mae": 0.08943706345271586,
+      "condition_oracle_mae": 0.23491798819744772
+    }
+  ],
+  "role": "Weather/time labels are privileged offline control inputs only. The deployed GP consumes RGB/perception features. Already-open repeated-route archival diagnoses, not new-map evidence."
+}

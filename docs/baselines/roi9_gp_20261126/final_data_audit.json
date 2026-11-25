@@ -1,0 +1,14 @@
+{
+  "rows": 23142,
+  "unique_ids": 23142,
+  "unique_decoded_rgb_pixels": 23142,
+  "pack_count": 82,
+  "pack_hashes_verified": true,
+  "target_counts_max_abs_delta": 2.97958024919609e-08,
+  "undefined_whole_frame_targets": 0,
+  "new26_raw_RGB_Semantic_files_verified": 672,
+  "new26_accepted_frames": 336,
+  "source_checkpoint_unchanged": true,
+  "checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+  "checkpoint_unchanged_verified": true
+}

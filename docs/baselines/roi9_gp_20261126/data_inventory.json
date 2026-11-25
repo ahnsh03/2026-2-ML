@@ -1,0 +1,587 @@
+{
+  "rows": 23142,
+  "unique_ids": 23142,
+  "unique_rgb_pixels": 23142,
+  "keys": 82,
+  "new26_accepted_frames": 336,
+  "new26_calibration": 96,
+  "new26_recreated_scenes": 144,
+  "new26_held_roads": 96,
+  "historical_release_provenance": "Historical version is user-reported25.S4.MolitComp03; current26.R1.H3 was checked against the running application. Older binaries were not re-verified.",
+  "sources": [
+    {
+      "key": "fresh",
+      "rows": 384,
+      "defined_y": 384,
+      "pack_sha256": "a018a8b62d43a87b0b924792617c7a12ae53b56abce1241bd3db924240063304",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "fresh_clock_supplement",
+      "rows": 96,
+      "defined_y": 96,
+      "pack_sha256": "8c473d479589d1681547728900bab20af15f4de29c0c6f5cff9a40c7d4eb12a2",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "fresh_uncertainty",
+      "rows": 144,
+      "defined_y": 144,
+      "pack_sha256": "4c6252eaf0e3cbbfd5ded9e5a4fe63844dce99aca846e3ef72c9958c9ab3ab05",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "geo_block_00",
+      "rows": 120,
+      "defined_y": 120,
+      "pack_sha256": "24bf294d33032e76ca3da5e05aadbd2e282b031928b7412b26bda78601d2828d",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "geo_block_01",
+      "rows": 120,
+      "defined_y": 120,
+      "pack_sha256": "f2bc5287f94ce59395669d62f1cc0961a04d666bee088c885a47abe0a4f7aa99",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "geo_block_02",
+      "rows": 120,
+      "defined_y": 120,
+      "pack_sha256": "e54c55d13e20e8311e67bd45b6eb35190dac00576450c8c735b123956f06cce1",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "geo_block_03",
+      "rows": 120,
+      "defined_y": 120,
+      "pack_sha256": "adadaadc41ed2d7bf1ea851453a7159c47049792875de878f1d4ad38f96b98b5",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "geo_block_04",
+      "rows": 120,
+      "defined_y": 120,
+      "pack_sha256": "b8c68aed54fdad7c53c2c51f50fdb57f6e054d341afc17c362a35a5992a59056",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "geo_block_05",
+      "rows": 120,
+      "defined_y": 120,
+      "pack_sha256": "48854bcd225597ec878ddea17adbb984dce4493a6d5538679df2436291efcd05",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "geo_block_06",
+      "rows": 120,
+      "defined_y": 120,
+      "pack_sha256": "ac9daaac0d32210173daa68049ed0bd38ebf0ce5488f49c6e4b783990383ea52",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "geo_block_07",
+      "rows": 120,
+      "defined_y": 120,
+      "pack_sha256": "7df35eb849964af7bddb26ccd42c741b1de4caa4f25e5b7ce5c70604524a82e1",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "mixed_a",
+      "rows": 484,
+      "defined_y": 484,
+      "pack_sha256": "aa8f10f4d6fb16db0b7a97e2372938c0a20a2d947bd423ac666dad7906866dff",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "mixed_b",
+      "rows": 484,
+      "defined_y": 484,
+      "pack_sha256": "90da35b2f69b531ec1a9113dbb80a431742cf0941a019c3bb1ffd837d8fd8973",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "night_challenge",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "9022222bb30a46f6a1241351897d038743546a7a7fafb1cd512dc421e2abb49e",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m0_w0_h13",
+      "rows": 250,
+      "defined_y": 250,
+      "pack_sha256": "4840786186d6092d5325965c942058f9afba57bc3d151c8a029dbd55bbc1edb4",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m0_w0_h20",
+      "rows": 252,
+      "defined_y": 252,
+      "pack_sha256": "008b9c842495a170806e0ce6a53581319e06015c23edda7f565a1c9806e311e8",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m0_w1_h13",
+      "rows": 251,
+      "defined_y": 251,
+      "pack_sha256": "bf5b141c965c5b7d91c1debb585e7ebaece9a3ee9d93a127aa78750734d8e8bd",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m0_w1_h20",
+      "rows": 251,
+      "defined_y": 251,
+      "pack_sha256": "adb8c8221c290c06385dc77174230faa6dbe9d2310a4702c501eaef44f598e2d",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m0_w2_h13",
+      "rows": 252,
+      "defined_y": 252,
+      "pack_sha256": "41e55ae59a09f1893267f57a5ac5ecb46cd8bf18b1e96f04cf9308076483e9f9",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m0_w2_h20",
+      "rows": 251,
+      "defined_y": 251,
+      "pack_sha256": "7be5958a854dd35b9449fb14bb1c1d384e15d4b674f231b12a2fd2cfcfd5b5c7",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m0_w3_h13",
+      "rows": 250,
+      "defined_y": 250,
+      "pack_sha256": "abb44bcc97fca2e4c57472ce5108528745b07ae2fe121d8ebe60c2538fc9acb2",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m0_w3_h20",
+      "rows": 247,
+      "defined_y": 247,
+      "pack_sha256": "4a106884d200fa1d081ab07b79caf4dcf4623fa5943115dc483bd7922929fa8a",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m0_w4_h13",
+      "rows": 250,
+      "defined_y": 250,
+      "pack_sha256": "c584ffe3cdedca91233c821e33bd0bd0830c9f47f10de2fd1493f4cfff4f4dea",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m0_w4_h20",
+      "rows": 247,
+      "defined_y": 247,
+      "pack_sha256": "18956733b5f32cdff727d8c9d551456ef774392823658aaa062bd749e528ef90",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m0_w5_h13",
+      "rows": 251,
+      "defined_y": 251,
+      "pack_sha256": "9d8302688f9738add891357326505a6ee67ca03e7f4bf6ded2f6748401d7195d",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m0_w5_h20",
+      "rows": 250,
+      "defined_y": 250,
+      "pack_sha256": "1e739ba30e3d68ce55b8e2d17c44c4417ab7be322fd97944c14f1ff39ca4f223",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m1_w0_h13",
+      "rows": 251,
+      "defined_y": 251,
+      "pack_sha256": "9c9824ff192e11c2da7c7a1974da6781677d1e50774dd670127d005705cef980",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m1_w0_h20",
+      "rows": 251,
+      "defined_y": 251,
+      "pack_sha256": "f264b826082e7cf8ff8a331c6731a00c0ceede2bb8df9ee5dd6f069455513d9b",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m1_w1_h13",
+      "rows": 252,
+      "defined_y": 252,
+      "pack_sha256": "6f33cab8e9dbdeb0eb86df1e92d296788e92ac634ac69b26e6576ed2a192ea77",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m1_w1_h20",
+      "rows": 251,
+      "defined_y": 251,
+      "pack_sha256": "5ddb548732d9434bcb1d2228f2b85e75e1192885940f7582651acd3ac2825b42",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m1_w2_h13",
+      "rows": 251,
+      "defined_y": 251,
+      "pack_sha256": "0e8c2eb0d08f3cc93bef813097e77061cb16d2bce6d9c0da4e7df2424f3c1fb9",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m1_w2_h20",
+      "rows": 251,
+      "defined_y": 251,
+      "pack_sha256": "302ee73c8ec4a1b19ba4bdaba3d363258fb9dc84df2b6a98175775185ff06dd3",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m1_w3_h13",
+      "rows": 248,
+      "defined_y": 248,
+      "pack_sha256": "e62b92c0340e74402b7ad3adf7054575f8f46b0ce4bf13a05a6baece296f5e59",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m1_w3_h20",
+      "rows": 248,
+      "defined_y": 248,
+      "pack_sha256": "5ce14ed5e8176130458a16c44cb05dec5506a65ab52350f9c040674f9dc530bf",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m1_w4_h13",
+      "rows": 248,
+      "defined_y": 248,
+      "pack_sha256": "76a27a8120e8d0ef227a49444beaa304b07cfd86c32137c3253461ba55c0bfe4",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m1_w4_h20",
+      "rows": 247,
+      "defined_y": 247,
+      "pack_sha256": "740a015a59ff8483806e154c11f27a561145068f85923fd8ebee0208e814b5bf",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m1_w5_h13",
+      "rows": 251,
+      "defined_y": 251,
+      "pack_sha256": "7a2b731bacca178146955018d40b80c273897a722a691403fc6c3001add3af88",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "nov23_m1_w5_h20",
+      "rows": 251,
+      "defined_y": 251,
+      "pack_sha256": "8d08cf60d789ef49422e075407773a01a9b432ece445b7772d9a013fe1bd59d1",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "prospective_known",
+      "rows": 576,
+      "defined_y": 576,
+      "pack_sha256": "adbfed8d5936f003c7e81311ec1a2104f5c02dcfb9a2e183b93f31f82c920053",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "prospective_unseen",
+      "rows": 72,
+      "defined_y": 72,
+      "pack_sha256": "df4c99f115b4dad499eade963e88b3d6d75ab6936881044afd08d1ea8245bf64",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "roi10_other_road_a",
+      "rows": 137,
+      "defined_y": 137,
+      "pack_sha256": "1390a841cd77fc009732209d4516c82ac1bb5fafaf9890f64841cdb2ba61d118",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "roi10_other_road_b",
+      "rows": 136,
+      "defined_y": 136,
+      "pack_sha256": "30ad8b591c5c3d9a66ab57388cf8d1106f3fee2ab593cc5b1f16c2bb9cd76e25",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "stream_new",
+      "rows": 1448,
+      "defined_y": 1448,
+      "pack_sha256": "e60f98d7f72bfc485597ef425da97aa4b658f3874479d32de27d0f98de65f243",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z00",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "ff68e99700ccf8ccb718a478e2c3681d0da7c3e44222c5a5c629cd3e4974e5ee",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z02",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "8bd1f1f06a61659dccdc831d9a445c8a0036a37de03e0accb4bcc2e188c96164",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z03",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "a2b49c1105151fbea519df71d67b7b6c5418f70f74b1d4d5dde995ca9a6322f5",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z04",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "7d000e2692d971f2b041a520e0a530a81cc0be5e4d1ace1bc6f36592b39df047",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z05",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "f89ade7a0edeb8f395dc4bb7e9d40343d41b0f526ee5d52508684e059213d888",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z06",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "17f79f4366b8175304d1a380b366e071cde20891ffee9a58431d64e8e2e4716d",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z07",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "5cf58118d319e698adee9ad9edbd66a58a289fe93fa7947a3b2352b7fd3f3606",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z08",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "53ed5a69c73a7b7377c0d9e03f746f08361c7904f427bef787c3a72ca8ff79b6",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z10",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "05d1f3ea1a0fc9796c368b4434a6cf3dffc5c44a0ca49e1954de5a4f40261162",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z11",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "d005c6745dea8d353d269113ea366a32d1dfbef9e89f22868168c8e5f1a1a38e",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z12",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "2891b8f373baa8c675a798fcbe81b780548dff86f8f6351fc5dc12aabff5e6a2",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z13",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "2e727c6df6217f5add5e51b03890fd1af5c6cb0b31cd262eff6fbe053a8789d4",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "z14",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "12ae57b1a7278a266f07e95064ec706516d169ec8f04ab33b2c6f500d0106aa9",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "extra_cal",
+      "rows": 288,
+      "defined_y": 288,
+      "pack_sha256": "39f53495a6b43b213e9604b66144b846b44bbcff87812909800fbf2a4dbe77df",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "newroads",
+      "rows": 144,
+      "defined_y": 144,
+      "pack_sha256": "6d3bdc8055da39c174278e1f6d00d1c79b99e9959495026230a21b3e992ebbb1",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "shapes",
+      "rows": 80,
+      "defined_y": 80,
+      "pack_sha256": "274fb1e5e8babf1a865799dcb10cae722d116fa1edfb1dce60f04e2574b116b9",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_cycle_replication_cloudy13_v1_rpc",
+      "rows": 344,
+      "defined_y": 344,
+      "pack_sha256": "c70e89d783c003105df11e3863c2fbf34438c6a778545908286b0c3c9e6566f1",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_cycle_replication_snowy13_v1_rpc",
+      "rows": 336,
+      "defined_y": 336,
+      "pack_sha256": "ea9d1b52578e67c4a5749be21f32dc330486d7f07fd8f53cacab45972332b624",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_cycle_replication_sunny13_v1_rpc",
+      "rows": 351,
+      "defined_y": 351,
+      "pack_sha256": "281d20bc84653557ba793f880248276880d852c7832b1462a67afcf0a3687c23",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_cycle_replication_sunny20_v2_rpc",
+      "rows": 340,
+      "defined_y": 340,
+      "pack_sha256": "0f39f29357962ca9fddbccf07a0ebe9cd600cae15fbb12154bb5d5e8278fca72",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_extension_cloudy13_v1_rpc",
+      "rows": 376,
+      "defined_y": 376,
+      "pack_sha256": "9faea3dd002d1e45acaa80939533993a96a4b07fc04cd8d6d1be66ee3d4e0b96",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_extension_snowy13_v1_rpc",
+      "rows": 365,
+      "defined_y": 365,
+      "pack_sha256": "21e422bbe9659cef846cdcb0f89df3a7d316ed2703e749bce6ee9ebab43e6126",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_extension_sunny08_v1_rpc",
+      "rows": 359,
+      "defined_y": 359,
+      "pack_sha256": "c224918b7a2239f29fbc8e7d1ee5606556e74a157c683ce37f32624e07a8c335",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_extension_sunny20_v1_rpc",
+      "rows": 352,
+      "defined_y": 352,
+      "pack_sha256": "a1ee531cf394a9cc27bbc9c1e21d4bf34fd8f66d876085c4760c08800928bcf4",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_motion_final_01_rpc",
+      "rows": 406,
+      "defined_y": 406,
+      "pack_sha256": "8483b48ded0c59043a1e8ce86143dadfbcb79bc294c01d751a8b73f4d456fae8",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_motion_final_02_rpc",
+      "rows": 402,
+      "defined_y": 402,
+      "pack_sha256": "bdf91c13f0b173c3f825441191f43d26376cd4be310bc2c24176bd019c2ba307",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_motion_final_03_rpc",
+      "rows": 393,
+      "defined_y": 393,
+      "pack_sha256": "bda9fae4665441cb59538ff5414925e583e95ece57a6cb85e792836a388eb0b1",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_motion_final_04_rpc",
+      "rows": 390,
+      "defined_y": 390,
+      "pack_sha256": "ca172d837ac9a3618183a8462e475c5aa2e0d357ac2232c70edbac0a870d6843",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_motion_final_05_rpc",
+      "rows": 384,
+      "defined_y": 384,
+      "pack_sha256": "4fa4f39bf8e5fca2571176a1137a223487753256f4b3a75ed02b050b24d567b2",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_motion_final_06_rpc",
+      "rows": 383,
+      "defined_y": 383,
+      "pack_sha256": "55cdbaf0351ce293c893464f8b282b07105f70d543e30a790a7aaa0c4886a206",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_motion_final_07_rpc",
+      "rows": 377,
+      "defined_y": 377,
+      "pack_sha256": "fcdb300231b83be2ee91dd936d60714b675264d34447d372b68e27e95afe3068",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_motion_final_08_rpc",
+      "rows": 376,
+      "defined_y": 376,
+      "pack_sha256": "db489416ddd5d4b52dc7a19c69544abfe47cdfebfad299279c263221044e93e8",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_motion_shifted_01_rpc",
+      "rows": 374,
+      "defined_y": 374,
+      "pack_sha256": "030262e28774e3e6f47f4ec9df5cc5ce098bbb9dca8d4502b9d792a02087a77c",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_motion_shifted_02_rpc",
+      "rows": 370,
+      "defined_y": 370,
+      "pack_sha256": "097b6fe7ba0379784faf55d36434ea96280b931e5b164708607cf781dddad747",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_retention_validation_cloudy08_v1_rpc",
+      "rows": 332,
+      "defined_y": 332,
+      "pack_sha256": "526be9dac6535ec27684ab2a237035c2e426d574f7bba3abf18d314b0412e6f0",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "archive_retention_validation_foggy20_v1_rpc",
+      "rows": 329,
+      "defined_y": 329,
+      "pack_sha256": "a49c8159b4af5a952e5274527fbabeb77ef2b8c2e19bde476e75929f27f65fa1",
+      "simulator_release": "25.S4.MolitComp03"
+    },
+    {
+      "key": "release26_calibration",
+      "rows": 96,
+      "defined_y": 96,
+      "pack_sha256": "39842af319856bc9235640022190a18e136ff3e612a52fbbfee67f3679192102",
+      "simulator_release": "26.R1"
+    },
+    {
+      "key": "release26_transfer",
+      "rows": 144,
+      "defined_y": 144,
+      "pack_sha256": "21abb4be5ed1d05d1f4306432a9db01f9abfc076c0d06c51c72f0fc4b4a01856",
+      "simulator_release": "26.R1"
+    },
+    {
+      "key": "release26_heldroads",
+      "rows": 96,
+      "defined_y": 96,
+      "pack_sha256": "a35c72d9e6b8beb5ec477883673055dbd2d528a54ddd88f6796b068270370a4b",
+      "simulator_release": "26.R1"
+    }
+  ]
+}

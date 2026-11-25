@@ -1,0 +1,1297 @@
+{
+  "pruning_study": [
+    {
+      "id": "remove_lane_fraction_GP_b0_7",
+      "view": "remove_lane_fraction",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07359394239052118,
+        0.0794676911867692,
+        0.06685185510744092
+      ],
+      "folds": [
+        [
+          0.05089951633545869,
+          0.06882619124269214,
+          0.06252596006439609
+        ],
+        [
+          0.06585568562144221,
+          0.0707185620661675,
+          0.07623358400150547
+        ],
+        [
+          0.10402662521466266,
+          0.09885832025144797,
+          0.0617960212564212
+        ]
+      ],
+      "seconds": 0.7207609679999223,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "global.patch_entropy",
+        "global.lane_margin",
+        "near_minus_far.lane_probability",
+        "near_minus_far.marking_entropy",
+        "near_minus_far.lane_weighted_entropy",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 31,
+      "development": {
+        "mae": [
+          0.042307905668788885,
+          0.05010961246054625,
+          0.04278097986113522
+        ],
+        "far_vs_both_auc": 0.9571791696539138
+      },
+      "model_file": "remove_lane_fraction_GP_b0_7.npz",
+      "model_sha256": "5751dafcdb49f7c83896644ad529ae4955d889a7a3fbf67fcf84ab96fa583027"
+    },
+    {
+      "id": "remove_lane_probability_GP_b0_7",
+      "view": "remove_lane_probability",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.0734349258270915,
+        0.07926029461794995,
+        0.0662412896580348
+      ],
+      "folds": [
+        [
+          0.050848552150455764,
+          0.06880610605614013,
+          0.06133699626262706
+        ],
+        [
+          0.0655191583343238,
+          0.07019514928419356,
+          0.07537576021751208
+        ],
+        [
+          0.10393706699649495,
+          0.09877962851351615,
+          0.062011112493965265
+        ]
+      ],
+      "seconds": 0.8014831809996394,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "global.patch_entropy",
+        "global.lane_margin",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.marking_entropy",
+        "near_minus_far.lane_weighted_entropy",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 31,
+      "development": {
+        "mae": [
+          0.042345618651645434,
+          0.04999468314167947,
+          0.04132149410277807
+        ],
+        "far_vs_both_auc": 0.9573225575180864
+      },
+      "model_file": "remove_lane_probability_GP_b0_7.npz",
+      "model_sha256": "1402ad83e5d08c12d5cb1e17909db2ae09fadfc97101e2b99e3c841abe8c542c"
+    },
+    {
+      "id": "remove_marking_entropy_GP_b0_7",
+      "view": "remove_marking_entropy",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07370669080098124,
+        0.08024989660682803,
+        0.06639907410075269
+      ],
+      "folds": [
+        [
+          0.051117083392365835,
+          0.06697891956825859,
+          0.06390363617955236
+        ],
+        [
+          0.06839274461874371,
+          0.07558676948003054,
+          0.07231283943448066
+        ],
+        [
+          0.10161024439183419,
+          0.09818400077219497,
+          0.06298074668822502
+        ]
+      ],
+      "seconds": 0.7092463199996928,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "global.patch_entropy",
+        "global.lane_margin",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_weighted_entropy",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 31,
+      "development": {
+        "mae": [
+          0.04071011057090082,
+          0.04949477516883163,
+          0.03969234319150877
+        ],
+        "far_vs_both_auc": 0.9510525972756305
+      },
+      "model_file": "remove_marking_entropy_GP_b0_7.npz",
+      "model_sha256": "195a0af3c4d3de71a203152114b18796769f88f54b984d186ee93764c1129729"
+    },
+    {
+      "id": "remove_lane_weighted_entropy_GP_b0_7",
+      "view": "remove_lane_weighted_entropy",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07302137821971186,
+        0.07986132781028088,
+        0.06923137813998047
+      ],
+      "folds": [
+        [
+          0.05028303677407644,
+          0.06909155439786248,
+          0.06519367305107368
+        ],
+        [
+          0.06594487354908983,
+          0.0717312816236515,
+          0.07950062964075973
+        ],
+        [
+          0.10283622433596931,
+          0.09876114740932866,
+          0.06299983172810796
+        ]
+      ],
+      "seconds": 0.7603372769999623,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "global.patch_entropy",
+        "global.lane_margin",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.marking_entropy",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 31,
+      "development": {
+        "mae": [
+          0.04089135114448939,
+          0.04902408213374568,
+          0.04276599172329662
+        ],
+        "far_vs_both_auc": 0.9608290425601251
+      },
+      "model_file": "remove_lane_weighted_entropy_GP_b0_7.npz",
+      "model_sha256": "9f92b697f90b3f0e7cb54637c0d3f0cd50a7414a783f171144ff9de9dfba74c2"
+    },
+    {
+      "id": "remove_lane_drivable_disagreement_GP_b0_7",
+      "view": "remove_lane_drivable_disagreement",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07354677212845673,
+        0.07899909412752061,
+        0.0664064013319125
+      ],
+      "folds": [
+        [
+          0.05001989397936077,
+          0.06813950336249369,
+          0.06214106154767381
+        ],
+        [
+          0.06603369349378672,
+          0.06908263733159067,
+          0.07487964540989375
+        ],
+        [
+          0.10458672891222268,
+          0.09977514168847745,
+          0.06219849703816993
+        ]
+      ],
+      "seconds": 0.6451712440002666,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "global.patch_entropy",
+        "global.lane_margin",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.marking_entropy",
+        "near_minus_far.lane_weighted_entropy"
+      ],
+      "dimensions": 31,
+      "development": {
+        "mae": [
+          0.0430265953246431,
+          0.05188894639519177,
+          0.040451562709995253
+        ],
+        "far_vs_both_auc": 0.9527732516457016
+      },
+      "model_file": "remove_lane_drivable_disagreement_GP_b0_7.npz",
+      "model_sha256": "a72b1892d08c05dcc394a666157dd37d937679c1ea426e80d96f65355f62d461"
+    },
+    {
+      "id": "remove_raw_uncertainty_GP_b0_7",
+      "view": "remove_raw_uncertainty",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07374432208242959,
+        0.0776833292146337,
+        0.06703652075479767
+      ],
+      "folds": [
+        [
+          0.05236973663426572,
+          0.06557220329195866,
+          0.06311684138009227
+        ],
+        [
+          0.06433845162040747,
+          0.0678609992698632,
+          0.07280631254082465
+        ],
+        [
+          0.10452477799261559,
+          0.09961678508207922,
+          0.0651864083434761
+        ]
+      ],
+      "seconds": 0.8312399030000961,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.marking_entropy",
+        "near_minus_far.lane_weighted_entropy",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 29,
+      "development": {
+        "mae": [
+          0.0449021477454548,
+          0.05138369527370737,
+          0.043254164536514095
+        ],
+        "far_vs_both_auc": 0.9459688457276935
+      },
+      "model_file": "remove_raw_uncertainty_GP_b0_7.npz",
+      "model_sha256": "1da77008995e95bb16f2929a95eeb006ae59e903a6a8e3f20649f9c5fa6f26ed"
+    },
+    {
+      "id": "remove_hood_GP_b0_6",
+      "view": "remove_hood",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.01,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.08211585665457001,
+        0.10224286497481265,
+        0.06518399624718625
+      ],
+      "folds": [
+        [
+          0.0583848076536303,
+          0.08587051110830202,
+          0.059786944877679264
+        ],
+        [
+          0.05964252060534087,
+          0.09346356642628487,
+          0.06164446845138097
+        ],
+        [
+          0.12832024170473888,
+          0.12739451738985103,
+          0.07412057541249852
+        ]
+      ],
+      "seconds": 0.7222184739994191,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "global.patch_entropy",
+        "global.lane_margin",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.marking_entropy",
+        "near_minus_far.lane_weighted_entropy",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 26,
+      "development": {
+        "mae": [
+          0.0643563902518372,
+          0.07309818954416286,
+          0.0499146471909167
+        ],
+        "far_vs_both_auc": 0.9192204914293163
+      },
+      "model_file": "remove_hood_GP_b0_6.npz",
+      "model_sha256": "8e73af5bfb023151b2dc64709358efbafcb14130b1fb6da599a0ffe332c1d8b4"
+    },
+    {
+      "id": "remove_new_rgb_GP_b0_7",
+      "view": "remove_new_rgb",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07601243117157835,
+        0.08858417320785329,
+        0.06585619953224775
+      ],
+      "folds": [
+        [
+          0.05372167052010873,
+          0.07619855285458234,
+          0.06171842576467511
+        ],
+        [
+          0.06504041838925044,
+          0.08366210724186929,
+          0.06844500748073425
+        ],
+        [
+          0.10927520460537588,
+          0.10589185952710826,
+          0.06740516535133391
+        ]
+      ],
+      "seconds": 0.7531808489993637,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "global.patch_entropy",
+        "global.lane_margin",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.marking_entropy",
+        "near_minus_far.lane_weighted_entropy",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 26,
+      "development": {
+        "mae": [
+          0.046779981392603455,
+          0.056471123892340186,
+          0.041748830420484384
+        ],
+        "far_vs_both_auc": 0.9521736296682526
+      },
+      "model_file": "remove_new_rgb_GP_b0_7.npz",
+      "model_sha256": "eb6aab443cf215d8abf31e130c64fb2c69a9c5f709c3686afa9d20ce87627664"
+    },
+    {
+      "id": "remove_conditional_output_GP_b0_8",
+      "view": "remove_conditional_output",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.15,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07785818018768435,
+        0.08049724632645665,
+        0.06605204422539905
+      ],
+      "folds": [
+        [
+          0.06089194608522782,
+          0.07247640460768583,
+          0.06190569422494806
+        ],
+        [
+          0.0719871653575858,
+          0.06994636916743636,
+          0.07508276430925832
+        ],
+        [
+          0.10069542912023946,
+          0.09906896520424775,
+          0.061167674141990744
+        ]
+      ],
+      "seconds": 0.7674201540003196,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.top_entropy",
+        "global.patch_entropy",
+        "global.lane_margin",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.marking_entropy",
+        "near_minus_far.lane_weighted_entropy",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 26,
+      "development": {
+        "mae": [
+          0.04431765913224011,
+          0.04594479295703828,
+          0.043826458756138345
+        ],
+        "far_vs_both_auc": 0.9666297334289252
+      },
+      "model_file": "remove_conditional_output_GP_b0_8.npz",
+      "model_sha256": "6c50529e5ed0a82112d149fd6fe81d488a07279ea58a16db39ccead32c8bdfc9"
+    }
+  ],
+  "combined_pruning": [
+    {
+      "id": "remove_both_relation_entropies_GP_b0_7",
+      "view": "remove_both_relation_entropies",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07403692241038944,
+        0.08243532740915634,
+        0.06869113694843629
+      ],
+      "folds": [
+        [
+          0.05089788351933635,
+          0.0682111527188432,
+          0.06602878587388761
+        ],
+        [
+          0.06989421970108538,
+          0.07974200657247353,
+          0.07687802205225133
+        ],
+        [
+          0.10131866401074657,
+          0.09935282293615225,
+          0.06316660291916992
+        ]
+      ],
+      "seconds": 0.694437391000065,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "global.patch_entropy",
+        "global.lane_margin",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 30,
+      "development": {
+        "mae": [
+          0.03914764644358659,
+          0.04905881528013159,
+          0.04309771785448688
+        ],
+        "far_vs_both_auc": 0.9543244476308415
+      },
+      "model_file": "remove_both_relation_entropies_GP_b0_7.npz",
+      "model_sha256": "59d47841089168d1c85c3db7005922fd53d329d5515e4063306b288c78fa4062"
+    },
+    {
+      "id": "combo_without_top_entropy_GP_b0_7",
+      "view": "combo_without_top_entropy",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.0731786554265695,
+        0.08012939197525182,
+        0.0689328091559045
+      ],
+      "folds": [
+        [
+          0.05203288762881914,
+          0.065942526276876,
+          0.06830652769563132
+        ],
+        [
+          0.06633682441085537,
+          0.07557268042916636,
+          0.07320153181868012
+        ],
+        [
+          0.101166254240034,
+          0.09887296921971313,
+          0.06529036795340204
+        ]
+      ],
+      "seconds": 0.6678618480000296,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.patch_entropy",
+        "global.lane_margin",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 29,
+      "development": {
+        "mae": [
+          0.04153959123832809,
+          0.04960884042682013,
+          0.046592809231418536
+        ],
+        "far_vs_both_auc": 0.9522648764909079
+      },
+      "model_file": "combo_without_top_entropy_GP_b0_7.npz",
+      "model_sha256": "ee42da89226645fd9e00505320d85780aa7841feeffe10d5d16ce420e1ddf6eb"
+    },
+    {
+      "id": "combo_without_patch_entropy_GP_b0_7",
+      "view": "combo_without_patch_entropy",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07389786786218763,
+        0.08222242215443558,
+        0.06830580754855248
+      ],
+      "folds": [
+        [
+          0.05145086827208277,
+          0.06838918605549216,
+          0.06367625797469559
+        ],
+        [
+          0.06975583791688339,
+          0.07974097827092569,
+          0.07785711957894226
+        ],
+        [
+          0.10048689739759674,
+          0.09853710213688886,
+          0.0633840450920196
+        ]
+      ],
+      "seconds": 0.5972093029995449,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "global.lane_margin",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 29,
+      "development": {
+        "mae": [
+          0.03938621037818145,
+          0.04886068381294033,
+          0.042560467318795356
+        ],
+        "far_vs_both_auc": 0.9485237567620413
+      },
+      "model_file": "combo_without_patch_entropy_GP_b0_7.npz",
+      "model_sha256": "4bf2e438509bf4c07816c1474d8f65dadb3d4bbc52cd51870637de09d0a36855"
+    },
+    {
+      "id": "combo_without_lane_margin_GP_b0_7",
+      "view": "combo_without_lane_margin",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07392256807125212,
+        0.08196579905531433,
+        0.06896086757081256
+      ],
+      "folds": [
+        [
+          0.05087204675520622,
+          0.06795722241591093,
+          0.06613275790925321
+        ],
+        [
+          0.06988055919642566,
+          0.07930037683177324,
+          0.07764625351663815
+        ],
+        [
+          0.10101509826212446,
+          0.09863979791825883,
+          0.06310359128654631
+        ]
+      ],
+      "seconds": 0.6402757070000007,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "global.patch_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 29,
+      "development": {
+        "mae": [
+          0.039497328067335725,
+          0.04922345699408276,
+          0.043285604535193686
+        ],
+        "far_vs_both_auc": 0.9542983771100828
+      },
+      "model_file": "combo_without_lane_margin_GP_b0_7.npz",
+      "model_sha256": "8c870aeaee24a038d0aab4f06a6c6277c880491602eec16b994cae4c6c2d833d"
+    }
+  ],
+  "uncertainty_minimal": [
+    {
+      "id": "only_top_entropy_GP_b0_7",
+      "view": "only_top_entropy",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07374325225413568,
+        0.08175651266777435,
+        0.06852226358747365
+      ],
+      "folds": [
+        [
+          0.05139797332086124,
+          0.0681513655840026,
+          0.06369944431307524
+        ],
+        [
+          0.0697531299080017,
+          0.07926152012625003,
+          0.07858582017079499
+        ],
+        [
+          0.10007865353354409,
+          0.09785665229307042,
+          0.06328152627855071
+        ]
+      ],
+      "seconds": 0.6013437229994452,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 28,
+      "development": {
+        "mae": [
+          0.03969349053383985,
+          0.049070750739938475,
+          0.042784667420475805
+        ],
+        "far_vs_both_auc": 0.9483673336374895
+      },
+      "model_file": "only_top_entropy_GP_b0_7.npz",
+      "model_sha256": "ce5feacd45c129f4fd29f9eb5070a00e5c8e46d2f3e79b1a3ff2c01b8d93ffb2"
+    },
+    {
+      "id": "only_patch_entropy_GP_b0_9",
+      "view": "only_patch_entropy",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 5.6,
+        "noise_variance": 0.01,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07305691546232569,
+        0.07751401624894877,
+        0.06771286449013225
+      ],
+      "folds": [
+        [
+          0.05207068918544762,
+          0.06676378716386536,
+          0.06680761019748958
+        ],
+        [
+          0.06724121884171709,
+          0.07134126848668058,
+          0.07363546644841429
+        ],
+        [
+          0.0998588383598124,
+          0.09443699309630037,
+          0.06269551682449287
+        ]
+      ],
+      "seconds": 0.6737967010003558,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.patch_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 28,
+      "development": {
+        "mae": [
+          0.04146034244628233,
+          0.049423097313714165,
+          0.04540672482713085
+        ],
+        "far_vs_both_auc": 0.949188555041387
+      },
+      "model_file": "only_patch_entropy_GP_b0_9.npz",
+      "model_sha256": "d4d8fe833d0590e7a3a065ebb06b147f9bc4446d036860a064f517a3fa892352"
+    },
+    {
+      "id": "only_lane_margin_GP_b0_7",
+      "view": "only_lane_margin",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07361594551996815,
+        0.08065971414385475,
+        0.06917693549544626
+      ],
+      "folds": [
+        [
+          0.05266029198289499,
+          0.06723972166633888,
+          0.06609793339681794
+        ],
+        [
+          0.06693382323910489,
+          0.07590069538096954,
+          0.0752432589114777
+        ],
+        [
+          0.10125372133790457,
+          0.09883872538425588,
+          0.06618961417804314
+        ]
+      ],
+      "seconds": 0.6590563250001651,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.lane_margin",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 28,
+      "development": {
+        "mae": [
+          0.04273971214668956,
+          0.04989434686112342,
+          0.04703036815340521
+        ],
+        "far_vs_both_auc": 0.9458254578635208
+      },
+      "model_file": "only_lane_margin_GP_b0_7.npz",
+      "model_sha256": "337e72a8e59c0704e84760c9e552c48f8f007d927bdf586533b1df10bc61edf9"
+    },
+    {
+      "id": "without_all_raw_GP_b0_7",
+      "view": "without_all_raw",
+      "kind": "GP",
+      "balanced": false,
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.0
+      },
+      "cv": [
+        0.07357352354543757,
+        0.08019927023667647,
+        0.06969600493723199
+      ],
+      "folds": [
+        [
+          0.052649225346077,
+          0.0667509387353153,
+          0.06625373472797631
+        ],
+        [
+          0.06743407510781449,
+          0.07576149436142712,
+          0.07654819574002192
+        ],
+        [
+          0.10063727018242125,
+          0.09808537761328698,
+          0.06628608434369776
+        ]
+      ],
+      "seconds": 0.5773964279997017,
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 27,
+      "development": {
+        "mae": [
+          0.04301781756908412,
+          0.049987816882130526,
+          0.047377242412110304
+        ],
+        "far_vs_both_auc": 0.9454604705728997
+      },
+      "model_file": "without_all_raw_GP_b0_7.npz",
+      "model_sha256": "a9eeadabcae783533b6c9324a4e067ac90a2c964ca9af12d31eb82fc53586230"
+    }
+  ]
+}

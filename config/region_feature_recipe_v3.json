@@ -1,0 +1,127 @@
+{
+  "version": "roi9-gp-feature-selection-20261126-v3",
+  "created_utc": "2026-11-25T16:58:20.444465+00:00",
+  "profile": "roi9-front-v1",
+  "regions_sha256": "96871a98fc7ce4f268c4d9aacbc34603c720e4c7bf70964e5b238aa2375a9786",
+  "checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+  "target": "one whole-frame white+yellow lane IoU",
+  "tasks": {
+    "quality_spatial_gp": {
+      "kind": "SpatialGP",
+      "primary_target": "one whole-frame white+yellow lane IoU",
+      "auxiliary_targets": [
+        "near image-band lane recall",
+        "far image-band lane recall"
+      ],
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 28,
+      "model_sha256": "f802ab47b64608aa0c336c244eef390ae43d46f2548d6d74a66f9a6350c3b8b6",
+      "calibration_sha256": "f3e491e3e0858c30f5ef72cdd8ae47d136ca6d2159d418a7f8ec1ff73ebcee0d",
+      "artifact_filename": "quality_spatial_gp.npz",
+      "calibration_filename": "calibration_26r1.json",
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.05,
+        "task_correlation": 0.4
+      },
+      "training_rows": 2480,
+      "required_inputs": [
+        "front_rgb",
+        "head_maps",
+        "marking_probability"
+      ],
+      "primary_point_prediction": "clipped raw GP mean; calibrated moments are separate risk-score inputs"
+    },
+    "quality_rf": {
+      "kind": "RF",
+      "ordered_features": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement"
+      ],
+      "dimensions": 28,
+      "model_sha256": "2fc1bb79a1b88bc02a1bfa50b7efdf2c2e6e0ed9a32f222073c2149dcd58514b",
+      "artifact_filename": "quality_rf.joblib",
+      "training_rows": 2480,
+      "parameters": {
+        "n_estimators": 128,
+        "min_samples_leaf": 2,
+        "max_features": 0.5,
+        "max_depth": 12
+      },
+      "runtime": "Use the training scikit-learn dependency version; GP NPZ is the cross-profile inference artifact."
+    }
+  },
+  "feature_composition": {
+    "rgb": 10,
+    "pooled_head": 14,
+    "raw_softmax": 1,
+    "near_minus_far_relations": 3
+  },
+  "status": "Frozen9-region/28-input GP integration baseline for November27. Final policy, perception-retraining retention and live ROS adoption are pending.",
+  "environment_features": "Separate unchanged weather80/hour160/RGB54 e-means study in v2; not automatically appended to quality inputs.",
+  "selection": {
+    "frozen_run_sha256": "dbc7c927e8f2d57db81bb7cd2b25fb9611df98ccef122d9cdc9a5401b4d89562",
+    "parent_model_sha256": "79abd83829563ed41a4116ef6ed826f6451221526685bdf16a3f7eb2925a990c",
+    "calibration_source_sha256": "6b9299eaee1144a19460aa2d102160741602a9a0dd266bc0f0784e06e1d5c45d",
+    "limitations": "A spatial diagnostic is not an operational failure definition. Region recalls are offline supervision; no online GT or ROI IoU. Gaussian moment calibration has no OOD coverage guarantee."
+  },
+  "parent_recipe_sha256": "a6c5df6a46296ef06302d942e61634ac06f67bef394482b5427a861ac0ba0a3e",
+  "active_simulator_release": "26.R1",
+  "training_membership_sha256": "5d0dead15ef9a9a630afa0fdd441eec6a3bcc99becd8866921dc2505134b337d",
+  "split_roles_sha256": "2214a805c79104ca49105daebf1dfc5d4641816af8715b6168a70e2e187b6d12"
+}

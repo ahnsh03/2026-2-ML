@@ -1,0 +1,32 @@
+{
+  "ordered_features": [
+    "near_left.chroma",
+    "near_left.blue_minus_red",
+    "near_left.edge_density",
+    "near_right.median_residual",
+    "hood.intensity",
+    "hood.dark_channel",
+    "hood.dark_fraction",
+    "hood.intensity_median",
+    "hood.blue_minus_red",
+    "hood.edge_density",
+    "near_left.drivable_fraction",
+    "near_left.lane_fraction",
+    "near_left.lane_probability",
+    "near_left.lane_weighted_entropy",
+    "near_left.lane_weighted_probability",
+    "near_right.drivable_fraction",
+    "near_right.lane_fraction",
+    "near_right.lane_probability",
+    "near_right.lane_weighted_entropy",
+    "near_right.lane_weighted_probability",
+    "global.lane_fraction",
+    "global.lane_probability",
+    "global.lane_weighted_entropy",
+    "global.lane_weighted_probability",
+    "global.top_entropy",
+    "near_minus_far.lane_fraction",
+    "near_minus_far.lane_probability",
+    "near_minus_far.lane_drivable_disagreement"
+  ]
+}

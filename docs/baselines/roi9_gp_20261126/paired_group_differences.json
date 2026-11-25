@@ -1,0 +1,26 @@
+{
+  "archival_sessions": {
+    "groups": 20,
+    "gp_minus_rf_macro_delta": -0.003353447666588222,
+    "paired_group_bootstrap95": [
+      -0.005344953479113992,
+      -0.001330019980607868
+    ]
+  },
+  "recreated_scenes": {
+    "groups": 6,
+    "gp_minus_rf_macro_delta": 0.010290339729892574,
+    "paired_group_bootstrap95": [
+      0.007972258109965906,
+      0.012768288888701131
+    ]
+  },
+  "held_road_sites": {
+    "groups": 4,
+    "gp_minus_rf_macro_delta": -0.006716896266194711,
+    "paired_group_bootstrap95": [
+      -0.01827063545443847,
+      0.010347810553759086
+    ]
+  }
+}

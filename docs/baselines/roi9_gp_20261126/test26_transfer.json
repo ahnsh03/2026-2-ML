@@ -1,0 +1,467 @@
+{
+  "lock": {
+    "created_utc": "2026-11-25T15:52:24.554518+00:00",
+    "key": "release26_transfer",
+    "calibration_freeze_sha256": "68cf87f257669ca03168d7b9f4b95ea85363e168d0bc6b2ec8b37059f6458682",
+    "pack_sha256": "21abb4be5ed1d05d1f4306432a9db01f9abfc076c0d06c51c72f0fc4b4a01856",
+    "source_sha256": "9872f03f02d2ab3cf4a18ae1012f460a5324415cd23762f02f9899e3520cbbbb",
+    "rows": 144,
+    "sites": 6,
+    "minimum_calibration_distance": 49.5897635425822,
+    "rgb_pixel_duplicates_with_prior": 0,
+    "role": "Prospective setup transfer at repeated training scenes",
+    "point_and_calibration_selection": "Frozen before scoring this cohort. No refit or threshold selection from these scores."
+  },
+  "models": [
+    {
+      "name": "coverage_GP_b0_9",
+      "kind": "SpatialGP",
+      "model_sha256": "79abd83829563ed41a4116ef6ed826f6451221526685bdf16a3f7eb2925a990c",
+      "raw": {
+        "rows": 144,
+        "defined": 144,
+        "supported": 144,
+        "mae": 0.030313611507919655,
+        "bias": -0.0018961411322190756,
+        "group_macro_mae": 0.03031361150791966,
+        "group_count": 6,
+        "group_bootstrap_95": [
+          0.02341152960535683,
+          0.03706255956304867
+        ],
+        "low_iou": 59,
+        "normal_far_only": 80,
+        "spatial_counts": {
+          "-1": 0,
+          "0": 4,
+          "1": 52,
+          "2": 88,
+          "3": 0
+        },
+        "low_iou_auc": 0.994616151545364,
+        "recall_mae": [
+          0.033694564679099225,
+          0.047942176260212244
+        ],
+        "contrast_far_vs_both_auc": 0.9189248251748251,
+        "coverage90": [
+          0.9583333333333334,
+          0.9652777777777778,
+          0.7152777777777778
+        ],
+        "mean_interval_width": [
+          0.21075289326023883,
+          0.23641195629498854,
+          0.12450289966570037
+        ],
+        "sigma_far_vs_both_auc": 0.7204982517482518,
+        "sigma_global_low_auc": 0.2953140578265205
+      },
+      "calibration26": {
+        "rows": 144,
+        "defined": 144,
+        "supported": 144,
+        "mae": 0.030299782046489827,
+        "bias": 0.00041655415025739113,
+        "group_macro_mae": 0.030299782046489827,
+        "group_count": 6,
+        "group_bootstrap_95": [
+          0.02349270323745814,
+          0.03733356487060372
+        ],
+        "low_iou": 59,
+        "normal_far_only": 80,
+        "spatial_counts": {
+          "-1": 0,
+          "0": 4,
+          "1": 52,
+          "2": 88,
+          "3": 0
+        },
+        "low_iou_auc": 0.994616151545364,
+        "recall_mae": [
+          0.03378831614485059,
+          0.044988532466857675
+        ],
+        "contrast_far_vs_both_auc": 0.9189248251748251,
+        "coverage90": [
+          0.9861111111111112,
+          0.9861111111111112,
+          0.8125
+        ],
+        "mean_interval_width": [
+          0.2552670909056431,
+          0.2673932826013994,
+          0.13928551741983428
+        ],
+        "sigma_far_vs_both_auc": 0.7204982517482518,
+        "sigma_global_low_auc": 0.2953140578265205
+      },
+      "events": {
+        "low_iou": {
+          "rows": 144,
+          "positives": 59,
+          "gaussian_auc": 0.9948155533399801,
+          "gaussian_brier": 0.03362518829625285,
+          "diagonal_brier": 0.03362518829625285
+        },
+        "normal_near_good_far_weak": {
+          "rows": 144,
+          "positives": 80,
+          "gaussian_auc": 0.94453125,
+          "gaussian_brier": 0.07660102110330974,
+          "diagonal_brier": 0.07674581860135977
+        }
+      },
+      "far_vs_both_weak": {
+        "rows": 140,
+        "sigma_auc": 0.7204982517482518,
+        "near_mean_auc": 0.9868881118881119,
+        "contrast_auc": 0.9189248251748251
+      },
+      "legacy_calibration": {
+        "rows": 144,
+        "defined": 144,
+        "supported": 144,
+        "mae": 0.036491224466058805,
+        "bias": -0.0219244018526058,
+        "group_macro_mae": 0.0364912244660588,
+        "group_count": 6,
+        "group_bootstrap_95": [
+          0.028413330706433995,
+          0.04480272921327376
+        ],
+        "low_iou": 59,
+        "normal_far_only": 80,
+        "spatial_counts": {
+          "-1": 0,
+          "0": 4,
+          "1": 52,
+          "2": 88,
+          "3": 0
+        },
+        "low_iou_auc": 0.994616151545364,
+        "recall_mae": [
+          0.03630034918791567,
+          0.045842193139535664
+        ],
+        "contrast_far_vs_both_auc": 0.9189248251748251,
+        "coverage90": [
+          1.0,
+          0.9930555555555556,
+          0.9861111111111112
+        ],
+        "mean_interval_width": [
+          0.332003783855649,
+          0.32123865116009276,
+          0.2898839708403119
+        ],
+        "sigma_far_vs_both_auc": 0.7204982517482518,
+        "sigma_global_low_auc": 0.2953140578265205
+      }
+    },
+    {
+      "name": "base_GP",
+      "kind": "SpatialGP",
+      "model_sha256": "ce5feacd45c129f4fd29f9eb5070a00e5c8e46d2f3e79b1a3ff2c01b8d93ffb2",
+      "raw": {
+        "rows": 144,
+        "defined": 144,
+        "supported": 144,
+        "mae": 0.0545817858566089,
+        "bias": -0.03221869699849577,
+        "group_macro_mae": 0.05458178585660891,
+        "group_count": 6,
+        "group_bootstrap_95": [
+          0.028761905311997887,
+          0.090972608268747
+        ],
+        "low_iou": 59,
+        "normal_far_only": 80,
+        "spatial_counts": {
+          "-1": 0,
+          "0": 4,
+          "1": 52,
+          "2": 88,
+          "3": 0
+        },
+        "low_iou_auc": 0.9912263210368892,
+        "recall_mae": [
+          0.04607223583912914,
+          0.06514076899437256
+        ],
+        "contrast_far_vs_both_auc": 0.950611888111888,
+        "coverage90": [
+          0.7986111111111112,
+          0.8888888888888888,
+          0.6041666666666666
+        ],
+        "mean_interval_width": [
+          0.21903583705993343,
+          0.24939725489995304,
+          0.12040155987635805
+        ],
+        "sigma_far_vs_both_auc": 0.7803758741258742,
+        "sigma_global_low_auc": 0.2123629112662014
+      },
+      "calibration26": {
+        "rows": 144,
+        "defined": 144,
+        "supported": 144,
+        "mae": 0.05139482674851313,
+        "bias": -0.01707219147833487,
+        "group_macro_mae": 0.05139482674851314,
+        "group_count": 6,
+        "group_bootstrap_95": [
+          0.02858929131990688,
+          0.08350869750463275
+        ],
+        "low_iou": 59,
+        "normal_far_only": 80,
+        "spatial_counts": {
+          "-1": 0,
+          "0": 4,
+          "1": 52,
+          "2": 88,
+          "3": 0
+        },
+        "low_iou_auc": 0.9912263210368892,
+        "recall_mae": [
+          0.045301524855201676,
+          0.06579070688131278
+        ],
+        "contrast_far_vs_both_auc": 0.950611888111888,
+        "coverage90": [
+          0.9027777777777778,
+          0.9166666666666666,
+          0.7083333333333334
+        ],
+        "mean_interval_width": [
+          0.2902244845491757,
+          0.27028466578490756,
+          0.15905771447638611
+        ],
+        "sigma_far_vs_both_auc": 0.7803758741258742,
+        "sigma_global_low_auc": 0.2123629112662014
+      },
+      "events": {
+        "low_iou": {
+          "rows": 144,
+          "positives": 59,
+          "gaussian_auc": 0.9910269192422732,
+          "gaussian_brier": 0.059601180789813656,
+          "diagonal_brier": 0.059601180789813656
+        },
+        "normal_near_good_far_weak": {
+          "rows": 144,
+          "positives": 80,
+          "gaussian_auc": 0.9685546875,
+          "gaussian_brier": 0.0922810350277783,
+          "diagonal_brier": 0.0922810350277783
+        }
+      },
+      "far_vs_both_weak": {
+        "rows": 140,
+        "sigma_auc": 0.7803758741258742,
+        "near_mean_auc": 0.9971590909090909,
+        "contrast_auc": 0.950611888111888
+      }
+    },
+    {
+      "name": "coverage_independent",
+      "kind": "SpatialGP",
+      "model_sha256": "a4992e81b62a6c9f8a9801015e75b8cb061cbdfa59e8da0ed5237bda341d4bee",
+      "raw": {
+        "rows": 144,
+        "defined": 144,
+        "supported": 144,
+        "mae": 0.03230819146502066,
+        "bias": -0.0006244678811834935,
+        "group_macro_mae": 0.032308191465020654,
+        "group_count": 6,
+        "group_bootstrap_95": [
+          0.02514937041083702,
+          0.03948562509032888
+        ],
+        "low_iou": 59,
+        "normal_far_only": 80,
+        "spatial_counts": {
+          "-1": 0,
+          "0": 4,
+          "1": 52,
+          "2": 88,
+          "3": 0
+        },
+        "low_iou_auc": 0.9948155533399801,
+        "recall_mae": [
+          0.03380231685293082,
+          0.04735124033295138
+        ],
+        "contrast_far_vs_both_auc": 0.919798951048951,
+        "coverage90": [
+          0.9583333333333334,
+          0.9652777777777778,
+          0.7291666666666666
+        ],
+        "mean_interval_width": [
+          0.21098688123969606,
+          0.23666492155115257,
+          0.12459470675779082
+        ],
+        "sigma_far_vs_both_auc": 0.7213723776223776,
+        "sigma_global_low_auc": 0.2943170488534397
+      },
+      "calibration26": {
+        "rows": 144,
+        "defined": 144,
+        "supported": 144,
+        "mae": 0.032769829811922974,
+        "bias": 0.0034326935757996403,
+        "group_macro_mae": 0.03276982981192298,
+        "group_count": 6,
+        "group_bootstrap_95": [
+          0.025248730838339204,
+          0.04038988802107516
+        ],
+        "low_iou": 59,
+        "normal_far_only": 80,
+        "spatial_counts": {
+          "-1": 0,
+          "0": 4,
+          "1": 52,
+          "2": 88,
+          "3": 0
+        },
+        "low_iou_auc": 0.9948155533399801,
+        "recall_mae": [
+          0.034171888187148614,
+          0.04490742750518123
+        ],
+        "contrast_far_vs_both_auc": 0.919798951048951,
+        "coverage90": [
+          1.0,
+          0.9791666666666666,
+          0.8333333333333334
+        ],
+        "mean_interval_width": [
+          0.2754397250630831,
+          0.2798459321294932,
+          0.14840605866594003
+        ],
+        "sigma_far_vs_both_auc": 0.7213723776223776,
+        "sigma_global_low_auc": 0.2943170488534397
+      },
+      "events": {
+        "low_iou": {
+          "rows": 144,
+          "positives": 59,
+          "gaussian_auc": 0.9952143569292123,
+          "gaussian_brier": 0.03440491821258315,
+          "diagonal_brier": 0.03440491821258315
+        },
+        "normal_near_good_far_weak": {
+          "rows": 144,
+          "positives": 80,
+          "gaussian_auc": 0.9546875,
+          "gaussian_brier": 0.07507276933047656,
+          "diagonal_brier": 0.07507276933047656
+        }
+      },
+      "far_vs_both_weak": {
+        "rows": 140,
+        "sigma_auc": 0.7213723776223776,
+        "near_mean_auc": 0.9888548951048951,
+        "contrast_auc": 0.919798951048951
+      }
+    },
+    {
+      "name": "coverage_RF",
+      "kind": "RF",
+      "model_sha256": "2fc1bb79a1b88bc02a1bfa50b7efdf2c2e6e0ed9a32f222073c2149dcd58514b",
+      "raw": {
+        "rows": 144,
+        "defined": 144,
+        "supported": 144,
+        "mae": 0.020023271778027082,
+        "bias": -0.0033297274689554814,
+        "group_macro_mae": 0.020023271778027086,
+        "group_count": 6,
+        "group_bootstrap_95": [
+          0.014977231967429422,
+          0.025106965565301686
+        ],
+        "low_iou": 59,
+        "normal_far_only": 80,
+        "spatial_counts": {
+          "-1": 0,
+          "0": 4,
+          "1": 52,
+          "2": 88,
+          "3": 0
+        },
+        "low_iou_auc": 0.99740777666999
+      }
+    },
+    {
+      "name": "coverage_RFaux",
+      "kind": "RFaux",
+      "model_sha256": "8f7c74fc94cf6296302884dc9cbb69fea4660f20fe74d143a1de9345293b1d98",
+      "raw": {
+        "rows": 144,
+        "defined": 144,
+        "supported": 144,
+        "mae": 0.02215622563770223,
+        "bias": -0.005646126228901802,
+        "group_macro_mae": 0.022156225637702226,
+        "group_count": 6,
+        "group_bootstrap_95": [
+          0.015051388382546606,
+          0.029108272528571177
+        ],
+        "low_iou": 59,
+        "normal_far_only": 80,
+        "spatial_counts": {
+          "-1": 0,
+          "0": 4,
+          "1": 52,
+          "2": 88,
+          "3": 0
+        },
+        "low_iou_auc": 0.993419740777667,
+        "recall_mae": [
+          0.021644552353389815,
+          0.03706690579096031
+        ],
+        "contrast_far_vs_both_auc": 0.9519230769230769
+      }
+    },
+    {
+      "name": "base_RF",
+      "kind": "RF",
+      "model_sha256": "9b23a671052edc5f8593c4fba34f618df71778c7b74127af1aa756d4e2458d7d",
+      "raw": {
+        "rows": 144,
+        "defined": 144,
+        "supported": 144,
+        "mae": 0.05629918579938731,
+        "bias": -0.033117156846718315,
+        "group_macro_mae": 0.05629918579938731,
+        "group_count": 6,
+        "group_bootstrap_95": [
+          0.03188022969550439,
+          0.087085013813873
+        ],
+        "low_iou": 59,
+        "normal_far_only": 80,
+        "spatial_counts": {
+          "-1": 0,
+          "0": 4,
+          "1": 52,
+          "2": 88,
+          "3": 0
+        },
+        "low_iou_auc": 0.9830508474576272
+      }
+    }
+  ]
+}
