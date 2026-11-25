@@ -1,0 +1,22 @@
+{
+  "schema": "portable-forest-validation-1",
+  "source_sha256": {
+    "src/quality_estimation/portable_forest.py": "b33cc729b2f1f4bcf3307f6945467622a5d0182ee867c88196f84bdc7dac36c8",
+    "src/quality_estimation/region_inference.py": "e607ad2ff9061046b7937ec97e5b524fbad8be898fdc625f7f4c6da28dc3f49b",
+    "scripts/export_portable_forests.py": "43ad836d7c7f286d2b01306ebb60f22feff1a5467dfee041b2d4b4745a3bf11b",
+    "scripts/experiments/roi9_gp_20261125/validate_portable_forests.py": "ce11d593099abb65c6939395d63641c3ac77199cbc0718e6487b8d4c0285ee24",
+    "tests/test_portable_forest.py": "1f1b12413a37f286069a380c493f47d0165791c9ca4ea948ef52b8baedf35770",
+    "tests/test_portable_forest_cli.py": "a266f5504bf1836d19bd944348eba1fbf12507187a0b00ab0ec91cba94678543"
+  },
+  "quality_rows": 96,
+  "environment_rows": 432,
+  "has_physical_rtx40_gpu_test": false,
+  "cli_rtx40": {
+    "quality_rf": true,
+    "weather": true,
+    "uses_semantic": false,
+    "feature_replay_max_difference": 9.313225746154785e-10,
+    "prediction_difference": 0.0
+  },
+  "limitations": "CPU inference in both profile images; no new training, live ROS, throughput claim or quality-policy adoption."
+}

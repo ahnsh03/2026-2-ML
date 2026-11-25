@@ -1,0 +1,41 @@
+{
+  "python": "3.12.13",
+  "numpy": "2.5.5",
+  "recipe_sha256": "8613f2d36955263c6c5a377e49e882ce55fad5eef5d1363d092380bb6207609c",
+  "inputs_sha256": "4d19f80daf9ceca66f1ae0182d36e97b0b7099d4ded9e56b321aacf1be382402",
+  "tasks": {
+    "quality_rf": {
+      "rows": 96,
+      "dimensions": 28,
+      "maximum_prediction_difference": 0.0,
+      "inference_batch_seconds": 0.029737500997725874,
+      "artifact_sha256": "aa5183bf94891f7216e3b8047cc503930eb2f4651c1e93a1c3dcd5d0487e9beb"
+    },
+    "weather": {
+      "rows": 432,
+      "dimensions": 80,
+      "maximum_prediction_difference": 0.0,
+      "inference_batch_seconds": 0.024775721001788042,
+      "artifact_sha256": "19bdf230dc7bec9184a02f963fd3a1b8424ec68dbae6fb650551ec634fa03b64",
+      "changed_class_ids": 0,
+      "maximum_probability_difference": 0.0
+    },
+    "hour": {
+      "rows": 432,
+      "dimensions": 160,
+      "maximum_prediction_difference": 0.0,
+      "inference_batch_seconds": 0.028313443002843997,
+      "artifact_sha256": "e421ee23a280740fb1f0e989b70173203bc2a49c86ee889c607426478a965808",
+      "changed_class_ids": 0,
+      "maximum_probability_difference": 0.0
+    },
+    "environment": {
+      "rows": 432,
+      "dimensions": 54,
+      "maximum_prediction_difference": 0.0,
+      "inference_batch_seconds": 0.005151975001354003,
+      "artifact_sha256": "4b320a39f7169dfa05f97072a7be19455fbf19cac861cf3cb18aa737e27ce2e8",
+      "changed_class_ids": 0
+    }
+  }
+}

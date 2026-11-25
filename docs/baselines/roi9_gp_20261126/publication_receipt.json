@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-11-25T18:05:18.058677+00:00",
+  "created_utc": "2026-11-25T18:16:52.288374+00:00",
   "source_sha256": "fc00075700e700e21312296de29c2ea06dba39a87edb25e04d3c870aec1fed51",
   "files": {
     "10_spatial_posterior.png": "7d930a3f4594bb6666a8169530c9f023be94788468d72e950b813024c10ca6dd",
@@ -8,7 +8,7 @@
     "09_setup_transfer.png": "a118f4e3465e50a0153a6d7541ca6582154103703a6a0856d4fc1475b8da15ef",
     "03_sigma_and_spatial_means.png": "5df5163f2a3d39f1714de019f8e61f5c51bbd89f19a7e865461bc48ca1e02670",
     "05_review_tradeoff.png": "b002658e0d29fb408b76293ec75c52101575c33e1db24830a69f367271416a42",
-    "README.md": "e41420eb6982d41272fa5f63dd96abe25012f67e1fad522ea1c0e6a8dfed7a54",
+    "README.md": "79dfb2a5823c8fe8a9d1527fdb929239049372d9bccc9e205819a6528bd2a260",
     "06_calibration_coverage_width.png": "5ff3fc60d3e12cb5161e705e624758a305c987f31611d853e92a9c251ea60299",
     "test26_heldroads.json": "0f3aa25df18a0a4909eb728d93b3c41dad372e786002c4b389a3aee58210b978",
     "test26_transfer.json": "dd8382dfef7de550754be120aa760a4e37164c077d8fd5b0428c4c82399016a0",
@@ -60,6 +60,7 @@
     "followup/paired_far_effects.json": "82a03f9dc5f0f6ecfbf5632c29dd70549fb1a25915b8a3e4dd844b44e12595c9",
     "followup/source_binding.json": "ef98bb0fcc2924ad1e0ad1423ff67b914beed92cc2084eb1131595ee4fe14550",
     "followup/14_far_followup.png": "9fdbc388b6b3a08142069bccecfc2e43f4f321f1446f061563867e3fbbac069e",
-    "followup/inventory_audit.json": "8b6297694343b7a4bb7d5ba226b46812026aeaa943d4aef5bbc7f7898f2423e1"
+    "followup/inventory_audit.json": "8b6297694343b7a4bb7d5ba226b46812026aeaa943d4aef5bbc7f7898f2423e1",
+    "portable/receipt.json": "1d3035476304ec4350509cd42192f8f80a3f867d7cb13b3020284658fb80e4b3"
   }
 }
