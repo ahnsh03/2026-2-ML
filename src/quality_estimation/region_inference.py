@@ -23,6 +23,9 @@ def main():
     parser.add_argument("--recipe", required=True, type=Path)
     parser.add_argument("--task", required=True)
     parser.add_argument("--model", type=Path)
+    parser.add_argument("--calibration", type=Path)
+    parser.add_argument("--perception-checkpoint-sha256")
+    parser.add_argument("--simulator-release")
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
     specification = json.loads(args.recipe.read_text())
@@ -56,7 +59,14 @@ def main():
         if digest != recipe["model_sha256"]:
             parser.error("model checksum differs from frozen recipe")
         result["model_sha256"] = digest
-        if recipe["kind"] == "centroids":
+        if recipe["kind"] == "SpatialGP":
+            from .spatial_predictor import FrozenSpatialPredictor
+            if args.perception_checkpoint_sha256 != specification['checkpoint_sha256']:
+                parser.error('actual perception checkpoint SHA is required for the spatial GP input contract')
+            predictor=FrozenSpatialPredictor(args.recipe,args.model,profile,task=args.task,
+                                             calibration_path=args.calibration,simulator_release=args.simulator_release)
+            result.update(predictor.predict_vector(vector))
+        elif recipe["kind"] == "centroids":
             with np.load(args.model, allow_pickle=False) as artifact:
                 if artifact["ordered_features"].tolist() != columns:
                     parser.error("centroid feature order differs")

@@ -1,10 +1,13 @@
 <launch>
   <!-- Shared packet/runtime profile for supported MORAI simulator releases. -->
   <arg name="runtime_profile" default="morai_udp"/>
+  <arg name="simulator_release" default="26r1"/>
+  <arg name="invert_steer" default="$(eval arg('simulator_release') == '26r1')"/>
+  <arg name="cmd_payload_bytes" default="$(eval 27 if arg('simulator_release') == '26r1' else 23)"/>
   <arg name="transport_profile" default="local"/>
   <arg name="stream_profile" default="competition"/>
   <arg name="enable_ego_status" default="true"/>
-  <arg name="enable_competition_status" default="true"/>
+  <arg name="enable_competition_status" default="$(eval arg('simulator_release') == 'molitcomp03')"/>
   <arg name="competition_status_required" default="false"/>
   <arg name="enable_object" default="$(eval arg('stream_profile') == 'development')"/>
   <arg name="enable_collision" default="true"/>
@@ -36,8 +39,9 @@
     <param name="cmd_port"           value="$(arg cmd_port)"/>
     <param name="max_steer_deg"      value="$(arg max_steer_deg)"/>
     <param name="timestamp_mode"     value="$(arg timestamp_mode)"/>
-    <param name="cmd_payload_bytes"  value="23"/>
-    <param name="invert_steer"       value="false"/>
+    <param name="simulator_release" value="$(arg simulator_release)"/>
+    <param name="cmd_payload_bytes"  value="$(arg cmd_payload_bytes)"/>
+    <param name="invert_steer"       value="$(arg invert_steer)"/>
     <param name="ego_velocity_in_ms" value="true"/>
     <param name="frame_id"           value="base_link"/>
   </node>

@@ -1,0 +1,8 @@
+FROM pytorch/pytorch:2.1.2-cuda11.8-cudnn8-runtime@sha256:971fbeae82c0a5a7a970a264a8b8ce1c3426aa79df7111004ad2bc2640f7d89c
+RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+COPY config/requirements-quality.txt /tmp/requirements-quality.txt
+RUN pip install --no-cache-dir --timeout 180 --retries 8 -r /tmp/requirements-quality.txt \
+    PyYAML==6.0.3 pillow==10.4.0 tqdm==4.67.1 matplotlib==3.7.5
+ENV PYTHONDONTWRITEBYTECODE=1
+WORKDIR /ml

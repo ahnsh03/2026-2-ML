@@ -11,6 +11,7 @@
 set -euo pipefail
 
 ML_REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+gpu_profile_override="${ML_GPU_PROFILE:-}"
 CONFIG="${ML_LOCAL_ENV:-$ML_REPO/config/local.env}"
 if [[ -f "$CONFIG" ]]; then
   set -a
@@ -20,6 +21,9 @@ if [[ -f "$CONFIG" ]]; then
 fi
 ML_WS="${ML_WS:-$(dirname "$ML_REPO")}"
 ML_OUTPUT_ROOT="${ML_OUTPUT_ROOT:-$ML_WS/outputs}"
+source "$ML_REPO/scripts/gpu_profiles.sh"
+ml_resolve_gpu_profile "${gpu_profile_override:-${ML_GPU_PROFILE:-auto}}"
+PERCEPTION_IMAGE="$ML_RESOLVED_IMAGE"
 
 if [[ $# -eq 0 ]]; then
   echo "usage: $0 <command...>" >&2
@@ -51,6 +55,7 @@ done
 mkdir -p "$ML_OUTPUT_ROOT"
 
 echo "[DATA]   $PERCEPTION_DATA -> /data (ro)" >&2
+echo "[GPU]    $ML_RESOLVED_PROFILE -> $PERCEPTION_IMAGE" >&2
 echo "[CKPT]   $PERCEPTION_CKPT_ROOT -> /ckpt (ro)" >&2
 echo "[OUTPUT] $ML_OUTPUT_ROOT -> /outputs (rw)" >&2
 
@@ -73,5 +78,6 @@ exec docker run --rm "${tty_flags[@]}" --gpus all --shm-size 8g \
   -e ML_OUTPUT_ROOT=/outputs \
   -e PYTHONPATH=/ml/src \
   -e PYTHONDONTWRITEBYTECODE=1 \
+  -e ML_GPU_PROFILE="$ML_RESOLVED_PROFILE" \
   -w /ml \
   "$PERCEPTION_IMAGE" "$@"

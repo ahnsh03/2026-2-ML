@@ -1,0 +1,12 @@
+# Python 3.11 runtime in the CUDA 12.8 PyTorch image.
+# Artifact exports use NumPy arrays and explicit schemas to avoid pickle-only coupling.
+numpy==2.2.6
+scipy==1.15.3
+scikit-learn==1.9.1
+joblib==1.6.0
+threadpoolctl==3.8.0
+opencv-python-headless==5.1.0.95
+PyYAML==6.0.3
+pillow==11.2.1
+tqdm==4.67.1
+matplotlib==3.10.3

@@ -106,7 +106,10 @@ def load_target_model(
     import torch
     from twinlite_morai import configure_twinlite_task, load_external_twinlite, task_from_checkpoint
 
-    state = torch.load(str(checkpoint), map_location="cpu")
+    # Project-owned training checkpoints include task/config metadata. PyTorch 2.6+
+    # changed weights_only's default; keep the same explicit trusted-checkpoint
+    # semantics on the legacy CUDA 11.8 and Blackwell CUDA 12.8 runtimes.
+    state = torch.load(str(checkpoint), map_location="cpu", weights_only=False)
     use_ema = weights == "ema" or (weights == "auto" and state.get("ema_state_dict") is not None)
     if use_ema and state.get("ema_state_dict") is None:
         raise RuntimeError("체크포인트에 EMA 가중치가 없습니다")

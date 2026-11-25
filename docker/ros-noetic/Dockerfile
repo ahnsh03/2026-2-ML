@@ -37,7 +37,7 @@ RUN pip3 install --no-cache-dir --upgrade "pip<24.1"
 # 시스템 Python 3.8 용 CUDA PyTorch. src/traffic_light/live_infer.py 가 이
 # 인터프리터를 사용한다. 기본 이미지는 RTX 40 시리즈용이며 신호등 ResNet18과
 # 센서퓨전 YOLO가 모두 이 CUDA 11.8 환경을 사용한다. RTX 50 전용 Python/CUDA
-# 환경은 이 파일이 아니라 Dockerfile.rtx50에서 추가한다.
+# 환경은 docker/perception/Dockerfile.rtx50의 별도 추론 컨테이너로 사용한다.
 RUN pip3 install --no-cache-dir \
       torch==2.1.2 \
       torchvision==0.16.2 \

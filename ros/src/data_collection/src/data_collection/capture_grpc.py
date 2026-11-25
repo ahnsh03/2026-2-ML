@@ -33,7 +33,7 @@ def resolve_proto_root(package_path, configured=""):
 
 
 class MoraiCaptureClient(object):
-    def __init__(self, address, port, proto_root, rpc_timeout_sec=2.0):
+    def __init__(self, address, port, proto_root, rpc_timeout_sec=2.0, read_sim_time=True):
         if proto_root not in sys.path:
             sys.path.insert(0, proto_root)
         try:
@@ -52,6 +52,7 @@ class MoraiCaptureClient(object):
         self._empty_type = Empty
         self._request_type = SensorDataSaveConfig
         self._timeout = float(rpc_timeout_sec)
+        self._read_sim_time = bool(read_sim_time)
         target = "{}:{}".format(address, int(port))
         self._channel = grpc.insecure_channel(
             target,
@@ -85,7 +86,7 @@ class MoraiCaptureClient(object):
         request.is_custom_file_name = True
         request.custom_file_name = custom_name
         request.file_dir = file_dir or ""
-        sim_time_raw = self._sim_time_raw()
+        sim_time_raw = self._sim_time_raw() if self._read_sim_time else None
         started = time.monotonic()
         response = self._sensor.SaveSensorData(request, timeout=self._timeout)
         latency_ms = (time.monotonic() - started) * 1000.0
@@ -97,6 +98,7 @@ class MoraiCaptureClient(object):
             "grpc_custom_message": str(getattr(response, "custom_message", "")),
             "rpc_latency_ms": round(latency_ms, 3),
             "morai_sim_time_raw": sim_time_raw,
+            "sim_time_read_enabled": self._read_sim_time,
             "morai_sim_time_unit": "us" if sim_time_raw is not None else None,
             "morai_sim_time_ns": (
                 int(sim_time_raw) * 1000 if sim_time_raw is not None else None

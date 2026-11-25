@@ -126,32 +126,39 @@ def roi7_iou_feature_schema(profile):
     }
 
 
-def extract_global_uncertainty(marking_probability):
+def extract_global_uncertainty(marking_probability, names=None):
     """Summarize full-resolution softmax on the 360x640 unpadded model image."""
     p = marking_probability
     if (p.shape != (4, 360, 640) or p.dtype != np.float32 or not np.isfinite(p).all()
             or p.min() < 0 or p.max() > 1 or not np.allclose(p.sum(0), 1., atol=2e-6, rtol=0)):
         raise ValueError("expected unpadded float32 four-class softmax at 360x640")
-    entropy = -(p * np.log(np.maximum(p, np.finfo(np.float32).tiny))).sum(0) / np.log(4)
-    flat = entropy.ravel()
-    count = (flat.size + 9) // 10
-    top_entropy = np.partition(flat, flat.size - count)[-count:].mean()
-
-    window, stride = 32, 16
-    height, width = entropy.shape
-    # Include the final edge-aligned window when the regular grid misses it.
-    y = np.unique(np.r_[np.arange(0, height - window + 1, stride), height - window])[:, None]
-    x = np.unique(np.r_[np.arange(0, width - window + 1, stride), width - window])[None, :]
-    sums = cv2.integral(entropy, sdepth=cv2.CV_64F)
-    patch_entropy = (sums[y + window, x + window] - sums[y + window, x]
-                     - sums[y, x + window] + sums[y, x]).max() / window**2
-
-    lane = np.isin(p.argmax(axis=0), (1, 2))
-    margin = 0.
-    if lane.any():
-        top_two = np.partition(p[:, lane], 2, axis=0)[-2:]
-        margin = (top_two[1] - top_two[0]).mean()
-    return np.asarray([top_entropy, patch_entropy, margin], dtype=np.float32)
+    requested=list(UNCERTAINTY_FEATURES) if names is None else list(names)
+    if not requested or len(set(requested))!=len(requested) or not set(requested)<=set(UNCERTAINTY_FEATURES):
+        raise ValueError('unknown or duplicate uncertainty summaries')
+    values={}
+    if set(requested)&{'global.top_entropy','global.patch_entropy'}:
+        entropy = -(p * np.log(np.maximum(p, np.finfo(np.float32).tiny))).sum(0) / np.log(4)
+    if 'global.top_entropy' in requested:
+        flat = entropy.ravel()
+        count = (flat.size + 9) // 10
+        values['global.top_entropy'] = np.partition(flat, flat.size - count)[-count:].mean()
+    if 'global.patch_entropy' in requested:
+        window, stride = 32, 16
+        height, width = entropy.shape
+        # Include the final edge-aligned window when the regular grid misses it.
+        y = np.unique(np.r_[np.arange(0, height - window + 1, stride), height - window])[:, None]
+        x = np.unique(np.r_[np.arange(0, width - window + 1, stride), width - window])[None, :]
+        sums = cv2.integral(entropy, sdepth=cv2.CV_64F)
+        values['global.patch_entropy'] = (sums[y + window, x + window] - sums[y + window, x]
+                         - sums[y, x + window] + sums[y, x]).max() / window**2
+    if 'global.lane_margin' in requested:
+        lane = np.isin(p.argmax(axis=0), (1, 2))
+        margin = 0.
+        if lane.any():
+            top_two = np.partition(p[:, lane], 2, axis=0)[-2:]
+            margin = (top_two[1] - top_two[0]).mean()
+        values['global.lane_margin']=margin
+    return np.asarray([values[name] for name in requested],dtype=np.float32)
 
 
 def extract_roi7_iou_features(rgb, head_maps, marking_probability, profile):

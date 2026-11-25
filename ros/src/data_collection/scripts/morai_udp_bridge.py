@@ -210,8 +210,14 @@ class MoraiUdpBridge(object):
         self.cmd_ip = p("~cmd_ip", "127.0.0.1")
         self.cmd_port = p("~cmd_port", 9093)          # MORAI 의 Host PORT
         self.max_steer_deg = float(p("~max_steer_deg", 40.0))
-        self.cmd_bytes = int(p("~cmd_payload_bytes", 27))
-        self.invert_steer = bool(p("~invert_steer", False))
+        self.simulator_release = str(p("~simulator_release", "26r1"))
+        if self.simulator_release not in ("26r1", "molitcomp03"):
+            raise ValueError("simulator_release must be 26r1 or molitcomp03")
+        self.cmd_bytes = int(p("~cmd_payload_bytes", 27 if self.simulator_release == "26r1" else 23))
+        if (self.cmd_bytes not in (23, 27) or not math.isfinite(self.max_steer_deg)
+                or self.max_steer_deg <= 0):
+            raise ValueError("command payload must be 23/27 bytes and steering range positive")
+        self.invert_steer = bool(p("~invert_steer", self.simulator_release == "26r1"))
         self.frame_id = p("~frame_id", "base_link")
         self.ego_vel_ms = bool(p("~ego_velocity_in_ms", True))
         self.runtime_profile = str(p("~runtime_profile", "morai_udp"))
@@ -223,7 +229,7 @@ class MoraiUdpBridge(object):
             raise ValueError("lan2lan transport only permits the competition stream profile")
         self.enabled_inputs = {
             "ego": bool(p("~enable_ego_status", True)),
-            "competition": bool(p("~enable_competition_status", True)),
+            "competition": bool(p("~enable_competition_status", self.simulator_release == "molitcomp03")),
             "obj": bool(p("~enable_object", False)),
             "col": bool(p("~enable_collision", True)),
         }

@@ -1,0 +1,5 @@
+FROM pytorch/pytorch:2.7.1-cuda12.8-cudnn9-runtime@sha256:c16f4c749e2d9e96878875cdf6cc45cddda1d1a36fddd371dd6f2360f1b6e2a2
+COPY docker/perception/requirements-rtx50.txt /tmp/requirements-rtx50.txt
+RUN pip install --no-cache-dir --timeout 180 --retries 8 --resume-retries 8 -r /tmp/requirements-rtx50.txt
+ENV PYTHONDONTWRITEBYTECODE=1
+WORKDIR /ml

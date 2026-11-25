@@ -6,7 +6,7 @@
       "listEgoNetworkInfo": [
         {
           "netType": 1,
-          "PUBSUB_TYPE": 786,
+          "PUBSUB_TYPE": 771,
           "Division_TYPE": 3,
           "config": {
             "commType": 0,
@@ -71,8 +71,8 @@
             }
           },
           "EgoCtrlConfig": {
-            "egoCtrlMode": 2,
-            "_PUBSUB_TYPE": 0,
+            "egoCtrlMode": 3,
+            "_PUBSUB_TYPE": 771,
             "commType": 1,
             "ctrlSleepTime": 0.016666999086737633,
             "udpConfig": {
@@ -82,7 +82,7 @@
               "destinationPort": 9094,
               "receiveTimeout": 50,
               "isBufferThreadActivated": true,
-              "receiveBufferSize": 531,
+              "receiveBufferSize": 59,
               "sizeOfAuxHeader": 12
             },
             "rosConfig": {

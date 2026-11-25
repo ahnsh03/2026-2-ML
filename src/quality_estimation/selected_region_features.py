@@ -10,6 +10,7 @@ from .region_candidates import (
 )
 from .roi10 import _image_fields, _require_rgb
 from .spatial_features import UNCERTAINTY_FEATURES, extract_global_uncertainty
+from .road_structure_features import MORPHOLOGY, extract_road_structure, ordered_features as road_features
 
 
 def extract_selected_features(rgb, head_maps, profile, ordered_features, *, marking_probability=None):
@@ -19,6 +20,7 @@ def extract_selected_features(rgb, head_maps, profile, ordered_features, *, mark
     locations = {name: kind for kind in ("rgb", "output", "relations", "histograms")
                  for name in schema[kind]}
     locations.update({name: "uncertainty" for name in UNCERTAINTY_FEATURES})
+    locations.update({name: "morphology" for name in road_features()})
     if not ordered_features or len(set(ordered_features)) != len(ordered_features):
         raise ValueError("expected a nonempty unique ordered feature list")
     if any(name not in locations for name in ordered_features):
@@ -65,11 +67,19 @@ def extract_selected_features(rgb, head_maps, profile, ordered_features, *, mark
     histogram_columns = [name for name in ordered_features if locations[name] == "histograms"]
     if histogram_columns:
         nodes.update(zip(histogram_columns, native_histograms(rgb, profile, histogram_columns)))
-    if any(locations[name] == "uncertainty" for name in ordered_features):
+    raw_kinds={locations[name] for name in ordered_features}&{"uncertainty","morphology"}
+    if raw_kinds:
         if marking_probability is None or marking_probability.shape != (4, 384, 640):
             raise ValueError("raw uncertainty features require float32 four-class 384x640 softmax")
-        values = extract_global_uncertainty(marking_probability[:, 12:372])
-        nodes.update(zip(UNCERTAINTY_FEATURES, values))
+    if "uncertainty" in raw_kinds:
+        names=[name for name in ordered_features if locations[name]=='uncertainty']
+        values = extract_global_uncertainty(marking_probability[:, 12:372],names)
+        nodes.update(zip(names, values))
+    if "morphology" in raw_kinds:
+        scopes=list(dict.fromkeys(name.split(".")[0] for name in ordered_features if locations[name]=="morphology"))
+        values=extract_road_structure(marking_probability[:,12:372],profile,scopes)
+        names=[scope+"."+stat for scope in scopes for stat in MORPHOLOGY]
+        nodes.update(zip(names,values))
     result = []
     for name in ordered_features:
         if locations[name] == "relations":

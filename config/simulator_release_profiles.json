@@ -1,0 +1,48 @@
+{
+  "version": "morai-release-profiles-1",
+  "active_release": "26r1",
+  "profiles": {
+    "26r1": {
+      "simulator_release": "26.R1",
+      "network_controller_pubsub_type": 771,
+      "network_ego_pubsub_type": 770,
+      "invert_steer": true,
+      "command_payload_bytes": 27,
+      "network_receive_buffer_size": 59,
+      "command_control_mode": 2,
+      "ros_command_topic": "/ctrl_cmd",
+      "ros_message": "morai_msgs/CtrlCmd",
+      "ros_steering_units": "radians, left positive before transport inversion",
+      "acceptance": "Release-schema reference and prior local steering convention; active-instance topic and low-speed turn acceptance pending",
+      "network_source_export_control_type": 786,
+      "network_import_ego_ctrl_mode": 3,
+      "transport": "normalized internal ROS to UDP",
+      "native_ros_acceptance": "Direct simulator ROS message-version mapping is not yet validated"
+    },
+    "molitcomp03": {
+      "simulator_release": "25.S4.MolitComp03",
+      "network_controller_pubsub_type": 771,
+      "network_ego_pubsub_type": 295,
+      "invert_steer": false,
+      "command_payload_bytes": 23,
+      "network_receive_buffer_size": 55,
+      "command_control_mode": 2,
+      "ros_command_topic": "/ctrl_cmd",
+      "ros_message": "morai_msgs/CtrlCmd",
+      "ros_steering_units": "radians, left positive before transport inversion",
+      "acceptance": "Historical collection profile",
+      "network_source_export_control_type": 771,
+      "network_import_ego_ctrl_mode": 3,
+      "transport": "normalized internal ROS to UDP",
+      "native_ros_acceptance": "Direct simulator ROS message-version mapping is not yet validated"
+    }
+  },
+  "notes": [
+    "Network PUBSUB_TYPE differs from the control_mode byte inside a UDP command.",
+    "The release templates differ while the normalized ROS command is shared.",
+    "Steering inversion is applied exactly once at the transport boundary.",
+    "The inspected 26R1 controller uses27 payload bytes/59 datagram bytes; the legacy profile uses23/55. Compatibility overrides require instance acceptance.",
+    "Archived collection provenance stays with its recorded release.",
+    "Historical 26R1 export value 786 selects TrajectoryTrackingCmd. The verified UDP import selects MoraiCmdController 771 for both releases and JSON AutoMode 3, while the UDP command byte remains 2."
+  ]
+}
