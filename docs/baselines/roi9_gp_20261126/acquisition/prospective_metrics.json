@@ -1,0 +1,1500 @@
+{
+  "scope": "Prospective same-map four-road quality-GP label-acquisition comparison. All arms/budgets frozen before fresh capture; no perception retraining, new calibration, operational failure definition or update adoption.",
+  "test_rows": 96,
+  "test_sites": 4,
+  "first_test_capture": "2026-11-25T18:42:43.413967+00:00",
+  "models_frozen_utc": "2026-11-25T18:41:23.612497+00:00",
+  "parent_model_sha256": "f802ab47b64608aa0c336c244eef390ae43d46f2548d6d74a66f9a6350c3b8b6",
+  "test_pack_sha256": "2c69b4f5eb579e8ffd2b214524a5967a99fc9973f34465745ae28be6a2252a59",
+  "contrasts": {
+    "4": {
+      "conditional_minus_probability": {
+        "sites": 4,
+        "site_mae_differences": [
+          -0.000491308838408748,
+          -0.00042305253708133095,
+          -0.00040133772835389964,
+          -0.003453366594474823
+        ],
+        "mean_difference": -0.0011922664245797004,
+        "site_bootstrap95": [
+          -0.00269578808012645,
+          -0.0004121951327176153
+        ]
+      },
+      "conditional_minus_random_seed_mean": {
+        "sites": 4,
+        "site_mae_differences": [
+          -0.0001249630523334211,
+          0.00017404313587349174,
+          6.812577951628707e-05,
+          -0.0016908531599054838
+        ],
+        "mean_difference": -0.0003934118242122815,
+        "site_bootstrap95": [
+          -0.001251108425050041,
+          0.0001210844576948894
+        ]
+      },
+      "conditional_minus_parent": {
+        "sites": 4,
+        "site_mae_differences": [
+          -0.0001105119875786098,
+          0.0002633535088236577,
+          0.00016693565678585487,
+          -0.0019377073699590047
+        ],
+        "mean_difference": -0.0004044825479820255,
+        "site_bootstrap95": [
+          -0.0014115466132727898,
+          0.0002151445828047563
+        ]
+      }
+    },
+    "8": {
+      "conditional_minus_probability": {
+        "sites": 4,
+        "site_mae_differences": [
+          -0.0012689385000233047,
+          -0.000771152641884737,
+          -0.0007723453490410259,
+          -0.00475401378232998
+        ],
+        "mean_difference": -0.001891612568319762,
+        "site_bootstrap95": [
+          -0.0037585966740077414,
+          -0.0007717489954628814
+        ]
+      },
+      "conditional_minus_random_seed_mean": {
+        "sites": 4,
+        "site_mae_differences": [
+          -0.0009720328339198336,
+          8.9836841127372e-05,
+          -0.0002746796971894727,
+          -0.0014628134034496143
+        ],
+        "mean_difference": -0.0006549222733578872,
+        "site_bootstrap95": [
+          -0.001217423118684724,
+          -9.242142803105036e-05
+        ]
+      },
+      "conditional_minus_parent": {
+        "sites": 4,
+        "site_mae_differences": [
+          -0.0007720958412013382,
+          0.00021510441828254123,
+          -0.00016871102107046676,
+          -0.002279902847059853
+        ],
+        "mean_difference": -0.0007514013227622792,
+        "site_bootstrap95": [
+          -0.0017521048905625065,
+          2.3196698606037236e-05
+        ]
+      }
+    },
+    "16": {
+      "conditional_minus_probability": {
+        "sites": 4,
+        "site_mae_differences": [
+          -0.0016362339694556763,
+          -0.0007216476719322795,
+          -0.0011785167850536654,
+          -0.00474942085022486
+        ],
+        "mean_difference": -0.0020714548191666203,
+        "site_bootstrap95": [
+          -0.0038566948339320613,
+          -0.0009500822284929725
+        ]
+      },
+      "conditional_minus_random_seed_mean": {
+        "sites": 4,
+        "site_mae_differences": [
+          -0.0016259456026274932,
+          0.0007167342705215185,
+          -0.00081630749319863,
+          -0.0007960785777280585
+        ],
+        "mean_difference": -0.0006303993507581658,
+        "site_bootstrap95": [
+          -0.0014184788464026345,
+          0.0003334738295914814
+        ]
+      },
+      "conditional_minus_parent": {
+        "sites": 4,
+        "site_mae_differences": [
+          -0.0011603226994773563,
+          0.00041716142236891685,
+          -0.0004262652909214071,
+          -0.0026470558650245127
+        ],
+        "mean_difference": -0.0009541206082635898,
+        "site_bootstrap95": [
+          -0.0020918582214987363,
+          2.279039190734855e-05
+        ]
+      }
+    }
+  },
+  "models": [
+    {
+      "method": "rf_mean",
+      "budget": 4,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.046840774712768964,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.056907732726104644,
+            "acq_20261126__release26_site401": 0.046192634018482566,
+            "acq_20261126__release26_site402": 0.035619867803452526,
+            "acq_20261126__release26_site403": 0.04864286430303614
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004646429928849956,
+          "mean_latent_variance": 0.0009180693778519794
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05853838534194491,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07569607077458862,
+            "acq_20261126__release26_site401": 0.05931412857258184,
+            "acq_20261126__release26_site402": 0.0677021639421862,
+            "acq_20261126__release26_site403": 0.03144117807842298
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005846909319021816,
+          "mean_latent_variance": 0.0011558083314864612
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07689515085162403,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06546201751389312,
+            "acq_20261126__release26_site401": 0.08962260671842603,
+            "acq_20261126__release26_site402": 0.048281818354401505,
+            "acq_20261126__release26_site403": 0.10421416081977547
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.0016220787604645885,
+          "mean_latent_variance": 0.00032189067001164086
+        }
+      },
+      "q_variance_ratio": 0.9995552606637087,
+      "q_latent_variance_ratio": 0.9977531930889798,
+      "pool_unique_sites": 1,
+      "acquired_whole_iou_mean": 0.1013205498456955,
+      "model_sha256": "9575596d858b34985e95626e03639e25c96f18d953bf5e983dc1173e795eeb9f"
+    },
+    {
+      "method": "global_mean",
+      "budget": 4,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.047300075482437,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05711172338390483,
+            "acq_20261126__release26_site401": 0.046462610998797116,
+            "acq_20261126__release26_site402": 0.03608564211549853,
+            "acq_20261126__release26_site403": 0.049540325431547516
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004646273592308927,
+          "mean_latent_variance": 0.0009179130413109511
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05924083911372522,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07618650816563716,
+            "acq_20261126__release26_site401": 0.05958725334241211,
+            "acq_20261126__release26_site402": 0.0682373725158847,
+            "acq_20261126__release26_site403": 0.032952222430966904
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.0058467125660077,
+          "mean_latent_variance": 0.001155611578472347
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07690690522519415,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06549238789824688,
+            "acq_20261126__release26_site401": 0.08970771928477304,
+            "acq_20261126__release26_site402": 0.048353855820713824,
+            "acq_20261126__release26_site403": 0.10407365789704288
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.001622024120247258,
+          "mean_latent_variance": 0.00032183602979431056
+        }
+      },
+      "q_variance_ratio": 0.999521629033745,
+      "q_latent_variance_ratio": 0.997583287320668,
+      "pool_unique_sites": 2,
+      "acquired_whole_iou_mean": 0.13322964683175087,
+      "model_sha256": "577a65e8e2c3c4b33523766cf8935c3ec6df43463b389f959d41ec0cdbfab84c"
+    },
+    {
+      "method": "global_probability",
+      "budget": 4,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04805425914704831,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05723189488404168,
+            "acq_20261126__release26_site401": 0.04689676666056686,
+            "acq_20261126__release26_site402": 0.036169524475584476,
+            "acq_20261126__release26_site403": 0.051918850568000253
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.0046462765281420565,
+          "mean_latent_variance": 0.0009179159771440797
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.06016334740878024,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.0765240464385399,
+            "acq_20261126__release26_site401": 0.05999350975034834,
+            "acq_20261126__release26_site402": 0.06832426321989714,
+            "acq_20261126__release26_site403": 0.03581157022633558
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005846718740483457,
+          "mean_latent_variance": 0.0011556177529481037
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07684213036643993,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06540689095318863,
+            "acq_20261126__release26_site401": 0.08988230077511351,
+            "acq_20261126__release26_site402": 0.04835318052573908,
+            "acq_20261126__release26_site403": 0.10372614921171848
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.0016220315196285968,
+          "mean_latent_variance": 0.00032184342917564943
+        }
+      },
+      "q_variance_ratio": 0.9995222605998062,
+      "q_latent_variance_ratio": 0.9975864779693805,
+      "pool_unique_sites": 1,
+      "acquired_whole_iou_mean": 0.27100078761577606,
+      "model_sha256": "fcff30482f8ab93f46aa43e626cb61f576abbab52621b0b8fc3f9213a90c701c"
+    },
+    {
+      "method": "dual_probability",
+      "budget": 4,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04778908157588913,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05728349166737034,
+            "acq_20261126__release26_site401": 0.046886281138047874,
+            "acq_20261126__release26_site402": 0.03623007710840756,
+            "acq_20261126__release26_site403": 0.05075647638973077
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004647357858613875,
+          "mean_latent_variance": 0.0009189973076158981
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05980944098737673,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07647490676204231,
+            "acq_20261126__release26_site401": 0.05989981005517666,
+            "acq_20261126__release26_site402": 0.06822146874455176,
+            "acq_20261126__release26_site403": 0.0346415783877362
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.0058480786888534765,
+          "mean_latent_variance": 0.0011569777013181214
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.0767409284454219,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.0649923800262235,
+            "acq_20261126__release26_site401": 0.09001662747353241,
+            "acq_20261126__release26_site402": 0.048054246682507684,
+            "acq_20261126__release26_site403": 0.10390045959942402
+          },
+          "raw_gaussian_90_coverage": 0.53125,
+          "mean_observation_variance": 0.0016224070582381688,
+          "mean_latent_variance": 0.00032221896778522125
+        }
+      },
+      "q_variance_ratio": 0.9997548799609444,
+      "q_latent_variance_ratio": 0.9987616625001678,
+      "pool_unique_sites": 2,
+      "acquired_whole_iou_mean": 0.42969902977347374,
+      "model_sha256": "3fd7ed6bee30d6e51250be1dca89a575afc8a18821a0976129c231ab838fa85e"
+    },
+    {
+      "method": "dual_conditional",
+      "budget": 4,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04659681515130943,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05679218282896159,
+            "acq_20261126__release26_site401": 0.04646322860096654,
+            "acq_20261126__release26_site402": 0.03582873938005366,
+            "acq_20261126__release26_site403": 0.04730310979525595
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004647126974532516,
+          "mean_latent_variance": 0.0009187664235345399
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.058784028179432346,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07527865953659969,
+            "acq_20261126__release26_site401": 0.05937959908112241,
+            "acq_20261126__release26_site402": 0.06789231202988665,
+            "acq_20261126__release26_site403": 0.03258554207012062
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005847787735635018,
+          "mean_latent_variance": 0.001156686748099663
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.0768062655937761,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06575041395197549,
+            "acq_20261126__release26_site401": 0.09000102235786663,
+            "acq_20261126__release26_site402": 0.048339885805680015,
+            "acq_20261126__release26_site403": 0.10313374025958226
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.001622325385485883,
+          "mean_latent_variance": 0.0003221372950329352
+        }
+      },
+      "q_variance_ratio": 0.999705211419363,
+      "q_latent_variance_ratio": 0.998510738839096,
+      "pool_unique_sites": 3,
+      "acquired_whole_iou_mean": 0.49187237583100796,
+      "model_sha256": "73160afaf8b778fc5c2fcc70d60dad85748781967c074fb47443b3088961b994"
+    },
+    {
+      "method": "gp_information_only",
+      "budget": 4,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04683000847671829,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.056811872513057284,
+            "acq_20261126__release26_site401": 0.04702693274472843,
+            "acq_20261126__release26_site402": 0.035641708672203516,
+            "acq_20261126__release26_site403": 0.04783951997688394
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004646222050971721,
+          "mean_latent_variance": 0.0009178614999737444
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.058812148396713594,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07525233017944456,
+            "acq_20261126__release26_site401": 0.059331463755319884,
+            "acq_20261126__release26_site402": 0.06805159604111748,
+            "acq_20261126__release26_site403": 0.032613203610972426
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005846649423707402,
+          "mean_latent_variance": 0.001155548436172048
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07714529058686952,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06589730535450043,
+            "acq_20261126__release26_site401": 0.09080460488905233,
+            "acq_20261126__release26_site402": 0.048294943719147665,
+            "acq_20261126__release26_site403": 0.10358430838477768
+          },
+          "raw_gaussian_90_coverage": 0.53125,
+          "mean_observation_variance": 0.0016220105364424652,
+          "mean_latent_variance": 0.00032182244598951776
+        }
+      },
+      "q_variance_ratio": 0.9995105412920735,
+      "q_latent_variance_ratio": 0.99752727245402,
+      "pool_unique_sites": 3,
+      "acquired_whole_iou_mean": 0.4732170607894659,
+      "model_sha256": "bb5ea17f7e1237815f23e578a454e9356f95a357a50b4e784c16cf0dc53aa6ce"
+    },
+    {
+      "method": "random_23411",
+      "budget": 4,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.046722380667840034,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05683238429960516,
+            "acq_20261126__release26_site401": 0.04641608604331565,
+            "acq_20261126__release26_site402": 0.03546277499954769,
+            "acq_20261126__release26_site403": 0.048178277328891635
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004648330609023316,
+          "mean_latent_variance": 0.0009199700580253401
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05884952759699458,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.075683558837962,
+            "acq_20261126__release26_site401": 0.05937638888087171,
+            "acq_20261126__release26_site402": 0.0676038035780553,
+            "acq_20261126__release26_site403": 0.0327343590910893
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.00584930301486626,
+          "mean_latent_variance": 0.0011582020273309063
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07653139083121031,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06522058070783716,
+            "acq_20261126__release26_site401": 0.0901051459460077,
+            "acq_20261126__release26_site402": 0.048142361997702575,
+            "acq_20261126__release26_site403": 0.10265747467329384
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.0016227472900639014,
+          "mean_latent_variance": 0.0003225591996109538
+        }
+      },
+      "q_variance_ratio": 0.9999641412225923,
+      "q_latent_variance_ratio": 0.9998188427640061,
+      "pool_unique_sites": 2,
+      "acquired_whole_iou_mean": 0.8621862828731537,
+      "model_sha256": "37cf3e0fbb8b43fd45b6bd4ce7bf428983ed3f12088dbbb09a79f4bc9788fcec"
+    },
+    {
+      "method": "random_23412",
+      "budget": 4,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.046922894562790175,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05678010195423496,
+            "acq_20261126__release26_site401": 0.04603513646749129,
+            "acq_20261126__release26_site402": 0.03563290449588891,
+            "acq_20261126__release26_site403": 0.04924343533354555
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004648243109558351,
+          "mean_latent_variance": 0.0009198825585603744
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.0588945126126269,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07577574403249891,
+            "acq_20261126__release26_site401": 0.05921965783442379,
+            "acq_20261126__release26_site402": 0.0678720344231869,
+            "acq_20261126__release26_site403": 0.03271061416039799
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005849193093368145,
+          "mean_latent_variance": 0.0011580921058327897
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07679306143916158,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06514474232323991,
+            "acq_20261126__release26_site401": 0.08947463292136808,
+            "acq_20261126__release26_site402": 0.04808691350885649,
+            "acq_20261126__release26_site403": 0.10446595700318177
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.0016227172189204081,
+          "mean_latent_variance": 0.00032252912846746063
+        }
+      },
+      "q_variance_ratio": 0.9999453180504255,
+      "q_latent_variance_ratio": 0.9997237487845431,
+      "pool_unique_sites": 3,
+      "acquired_whole_iou_mean": 0.6118244230747223,
+      "model_sha256": "402ba93d80d94cdff286bf05caa031be8daf5ff7b1518bf620828a12e35a45ee"
+    },
+    {
+      "method": "random_23413",
+      "budget": 4,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.047325405695934936,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.0571389513900449,
+            "acq_20261126__release26_site401": 0.04641633388447219,
+            "acq_20261126__release26_site402": 0.03618616130617553,
+            "acq_20261126__release26_site403": 0.04956017620304711
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004647120452304108,
+          "mean_latent_variance": 0.0009187599013061312
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.059313841044140114,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.0762683871944045,
+            "acq_20261126__release26_site401": 0.05957133753531189,
+            "acq_20261126__release26_site402": 0.06818975068346343,
+            "acq_20261126__release26_site403": 0.033225888763380625
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005847778747453357,
+          "mean_latent_variance": 0.0011566777599180025
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07689888820297519,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06529620531075524,
+            "acq_20261126__release26_site401": 0.08947132942958462,
+            "acq_20261126__release26_site402": 0.048663729223510165,
+            "acq_20261126__release26_site403": 0.10416428884805075
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.0016223211016492469,
+          "mean_latent_variance": 0.00032213301119629937
+        }
+      },
+      "q_variance_ratio": 0.9997038083361751,
+      "q_latent_variance_ratio": 0.9985036505139893,
+      "pool_unique_sites": 2,
+      "acquired_whole_iou_mean": 0.3936369810253382,
+      "model_sha256": "120411a600b15a2566546bae29467513834832724852ef8e644f9863a64d72d3"
+    },
+    {
+      "method": "rf_mean",
+      "budget": 8,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.047758841441117195,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05704194002330535,
+            "acq_20261126__release26_site401": 0.046446262400750726,
+            "acq_20261126__release26_site402": 0.03605108250239967,
+            "acq_20261126__release26_site403": 0.05149608083801305
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004644003884381887,
+          "mean_latent_variance": 0.0009156433333839109
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.059646545733559854,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07604924642141458,
+            "acq_20261126__release26_site401": 0.05956024513574119,
+            "acq_20261126__release26_site402": 0.06815213777834817,
+            "acq_20261126__release26_site403": 0.03482455359873544
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005843856630060554,
+          "mean_latent_variance": 0.0011527556425252007
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07683620158199213,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06551646413686929,
+            "acq_20261126__release26_site401": 0.0897151538666755,
+            "acq_20261126__release26_site402": 0.048436848029685564,
+            "acq_20261126__release26_site403": 0.1036763402947382
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.0016212322416343627,
+          "mean_latent_variance": 0.00032104415118141514
+        }
+      },
+      "q_variance_ratio": 0.9990333620129606,
+      "q_latent_variance_ratio": 0.9951165801346793,
+      "pool_unique_sites": 2,
+      "acquired_whole_iou_mean": 0.16899273172020912,
+      "model_sha256": "7c92519da1262c7318aba175fe9750fb893492eaf76cf7db1eeef0ef3d53e456"
+    },
+    {
+      "method": "global_mean",
+      "budget": 8,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.047843396995781357,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05723616852264558,
+            "acq_20261126__release26_site401": 0.046888410966034695,
+            "acq_20261126__release26_site402": 0.03612221750194502,
+            "acq_20261126__release26_site403": 0.05112679099250015
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.0046444221783842835,
+          "mean_latent_variance": 0.0009160616273863068
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05977944455543573,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07644250211936184,
+            "acq_20261126__release26_site401": 0.059974333056675676,
+            "acq_20261126__release26_site402": 0.06824522882027408,
+            "acq_20261126__release26_site403": 0.03445571422543132
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005844383152758208,
+          "mean_latent_variance": 0.001153282165222854
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07683312682465819,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06543996928859515,
+            "acq_20261126__release26_site401": 0.08988106839305092,
+            "acq_20261126__release26_site402": 0.04839265909428766,
+            "acq_20261126__release26_site403": 0.10361881052269901
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.0016213786693112147,
+          "mean_latent_variance": 0.00032119057885826726
+        }
+      },
+      "q_variance_ratio": 0.999123346792028,
+      "q_latent_variance_ratio": 0.9955711799575346,
+      "pool_unique_sites": 2,
+      "acquired_whole_iou_mean": 0.18616066873073578,
+      "model_sha256": "8a09ddc6c9470eb85f69883f57e703dc70ca77f43af1ab9b3738f6d9c4c4ca82"
+    },
+    {
+      "method": "global_probability",
+      "budget": 8,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.048299856271526366,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05758224648750083,
+            "acq_20261126__release26_site401": 0.047563362052190215,
+            "acq_20261126__release26_site402": 0.03647229951868538,
+            "acq_20261126__release26_site403": 0.05158151702772906
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004644988356989891,
+          "mean_latent_variance": 0.0009166278059919145
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.06025901093579092,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07685181355233305,
+            "acq_20261126__release26_site401": 0.06057944688289124,
+            "acq_20261126__release26_site402": 0.0685338025129927,
+            "acq_20261126__release26_site403": 0.035070980794946666
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005845096210563289,
+          "mean_latent_variance": 0.001153995223027935
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07689736464034345,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06539657214847346,
+            "acq_20261126__release26_site401": 0.09017916114183755,
+            "acq_20261126__release26_site402": 0.04841926462685544,
+            "acq_20261126__release26_site403": 0.10359446064420737
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.0016215778602610878,
+          "mean_latent_variance": 0.0003213897698081403
+        }
+      },
+      "q_variance_ratio": 0.9992451449924477,
+      "q_latent_variance_ratio": 0.9961865000250937,
+      "pool_unique_sites": 2,
+      "acquired_whole_iou_mean": 0.24567124992609024,
+      "model_sha256": "837bd958f093fbf4cf57b6051184d6713089cdad5d46ab0bcabb9649f81372d7"
+    },
+    {
+      "method": "dual_probability",
+      "budget": 8,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04814150894484894,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05739953747536217,
+            "acq_20261126__release26_site401": 0.04718613215231016,
+            "acq_20261126__release26_site402": 0.036265438051238365,
+            "acq_20261126__release26_site403": 0.05171492810048508
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004645645924576811,
+          "mean_latent_variance": 0.0009172853735788352
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.0601465353350806,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07667546078424063,
+            "acq_20261126__release26_site401": 0.060216937116079394,
+            "acq_20261126__release26_site402": 0.0682561138076186,
+            "acq_20261126__release26_site403": 0.035437629632383776
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005845924893127606,
+          "mean_latent_variance": 0.0011548239055922532
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.076650177417724,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06489430289518165,
+            "acq_20261126__release26_site401": 0.09006072118811954,
+            "acq_20261126__release26_site402": 0.048040420507983704,
+            "acq_20261126__release26_site403": 0.10360526507961111
+          },
+          "raw_gaussian_90_coverage": 0.53125,
+          "mean_observation_variance": 0.0016218105590583797,
+          "mean_latent_variance": 0.000321622468605432
+        }
+      },
+      "q_variance_ratio": 0.9993866030905602,
+      "q_latent_variance_ratio": 0.9969011411789648,
+      "pool_unique_sites": 2,
+      "acquired_whole_iou_mean": 0.4144857507199049,
+      "model_sha256": "9ae8804f5dbe4a9838d96b675b5ae404869636efd0556fe83953e2af2ece4e6c"
+    },
+    {
+      "method": "dual_conditional",
+      "budget": 8,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.046249896376529175,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05613059897533886,
+            "acq_20261126__release26_site401": 0.046414979510425426,
+            "acq_20261126__release26_site402": 0.03549309270219734,
+            "acq_20261126__release26_site403": 0.0469609143181551
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004643327559957516,
+          "mean_latent_variance": 0.0009149670089595403
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05808114889224055,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07383840259341254,
+            "acq_20261126__release26_site401": 0.05885517603347839,
+            "acq_20261126__release26_site402": 0.06756220683396652,
+            "acq_20261126__release26_site403": 0.03206881010810477
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.00584300579418721,
+          "mean_latent_variance": 0.0011519048066518558
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07713342776981054,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06654233463953414,
+            "acq_20261126__release26_site401": 0.09042781817249791,
+            "acq_20261126__release26_site402": 0.04845336276710185,
+            "acq_20261126__release26_site403": 0.1031101955001082
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.001620996720729584,
+          "mean_latent_variance": 0.0003208086302766366
+        }
+      },
+      "q_variance_ratio": 0.9988878688823964,
+      "q_latent_variance_ratio": 0.994381554143987,
+      "pool_unique_sites": 3,
+      "acquired_whole_iou_mean": 0.43187479861080647,
+      "model_sha256": "938e16a779d317f2133929de187eded80213c99ed6ffa282539e669e8b181539"
+    },
+    {
+      "method": "gp_information_only",
+      "budget": 8,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04638444593644667,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05628504811038058,
+            "acq_20261126__release26_site401": 0.04697596045036808,
+            "acq_20261126__release26_site402": 0.03551362924236379,
+            "acq_20261126__release26_site403": 0.04676314594267426
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004643428676155115,
+          "mean_latent_variance": 0.0009150681251571395
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.058254341778285444,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07389700729748426,
+            "acq_20261126__release26_site401": 0.05911282294720391,
+            "acq_20261126__release26_site402": 0.0676161564216024,
+            "acq_20261126__release26_site403": 0.03239138044685119
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005843133784542281,
+          "mean_latent_variance": 0.0011520327970069265
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07720003846385066,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06678462191853594,
+            "acq_20261126__release26_site401": 0.09095101393869687,
+            "acq_20261126__release26_site402": 0.048574324945382365,
+            "acq_20261126__release26_site403": 0.1024901930527875
+          },
+          "raw_gaussian_90_coverage": 0.53125,
+          "mean_observation_variance": 0.0016210339461559702,
+          "mean_latent_variance": 0.00032084585570302265
+        }
+      },
+      "q_variance_ratio": 0.9989096213307915,
+      "q_latent_variance_ratio": 0.9944914467201491,
+      "pool_unique_sites": 3,
+      "acquired_whole_iou_mean": 0.5219249622896314,
+      "model_sha256": "dc6975a5c4ae90ca88e196bfdb2f3d1cecc7960508c59fdd08c05f8d1332633d"
+    },
+    {
+      "method": "random_23411",
+      "budget": 8,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.046513885653916814,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.0568353153586621,
+            "acq_20261126__release26_site401": 0.04665064898477302,
+            "acq_20261126__release26_site402": 0.03539616906609588,
+            "acq_20261126__release26_site403": 0.04717340920613624
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004647748151217078,
+          "mean_latent_variance": 0.000919387600219102
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05884610492521734,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07549384201304611,
+            "acq_20261126__release26_site401": 0.0598244088666019,
+            "acq_20261126__release26_site402": 0.0673223934245485,
+            "acq_20261126__release26_site403": 0.03274377539667287
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005848570475011884,
+          "mean_latent_variance": 0.0011574694874765294
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07641670071066857,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06546044885947214,
+            "acq_20261126__release26_site401": 0.09025488472206707,
+            "acq_20261126__release26_site402": 0.04845105557733904,
+            "acq_20261126__release26_site403": 0.10150041368379605
+          },
+          "raw_gaussian_90_coverage": 0.53125,
+          "mean_observation_variance": 0.0016225449943129723,
+          "mean_latent_variance": 0.00032235690386002485
+        }
+      },
+      "q_variance_ratio": 0.9998388409870878,
+      "q_latent_variance_ratio": 0.999185830542889,
+      "pool_unique_sites": 3,
+      "acquired_whole_iou_mean": 0.8004422225058079,
+      "model_sha256": "f9c2848b0a93383fd636a717e2739d3c07d9d3eabab8788a0378e6aee46a0f55"
+    },
+    {
+      "method": "random_23412",
+      "budget": 8,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04686690086282593,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05724939594585132,
+            "acq_20261126__release26_site401": 0.04583411990789995,
+            "acq_20261126__release26_site402": 0.03570891409374192,
+            "acq_20261126__release26_site403": 0.04867517350381053
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.0046479897515456945,
+          "mean_latent_variance": 0.0009196292005477187
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.058768760792373476,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07575742866443484,
+            "acq_20261126__release26_site401": 0.05898768240045515,
+            "acq_20261126__release26_site402": 0.06766905871348475,
+            "acq_20261126__release26_site403": 0.03266087339111919
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005848874917376886,
+          "mean_latent_variance": 0.0011577739298415312
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.0767161409101604,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06530746325889457,
+            "acq_20261126__release26_site401": 0.0894388336417672,
+            "acq_20261126__release26_site402": 0.04851078337279662,
+            "acq_20261126__release26_site403": 0.10360748336718321
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.0016226304188884306,
+          "mean_latent_variance": 0.00032244232843548284
+        }
+      },
+      "q_variance_ratio": 0.9998908148429609,
+      "q_latent_variance_ratio": 0.9994484005677086,
+      "pool_unique_sites": 3,
+      "acquired_whole_iou_mean": 0.6626927964389324,
+      "model_sha256": "dd5909896c414b2f2b851c17e22297334d4291ab6798eb57bcf390ed6c8da8d9"
+    },
+    {
+      "method": "random_23413",
+      "budget": 8,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04733366943291847,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05722318412326266,
+            "acq_20261126__release26_site401": 0.04649065911522119,
+            "acq_20261126__release26_site402": 0.036198234038322646,
+            "acq_20261126__release26_site403": 0.04942260045486738
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004646964092860687,
+          "mean_latent_variance": 0.0009186035418627106
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.059324035668594864,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07628805243929207,
+            "acq_20261126__release26_site401": 0.05958824006631119,
+            "acq_20261126__release26_site402": 0.06816422414316121,
+            "acq_20261126__release26_site403": 0.033255626025614965
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005847581736575303,
+          "mean_latent_variance": 0.00115648074903995
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07676672444117921,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06524922714478809,
+            "acq_20261126__release26_site401": 0.08971990989017282,
+            "acq_20261126__release26_site402": 0.0485918476510124,
+            "acq_20261126__release26_site403": 0.10350591307874356
+          },
+          "raw_gaussian_90_coverage": 0.53125,
+          "mean_observation_variance": 0.001622265864741055,
+          "mean_latent_variance": 0.00032207777428810747
+        }
+      },
+      "q_variance_ratio": 0.9996701717793737,
+      "q_latent_variance_ratio": 0.9983337198554724,
+      "pool_unique_sites": 3,
+      "acquired_whole_iou_mean": 0.5575587721541524,
+      "model_sha256": "45a5cb0ef715d50ee516c4cc5e88909f8940ae9208b9c798496d536de0837ff1"
+    },
+    {
+      "method": "rf_mean",
+      "budget": 16,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04812356504113056,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05732535201717581,
+            "acq_20261126__release26_site401": 0.047349688435830005,
+            "acq_20261126__release26_site402": 0.036456483773437444,
+            "acq_20261126__release26_site403": 0.05136273593807902
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004642976990069605,
+          "mean_latent_variance": 0.0009146164390716282
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05992947928215726,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07614900205737002,
+            "acq_20261126__release26_site401": 0.060254888615568825,
+            "acq_20261126__release26_site402": 0.06846465289109611,
+            "acq_20261126__release26_site403": 0.03484937356459408
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.0058425635810823206,
+          "mean_latent_variance": 0.001151462593546968
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07711905563489344,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06562522517575561,
+            "acq_20261126__release26_site401": 0.09042070634842543,
+            "acq_20261126__release26_site402": 0.04816738910718397,
+            "acq_20261126__release26_site403": 0.10426290190820871
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.0016208715913122132,
+          "mean_latent_variance": 0.0003206835008592659
+        }
+      },
+      "q_variance_ratio": 0.9988124531371776,
+      "q_latent_variance_ratio": 0.9940005565489212,
+      "pool_unique_sites": 2,
+      "acquired_whole_iou_mean": 0.23996502719819546,
+      "model_sha256": "bf3922333e961be236cf68741cbda517dec6ebc86305db7da436eeeaef1a6a56"
+    },
+    {
+      "method": "global_mean",
+      "budget": 16,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04820369661051599,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.0574732004145807,
+            "acq_20261126__release26_site401": 0.04753056046679923,
+            "acq_20261126__release26_site402": 0.03646596426912819,
+            "acq_20261126__release26_site403": 0.05134506129155583
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004643612486048008,
+          "mean_latent_variance": 0.0009152519350500319
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.06015083303535129,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07676284918788656,
+            "acq_20261126__release26_site401": 0.060526099916644115,
+            "acq_20261126__release26_site402": 0.06862650440460712,
+            "acq_20261126__release26_site403": 0.03468787863226738
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005843363706197297,
+          "mean_latent_variance": 0.0011522627186619434
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07693870011858911,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06540665746011239,
+            "acq_20261126__release26_site401": 0.09017608996527737,
+            "acq_20261126__release26_site402": 0.048418284161073966,
+            "acq_20261126__release26_site403": 0.10375376888789269
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.001621094571635907,
+          "mean_latent_variance": 0.00032090648118295956
+        }
+      },
+      "q_variance_ratio": 0.9989491631184041,
+      "q_latent_variance_ratio": 0.9946912103894089,
+      "pool_unique_sites": 4,
+      "acquired_whole_iou_mean": 0.2321216594427824,
+      "model_sha256": "028a2101c88475d776431d5fdc073608edbbcac80579d0381e046007bc8eac1c"
+    },
+    {
+      "method": "global_probability",
+      "budget": 16,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04822163735843493,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.057466023710227854,
+            "acq_20261126__release26_site401": 0.047534248222168916,
+            "acq_20261126__release26_site402": 0.036462578069871625,
+            "acq_20261126__release26_site403": 0.05142369943147137
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.0046436203092221975,
+          "mean_latent_variance": 0.0009152597582242207
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.06011446869705983,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07667901521810049,
+            "acq_20261126__release26_site401": 0.06049597051991382,
+            "acq_20261126__release26_site402": 0.0685027295481141,
+            "acq_20261126__release26_site403": 0.034780159502110934
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.00584337353667418,
+          "mean_latent_variance": 0.0011522725491388255
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.0769556960513152,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06545015711367078,
+            "acq_20261126__release26_site401": 0.09023713504235609,
+            "acq_20261126__release26_site402": 0.04847222304188384,
+            "acq_20261126__release26_site403": 0.10366326900735014
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.001621097266895784,
+          "mean_latent_variance": 0.00032090917644283677
+        }
+      },
+      "q_variance_ratio": 0.9989508460653194,
+      "q_latent_variance_ratio": 0.9946997125758614,
+      "pool_unique_sites": 3,
+      "acquired_whole_iou_mean": 0.23959913663566113,
+      "model_sha256": "deabd178f768eaa64d465ebdab9c222488f89e412e1ee78734b22b87e5996dc1"
+    },
+    {
+      "method": "dual_probability",
+      "budget": 16,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04811863191019449,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05737860608651852,
+            "acq_20261126__release26_site401": 0.04733868418644408,
+            "acq_20261126__release26_site402": 0.036414055217400064,
+            "acq_20261126__release26_site403": 0.0513431821504153
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.004643250777353441,
+          "mean_latent_variance": 0.0009148902263554651
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.060000257382051274,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07661658773462267,
+            "acq_20261126__release26_site401": 0.06032104931330973,
+            "acq_20261126__release26_site402": 0.06835711138229422,
+            "acq_20261126__release26_site403": 0.03470628109797845
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.0058429086386113495,
+          "mean_latent_variance": 0.001151807651075997
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07649420496069843,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06459538982457715,
+            "acq_20261126__release26_site401": 0.08989473627180795,
+            "acq_20261126__release26_site402": 0.047864551494409546,
+            "acq_20261126__release26_site403": 0.10362214225199906
+          },
+          "raw_gaussian_90_coverage": 0.53125,
+          "mean_observation_variance": 0.0016209685407894286,
+          "mean_latent_variance": 0.0003207804503364811
+        }
+      },
+      "q_variance_ratio": 0.9988713511565283,
+      "q_latent_variance_ratio": 0.9942981071951639,
+      "pool_unique_sites": 2,
+      "acquired_whole_iou_mean": 0.3819113001227379,
+      "model_sha256": "cdc64633f971dc9fb59021eb760efaf5396db5353ef4ca1107b0b677c83cf209"
+    },
+    {
+      "method": "dual_conditional",
+      "budget": 16,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04604717709102787,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.055742372117062844,
+            "acq_20261126__release26_site401": 0.0466170365145118,
+            "acq_20261126__release26_site402": 0.0352355384323464,
+            "acq_20261126__release26_site403": 0.04659376130019044
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.00464252282448558,
+          "mean_latent_variance": 0.000914162273487604
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05802666160008174,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07339138608398067,
+            "acq_20261126__release26_site401": 0.05911822965768845,
+            "acq_20261126__release26_site402": 0.06737542076252938,
+            "acq_20261126__release26_site403": 0.03222160989612849
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.0058419929078221385,
+          "mean_latent_variance": 0.0011508919202867852
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.0770606855434418,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06637794715759564,
+            "acq_20261126__release26_site401": 0.09074302207035943,
+            "acq_20261126__release26_site402": 0.04867847151432119,
+            "acq_20261126__release26_site403": 0.1024433014314909
+          },
+          "raw_gaussian_90_coverage": 0.53125,
+          "mean_observation_variance": 0.0016207151827803768,
+          "mean_latent_variance": 0.00032052709232742926
+        }
+      },
+      "q_variance_ratio": 0.9987147515457028,
+      "q_latent_variance_ratio": 0.9935069716711514,
+      "pool_unique_sites": 3,
+      "acquired_whole_iou_mean": 0.47277180571109056,
+      "model_sha256": "50ea3766ef643384056ba2eda081a44c455b4468559c9963815b20cba398a8bb"
+    },
+    {
+      "method": "gp_information_only",
+      "budget": 16,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04617062965642151,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05653571879388585,
+            "acq_20261126__release26_site401": 0.04699530738934349,
+            "acq_20261126__release26_site402": 0.035569020208652234,
+            "acq_20261126__release26_site403": 0.04558247223380447
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.0046415955445333786,
+          "mean_latent_variance": 0.0009132349935354022
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05809784869336093,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07389426543591197,
+            "acq_20261126__release26_site401": 0.059014443448202024,
+            "acq_20261126__release26_site402": 0.06757825576428837,
+            "acq_20261126__release26_site403": 0.03190443012504137
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.0058408266033403355,
+          "mean_latent_variance": 0.0011497256158049813
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07710228638175572,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06692668670595726,
+            "acq_20261126__release26_site401": 0.09098174449436369,
+            "acq_20261126__release26_site402": 0.04882860079115525,
+            "acq_20261126__release26_site403": 0.10167211353554666
+          },
+          "raw_gaussian_90_coverage": 0.53125,
+          "mean_observation_variance": 0.0016203928888216578,
+          "mean_latent_variance": 0.0003202047983687103
+        }
+      },
+      "q_variance_ratio": 0.9985152720380972,
+      "q_latent_variance_ratio": 0.9924992084720766,
+      "pool_unique_sites": 4,
+      "acquired_whole_iou_mean": 0.5963244428858161,
+      "model_sha256": "ff969d8708725a061bc1b9dc9dcef28b1a79e617077166dceebb701a1d16644d"
+    },
+    {
+      "method": "random_23411",
+      "budget": 16,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.046224687067834835,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05701557361242319,
+            "acq_20261126__release26_site401": 0.0461707239084185,
+            "acq_20261126__release26_site402": 0.035626827053885195,
+            "acq_20261126__release26_site403": 0.04608562369661246
+          },
+          "raw_gaussian_90_coverage": 0.9479166666666666,
+          "mean_observation_variance": 0.0046470886391729764,
+          "mean_latent_variance": 0.0009187280881750006
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05882709788370244,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07557682491375839,
+            "acq_20261126__release26_site401": 0.059714871969494314,
+            "acq_20261126__release26_site402": 0.06742492145260222,
+            "acq_20261126__release26_site403": 0.032591773198954906
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005847741030410038,
+          "mean_latent_variance": 0.0011566400428746838
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07594969165085182,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06522458398237882,
+            "acq_20261126__release26_site401": 0.08920952442486525,
+            "acq_20261126__release26_site402": 0.04868526695683587,
+            "acq_20261126__release26_site403": 0.1006793912393273
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.0016223159470202797,
+          "mean_latent_variance": 0.000322127856567332
+        }
+      },
+      "q_variance_ratio": 0.9996969645909627,
+      "q_latent_variance_ratio": 0.9984690761627109,
+      "pool_unique_sites": 4,
+      "acquired_whole_iou_mean": 0.7348252534866333,
+      "model_sha256": "ee30b6cf777a839adddeac333371927b57b60e7959c9710bde8709616daaadac"
+    },
+    {
+      "method": "random_23412",
+      "budget": 16,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.046710773146559574,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05761375068192504,
+            "acq_20261126__release26_site401": 0.04517631967393443,
+            "acq_20261126__release26_site402": 0.03587810307704105,
+            "acq_20261126__release26_site403": 0.04817491915333777
+          },
+          "raw_gaussian_90_coverage": 0.9375,
+          "mean_observation_variance": 0.004647196651882611,
+          "mean_latent_variance": 0.000918836100884635
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05860391680884384,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07575985744298354,
+            "acq_20261126__release26_site401": 0.058910665170056796,
+            "acq_20261126__release26_site402": 0.06732102957263979,
+            "acq_20261126__release26_site403": 0.032424115049695224
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005847876330131345,
+          "mean_latent_variance": 0.0011567753425959922
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07633803013038944,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06499793074028765,
+            "acq_20261126__release26_site401": 0.08834499014521513,
+            "acq_20261126__release26_site402": 0.048605718465081875,
+            "acq_20261126__release26_site403": 0.10340348117097307
+          },
+          "raw_gaussian_90_coverage": 0.5416666666666666,
+          "mean_observation_variance": 0.0016223520614729824,
+          "mean_latent_variance": 0.00032216397102003465
+        }
+      },
+      "q_variance_ratio": 0.9997202006396684,
+      "q_latent_variance_ratio": 0.9985864638335469,
+      "pool_unique_sites": 4,
+      "acquired_whole_iou_mean": 0.7050290163606405,
+      "model_sha256": "80c396ef4027eef4f0ccee99c3f214d044531f70d88cf892c07659f88e67dc0a"
+    },
+    {
+      "method": "random_23413",
+      "budget": 16,
+      "metrics": {
+        "Q": {
+          "rows": 96,
+          "mae": 0.04709726911096371,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.05747562886472277,
+            "acq_20261126__release26_site401": 0.04635386314961793,
+            "acq_20261126__release26_site402": 0.03665060764570884,
+            "acq_20261126__release26_site403": 0.04790897678380527
+          },
+          "raw_gaussian_90_coverage": 0.9375,
+          "mean_observation_variance": 0.004646588924509602,
+          "mean_latent_variance": 0.0009182283735116248
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.059238809969587324,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.07635549540409567,
+            "acq_20261126__release26_site401": 0.059658764457972135,
+            "acq_20261126__release26_site402": 0.067724365870763,
+            "acq_20261126__release26_site403": 0.033216614145518485
+          },
+          "raw_gaussian_90_coverage": 0.9166666666666666,
+          "mean_observation_variance": 0.005847109953922775,
+          "mean_latent_variance": 0.00115600896638742
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.07635220533720143,
+          "by_site_mae": {
+            "acq_20261126__release26_site400": 0.06498764361704562,
+            "acq_20261126__release26_site401": 0.08928089541111477,
+            "acq_20261126__release26_site402": 0.049226873001086864,
+            "acq_20261126__release26_site403": 0.10191340931955846
+          },
+          "raw_gaussian_90_coverage": 0.53125,
+          "mean_observation_variance": 0.0016221357059648378,
+          "mean_latent_variance": 0.0003219476155118901
+        }
+      },
+      "q_variance_ratio": 0.9995894643319992,
+      "q_latent_variance_ratio": 0.9979259887740616,
+      "pool_unique_sites": 4,
+      "acquired_whole_iou_mean": 0.6523343198932707,
+      "model_sha256": "b153bf06bbc63028a84075388f2b0d847be82bc50191f8979142717aa22e52c4"
+    }
+  ],
+  "cached_inference_verification": {
+    "max_mean_difference": 0.0,
+    "max_cov_difference": 0.0
+  },
+  "source_sha256": "e44f9a8d866e8dc481b98788254700a2c347336400c5fb963151de7e6d263eeb"
+}

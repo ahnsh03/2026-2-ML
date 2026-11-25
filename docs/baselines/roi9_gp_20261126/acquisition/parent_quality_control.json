@@ -1,0 +1,7 @@
+{
+  "rows": 96,
+  "gp_mae": 0.047001297699291456,
+  "rf_mae": 0.04828898849309644,
+  "rf_model_sha256": "2fc1bb79a1b88bc02a1bfa50b7efdf2c2e6e0ed9a32f222073c2149dcd58514b",
+  "scope": "Unchanged equal-training2480-row/28-input GP and quality RF on this additional cohort. RF-driven label acquisition is a separate arm, not an updated RF."
+}

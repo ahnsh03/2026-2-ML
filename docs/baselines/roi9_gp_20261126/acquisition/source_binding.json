@@ -1,0 +1,11 @@
+{
+  "git_commit": "785d681cfe4139716ba0145f310072f43e4a9268",
+  "all_four_sources_match_pre_capture_hashes": true,
+  "source_sha256": {
+    "src/quality_estimation/conditioned_spatial_gp.py": "19afaadfc841f3eb031586d4273ee4d0d6fc4f77b4f766edd4162cabcc9f10be",
+    "src/quality_estimation/spatial_gp.py": "01fbde904c91fa529774da1769fa88c66c49cfeff1bd2999e94cd07ddee1da0b",
+    "scripts/experiments/roi9_gp_20261125/acquisition_update.py": "f9e5a20e7a817a97ddf679574f52e4a55dcac6ca0271935db5ab2f75654ad5b4",
+    "scripts/experiments/roi9_gp_20261125/freeze_acquisition.py": "9a35f48f6489af6cbfa18066936fae4816780cc22e30d5c8029133bd604ee321"
+  },
+  "note": "Commit recorded after execution; its bytes match the immutable pre-capture selection/update freeze hashes. No commit timestamps were backdated."
+}

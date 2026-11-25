@@ -61,3 +61,18 @@ The31-input farGP is diagnostic-only. It retains the primary Q/near marginal and
 `extract.py` also accepts `--adaptation-run` instead of a baseline `--checkpoint`. Use a separate pack directory. The fitted state is explicitly `model_state_dict`; the baseline remains EMA. `fit_versioned_spatial.py` validates pack lineage, disjoint IDs/pixels, geographic embargo and perception-training exposure, then fits the current28-input GP and a separate calibration for that version. `verify_version_pair.py` audits actual RGB replay, reconstructed GT counts and rejected f0/f1 mixtures. The [functional study](../../../docs/experiments/9영역_인지버전쌍_연결검증_20261126.md) used an archived candidate, not new perception retraining or an adoption decision.
 
 Frozen RFs can also be exported without changing fitted trees using [export_portable_forests.py](../../export_portable_forests.py); [cross-profile evidence](../../../docs/baselines/roi9_gp_20261126/portable/README.md) separates NumPy inference portability from GPU and policy acceptance.
+
+## Real-label acquisition and a frozen GP posterior update
+
+`freeze_acquisition.py` only accepts an input-only NPZ with X, IDs, RF point predictions and ordered features. It freezes9methods×3budgets before pool GT is attached. `acquisition_update.py` subsequently uses actual pool targets to freeze27small posterior updates. `acquisition_evaluate.py` checks the freeze predates fresh capture and reports every arm; `make_acquisition_figures.py` exports2560×1440PNG and SVG. [Measured results](../../../docs/experiments/GP_조건부_라벨획득_20261126.md) distinguish small quality-GP gains from uncertainty reduction and deep-model retraining.
+
+Current canonical registration uses a complete prior registry and an explicit collection prefix:
+
+```bash
+PYTHONPATH=src:scripts python3 scripts/experiments/roi9_gp_20261125/register_capture.py \
+  --data-root "$DATA_ROOT" --collections "$CAPTURE_DIR" \
+  --existing-index "$CURRENT_REGISTERED_INDEX" --sample-id-prefix "$COLLECTION_NAMESPACE" \
+  --key "$NEW_SOURCE_KEY" --expected-rows "$EXPECTED_ROWS" --output "$NEW_REGISTERED_INDEX"
+```
+
+Raw capture IDs/site names and media stay immutable; canonical IDs/site names carry the namespace. Existing-ID and missing-channel checks run before writing an index. `select_transfer_sites.py` also rejects site-ID ranges already used by exclusion plans. Preserve old plans and failed/alias histories; do not overwrite original receipts to resolve a collision.

@@ -1,0 +1,17 @@
+{
+  "simulator_release": "26.R1",
+  "raw_frames": 96,
+  "raw_channels": 4,
+  "minimum_planned_point_to_quality_training_m": 135.5172318180849,
+  "minimum_planned_full_link_to_quality_training_m": 73.88835699625378,
+  "minimum_actual_test_to_prior26_m": 50.982294650986454,
+  "minimum_actual_test_to_all_archived_positions_m": 18.547411241453045,
+  "geography_clarification": "The50m exclusion covered previous26R1 plans, not every archived trajectory. Protocol wording previously captured was broader than its implementation. This is new captured media held apart from quality fitting; not an all-history-unseen road or new-map test.",
+  "collection_identity_correction": "Requested raw siteIDs400..403 collided with an earlier calibration collection. Raw logs/media stayed immutable; canonical sample/site IDs use acq_20261126__ and retain original capture IDs. All27 predictions/covariances/MAE are unchanged.",
+  "restored_verified": true,
+  "restored_distance_m": 0.003865401417428306,
+  "restored_yaw_error_deg": -0.00390625,
+  "restored_speed_mps": 8.181015489394727e-05,
+  "udp_actuation_issued": false,
+  "native_ros_or_steering_acceptance": false
+}

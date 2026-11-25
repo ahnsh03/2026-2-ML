@@ -17,6 +17,32 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def condition_moments(mean, covariance, cross, cholesky, innovation):
+    """Apply a frozen real-label update to matching parent moments/cross-covariance."""
+    mean = np.array(mean, float, copy=True)
+    covariance = np.array(covariance, float, copy=True)
+    n, tasks = mean.shape
+    k = len(innovation)
+    if (
+        covariance.shape != (n, tasks, tasks)
+        or cross.shape != (n * tasks, k)
+        or cholesky.shape != (k, k)
+        or not k
+        or not all(
+            np.isfinite(a).all()
+            for a in [mean, covariance, cross, cholesky, innovation]
+        )
+    ):
+        raise ValueError("finite matching parent moments and update factors required")
+    mean += (cross @ innovation).reshape(n, tasks)
+    projected = solve_triangular(cholesky, cross.T, lower=True).T.reshape(n, tasks, k)
+    covariance -= np.einsum("ntk,nuk->ntu", projected, projected)
+    covariance = (covariance + covariance.transpose(0, 2, 1)) / 2
+    if np.diagonal(covariance, axis1=1, axis2=2).min() < -1e-8:
+        raise ValueError("conditional covariance has negative variance")
+    return mean, covariance
+
+
 class ConditionedSpatialGP:
     @classmethod
     def fit(cls, parent_path, X, Y):
@@ -63,15 +89,9 @@ class ConditionedSpatialGP:
             len(x) * tasks, -1
         )
         cross = cross[:, self.observed]
-        mean += (cross @ self.innovation).reshape(len(x), tasks)
-        projected = solve_triangular(self.cholesky, cross.T, lower=True).T.reshape(
-            len(x), tasks, -1
+        return condition_moments(
+            mean, covariance, cross, self.cholesky, self.innovation
         )
-        covariance -= np.einsum("ntk,nuk->ntu", projected, projected)
-        covariance = (covariance + covariance.transpose(0, 2, 1)) / 2
-        if np.diagonal(covariance, axis1=1, axis2=2).min() < -1e-8:
-            raise ValueError("conditional covariance has negative variance")
-        return mean, covariance
 
     def save(self, path):
         if Path(path).exists():

@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-11-25T18:40:03.317894+00:00",
+  "parent_model_sha256": "f802ab47b64608aa0c336c244eef390ae43d46f2548d6d74a66f9a6350c3b8b6",
+  "perception_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+  "roi": "roi9-front-v1",
+  "features": 28,
+  "pool": "previously inspected96frames4links, excluded from parent quality fitting/calibration",
+  "budgets": [
+    4,
+    8,
+    16
+  ],
+  "methods": [
+    "rf_mean",
+    "global_mean",
+    "global_probability",
+    "dual_probability",
+    "dual_conditional",
+    "gp_information_only",
+    "random_23411",
+    "random_23412",
+    "random_23413"
+  ],
+  "primary_contrast": "dual_conditional versus dual_probability and three same-budget random seeds; all methods reported",
+  "selection": "Frozen from input-only NPZ in an isolated mount without pool GT. Each budget is an independent batch from the same parent.",
+  "update": "Only after selection, attach real pool Y and condition GP posterior, with fixed standardization/kernel/task coupling/noise. No perception training or new labels fabricated.",
+  "evaluation": "Fresh four other map links selected by geometry, >=25m whole-link from parent quality training and >=50m from previously planned/captured sites;6weather x4hours. Earlier opened cohorts are diagnostic only.",
+  "interpretation": "Reduced posterior variance is not guaranteed realized error reduction. Keep parent f0/g0 baseline; no automatic policy or update adoption.",
+  "deadline_utc": "2026-11-25T21:00:00+00:00"
+}

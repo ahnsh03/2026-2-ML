@@ -1,0 +1,20 @@
+{
+  "source_sha256": "c4479578699dce7428ea5de127372c71e73aae2366a8378c03097a8d87f7c08b",
+  "results_sha256": "a19a9649a42121a5b19986d5250dc6ec6e1a4bff20d48689b6c8a2a5f03e2072",
+  "figures": [
+    {
+      "file": "17_gp_real_label_acquisition.png",
+      "sha256": "2725c6bf5e88eba51e5bab1ca501c6280a5e5bae2e27b96240d7a330387750e1",
+      "width": 2560,
+      "height": 1440,
+      "caption": "All9methods and3budgets were frozen before fresh capture; random seeds are summarized in the band. Conditional acquisition improves over risk ranking on4 sites, but parent/random contrasts include zero. Not a perception retraining result."
+    },
+    {
+      "file": "18_uncertainty_vs_realized_error.png",
+      "sha256": "74f59497f46271f0d484d6d49104cfcc3ae1e629db22682d985975a19e7664fd",
+      "width": 2560,
+      "height": 1440,
+      "caption": "Fixed parent observation noise is unchanged. All three latent variances shrink, while the far-recall point error worsens slightly. Expected information gain and realized accuracy are different quantities."
+    }
+  ]
+}

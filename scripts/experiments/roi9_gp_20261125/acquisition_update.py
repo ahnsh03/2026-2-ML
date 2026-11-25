@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 import argparse
+import shutil
 from datetime import datetime, timezone
 from pathlib import Path
 import numpy as np
@@ -58,6 +59,14 @@ def main():
                 observed_values=len(updated.observed),
             )
         )
+    for name in [
+        "src/quality_estimation/conditioned_spatial_gp.py",
+        "src/quality_estimation/spatial_gp.py",
+        "scripts/experiments/roi9_gp_20261125/acquisition_update.py",
+    ]:
+        destination = args.output / "source" / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(name, destination)
     save(
         args.output / "frozen.json",
         dict(
@@ -71,7 +80,7 @@ def main():
                 for name in [
                     "src/quality_estimation/conditioned_spatial_gp.py",
                     "src/quality_estimation/spatial_gp.py",
-                "scripts/experiments/roi9_gp_20261125/acquisition_update.py",
+                    "scripts/experiments/roi9_gp_20261125/acquisition_update.py",
                 ]
             },
             scope="Quality-GP posterior updates only. Fixed perception, kernels, task coupling, scaling and noise. No perception retraining or policy adoption.",

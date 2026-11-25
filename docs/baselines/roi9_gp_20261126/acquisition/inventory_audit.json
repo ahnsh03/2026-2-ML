@@ -1,0 +1,41 @@
+{
+  "total_registered_rows": 23430,
+  "registered_packs": 85,
+  "unique_ids": 23430,
+  "unique_decoded_rgb_pixels": 23430,
+  "new_raw_four_channel_files_verified": 384,
+  "whole_frame_counts_max_difference": 2.97958024919609e-08,
+  "new_test_rows": 96,
+  "new26_accepted": 624,
+  "minimum_test_to_all_registered_prior_camera_positions_m": 18.547411241453045,
+  "minimum_test_to_prior26_camera_positions_m": 50.982294650986454,
+  "minimum_test_to_acquisition_pool_m": 56.81300217819113,
+  "new_ids_and_pixels_disjoint_from_prior": true,
+  "perception_version": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+  "canonical_namespace": "acq_20261126__",
+  "raw_capture_id_collisions_repaired": 96,
+  "raw_records_changed": false,
+  "canonical_regeneration_unchanged_arrays": [
+    "output",
+    "uncertainty",
+    "morphology",
+    "counts",
+    "y",
+    "pixel_sha256",
+    "group",
+    "cohort",
+    "weather",
+    "hour",
+    "xy"
+  ],
+  "canonical_regeneration_max_differences": {
+    "rgb": 3.725290298461914e-09,
+    "output": 0.0,
+    "relations": 3.725290298461914e-09,
+    "uncertainty": 0.0,
+    "morphology": 0.0,
+    "y": 0.0,
+    "xy": 0.0
+  },
+  "source_sha256": "238e352154300b7e9d996fb325b9e2fb896bf0e85a6ce009fb36ad5e036448de"
+}

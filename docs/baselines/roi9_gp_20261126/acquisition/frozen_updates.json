@@ -1,0 +1,204 @@
+{
+  "created_utc": "2026-11-25T18:41:23.612497+00:00",
+  "selection_created_utc": "2026-11-25T18:40:39.563274+00:00",
+  "selection_sha256": "c8c61b44b008dbf9697c850f981a8d53813a7509f8ba01c650d940e36698cc16",
+  "parent_model_sha256": "f802ab47b64608aa0c336c244eef390ae43d46f2548d6d74a66f9a6350c3b8b6",
+  "inputs_sha256": "9080908f53b441fe916910ef81a9f73d22de1574569a60a0cf150c654915cc1c",
+  "uses_gt_at_selection": false,
+  "models": [
+    {
+      "method": "rf_mean",
+      "budget": 4,
+      "filename": "rf_mean_b04.npz",
+      "sha256": "9575596d858b34985e95626e03639e25c96f18d953bf5e983dc1173e795eeb9f",
+      "observed_values": 12
+    },
+    {
+      "method": "global_mean",
+      "budget": 4,
+      "filename": "global_mean_b04.npz",
+      "sha256": "577a65e8e2c3c4b33523766cf8935c3ec6df43463b389f959d41ec0cdbfab84c",
+      "observed_values": 12
+    },
+    {
+      "method": "global_probability",
+      "budget": 4,
+      "filename": "global_probability_b04.npz",
+      "sha256": "fcff30482f8ab93f46aa43e626cb61f576abbab52621b0b8fc3f9213a90c701c",
+      "observed_values": 12
+    },
+    {
+      "method": "dual_probability",
+      "budget": 4,
+      "filename": "dual_probability_b04.npz",
+      "sha256": "3fd7ed6bee30d6e51250be1dca89a575afc8a18821a0976129c231ab838fa85e",
+      "observed_values": 12
+    },
+    {
+      "method": "dual_conditional",
+      "budget": 4,
+      "filename": "dual_conditional_b04.npz",
+      "sha256": "73160afaf8b778fc5c2fcc70d60dad85748781967c074fb47443b3088961b994",
+      "observed_values": 12
+    },
+    {
+      "method": "gp_information_only",
+      "budget": 4,
+      "filename": "gp_information_only_b04.npz",
+      "sha256": "bb5ea17f7e1237815f23e578a454e9356f95a357a50b4e784c16cf0dc53aa6ce",
+      "observed_values": 12
+    },
+    {
+      "method": "random_23411",
+      "budget": 4,
+      "filename": "random_23411_b04.npz",
+      "sha256": "37cf3e0fbb8b43fd45b6bd4ce7bf428983ed3f12088dbbb09a79f4bc9788fcec",
+      "observed_values": 12
+    },
+    {
+      "method": "random_23412",
+      "budget": 4,
+      "filename": "random_23412_b04.npz",
+      "sha256": "402ba93d80d94cdff286bf05caa031be8daf5ff7b1518bf620828a12e35a45ee",
+      "observed_values": 12
+    },
+    {
+      "method": "random_23413",
+      "budget": 4,
+      "filename": "random_23413_b04.npz",
+      "sha256": "120411a600b15a2566546bae29467513834832724852ef8e644f9863a64d72d3",
+      "observed_values": 12
+    },
+    {
+      "method": "rf_mean",
+      "budget": 8,
+      "filename": "rf_mean_b08.npz",
+      "sha256": "7c92519da1262c7318aba175fe9750fb893492eaf76cf7db1eeef0ef3d53e456",
+      "observed_values": 24
+    },
+    {
+      "method": "global_mean",
+      "budget": 8,
+      "filename": "global_mean_b08.npz",
+      "sha256": "8a09ddc6c9470eb85f69883f57e703dc70ca77f43af1ab9b3738f6d9c4c4ca82",
+      "observed_values": 24
+    },
+    {
+      "method": "global_probability",
+      "budget": 8,
+      "filename": "global_probability_b08.npz",
+      "sha256": "837bd958f093fbf4cf57b6051184d6713089cdad5d46ab0bcabb9649f81372d7",
+      "observed_values": 24
+    },
+    {
+      "method": "dual_probability",
+      "budget": 8,
+      "filename": "dual_probability_b08.npz",
+      "sha256": "9ae8804f5dbe4a9838d96b675b5ae404869636efd0556fe83953e2af2ece4e6c",
+      "observed_values": 24
+    },
+    {
+      "method": "dual_conditional",
+      "budget": 8,
+      "filename": "dual_conditional_b08.npz",
+      "sha256": "938e16a779d317f2133929de187eded80213c99ed6ffa282539e669e8b181539",
+      "observed_values": 24
+    },
+    {
+      "method": "gp_information_only",
+      "budget": 8,
+      "filename": "gp_information_only_b08.npz",
+      "sha256": "dc6975a5c4ae90ca88e196bfdb2f3d1cecc7960508c59fdd08c05f8d1332633d",
+      "observed_values": 24
+    },
+    {
+      "method": "random_23411",
+      "budget": 8,
+      "filename": "random_23411_b08.npz",
+      "sha256": "f9c2848b0a93383fd636a717e2739d3c07d9d3eabab8788a0378e6aee46a0f55",
+      "observed_values": 24
+    },
+    {
+      "method": "random_23412",
+      "budget": 8,
+      "filename": "random_23412_b08.npz",
+      "sha256": "dd5909896c414b2f2b851c17e22297334d4291ab6798eb57bcf390ed6c8da8d9",
+      "observed_values": 24
+    },
+    {
+      "method": "random_23413",
+      "budget": 8,
+      "filename": "random_23413_b08.npz",
+      "sha256": "45a5cb0ef715d50ee516c4cc5e88909f8940ae9208b9c798496d536de0837ff1",
+      "observed_values": 24
+    },
+    {
+      "method": "rf_mean",
+      "budget": 16,
+      "filename": "rf_mean_b16.npz",
+      "sha256": "bf3922333e961be236cf68741cbda517dec6ebc86305db7da436eeeaef1a6a56",
+      "observed_values": 48
+    },
+    {
+      "method": "global_mean",
+      "budget": 16,
+      "filename": "global_mean_b16.npz",
+      "sha256": "028a2101c88475d776431d5fdc073608edbbcac80579d0381e046007bc8eac1c",
+      "observed_values": 48
+    },
+    {
+      "method": "global_probability",
+      "budget": 16,
+      "filename": "global_probability_b16.npz",
+      "sha256": "deabd178f768eaa64d465ebdab9c222488f89e412e1ee78734b22b87e5996dc1",
+      "observed_values": 48
+    },
+    {
+      "method": "dual_probability",
+      "budget": 16,
+      "filename": "dual_probability_b16.npz",
+      "sha256": "cdc64633f971dc9fb59021eb760efaf5396db5353ef4ca1107b0b677c83cf209",
+      "observed_values": 48
+    },
+    {
+      "method": "dual_conditional",
+      "budget": 16,
+      "filename": "dual_conditional_b16.npz",
+      "sha256": "50ea3766ef643384056ba2eda081a44c455b4468559c9963815b20cba398a8bb",
+      "observed_values": 48
+    },
+    {
+      "method": "gp_information_only",
+      "budget": 16,
+      "filename": "gp_information_only_b16.npz",
+      "sha256": "ff969d8708725a061bc1b9dc9dcef28b1a79e617077166dceebb701a1d16644d",
+      "observed_values": 48
+    },
+    {
+      "method": "random_23411",
+      "budget": 16,
+      "filename": "random_23411_b16.npz",
+      "sha256": "ee30b6cf777a839adddeac333371927b57b60e7959c9710bde8709616daaadac",
+      "observed_values": 48
+    },
+    {
+      "method": "random_23412",
+      "budget": 16,
+      "filename": "random_23412_b16.npz",
+      "sha256": "80c396ef4027eef4f0ccee99c3f214d044531f70d88cf892c07659f88e67dc0a",
+      "observed_values": 48
+    },
+    {
+      "method": "random_23413",
+      "budget": 16,
+      "filename": "random_23413_b16.npz",
+      "sha256": "b153bf06bbc63028a84075388f2b0d847be82bc50191f8979142717aa22e52c4",
+      "observed_values": 48
+    }
+  ],
+  "source_sha256": {
+    "src/quality_estimation/conditioned_spatial_gp.py": "19afaadfc841f3eb031586d4273ee4d0d6fc4f77b4f766edd4162cabcc9f10be",
+    "src/quality_estimation/spatial_gp.py": "01fbde904c91fa529774da1769fa88c66c49cfeff1bd2999e94cd07ddee1da0b",
+    "scripts/experiments/roi9_gp_20261125/acquisition_update.py": "f9e5a20e7a817a97ddf679574f52e4a55dcac6ca0271935db5ab2f75654ad5b4"
+  }
+}

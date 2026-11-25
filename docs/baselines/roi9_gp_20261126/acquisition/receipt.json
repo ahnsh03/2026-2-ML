@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-11-25T19:13:11.005269+00:00",
+  "source_sha256": "f9a0514e3b8838b268c0e0d937e132413826ffcc140cb9b9de1ed11c8095e885",
+  "files": {
+    "17_gp_real_label_acquisition.png": "2725c6bf5e88eba51e5bab1ca501c6280a5e5bae2e27b96240d7a330387750e1",
+    "18_uncertainty_vs_realized_error.png": "74f59497f46271f0d484d6d49104cfcc3ae1e629db22682d985975a19e7664fd",
+    "README.md": "800b6978e04865880ce000e38e2a34c99a1333636814e862263e9e2abf78c288",
+    "collection_scope.json": "4cafde6874d0e831beafa1378168c3ba80a16ae664193eec44386c74a03e0559",
+    "figure_receipt.json": "becb59a98047bf8d213a34e09a6835b3e3ae6455dc3e7f9c1802b542479eb48d",
+    "frozen_updates.json": "9437b5adf33101718c88f2a8781c6cf9e60ac53c95f4bc6990ec556989bdd28d",
+    "id_namespace_validation.json": "4c03cc7304cde3c032461bddef134d645b8383915afe5d0b1a28a812eb40cdba",
+    "inventory_audit.json": "92321bdd41c1adbb1faf6f39f8a90a571be34ed20d3c95d3cc3a8ba6f481d473",
+    "parent_quality_control.json": "c43bf08b33d883d4266f7ddd1c53d996ba2cea4ade7cc7847143e1e131b9b48a",
+    "parent_uncertainty.json": "d09bf6dde8d82513ff1fe87603056a28f761d24532d7de267231cc9bd0652fe0",
+    "prospective_metrics.json": "a19a9649a42121a5b19986d5250dc6ec6e1a4bff20d48689b6c8a2a5f03e2072",
+    "protocol.json": "fa9876b18b7a5ef5b5347c94b6bc25f692e42de51652cc444d015d6410364f68",
+    "source_binding.json": "9810fe6e63cada15229491d78ddd12da3e46a0173d60032f5dbd94bde1cfa6d7"
+  }
+}

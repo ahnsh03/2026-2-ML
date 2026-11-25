@@ -1,11 +1,11 @@
 """Choose new release-transfer road sites using map geometry alone, without RGB/GT."""
 
 from __future__ import annotations
-import argparse, math
+import argparse
 from datetime import datetime, timezone
 from pathlib import Path
 import numpy as np
-from scipy.spatial import cKDTree, distance
+from scipy.spatial import cKDTree
 from study import read, save, sha
 from register_geometry import clearance
 
@@ -30,6 +30,12 @@ def main():
     )
     a = ap.parse_args()
     exclusions = [pose for path in a.exclude_plan for pose in read(path)["poses"]]
+    reserved_ids = {int(pose["id"]) for pose in exclusions}
+    requested_ids = set(range(a.site_id_start, a.site_id_start + a.sites))
+    if requested_ids & reserved_ids:
+        raise ValueError(
+            "requested site IDs already occur in exclusion plans; choose an unused range"
+        )
     excluded_links = {p["requested_link"] for p in exclusions if "requested_link" in p}
     excluded_xy = np.asarray(
         [[p["pose"]["location"][axis] for axis in "xy"] for p in exclusions]
