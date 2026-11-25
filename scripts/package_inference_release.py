@@ -69,11 +69,16 @@ def main():
             "docker",
             "scripts",
             ".gitmodules",
+            "ros/src/data_collection/src/data_collection",
         ],
         check=True,
     )
     with tarfile.open(archive) as source:
         source.extractall(code, filter="data")
+    if not (
+        code / "ros/src/data_collection/src/data_collection/mask_baker.py"
+    ).is_file():
+        raise ValueError("shared pure-Python capture palette helper is missing")
     target = code / "third_party/TwinLiteNetPlus"
     target.parent.mkdir(exist_ok=True)
     subprocess.run(
