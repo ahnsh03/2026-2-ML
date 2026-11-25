@@ -1,0 +1,15 @@
+{
+  "supplementary_calibration": 96,
+  "supplementary_test": 96,
+  "new26_total": 528,
+  "registered_total": 23334,
+  "test_sites": 4,
+  "calibration_sites": 8,
+  "supplementary_calibration_far_at_least_half": 15,
+  "calibration_frozen_utc": "2026-11-25T17:29:53.274524+00:00",
+  "first_test_capture": "2026-11-25T17:30:30.704082+00:00",
+  "point_models_and_calibration_before_capture": true,
+  "test_plan_sha256": "4fd48139d8d67edd20be0302f2aa81d54b8c7d1e288812a5100e338c7ae01c39",
+  "source_receipt_sha256": "88aa81e812d20bda2c324dde401dff825ce16fd0127d7ff205aaae2f4229e3cd",
+  "limitations": "Calibration supplement selected from high far-recall strata in old calibration data; not a representative deployment population. New roads are on the same map. RPC service reconnection was needed; accepted source manifests and failed/orphan records were preserved."
+}

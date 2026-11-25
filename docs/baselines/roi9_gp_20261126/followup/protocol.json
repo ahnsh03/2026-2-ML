@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-11-25T17:15:49.030337+00:00",
+  "baseline_git": "a3266c5053fe78d590bd25c35a14d3f615e980ce",
+  "baseline_recipe_sha256": "69b087c68e0296ff69e38c5cf55cde3cc0c76a24eba587bfd0874343ecc36c1c",
+  "scope": "Post-baseline far-recall diagnostic follow-up. Primary28-featureGP/Q and perceptionf0 remain frozen. Original96test opened and diagnostic only. Select far-only GP/RF views using training geographic CV; original development reports secondary; supplementary calibration chosen from old-calibration strata; new four-road test remains closed until models/calibration locked.",
+  "training_rows": 2480,
+  "feature_views": [
+    "quality28",
+    "quality28_plus_pooled_morph6",
+    "far_output28_plus_far_morph3"
+  ],
+  "model_families": [
+    "GP",
+    "RF"
+  ],
+  "gp_settings": 12,
+  "rf_settings": 12,
+  "folds": 3,
+  "embargo_m": 25,
+  "selection": "Minimum training geographic-CV far-recallMAE; no new-calibration/test performance in feature/model choice. Separate farGP does not replace or worsen Q by construction, but cross-task covariance with the primary is not retained.",
+  "target": "far-band lane recall, not IoU or operational failure",
+  "calibration_candidates": [
+    "original26cal96",
+    "original26cal96+supplement96"
+  ],
+  "prospective_test": "four other links, >=25m full-link from frozen quality training, >=50m from previous test/calibration planned poses; same physical map",
+  "deadline_utc": "2026-11-25T21:00:00+00:00"
+}

@@ -1,0 +1,8 @@
+{
+  "rows": 96,
+  "sites": 4,
+  "gp_raw_iou_mae": 0.07781127295322583,
+  "rf_raw_iou_mae": 0.07817875682193064,
+  "rf_model_sha256": "2fc1bb79a1b88bc02a1bfa50b7efdf2c2e6e0ed9a32f222073c2149dcd58514b",
+  "scope": "Main frozen28-input GP versus the actual frozen quality RF. Auxiliary-far RF is a different target-specific model and must not be described as predicting whole IoU."
+}

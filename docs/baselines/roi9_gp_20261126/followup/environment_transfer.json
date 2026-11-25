@@ -1,0 +1,240 @@
+{
+  "weather": {
+    "rows": 432,
+    "accuracy": 0.9513888888888888,
+    "balanced_accuracy": 0.9513888888888888,
+    "macro_f1": 0.9515174723310958,
+    "labels": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "confusion": [
+      [
+        63,
+        8,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        66,
+        0,
+        6,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        68,
+        0,
+        4,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        71,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        71,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        72
+      ]
+    ],
+    "model_sha256": "e1d8f28f0a5aa4155cb7fb14221bc03ab18d4e31e6eda44f02df84f0bd470bae"
+  },
+  "hour": {
+    "rows": 432,
+    "accuracy": 0.8055555555555556,
+    "balanced_accuracy": 0.8055555555555556,
+    "macro_f1": 0.442371536482265,
+    "labels": [
+      5,
+      8,
+      11,
+      13,
+      16,
+      18,
+      20,
+      23
+    ],
+    "confusion": [
+      [
+        81,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        26
+      ],
+      [
+        0,
+        77,
+        1,
+        2,
+        28,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        13,
+        95,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        0,
+        0,
+        0,
+        10,
+        95,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "model_sha256": "834622167eece09dfb93b7d297be2e259972a65b5b5e39fd53daf6cb02181640"
+  },
+  "environment": {
+    "method": "Frozen official e-means centers, NumPy nearest-center assignment; no center refit",
+    "clusters": 16,
+    "occupied": 15,
+    "counts": [
+      22,
+      31,
+      47,
+      31,
+      22,
+      8,
+      14,
+      16,
+      11,
+      0,
+      52,
+      25,
+      19,
+      41,
+      52,
+      41
+    ],
+    "largest_fraction": 0.12037037037037036,
+    "weather_nmi": 0.5429679816624814,
+    "hour_nmi": 0.45513450329567956,
+    "center_distance_quantiles": [
+      1.2434455718988562,
+      2.949108993412047,
+      6.213759651887607,
+      11.337153784903336
+    ],
+    "artifact_sha256": "4b320a39f7169dfa05f97072a7be19455fbf19cac861cf3cb18aa737e27ce2e8"
+  },
+  "by_source": {
+    "release26_calibration": {
+      "rows": 96,
+      "weather_accuracy": 0.9479166666666666,
+      "hour_accuracy": 0.8645833333333334,
+      "weather_nmi": 0.5909300476628729,
+      "occupied_clusters": 14
+    },
+    "release26_far_calibration": {
+      "rows": 96,
+      "weather_accuracy": 0.8958333333333334,
+      "hour_accuracy": 0.75,
+      "weather_nmi": 0.5098629246373424,
+      "occupied_clusters": 15
+    },
+    "release26_heldroads": {
+      "rows": 96,
+      "weather_accuracy": 0.9583333333333334,
+      "hour_accuracy": 0.84375,
+      "weather_nmi": 0.5660053959371293,
+      "occupied_clusters": 15
+    },
+    "release26_transfer": {
+      "rows": 144,
+      "weather_accuracy": 0.9861111111111112,
+      "hour_accuracy": 0.7777777777777778,
+      "weather_nmi": 0.6065575762269341,
+      "occupied_clusters": 15
+    }
+  },
+  "uses_semantic_or_iou": false,
+  "refits_models": false,
+  "recipe_sha256": "4fca30ab7180140fcae8ca4c92af1985ebde56e4b7ad1033798352019a94cbfc",
+  "index_sha256": "04eab12cce6dd1baf84b33579bbc8a1049151ff22214431b78eb61a1c102a24b",
+  "source_sha256": "ee2698c0c8807a604ddbee0f27102374275174e35df655d50f3cd91ca1d4cc96",
+  "rgb_feature_columns": 251,
+  "cpu_extraction_p50_p95": [
+    0.02908973000194237,
+    0.032426750200465905
+  ],
+  "scope": "Frozen v2 environmental expression transfer to26R1. Weather/time are evaluation labels only. Accuracy/NMI do not establish improved quality estimation or an operational failure policy."
+}

@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 import numpy as np
 import joblib
 from sklearn.metrics import roc_auc_score
+from scipy.stats import spearmanr
 from quality_estimation.region_feature_views import feature_matrix
 from quality_estimation.spatial_gp import SpatialQualityGP
 from quality_estimation.spatial_composition import independent_far_posterior
@@ -96,6 +97,11 @@ def metrics(mean, cov, data):
                     (abs(error) <= 1.6448536269514722 * sigma[valid, j]).mean()
                 ),
                 mean_width90=float((2 * 1.6448536269514722 * sigma[valid, j]).mean()),
+            )
+            absolute = abs(np.clip(mean[valid, j], 0, 1) - y[valid, j])
+            correlation = spearmanr(sigma[valid, j], absolute).statistic
+            result[name]["sigma_to_absolute_error_spearman"] = (
+                float(correlation) if np.isfinite(correlation) else None
             )
     support = (data["near_gt"] >= 50) & (data["far_gt"] >= 50) & np.isfinite(y).all(1)
     far = (y[:, 0] >= 0.7) & (y[:, 1] >= 0.8) & (y[:, 2] < 0.5)
@@ -212,6 +218,9 @@ def main():
                 source_sha256=sha(Path(__file__)),
                 rows=len(data["ids"]),
                 sites=len(set(data["site"])),
+                artifact_sha256={
+                    p.name: sha(p) for p in a.output.iterdir() if p.is_file()
+                },
                 scope="Prospective supplementary test after candidate/calibration freeze"
                 if a.key == "release26_followup_test"
                 else "Previously opened diagnostic data; not new independent validation",

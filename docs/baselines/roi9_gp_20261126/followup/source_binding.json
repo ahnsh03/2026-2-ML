@@ -1,0 +1,7 @@
+{
+  "calibration_source_commit": "ee700f7",
+  "calibration_source_path": "scripts/experiments/roi9_gp_20261125/far_validate.py",
+  "sha256": "0f91c5f03b3e12eca831a91fa8206aaecc6b6eff1e38958e6a7c720347c114d1",
+  "hash_matches_frozen_calibration": true,
+  "note": "Source bytes at calibration freeze were recovered and matched byte-for-byte before this commit; Git recording time is not the experiment execution time."
+}

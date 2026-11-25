@@ -1,0 +1,297 @@
+{
+  "models": [
+    {
+      "name": "primary",
+      "raw": {
+        "IoU": {
+          "rows": 96,
+          "mae": 0.06445274004426287,
+          "bias": -0.0408610753345289,
+          "coverage90": 0.875,
+          "mean_width90": 0.21813055450108756
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.056047939432793605,
+          "bias": 0.019634088437152347,
+          "coverage90": 0.8333333333333334,
+          "mean_width90": 0.24469056224867483
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.10231030720433215,
+          "bias": -0.09794062105145422,
+          "coverage90": 0.3958333333333333,
+          "mean_width90": 0.12887453834644771
+        },
+        "supported_rows": 96,
+        "normal_far_count": 30,
+        "normal_far_probability": {
+          "auc": 0.8075757575757576,
+          "brier": 0.23958978266444883
+        }
+      },
+      "original96": {
+        "IoU": {
+          "rows": 96,
+          "mae": 0.06334461466089401,
+          "bias": -0.03854838005205243,
+          "coverage90": 0.9166666666666666,
+          "mean_width90": 0.2642030257509754
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05632490106150459,
+          "bias": 0.021033473508534167,
+          "coverage90": 0.8541666666666666,
+          "mean_width90": 0.27675678373734663
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.11306474936092402,
+          "bias": -0.11030704096233089,
+          "coverage90": 0.3958333333333333,
+          "mean_width90": 0.14417621440163483
+        },
+        "supported_rows": 96,
+        "normal_far_count": 30,
+        "normal_far_probability": {
+          "auc": 0.807070707070707,
+          "brier": 0.2315990886860769
+        }
+      },
+      "supported192": {
+        "IoU": {
+          "rows": 96,
+          "mae": 0.06968072719709331,
+          "bias": -0.05102301724934603,
+          "coverage90": 0.90625,
+          "mean_width90": 0.26548177093517605
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.055047393141936185,
+          "bias": -0.0038791220216112983,
+          "coverage90": 0.9479166666666666,
+          "mean_width90": 0.30755376596012773
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.09071303714083166,
+          "bias": -0.08332217561493455,
+          "coverage90": 0.7083333333333334,
+          "mean_width90": 0.22770841416318752
+        },
+        "supported_rows": 96,
+        "normal_far_count": 30,
+        "normal_far_probability": {
+          "auc": 0.8202020202020202,
+          "brier": 0.1881597183323976
+        }
+      }
+    },
+    {
+      "name": "far28_GP",
+      "raw": {
+        "IoU": {
+          "rows": 96,
+          "mae": 0.06445274004426287,
+          "bias": -0.0408610753345289,
+          "coverage90": 0.875,
+          "mean_width90": 0.21813055450108756
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.056047939432793605,
+          "bias": 0.019634088437152347,
+          "coverage90": 0.8333333333333334,
+          "mean_width90": 0.24469056224867483
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.10090822646700427,
+          "bias": -0.09505024084780472,
+          "coverage90": 0.28125,
+          "mean_width90": 0.07844863033644725
+        },
+        "supported_rows": 96,
+        "normal_far_count": 30,
+        "normal_far_probability": {
+          "auc": 0.795959595959596,
+          "brier": 0.25408999037482555
+        }
+      },
+      "original96": {
+        "IoU": {
+          "rows": 96,
+          "mae": 0.06334461466089401,
+          "bias": -0.03854838005205243,
+          "coverage90": 0.9166666666666666,
+          "mean_width90": 0.2642030257509754
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05632490106150459,
+          "bias": 0.021033473508534167,
+          "coverage90": 0.8541666666666666,
+          "mean_width90": 0.27675678373734663
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.11126509352722014,
+          "bias": -0.10728516524355465,
+          "coverage90": 0.4166666666666667,
+          "mean_width90": 0.16323055308426737
+        },
+        "supported_rows": 96,
+        "normal_far_count": 30,
+        "normal_far_probability": {
+          "auc": 0.808080808080808,
+          "brier": 0.23260523312017498
+        }
+      },
+      "supported192": {
+        "IoU": {
+          "rows": 96,
+          "mae": 0.06968072719709331,
+          "bias": -0.05102301724934603,
+          "coverage90": 0.90625,
+          "mean_width90": 0.26548177093517605
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.055047393141936185,
+          "bias": -0.0038791220216112983,
+          "coverage90": 0.9479166666666666,
+          "mean_width90": 0.30755376596012773
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.09987872891531728,
+          "bias": -0.09376264826302692,
+          "coverage90": 0.6770833333333334,
+          "mean_width90": 0.23688845925425564
+        },
+        "supported_rows": 96,
+        "normal_far_count": 30,
+        "normal_far_probability": {
+          "auc": 0.814141414141414,
+          "brier": 0.1994220869803481
+        }
+      }
+    },
+    {
+      "name": "far31_GP",
+      "raw": {
+        "IoU": {
+          "rows": 96,
+          "mae": 0.06445274004426287,
+          "bias": -0.0408610753345289,
+          "coverage90": 0.875,
+          "mean_width90": 0.21813055450108756
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.056047939432793605,
+          "bias": 0.019634088437152347,
+          "coverage90": 0.8333333333333334,
+          "mean_width90": 0.24469056224867483
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.10913745863344602,
+          "bias": -0.1044245385083904,
+          "coverage90": 0.46875,
+          "mean_width90": 0.1310358472077102
+        },
+        "supported_rows": 96,
+        "normal_far_count": 30,
+        "normal_far_probability": {
+          "auc": 0.814141414141414,
+          "brier": 0.23309638671018437
+        }
+      },
+      "original96": {
+        "IoU": {
+          "rows": 96,
+          "mae": 0.06334461466089401,
+          "bias": -0.03854838005205243,
+          "coverage90": 0.9166666666666666,
+          "mean_width90": 0.2642030257509754
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.05632490106150459,
+          "bias": 0.021033473508534167,
+          "coverage90": 0.8541666666666666,
+          "mean_width90": 0.27675678373734663
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.1428576108741012,
+          "bias": -0.14296901024445915,
+          "coverage90": 0.3333333333333333,
+          "mean_width90": 0.1510576300082961
+        },
+        "supported_rows": 96,
+        "normal_far_count": 30,
+        "normal_far_probability": {
+          "auc": 0.7949494949494949,
+          "brier": 0.24460182569510347
+        }
+      },
+      "supported192": {
+        "IoU": {
+          "rows": 96,
+          "mae": 0.06968072719709331,
+          "bias": -0.05102301724934603,
+          "coverage90": 0.90625,
+          "mean_width90": 0.26548177093517605
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.055047393141936185,
+          "bias": -0.0038791220216112983,
+          "coverage90": 0.9479166666666666,
+          "mean_width90": 0.30755376596012773
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.11032501654155669,
+          "bias": -0.10598625849713868,
+          "coverage90": 0.6875,
+          "mean_width90": 0.25023889019172446
+        },
+        "supported_rows": 96,
+        "normal_far_count": 30,
+        "normal_far_probability": {
+          "auc": 0.8297979797979798,
+          "brier": 0.19511838666475448
+        }
+      }
+    },
+    {
+      "name": "far31_RF",
+      "raw": {
+        "IoU": {
+          "rows": 96,
+          "mae": 0.06445274004426287,
+          "bias": -0.0408610753345289
+        },
+        "near_recall": {
+          "rows": 96,
+          "mae": 0.056047939432793605,
+          "bias": 0.019634088437152347
+        },
+        "far_recall": {
+          "rows": 96,
+          "mae": 0.1154822115730515,
+          "bias": -0.11104051035802383
+        },
+        "supported_rows": 96,
+        "normal_far_count": 30
+      }
+    }
+  ],
+  "scope": "All variants retain Q/near means from the primary GP; far31_RF predicts only far recall. Use primary_quality_control for the actual quality RF comparison. The older96-frame cohort was already inspected; only the supplementary96-frame set is prospective for these candidates."
+}

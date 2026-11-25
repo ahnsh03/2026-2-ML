@@ -1,0 +1,13 @@
+{
+  "total_registered_rows": 23334,
+  "packs": 84,
+  "unique_ids": 23334,
+  "unique_decoded_rgb_pixels": 23334,
+  "whole_frame_target_counts_max_delta": 2.97958024919609e-08,
+  "supplement_raw_four_channel_files_verified": 768,
+  "new26_accepted": 528,
+  "test_models_and_calibration_frozen_before_capture": true,
+  "first_supplementary_test_capture": "2026-11-25T17:30:30.704082+00:00",
+  "calibration_freeze": "2026-11-25T17:29:53.274524+00:00",
+  "restoration_verified": true
+}

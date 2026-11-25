@@ -1,0 +1,139 @@
+{
+  "calibration_frames": 192,
+  "cluster_support": [
+    {
+      "cluster": 0,
+      "frames": 12,
+      "sites": 7,
+      "benchmark_normal": 6,
+      "benchmark_normal_sites": 5,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 1,
+      "frames": 13,
+      "sites": 7,
+      "benchmark_normal": 10,
+      "benchmark_normal_sites": 6,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 2,
+      "frames": 22,
+      "sites": 8,
+      "benchmark_normal": 7,
+      "benchmark_normal_sites": 4,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 3,
+      "frames": 13,
+      "sites": 7,
+      "benchmark_normal": 1,
+      "benchmark_normal_sites": 1,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 4,
+      "frames": 11,
+      "sites": 8,
+      "benchmark_normal": 3,
+      "benchmark_normal_sites": 3,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 5,
+      "frames": 3,
+      "sites": 1,
+      "benchmark_normal": 1,
+      "benchmark_normal_sites": 1,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 6,
+      "frames": 5,
+      "sites": 5,
+      "benchmark_normal": 0,
+      "benchmark_normal_sites": 0,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 7,
+      "frames": 6,
+      "sites": 6,
+      "benchmark_normal": 0,
+      "benchmark_normal_sites": 0,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 8,
+      "frames": 5,
+      "sites": 3,
+      "benchmark_normal": 0,
+      "benchmark_normal_sites": 0,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 9,
+      "frames": 0,
+      "sites": 0,
+      "benchmark_normal": 0,
+      "benchmark_normal_sites": 0,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 10,
+      "frames": 21,
+      "sites": 7,
+      "benchmark_normal": 14,
+      "benchmark_normal_sites": 6,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 11,
+      "frames": 10,
+      "sites": 7,
+      "benchmark_normal": 0,
+      "benchmark_normal_sites": 0,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 12,
+      "frames": 9,
+      "sites": 5,
+      "benchmark_normal": 5,
+      "benchmark_normal_sites": 3,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 13,
+      "frames": 20,
+      "sites": 8,
+      "benchmark_normal": 0,
+      "benchmark_normal_sites": 0,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 14,
+      "frames": 23,
+      "sites": 8,
+      "benchmark_normal": 14,
+      "benchmark_normal_sites": 5,
+      "eligible_for_existing_group_rule": false
+    },
+    {
+      "cluster": 15,
+      "frames": 19,
+      "sites": 8,
+      "benchmark_normal": 14,
+      "benchmark_normal_sites": 7,
+      "eligible_for_existing_group_rule": false
+    }
+  ],
+  "eligible_clusters": 0,
+  "coarse_clock_proxy_accuracy": 0.9976851851851852,
+  "clock_proxy_definition": "Hour<6 or>=18 versus other hours. This is a clock proxy, not visual visibility or operational normality.",
+  "scope": "Support audit only; no environment-specific thresholds fitted. IoU>=.7 is a benchmark, not operational normality. Existing rule requires20benchmark-normal frames over2sites.",
+  "environment_run_sha256": "a5b34d91d63033a09ce1e43cd0c7bee204b6832b06b4a622a8cbce7cb046d59f",
+  "source_sha256": "ce01ed0c87ee0a486aa4acb7cd1b99967ffec87b4447fd3dc72a3e40ca18a53b"
+}

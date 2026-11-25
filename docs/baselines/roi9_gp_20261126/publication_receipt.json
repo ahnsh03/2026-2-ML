@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-11-25T17:09:52.836991+00:00",
+  "created_utc": "2026-11-25T18:05:18.058677+00:00",
   "source_sha256": "fc00075700e700e21312296de29c2ea06dba39a87edb25e04d3c870aec1fed51",
   "files": {
     "10_spatial_posterior.png": "7d930a3f4594bb6666a8169530c9f023be94788468d72e950b813024c10ca6dd",
@@ -8,7 +8,7 @@
     "09_setup_transfer.png": "a118f4e3465e50a0153a6d7541ca6582154103703a6a0856d4fc1475b8da15ef",
     "03_sigma_and_spatial_means.png": "5df5163f2a3d39f1714de019f8e61f5c51bbd89f19a7e865461bc48ca1e02670",
     "05_review_tradeoff.png": "b002658e0d29fb408b76293ec75c52101575c33e1db24830a69f367271416a42",
-    "README.md": "9a504aa252158f87630901bdf151b36a2897df55c53392ea65ab92d86f3b50ed",
+    "README.md": "e41420eb6982d41272fa5f63dd96abe25012f67e1fad522ea1c0e6a8dfed7a54",
     "06_calibration_coverage_width.png": "5ff3fc60d3e12cb5161e705e624758a305c987f31611d853e92a9c251ea60299",
     "test26_heldroads.json": "0f3aa25df18a0a4909eb728d93b3c41dad372e786002c4b389a3aee58210b978",
     "test26_transfer.json": "dd8382dfef7de550754be120aa760a4e37164c077d8fd5b0428c4c82399016a0",
@@ -42,6 +42,24 @@
     "protocols/combined_pruning_views.json": "b885b8aa5908fe8b6735df16fde254d838c8e9002dcf35b504be0a59c84de433",
     "protocols/selected_features.json": "ed7f6058bd697856c403831ea1fc496419e9f9a648124891440546d3da284ca1",
     "protocols/pruning_views.json": "a205e0450f004879f9142b7ea32b1f9866da92262e319f5f36aec0f31fa28aed",
-    "protocols/candidate_schema.json": "d4b108571a88f8c81b5e543c6d5e36b250d50d68315783b6ebe2c9eb89aae1c8"
+    "protocols/candidate_schema.json": "d4b108571a88f8c81b5e543c6d5e36b250d50d68315783b6ebe2c9eb89aae1c8",
+    "followup/calibration_freeze.json": "1d8b603a2fcfb1a8098ebcd654272c4db8416af84b5d931d7cf70401bf6e3786",
+    "followup/primary_quality_control.json": "1a7afde61f0f9845efa27f72d4012357d42b4eedc9b049bb733cf998799ca533",
+    "followup/far_frozen_models.json": "0a033bfe09676452145224e50f46fb37811a64e284c2fc2e4f7cebbc1c603c63",
+    "followup/README.md": "4b23169afba36a8b34b73cc387a3e8e32ef39e6e1aa1dfcaf556d08436c1a648",
+    "followup/prospective_far_metrics.json": "12810e732c4d881168c1ee142d72fda4c3a57e8aa7c9ac8ff3b26ffed2edf928",
+    "followup/environment_transfer.json": "a5b34d91d63033a09ce1e43cd0c7bee204b6832b06b4a622a8cbce7cb046d59f",
+    "followup/16_environment_transfer_support.png": "8d673954ee4dddba0e06a688ed361170ab4bd6de6208e885f68d2463f5587c0e",
+    "followup/receipt.json": "46a05d36131aa62bb7a3f4af5eb55f30235abf1177e46f387ffdd397ce5ef0d3",
+    "followup/far_feature_comparison.json": "c10c052d5036409df8ac685594fd404df2237fbc042820bdc9f7755f27262797",
+    "followup/protocol.json": "efd10988251ca05f89b896302500ecae9f87b204dfb33085e8f15a0bfb9aa376",
+    "followup/collection_and_lock.json": "25ccb0d2767b935ad27106bdef3f0d1dae1d0147bfbb7c5f924d0a070336cd61",
+    "followup/environment_support.json": "f85f852e28f334b39d25dd10856b73a68ae8fab43de40554f23fcc03bf48d5fe",
+    "followup/previous96_diagnostics.json": "76c4b6a16e40d3e2a7d33a1817d2f3fad212fef858cedb1235923d5b6c6c18d5",
+    "followup/15_calibration_support_tradeoff.png": "79c91274e12796252f8345eaeb4e1cdaa744ddc9ae9fa5f25473410627561272",
+    "followup/paired_far_effects.json": "82a03f9dc5f0f6ecfbf5632c29dd70549fb1a25915b8a3e4dd844b44e12595c9",
+    "followup/source_binding.json": "ef98bb0fcc2924ad1e0ad1423ff67b914beed92cc2084eb1131595ee4fe14550",
+    "followup/14_far_followup.png": "9fdbc388b6b3a08142069bccecfc2e43f4f321f1446f061563867e3fbbac069e",
+    "followup/inventory_audit.json": "8b6297694343b7a4bb7d5ba226b46812026aeaa943d4aef5bbc7f7898f2423e1"
   }
 }
