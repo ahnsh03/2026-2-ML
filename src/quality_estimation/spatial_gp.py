@@ -224,6 +224,43 @@ class SpatialQualityGP:
         )
         return (covariance + covariance.T) / 2
 
+    def posterior_cross_covariance(self, X, Z):
+        """Latent physical-task covariance, shape (len(X), tasks, len(Z), tasks).
+
+        Restricted to small label-acquisition/evaluation windows. Observation
+        noise is added only when actually conditioning on acquired labels.
+        """
+        a, b = np.asarray(X, np.float64), np.asarray(Z, np.float64)
+        for x in [a, b]:
+            if (
+                x.ndim != 2
+                or x.shape[1] != self.n_features_in_
+                or not np.isfinite(x).all()
+            ):
+                raise ValueError("finite ordered GP inputs required")
+        tasks = len(self.y_mean_)
+        if len(a) * len(b) * tasks**2 > 4_000_000:
+            raise ValueError("cross covariance exceeds bounded review-window budget")
+        a = (a[:, self.selected_] - self.x_mean_) / self.x_scale_ * self.x_weight_
+        b = (b[:, self.selected_] - self.x_mean_) / self.x_scale_ * self.x_weight_
+        same = np.array_equal(a, b)
+        left = self.kernel(a, self.X_) @ self.input_eigenvectors_
+        right = left if same else self.kernel(b, self.X_) @ self.input_eigenvectors_
+        prior = self.kernel(a, b)
+        covariance = np.einsum("nm,ab->namb", prior, self.B_)
+        for j, eigenvalue in enumerate(self.task_eigenvalues_):
+            reduction = (
+                left * (eigenvalue**2 / self.denominator_[:, j])[None]
+            ) @ right.T
+            v = self.task_eigenvectors_[:, j]
+            covariance -= np.einsum("nm,a,b->namb", reduction, v, v)
+        covariance *= (
+            self.y_scale_[None, :, None, None] * self.y_scale_[None, None, None, :]
+        )
+        if same:
+            covariance = (covariance + covariance.transpose(2, 3, 0, 1)) / 2
+        return covariance
+
     def save(self, path):
         path = Path(path)
         if path.exists():
