@@ -1,4 +1,4 @@
-"""Recompute fixed-v6 nine-region candidates and offline spatial labels from registered RGB/GT."""
+"""Recompute nine-region X/y for fixed v6 or a verified perception adaptation run."""
 
 from __future__ import annotations
 import argparse
@@ -7,7 +7,11 @@ import json, time
 from pathlib import Path
 import cv2, numpy as np, torch
 from torch.utils.data import DataLoader
-from common.bridge import DEFAULT_CHECKPOINT_SHA256, load_target_model, sha256_file
+from common.bridge import load_target_model, sha256_file
+from quality_estimation.perception_identity import (
+    resolve_quality_perception,
+    baseline_identity,
+)
 from quality_estimation.build_dataset import collate, worker_init
 from quality_estimation.labels import build_label
 from quality_estimation.native import NativeSamples
@@ -28,20 +32,29 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--index", type=Path, required=True)
     ap.add_argument("--data-root", type=Path, required=True)
-    ap.add_argument("--checkpoint", type=Path, required=True)
+    perception = ap.add_mutually_exclusive_group(required=True)
+    perception.add_argument("--checkpoint", type=Path)
+    perception.add_argument("--adaptation-run", type=Path)
     ap.add_argument("--output", type=Path, required=True)
     ap.add_argument("--keys", nargs="+")
     ap.add_argument("--batch-size", type=int, default=16)
+    ap.add_argument("--device", default="cuda")
     a = ap.parse_args()
+    checkpoint, identity, _ = resolve_quality_perception(a.adaptation_run, a.checkpoint)
+    weights = "ema_state_dict" if identity["kind"] == "baseline" else "model_state_dict"
+    device = torch.device(a.device)
     a.output.mkdir(parents=True, exist_ok=True)
-    assert sha256_file(a.checkpoint) == DEFAULT_CHECKPOINT_SHA256
     torch.set_num_threads(1)
     cv2.setNumThreads(1)
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.allow_tf32 = False
     torch.backends.cuda.matmul.allow_tf32 = False
-    loaded = load_target_model(a.checkpoint, torch.device("cuda"), weights="ema")
+    loaded = load_target_model(
+        checkpoint, device, weights="ema" if identity["kind"] == "baseline" else "model"
+    )
+    if loaded.weights != weights:
+        raise ValueError("perception weight state differs")
     profile = SpatialProfile.load()
     native = profile.native[::2, ::2]
     schema = candidate_schema(profile)
@@ -62,10 +75,18 @@ def main():
     for key in keys:
         dest = a.output / (key + ".npz")
         if dest.exists():
-            assert (
-                sha256_file(dest)
-                == json.loads(dest.with_suffix(".json").read_text())["sha256"]
-            )
+            receipt = json.loads(dest.with_suffix(".json").read_text())
+            if (
+                sha256_file(dest) != receipt["sha256"]
+                or sha256_file(schema_path) != receipt["schema_sha256"]
+                or receipt["checkpoint_sha256"] != loaded.checkpoint_sha256
+                or receipt.get("perception_identity", baseline_identity()) != identity
+                or receipt.get("perception_weights", "ema_state_dict") != weights
+                or receipt["index_sha256"] != sha256_file(a.index)
+            ):
+                raise ValueError(
+                    "existing pack belongs to different inputs/perception; use a separate output"
+                )
             print("verified", key, flush=True)
             continue
         start = time.monotonic()
@@ -77,7 +98,7 @@ def main():
             num_workers=4,
             collate_fn=collate,
             worker_init_fn=worker_init,
-            pin_memory=True,
+            pin_memory=device.type == "cuda",
         )
         results = []
 
@@ -115,7 +136,9 @@ def main():
 
         with torch.inference_mode(), ThreadPoolExecutor(max_workers=4) as pool:
             for images, items in loader:
-                drive, mark = loaded.model(images.cuda(non_blocking=True))
+                drive, mark = loaded.model(
+                    images.to(device, non_blocking=device.type == "cuda")
+                )
                 ds = drive.argmax(1).cpu().numpy()
                 ps = mark.float().softmax(1).cpu().numpy()
                 results.extend(pool.map(one, zip(ds, ps, items)))
@@ -141,13 +164,20 @@ def main():
             sha256=sha256_file(dest),
             schema_sha256=sha256_file(schema_path),
             checkpoint_sha256=loaded.checkpoint_sha256,
+            perception_identity=identity,
+            perception_weights=loaded.weights,
             index_sha256=sha256_file(a.index),
             source_sha256=sha256_file(Path(__file__)),
             torch=torch.__version__,
             numpy=np.__version__,
             opencv=cv2.__version__,
-            gpu=torch.cuda.get_device_name(),
-            capability=torch.cuda.get_device_capability(),
+            device=str(device),
+            batch_size=a.batch_size,
+            precision="float32; TF32 off; deterministic cuDNN",
+            gpu=torch.cuda.get_device_name(device) if device.type == "cuda" else None,
+            capability=torch.cuda.get_device_capability(device)
+            if device.type == "cuda"
+            else None,
             simulator_release=index[key]["simulator_release"],
             seconds=time.monotonic() - start,
         )

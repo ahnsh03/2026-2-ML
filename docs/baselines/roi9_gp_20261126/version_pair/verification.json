@@ -1,0 +1,79 @@
+{
+  "scope": "Functional version-pair integration on previously inspected same-map data. No new perception training, fair f0/f1 quality comparison, adoption or live ROS acceptance.",
+  "replay_rows": 96,
+  "f1_feature_max_difference": 0.0,
+  "f1_count_mismatch_frames": 0,
+  "f1_iou_label_max_difference": 2.9420137104274602e-08,
+  "f1_gp_point_max_difference": 2.5979218776228663e-14,
+  "cross_batch_16_vs_8": {
+    "maximum_feature_difference": 2.4139881134033203e-05,
+    "maximum_gp_point_difference": 1.36382425215964e-05,
+    "changed_lane_mask_frames": 0
+  },
+  "f0_regression_rows": 16,
+  "f0_feature_max_difference": 0.0,
+  "queued_and_gt_joined": 12,
+  "admission_approved": false,
+  "mismatch_rejections": {
+    "f1_with_g0": "perception checkpoint/identity mismatch; specify the matching adaptation run explicitly",
+    "f0_with_g1": "perception checkpoint/identity mismatch; specify the matching adaptation run explicitly",
+    "f0_labels_with_f1_queue": "GT belongs to another perception checkpoint"
+  },
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "ba583a431f12240f8922b7c2289b915461286b36ccb3a8b7d0fbf7a09d3521f2",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "ea9001c64b24adf6ebef3787213069585b0e7bdd4cfdab74f420307ef95e0bfa"
+  },
+  "summary": {
+    "scope": "Functional version-pair replay only, not a new perception-training experiment or independent scientific test. Previously inspected same-map26R1 data. Do not replace the main f0/g0.",
+    "perception_identity": {
+      "schema_version": "ml-perception-identity-1",
+      "kind": "adaptation",
+      "checkpoint_sha256": "ba583a431f12240f8922b7c2289b915461286b36ccb3a8b7d0fbf7a09d3521f2",
+      "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+      "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+      "adaptation_run_sha256": "ea9001c64b24adf6ebef3787213069585b0e7bdd4cfdab74f420307ef95e0bfa"
+    },
+    "perception_weights": "model_state_dict",
+    "train_rows": 192,
+    "excluded_undefined_train": 0,
+    "calibration_rows": 96,
+    "diagnostic_rows": 96,
+    "role_audit": {
+      "train_vs_calibration": {
+        "minimum_distance_m": 395.7272725846159,
+        "id_or_pixel_overlap": false
+      },
+      "train_vs_diagnostic": {
+        "minimum_distance_m": 355.05845667447323,
+        "id_or_pixel_overlap": false
+      },
+      "calibration_vs_diagnostic": {
+        "minimum_distance_m": 54.42913409026298,
+        "id_or_pixel_overlap": false
+      }
+    },
+    "admission_approved": false,
+    "metrics": {
+      "whole_frame_lane_iou": {
+        "defined_rows": 96,
+        "raw_clipped_mae": 0.1169533065016621,
+        "calibrated_90_coverage": 0.71875
+      },
+      "near_lane_recall": {
+        "defined_rows": 96,
+        "raw_clipped_mae": 0.12357551826860096,
+        "calibrated_90_coverage": 0.6041666666666666
+      },
+      "far_lane_recall": {
+        "defined_rows": 96,
+        "raw_clipped_mae": 0.1468560120431431,
+        "calibrated_90_coverage": 0.96875
+      }
+    }
+  },
+  "source_sha256": "ca3a9d3fa1d419cf4ff2e33dcab30aaabb8f930c2429153d85281ac236e2d41a"
+}

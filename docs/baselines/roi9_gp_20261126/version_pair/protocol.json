@@ -1,0 +1,18 @@
+{
+  "created_utc": "2026-11-25T18:20:41.407011+00:00",
+  "scope": "Functional version-pair replay only, not a new perception-training experiment or independent scientific test. Previously inspected same-map26R1 data. Do not replace the main f0/g0.",
+  "perception": "existing November24 fixed-budget riskpoolrandom candidate; not scientifically adopted",
+  "quality_inputs": "current frozen roi9-front-v1 28-input order, no feature/hyperparameter search",
+  "train_keys": [
+    "release26_calibration",
+    "release26_far_calibration"
+  ],
+  "calibration_keys": [
+    "release26_heldroads"
+  ],
+  "diagnostic_keys": [
+    "release26_followup_test"
+  ],
+  "minimum_role_distance_m": 25,
+  "admission_approved": false
+}

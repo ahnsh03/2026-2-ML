@@ -1,0 +1,7 @@
+{
+  "rows": 96,
+  "numpy": "1.24.4",
+  "max_mean_difference": 4.04121180963557e-14,
+  "max_covariance_difference": 1.8041124150158794e-16,
+  "scope": "GPU-independent NPZ inference in the RTX40 CPU image; no physical RTX40 GPU test"
+}

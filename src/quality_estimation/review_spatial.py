@@ -8,6 +8,7 @@ import numpy as np
 from .spatial_gp import SpatialQualityGP
 from .spatial_risk import conditional_batch
 from .spatial_predictor import file_sha
+from .spatial_identity import validate_prediction_perception
 
 
 def select_window(predictions, ids, budget, policy, *, X=None, model=None):
@@ -107,6 +108,9 @@ def main():
     ]
     if [p["sample_id"] for p in predictions] != [p["sample_id"] for p in rows]:
         raise ValueError("replay row order differs")
+    perception_identity, perception_weights = validate_prediction_perception(
+        predictions, run
+    )
     if a.window_size < 1 or not 0 < a.budget_fraction <= 1:
         raise ValueError("invalid window/budget")
     x = np.load(root / "X.npy", allow_pickle=False)
@@ -159,6 +163,8 @@ def main():
                     model_sha256=run["model_sha256"],
                     recipe_sha256=run["recipe_sha256"],
                     checkpoint_sha256=run["checkpoint_sha256"],
+                    perception_identity=perception_identity,
+                    perception_weights=perception_weights,
                 )
             )
         windows.append(dict(session_id=session, rows=end - start, budget=budget))
@@ -179,6 +185,9 @@ def main():
         rows=len(rows),
         selected=len(selected),
         windows=windows,
+        checkpoint_sha256=run["checkpoint_sha256"],
+        perception_identity=perception_identity,
+        perception_weights=perception_weights,
         scope="Offline review candidates only. Far-band low recall is a spatial/visibility diagnostic. GT admission and perception update remain separate.",
     )
     (a.output_dir / "run.json").write_text(json.dumps(metadata, indent=2) + "\n")

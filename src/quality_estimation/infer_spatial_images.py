@@ -13,6 +13,7 @@ from .spatial_features import SpatialProfile
 from .selected_region_features import extract_selected_features
 from .roi10 import reduce_heads
 from .spatial_predictor import FrozenSpatialPredictor
+from .spatial_identity import resolve_spatial_perception
 
 
 class SpatialRGBScorer:
@@ -25,6 +26,7 @@ class SpatialRGBScorer:
         *,
         calibration=None,
         simulator_release=None,
+        adaptation_run=None,
     ):
         self.profile = SpatialProfile.load()
         self.predictor = FrozenSpatialPredictor(
@@ -34,8 +36,11 @@ class SpatialRGBScorer:
             calibration_path=calibration,
             simulator_release=simulator_release,
         )
-        if sha256_file(checkpoint) != self.predictor.specification["checkpoint_sha256"]:
-            raise ValueError("perception checkpoint differs from feature/model recipe")
+        checkpoint, self.perception_identity, _, state = resolve_spatial_perception(
+            self.predictor.specification,
+            checkpoint=checkpoint,
+            adaptation_run=adaptation_run,
+        )
         torch.set_num_threads(1)
         cv2.setNumThreads(1)
         torch.backends.cudnn.benchmark = False
@@ -43,7 +48,13 @@ class SpatialRGBScorer:
         torch.backends.cudnn.allow_tf32 = False
         torch.backends.cuda.matmul.allow_tf32 = False
         self.device = torch.device(device)
-        self.perception = load_target_model(checkpoint, self.device, weights="ema")
+        self.perception = load_target_model(
+            checkpoint,
+            self.device,
+            weights="ema" if state == "ema_state_dict" else "model",
+        )
+        if self.perception.weights != state:
+            raise ValueError("loaded perception weight state differs")
 
     @torch.inference_mode()
     def score(self, images, items):
@@ -78,6 +89,8 @@ class SpatialRGBScorer:
                 geometry=asdict(item["geometry"]),
                 uses_ground_truth=False,
                 checkpoint_sha256=self.perception.checkpoint_sha256,
+                perception_identity=self.perception_identity,
+                perception_weights=self.perception.weights,
                 profile=self.profile.version,
                 regions_sha256=self.profile.regions_sha256,
             )
@@ -104,10 +117,12 @@ def main():
         "data-root",
         "recipe",
         "model",
-        "checkpoint",
         "output-dir",
     ):
         ap.add_argument("--" + name, type=Path, required=True)
+    perception = ap.add_mutually_exclusive_group(required=True)
+    perception.add_argument("--checkpoint", type=Path)
+    perception.add_argument("--adaptation-run", type=Path)
     ap.add_argument("--calibration", type=Path)
     ap.add_argument("--batch-size", type=int, default=8)
     ap.add_argument(
@@ -139,6 +154,7 @@ def main():
         a.device,
         calibration=a.calibration,
         simulator_release=a.simulator_release,
+        adaptation_run=a.adaptation_run,
     )
     loader = DataLoader(
         RGBSamples(a.data_root, rows),
@@ -156,7 +172,9 @@ def main():
         uses_ground_truth=False,
         recipe_sha256=sha256_file(a.recipe),
         model_sha256=sha256_file(a.model),
-        checkpoint_sha256=sha256_file(a.checkpoint),
+        checkpoint_sha256=scorer.perception.checkpoint_sha256,
+        perception_identity=scorer.perception_identity,
+        perception_weights=scorer.perception.weights,
         calibration_sha256=sha256_file(a.calibration) if a.calibration else None,
         input_manifest_sha256=sha256_file(a.manifest),
         rows=len(rows),

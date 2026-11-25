@@ -255,6 +255,8 @@ class SpatialQualityGP:
                 "regions_sha256_",
                 "checkpoint_sha256_",
                 "target_names_",
+                "perception_identity_json_",
+                "perception_weights_",
                 "kernel_groups_",
                 "kernel_weights_",
             )

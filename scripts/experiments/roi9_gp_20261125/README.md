@@ -55,3 +55,9 @@ A completed queue or GT join is not approval to retrain. Candidate admission rem
 `far_followup.py` fits three intentional far-recall feature views with12GP/12RF settings each on the same2,480 rows. `far_validate.py` freezes calibration before supplementary test scoring. `environment_transfer.py` evaluates frozenv2 RGB weather/hour/e-means without Semantic or IoU; `audit_environment_support.py` checks whether groups have enough benchmark-normal calibration support. `remaining_capture.py` derives new immutable plans from accepted manifests; use the original complete parent plan and keep orphan/failed records.
 
 The31-input farGP is diagnostic-only. It retains the primary Q/near marginal and assumes zero covariance to a separately fitted far process. It is not a replacement of the primary28-input quality model or a learned joint cross-kernel. See the [follow-up report](../../../docs/experiments/ROI9_원거리보조와_환경전이_20261126.md).
+
+## Verified perception-version replay
+
+`extract.py` also accepts `--adaptation-run` instead of a baseline `--checkpoint`. Use a separate pack directory. The fitted state is explicitly `model_state_dict`; the baseline remains EMA. `fit_versioned_spatial.py` validates pack lineage, disjoint IDs/pixels, geographic embargo and perception-training exposure, then fits the current28-input GP and a separate calibration for that version. `verify_version_pair.py` audits actual RGB replay, reconstructed GT counts and rejected f0/f1 mixtures. The [functional study](../../../docs/experiments/9영역_인지버전쌍_연결검증_20261126.md) used an archived candidate, not new perception retraining or an adoption decision.
+
+Frozen RFs can also be exported without changing fitted trees using [export_portable_forests.py](../../export_portable_forests.py); [cross-profile evidence](../../../docs/baselines/roi9_gp_20261126/portable/README.md) separates NumPy inference portability from GPU and policy acceptance.

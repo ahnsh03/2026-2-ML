@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse, json, hashlib
 from pathlib import Path
 import numpy as np
+from .spatial_identity import validate_pack_perception
 
 
 def sha(path):
@@ -11,7 +12,15 @@ def sha(path):
 
 
 def join_candidates(
-    candidates, pack, source_rows, *, checkpoint_sha256, profile, regions_sha256
+    candidates,
+    pack,
+    source_rows,
+    *,
+    checkpoint_sha256,
+    profile,
+    regions_sha256,
+    perception_identity=None,
+    perception_weights=None,
 ):
     if profile != "roi9-front-v1":
         raise ValueError("nine-region label counts required")
@@ -28,6 +37,8 @@ def join_candidates(
         seen.add(sid)
         if candidate["checkpoint_sha256"] != checkpoint_sha256:
             raise ValueError("GT belongs to another perception checkpoint")
+        if perception_identity is not None:
+            validate_pack_perception(candidate, perception_identity, perception_weights)
         if (
             candidate["profile"] != profile
             or candidate["regions_sha256"] != regions_sha256
@@ -136,6 +147,8 @@ def main():
             checkpoint_sha256=receipt["checkpoint_sha256"],
             profile=schema["profile"],
             regions_sha256=schema["regions_sha256"],
+            perception_identity=receipt.get("perception_identity"),
+            perception_weights=receipt.get("perception_weights"),
         )
     a.output_dir.mkdir(parents=True, exist_ok=False)
     out = a.output_dir / "gt_review.jsonl"
@@ -150,6 +163,9 @@ def main():
         source_index_sha256=sha(a.source_index),
         gt_review_sha256=sha(out),
         admission_approved=False,
+        checkpoint_sha256=receipt["checkpoint_sha256"],
+        perception_identity=receipt.get("perception_identity"),
+        perception_weights=receipt.get("perception_weights"),
     )
     (a.output_dir / "run.json").write_text(json.dumps(metadata, indent=2) + "\n")
     (a.output_dir / "_SUCCESS").write_text(sha(a.output_dir / "run.json") + "\n")

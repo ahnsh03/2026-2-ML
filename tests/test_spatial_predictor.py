@@ -1,6 +1,7 @@
 import hashlib, json, tempfile, unittest
 from pathlib import Path
 import numpy as np
+from common.bridge import DEFAULT_CHECKPOINT_SHA256
 from quality_estimation.spatial_features import SpatialProfile
 from quality_estimation.spatial_gp import SpatialQualityGP
 from quality_estimation.spatial_predictor import FrozenSpatialPredictor
@@ -18,7 +19,7 @@ class SpatialPredictorTests(unittest.TestCase):
             feature_names_=columns,
             profile_version_=profile.version,
             regions_sha256_=profile.regions_sha256,
-            checkpoint_sha256_="a" * 64,
+            checkpoint_sha256_=DEFAULT_CHECKPOINT_SHA256,
             target_names_=[
                 "whole_frame_lane_iou",
                 "near_lane_recall",
@@ -42,7 +43,7 @@ class SpatialPredictorTests(unittest.TestCase):
             recipe = dict(
                 profile=profile.version,
                 regions_sha256=profile.regions_sha256,
-                checkpoint_sha256="a" * 64,
+                checkpoint_sha256=DEFAULT_CHECKPOINT_SHA256,
                 tasks=dict(
                     quality_spatial_gp=dict(
                         kind="SpatialGP",

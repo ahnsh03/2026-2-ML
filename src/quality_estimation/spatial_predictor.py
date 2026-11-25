@@ -6,6 +6,7 @@ from pathlib import Path
 import numpy as np
 from .spatial_gp import SpatialQualityGP
 from .spatial_risk import apply_calibration, spatial_scores
+from .spatial_identity import validate_model_perception
 
 
 def file_sha(path):
@@ -39,6 +40,9 @@ class FrozenSpatialPredictor:
         if self.model_sha256 != self.task["model_sha256"]:
             raise ValueError("model checksum differs from frozen recipe")
         self.model = SpatialQualityGP.load(model_path)
+        self.perception_identity, self.perception_weights = validate_model_perception(
+            self.model, self.specification
+        )
         if (
             self.model.n_features_in_ != len(self.columns)
             or self.model.feature_names_.tolist() != self.columns
@@ -66,6 +70,14 @@ class FrozenSpatialPredictor:
             self.calibration = json.loads(Path(calibration_path).read_text())
             if self.calibration["model_sha256"] != self.model_sha256:
                 raise ValueError("calibration belongs to another model")
+            if (
+                self.perception_identity["kind"] != "baseline"
+                or "perception_identity" in self.calibration
+            ) and (
+                self.calibration.get("perception_identity") != self.perception_identity
+                or self.calibration.get("perception_weights") != self.perception_weights
+            ):
+                raise ValueError("updated calibration perception lineage/state differs")
             if (
                 expected_release
                 and self.calibration.get("simulator_release") != expected_release
