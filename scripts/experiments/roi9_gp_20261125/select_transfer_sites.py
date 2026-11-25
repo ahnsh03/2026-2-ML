@@ -16,11 +16,24 @@ def main():
         ap.add_argument("--" + key, type=Path, required=True)
     ap.add_argument("--sites", type=int, default=4)
     ap.add_argument(
+        "--exclude-plan",
+        type=Path,
+        action="append",
+        default=[],
+        help="Exclude already captured/planned links and nearby poses",
+    )
+    ap.add_argument("--site-id-start", type=int, default=200)
+    ap.add_argument(
         "--training-selection",
         type=Path,
         help="Restrict the clearance reference to frozen quality-training membership",
     )
     a = ap.parse_args()
+    exclusions = [pose for path in a.exclude_plan for pose in read(path)["poses"]]
+    excluded_links = {p["requested_link"] for p in exclusions if "requested_link" in p}
+    excluded_xy = np.asarray(
+        [[p["pose"]["location"][axis] for axis in "xy"] for p in exclusions]
+    )
     points = []
     membership = (
         set(read(a.training_selection)["ids"]) if a.training_selection else None
@@ -36,6 +49,8 @@ def main():
     tree = cKDTree(np.unique(points, axis=0))
     candidates = []
     for record in read(a.map):
+        if record["idx"] in excluded_links:
+            continue
         if (
             record.get("lazy_init")
             or record.get("opp_traffic")
@@ -53,6 +68,11 @@ def main():
             0, np.cumsum(np.linalg.norm(np.diff(vertices[:, :2], axis=0), axis=1))
         ]
         for i in range(4, len(vertices) - 4, 12):
+            if (
+                len(excluded_xy)
+                and np.linalg.norm(excluded_xy - vertices[i, :2], axis=1).min() < 50
+            ):
+                continue
             if stations[i] < 3 or stations[-1] - stations[i] < 22:
                 continue
             pts = np.column_stack(
@@ -123,12 +143,13 @@ def main():
         if a.training_selection
         else None,
         expected_frames=24 * len(chosen),
+        exclusion_plan_sha256=[sha(path) for path in a.exclude_plan],
         poses=[],
     )
     for i, r in enumerate(chosen):
         plan["poses"].append(
             dict(
-                id=200 + i,
+                id=a.site_id_start + i,
                 group=f"release26_newroad{i}",
                 requested_link=r["link"],
                 station=r["station"],

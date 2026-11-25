@@ -49,3 +49,9 @@ PYTHONPATH=src python3 -m quality_estimation.join_spatial_gt --help
 ```
 
 A completed queue or GT join is not approval to retrain. Candidate admission remains false until role, visibility and operational-policy review. No new scientific perception retraining or live26R1 ROS acceptance is claimed by this study.
+
+## Bounded far/environment follow-up
+
+`far_followup.py` fits three intentional far-recall feature views with12GP/12RF settings each on the same2,480 rows. `far_validate.py` freezes calibration before supplementary test scoring. `environment_transfer.py` evaluates frozenv2 RGB weather/hour/e-means without Semantic or IoU; `audit_environment_support.py` checks whether groups have enough benchmark-normal calibration support. `remaining_capture.py` derives new immutable plans from accepted manifests; use the original complete parent plan and keep orphan/failed records.
+
+The31-input farGP is diagnostic-only. It retains the primary Q/near marginal and assumes zero covariance to a separately fitted far process. It is not a replacement of the primary28-input quality model or a learned joint cross-kernel. See the [follow-up report](../../../docs/experiments/ROI9_원거리보조와_환경전이_20261126.md).
