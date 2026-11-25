@@ -1,0 +1,362 @@
+{
+  "scope": "CPU forest.predict only after3warmup calls,15timed calls. Model loading, feature extraction, camera/deep inference, IO and ROS excluded. Not end-to-end FPS.",
+  "before": {
+    "scope": "Warmed forest.predict only: no feature extraction, image inference, IO or ROS. No GPU-speed claim.",
+    "python": "3.12.13",
+    "numpy": "2.5.5",
+    "repeats": 15,
+    "warmup": 3,
+    "recipe_sha256": "8613f2d36955263c6c5a377e49e882ce55fad5eef5d1363d092380bb6207609c",
+    "input_sha256": "4d19f80daf9ceca66f1ae0182d36e97b0b7099d4ded9e56b321aacf1be382402",
+    "forest_source_sha256": "b33cc729b2f1f4bcf3307f6945467622a5d0182ee867c88196f84bdc7dac36c8",
+    "benchmark_source_sha256": "b865979f7888a1b5f884553aebc11c7b26f3f36e8d38a15f40a141d3617c3d5d",
+    "records": [
+      {
+        "task": "quality_rf",
+        "batch": 1,
+        "median_ms": 6.070357998396503,
+        "p95_ms": 9.11751670100784,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "quality_rf",
+        "batch": 8,
+        "median_ms": 5.887807001272449,
+        "p95_ms": 9.110696599964285,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "quality_rf",
+        "batch": 64,
+        "median_ms": 8.33000399870798,
+        "p95_ms": 12.52924339860328,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "weather",
+        "batch": 1,
+        "median_ms": 4.577040999720339,
+        "p95_ms": 6.148582098467158,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "weather",
+        "batch": 8,
+        "median_ms": 6.952399999136105,
+        "p95_ms": 9.377702599522307,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "weather",
+        "batch": 64,
+        "median_ms": 7.912060002126964,
+        "p95_ms": 11.346482799854128,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "hour",
+        "batch": 1,
+        "median_ms": 3.858978998323437,
+        "p95_ms": 6.157605699263512,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "hour",
+        "batch": 8,
+        "median_ms": 7.398105997708626,
+        "p95_ms": 9.860245099844178,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "hour",
+        "batch": 64,
+        "median_ms": 10.439404999488033,
+        "p95_ms": 13.548507102314032,
+        "max_prediction_difference": 0.0
+      }
+    ]
+  },
+  "after": {
+    "scope": "Warmed forest.predict only: no feature extraction, image inference, IO or ROS. No GPU-speed claim.",
+    "python": "3.12.13",
+    "numpy": "2.5.5",
+    "repeats": 15,
+    "warmup": 3,
+    "recipe_sha256": "8613f2d36955263c6c5a377e49e882ce55fad5eef5d1363d092380bb6207609c",
+    "input_sha256": "4d19f80daf9ceca66f1ae0182d36e97b0b7099d4ded9e56b321aacf1be382402",
+    "forest_source_sha256": "76bd39cfd9d8a0493aa0f72619fd72e04871e064c9cbc51af0b20c0e16ec416c",
+    "benchmark_source_sha256": "b865979f7888a1b5f884553aebc11c7b26f3f36e8d38a15f40a141d3617c3d5d",
+    "records": [
+      {
+        "task": "quality_rf",
+        "batch": 1,
+        "median_ms": 0.2353470008529257,
+        "p95_ms": 0.2526394022424938,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "quality_rf",
+        "batch": 8,
+        "median_ms": 0.3354820000822656,
+        "p95_ms": 0.36639500176534057,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "quality_rf",
+        "batch": 64,
+        "median_ms": 2.3475009984395,
+        "p95_ms": 2.636160398105858,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "weather",
+        "batch": 1,
+        "median_ms": 0.2529580015107058,
+        "p95_ms": 0.2716802009672392,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "weather",
+        "batch": 8,
+        "median_ms": 0.4322400018281769,
+        "p95_ms": 0.4747029008285608,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "weather",
+        "batch": 64,
+        "median_ms": 1.5300990016839933,
+        "p95_ms": 1.8542123008955964,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "hour",
+        "batch": 1,
+        "median_ms": 0.2427319996058941,
+        "p95_ms": 0.26391349856567103,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "hour",
+        "batch": 8,
+        "median_ms": 0.4845429975830484,
+        "p95_ms": 0.5047105012636166,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "hour",
+        "batch": 64,
+        "median_ms": 2.002110002649715,
+        "p95_ms": 2.7467792995594205,
+        "max_prediction_difference": 0.0
+      }
+    ]
+  },
+  "rtx40_cpu": {
+    "scope": "Warmed forest.predict only: no feature extraction, image inference, IO or ROS. No GPU-speed claim.",
+    "python": "3.10.13",
+    "numpy": "1.24.4",
+    "repeats": 15,
+    "warmup": 3,
+    "recipe_sha256": "8613f2d36955263c6c5a377e49e882ce55fad5eef5d1363d092380bb6207609c",
+    "input_sha256": "4d19f80daf9ceca66f1ae0182d36e97b0b7099d4ded9e56b321aacf1be382402",
+    "forest_source_sha256": "76bd39cfd9d8a0493aa0f72619fd72e04871e064c9cbc51af0b20c0e16ec416c",
+    "benchmark_source_sha256": "b865979f7888a1b5f884553aebc11c7b26f3f36e8d38a15f40a141d3617c3d5d",
+    "records": [
+      {
+        "task": "quality_rf",
+        "batch": 1,
+        "median_ms": 0.25564800307620317,
+        "p95_ms": 0.2660908994585043,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "quality_rf",
+        "batch": 8,
+        "median_ms": 0.3916200003004633,
+        "p95_ms": 0.5972407001536337,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "quality_rf",
+        "batch": 64,
+        "median_ms": 1.5632589966116939,
+        "p95_ms": 1.973042199097108,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "weather",
+        "batch": 1,
+        "median_ms": 0.2696660012588836,
+        "p95_ms": 0.29633550002472475,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "weather",
+        "batch": 8,
+        "median_ms": 0.6868840027891565,
+        "p95_ms": 1.0149481997359542,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "weather",
+        "batch": 64,
+        "median_ms": 2.144653000868857,
+        "p95_ms": 2.509591300986358,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "hour",
+        "batch": 1,
+        "median_ms": 0.2764529999694787,
+        "p95_ms": 0.40973009927256493,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "hour",
+        "batch": 8,
+        "median_ms": 0.5257350021565799,
+        "p95_ms": 0.5725958009861641,
+        "max_prediction_difference": 0.0
+      },
+      {
+        "task": "hour",
+        "batch": 64,
+        "median_ms": 1.8809020002663601,
+        "p95_ms": 2.4583433001680532,
+        "max_prediction_difference": 0.0
+      }
+    ]
+  },
+  "parity": {
+    "cpu312": {
+      "python": "3.12.13",
+      "numpy": "2.5.5",
+      "recipe_sha256": "8613f2d36955263c6c5a377e49e882ce55fad5eef5d1363d092380bb6207609c",
+      "inputs_sha256": "4d19f80daf9ceca66f1ae0182d36e97b0b7099d4ded9e56b321aacf1be382402",
+      "tasks": {
+        "quality_rf": {
+          "rows": 96,
+          "dimensions": 28,
+          "maximum_prediction_difference": 0.0,
+          "inference_batch_seconds": 0.029297693999978947,
+          "artifact_sha256": "aa5183bf94891f7216e3b8047cc503930eb2f4651c1e93a1c3dcd5d0487e9beb"
+        },
+        "weather": {
+          "rows": 432,
+          "dimensions": 80,
+          "maximum_prediction_difference": 0.0,
+          "inference_batch_seconds": 0.022458332998212427,
+          "artifact_sha256": "19bdf230dc7bec9184a02f963fd3a1b8424ec68dbae6fb650551ec634fa03b64",
+          "changed_class_ids": 0,
+          "maximum_probability_difference": 0.0
+        },
+        "hour": {
+          "rows": 432,
+          "dimensions": 160,
+          "maximum_prediction_difference": 0.0,
+          "inference_batch_seconds": 0.026008600001659943,
+          "artifact_sha256": "e421ee23a280740fb1f0e989b70173203bc2a49c86ee889c607426478a965808",
+          "changed_class_ids": 0,
+          "maximum_probability_difference": 0.0
+        },
+        "environment": {
+          "rows": 432,
+          "dimensions": 54,
+          "maximum_prediction_difference": 0.0,
+          "inference_batch_seconds": 0.0040728950007178355,
+          "artifact_sha256": "4b320a39f7169dfa05f97072a7be19455fbf19cac861cf3cb18aa737e27ce2e8",
+          "changed_class_ids": 0
+        }
+      }
+    },
+    "rtx40_cpu": {
+      "python": "3.10.13",
+      "numpy": "1.24.4",
+      "recipe_sha256": "8613f2d36955263c6c5a377e49e882ce55fad5eef5d1363d092380bb6207609c",
+      "inputs_sha256": "4d19f80daf9ceca66f1ae0182d36e97b0b7099d4ded9e56b321aacf1be382402",
+      "tasks": {
+        "quality_rf": {
+          "rows": 96,
+          "dimensions": 28,
+          "maximum_prediction_difference": 0.0,
+          "inference_batch_seconds": 0.02826988699962385,
+          "artifact_sha256": "aa5183bf94891f7216e3b8047cc503930eb2f4651c1e93a1c3dcd5d0487e9beb"
+        },
+        "weather": {
+          "rows": 432,
+          "dimensions": 80,
+          "maximum_prediction_difference": 0.0,
+          "inference_batch_seconds": 0.023855728999478742,
+          "artifact_sha256": "19bdf230dc7bec9184a02f963fd3a1b8424ec68dbae6fb650551ec634fa03b64",
+          "changed_class_ids": 0,
+          "maximum_probability_difference": 0.0
+        },
+        "hour": {
+          "rows": 432,
+          "dimensions": 160,
+          "maximum_prediction_difference": 0.0,
+          "inference_batch_seconds": 0.029069760003039846,
+          "artifact_sha256": "e421ee23a280740fb1f0e989b70173203bc2a49c86ee889c607426478a965808",
+          "changed_class_ids": 0,
+          "maximum_probability_difference": 0.0
+        },
+        "environment": {
+          "rows": 432,
+          "dimensions": 54,
+          "maximum_prediction_difference": 0.0,
+          "inference_batch_seconds": 0.007851340997149237,
+          "artifact_sha256": "4b320a39f7169dfa05f97072a7be19455fbf19cac861cf3cb18aa737e27ce2e8",
+          "changed_class_ids": 0
+        }
+      }
+    },
+    "rtx50_cpu": {
+      "python": "3.11.13",
+      "numpy": "2.2.6",
+      "recipe_sha256": "8613f2d36955263c6c5a377e49e882ce55fad5eef5d1363d092380bb6207609c",
+      "inputs_sha256": "4d19f80daf9ceca66f1ae0182d36e97b0b7099d4ded9e56b321aacf1be382402",
+      "tasks": {
+        "quality_rf": {
+          "rows": 96,
+          "dimensions": 28,
+          "maximum_prediction_difference": 0.0,
+          "inference_batch_seconds": 0.030744941002922133,
+          "artifact_sha256": "aa5183bf94891f7216e3b8047cc503930eb2f4651c1e93a1c3dcd5d0487e9beb"
+        },
+        "weather": {
+          "rows": 432,
+          "dimensions": 80,
+          "maximum_prediction_difference": 0.0,
+          "inference_batch_seconds": 0.02368303500043112,
+          "artifact_sha256": "19bdf230dc7bec9184a02f963fd3a1b8424ec68dbae6fb650551ec634fa03b64",
+          "changed_class_ids": 0,
+          "maximum_probability_difference": 0.0
+        },
+        "hour": {
+          "rows": 432,
+          "dimensions": 160,
+          "maximum_prediction_difference": 0.0,
+          "inference_batch_seconds": 0.03000388100190321,
+          "artifact_sha256": "e421ee23a280740fb1f0e989b70173203bc2a49c86ee889c607426478a965808",
+          "changed_class_ids": 0,
+          "maximum_probability_difference": 0.0
+        },
+        "environment": {
+          "rows": 432,
+          "dimensions": 54,
+          "maximum_prediction_difference": 0.0,
+          "inference_batch_seconds": 0.005570437999267597,
+          "artifact_sha256": "4b320a39f7169dfa05f97072a7be19455fbf19cac861cf3cb18aa737e27ce2e8",
+          "changed_class_ids": 0
+        }
+      }
+    }
+  },
+  "source_sha256": {
+    "src/quality_estimation/portable_forest.py": "76bd39cfd9d8a0493aa0f72619fd72e04871e064c9cbc51af0b20c0e16ec416c",
+    "src/quality_estimation/region_inference.py": "c5c24431d6cc1214ae16edad2317b8492a314d0d4f7bdc5efef64a231ad29c3f",
+    "scripts/benchmark_portable_forests.py": "b865979f7888a1b5f884553aebc11c7b26f3f36e8d38a15f40a141d3617c3d5d",
+    "tests/test_portable_forest.py": "db00cec2f6f5d3e6ac30d0cc1ba8db83741dc14337ef3b8ca687b7697374a701"
+  }
+}

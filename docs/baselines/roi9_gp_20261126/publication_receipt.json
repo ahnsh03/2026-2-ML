@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-11-25T19:13:11.109363+00:00",
+  "created_utc": "2026-11-25T19:20:13.009826+00:00",
   "source_sha256": "fc00075700e700e21312296de29c2ea06dba39a87edb25e04d3c870aec1fed51",
   "files": {
     "01_roi9_selected_inputs.png": "a1dec7dad34cc6a2e21a6efedc3dd871cd327f3145f2f6dd6aeb23d64e5c5ee9",
@@ -61,8 +61,9 @@
     "followup/source_binding.json": "ef98bb0fcc2924ad1e0ad1423ff67b914beed92cc2084eb1131595ee4fe14550",
     "label_acquisition.json": "17805e378614fafe9bba0b166371fd88a7e5f7f9a44316e63e876754a621d7de",
     "paired_group_differences.json": "870968152725b69508fd6df7cce9b569901f775d616c14eb01fca020f3096659",
-    "portable/README.md": "5895fd46ed064b8533f02ba4dd4ca3c0489cef0531227e77a05bc6c8d8873dbc",
-    "portable/receipt.json": "1d3035476304ec4350509cd42192f8f80a3f867d7cb13b3020284658fb80e4b3",
+    "portable/README.md": "e05c43dba01d34cd566c8206215dacb09829c1ccecac249b9dd63304bb7a7597",
+    "portable/optimized_runtime.json": "ded3fe58665ad7973bc61ca4728ca8fa2107429761756540b6a5031d99b9402e",
+    "portable/receipt.json": "21879f979a5417e27941dda6548cf45eb243b0336fb9aec1cab34238a6e98498",
     "portable/scope.json": "218f68d21a731bdfa9562ac5f0de2d9a798b696fc1dabe069227460a7978efac",
     "portable/validation_cpu312.json": "63e4504e5d7c3350853e69075f8dabfbc35801437322f45a0634dfd91e365a7c",
     "portable/validation_rtx40_cpu.json": "6038494e743c266c053ef6ccddb27d1ddfd363e6e7b8f638a483f14ccd89f048",

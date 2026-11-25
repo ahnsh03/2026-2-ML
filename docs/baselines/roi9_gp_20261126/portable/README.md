@@ -29,3 +29,17 @@ PYTHONPATH=src python3 -m quality_estimation.region_inference \
 ```
 
 품질 RF에는 f0에서 생성한 `--head-maps`, `--marking-probability`와 실제 `--perception-checkpoint-sha256`도 필요하다. 아티팩트 해시·ROI·열 순서·인지 버전이 다르거나 입력에 NaN/Inf가 있으면 거부한다. 이 호환 포맷은 단일 출력 sklearn RandomForestRegressor/Classifier의 유한 입력 추론만 지원한다. 재학습·환경 임계값 채택·온라인 연결의 근거로 사용하지 않는다.
+
+## 추론 반복 계산 보완
+
+트리별 Python 탐색을 모든 트리의 벡터 탐색으로 바꾸고, 샘플을 최대256장씩 처리한다. 리프 합산 순서는 유지해 기존 예측을 보존했다. 환경 CLI도 같은 클래스 확률을 두 번 계산하지 않는다. 학습된 트리·모델 파일·입력 열은 바꾸지 않았다.
+
+| forest.predict, batch1 | 이전 중앙값 | 보완 후 중앙값 |
+|---|---:|---:|
+| 품질 RF28 | 6.070ms | 0.235ms |
+| 날씨 RF80 | 4.577ms | 0.253ms |
+| 시각 RF160 | 3.859ms | 0.243ms |
+
+현재 CPU/Python3.12/NumPy2.5.5에서3회 warmup 뒤15회 측정한 값이다. **모델 로딩·영상 특징·인지모델·I/O·ROS를 제외한 forest 추론만의 시간**이므로 시스템 FPS로 환산하지 않는다. 두 이미지의CPU에서도 품질96장·환경432장의 예측/확률 차이0과 전체208개 테스트를 다시 확인했다. [입력/소스 해시·전체 배치·이식 검증](optimized_runtime.json)
+
+반복 실행하는 호출자는 모델을 시작할 때 한 번 로딩해 재사용한다. [측정 도구](../../../../scripts/benchmark_portable_forests.py)는 같은 번들의 `--bundle`, 정답 없는 검증 입력의 `--inputs`, 새 `--output` 경로를 받는다.

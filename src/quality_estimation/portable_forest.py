@@ -164,16 +164,25 @@ class PortableForest:
         if x.ndim != 2 or x.shape[1] != self.n_features_in_ or not np.isfinite(x).all():
             raise ValueError("finite ordered forest input required")
         output = np.zeros((len(x), self.values.shape[1]), np.float64)
-        for start in self.offsets[:-1]:
-            node = np.full(len(x), start, np.int64)
+        roots = self.offsets[:-1]
+        # Traverse all trees together, with bounded sample chunks. Keep the
+        # original tree accumulation order so exported probabilities stay exact.
+        for start in range(0, len(x), 256):
+            batch = x[start : start + 256]
+            node = np.broadcast_to(roots, (len(batch), len(roots))).copy()
             active = self.left[node] >= 0
             while active.any():
-                rows = np.flatnonzero(active)
-                current = node[rows]
-                go_left = x[rows, self.features[current]] <= self.thresholds[current]
-                node[rows] = np.where(go_left, self.left[current], self.right[current])
+                rows, trees = np.nonzero(active)
+                current = node[rows, trees]
+                go_left = (
+                    batch[rows, self.features[current]] <= self.thresholds[current]
+                )
+                node[rows, trees] = np.where(
+                    go_left, self.left[current], self.right[current]
+                )
                 active = self.left[node] >= 0
-            output += self.values[node]
+            for tree in range(len(roots)):
+                output[start : start + len(batch)] += self.values[node[:, tree]]
         return output / (len(self.offsets) - 1)
 
     def predict(self, X):

@@ -152,11 +152,12 @@ def main():
                     np.clip(model.predict(vector[None])[0], 0, 1)
                 )
             else:
-                result["class_id"] = int(model.predict(vector[None])[0])
+                probabilities = model.predict_proba(vector[None])[0]
+                result["class_id"] = int(model.classes_[probabilities.argmax()])
                 result["class_probabilities"] = dict(
                     zip(
                         (str(int(c)) for c in model.classes_),
-                        model.predict_proba(vector[None])[0].tolist(),
+                        probabilities.tolist(),
                     )
                 )
     with args.output.open("x", encoding="utf-8") as output:

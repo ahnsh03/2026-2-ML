@@ -8,7 +8,7 @@ from quality_estimation.portable_forest import PortableForest
 class PortableForestTests(unittest.TestCase):
     def test_regression_export_reload_and_float32_boundary_routing(self):
         rng = np.random.default_rng(23)
-        x = rng.normal(size=(120, 3))
+        x = rng.normal(size=(301, 3))
         y = np.sin(x[:, 0]) + x[:, 1] ** 2
         forest = RandomForestRegressor(n_estimators=9, max_depth=5, random_state=1).fit(
             x, y
