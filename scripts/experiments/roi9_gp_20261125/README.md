@@ -76,3 +76,7 @@ PYTHONPATH=src:scripts python3 scripts/experiments/roi9_gp_20261125/register_cap
 ```
 
 Raw capture IDs/site names and media stay immutable; canonical IDs/site names carry the namespace. Existing-ID and missing-channel checks run before writing an index. `select_transfer_sites.py` also rejects site-ID ranges already used by exclusion plans. Preserve old plans and failed/alias histories; do not overwrite original receipts to resolve a collision.
+
+`audit_calibration_budget.py` checks the existing192-frame calibration pool only. It separates16-cluster/20-normal-row capacity from near-band preservation diagnostics; it does not fit thresholds or certify operational normality. [Support/definition results](../../../docs/experiments/ROI9_원거리보조와_환경전이_20261126.md#7-수집-안정성과-다음-작업)
+
+The [inference release packager](../../package_inference_release.py) includes the real pinned upstream checkout, shared pure-Python palette helper, frozen artifacts and RGB-only examples. [Isolated runtime verification](../../../docs/baselines/roi9_gp_20261126/inference_release_verification.json) runs from the release and an empty output mount; neither the original data paths nor a training GT mount is required.

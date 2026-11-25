@@ -1,0 +1,38 @@
+{
+  "package_version": "v2",
+  "source_git": "6762967e760015e30ab37f6065649f69a15ead6f",
+  "release_manifest_sha256": "bfebd2c2686928fba6c951431a5f7d22844ac00e8059ee91bc82fea4106f92ff",
+  "package_files": 283,
+  "rgb_examples": 8,
+  "no_raw_gt": true,
+  "no_original_data_mounts": true,
+  "contains_training_membership": false,
+  "runtimes": {
+    "v2_rtx40_cpu": {
+      "rows": 8,
+      "device": "cpu",
+      "torch": "2.1.2",
+      "numpy": "1.24.4",
+      "opencv": "4.9.0",
+      "maximum_feature_difference": 1.210719347000122e-08,
+      "maximum_point_difference": 1.5810030912222217e-07,
+      "elapsed_cold_run_seconds": 2.0848780430023908
+    },
+    "v2_rtx50_gpu": {
+      "rows": 8,
+      "device": "cuda",
+      "torch": "2.7.1+cu128",
+      "numpy": "2.2.6",
+      "opencv": "5.1.0",
+      "maximum_feature_difference": 0.0,
+      "maximum_point_difference": 0.0,
+      "elapsed_cold_run_seconds": 13.347381602001406
+    }
+  },
+  "scope": "Read-only bundle and empty output mounts only. No live ROS, physicalRTX40GPU or systemFPS claim. Cold offline run times are not CPU/GPU performance comparisons.",
+  "cpu_gpu_point_max_difference": 1.5810030912222217e-07,
+  "read_only_inventory_unchanged_after_smoke": true,
+  "archive_filename": "team_inference_release_v2.tar.gz",
+  "archive_bytes": 92733317,
+  "archive_sha256": "8b37759600d7eb48c37a5756bef33d22b25e58508fdba1df0cfa4a5dbfcc0c2d"
+}

@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-11-25T19:26:55.154150+00:00",
+  "created_utc": "2026-11-25T19:47:28.567857+00:00",
   "source_sha256": "fc00075700e700e21312296de29c2ea06dba39a87edb25e04d3c870aec1fed51",
   "files": {
     "01_roi9_selected_inputs.png": "a1dec7dad34cc6a2e21a6efedc3dd871cd327f3145f2f6dd6aeb23d64e5c5ee9",
@@ -17,7 +17,7 @@
     "12_held_case_05.png": "364e809f7e53de6cb3c5b78a88725daa41d9bccce930fb6f332e82d3b717c9bd",
     "12_held_case_06.png": "aac70165304027ef89d07f1072cc075acf15073711a5570309c3ac94d8dbf80f",
     "13_far_target_support.png": "e240ac5033d72ab234667dff0e851bf032dd2249445409762bd558328d764647",
-    "README.md": "0f018170eeae8093b10edf21e73c6c55e7865dd8f5dd461ffcafb1ebe6eecd35",
+    "README.md": "b06c1673183a9dd913f5656e2da0d1a92ae7c5139d9ece4d60c24428a4ce96b1",
     "acquisition/17_gp_real_label_acquisition.png": "2725c6bf5e88eba51e5bab1ca501c6280a5e5bae2e27b96240d7a330387750e1",
     "acquisition/18_uncertainty_vs_realized_error.png": "74f59497f46271f0d484d6d49104cfcc3ae1e629db22682d985975a19e7664fd",
     "acquisition/README.md": "800b6978e04865880ce000e38e2a34c99a1333636814e862263e9e2abf78c288",
@@ -60,6 +60,7 @@
     "followup/protocol.json": "efd10988251ca05f89b896302500ecae9f87b204dfb33085e8f15a0bfb9aa376",
     "followup/receipt.json": "e953a241869e39657b4786feaf7681417db66a7daa054865b7a4643dc7c43877",
     "followup/source_binding.json": "ef98bb0fcc2924ad1e0ad1423ff67b914beed92cc2084eb1131595ee4fe14550",
+    "inference_release_verification.json": "d5b141478fe991e76efa90989cfbd299701e9247d9fca14089595de603b49edc",
     "label_acquisition.json": "17805e378614fafe9bba0b166371fd88a7e5f7f9a44316e63e876754a621d7de",
     "paired_group_differences.json": "870968152725b69508fd6df7cce9b569901f775d616c14eb01fca020f3096659",
     "portable/README.md": "e05c43dba01d34cd566c8206215dacb09829c1ccecac249b9dd63304bb7a7597",
