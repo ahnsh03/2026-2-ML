@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-11-25T19:20:13.009826+00:00",
+  "created_utc": "2026-11-25T19:26:55.154150+00:00",
   "source_sha256": "fc00075700e700e21312296de29c2ea06dba39a87edb25e04d3c870aec1fed51",
   "files": {
     "01_roi9_selected_inputs.png": "a1dec7dad34cc6a2e21a6efedc3dd871cd327f3145f2f6dd6aeb23d64e5c5ee9",
@@ -44,9 +44,10 @@
     "followup/14_far_followup.png": "9fdbc388b6b3a08142069bccecfc2e43f4f321f1446f061563867e3fbbac069e",
     "followup/15_calibration_support_tradeoff.png": "79c91274e12796252f8345eaeb4e1cdaa744ddc9ae9fa5f25473410627561272",
     "followup/16_environment_transfer_support.png": "8d673954ee4dddba0e06a688ed361170ab4bd6de6208e885f68d2463f5587c0e",
-    "followup/README.md": "4b23169afba36a8b34b73cc387a3e8e32ef39e6e1aa1dfcaf556d08436c1a648",
+    "followup/README.md": "ffb6dcb586220af3d99ba89fb1edab22d7217ebeaa57949d020dac3c5ee93f36",
     "followup/calibration_freeze.json": "1d8b603a2fcfb1a8098ebcd654272c4db8416af84b5d931d7cf70401bf6e3786",
     "followup/collection_and_lock.json": "25ccb0d2767b935ad27106bdef3f0d1dae1d0147bfbb7c5f924d0a070336cd61",
+    "followup/environment_calibration_budget.json": "105492642420d2b09ab1e679e99164a74838a7f2996e31362450951f7a73a6cf",
     "followup/environment_support.json": "f85f852e28f334b39d25dd10856b73a68ae8fab43de40554f23fcc03bf48d5fe",
     "followup/environment_transfer.json": "a5b34d91d63033a09ce1e43cd0c7bee204b6832b06b4a622a8cbce7cb046d59f",
     "followup/far_feature_comparison.json": "c10c052d5036409df8ac685594fd404df2237fbc042820bdc9f7755f27262797",
@@ -57,7 +58,7 @@
     "followup/primary_quality_control.json": "1a7afde61f0f9845efa27f72d4012357d42b4eedc9b049bb733cf998799ca533",
     "followup/prospective_far_metrics.json": "12810e732c4d881168c1ee142d72fda4c3a57e8aa7c9ac8ff3b26ffed2edf928",
     "followup/protocol.json": "efd10988251ca05f89b896302500ecae9f87b204dfb33085e8f15a0bfb9aa376",
-    "followup/receipt.json": "46a05d36131aa62bb7a3f4af5eb55f30235abf1177e46f387ffdd397ce5ef0d3",
+    "followup/receipt.json": "e953a241869e39657b4786feaf7681417db66a7daa054865b7a4643dc7c43877",
     "followup/source_binding.json": "ef98bb0fcc2924ad1e0ad1423ff67b914beed92cc2084eb1131595ee4fe14550",
     "label_acquisition.json": "17805e378614fafe9bba0b166371fd88a7e5f7f9a44316e63e876754a621d7de",
     "paired_group_differences.json": "870968152725b69508fd6df7cce9b569901f775d616c14eb01fca020f3096659",
