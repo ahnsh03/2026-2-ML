@@ -35,10 +35,12 @@ def main():
    index[key]=dict(value,rows=rows)
    packs[key]=dict(artifact=str(path.relative_to(a.data_root)),sha256=receipt['sha256'],schema=str((packroot/'schema.json').relative_to(a.data_root)),schema_sha256=receipt['schema_sha256'],original_index=str(source.relative_to(a.data_root)),original_index_sha256=sha(source),perception_checkpoint_sha256=receipt['checkpoint_sha256'],rows=len(rows))
  (a.output/'index_full.json').write_text(json.dumps(index,indent=2)+'\n');(a.output/'pack_artifacts.json').write_text(json.dumps(packs,indent=2)+'\n')
- excluded=[]
- for root in [n,n/'challenge']:
+ excluded=[];excluded_complete=[];canonical_runs={str(sid).rsplit('_f',1)[0] for sid in ids}
+ for root in [n,n/'challenge',n/'marked_support']:
+  if not (root/'runs').exists():continue
   for run in sorted((root/'runs').iterdir()):
    if run.is_dir() and not (run/'_SUCCESS').exists():excluded.append(str(run.relative_to(n)))
- result=dict(created_utc=datetime.now(timezone.utc).isoformat(),source_sha256=sha(Path(__file__)),packs=len(packs),unique_ids=len(ids),unique_decoded_rgb=len(pixel_sources),duplicate_decoded_pixels=duplicate_pixels,excluded_partial_runs=excluded,index_sha256=sha(a.output/'index_full.json'),pack_artifacts_sha256=sha(a.output/'pack_artifacts.json'),scope='Canonical complete rows only. No raw/source files moved or deleted; partial/pilot raw captures remain quarantined. Thinned scientific cohort indices remain separate. New nested challenge paths rebased to the supplied common data root.')
+   elif run.is_dir() and run.name not in canonical_runs:excluded_complete.append(str(run.relative_to(n)))
+ result=dict(created_utc=datetime.now(timezone.utc).isoformat(),source_sha256=sha(Path(__file__)),packs=len(packs),unique_ids=len(ids),unique_decoded_rgb=len(pixel_sources),duplicate_decoded_pixels=duplicate_pixels,excluded_partial_runs=excluded,excluded_complete_pilot_runs=excluded_complete,index_sha256=sha(a.output/'index_full.json'),pack_artifacts_sha256=sha(a.output/'pack_artifacts.json'),scope='Canonical complete rows only. No raw/source files moved or deleted; partial/pilot raw captures remain quarantined. Thinned scientific cohort indices remain separate. New nested followup paths rebased to the supplied common data root.')
  (a.output/'audit.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2),flush=True)
 if __name__=='__main__':main()
