@@ -74,7 +74,7 @@ def calibrated_review(mean, covariance, environments, calibration, weights):
 
 
 class DriveReviewPredictor:
-    def __init__(self, feature_study, calibration, policy, *, checkpoint_sha256, regions_sha256):
+    def __init__(self, feature_study, calibration, policy, *, checkpoint_sha256, regions_sha256, simulator_release):
         root, caldir = Path(feature_study), Path(calibration)
         self.selection = json.loads((root / 'selection_frozen.json').read_text())
         self.calibration = json.loads((caldir / 'calibration_frozen.json').read_text())
@@ -85,7 +85,8 @@ class DriveReviewPredictor:
             or c['environment_profile_sha256'] != file_sha(caldir / 'environment_profile.json')
             or self.policy['calibration_sha256'] != file_sha(caldir / 'calibration_frozen.json')
             or c['checkpoint_sha256'] != checkpoint_sha256
-            or c['regions_sha256'] != regions_sha256):
+            or c['regions_sha256'] != regions_sha256
+            or c['simulator_release'] != simulator_release):
             raise ValueError('review input/perception/calibration binding differs')
         record = self.selection['chosen']
         path = root / record['model']
