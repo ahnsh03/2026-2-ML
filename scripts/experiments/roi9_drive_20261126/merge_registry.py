@@ -14,6 +14,7 @@ def main():
  for role,folder in [('development','packs_development_v2'),('calibration','packs_calibration'),('test','packs_test')]:sources.append((n/('registry_'+role+'_final/index_full.json'),n/folder,None))
  sources.append((n/'challenge/registry/index_full.json',n/'challenge/packs',n))
  if (n/'marked_support/registry/index_full.json').exists():sources.append((n/'marked_support/registry/index_full.json',n/'marked_support/packs',n))
+ if (n/'confirmation/registry/index_full.json').exists():sources.append((n/'confirmation/registry/index_full.json',n/'confirmation/packs',n))
  for source,packroot,rebase in sources:
   original=read(source)
   for key,value in original.items():
@@ -36,7 +37,7 @@ def main():
    packs[key]=dict(artifact=str(path.relative_to(a.data_root)),sha256=receipt['sha256'],schema=str((packroot/'schema.json').relative_to(a.data_root)),schema_sha256=receipt['schema_sha256'],original_index=str(source.relative_to(a.data_root)),original_index_sha256=sha(source),perception_checkpoint_sha256=receipt['checkpoint_sha256'],rows=len(rows))
  (a.output/'index_full.json').write_text(json.dumps(index,indent=2)+'\n');(a.output/'pack_artifacts.json').write_text(json.dumps(packs,indent=2)+'\n')
  excluded=[];excluded_complete=[];canonical_runs={str(sid).rsplit('_f',1)[0] for sid in ids}
- for root in [n,n/'challenge',n/'marked_support']:
+ for root in [n,n/'challenge',n/'marked_support',n/'confirmation']:
   if not (root/'runs').exists():continue
   for run in sorted((root/'runs').iterdir()):
    if run.is_dir() and not (run/'_SUCCESS').exists():excluded.append(str(run.relative_to(n)))

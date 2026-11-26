@@ -8,18 +8,21 @@ from scipy.spatial import cKDTree
 def read(p):return json.loads(p.read_text())
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--study',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();n=a.study;a.output.mkdir(parents=True,exist_ok=False)
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--study',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--include-followups',action='store_true');a=p.parse_args();n=a.study;a.output.mkdir(parents=True,exist_ok=False)
  roles={};points={};pixels={};ids={};summary={};runs=[];raw_files={}
- for role in ['development','calibration','test']:
-  root=n/('registry_'+role+'_final');full=read(root/'index_full.json');thin=read(root/'index_thinned.json');audit=read(root/'audit.json');inventory=read(root/'inventory.json')
+ cohorts=[(role,n/('registry_'+role+'_final'),n) for role in ['development','calibration','test']]
+ if a.include_followups:
+  cohorts.extend((role,n/role/'registry',n/role) for role in ['challenge','marked_support','confirmation'])
+ for role,root,raw_root in cohorts:
+  full=read(root/'index_full.json');thin=read(root/'index_thinned.json');audit=read(root/'audit.json');inventory=read(root/'inventory.json')
   assert not audit['rejected'] and not audit['missing_conditions'];rows=[r for v in full.values() for r in v['rows']];roles[role]=rows;points[role]=np.array([r['xy'] for r in rows]);pixels[role]={r['expected_pixel_sha256'] for r in rows};ids[role]={r['sample_id'] for r in rows}
   assert len(ids[role])==len(rows)==len(pixels[role])
   for item in inventory:
    for channel,record in item['files'].items():
-    path=n/record['path'];assert sha(path)==record['sha256'];raw_files[str(path.relative_to(n))]=record['sha256']
+    path=raw_root/record['path'];assert sha(path)==record['sha256'];raw_files[str(path.relative_to(n))]=record['sha256']
   summary[role]=dict(full_frames=len(rows),thinned_frames=sum(len(v['rows']) for v in thin.values()),road_segments=len(full),runs=len(audit['runs']),actual_minimum_prior_camera_m=audit['minimum_actual_prior_m'],source_binding_mismatches=sum(not r['source_binding_matches'] for r in audit['runs']),index_sha256=sha(root/'index_full.json'),thin_index_sha256=sha(root/'index_thinned.json'))
   for r in audit['runs']:
-   run=n/'runs'/r['run_id'];s=read(run/'summary.json');first=[json.loads(line) for line in (run/'manifest.jsonl').read_text().splitlines()];v=[m['first_seen']['Intensity']['state']['speed_mps'] for m in first if m['accepted']]
+   run=raw_root/'runs'/r['run_id'];s=read(run/'summary.json');first=[json.loads(line) for line in (run/'manifest.jsonl').read_text().splitlines()];v=[m['first_seen']['Intensity']['state']['speed_mps'] for m in first if m['accepted']]
    control=[json.loads(line) for line in (run/'control.jsonl').read_text().splitlines()]
    xy=np.array([[c['state']['transform']['location'][axis] for axis in 'xy'] for c in control]);actual=float(np.linalg.norm(np.diff(xy,axis=0),axis=1).sum())
    summary_run=dict(role=role,route=s['route_id'],weather=s['weather'],hour=s['hour'],frames=s['frames'],projected_route_progress_m=s['last_station_m']-s['start_station_m'],telemetry_xy_distance_m=actual,maximum_cte_m=s['maximum_cte_m'],maximum_speed_kph=s['maximum_speed_mps']*3.6,minimum_capture_speed_kph=min(v)*3.6,maximum_file_first_seen_latency_s=max(m['maximum_first_seen_latency_s'] for m in first if m['accepted']))
