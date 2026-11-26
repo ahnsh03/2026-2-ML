@@ -77,6 +77,8 @@ def main():
  raw_p=spatial_probabilities(mean,cov);labels=spatial_labels(data['Y']);labels[~support(data)]=-1
  roads=data['site'];defined=np.isfinite(data['Y'][:,0]);low=(data['Y'][:,0]<.7).astype(int)
  calibration_truth=data['Y'].copy();calibration_truth[data['near_gt']<50,1]=np.nan;calibration_truth[data['far_gt']<50,2]=np.nan
+ global_reference=fit_moments(mean,cov,calibration_truth,env,roads,conditional=False,correlation_weight=0.)
+ save(a.output/'global_moments_reference.json',global_reference)
  oldcal=read(a.old/'frozen_bundle_final/calibration_26r1.json')
  prior_compatible=record['model_sha256']==oldcal['model_sha256'] and auxiliary is None
  raw=dict(marginals=marginal_metrics(mean,cov,data),spatial=probability_metrics(raw_p,labels,roads))
@@ -120,6 +122,6 @@ def main():
  if use_binary:relative[np.isclose(prediction[6],.7)]=prediction[2][np.isclose(prediction[6],.7)]
  np.savez_compressed(a.output/'selected_oof.npz',ids=data['ids'],roads=roads,weather=data['weather'],hour=data['hour'],truth=data['Y'],labels=labels,near_gt=data['near_gt'],far_gt=data['far_gt'],counts=data['counts'],environment=env,fine_environment=fine,environment_distance=distance,spatial=prediction[0],global_probability=prediction[2] if use_binary else prediction[1],environment_relative_probability=relative,environment_threshold=prediction[6],mean=prediction[3],covariance=prediction[4],raw_mean=mean,raw_covariance=cov)
  frozen=dict(version='drive-review-calibration-1',created_utc=datetime.now(timezone.utc).isoformat(),source_sha256=sha(Path(__file__)),selection_sha256=sha(a.feature_study/'selection_frozen.json'),model_sha256=record['model_sha256'],columns=record['columns'],profile='roi9-front-v1',checkpoint_sha256=str(model.checkpoint_sha256_),regions_sha256=str(model.regions_sha256_),simulator_release='26.R1',registry_sha256=sha(a.registry/'index_thinned.json'),calibration_rows=len(mean),calibration_roads=len(splits),selected_cv=winner,all_candidates=records,moments=cal,joint_map=joint,global_map=binary,environment_profile_sha256=sha(a.output/'environment_profile.json'),environment_thresholds=thresholds,prior96_compatible=prior_compatible,interval_gate_passed=bool([r for r in records if r['marginals']['far_recall']['coverage90']>=.8]),scope='Developed with calibration-road LOCO. These OOF scores are model/policy development evidence; prospective unobserved test-road drives must validate before adoption. No OOD coverage or operational-failure guarantee.',test_not_collected=True)
- frozen.update(far_auxiliary=auxiliary,auxiliary_gt_minimum=50,source_packs_sha256={key:sha(a.packs/(key+'.npz')) for key in registry})
+ frozen.update(far_auxiliary=auxiliary,auxiliary_gt_minimum=50,source_packs_sha256={key:sha(a.packs/(key+'.npz')) for key in registry},global_reference_sha256=sha(a.output/'global_moments_reference.json'),event_definition=dict(global_iou=.7,near_recall=.8,far_recall=.5,minimum_near_far_gt_pixels=50))
  save(a.output/'calibration_frozen.json',frozen);print('calibration frozen',winner['name'],winner['spatial'],'globalPlatt',use_binary,flush=True)
 if __name__=='__main__':main()
