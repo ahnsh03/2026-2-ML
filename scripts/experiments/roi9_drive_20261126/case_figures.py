@@ -29,7 +29,7 @@ def main():
    mask=cv2.resize(np.isin(mark,[1,2]).astype(np.uint8),(1280,720),interpolation=cv2.INTER_NEAREST)>0
    target=np.zeros_like(rgb);target[lane]=semantic[lane];overlay=rgb.copy();overlay[mask]=(overlay[mask]*.35+np.array([0,255,80])*.65).astype(np.uint8)
    root=a.output/sid;root.mkdir();Image.fromarray(rgb).save(root/'rgb.png');Image.fromarray(semantic).save(root/'semantic_native.png');Image.fromarray(target).save(root/'lane_gt_native.png');Image.fromarray(overlay).save(root/'prediction_overlay.png')
-   for k,(image,title) in enumerate(zip([rgb,target,overlay],['RGB','Own-frame native lane GT','Fixed v6 prediction'])):
+   for k,(image,title) in enumerate(zip([rgb,semantic,overlay],['RGB','Own-frame native Semantic GT','Fixed v6 prediction'])):
     axes[j,k].imshow(image);axes[j,k].axis('off');axes[j,k].set_title(f'{key.title()} | {title}',fontsize=12)
    q=truth[sid];estimate=r['raw_mean'];near,far=supports[sid]
    aux=[f'{value:.2f}' if np.isfinite(value) and count>=50 else 'n/a' for value,count in zip(q[1:],[near,far])]
