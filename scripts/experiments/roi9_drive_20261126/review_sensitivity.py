@@ -21,8 +21,8 @@ def select_quota(data,global_score,far_score,budget,fraction=.7):
 def totals(result,data):
  targets=labels(data);return dict(budget=result['budget'],actual_budget_fraction=result['actual_budget_fraction'],counts=result['counts'],recall={name:result['counts'][name]/int(mask.sum()) if mask.any() else None for name,mask in targets.items()})
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--study',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False);n=a.study
- with np.load(n/'prospective_test_v1/predictions.npz',allow_pickle=False) as z:d={k:z[k] for k in z.files}
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--study',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--predictions',type=Path);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False);n=a.study;predictions=a.predictions or n/'prospective_test_v1/predictions.npz'
+ with np.load(predictions,allow_pickle=False) as z:d={k:z[k] for k in z.files}
  data=dict(truth=d['truth'],counts=d['counts'],near_gt=d['near_gt'],far_gt=d['far_gt'],roads=d['roads'],ids=d['ids'])
  sigma=np.sqrt(d['raw_covariance'][:,0,0]);scores=dict(frozen_policy=d['priority'],calibrated_global=d['global_probability'],low_GP_mean=-d['raw_mean'][:,0],low_RF_mean=-d['rf_mean'][:,0],high_GP_observation_std=sigma,far_only_diagnostic=d['spatial'][:,2]);results={}
  for budget in [.05,.1,.2]:
@@ -38,6 +38,6 @@ def main():
  class_summary={str(label):dict(rows=int((d['labels']==label).sum()),median_whole_iou_std=float(np.median(sigma[d['labels']==label])) if (d['labels']==label).any() else None) for label in [-1,0,1,2,3]}
  corr=spearmanr(sigma,d['truth'][:,0],nan_policy='omit');correlation=float(corr.statistic) if np.isfinite(corr.statistic) else None
  environment={str(int(group)):dict(rows=int((d['environment']==group).sum()),weather_counts={str(int(w)):int(((d['environment']==group)&(d['weather']==w)).sum()) for w in np.unique(d['weather'])},hour_counts={str(int(h)):int(((d['environment']==group)&(d['hour']==h)).sum()) for h in np.unique(d['hour'])}) for group in np.unique(d['environment'])}
- save(a.output/'results.json',dict(predictions_sha256=sha(n/'prospective_test_v1/predictions.npz'),budget_comparisons=results,temporal_short_session=temporal_records,sigma_diagnostic=dict(by_spatial_class=class_summary,both_weak_vs_far_only_AUC=auc,Spearman_with_whole_iou=correlation),environment_groups=environment,scope=__doc__+' Short sessions have ceil-budget inflation. Near-healthy low-IoU is a proxy, not a normal/failure label. Spatial class-1 claims require actual class-1 support.'))
+ save(a.output/'results.json',dict(predictions_sha256=sha(predictions),budget_comparisons=results,temporal_short_session=temporal_records,sigma_diagnostic=dict(by_spatial_class=class_summary,both_weak_vs_far_only_AUC=auc,Spearman_with_whole_iou=correlation),environment_groups=environment,scope=__doc__+' Short sessions have ceil-budget inflation. Near-healthy low-IoU is a proxy, not a normal/failure label. Spatial class-1 claims require actual class-1 support.'))
  print('descriptive sensitivity complete',flush=True)
 if __name__=='__main__':main()
