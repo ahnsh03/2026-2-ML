@@ -16,8 +16,15 @@
 | 8 | `score_condition_shift.py` | 미리 선언한 추가 조건의 같은 평가 구간. 새로운 도로의 반복 검증으로 부르지 않는다. |
 | 9 | `audit_dataset.py`, `alignment_audit.py`, `merge_registry.py` | 원본 재검증·역할 간 중복/거리·RGB/GT 정합·전역 재가공 목록. |
 | 10 | `make_figures.py`, `prepare_rgb_replay.py`, `case_figures.py` | 16:9 PNG/SVG와 프레임마다 실제 연결한 GT 사례. 사진 원본은 실험 볼륨에 남긴다. |
+| 11 | `screen_support.py`, `score_supported_roads.py` | 세 고정 자세의 GT 지원만으로 새 도로를 선별한다. 원래 주평가를 교체하거나 예측 오차로 도로를 고르지 않는다. |
+| 12 | `conservative_calibration.py` | 후속 자료를 보정용으로 명시 전환한다. Q 평균/분산은 유지하고 근/원거리 구간 폭은 줄이지 않는다. 새 확인 자료 수집 전에 고정한다. |
+| 13 | `score_confirmation.py`, `assess_confirmation.py` | 별도 확인 도로의 고정 후 평가와 사전 판정 기준. 재적합하지 않으며 부족한 상태의 분모를 성공으로 집계하지 않는다. |
+| 14 | `context_controls.py`, `review_sensitivity.py` | 환경 전용 입력·과거 군집 중앙값 대조와 고정 점수의 예산/임계 민감도. 확인 자료에서 정책을 선택하지 않는다. |
+| 15 | `plot_confirmation.py`, `plot_drive.py`, `probability_cases.py` | 보정의 포함률/폭/확률 오차, 실제 궤적·속도, GT로 고른 설명용 사례를 구분해 저장한다. |
 
 각 도구의 `--help`로 입력을 확인한다. 입력 경로는 환경에 맞춰 제공하며 기존 완료 폴더를 덮어쓰지 않는다. 시뮬레이터 제어에는 공급사의 native gRPC Python 정의와 Windows 네트워크 설정이 필요하다. 직접 ROS 메시지·충돌 피드백·실시간 FPS를 인수한 도구는 아니다.
+
+`collect.py`의 기본 수집 종료 시각은 이 날짜 실험용이다. 다른 날 재현할 때 `--hard-stop-utc`를 명시한다. 도로 계획·보정·확인 영수증을 확정한 뒤 주행하며 실행 중 원본 계획을 덮어쓰지 않는다. 거리 필드의 XY는 저장 관측 시점의 Ego 차량 위치이며 카메라 노출 자세가 아니다.
 
 ## GT 없는 추론·사후 정답 연결
 
@@ -41,6 +48,17 @@ PYTHONPATH=src python3 -m quality_estimation.review_calibrated \
 ```
 
 40프로파일 CPU 검증에서는 `--device cpu`를 쓴다. 이는 실제40 GPU 검증을 뜻하지 않는다. 추론 입력은 RGB와 인지 출력이며 GT·위치·날씨/시각 설정은 넣지 않는다. 큐는 세션 경계와 동점을 고정하고, 창별 올림 때문에 전체 비율이10%를 넘을 수 있다. 주평가의 도로별 전체 후보10% 예산과 구별한다. `verify_replay.py`는 재가공 특징·두 프로파일을 대조하고 큐 확정 후에만 GT를 연결한다. 모든 후보의 `admission_approved`는 false다.
+
+v2 묶음을 만들 때 `package_review_bundle.py --calibration calibration_v2_final --policy calibration_v2_final/policy_frozen.json`을 명시한다. `verify_replay.py`의 registry/packs/reference/replay/queue/data-root 인자로 별도 확인 자료를 검사할 수 있다. 체크포인트·코드·ROI가 일치해도 보정의 통계적 유효성이 자동 보장되지는 않는다. [확인 결과와 채택 범위](../../../docs/experiments/ROI9_저속주행과_검수보정_20261126.md)를 먼저 읽는다.
+
+여러 도로를 포함한 큐는 같은 인지 버전의 팩들을 한 번에 연결한다. 기존 단일 팩 `--key`도 유지한다. 원본 볼륨을 제공하면 선택된 RGB/Semantic 바이트까지 다시 확인한다.
+
+```bash
+PYTHONPATH=src python3 -m quality_estimation.join_spatial_gt \
+  --queue-dir "$NEW_QUEUE" --packs "$VERIFIED_PACKS" \
+  --source-index "$REGISTERED_INDEX" --all-keys \
+  --data-root "$RGB_GT_ROOT" --output-dir "$NEW_GT_REVIEW"
+```
 
 ## 결과 해석
 

@@ -71,6 +71,9 @@ def join_candidates(
         fs = int(far[0] + far[2])
         nr = float(near[0] / ns) if ns else None
         fr = float(far[0] / fs) if fs else None
+        near_predicted=int(near[0]+near[1]);far_predicted=int(far[0]+far[1])
+        near_precision=float(near[0]/near_predicted) if near_predicted else None
+        far_precision=float(far[0]/far_predicted) if far_predicted else None
         supported = ns >= 50 and fs >= 50
         spatial = (
             (
@@ -95,9 +98,14 @@ def join_candidates(
                 iou_defined=q is not None,
                 near_lane_recall=nr,
                 far_lane_recall=fr,
+                near_lane_precision=near_precision,
+                far_lane_precision=far_precision,
+                near_false_positive_pixels=int(near[1]),
+                far_false_positive_pixels=int(far[1]),
                 near_gt_pixels=ns,
                 far_gt_pixels=fs,
                 spatial_diagnostic=spatial,
+                spatial_diagnostic_scope="Recall-only omission diagnostic. Retained recall does not establish low false positives or normal near-band quality.",
                 benchmark_low_iou=(q < 0.7) if q is not None else None,
                 status="gt_attached_awaiting_operating_policy_review",
                 admission_approved=False,

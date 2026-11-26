@@ -30,6 +30,8 @@ def main():
   key=(summary['route_id'],summary['weather'],summary['hour'])
   if key in selected:raise ValueError('more than one completed run for route/condition; choose explicitly')
   selected[key]=run.name;source=json.loads((run/'design.json').read_text());assert sha(run/'collector_source.py')==source['source_sha256']
+  assert source['plan_sha256']==summary['plan_sha256']
+  if (run/'plan_snapshot.json').exists():assert sha(run/'plan_snapshot.json')==source['plan_sha256']
   original=next(iter(json.loads((run/'index.json').read_text()).values()))['rows'];lookup={r['sample_id']:r for r in original};eligible=[]
   for line in (run/'manifest.jsonl').read_text().splitlines():
    m=json.loads(line)

@@ -22,7 +22,7 @@ def main():
   smoke.append(dict(row,image=relative))
  (out/'rgb_manifest.jsonl').write_text(''.join(json.dumps(row)+'\n' for row in smoke))
  source_names=['drive_review.py','drive_calibration.py','spatial_gp.py','spatial_risk.py','spatial_composition.py','spatial_features.py','selected_region_features.py','region_candidates.py','region_feature_views.py','road_structure_features.py','roi10.py','infer_review_images.py','review_calibrated.py']
- source_names+=['perception_identity.py','infer_images.py','build_dataset.py']
+ source_names+=['perception_identity.py','infer_images.py','build_dataset.py','join_spatial_gt.py','spatial_identity.py']
  source_hashes={'src/quality_estimation/'+name:sha(a.repo/'src/quality_estimation'/name) for name in source_names}
  source_hashes['src/common/bridge.py']=sha(a.repo/'src/common/bridge.py')
  c=read(out/'calibration/calibration_frozen.json')

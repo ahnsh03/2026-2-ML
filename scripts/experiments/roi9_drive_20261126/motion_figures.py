@@ -12,6 +12,7 @@ def save(fig,root,name):fig.savefig(root/(name+'.png'),dpi=160);fig.savefig(root
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--study',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--watchdog',type=Path);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False);n=a.study
  plan=read(n/'plans/routes_geometry_frozen.json');routes={r['route_id']:r for r in plan['routes']};color={'development':'#2171b5','calibration':'#e39d35','test':'#45a278'}
+ representatives={next(r['route_id'] for r in plan['routes'] if r['role']==role) for role in color}
  fig=plt.figure(figsize=(16,9));gs=GridSpec(2,2,figure=fig,width_ratios=[1.15,1]);mapax=fig.add_subplot(gs[:,0]);speedax=fig.add_subplot(gs[0,1]);cteax=fig.add_subplot(gs[1,1]);seen=set()
  canonical={r['run_id'] for role in color for r in read(n/('registry_'+role+'_final/audit.json'))['runs']}
  for path in sorted((n/'runs').glob('*/summary.json')):
@@ -21,7 +22,7 @@ def main():
   if s['route_id'] not in routes:continue
   control=[json.loads(line) for line in (path.parent/'control.jsonl').read_text().splitlines()];xy=np.array([[r['state']['transform']['location'][k] for k in 'xy'] for r in control]);points=np.asarray(routes[s['route_id']]['points']);role=s['role'];c=color[role]
   mapax.plot(points[:,0],points[:,1],'--',color='black',lw=2,alpha=.6);mapax.plot(xy[:,0],xy[:,1],color=c,lw=1.3,label=role if role not in seen else None);seen.add(role);mapax.text(xy[0,0]+2,xy[0,1]+2,s['route_id'].split('_')[-1],fontsize=8)
-  if s['route_id'] in ['drive26_r00','drive26_r03','drive26_r06']:
+  if s['route_id'] in representatives:
    station=[r['station_m'] for r in control];speedax.plot(station,[r['speed_mps']*3.6 for r in control],color=c,label=s['route_id']);cteax.plot(station,[r['cte_m']*100 for r in control],color=c,label=s['route_id'])
  mapax.set_aspect('equal');mapax.set(xlabel='Local map X (m)',ylabel='Local map Y (m)',title='Nine separated new segments on the same map');mapax.legend();speedax.set(xlabel='Measured route progress (m)',ylabel='Vehicle speed (km/h)',title='Actual low-speed control (one segment per role)');speedax.legend();cteax.set(xlabel='Measured route progress (m)',ylabel='Cross-track error (cm)',title='Tracking error from independent vehicle telemetry');cteax.legend()
  fig.suptitle('135 completed drives: new geometry with controlled weather/time',fontsize=20);fig.text(.03,.025,'Dashed black: planned route. Colored: measured moving trajectory at Sunny13. Other conditions are retained in raw logs.\nTarget4 km/h; maxima and full-run integrity are reported separately. Telemetry time is not camera exposure time.',fontsize=11);fig.subplots_adjust(bottom=.16,top=.87,wspace=.3,hspace=.4);save(fig,a.output,'06_actual_motion')

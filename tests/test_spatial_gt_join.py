@@ -56,6 +56,26 @@ class SpatialGTJoinTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 self.join(modified)
 
+    def test_high_recall_with_many_false_positives_is_visible_in_review(self):
+        self.counts[0,6]=[60,240,0]
+        tp,fp,fn=self.counts[0].sum(0)
+        self.pack['y']=np.array([tp/(tp+fp+fn)],np.float32)
+        row=self.join(self.candidates)[0]
+        self.assertEqual(row['near_lane_recall'],1.)
+        self.assertEqual(row['near_lane_precision'],.2)
+        self.assertEqual(row['near_false_positive_pixels'],240)
+        self.assertEqual(row['spatial_diagnostic'],'near_recall_retained_far_recall_reduced')
+        self.assertIn('Recall-only',row['spatial_diagnostic_scope'])
+        self.assertFalse(row['admission_approved'])
+
+    def test_precision_without_predictions_is_undefined(self):
+        self.counts[0,6]=[0,0,60]
+        tp,fp,fn=self.counts[0].sum(0)
+        self.pack['y']=np.array([tp/(tp+fp+fn)],np.float32)
+        row=self.join(self.candidates)[0]
+        self.assertIsNone(row['near_lane_precision'])
+        self.assertEqual(row['near_lane_recall'],0.)
+
 
 if __name__ == "__main__":
     unittest.main()

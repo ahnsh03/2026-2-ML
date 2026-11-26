@@ -20,10 +20,11 @@ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['extension','data-root','output']:p.add_argument('--'+name,type=Path,required=True)
-    a=p.parse_args();e=a.extension;a.output.mkdir(parents=True,exist_ok=False)
+    p.add_argument('--replay',type=Path)
+    a=p.parse_args();e=a.extension;replay_root=a.replay or e/'rgb_replay50';a.output.mkdir(parents=True,exist_ok=False)
     with np.load(e/'evaluation/predictions.npz',allow_pickle=False) as z:d={k:z[k] for k in z.files}
     rows={r['sample_id']:r for v in read(e/'registry/index_thinned.json').values() for r in v['rows']}
-    replay={r['sample_id']:r for r in map(json.loads,(e/'rgb_replay50_v2/predictions.jsonl').read_text().splitlines())}
+    replay={r['sample_id']:r for r in map(json.loads,(replay_root/'predictions.jsonl').read_text().splitlines())}
     raw_prob=spatial_probabilities(d['raw_mean'],d['raw_covariance'])
     names=['Both retained','Near weak only','Far weak only','Both weak'];records=[]
     for cls in range(4):
@@ -34,7 +35,7 @@ def main():
         rgbfile=a.data_root/row['image'];gtfile=a.data_root/row['semantic']
         assert sha(rgbfile)==row['expected_sha256']['rgb'] and sha(gtfile)==row['expected_sha256']['semantic']
         rgb=np.array(Image.open(rgbfile).convert('RGB'));gt=np.array(Image.open(gtfile).convert('RGB'))
-        heads=e/'rgb_replay50_v2'/r['heads_file'];assert sha(heads)==r['heads_sha256']
+        heads=replay_root/r['heads_file'];assert sha(heads)==r['heads_sha256']
         with np.load(heads,allow_pickle=False) as z:mask=cv2.resize(np.isin(z['marking_class'][12:372],[1,2]).astype(np.uint8),(1280,720),interpolation=cv2.INTER_NEAREST)>0
         overlay=rgb.copy();overlay[mask]=(overlay[mask]*.35+np.array([0,255,80])*.65).astype(np.uint8)
         fig=plt.figure(figsize=(16,9));grid=fig.add_gridspec(2,6,height_ratios=[1.2,1],hspace=.35,wspace=.6)
