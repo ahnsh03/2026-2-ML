@@ -26,6 +26,15 @@ def main():
   rlookup={sid:i for i,sid in enumerate(ids)};feature_error=float(np.max(abs(z['X']-actual[[rlookup[sid] for sid in z['ids']]])))
  protocol=read(n/'runtime_compatibility_protocol.json');passed=mean_error<=protocol['maximum_primary_point_mean_difference'] and spatial_error<=protocol['maximum_spatial_probability_difference']
  queue=read(n/'rgb_review_queue_v1/run.json');assert sha(n/'rgb_review_queue_v1/candidates.jsonl')==queue['candidates_sha256'];candidates=lines(n/'rgb_review_queue_v1/candidates.jsonl')
+ source_rows=[r for pack in index.values() for r in pack['rows']];source_lookup={r['sample_id']:r for r in source_rows}
+ for candidate in candidates:
+  source=source_lookup[candidate['sample_id']]
+  assert sha(n.parent/source['image'])==source['expected_sha256']['rgb'] and sha(n.parent/source['semantic'])==source['expected_sha256']['semantic']
+ receipts=[read(n/'packs_test'/(key+'.json')) for key in index]
+ assert all(r['index_sha256']==sha(n/'registry_test_final/index_full.json') for r in receipts)
+ receipt=receipts[0]
+ joined=join_candidates(candidates,data,source_rows,checkpoint_sha256=receipt['checkpoint_sha256'],profile=schema['profile'],regions_sha256=schema['regions_sha256'],perception_identity=receipt['perception_identity'],perception_weights=receipt['perception_weights'])
+ assert all(not row['admission_approved'] for row in joined)
  rows=[r for value in index.values() for r in value['rows']];receipt=read(n/'packs_test'/(next(iter(index))+'.json'))
  joined=join_candidates(candidates,data,rows,checkpoint_sha256=receipt['checkpoint_sha256'],profile=schema['profile'],regions_sha256=schema['regions_sha256'],perception_identity=receipt['perception_identity'],perception_weights=receipt['perception_weights'])
  assert len(joined)==len(candidates) and not any(r['admission_approved'] for r in joined)
