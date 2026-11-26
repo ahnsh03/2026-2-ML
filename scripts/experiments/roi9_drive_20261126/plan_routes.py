@@ -10,6 +10,7 @@ def main():
  p=argparse.ArgumentParser(description=__doc__)
  for name in ['map','prior-index','membership','output']:p.add_argument('--'+name,type=Path,required=True)
  p.add_argument('--exclude-plan',type=Path,action='append',default=[])
+ p.add_argument('--exclude-geometry-plan',type=Path,action='append',default=[])
  p.add_argument('--routes',type=int,default=9);p.add_argument('--length',type=float,default=32)
  p.add_argument('--prior-clearance',type=float,default=25);p.add_argument('--training-clearance',type=float,default=30)
  p.add_argument('--between-clearance',type=float,default=30)
@@ -18,6 +19,8 @@ def main():
  members={r['sample_id'] for r in json.loads(a.membership.read_text())['rows']}
  prior=cKDTree([r['xy'] for r in rows]); train=cKDTree([r['xy'] for r in rows if r['sample_id'] in members])
  excluded={r['requested_link'] for path in a.exclude_plan for r in json.loads(path.read_text()).get('poses',[]) if 'requested_link' in r}
+ previous_points=[point[:2] for path in a.exclude_geometry_plan for route in json.loads(path.read_text()).get('routes',[]) for point in route['points']]
+ previous_tree=cKDTree(previous_points) if previous_points else None
  candidates=[]
  for link in json.loads(a.map.read_text()):
   if link['idx'] in excluded or link.get('lazy_init') or link.get('opp_traffic'):continue
@@ -26,6 +29,7 @@ def main():
   for center in np.arange(5+a.length/2,s[-1]-5-a.length/2,8):
    station=np.arange(center-a.length/2,center+a.length/2+.01,.5)
    pts=np.column_stack([np.interp(station,s,xyz[:,i]) for i in range(3)])
+   if previous_tree is not None and previous_tree.query(pts[:,:2])[0].min()<a.between_clearance:continue
    pd=float(prior.query(pts[:,:2])[0].min());td=float(train.query(pts[:,:2])[0].min())
    if pd<a.prior_clearance+.3 or td<a.training_clearance+.3:continue
    headings=np.unwrap(np.arctan2(np.diff(pts[:,1]),np.diff(pts[:,0])))
