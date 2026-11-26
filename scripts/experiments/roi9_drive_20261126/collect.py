@@ -43,11 +43,36 @@ class Session:
  def __init__(self,args):
   self.args=args;self.channel=grpc.insecure_channel(args.endpoint);grpc.channel_ready_future(self.channel).result(timeout=5)
   self.actor=ActorStub(self.channel);self.environment=EnvironmentStub(self.channel);self.ego=ObjectInfo(object_type=1);self.ego.id.value='Ego'
- def state(self):return self.actor.GetActorState(self.ego,timeout=1)
+  self.state_type=type(self.actor.GetActorState(self.ego,timeout=3));self.last_udp_state=None
+ def state(self):
+  if not self.args.udp_relay:return self.actor.GetActorState(self.ego,timeout=1)
+  p=self.args.udp_relay/'state.json';stop=time.monotonic()+.2
+  while True:
+   try:raw=json.loads(p.read_text(encoding='utf-8-sig'));break
+   except (OSError,json.JSONDecodeError):
+    if time.monotonic()>=stop:raise
+    time.sleep(.01)
+  if abs(time.time()-raw['received_unix_ms']/1000)>.5:raise RuntimeError('UDP state stale')
+  self.last_udp_state=raw;s=self.state_type();s.actor_info.CopyFrom(self.ego)
+  for axis in 'xyz':
+   setattr(s.transform.location,axis,raw['position'][axis]);setattr(s.transform.rotation,axis,raw['rotation'][axis]);setattr(s.global_velocity,axis,raw['velocity_kph'][axis])
+  s.vehicle_state.gear_mode=raw['gear'];s.vehicle_state.current_link_info.id.value=raw['link_id'];return s
  def mode(self,v):return check(self.actor.SetVehicleControlMode(VehicleControlModeParam(actor_info=self.ego,mode=v),timeout=5))
  def gear(self,v):return check(self.actor.SetVehicleGear(VehicleGear(actor_info=self.ego,gear=v),timeout=5))
- def control(self,throttle=0,brake=1,steer=0):return check(self.actor.ControlVehicle(VehicleCtrlCmd(actor_info=self.ego,long_cmd_type=1,throttle=throttle,brake=brake,steer=steer),timeout=.6))
+ def relay_command(self,armed,throttle=0,brake=1,steer=0,gear=4):
+  path=self.args.udp_relay/'command.json';temp=path.with_suffix('.tmp.driver')
+  save(temp,dict(sequence=time.monotonic_ns(),armed=armed,throttle=throttle,brake=brake,steer=steer,gear=gear,utc=utc()))
+  stop=time.monotonic()+.25
+  while True:
+   try:temp.replace(path);break
+   except PermissionError:
+    if time.monotonic()>=stop:raise
+    time.sleep(.01)
+ def control(self,throttle=0,brake=1,steer=0):
+  if self.args.udp_relay:self.relay_command(True,throttle,brake,steer);return dict(queued=True,transport='Windows loopback UDP26R1 with independent0.6s watchdog')
+  return check(self.actor.ControlVehicle(VehicleCtrlCmd(actor_info=self.ego,long_cmd_type=1,throttle=throttle,brake=brake,steer=steer),timeout=.6))
  def hold(self):
+  if self.args.udp_relay:self.relay_command(False,gear=1);time.sleep(.25)
   self.gear(GEAR_MODE_P);self.mode(VEHICLE_CONTROL_KEYBOARD)
   check(self.actor.SetVelocity(SetVelocityParam(actor_info=self.ego,velocity=0),timeout=5))
  def place(self,pose):
@@ -67,16 +92,30 @@ class Session:
   raise RuntimeError('placement did not settle')
  def set_condition(self,w,h):
   oldw=self.environment.GetWeather(Empty(),timeout=5);oldh=self.environment.GetTime(Empty(),timeout=5)
+  receipt=[]
   for setter,request,getter,field,target in [(self.environment.SetWeather,type(oldw)(type=w,instantly=True),self.environment.GetWeather,'type',w),(self.environment.SetTime,type(oldh)(hour=h,instantly=True,data_only=False),self.environment.GetTime,'hour',h)]:
+   began=time.monotonic();code='acknowledged';observations=[]
    try:check(setter(request,timeout=10))
    except grpc.RpcError as e:
     if e.code()!=grpc.StatusCode.DEADLINE_EXCEEDED:raise
-   if getattr(getter(Empty(),timeout=5),field)!=target:raise RuntimeError('condition readback differs')
+    code='rpc_deadline'
+   stop=time.monotonic()+5
+   while True:
+    observed=getattr(getter(Empty(),timeout=5),field);observations.append(dict(elapsed=time.monotonic()-began,value=observed))
+    if observed==target:break
+    if time.monotonic()>stop:raise RuntimeError(f'condition readback differs: field={field}, requested={target}, observed={observed}')
+    time.sleep(.2)
+   receipt.append(dict(field=field,requested=target,rpc=code,observations=observations))
   time.sleep(1.5)
+  return receipt
  def restore(self,initial):
   result={}
+  try:self.control()
+  except BaseException as exc:result['stop_command_error']=repr(exc)
+  if self.args.udp_relay:
+   self.relay_command(False,gear=1);time.sleep(.3)
   try:
-   self.control();self.hold();self.set_condition(initial['weather_type'],initial['time']['hour'])
+   self.hold();self.set_condition(initial['weather_type'],initial['time']['hour'])
    s=self.place(initial['ego']['transform']);m=self.actor.GetVehicleControlMode(self.ego,timeout=5)
    result=dict(ego=message(s),mode=message(m),weather=message(self.environment.GetWeather(Empty(),timeout=5)),time=message(self.environment.GetTime(Empty(),timeout=5)))
    result['xy_error_m']=math.hypot(s.transform.location.x-initial['ego']['transform']['location']['x'],s.transform.location.y-initial['ego']['transform']['location']['y'])
@@ -90,10 +129,15 @@ def run_drive(session,route,w,h,args):
  runid=f"{args.prefix}_{route['route_id']}_w{w}_h{h:02d}";dest=args.output/'runs'/runid
  if (dest/'_SUCCESS').exists():
   summary=json.loads((dest/'summary.json').read_text());assert summary['plan_sha256']==digest(args.plan);return summary
+ for prefix in args.reuse_prefix:
+  reused=args.output/'runs'/f"{prefix}_{route['route_id']}_w{w}_h{h:02d}"
+  if (reused/'_SUCCESS').exists():
+   summary=json.loads((reused/'summary.json').read_text());assert summary['plan_sha256']==digest(args.plan)
+   print('reuse completed',summary['run_id'],flush=True);return summary
  dest.mkdir(parents=True,exist_ok=False)
  (dest/'collector_source.py').write_bytes(Path(__file__).read_bytes())
- save(dest/'design.json',dict(created_utc=utc(),source_sha256=digest(dest/'collector_source.py'),plan_sha256=digest(args.plan),route=route,weather=w,hour=h,target_kph=args.target_kph,capture_interval_s=args.capture_interval,steering_range_deg=args.steering_range_deg,native_velocity_divisor=args.native_velocity_divisor,scope='Actual moving capture. Native simulation/exposure timestamps unavailable; request and per-file readbacks retained. Actuator uses native gRPC normalized steering; not direct ROS/UDP validation.'))
- session.set_condition(w,h);s0=session.place(route['start_pose']);save(dest/'before.json',message(s0))
+ save(dest/'design.json',dict(created_utc=utc(),source_sha256=digest(dest/'collector_source.py'),plan_sha256=digest(args.plan),route=route,weather=w,hour=h,target_kph=args.target_kph,capture_interval_s=args.capture_interval,steering_range_deg=args.steering_range_deg,native_velocity_divisor=args.native_velocity_divisor,transport='WindowsUDP26R1+watchdog' if args.udp_relay else 'native_gRPC',scope='Actual moving capture. Camera exposure timestamps unavailable; request and per-file readbacks retained. UDP state timestamp is vehicle telemetry, not camera exposure. Direct ROS and UDP collision feedback are not tested.'))
+ save(dest/'condition_receipt.json',session.set_condition(w,h));s0=session.place(route['start_pose']);save(dest/'before.json',message(s0))
  points=np.asarray(route['points']);_,_,stations=geometry(points,[s0.transform.location.x,s0.transform.location.y])
  session.mode(VEHICLE_CONTROL_AUTO_MODE);session.gear(GEAR_MODE_D)
  for _ in range(4):session.control();time.sleep(.05)
@@ -114,7 +158,7 @@ def run_drive(session,route,w,h,args):
   steer=float(np.clip(delta/math.radians(args.steering_range_deg),-.5,.5));target_speed=args.target_kph/3.6
   throttle=float(np.clip(.14+.16*(target_speed-speed),0,.3));brake=.25 if speed>target_speed+.35 else 0.
   session.control(throttle=throttle if not brake else 0,brake=brake,steer=steer)
-  record=dict(utc=utc(),elapsed=tick-started,monotonic=tick,state=message(s),station_m=station,cte_m=cte,speed_mps=speed,command=dict(throttle=throttle if not brake else 0,brake=brake,steer=steer))
+  record=dict(utc=utc(),elapsed=tick-started,monotonic=tick,state=message(s),station_m=station,cte_m=cte,speed_mps=speed,command=dict(throttle=throttle if not brake else 0,brake=brake,steer=steer),udp_state=session.last_udp_state)
   controls.append(record);append(dest/'control.jsonl',record)
   if station>=1 and speed>.2 and tick-last_capture>=args.capture_interval and stations[-1]-station>3:
    name=runid+f'_f{len(captures):04d}';channel=grpc.insecure_channel(args.endpoint)
@@ -126,6 +170,7 @@ def run_drive(session,route,w,h,args):
    for suffix in ['Intensity','Semantic','Depth','Instance']:
     file=args.output/'captures/CAMERA_1'/(capture['sample_id']+'_'+suffix+'.png')
     if suffix not in capture['first_seen'] and file.exists():capture['first_seen'][suffix]=dict(observed_utc=utc(),monotonic=time.monotonic(),bytes=file.stat().st_size,state=record)
+   if time.monotonic()-capture['requested_monotonic']>1. and len(capture['first_seen'])<4:raise RuntimeError('moving capture files overdue; stop with independent UDP brake')
   time.sleep(max(0,.06-(time.monotonic()-tick)))
  session.control();session.hold();time.sleep(.4)
  rows=[];incomplete=0
@@ -160,6 +205,8 @@ def main():
  p=argparse.ArgumentParser(description=__doc__)
  p.add_argument('--plan',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--simulator-file-dir',required=True);p.add_argument('--endpoint',default='host.docker.internal:7789');p.add_argument('--prefix',required=True)
  p.add_argument('--routes',nargs='+');p.add_argument('--roles',nargs='+');p.add_argument('--condition',nargs=2,type=int,action='append');p.add_argument('--target-kph',type=float,default=4);p.add_argument('--steering-range-deg',type=float,default=20);p.add_argument('--native-velocity-divisor',type=float,choices=[1.,3.6],default=3.6);p.add_argument('--capture-interval',type=float,default=1.2);p.add_argument('--hard-stop-utc',default='2026-11-26T05:00:00+00:00')
+ p.add_argument('--reuse-prefix',nargs='*',default=[])
+ p.add_argument('--udp-relay',type=Path);p.add_argument('--max-new-runs',type=int,default=0)
  a=p.parse_args();assert 0<a.target_kph<=5 and .8<=a.capture_interval<=4 and 10<=a.steering_range_deg<=45
  a.output.mkdir(parents=True,exist_ok=True);(a.output/'runs').mkdir(exist_ok=True)
  session=Session(a);weather=session.environment.GetWeather(Empty(),timeout=5);initial=dict(utc=utc(),ego=message(session.state()),mode=message(session.actor.GetVehicleControlMode(session.ego,timeout=5)),weather=message(weather),weather_type=weather.type,time=message(session.environment.GetTime(Empty(),timeout=5)))
@@ -168,14 +215,17 @@ def main():
  def interrupted(*_):raise InterruptedError('collection interrupted')
  for sig in [signal.SIGINT,signal.SIGTERM]:signal.signal(sig,interrupted)
  before=a.output/(a.prefix+'_before.json');assert not before.exists();save(before,initial)
- completed=[];failure=None
+ completed=[];failure=None;new_runs=0
  try:
   check(session.actor.SetPause(EnableActor(actor_info=session.ego,enable=False),timeout=5))
   plan=json.loads(a.plan.read_text())
   for route in plan['routes']:
    if a.routes and route['route_id'] not in a.routes:continue
    if a.roles and route['role'] not in a.roles:continue
-   for w,h in (a.condition or route['conditions']):completed.append(run_drive(session,route,w,h,a))
+   for w,h in (a.condition or route['conditions']):
+    result=run_drive(session,route,w,h,a);completed.append(result)
+    if result['run_id'].startswith(a.prefix+'_'):new_runs+=1
+    if a.max_new_runs and new_runs>=a.max_new_runs:return
  except BaseException as e:failure=repr(e);raise
  finally:
   restored=session.restore(initial);save(a.output/(a.prefix+'_completion.json'),dict(completed_runs=completed,failure=failure,restoration=restored,finished_utc=utc()))
