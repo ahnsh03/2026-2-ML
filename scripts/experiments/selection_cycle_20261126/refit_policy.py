@@ -38,7 +38,7 @@ def main():
         if i in trials:return trials[i]['objective']
         v=parameters[i];priority=mixture_priority(scores[v['score_family']][ix],epistemic[ix],v['uncertainty_weight']);details=[]
         for fraction in [.1,3072/7442]:
-            budget=int(np.ceil(len(ix)*fraction));local=select_review(data['ids'][ix],priority,labels[ix],budget,quota_exponent=v['quota_exponent'],audit_fraction=v['audit_fraction']);picked=np.zeros(len(ix),bool);picked[local]=True
+            budget=int(np.ceil(len(ix)*fraction));local=select_review(data['ids'][ix],priority,labels[ix],budget,quota_exponent=v['quota_exponent'],audit_fraction=v['audit_fraction'],audit_rounding='ceil');picked=np.zeros(len(ix),bool);picked[local]=True
             def recall(groups):
                 values=[picked[(groups==g)&truth].mean() for g in np.unique(groups) if ((groups==g)&truth).sum()>=3]
                 return float(np.mean(values)) if values else None
@@ -58,12 +58,12 @@ def main():
         reason='Fewer than20 low-IoU development rows or2positive roads; skip BO and preserve a simple quality-ranked queue with10% random audit.'
     dump(out/'policy_search.json',dict(bo_indices=history,bo_losses=losses,random_indices=random,random_losses=rloss,shared_initial=initial,trials={str(k):v for k,v in trials.items()},
          enough_positive_support=bool(enough),positive_rows=int(truth.sum()),positive_roads=len(set(roads[truth])),selected=chosen,reason=reason,raw_brier=raw_brier,calibrated_brier=cal_brier,calibration_enabled=bool(use_cal),
-         audit_fraction_floor=.1,objective='Mean dev low-IoU recall across roads/environment groups at10% and41.3% budgets, with review-normal cost. Not measured retraining gain.'))
+         audit_fraction_floor=.1,audit_rounding='ceil',objective='Mean dev low-IoU recall across roads/environment groups at10% and41.3% budgets, with review-normal cost. Not measured retraining gain.'))
     # Selection is frozen before any heldout data are used.
     shutil.copy2(a.refit/rec['model'],out/'quality_gp.npz');shutil.copy2(a.refit/'calibration.json',out/'calibration.json');shutil.copy2(a.refit/'environment.json',out/'environment.json')
     identity=selected['perception_identity'];policy=dict(version='versioned-review-policy-1',**chosen,model_sha256=sha(out/'quality_gp.npz'),perception_identity=identity,
          environment_sha256=sha(out/'environment.json'),calibration_sha256=sha(out/'calibration.json'),calibration_enabled=bool(use_cal),absolute_quality_threshold=.7,relative_thresholds_enabled=False,
-         selection_population='Whole supplied archive buffer; uncertainty ranks are computed after inference batches are concatenated.',scope='Candidate review priority only; GT verification and admission are separate.')
+         audit_rounding='ceil',selection_population='Whole supplied archive buffer; uncertainty ranks are computed after inference batches are concatenated.',scope='Candidate review priority only; GT verification and admission are separate.')
     dump(out/'policy.json',policy)
     manifest=dict(version='roi9-versioned-review-bundle-1',profile=selected['profile'],regions_sha256=selected['regions_sha256'],perception_identity=identity,
           perception_weights=selected['perception_weights'],checkpoint_sha256=selected['checkpoint_sha256'],ordered_features=rec['columns'],target_names=rec['targets'],

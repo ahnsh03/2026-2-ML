@@ -42,11 +42,16 @@ def main():
                 records.append(record)
     predictions={k:np.concatenate(v) for k,v in parts.items()};ids=np.array([r['sample_id'] for r in records]);budget=a.budget if a.budget is not None else int(np.ceil(len(rows)*.1))
     selected,priority=review.select(ids,predictions,budget)
-    candidates=[dict(records[i],priority=float(priority[i]),selection_rank=j+1,review_population=len(rows),budget=budget,selection_scope='Whole provided archive buffer; not independently ranked inference batches.') for j,i in enumerate(selected)]
+    rounding=np.ceil if review.policy.get('audit_rounding','floor')=='ceil' else np.floor
+    audit=int(rounding(budget*review.policy['audit_fraction']));priority_count=budget-audit
+    candidates=[dict(records[i],priority=float(priority[i]),selection_rank=j+1,review_population=len(rows),budget=budget,
+                     selection_component='priority' if j<priority_count else 'random_audit',
+                     conditional_inclusion_probability=1. if j<priority_count else audit/(len(rows)-priority_count),
+                     selection_scope='Whole provided archive buffer; not independently ranked inference batches.') for j,i in enumerate(selected)]
     for name,value in [('predictions.jsonl',records),('candidates.jsonl',candidates)]:
         (a.output/name).write_text(''.join(json.dumps(r,allow_nan=False)+'\n' for r in value))
     np.savez_compressed(a.output/'features.npz',X=np.concatenate(vectors),ids=ids,ordered_features=columns)
-    metadata=dict(status='complete',rows=len(rows),budget=budget,uses_ground_truth=False,perception_identity=identity,perception_weights=perception.weights,
+    metadata=dict(status='complete',rows=len(rows),budget=budget,audit_slots=audit,priority_slots=priority_count,uses_ground_truth=False,perception_identity=identity,perception_weights=perception.weights,
                   checkpoint_sha256=identity['checkpoint_sha256'],profile=review.profile.version,regions_sha256=review.profile.regions_sha256,
                   bundle_manifest_sha256=sha256_file(a.bundle/'bundle_manifest.json'),manifest_sha256=sha256_file(a.manifest),source_sha256=sha256_file(Path(__file__)),
                   candidates_sha256=sha256_file(a.output/'candidates.jsonl'),seconds=time.monotonic()-started,scope='Offline RGB replay; no live ROS or automatic training admission.')

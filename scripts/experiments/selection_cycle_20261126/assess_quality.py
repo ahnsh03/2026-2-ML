@@ -11,7 +11,6 @@ import json
 import sys
 import joblib
 import numpy as np
-from scipy.special import ndtr
 from scipy.stats import spearmanr
 from sklearn.metrics import roc_auc_score
 from quality_estimation.versioned_review import VersionedReview
@@ -20,6 +19,7 @@ from quality_estimation.region_feature_views import feature_matrix
 from quality_estimation.diagnostic_targets import auxiliary_targets
 from quality_estimation.cluster_review import select_review
 from quality_estimation.spatial_identity import validate_pack_perception
+from quality_estimation.perception_identity import baseline_identity
 from prepare import dump
 sys.path.insert(0, str(Path(__file__).parents[1] / 'roi9_gp_20261125'))
 from study import load
@@ -69,6 +69,8 @@ def main():
     receipt = json.loads((study / 'g1_quality/packs/heldout_diagnostic.json').read_text())
     validate_pack_perception(receipt, review.spec['perception_identity'], review.spec['perception_weights'])
     f0, f0_schema = load(study / 'f0_quality/packs', ['heldout_diagnostic'])
+    f0_receipt = json.loads((study / 'f0_quality/packs/heldout_diagnostic.json').read_text())
+    validate_pack_perception(f0_receipt, baseline_identity(), 'ema_state_dict')
     assert np.array_equal(pack['ids'], f0['ids']) and np.array_equal(pack['pixel_sha256'], f0['pixel_sha256'])
     if receipt['index_sha256'] != hashlib.sha256((study / 'protocol/quality_index_frozen.json').read_bytes()).hexdigest():
         raise ValueError('heldout membership changed')
@@ -92,6 +94,7 @@ def main():
                       for site, cohort in zip(sites, pack['cohort'])])
     # Source membership, rather than a free-form cohort string, defines cohorts.
     index = json.loads((study / 'protocol/quality_index_frozen.json').read_text())['heldout_diagnostic']['rows']
+    assert pack['ids'].tolist() == [r['sample_id'] for r in index]
     sources = np.array([r['source_key'] for r in index])
     primary = np.char.startswith(sources, 'drive_confirmation_test_')
     shift = np.char.startswith(sources, 'drive_calibration_shift_')
@@ -169,7 +172,7 @@ def main():
                                  'rf_low_mean': 1 - rf_mean,
                                  'sigma_only': prediction['quality_epistemic_sd']}[policy]
                         picked = select_review(pack['ids'][local_ix], score[local_ix], np.zeros(len(local_ix), int), budget,
-                                               audit_fraction=.1 if policy == 'global_probability_audit' else 0.)
+                                               audit_fraction=.1 if policy == 'global_probability_audit' else 0.,audit_rounding=review.policy.get('audit_rounding','floor'))
                     selected.extend(local_ix[picked].tolist())
                 rows.append(dict(policy=policy, fraction=fraction, **review_metrics(ix, selected, truth[:, 0], sites)))
                 if cohort_name == 'confirmation' and fraction == .1:
@@ -206,6 +209,7 @@ def main():
                      'Gaussian intervals are empirical road-calibrated intervals, without OOD coverage guarantee.',
                      'Near/far auxiliary targets use image bands, not metric-distance zones.',
                      'All selected candidates still require verified GT and explicit training admission.',
+                     'Quality-fit IDs/pixels are disjoint from perception adaptation, but their geography is often close to new admissions; only heldout/dev/cal have the adaptation geography embargo.',
                      'Stale g0 on f1 is an intentional offline mismatch diagnostic, not a usable deployed pair.',
                      'No feature, policy, or threshold is selected or retuned on heldout.'])
     dump(study / 'reports/quality_heldout_assessment.json', finite_json(output))

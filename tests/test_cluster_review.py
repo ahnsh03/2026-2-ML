@@ -20,5 +20,13 @@ class ClusterReviewTest(unittest.TestCase):
         score=review_scores(np.array([.5,.7,.9]),np.array([.01,.01,.01]))
         self.assertGreater(score[0],score[1]);self.assertAlmostEqual(score[1],.5);self.assertGreater(score[1],score[2])
         with self.assertRaises(ValueError):review_scores([.5],[-1.])
+    def test_small_budget_can_preserve_audit_with_explicit_rounding(self):
+        ids=np.array([str(i) for i in range(50)]);scores=np.arange(50.);groups=np.zeros(50,int)
+        floor=select_review(ids,scores,groups,7,audit_fraction=.1)
+        ceil=select_review(ids,scores,groups,7,audit_fraction=.1,audit_rounding='ceil',seed=8)
+        self.assertEqual(floor.tolist(),list(range(49,42,-1)))
+        self.assertEqual(ceil[:6].tolist(),list(range(49,43,-1)))
+        self.assertLess(ceil[-1],44);self.assertEqual(len(set(ceil)),7)
+        with self.assertRaisesRegex(ValueError,'rounding'):select_review(ids,scores,groups,7,audit_rounding='unknown')
 
 if __name__=='__main__':unittest.main()

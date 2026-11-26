@@ -40,5 +40,18 @@ class VersionedReviewTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'version pair'):VersionedReview(root,perception_identity=wrong)
             (root/'environment.json').write_text('{}')
             with self.assertRaisesRegex(ValueError,'artifact changed'):VersionedReview(root)
+    def test_common_policy_can_ignore_environment_quotas_without_changing_scores(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);x=self.bundle(root);review=VersionedReview(root);pred=review.predict(x,x)
+            review.policy.update(environment_quotas_enabled=False,audit_fraction=0.,uncertainty_weight=0.)
+            ids=np.array([f'{i:03d}' for i in range(len(x))]);a,_=review.select(ids,pred,5)
+            pred['environment_cluster']=np.arange(len(x));b,_=review.select(ids,pred,5)
+            np.testing.assert_array_equal(a,b)
+            expected=np.lexsort((ids,-pred['low_quality_probability']))[:5]
+            np.testing.assert_array_equal(a,expected)
+    def test_near_far_contrast_uses_posterior_cross_covariance(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);x=self.bundle(root);pred=VersionedReview(root).predict(x,x);cov=pred['risk_covariance']
+            np.testing.assert_allclose(pred['near_minus_far_recall_sd']**2,cov[:,1,1]+cov[:,2,2]-2*cov[:,1,2])
 
 if __name__=='__main__':unittest.main()

@@ -99,11 +99,31 @@ def main():
                    '--keys', 'heldout_diagnostic', '--batch-size', '4']
         with (study / 'logs' / (name + '_heldout_packs.log')).open('a') as log:
             subprocess.run(command, cwd=args.repo, stdout=log, stderr=subprocess.STDOUT, check=True)
-    for script in ['assess_perception.py', 'assess_quality.py']:
+    for script in ['assess_perception.py', 'assess_quality.py', 'finalize_pair.py']:
         with (study / 'logs' / script.replace('.py', '.log')).open('a') as log:
             subprocess.run([str(args.python), 'scripts/experiments/selection_cycle_20261126/' + script,
                             '--study', str(study)], cwd=args.repo,
                            stdout=log, stderr=subprocess.STDOUT, check=True)
+    with (study / 'logs/verify_final_runtime.log').open('a') as log:
+        subprocess.run([str(args.python), 'scripts/experiments/selection_cycle_20261126/verify_final_runtime.py',
+                        '--study', str(study), '--repo', str(args.repo)], cwd=args.repo,
+                       stdout=log, stderr=subprocess.STDOUT, check=True)
+    with (study / 'logs/figures_results.log').open('a') as log:
+        subprocess.run([str(args.python), 'scripts/experiments/selection_cycle_20261126/figures_results.py',
+                        '--study', str(study), '--output', str(study / 'figures_results')], cwd=args.repo,
+                       stdout=log, stderr=subprocess.STDOUT, check=True)
+    case_command = ['docker', 'run', '--name', 'ml-cycle-case-export', '--rm', '--gpus', 'all',
+                    *mounts, 'ml-perception:rtx50-cu128', 'python',
+                    'scripts/experiments/selection_cycle_20261126/export_perception_cases.py',
+                    '--study', str(study), '--checkpoint', baseline,
+                    '--output', str(study / 'figures_cases')]
+    with (study / 'logs/figures_cases.log').open('a') as log:
+        subprocess.run(case_command, cwd=args.repo, stdout=log, stderr=subprocess.STDOUT, check=True)
+    with (study / 'logs/export_public_evidence.log').open('a') as log:
+        subprocess.run([str(args.python), 'scripts/experiments/selection_cycle_20261126/export_public_evidence.py',
+                        '--study', str(study), '--output',
+                        str(args.repo / 'docs/baselines/selection_cycle_20261127')], cwd=args.repo,
+                       stdout=log, stderr=subprocess.STDOUT, check=True)
     dump(study / 'FINAL_WORK_IN_PROGRESS.json', dict(status='heldout_evaluation_complete',
          completed_utc=datetime.now(timezone.utc).isoformat(), plan_sha256=sha(plan_path),
          interpretation='Offline research result; live connection and further cycles are separate tasks'))

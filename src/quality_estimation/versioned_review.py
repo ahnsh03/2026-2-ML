@@ -40,6 +40,7 @@ class VersionedReview:
             if component['model_sha256']!=sha256_file(root/'quality_gp.npz') or component['perception_identity']!=identity:raise ValueError('review calibration/policy model differs')
         if self.policy['environment_sha256']!=sha256_file(root/'environment.json') or self.policy['calibration_sha256']!=sha256_file(root/'calibration.json'):raise ValueError('review policy environment/calibration differs')
         if any(not 0<=self.policy[k]<=1 for k in ['uncertainty_weight','quota_exponent','audit_fraction']):raise ValueError('invalid review mixture parameters')
+        if self.policy.get('audit_rounding','floor') not in ('floor','ceil'):raise ValueError('invalid review audit rounding')
         if self.policy['absolute_quality_threshold']!=.7:raise ValueError('research benchmark quality threshold differs')
         if self.policy['score_family']=='union_near' and len(self.target_names)!=4:raise ValueError('near-F1 union requires four-task GP')
 
@@ -71,5 +72,6 @@ class VersionedReview:
         elif family=='union_near':score=predictions['quality_or_near_f1_defect_probability']
         else:raise ValueError('unknown review priority family')
         priority=mixture_priority(score,predictions['quality_epistemic_sd'],self.policy['uncertainty_weight'])
-        indices=select_review(np.asarray(ids),priority,predictions['environment_cluster'],int(budget),quota_exponent=self.policy['quota_exponent'],audit_fraction=self.policy['audit_fraction'],seed=seed)
+        groups=predictions['environment_cluster'] if self.policy.get('environment_quotas_enabled',True) else np.zeros(len(ids),int)
+        indices=select_review(np.asarray(ids),priority,groups,int(budget),quota_exponent=self.policy['quota_exponent'],audit_fraction=self.policy['audit_fraction'],seed=seed,audit_rounding=self.policy.get('audit_rounding','floor'))
         return indices,priority

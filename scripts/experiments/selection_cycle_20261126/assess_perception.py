@@ -37,7 +37,6 @@ def main():
     parser.add_argument('--study', type=Path, required=True)
     study = parser.parse_args().study
     plan = json.loads((study / 'protocol/heldout_evaluation_frozen.json').read_text())
-    dev = json.loads((study / 'reports/perception_development_comparison.json').read_text())
     gates = json.loads((study / 'protocol/evaluation_gate_v2_frozen.json').read_text())['perception_adoption']
     records = {}
     baseline_ids = None

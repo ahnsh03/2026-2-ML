@@ -24,7 +24,7 @@ def review_scores(mean,variance,*,threshold=.7,uncertainty_weight=0.):
     return (1-uncertainty_weight)*probability+uncertainty_weight*sigma_rank
 
 
-def select_review(ids,scores,clusters,budget,*,quota_exponent=1.,audit_fraction=0.,seed=261126):
+def select_review(ids,scores,clusters,budget,*,quota_exponent=1.,audit_fraction=0.,seed=261126,audit_rounding='floor'):
     """Within-cluster quality priority; exponent 1 preserves population proportions.
 
     Exponent 0 allocates equally. Small clusters saturate and remaining slots are
@@ -37,7 +37,8 @@ def select_review(ids,scores,clusters,budget,*,quota_exponent=1.,audit_fraction=
         raise ValueError('invalid review population')
     if type(budget) is not int or not 0<=budget<=n or not 0<=quota_exponent<=1 or not 0<=audit_fraction<=1:
         raise ValueError('invalid fixed review budget')
-    audit=int(np.floor(budget*audit_fraction));priority=budget-audit
+    if audit_rounding not in ('floor','ceil'):raise ValueError('invalid audit rounding')
+    audit=int((np.ceil if audit_rounding=='ceil' else np.floor)(budget*audit_fraction));priority=budget-audit
     labels,counts=np.unique(clusters,return_counts=True);weights=counts.astype(float)**quota_exponent
     queues={k:np.flatnonzero(clusters==k)[np.lexsort((ids[clusters==k],-scores[clusters==k]))].tolist() for k in labels}
     taken={k:0 for k in labels};chosen=[]
