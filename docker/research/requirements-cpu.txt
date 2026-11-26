@@ -1,0 +1,8 @@
+# Separate CPU study environment; keep the RTX40 CUDA/NumPy environment intact.
+numpy==2.5.5
+scipy==1.18.1
+scikit-learn==1.9.1
+faiss-cpu==1.16.0
+joblib==1.6.0
+opencv-python-headless==5.1.0.95
+matplotlib==3.11.2
