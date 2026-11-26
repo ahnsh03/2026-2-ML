@@ -5,8 +5,8 @@ import numpy as np
 
 def read(p):return json.loads(p.read_text())
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--study',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();n=a.study;a.output.mkdir(parents=True,exist_ok=False)
- registry=read(n/'registry_test_final/index_thinned.json');rows=[r for v in registry.values() for r in v['rows']];manifest=[]
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--study',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--registry',type=Path);a=p.parse_args();n=a.study;a.output.mkdir(parents=True,exist_ok=False)
+ registry=read((a.registry or n/'registry_test_final')/'index_thinned.json');rows=[r for v in registry.values() for r in v['rows']];manifest=[]
  for r in rows:
   manifest.append(dict(sample_id=r['sample_id'],image=r['image'],expected_sha256={'rgb':r['expected_sha256']['rgb']},expected_pixel_sha256=r['expected_pixel_sha256'],session_id=f"{r['site']}_w{r['weather']}_h{r['hour']}",view='front'))
  (a.output/'rgb_only_manifest.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in manifest))

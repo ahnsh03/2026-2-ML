@@ -13,6 +13,7 @@ def main():
  sources=[(a.old/'extraction_index_with_acquisition.json',a.old/'packs',None)]
  for role,folder in [('development','packs_development_v2'),('calibration','packs_calibration'),('test','packs_test')]:sources.append((n/('registry_'+role+'_final/index_full.json'),n/folder,None))
  sources.append((n/'challenge/registry/index_full.json',n/'challenge/packs',n))
+ if (n/'marked_support/registry/index_full.json').exists():sources.append((n/'marked_support/registry/index_full.json',n/'marked_support/packs',n))
  for source,packroot,rebase in sources:
   original=read(source)
   for key,value in original.items():

@@ -12,10 +12,11 @@ def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
  p=argparse.ArgumentParser(description=__doc__)
  for name in ['study','data-root','replay','pairs','output']:p.add_argument('--'+name,type=Path,required=True)
+ p.add_argument('--registry',type=Path);p.add_argument('--evaluation',type=Path)
  a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False);n=a.study
- index=read(n/'registry_test_final/index_thinned.json');rows={r['sample_id']:r for v in index.values() for r in v['rows']}
+ index=read((a.registry or n/'registry_test_final')/'index_thinned.json');rows={r['sample_id']:r for v in index.values() for r in v['rows']}
  pred={r['sample_id']:r for r in map(json.loads,(a.replay/'predictions.jsonl').read_text().splitlines())}
- with np.load(n/'prospective_test_v1/predictions.npz',allow_pickle=False) as z:
+ with np.load((a.evaluation or n/'prospective_test_v1')/'predictions.npz',allow_pickle=False) as z:
   truth={sid:q for sid,q in zip(z['ids'],z['truth'])};supports={sid:(int(near),int(far)) for sid,near,far in zip(z['ids'],z['near_gt'],z['far_gt'])}
  records=[]
  for pair in read(a.pairs):
