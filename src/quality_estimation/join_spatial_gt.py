@@ -5,6 +5,7 @@ import argparse, json, hashlib
 from pathlib import Path
 import numpy as np
 from .spatial_identity import validate_pack_perception
+from .diagnostic_targets import gt_review_flags
 
 
 def sha(path):
@@ -107,6 +108,7 @@ def join_candidates(
                 spatial_diagnostic=spatial,
                 spatial_diagnostic_scope="Recall-only omission diagnostic. Retained recall does not establish low false positives or normal near-band quality.",
                 benchmark_low_iou=(q < 0.7) if q is not None else None,
+                gt_review_flags=gt_review_flags(counts,q),
                 status="gt_attached_awaiting_operating_policy_review",
                 admission_approved=False,
                 label_definition="White/yellow union on all nonpadding pixels. Near/far image-band recalls diagnose omissions; low IoU alone is not an operational failure label.",

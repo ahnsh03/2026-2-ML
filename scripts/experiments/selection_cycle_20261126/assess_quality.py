@@ -16,7 +16,7 @@ from sklearn.metrics import roc_auc_score
 from quality_estimation.versioned_review import VersionedReview
 from quality_estimation.spatial_gp import SpatialQualityGP
 from quality_estimation.region_feature_views import feature_matrix
-from quality_estimation.diagnostic_targets import auxiliary_targets
+from quality_estimation.diagnostic_targets import auxiliary_targets,gt_review_flags
 from quality_estimation.cluster_review import select_review
 from quality_estimation.spatial_identity import validate_pack_perception
 from quality_estimation.perception_identity import baseline_identity
@@ -101,6 +101,9 @@ def main():
     main_mask = np.char.startswith(sources, 'drive_test_')
     assert primary.sum() == 366 and main_mask.sum() == 366 and shift.sum() == 102
     counts = pack['counts']
+    flags = [gt_review_flags(c,float(q) if np.isfinite(q) else None) for c,q in zip(counts,pack['y'])]
+    near_defect = np.array([v['near_precision_or_recall_reduced'] is True for v in flags])
+    far_only = np.array([v['near_retained_far_reduced'] is True for v in flags])
     gt_pixels = (counts[:, :, 0] + counts[:, :, 2]).sum(1)
     ng = (counts[:, 6:8, 0] + counts[:, 6:8, 2]).sum(1)
     fg = (counts[:, 4:6, 0] + counts[:, 4:6, 2]).sum(1)
@@ -144,12 +147,21 @@ def main():
                      state_counts=np.bincount(states, minlength=4).tolist(),
                      multiclass_brier=float(np.mean(np.sum((band_probability - np.eye(4)[states]) ** 2, axis=1))) if len(states) else None,
                      accuracy=float(np.mean(band_probability.argmax(1) == states)) if len(states) else None)
+        distinguish = mask & (near_defect | far_only)
+        distinguish_y = near_defect[distinguish]
+        taxonomy = {key: int(sum(bool(v[key]) for i,v in enumerate(flags) if mask[i])) for key in [
+                    'valid_for_low_iou_benchmark','near_omission','near_false_positive_issue',
+                    'near_precision_or_recall_reduced','far_omission','near_precision_and_recall_retained','near_retained_far_reduced']}
         risk[name] = dict(rows=len(ix), positives=int(low.sum()),
              macro_road_brier=float(macro((probability - low) ** 2, sites[ix])) if len(ix) else None,
              quality_probability_auc=float(roc_auc_score(low, probability)) if len(np.unique(low)) == 2 else None,
              sigma_only_auc=float(roc_auc_score(low, sigma)) if len(np.unique(low)) == 2 else None,
              sigma_quality_spearman=float(spearmanr(sigma, truth[ix, 0]).statistic) if len(ix) and np.ptp(sigma) else None,
-             interval_coverage=coverages, reliability=bins, joint_band_diagnostics=joint)
+             interval_coverage=coverages, reliability=bins, joint_band_diagnostics=joint,
+             precision_aware_gt_taxonomy=taxonomy,
+             sigma_near_defect_vs_far_only_auc=float(roc_auc_score(distinguish_y,prediction['quality_epistemic_sd'][distinguish])) if len(np.unique(distinguish_y))==2 else None,
+             sigma_near_defect_mean=float(prediction['quality_epistemic_sd'][mask&near_defect].mean()) if (mask&near_defect).any() else None,
+             sigma_far_only_mean=float(prediction['quality_epistemic_sd'][mask&far_only].mean()) if (mask&far_only).any() else None)
     review_table = {}
     selections = {}
     policies = ['g1_policy', 'global_probability', 'global_probability_audit', 'gp_low_mean', 'rf_low_mean', 'sigma_only']

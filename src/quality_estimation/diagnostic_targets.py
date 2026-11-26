@@ -9,6 +9,34 @@ from .spatial_risk import gaussian_lower_probability
 
 FOUR_TARGET_NAMES=('whole_frame_lane_iou','near_lane_recall','far_lane_recall','near_lane_f1')
 
+
+def gt_review_flags(counts,whole_iou,*,quality_threshold=.7,near_threshold=.8,far_recall_threshold=.5,minimum_band_pixels=50):
+    """Post-GT review taxonomy; no operating-failure or visibility certification.
+
+    Recall support uses GT pixels; precision support uses predicted pixels so a
+    large hallucinated lane can be diagnosed even when no GT lane is present.
+    """
+    c=np.asarray(counts)
+    if c.shape!=(9,3) or c.dtype.kind not in 'ui' or (c<0).any():raise ValueError('nine-region integer TP/FP/FN counts required')
+    near=c[6:8].sum(0);far=c[4:6].sum(0);whole=c.sum(0)
+    ng,npred=int(near[0]+near[2]),int(near[0]+near[1]);fg=int(far[0]+far[2])
+    nr=float(near[0]/ng) if ng else None;precision=float(near[0]/npred) if npred else None;fr=float(far[0]/fg) if fg else None
+    recall_low=nr<near_threshold if ng>=minimum_band_pixels else None
+    precision_low=precision<near_threshold if npred>=minimum_band_pixels else None
+    far_low=fr<far_recall_threshold if fg>=minimum_band_pixels else None
+    near_supported=recall_low is not None or precision_low is not None
+    near_defect=bool(recall_low or precision_low) if near_supported else None
+    retained=bool(nr>=near_threshold and precision>=near_threshold) if ng>=minimum_band_pixels and npred>=minimum_band_pixels else None
+    supported_whole=int(whole[0]+whole[2])>=2*minimum_band_pixels
+    return dict(valid_for_low_iou_benchmark=bool(supported_whole and whole_iou is not None and np.isfinite(whole_iou)),
+                near_omission=recall_low,near_false_positive_issue=precision_low,
+                near_precision_or_recall_reduced=near_defect,far_omission=far_low,
+                near_precision_and_recall_retained=retained,
+                near_retained_far_reduced=bool(retained and far_low) if retained is not None and far_low is not None else None,
+                quality_threshold=float(quality_threshold),near_precision_recall_threshold=float(near_threshold),far_recall_threshold=float(far_recall_threshold),
+                minimum_band_pixels=int(minimum_band_pixels),operating_failure_established=False,
+                scope='Offline image-band diagnostic after verified GT. Low IoU or reduced far recall alone does not establish operating failure or visibility-normality.')
+
 def auxiliary_targets(counts,whole_iou):
     counts=np.asarray(counts);whole_iou=np.asarray(whole_iou,float)
     if counts.shape!=(len(whole_iou),9,3) or (counts<0).any():raise ValueError('aligned nine-region TP/FP/FN counts required')
