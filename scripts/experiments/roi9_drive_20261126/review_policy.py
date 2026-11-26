@@ -7,12 +7,10 @@ from scipy.special import ndtr
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import Matern,ConstantKernel,WhiteKernel
 from sklearn.exceptions import ConvergenceWarning
+from quality_estimation.drive_review import review_priority as priority
 
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def save(p,v):p.write_text(json.dumps(v,indent=2,allow_nan=False)+'\n')
-def priority(global_p,spatial_p,environment_p,weights):
- lam,eta=weights
- return (1-eta)*global_p+eta*environment_p+.5*(spatial_p[:,1]+spatial_p[:,3])+lam*spatial_p[:,2]
 def labels(data):
  y=data['truth'];counts=data['counts'];near=counts[:,6:8].sum(1);whole=counts.sum(1)
  npred=near[:,0]+near[:,1];wpred=whole[:,0]+whole[:,1]

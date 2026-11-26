@@ -6,6 +6,7 @@ from quality_estimation.drive_calibration import (
     apply_probability_map, fit_monotone_binary, apply_monotone_binary,
     fit_moments, apply_moments,
 )
+from quality_estimation.drive_review import calibrated_review, review_priority, assign_environment
 
 class DriveCalibrationTest(unittest.TestCase):
     def test_joint_classes_match_independent_gaussian_and_partition(self):
@@ -51,5 +52,32 @@ class DriveCalibrationTest(unittest.TestCase):
         cm,cc,fallback=apply_moments(m,c,env,fit)
         self.assertFalse(fallback[:100].any());self.assertTrue(fallback[100:].all())
         self.assertTrue((np.linalg.eigvalsh(cc)>0).all());self.assertTrue(np.isfinite(cm).all())
+
+    def test_ood_environment_cannot_get_conditional_fit(self):
+        rng=np.random.default_rng(17);m=np.full((80,3),.5)
+        c=np.tile(np.eye(3)*.01,(80,1,1));y=m+rng.normal(0,.1,m.shape)
+        roads=np.tile(['a','b'],40);env=np.full(80,-1)
+        fit=fit_moments(m,c,y,env,roads,conditional=True)
+        self.assertEqual(fit['groups'],{})
+        self.assertTrue(apply_moments(m,c,env,fit)[2].all())
+
+    def test_gt_free_review_preserves_global_fallback_and_joint_partition(self):
+        m=np.array([[.6,.85,.45],[.9,.6,.8]]);c=np.tile(np.eye(3)*.01,(2,1,1))
+        moment=dict(global_fit=dict(bias=[0.]*3,scale=[1.]*3),groups={},correlation_weight=0.)
+        cal=dict(event_definition=dict(global_iou=.7,near_recall=.8,far_recall=.5),moments=moment,
+                 joint_map=dict(temperature=1.,bias=[0.]*4),global_map=dict(kind='identity'),
+                 environment_thresholds={'0':dict(threshold=.55)})
+        result=calibrated_review(m,c,np.array([0,-1]),cal,[.5,1.])
+        np.testing.assert_allclose(result['spatial'].sum(1),1)
+        self.assertEqual(result['environment_threshold'][1],.7)
+        self.assertEqual(result['environment_relative_probability'][1],result['global_probability'][1])
+        self.assertLess(result['environment_relative_probability'][0],result['global_probability'][0])
+        np.testing.assert_array_equal(review_priority(result['global_probability'],result['spatial'],result['environment_relative_probability'],None),result['global_probability'])
+
+    def test_environment_uses_rgb_only_and_unknown_distance_falls_back(self):
+        profile=dict(ordered_features=['a','b'],selected=[0,1],mean=[0.,0.],scale=[1.,1.],centers=[[0.,0.],[2.,2.]],policy_map=[0,1],maximum_reference_distance=1.)
+        fine,distance,coarse=assign_environment([[0.,0.],[20.,20.]],['a','b'],profile)
+        np.testing.assert_array_equal(coarse,[0,-1])
+        with self.assertRaises(ValueError):assign_environment([[0.,0.]],['b','a'],profile)
 
 if __name__=='__main__':unittest.main()

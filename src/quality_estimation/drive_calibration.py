@@ -52,6 +52,7 @@ def fit_moments(mean,covariance,truth,environments,roads,*,conditional=False,cor
     groups={}
     if conditional:
         for key in np.unique(environments):
+            if key < 0:continue  # Unknown/OOD groups always use the global fallback.
             ix=environments==key
             if ix.sum()<min_rows or len(set(roads[ix]))<min_roads or np.min(np.isfinite(truth[ix]).sum(0))<min_rows:continue
             local=calibrate_moments(mean[ix],covariance[ix],truth[ix],coverage)
