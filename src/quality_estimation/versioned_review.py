@@ -55,6 +55,8 @@ class VersionedReview:
                     low_quality_probability=low,quality_predictive_sd=sd,quality_epistemic_sd=epistemic,
                     expected_quality_deficit=bounded_expected_deficit(mean[:,0],cal_cov[:,0,0],.7),
                     band_diagnostic_probabilities=band_diagnostic_probabilities(mean,cal_cov))
+        output['near_minus_far_recall_mean']=mean[:,1]-mean[:,2]
+        output['near_minus_far_recall_sd']=np.sqrt(np.maximum(cal_cov[:,1,1]+cal_cov[:,2,2]-2*cal_cov[:,1,2],0))
         if len(self.target_names)==4:
             output['near_f1_defect_probability']=near_defect_probability(mean,cal_cov)
             output['quality_or_near_f1_defect_probability']=quality_or_near_defect_probability(mean,cal_cov)

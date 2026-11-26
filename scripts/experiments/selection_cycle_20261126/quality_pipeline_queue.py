@@ -7,6 +7,8 @@ from prepare import dump
 def main():
  p=argparse.ArgumentParser();p.add_argument('--study',type=Path,required=True);p.add_argument('--repo',type=Path,required=True);p.add_argument('--python',type=Path,required=True);a=p.parse_args();S=a.study
  while not (S/'reports/development_evaluations_complete.json').exists():time.sleep(15)
+ if (S/'protocol/interpolation_extension_frozen.json').exists():
+  while not (S/'reports/primary_interpolation_complete.json').exists():time.sleep(15)
  compare=[str(a.python),'scripts/experiments/selection_cycle_20261126/compare_perception.py','--study',str(S),'--freeze-provisional']
  if not (S/'protocol/provisional_f1_frozen.json').exists():subprocess.run(compare,cwd=a.repo,check=True)
  provisional=json.loads((S/'protocol/provisional_f1_frozen.json').read_text());run=Path(provisional['selected']['run']);out=S/'g1_quality'

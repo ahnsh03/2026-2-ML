@@ -31,7 +31,8 @@ def main():
     environment=RegionEnvironment.load(a.refit/'environment.json');env=environment.assign(feature_matrix(data,schema,environment.columns));labels=env['environment_cluster']
     scores={'probability':probability,'expected_deficit':bounded_expected_deficit(mean[:,0],c[:,0,0],.7)/.7,'mean':1-np.clip(raw[:,0],0,1)}
     if len(model.y_mean_)==4:scores['union_near']=quality_or_near_defect_probability(mean,c)
-    families=list(scores);parameters=[dict(score_family=f,uncertainty_weight=u,quota_exponent=q,audit_fraction=au) for f,u,q,au in itertools.product(families,[0.,.1,.25],[0.,.5,1.],[0.,.1])]
+    # Keep independent audit support when deployment labels would otherwise be selected-only.
+    families=list(scores);parameters=[dict(score_family=f,uncertainty_weight=u,quota_exponent=q,audit_fraction=.1) for f,u,q in itertools.product(families,[0.,.1,.25],[0.,.5,1.])]
     coords=np.array([[families.index(v['score_family'])/max(len(families)-1,1),v['uncertainty_weight']/.25,v['quota_exponent'],v['audit_fraction']/.1] for v in parameters]);trials={}
     def objective(i):
         if i in trials:return trials[i]['objective']
@@ -57,7 +58,7 @@ def main():
         reason='Fewer than20 low-IoU development rows or2positive roads; skip BO and preserve a simple quality-ranked queue with10% random audit.'
     dump(out/'policy_search.json',dict(bo_indices=history,bo_losses=losses,random_indices=random,random_losses=rloss,shared_initial=initial,trials={str(k):v for k,v in trials.items()},
          enough_positive_support=bool(enough),positive_rows=int(truth.sum()),positive_roads=len(set(roads[truth])),selected=chosen,reason=reason,raw_brier=raw_brier,calibrated_brier=cal_brier,calibration_enabled=bool(use_cal),
-         objective='Mean dev low-IoU recall across roads/environment groups at10% and41.3% budgets, with review-normal cost. Not measured retraining gain.'))
+         audit_fraction_floor=.1,objective='Mean dev low-IoU recall across roads/environment groups at10% and41.3% budgets, with review-normal cost. Not measured retraining gain.'))
     # Selection is frozen before any heldout data are used.
     shutil.copy2(a.refit/rec['model'],out/'quality_gp.npz');shutil.copy2(a.refit/'calibration.json',out/'calibration.json');shutil.copy2(a.refit/'environment.json',out/'environment.json')
     identity=selected['perception_identity'];policy=dict(version='versioned-review-policy-1',**chosen,model_sha256=sha(out/'quality_gp.npz'),perception_identity=identity,

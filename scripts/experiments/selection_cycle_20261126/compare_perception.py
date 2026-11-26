@@ -22,6 +22,8 @@ def main():
  baseline=metrics(S/'evaluations/f0/development_retention');gates=json.loads((S/'protocol/evaluation_gate_v2_frozen.json').read_text());gate=gates['perception_adoption'];queue=json.loads((S/'protocol/training_queue_frozen.json').read_text())['queue']
  control=S/'protocol/control_queue_v2_frozen.json'
  if control.exists():queue+=json.loads(control.read_text())['queue']
+ interpolation=S/'protocol/interpolation_queue_frozen.json'
+ if interpolation.exists():queue+=json.loads(interpolation.read_text())['queue']
  results=[]
  for item in queue:
   directory=S/'evaluations'/Path(item['run']).name/'development_retention'
@@ -37,22 +39,26 @@ def main():
   for view in m['retention_views']:
    for h in ['lane','drivable']:
     if m['retention_views'][view][h]<baseline['retention_views'][view][h]-gate['maximum_original_view_lane_or_drivable_loss']:fail.append('retention_'+view+'_'+h)
-  results.append(dict(**item,metrics=m,development_gain=gain,road_deltas=deltas,passes=not fail,failed_gates=fail))
+  alpha=item.get('alpha',1.);variant=item['arm'] if alpha==1. else item['arm']+f'@a{alpha:.2f}'
+  results.append(dict(**item,variant=variant,metrics=m,development_gain=gain,road_deltas=deltas,passes=not fail,failed_gates=fail))
  methods={}
- for arm in sorted({r['arm'] for r in results}):
-  rs=[r for r in results if r['arm']==arm];methods[arm]=dict(seeds=len(rs),mean_development_iou=float(np.mean([r['metrics']['development_macro'] for r in rs])),mean_development_gain=float(np.mean([r['development_gain'] for r in rs])),all_seeds_pass=bool(len(rs)==2 and all(r['passes'] for r in rs)))
+ for variant in sorted({r['variant'] for r in results}):
+  rs=[r for r in results if r['variant']==variant];methods[variant]=dict(base_arm=rs[0]['arm'],alpha=rs[0].get('alpha',1.),seeds=len(rs),mean_development_iou=float(np.mean([r['metrics']['development_macro'] for r in rs])),mean_development_gain=float(np.mean([r['development_gain'] for r in rs])),all_seeds_pass=bool(len(rs)==2 and all(r['passes'] for r in rs)))
  report=dict(created_utc=datetime.now(timezone.utc).isoformat(),baseline=baseline,records=results,methods=methods,heldout_accessed=False,gates_sha256=hashlib.sha256((S/'protocol/evaluation_gate_v2_frozen.json').read_bytes()).hexdigest())
  dump(S/'reports/perception_development_comparison.json',report)
  if a.freeze_provisional:
-  assert sum(r['arm']!='ReplayOnly' for r in results)==6,'all primary endpoints required'
+  assert sum(r['arm']!='ReplayOnly' and r.get('alpha',1.)==1. for r in results)==6,'all primary raw endpoints required'
+  if interpolation.exists():assert (S/'reports/primary_interpolation_complete.json').exists(),'all symmetric primary interpolation checks required'
   if (S/'protocol/provisional_f1_frozen.json').exists():raise ValueError('provisional model already frozen')
-  passing=[arm for arm,v in methods.items() if arm!='ReplayOnly' and v['all_seeds_pass']]
-  if passing:arm=max(passing,key=lambda arm:methods[arm]['mean_development_iou']);reason='Both seeds pass preregistered retention/development gates'
-  else:arm=max([arm for arm in methods if arm!='ReplayOnly'],key=lambda arm:methods[arm]['mean_development_iou']);reason='No repeated passing update; research-only quality-refit candidate, default f0 remains'
-  rs=[r for r in results if r['arm']==arm];eligible=[r for r in rs if r['passes']] if passing else rs
-  representative=min(eligible,key=lambda r:abs(r['metrics']['development_macro']-methods[arm]['mean_development_iou']))
+  passing=[variant for variant,v in methods.items() if v['base_arm']!='ReplayOnly' and v['all_seeds_pass']]
+  if passing:
+   best_score=max(methods[v]['mean_development_iou'] for v in passing);near=[v for v in passing if methods[v]['mean_development_iou']>=best_score-.002]
+   variant=max(near,key=lambda v:(methods[v]['alpha'],methods[v]['mean_development_iou']));reason='Both seeds pass original retention/development gates; common-alpha grid chosen on dev only; prefer larger alpha within0.002devIoU'
+  else:variant=max([v for v in methods if methods[v]['base_arm']!='ReplayOnly'],key=lambda v:methods[v]['mean_development_iou']);reason='No repeated passing update; research-only quality-refit candidate, default f0 remains'
+  rs=[r for r in results if r['variant']==variant];eligible=[r for r in rs if r['passes']] if passing else rs
+  representative=min(eligible,key=lambda r:abs(r['metrics']['development_macro']-methods[variant]['mean_development_iou']))
   checkpoint=Path(representative['run'])/'checkpoint.pt'
-  dump(S/'protocol/provisional_f1_frozen.json',dict(selected=representative,method=methods[arm],eligible_for_adoption=bool(passing),reason=reason,
+  dump(S/'protocol/provisional_f1_frozen.json',dict(selected=representative,method=methods[variant],eligible_for_adoption=bool(passing),reason=reason,
        checkpoint_sha256=hashlib.sha256(checkpoint.read_bytes()).hexdigest(),selected_utc=datetime.now(timezone.utc).isoformat(),heldout_not_used=True,
        interpretation='Tentative new-data endpoint for g1 regeneration; replay-only continuation and heldout checks remain separate.'))
  print(json.dumps(methods,indent=2),flush=True)
