@@ -22,11 +22,12 @@ def main():
  result=read(n/'prospective_test_v1/results.json')
  with np.load(n/'prospective_test_v1/predictions.npz',allow_pickle=False) as z:d={k:z[k] for k in z.files}
  colors=np.array(['#2171b5','#dc4b50','#e9a23b','#7b4ba0']);valid=d['labels']>=0
+ point_colors=colors[np.maximum(d['labels'],0)].copy();point_colors[~valid]='#999999'
  fig,axes=plt.subplots(1,3,figsize=(16,9))
  for j,ax in enumerate(axes):
   ix=np.isfinite(d['truth'][:,j]);
   if j:ix&=d['near_gt' if j==1 else 'far_gt']>=50
-  ax.scatter(d['truth'][ix,j],np.clip(d['raw_mean'][ix,j],0,1),s=18,c=colors[np.maximum(d['labels'][ix],0)],alpha=.65);ax.plot([0,1],[0,1],'k--',lw=1);ax.set(xlim=(0,1),ylim=(0,1),xlabel='GT (offline)',ylabel='Raw GP point estimate',title=['Whole-frame lane IoU','Near-band recall','Far-band recall'][j]);ax.set_aspect('equal')
+  ax.scatter(d['truth'][ix,j],np.clip(d['raw_mean'][ix,j],0,1),s=18,c=point_colors[ix],alpha=.65);ax.plot([0,1],[0,1],'k--',lw=1);ax.set(xlim=(0,1),ylim=(0,1),xlabel='GT (offline)',ylabel='Raw GP point estimate',title=['Whole-frame lane IoU','Near-band recall','Far-band recall'][j]);ax.set_aspect('equal')
  fig.suptitle('Prospective evaluation on three new moving segments',fontsize=20);fig.text(.05,.08,'Features, GP weights, calibration and review policy were frozen before all test drives.\n5 weather settings x 3 times per segment; distance-thinned candidates. Same-map evidence, not independent-map validation.',fontsize=12);fig.subplots_adjust(bottom=.2,top=.84,wspace=.28);savefig(fig,a.output,'02_prospective_regression')
  keys=['raw_composed','global_moments','selected_calibration'];names=['Raw composed GP','Global moment correction','Selected calibration'];metrics=result['calibration']
  fig,axes=plt.subplots(1,3,figsize=(16,9));x=np.arange(3)
