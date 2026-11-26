@@ -17,21 +17,28 @@ def cost(distance,edge,dx=0,dy=0):
  return float(np.minimum(distance[y[ok],x[ok]],5).mean()) if ok.any() else None
 def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--registry',type=Path,required=True);p.add_argument('--root',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False)
- index=json.loads((a.registry/'index_full.json').read_text());profile=SpatialProfile.load();records=[];images=[]
+ index=json.loads((a.registry/'index_full.json').read_text());profile=SpatialProfile.load();records=[];images=[];skipped=[]
  for key,pack in index.items():
   rows=[r for r in pack['rows'] if r['weather']==0 and r['hour']==13]
   if len(rows)<3:continue
   for i in range(1,len(rows)-1):
    row=rows[i];rgb=cv2.cvtColor(cv2.imread(str(a.root/row['image'])),cv2.COLOR_BGR2RGB);dist=edge_distance(rgb)
    sem=cv2.cvtColor(cv2.imread(str(a.root/row['semantic'])),cv2.COLOR_BGR2RGB);edge=boundary(sem,profile.native)
+   if edge.sum()<50:
+    skipped.append(dict(id=row['sample_id'],reason='fewer than50 native lane-boundary pixels'));continue
    shifts=[(cost(dist,edge,dx,dy),dx,dy) for dx in range(-3,4) for dy in range(-3,4)];best=min(shifts)
    neighbors=[]
    for j in [i-1,i+1]:
-    other=cv2.cvtColor(cv2.imread(str(a.root/rows[j]['semantic'])),cv2.COLOR_BGR2RGB);neighbors.append(cost(dist,boundary(other,profile.native)))
+    other=cv2.cvtColor(cv2.imread(str(a.root/rows[j]['semantic'])),cv2.COLOR_BGR2RGB);other_edge=boundary(other,profile.native)
+    if other_edge.sum()<50:break
+    neighbors.append(cost(dist,other_edge))
+   if len(neighbors)!=2:
+    skipped.append(dict(id=row['sample_id'],reason='adjacent frame lacks50 native lane-boundary pixels'));continue
    own=cost(dist,edge);records.append(dict(id=row['sample_id'],group=row['group'],own_cost_px=own,neighbor_mean_cost_px=float(np.mean(neighbors)),best_shift_xy=[best[1],best[2]],best_cost_px=best[0],improvement_px=own-best[0],lane_boundary_pixels=int(edge.sum())))
    if i==len(rows)//2:images.append((row,rgb,sem,edge))
  summary=dict(method='RGB Canny-edge distance at exact native white/yellow GT boundaries; near/far road bands, Sunny13 only. Compare own GT with adjacent moving-frame GT and translation sensitivity. This is content evidence, not hardware exposure synchronization proof.',frames=len(records),groups=len({r['group'] for r in records}),median_own_cost_px=float(np.median([r['own_cost_px'] for r in records])),median_neighbor_cost_px=float(np.median([r['neighbor_mean_cost_px'] for r in records])),own_better_than_neighbors_fraction=float(np.mean([r['own_cost_px']<r['neighbor_mean_cost_px'] for r in records])),median_best_shift_linf_px=float(np.median([max(abs(x) for x in r['best_shift_xy']) for r in records])),maximum_translation_cost_improvement_px=max(r['improvement_px'] for r in records))
- (a.output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');(a.output/'frames.json').write_text(json.dumps(records,indent=2)+'\n')
+ summary.update(skipped=skipped,minimum_native_boundary_pixels=50)
+ (a.output/'summary.json').write_text(json.dumps(summary,indent=2,allow_nan=False)+'\n');(a.output/'frames.json').write_text(json.dumps(records,indent=2,allow_nan=False)+'\n')
  import matplotlib;matplotlib.use('Agg')
  import matplotlib.pyplot as plt
  fig,axes=plt.subplots(len(images),3,figsize=(16,9),squeeze=False)
