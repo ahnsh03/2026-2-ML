@@ -1,0 +1,64 @@
+{
+  "perception_quality": {
+    "created_utc": "2026-11-26T10:37:10.371120+00:00",
+    "f1_evaluation_opened": false,
+    "perception_adoption": {
+      "development_primary": "26R1 3m-thinned three development roads",
+      "minimum_macro_road_lane_iou_gain": 0.005,
+      "minimum_improved_roads": 2,
+      "maximum_road_lane_iou_loss": 0.02,
+      "maximum_original_pooled_lane_loss": 0.005,
+      "maximum_original_pooled_drivable_loss": 0.005,
+      "maximum_original_class_iou_loss": 0.01,
+      "maximum_original_view_lane_or_drivable_loss": 0.01
+    },
+    "winner_selection": "Rank passing new-data methods by mean two-seed development macro-road IoU; choose a representative passing seed by development only; replay-only is a continuation control. No heldout selection.",
+    "quality_adoption": {
+      "gp_development_mae_tolerance_to_rf": 0.005,
+      "primary_heldout_mae_increase_tolerance_vs_g0_f0": 0.01,
+      "features": "28 by default; fp34 only if >=.003 development quality improvement and no auxiliary regression >.005",
+      "near_f1_auxiliary": "Experimental unless development near-F1 gain >=.005 without quality loss >.002"
+    },
+    "interpretation": "Research acceptance gates, not safety/visibility guarantees; all retention classes/views and conditions reported; opened historical cohorts reserved from this new adaptation.",
+    "source_roles": "roles_v2_frozen.json",
+    "absolute_quality_iou_threshold": 0.7,
+    "relative_environment_thresholds_adopted": false
+  },
+  "review": {
+    "created_utc": "2026-11-26T12:02:41.569615+00:00",
+    "heldout_opened": false,
+    "primary": "confirmation three roads; supported whole-lane GT>=100pixels; road-wise ceil10%budget",
+    "review_mix_gate": {
+      "minimum_positive_rows": 20,
+      "minimum_positive_roads": 2,
+      "maximum_macro_road_recall_loss_to_global_probability_audit": 0.02,
+      "minimum_precision_vs_random_100_seeds": true
+    },
+    "fallback": {
+      "score_family": "probability",
+      "uncertainty_weight": 0.0,
+      "quota_exponent": 1.0,
+      "audit_fraction": 0.1,
+      "audit_rounding": "ceil",
+      "environment_quotas_enabled": false
+    },
+    "probability_interpretation": "Research priority scores; empirical coverage/Brier reported. No safety or OOD probability guarantee.",
+    "absolute_failure_benchmark": 0.7,
+    "relative_environment_thresholds_adopted": false,
+    "next_cycle": "Verified GT admission and version-specific g1 refit before another round; current trainer begins at f0 only",
+    "scope": "Mixture acceptance versus an explicit fixed common-priority fallback, not heldout hyperparameter optimization"
+  },
+  "interpolation": {
+    "created_utc": "2026-11-26T11:29:15.955561+00:00",
+    "alphas": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "formula": "theta_alpha=(1-alpha)*f0_EMA+alpha*trained_parameters; frozen buffers must agree",
+    "motivation": "First completed Random endpoint improved dev but missed pre-existing retention limit. Additional development experiment, registered after that result and before other f1 development outcomes.",
+    "scope": "Same alpha grid for all methods/seeds including continuation control; no heldout selection; no extra training steps. Gates unchanged.",
+    "primary_reference": "https://github.com/mlfoundations/wise-ft",
+    "reference_scope": "Weight interpolation concept only; different model/task/data, no CLIP reproduction or promised benefit."
+  }
+}

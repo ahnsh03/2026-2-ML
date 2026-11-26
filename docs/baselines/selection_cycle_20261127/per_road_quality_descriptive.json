@@ -1,0 +1,117 @@
+{
+  "confirmation": [
+    {
+      "road": "Road 1",
+      "rows": 122,
+      "gp_q_mae": 0.15239757129345732,
+      "rf_q_mae": 0.16523323934671855,
+      "gp_mean_bias": 0.11874934220838375,
+      "mean_actual_iou": 0.40656014323924616,
+      "mean_estimated_iou": 0.5253094854476298,
+      "maximum_absolute_error": 0.4206075019627966,
+      "low_iou_rows": 122,
+      "mean_epistemic_sigma": 0.034324303181367415
+    },
+    {
+      "road": "Road 2",
+      "rows": 122,
+      "gp_q_mae": 0.050161489027271536,
+      "rf_q_mae": 0.05618855682514252,
+      "gp_mean_bias": -0.012219865801923972,
+      "mean_actual_iou": 0.7617662725454656,
+      "mean_estimated_iou": 0.7495464067435416,
+      "maximum_absolute_error": 0.20908457358622284,
+      "low_iou_rows": 40,
+      "mean_epistemic_sigma": 0.023547332181660725
+    },
+    {
+      "road": "Road 3",
+      "rows": 122,
+      "gp_q_mae": 0.03680925542655324,
+      "rf_q_mae": 0.030043190048339583,
+      "gp_mean_bias": -0.02503327209814225,
+      "mean_actual_iou": 0.7815884860978288,
+      "mean_estimated_iou": 0.7565552139996865,
+      "maximum_absolute_error": 0.17918763518875935,
+      "low_iou_rows": 25,
+      "mean_epistemic_sigma": 0.011433804561096344
+    }
+  ],
+  "main": [
+    {
+      "road": "Road 1",
+      "rows": 122,
+      "gp_q_mae": 0.24349605152187914,
+      "rf_q_mae": 0.23129071816455246,
+      "gp_mean_bias": 0.13969551858720153,
+      "mean_actual_iou": 0.05682941728734859,
+      "mean_estimated_iou": 0.19652493587455014,
+      "maximum_absolute_error": 0.6306933076698281,
+      "low_iou_rows": 122,
+      "mean_epistemic_sigma": 0.1315748329249778
+    },
+    {
+      "road": "Road 2",
+      "rows": 122,
+      "gp_q_mae": 0.19377684613735024,
+      "rf_q_mae": 0.15879927256431012,
+      "gp_mean_bias": 0.19377684613735024,
+      "mean_actual_iou": 0.0,
+      "mean_estimated_iou": 0.19377684613735024,
+      "maximum_absolute_error": 0.4400225427265403,
+      "low_iou_rows": 122,
+      "mean_epistemic_sigma": 0.1227525562162824
+    },
+    {
+      "road": "Road 3",
+      "rows": 122,
+      "gp_q_mae": 0.03865257131571131,
+      "rf_q_mae": 0.05816648104401185,
+      "gp_mean_bias": -0.007938766620253293,
+      "mean_actual_iou": 0.7034190576471888,
+      "mean_estimated_iou": 0.6954802910269354,
+      "maximum_absolute_error": 0.15694943066551142,
+      "low_iou_rows": 40,
+      "mean_epistemic_sigma": 0.02203145605860131
+    }
+  ],
+  "condition_shift": [
+    {
+      "road": "Road 1",
+      "rows": 34,
+      "gp_q_mae": 0.18146889377866987,
+      "rf_q_mae": 0.1966604247687207,
+      "gp_mean_bias": 0.15135808094463726,
+      "mean_actual_iou": 0.017576959790001196,
+      "mean_estimated_iou": 0.16893504073463844,
+      "maximum_absolute_error": 0.4611440349777257,
+      "low_iou_rows": 34,
+      "mean_epistemic_sigma": 0.1352256048737623
+    },
+    {
+      "road": "Road 2",
+      "rows": 34,
+      "gp_q_mae": 0.10544319162135032,
+      "rf_q_mae": 0.1507688990016881,
+      "gp_mean_bias": 0.10544319162135032,
+      "mean_actual_iou": 0.0,
+      "mean_estimated_iou": 0.10544319162135032,
+      "maximum_absolute_error": 0.26471585907837825,
+      "low_iou_rows": 34,
+      "mean_epistemic_sigma": 0.09702988242898736
+    },
+    {
+      "road": "Road 3",
+      "rows": 34,
+      "gp_q_mae": 0.0619682751216258,
+      "rf_q_mae": 0.0936836438813375,
+      "gp_mean_bias": -0.006323160205666305,
+      "mean_actual_iou": 0.5350409909117619,
+      "mean_estimated_iou": 0.5287178307060958,
+      "maximum_absolute_error": 0.08792834201056646,
+      "low_iou_rows": 25,
+      "mean_epistemic_sigma": 0.02372613697485548
+    }
+  ],
+  "scope": "Descriptive per-road audit after frozen model/policy assessment. No tuning or role promotion. Aliases restart in each role; all are within the same simulator map."
+}

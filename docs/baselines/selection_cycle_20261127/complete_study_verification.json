@@ -1,0 +1,12 @@
+{
+  "completed_training_runs": 8,
+  "parameter_derivations": 24,
+  "logged_replay_order_same_within_each_seed": true,
+  "all_training_inputs_match_frozen_manifests": true,
+  "final_training_checkpoints_match_optimizer_snapshots": true,
+  "interpolations_tensor_exact": true,
+  "sealed_per_frame_evaluations": 50,
+  "original_first_run_training_log_sealed": true,
+  "private_inventory_sha256": "ee0d95cd0e90a145c5d7efb370d99ec998b368ce76f44e72bbc8e1789f5bfe33",
+  "source_sha256": "8c5f7a337aadfba39ed6eab512d922b2e6320ccabcdf498b4b9865bff67db137"
+}

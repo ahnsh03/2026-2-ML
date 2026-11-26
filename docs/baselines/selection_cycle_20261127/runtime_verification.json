@@ -1,0 +1,31 @@
+{
+  "completed_utc": "2026-11-26T20:04:29.703934+00:00",
+  "evaluation_role": "heldout_diagnostic",
+  "rows": 96,
+  "selected": 12,
+  "audit_slots": 2,
+  "feature_columns": 52,
+  "rgb_only_vs_matched_pack_max_abs": 0.0,
+  "cross_profile_features_max_abs": 3.266334533691406e-05,
+  "matched_pack_rows": 96,
+  "matched_pack_uses_identical_batch_composition": true,
+  "original_archive_batch_feature_max_abs": 3.266334533691406e-05,
+  "original_archive_batch_rgb_max_abs": 0.0,
+  "original_archive_batch_iou_prediction_max_abs": 5.388414806795083e-06,
+  "cross_profile_iou_prediction_max_abs": 1.1315657785448963e-05,
+  "portable_rf_cross_profile_max_abs": {
+    "rtx40-cu118": 0.0,
+    "rtx50-cu128": 0.0
+  },
+  "uses_ground_truth_for_inference": false,
+  "intentionally_unavailable_gt_ignored": true,
+  "mismatched_f0_identity_rejected": true,
+  "actual_gpu": "RTX5070Ti with rtx50-cu128",
+  "second_profile": "rtx40-cu118 on CPU; actual40GPU not tested",
+  "gt_attached_only_after_selection": true,
+  "admission_approved": false,
+  "reserved_source_roles_preserved_after_gt": true,
+  "deployment_decision_sha256": "fc7aea47827a45622a43ad6b92b88d8b052bc73ab9fc8c87e4d1f149873022d5",
+  "bundle_manifest_sha256": "b04a9113106df93e86ce127c7376a900753fb74347bcbe227b41652f08957f64",
+  "source_sha256": "d481501dd74364d0a835c4523bca2425ef5062a0936a89c994b5fdb04c68d53c"
+}

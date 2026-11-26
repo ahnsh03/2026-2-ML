@@ -1,0 +1,16 @@
+{
+  "source_commit": "b952fa8",
+  "scope": "Post-evaluation verification and figure clarification only. Frozen model, feature, target, threshold and policy choices unchanged.",
+  "source_archive_sha256": "c38547137edf0aacfd5aa9cc4810d5e240c66a5396ce2bfec5cfefdf4b65eb40",
+  "identical_batch_feature_max_abs": 0.0,
+  "original_archive_different_batch_feature_max_abs": 3.266334533691406e-05,
+  "original_archive_different_batch_iou_max_abs": 5.388414806795083e-06,
+  "relocated_internal_bundle_identity_verified": true,
+  "relocated_quality_columns": 28,
+  "relocated_environment_columns": 27,
+  "unit_tests": {
+    "rtx40_cpu": 257,
+    "rtx50_cpu": 257
+  },
+  "actual_rtx40_gpu_tested": false
+}

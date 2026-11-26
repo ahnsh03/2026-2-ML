@@ -1,0 +1,16 @@
+{
+  "created_utc": "2026-11-26T15:09:24.424162+00:00",
+  "diagnostic_assignment_population": {
+    "candidate_pool": 7442,
+    "development": 1620,
+    "calibration": 2232
+  },
+  "final_quality_population": {
+    "quality_fit": 2480,
+    "development": 937,
+    "calibration": 612,
+    "heldout_diagnostic": 834
+  },
+  "interpretation": "environment_diagnostics.assignment uses the broader role-labeled source pack before final spatial embargo/quality membership. It is an appearance-confound diagnostic, not the final GP/refit/calibration evaluation population. Every final member has the same role in the broader pack; memberships do not cross roles.",
+  "role_index_sha256": "0cbd113440fe9916e98b6cf74c72a6ab63050e9eb3987eeb708a5cb16fa962c8"
+}

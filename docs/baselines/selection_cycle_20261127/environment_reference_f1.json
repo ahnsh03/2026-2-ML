@@ -1,0 +1,3234 @@
+{
+  "development": {
+    "created_utc": "2026-11-26T17:30:11.137381+00:00",
+    "perception_identity": {
+      "schema_version": "ml-perception-identity-1",
+      "kind": "adaptation",
+      "checkpoint_sha256": "1dab681c3f731caf59b56f8d840518bfe8177047f94550c1baabd72453bbabab",
+      "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+      "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+      "adaptation_run_sha256": "ac271a4b790fc97853b143f7f558a0caf7442feaa482ae1665d8eb93e293d79d"
+    },
+    "model_sha256": "49ce7e0afa765dbb17e06fce1d2cfd651c92cbe4657afbf68435e4e6f419f8a9",
+    "environment_sha256": "c2ce0665d3d4b4dd48aa2ea549b4e3875541b4c52b4da3664d31693781c8c886",
+    "calibration_rows": 612,
+    "calibration_supported_rows": 490,
+    "calibration_near_retained_rows": 328,
+    "development_rows": 361,
+    "development_near_defects": 120,
+    "selected": {
+      "parameters": {
+        "reference_population": "all_supported",
+        "quantile": 0.25,
+        "shrinkage": 25.0,
+        "quota_exponent": 0.0,
+        "uncertainty_weight": 0.25
+      },
+      "loss": 0.581096122179407,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 38,
+          "near_defects_found": 20,
+          "macro_road_near_defect_recall": 0.16645271715875054,
+          "macro_cluster_near_defect_recall": 0.20225155279503104,
+          "near_retained_review_fraction": 0.47368421052631576,
+          "loss": 0.7544149012510065
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "near_defects_found": 72,
+          "macro_road_near_defect_recall": 0.5988446726572528,
+          "macro_cluster_near_defect_recall": 0.6845792664892044,
+          "near_retained_review_fraction": 0.52,
+          "loss": 0.40777734310780744
+        }
+      ],
+      "reference": {
+        "version": "relative-review-reference-1",
+        "absolute_quality_threshold": 0.7,
+        "groups": {
+          "0": {
+            "threshold": 0.7,
+            "reference_quantile": 0.8914448022842407,
+            "rows": 62,
+            "roads": 4,
+            "unique_5m_cells": 24,
+            "shrinkage_weight": 0.4897959183673469,
+            "eligible": true
+          },
+          "1": {
+            "threshold": 0.5906165035403504,
+            "reference_quantile": 0.4766753613948822,
+            "rows": 64,
+            "roads": 4,
+            "unique_5m_cells": 24,
+            "shrinkage_weight": 0.4897959183673469,
+            "eligible": true
+          },
+          "2": {
+            "threshold": 0.5201435893774032,
+            "reference_quantile": 0.3402871787548065,
+            "rows": 32,
+            "roads": 4,
+            "unique_5m_cells": 25,
+            "shrinkage_weight": 0.5,
+            "eligible": true
+          },
+          "3": {
+            "threshold": 0.7,
+            "reference_quantile": 0.8688865900039673,
+            "rows": 35,
+            "roads": 4,
+            "unique_5m_cells": 17,
+            "shrinkage_weight": 0.40476190476190477,
+            "eligible": true
+          },
+          "4": {
+            "threshold": 0.7,
+            "reference_quantile": null,
+            "rows": 10,
+            "roads": 2,
+            "unique_5m_cells": 8,
+            "shrinkage_weight": 0.0,
+            "eligible": false
+          },
+          "5": {
+            "threshold": 0.538505922143276,
+            "reference_quantile": 0.3889743685722351,
+            "rows": 66,
+            "roads": 4,
+            "unique_5m_cells": 27,
+            "shrinkage_weight": 0.5192307692307693,
+            "eligible": true
+          },
+          "6": {
+            "threshold": 0.7,
+            "reference_quantile": 0.8584837317466736,
+            "rows": 185,
+            "roads": 4,
+            "unique_5m_cells": 26,
+            "shrinkage_weight": 0.5098039215686274,
+            "eligible": true
+          },
+          "7": {
+            "threshold": 0.7,
+            "reference_quantile": 0.8857787847518921,
+            "rows": 36,
+            "roads": 3,
+            "unique_5m_cells": 18,
+            "shrinkage_weight": 0.4186046511627907,
+            "eligible": true
+          }
+        },
+        "quantile": 0.25,
+        "shrinkage": 25.0,
+        "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+      },
+      "noncommon_development_rows": 119
+    },
+    "common_best": {
+      "quota_exponent": 0.0,
+      "uncertainty_weight": 0.25,
+      "loss": 0.5847452914971871,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 38,
+          "near_defects_found": 20,
+          "macro_road_near_defect_recall": 0.16645271715875054,
+          "macro_cluster_near_defect_recall": 0.20225155279503104,
+          "near_retained_review_fraction": 0.47368421052631576,
+          "loss": 0.7544149012510065
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "near_defects_found": 71,
+          "macro_road_near_defect_recall": 0.5907145913564399,
+          "macro_cluster_near_defect_recall": 0.6791444838805087,
+          "near_retained_review_fraction": 0.5266666666666666,
+          "loss": 0.4150756817433676
+        }
+      ]
+    },
+    "development_loss_improvement": 0.003649169317780143,
+    "diagnostic_gain_gate_passes": false,
+    "primary_runtime_policy_changed": false,
+    "absolute_quality_threshold": 0.7,
+    "bo_history": [
+      0,
+      53,
+      54,
+      107,
+      2,
+      60,
+      72,
+      78,
+      62,
+      18,
+      24,
+      6,
+      36,
+      42,
+      90,
+      96
+    ],
+    "bo_losses": [
+      0.6070725687495514,
+      0.685263030796959,
+      0.6070725687495514,
+      0.685263030796959,
+      0.6505262174524329,
+      0.6070725687495514,
+      0.6070725687495514,
+      0.6070725687495514,
+      0.6543679413273374,
+      0.6070725687495514,
+      0.6070725687495514,
+      0.6070725687495514,
+      0.6070725687495514,
+      0.6070725687495514,
+      0.6070725687495514,
+      0.6070725687495514
+    ],
+    "random_history": [
+      0,
+      53,
+      54,
+      107,
+      17,
+      99,
+      19,
+      66,
+      63,
+      41,
+      37,
+      91,
+      81,
+      42,
+      51,
+      21
+    ],
+    "random_losses": [
+      0.6070725687495514,
+      0.685263030796959,
+      0.6070725687495514,
+      0.685263030796959,
+      0.685263030796959,
+      0.6188432491431579,
+      0.581096122179407,
+      0.6070725687495514,
+      0.6188432491431579,
+      0.685263030796959,
+      0.581096122179407,
+      0.5847452914971871,
+      0.6188432491431579,
+      0.6070725687495514,
+      0.6188432491431579,
+      0.6188432491431579
+    ],
+    "shared_initial": [
+      0,
+      53,
+      54,
+      107
+    ],
+    "budget_each": 16,
+    "trials": {
+      "0": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.1,
+          "shrinkage": 25.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8359120488166809,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.5667917436482955,
+              "reference_quantile": 0.42803314328193665,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.4888812661170959,
+              "reference_quantile": 0.2777625322341919,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.5,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.7882632613182068,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.40476190476190477,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.42411955188100153,
+              "reference_quantile": 0.16867469251155853,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.5192307692307693,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8224508166313171,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.5098039215686274,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8732331991195679,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.4186046511627907,
+              "eligible": true
+            }
+          },
+          "quantile": 0.1,
+          "shrinkage": 25.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "53": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.4,
+          "shrinkage": 400.0,
+          "quota_exponent": 1.0,
+          "uncertainty_weight": 0.25
+        },
+        "loss": 0.685263030796959,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 11,
+            "macro_road_near_defect_recall": 0.09071459135643987,
+            "macro_cluster_near_defect_recall": 0.2293145519077196,
+            "near_retained_review_fraction": 0.7105263157894737,
+            "loss": 0.8418135979624869
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 56,
+            "macro_road_near_defect_recall": 0.4661959777492512,
+            "macro_cluster_near_defect_recall": 0.5845164152617568,
+            "near_retained_review_fraction": 0.6266666666666667,
+            "loss": 0.5287124636314312
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.9006000757217407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.05660377358490566,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.6888271918836629,
+              "reference_quantile": 0.5026137232780457,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.05660377358490566,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.6832536483512205,
+              "reference_quantile": 0.4153120219707489,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.058823529411764705,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8889179825782776,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.0407673860911271,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.6812122878062362,
+              "reference_quantile": 0.4028758108615875,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.06323185011709602,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8718065619468689,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.06103286384976526,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8902310729026794,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.0430622009569378,
+              "eligible": true
+            }
+          },
+          "quantile": 0.4,
+          "shrinkage": 400.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "54": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.1,
+          "shrinkage": 25.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8359120488166809,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.7882632613182068,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.40476190476190477,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8224508166313171,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.5098039215686274,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8732331991195679,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.4186046511627907,
+              "eligible": true
+            }
+          },
+          "quantile": 0.1,
+          "shrinkage": 25.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "107": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.4,
+          "shrinkage": 400.0,
+          "quota_exponent": 1.0,
+          "uncertainty_weight": 0.25
+        },
+        "loss": 0.685263030796959,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 11,
+            "macro_road_near_defect_recall": 0.09071459135643987,
+            "macro_cluster_near_defect_recall": 0.2293145519077196,
+            "near_retained_review_fraction": 0.7105263157894737,
+            "loss": 0.8418135979624869
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 56,
+            "macro_road_near_defect_recall": 0.4661959777492512,
+            "macro_cluster_near_defect_recall": 0.5845164152617568,
+            "near_retained_review_fraction": 0.6266666666666667,
+            "loss": 0.5287124636314312
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.9006000757217407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.05660377358490566,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8889179825782776,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.0407673860911271,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8718065619468689,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.06103286384976526,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8902310729026794,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.0430622009569378,
+              "eligible": true
+            }
+          },
+          "quantile": 0.4,
+          "shrinkage": 400.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "2": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.1,
+          "shrinkage": 25.0,
+          "quota_exponent": 0.5,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6505262174524329,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 16,
+            "macro_road_near_defect_recall": 0.1326486949080017,
+            "macro_cluster_near_defect_recall": 0.16110248447204967,
+            "near_retained_review_fraction": 0.5789473684210527,
+            "loss": 0.8039797598449996
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 64,
+            "macro_road_near_defect_recall": 0.5331621737270004,
+            "macro_cluster_near_defect_recall": 0.48848343685300205,
+            "near_retained_review_fraction": 0.5733333333333334,
+            "loss": 0.4970726750598661
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8359120488166809,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.5667917436482955,
+              "reference_quantile": 0.42803314328193665,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.4888812661170959,
+              "reference_quantile": 0.2777625322341919,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.5,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.7882632613182068,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.40476190476190477,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.42411955188100153,
+              "reference_quantile": 0.16867469251155853,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.5192307692307693,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8224508166313171,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.5098039215686274,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8732331991195679,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.4186046511627907,
+              "eligible": true
+            }
+          },
+          "quantile": 0.1,
+          "shrinkage": 25.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "60": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.1,
+          "shrinkage": 100.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8359120488166809,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.7882632613182068,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.1452991452991453,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8224508166313171,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.20634920634920634,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8732331991195679,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.15254237288135594,
+              "eligible": true
+            }
+          },
+          "quantile": 0.1,
+          "shrinkage": 100.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "72": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.25,
+          "shrinkage": 25.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8914448022842407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8688865900039673,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.40476190476190477,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8584837317466736,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.5098039215686274,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8857787847518921,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.4186046511627907,
+              "eligible": true
+            }
+          },
+          "quantile": 0.25,
+          "shrinkage": 25.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "78": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.25,
+          "shrinkage": 100.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8914448022842407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8688865900039673,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.1452991452991453,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8584837317466736,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.20634920634920634,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8857787847518921,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.15254237288135594,
+              "eligible": true
+            }
+          },
+          "quantile": 0.25,
+          "shrinkage": 100.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "62": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.1,
+          "shrinkage": 100.0,
+          "quota_exponent": 0.5,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6543679413273374,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 16,
+            "macro_road_near_defect_recall": 0.1326486949080017,
+            "macro_cluster_near_defect_recall": 0.16110248447204967,
+            "near_retained_review_fraction": 0.5789473684210527,
+            "loss": 0.8039797598449996
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 63,
+            "macro_road_near_defect_recall": 0.524390243902439,
+            "macro_cluster_near_defect_recall": 0.48304865424430643,
+            "near_retained_review_fraction": 0.58,
+            "loss": 0.5047561228096753
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8359120488166809,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.7882632613182068,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.1452991452991453,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8224508166313171,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.20634920634920634,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8732331991195679,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.15254237288135594,
+              "eligible": true
+            }
+          },
+          "quantile": 0.1,
+          "shrinkage": 100.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "18": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.25,
+          "shrinkage": 25.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8914448022842407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.5906165035403504,
+              "reference_quantile": 0.4766753613948822,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.5201435893774032,
+              "reference_quantile": 0.3402871787548065,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.5,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8688865900039673,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.40476190476190477,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.538505922143276,
+              "reference_quantile": 0.3889743685722351,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.5192307692307693,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8584837317466736,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.5098039215686274,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8857787847518921,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.4186046511627907,
+              "eligible": true
+            }
+          },
+          "quantile": 0.25,
+          "shrinkage": 25.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "24": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.25,
+          "shrinkage": 100.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8914448022842407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.6567758763990094,
+              "reference_quantile": 0.4766753613948822,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.6280574357509613,
+              "reference_quantile": 0.3402871787548065,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.2,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8688865900039673,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.1452991452991453,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.6338764405626011,
+              "reference_quantile": 0.3889743685722351,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.2125984251968504,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8584837317466736,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.20634920634920634,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8857787847518921,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.15254237288135594,
+              "eligible": true
+            }
+          },
+          "quantile": 0.25,
+          "shrinkage": 100.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "6": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.1,
+          "shrinkage": 100.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8359120488166809,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.6473612535384393,
+              "reference_quantile": 0.42803314328193665,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.6155525064468383,
+              "reference_quantile": 0.2777625322341919,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.2,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.7882632613182068,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.1452991452991453,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.587041076360725,
+              "reference_quantile": 0.16867469251155853,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.2125984251968504,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8224508166313171,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.20634920634920634,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8732331991195679,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.15254237288135594,
+              "eligible": true
+            }
+          },
+          "quantile": 0.1,
+          "shrinkage": 100.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "36": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.4,
+          "shrinkage": 25.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.9006000757217407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.6033210073198592,
+              "reference_quantile": 0.5026137232780457,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.5576560109853744,
+              "reference_quantile": 0.4153120219707489,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.5,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8889179825782776,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.40476190476190477,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.5457239787165935,
+              "reference_quantile": 0.4028758108615875,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.5192307692307693,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8718065619468689,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.5098039215686274,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8902310729026794,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.4186046511627907,
+              "eligible": true
+            }
+          },
+          "quantile": 0.4,
+          "shrinkage": 25.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "42": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.4,
+          "shrinkage": 100.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.9006000757217407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.6617962045054281,
+              "reference_quantile": 0.5026137232780457,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.6430624043941497,
+              "reference_quantile": 0.4153120219707489,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.2,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8889179825782776,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.1452991452991453,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.6368318653012823,
+              "reference_quantile": 0.4028758108615875,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.2125984251968504,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8718065619468689,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.20634920634920634,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8902310729026794,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.15254237288135594,
+              "eligible": true
+            }
+          },
+          "quantile": 0.4,
+          "shrinkage": 100.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "90": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.4,
+          "shrinkage": 25.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.9006000757217407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8889179825782776,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.40476190476190477,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8718065619468689,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.5098039215686274,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8902310729026794,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.4186046511627907,
+              "eligible": true
+            }
+          },
+          "quantile": 0.4,
+          "shrinkage": 25.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "96": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.4,
+          "shrinkage": 100.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.9006000757217407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8889179825782776,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.1452991452991453,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8718065619468689,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.20634920634920634,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8902310729026794,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.15254237288135594,
+              "eligible": true
+            }
+          },
+          "quantile": 0.4,
+          "shrinkage": 100.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "17": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.1,
+          "shrinkage": 400.0,
+          "quota_exponent": 1.0,
+          "uncertainty_weight": 0.25
+        },
+        "loss": 0.685263030796959,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 11,
+            "macro_road_near_defect_recall": 0.09071459135643987,
+            "macro_cluster_near_defect_recall": 0.2293145519077196,
+            "near_retained_review_fraction": 0.7105263157894737,
+            "loss": 0.8418135979624869
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 56,
+            "macro_road_near_defect_recall": 0.4661959777492512,
+            "macro_cluster_near_defect_recall": 0.5845164152617568,
+            "near_retained_review_fraction": 0.6266666666666667,
+            "loss": 0.5287124636314312
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8359120488166809,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.05660377358490566,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.6846056496197322,
+              "reference_quantile": 0.42803314328193665,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.05660377358490566,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.6751625018961289,
+              "reference_quantile": 0.2777625322341919,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.058823529411764705,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.7882632613182068,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.0407673860911271,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.6664033177934708,
+              "reference_quantile": 0.16867469251155853,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.06323185011709602,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8224508166313171,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.06103286384976526,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8732331991195679,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.0430622009569378,
+              "eligible": true
+            }
+          },
+          "quantile": 0.1,
+          "shrinkage": 400.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "99": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.4,
+          "shrinkage": 100.0,
+          "quota_exponent": 0.5,
+          "uncertainty_weight": 0.25
+        },
+        "loss": 0.6188432491431579,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 16,
+            "macro_road_near_defect_recall": 0.1326486949080017,
+            "macro_cluster_near_defect_recall": 0.16110248447204967,
+            "near_retained_review_fraction": 0.5789473684210527,
+            "loss": 0.8039797598449996
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.5656824989302525,
+            "macro_cluster_near_defect_recall": 0.6810854776693286,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.43370673844131613
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.9006000757217407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8889179825782776,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.1452991452991453,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8718065619468689,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.20634920634920634,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8902310729026794,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.15254237288135594,
+              "eligible": true
+            }
+          },
+          "quantile": 0.4,
+          "shrinkage": 100.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "19": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.25,
+          "shrinkage": 25.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.25
+        },
+        "loss": 0.581096122179407,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 72,
+            "macro_road_near_defect_recall": 0.5988446726572528,
+            "macro_cluster_near_defect_recall": 0.6845792664892044,
+            "near_retained_review_fraction": 0.52,
+            "loss": 0.40777734310780744
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8914448022842407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.5906165035403504,
+              "reference_quantile": 0.4766753613948822,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.5201435893774032,
+              "reference_quantile": 0.3402871787548065,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.5,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8688865900039673,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.40476190476190477,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.538505922143276,
+              "reference_quantile": 0.3889743685722351,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.5192307692307693,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8584837317466736,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.5098039215686274,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8857787847518921,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.4186046511627907,
+              "eligible": true
+            }
+          },
+          "quantile": 0.25,
+          "shrinkage": 25.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "66": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.1,
+          "shrinkage": 400.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.0
+        },
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8359120488166809,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.05660377358490566,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.7882632613182068,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.0407673860911271,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8224508166313171,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.06103286384976526,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8732331991195679,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.0430622009569378,
+              "eligible": true
+            }
+          },
+          "quantile": 0.1,
+          "shrinkage": 400.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "63": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.1,
+          "shrinkage": 100.0,
+          "quota_exponent": 0.5,
+          "uncertainty_weight": 0.25
+        },
+        "loss": 0.6188432491431579,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 16,
+            "macro_road_near_defect_recall": 0.1326486949080017,
+            "macro_cluster_near_defect_recall": 0.16110248447204967,
+            "near_retained_review_fraction": 0.5789473684210527,
+            "loss": 0.8039797598449996
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.5656824989302525,
+            "macro_cluster_near_defect_recall": 0.6810854776693286,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.43370673844131613
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8359120488166809,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.7882632613182068,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.1452991452991453,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8224508166313171,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.20634920634920634,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8732331991195679,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.15254237288135594,
+              "eligible": true
+            }
+          },
+          "quantile": 0.1,
+          "shrinkage": 100.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "41": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.4,
+          "shrinkage": 25.0,
+          "quota_exponent": 1.0,
+          "uncertainty_weight": 0.25
+        },
+        "loss": 0.685263030796959,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 11,
+            "macro_road_near_defect_recall": 0.09071459135643987,
+            "macro_cluster_near_defect_recall": 0.2293145519077196,
+            "near_retained_review_fraction": 0.7105263157894737,
+            "loss": 0.8418135979624869
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 56,
+            "macro_road_near_defect_recall": 0.4661959777492512,
+            "macro_cluster_near_defect_recall": 0.5845164152617568,
+            "near_retained_review_fraction": 0.6266666666666667,
+            "loss": 0.5287124636314312
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.9006000757217407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.6033210073198592,
+              "reference_quantile": 0.5026137232780457,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.5576560109853744,
+              "reference_quantile": 0.4153120219707489,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.5,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8889179825782776,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.40476190476190477,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.5457239787165935,
+              "reference_quantile": 0.4028758108615875,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.5192307692307693,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8718065619468689,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.5098039215686274,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8902310729026794,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.4186046511627907,
+              "eligible": true
+            }
+          },
+          "quantile": 0.4,
+          "shrinkage": 25.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "37": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.4,
+          "shrinkage": 25.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.25
+        },
+        "loss": 0.581096122179407,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 72,
+            "macro_road_near_defect_recall": 0.5988446726572528,
+            "macro_cluster_near_defect_recall": 0.6845792664892044,
+            "near_retained_review_fraction": 0.52,
+            "loss": 0.40777734310780744
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.9006000757217407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.6033210073198592,
+              "reference_quantile": 0.5026137232780457,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.5576560109853744,
+              "reference_quantile": 0.4153120219707489,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.5,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8889179825782776,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.40476190476190477,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.5457239787165935,
+              "reference_quantile": 0.4028758108615875,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.5192307692307693,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8718065619468689,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.5098039215686274,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8902310729026794,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.4186046511627907,
+              "eligible": true
+            }
+          },
+          "quantile": 0.4,
+          "shrinkage": 25.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "91": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.4,
+          "shrinkage": 25.0,
+          "quota_exponent": 0.0,
+          "uncertainty_weight": 0.25
+        },
+        "loss": 0.5847452914971871,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 71,
+            "macro_road_near_defect_recall": 0.5907145913564399,
+            "macro_cluster_near_defect_recall": 0.6791444838805087,
+            "near_retained_review_fraction": 0.5266666666666666,
+            "loss": 0.4150756817433676
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.9006000757217407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8889179825782776,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.40476190476190477,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8718065619468689,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.5098039215686274,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8902310729026794,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.4186046511627907,
+              "eligible": true
+            }
+          },
+          "quantile": 0.4,
+          "shrinkage": 25.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "81": {
+        "parameters": {
+          "reference_population": "near_retained",
+          "quantile": 0.25,
+          "shrinkage": 100.0,
+          "quota_exponent": 0.5,
+          "uncertainty_weight": 0.25
+        },
+        "loss": 0.6188432491431579,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 16,
+            "macro_road_near_defect_recall": 0.1326486949080017,
+            "macro_cluster_near_defect_recall": 0.16110248447204967,
+            "near_retained_review_fraction": 0.5789473684210527,
+            "loss": 0.8039797598449996
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.5656824989302525,
+            "macro_cluster_near_defect_recall": 0.6810854776693286,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.43370673844131613
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8914448022842407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.1935483870967742,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8688865900039673,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.1452991452991453,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8584837317466736,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.20634920634920634,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8857787847518921,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.15254237288135594,
+              "eligible": true
+            }
+          },
+          "quantile": 0.25,
+          "shrinkage": 100.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 0
+      },
+      "51": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.4,
+          "shrinkage": 400.0,
+          "quota_exponent": 0.5,
+          "uncertainty_weight": 0.25
+        },
+        "loss": 0.6188432491431579,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 16,
+            "macro_road_near_defect_recall": 0.1326486949080017,
+            "macro_cluster_near_defect_recall": 0.16110248447204967,
+            "near_retained_review_fraction": 0.5789473684210527,
+            "loss": 0.8039797598449996
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.5656824989302525,
+            "macro_cluster_near_defect_recall": 0.6810854776693286,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.43370673844131613
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.9006000757217407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.05660377358490566,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.6888271918836629,
+              "reference_quantile": 0.5026137232780457,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.05660377358490566,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.6832536483512205,
+              "reference_quantile": 0.4153120219707489,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.058823529411764705,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8889179825782776,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.0407673860911271,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.6812122878062362,
+              "reference_quantile": 0.4028758108615875,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.06323185011709602,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8718065619468689,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.06103286384976526,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8902310729026794,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.0430622009569378,
+              "eligible": true
+            }
+          },
+          "quantile": 0.4,
+          "shrinkage": 400.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      },
+      "21": {
+        "parameters": {
+          "reference_population": "all_supported",
+          "quantile": 0.25,
+          "shrinkage": 25.0,
+          "quota_exponent": 0.5,
+          "uncertainty_weight": 0.25
+        },
+        "loss": 0.6188432491431579,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 16,
+            "macro_road_near_defect_recall": 0.1326486949080017,
+            "macro_cluster_near_defect_recall": 0.16110248447204967,
+            "near_retained_review_fraction": 0.5789473684210527,
+            "loss": 0.8039797598449996
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.5656824989302525,
+            "macro_cluster_near_defect_recall": 0.6810854776693286,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.43370673844131613
+          }
+        ],
+        "reference": {
+          "version": "relative-review-reference-1",
+          "absolute_quality_threshold": 0.7,
+          "groups": {
+            "0": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8914448022842407,
+              "rows": 62,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "1": {
+              "threshold": 0.5906165035403504,
+              "reference_quantile": 0.4766753613948822,
+              "rows": 64,
+              "roads": 4,
+              "unique_5m_cells": 24,
+              "shrinkage_weight": 0.4897959183673469,
+              "eligible": true
+            },
+            "2": {
+              "threshold": 0.5201435893774032,
+              "reference_quantile": 0.3402871787548065,
+              "rows": 32,
+              "roads": 4,
+              "unique_5m_cells": 25,
+              "shrinkage_weight": 0.5,
+              "eligible": true
+            },
+            "3": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8688865900039673,
+              "rows": 35,
+              "roads": 4,
+              "unique_5m_cells": 17,
+              "shrinkage_weight": 0.40476190476190477,
+              "eligible": true
+            },
+            "4": {
+              "threshold": 0.7,
+              "reference_quantile": null,
+              "rows": 10,
+              "roads": 2,
+              "unique_5m_cells": 8,
+              "shrinkage_weight": 0.0,
+              "eligible": false
+            },
+            "5": {
+              "threshold": 0.538505922143276,
+              "reference_quantile": 0.3889743685722351,
+              "rows": 66,
+              "roads": 4,
+              "unique_5m_cells": 27,
+              "shrinkage_weight": 0.5192307692307693,
+              "eligible": true
+            },
+            "6": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8584837317466736,
+              "rows": 185,
+              "roads": 4,
+              "unique_5m_cells": 26,
+              "shrinkage_weight": 0.5098039215686274,
+              "eligible": true
+            },
+            "7": {
+              "threshold": 0.7,
+              "reference_quantile": 0.8857787847518921,
+              "rows": 36,
+              "roads": 3,
+              "unique_5m_cells": 18,
+              "shrinkage_weight": 0.4186046511627907,
+              "eligible": true
+            }
+          },
+          "quantile": 0.25,
+          "shrinkage": 25.0,
+          "scope": "Relative priority within observed environment distribution. This never converts low absolute IoU to a quality pass or operational normality label."
+        },
+        "noncommon_development_rows": 119
+      }
+    },
+    "common_comparators": [
+      {
+        "quota_exponent": 0.0,
+        "uncertainty_weight": 0.0,
+        "loss": 0.6070725687495514,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.566324347454001,
+            "macro_cluster_near_defect_recall": 0.5490424430641823,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.45973023624809634
+          }
+        ]
+      },
+      {
+        "quota_exponent": 0.0,
+        "uncertainty_weight": 0.25,
+        "loss": 0.5847452914971871,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 20,
+            "macro_road_near_defect_recall": 0.16645271715875054,
+            "macro_cluster_near_defect_recall": 0.20225155279503104,
+            "near_retained_review_fraction": 0.47368421052631576,
+            "loss": 0.7544149012510065
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 71,
+            "macro_road_near_defect_recall": 0.5907145913564399,
+            "macro_cluster_near_defect_recall": 0.6791444838805087,
+            "near_retained_review_fraction": 0.5266666666666666,
+            "loss": 0.4150756817433676
+          }
+        ]
+      },
+      {
+        "quota_exponent": 0.5,
+        "uncertainty_weight": 0.0,
+        "loss": 0.6543679413273374,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 16,
+            "macro_road_near_defect_recall": 0.1326486949080017,
+            "macro_cluster_near_defect_recall": 0.16110248447204967,
+            "near_retained_review_fraction": 0.5789473684210527,
+            "loss": 0.8039797598449996
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 63,
+            "macro_road_near_defect_recall": 0.524390243902439,
+            "macro_cluster_near_defect_recall": 0.48304865424430643,
+            "near_retained_review_fraction": 0.58,
+            "loss": 0.5047561228096753
+          }
+        ]
+      },
+      {
+        "quota_exponent": 0.5,
+        "uncertainty_weight": 0.25,
+        "loss": 0.6188432491431579,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 16,
+            "macro_road_near_defect_recall": 0.1326486949080017,
+            "macro_cluster_near_defect_recall": 0.16110248447204967,
+            "near_retained_review_fraction": 0.5789473684210527,
+            "loss": 0.8039797598449996
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 68,
+            "macro_road_near_defect_recall": 0.5656824989302525,
+            "macro_cluster_near_defect_recall": 0.6810854776693286,
+            "near_retained_review_fraction": 0.5466666666666666,
+            "loss": 0.43370673844131613
+          }
+        ]
+      },
+      {
+        "quota_exponent": 1.0,
+        "uncertainty_weight": 0.0,
+        "loss": 0.7142148353955635,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 9,
+            "macro_road_near_defect_recall": 0.07445442875481385,
+            "macro_cluster_near_defect_recall": 0.10431455190771961,
+            "near_retained_review_fraction": 0.7631578947368421,
+            "loss": 0.8870960113129361
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 57,
+            "macro_road_near_defect_recall": 0.4749679075738125,
+            "macro_cluster_near_defect_recall": 0.4884279798876072,
+            "near_retained_review_fraction": 0.62,
+            "loss": 0.541333659478191
+          }
+        ]
+      },
+      {
+        "quota_exponent": 1.0,
+        "uncertainty_weight": 0.25,
+        "loss": 0.685263030796959,
+        "budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 38,
+            "near_defects_found": 11,
+            "macro_road_near_defect_recall": 0.09071459135643987,
+            "macro_cluster_near_defect_recall": 0.2293145519077196,
+            "near_retained_review_fraction": 0.7105263157894737,
+            "loss": 0.8418135979624869
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 150,
+            "near_defects_found": 56,
+            "macro_road_near_defect_recall": 0.4661959777492512,
+            "macro_cluster_near_defect_recall": 0.5845164152617568,
+            "near_retained_review_fraction": 0.6266666666666667,
+            "loss": 0.5287124636314312
+          }
+        ]
+      }
+    ],
+    "source_sha256": "984734a915d0fcc7e314daeb4042aa597318ec5150cabbe53b41875c6631b40f",
+    "interpretation": "Version-specific near-defect retrieval diagnostic; normal visibility is unlabelled. No low absolute IoU becomes a pass. Primary runtime stays the separately frozen absolute-quality policy; any relative proposal requires heldout and next-cycle training validation."
+  },
+  "heldout": {
+    "created_utc": "2026-11-26T19:59:55.271292+00:00",
+    "perception_identity": {
+      "schema_version": "ml-perception-identity-1",
+      "kind": "adaptation",
+      "checkpoint_sha256": "1dab681c3f731caf59b56f8d840518bfe8177047f94550c1baabd72453bbabab",
+      "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+      "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+      "adaptation_run_sha256": "ac271a4b790fc97853b143f7f558a0caf7442feaa482ae1665d8eb93e293d79d"
+    },
+    "reference_sha256": "cafa68e9182ff587f55e4dce2eefdebe71f698867bd6c22d6452cf7ca2e55f51",
+    "development_gain_gate": false,
+    "heldout": {
+      "confirmation": {
+        "rows": 366,
+        "near_defects": 167,
+        "relative_loss": 0.6206956347029877,
+        "common_loss": 0.6206956347029877,
+        "improvement": 0.0,
+        "relative_budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 39,
+            "near_defects_found": 22,
+            "macro_road_near_defect_recall": 0.14685592185592186,
+            "macro_cluster_near_defect_recall": 0.10227272727272725,
+            "near_retained_review_fraction": 0.4358974358974359,
+            "loss": 0.7786113886113886
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 153,
+            "near_defects_found": 86,
+            "macro_road_near_defect_recall": 0.5492979242979242,
+            "macro_cluster_near_defect_recall": 0.4761153198653199,
+            "near_retained_review_fraction": 0.43790849673202614,
+            "loss": 0.46277988079458676
+          }
+        ],
+        "common_budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 39,
+            "near_defects_found": 22,
+            "macro_road_near_defect_recall": 0.14685592185592186,
+            "macro_cluster_near_defect_recall": 0.10227272727272725,
+            "near_retained_review_fraction": 0.4358974358974359,
+            "loss": 0.7786113886113886
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 153,
+            "near_defects_found": 86,
+            "macro_road_near_defect_recall": 0.5492979242979242,
+            "macro_cluster_near_defect_recall": 0.4761153198653199,
+            "near_retained_review_fraction": 0.43790849673202614,
+            "loss": 0.46277988079458676
+          }
+        ],
+        "noncommon_threshold_rows": 120,
+        "ood_rows": 0
+      },
+      "main": {
+        "rows": 366,
+        "near_defects": 60,
+        "relative_loss": 0.6751920890987387,
+        "common_loss": 0.6624143113209608,
+        "improvement": -0.012777777777777888,
+        "relative_budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 39,
+            "near_defects_found": 7,
+            "macro_road_near_defect_recall": 0.05833333333333333,
+            "macro_cluster_near_defect_recall": 0.11594202898550723,
+            "near_retained_review_fraction": 0.15384615384615385,
+            "loss": 0.7725808249721293
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 153,
+            "near_defects_found": 27,
+            "macro_road_near_defect_recall": 0.27499999999999997,
+            "macro_cluster_near_defect_recall": 0.45591787439613524,
+            "near_retained_review_fraction": 0.16993464052287582,
+            "loss": 0.5778033532253481
+          }
+        ],
+        "common_budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 39,
+            "near_defects_found": 7,
+            "macro_road_near_defect_recall": 0.05833333333333333,
+            "macro_cluster_near_defect_recall": 0.11594202898550723,
+            "near_retained_review_fraction": 0.15384615384615385,
+            "loss": 0.7725808249721293
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 153,
+            "near_defects_found": 28,
+            "macro_road_near_defect_recall": 0.30833333333333335,
+            "macro_cluster_near_defect_recall": 0.483695652173913,
+            "near_retained_review_fraction": 0.16993464052287582,
+            "loss": 0.5522477976697925
+          }
+        ],
+        "noncommon_threshold_rows": 120,
+        "ood_rows": 0
+      },
+      "condition_shift": {
+        "rows": 102,
+        "near_defects": 28,
+        "relative_loss": 0.6767105263157894,
+        "common_loss": 0.6730921052631578,
+        "improvement": -0.0036184210526316596,
+        "relative_budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 12,
+            "near_defects_found": 2,
+            "macro_road_near_defect_recall": 0.041666666666666664,
+            "macro_cluster_near_defect_recall": 0.08881578947368421,
+            "near_retained_review_fraction": 0.16666666666666666,
+            "loss": 0.7905701754385964
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 45,
+            "near_defects_found": 10,
+            "macro_road_near_defect_recall": 0.3125,
+            "macro_cluster_near_defect_recall": 0.381578947368421,
+            "near_retained_review_fraction": 0.13333333333333333,
+            "loss": 0.5628508771929824
+          }
+        ],
+        "common_budgets": [
+          {
+            "fraction": 0.1,
+            "budget": 12,
+            "near_defects_found": 2,
+            "macro_road_near_defect_recall": 0.041666666666666664,
+            "macro_cluster_near_defect_recall": 0.08881578947368421,
+            "near_retained_review_fraction": 0.16666666666666666,
+            "loss": 0.7905701754385964
+          },
+          {
+            "fraction": 0.41279226014512227,
+            "budget": 45,
+            "near_defects_found": 10,
+            "macro_road_near_defect_recall": 0.3125,
+            "macro_cluster_near_defect_recall": 0.41776315789473684,
+            "near_retained_review_fraction": 0.13333333333333333,
+            "loss": 0.5556140350877192
+          }
+        ],
+        "noncommon_threshold_rows": 75,
+        "ood_rows": 0
+      }
+    },
+    "relative_runtime_adopted": false,
+    "absolute_failure_benchmark": 0.7,
+    "scope": "Fixed proposal diagnostic only. No visibility-normal labels or extra retraining arm validate an environmental pass criterion. The primary runtime remains the separately evaluated common-IoU policy."
+  }
+}

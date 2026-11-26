@@ -1,0 +1,665 @@
+{
+  "bo_indices": [
+    0,
+    9,
+    18,
+    26,
+    12,
+    10,
+    3,
+    21,
+    6,
+    15,
+    7,
+    24,
+    2,
+    19,
+    16,
+    8
+  ],
+  "bo_losses": [
+    0.5540776738791134,
+    0.5540776738791134,
+    0.5540776738791134,
+    0.6323000239439356,
+    0.5616950377521164,
+    0.6096068360742393,
+    0.5613548156301228,
+    0.565793534476553,
+    0.5502692241834457,
+    0.563745176990409,
+    0.5936185516290963,
+    0.5479957465980299,
+    0.68604326872129,
+    0.6134606372438299,
+    0.6181139680195246,
+    0.6629067105210054
+  ],
+  "random_indices": [
+    0,
+    9,
+    18,
+    26,
+    25,
+    13,
+    19,
+    21,
+    10,
+    7,
+    14,
+    24,
+    12,
+    2,
+    20,
+    11
+  ],
+  "random_losses": [
+    0.5540776738791134,
+    0.5540776738791134,
+    0.5540776738791134,
+    0.6323000239439356,
+    0.6006622628234585,
+    0.5970804541606394,
+    0.6134606372438299,
+    0.565793534476553,
+    0.6096068360742393,
+    0.5936185516290963,
+    0.6536779469273051,
+    0.5479957465980299,
+    0.5616950377521164,
+    0.68604326872129,
+    0.6718562600154843,
+    0.6718562600154843
+  ],
+  "shared_initial": [
+    0,
+    9,
+    18,
+    26
+  ],
+  "trials": {
+    "0": {
+      "parameters": {
+        "score_family": "probability",
+        "uncertainty_weight": 0.0,
+        "quota_exponent": 0.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.5540776738791134,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.18643560119811728,
+          "cluster_recall": 0.27148526077097507,
+          "normal_fraction": 0.40540540540540543,
+          "loss": 0.7149226682080156
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.6183782627299957,
+          "cluster_recall": 0.6920351473922902,
+          "normal_fraction": 0.5133333333333333,
+          "loss": 0.3932326795502112
+        }
+      ]
+    },
+    "9": {
+      "parameters": {
+        "score_family": "expected_deficit",
+        "uncertainty_weight": 0.0,
+        "quota_exponent": 0.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.5540776738791134,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.18643560119811728,
+          "cluster_recall": 0.27148526077097507,
+          "normal_fraction": 0.40540540540540543,
+          "loss": 0.7149226682080156
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.6183782627299957,
+          "cluster_recall": 0.6920351473922902,
+          "normal_fraction": 0.5133333333333333,
+          "loss": 0.3932326795502112
+        }
+      ]
+    },
+    "18": {
+      "parameters": {
+        "score_family": "mean",
+        "uncertainty_weight": 0.0,
+        "quota_exponent": 0.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.5540776738791134,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.18643560119811728,
+          "cluster_recall": 0.27148526077097507,
+          "normal_fraction": 0.40540540540540543,
+          "loss": 0.7149226682080156
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.6183782627299957,
+          "cluster_recall": 0.6920351473922902,
+          "normal_fraction": 0.5133333333333333,
+          "loss": 0.3932326795502112
+        }
+      ]
+    },
+    "26": {
+      "parameters": {
+        "score_family": "mean",
+        "uncertainty_weight": 0.25,
+        "quota_exponent": 1.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.6323000239439356,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.1443303380402225,
+          "cluster_recall": 0.2820578231292517,
+          "normal_fraction": 0.5405405405405406,
+          "loss": 0.7650983406581242
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.50033162173727,
+          "cluster_recall": 0.6081632653061224,
+          "normal_fraction": 0.6066666666666667,
+          "loss": 0.49950170722974685
+        }
+      ]
+    },
+    "12": {
+      "parameters": {
+        "score_family": "expected_deficit",
+        "uncertainty_weight": 0.1,
+        "quota_exponent": 0.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.5616950377521164,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.16933033804022254,
+          "cluster_recall": 0.2034297052154195,
+          "normal_fraction": 0.4594594594594595,
+          "loss": 0.7496077480246743
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.6275887890457852,
+          "cluster_recall": 0.7549886621315193,
+          "normal_fraction": 0.5066666666666667,
+          "loss": 0.37378232747955836
+        }
+      ]
+    },
+    "10": {
+      "parameters": {
+        "score_family": "expected_deficit",
+        "uncertainty_weight": 0.0,
+        "quota_exponent": 0.5,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.6096068360742393,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.16143560119811723,
+          "cluster_recall": 0.2421201814058957,
+          "normal_fraction": 0.4864864864864865,
+          "loss": 0.7520119002972477
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.5441591784338896,
+          "cluster_recall": 0.6048469387755102,
+          "normal_fraction": 0.5733333333333334,
+          "loss": 0.4672017718512309
+        }
+      ]
+    },
+    "3": {
+      "parameters": {
+        "score_family": "probability",
+        "uncertainty_weight": 0.1,
+        "quota_exponent": 0.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.5613548156301228,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.18687419768934532,
+          "cluster_recall": 0.27148526077097507,
+          "normal_fraction": 0.40540540540540543,
+          "loss": 0.7146595103132789
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.6016795036371416,
+          "cluster_recall": 0.6813775510204082,
+          "normal_fraction": 0.5266666666666666,
+          "loss": 0.40805012094696674
+        }
+      ]
+    },
+    "21": {
+      "parameters": {
+        "score_family": "mean",
+        "uncertainty_weight": 0.1,
+        "quota_exponent": 0.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.565793534476553,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.17766367137355585,
+          "cluster_recall": 0.20898526077097507,
+          "normal_fraction": 0.43243243243243246,
+          "loss": 0.738091231508158
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.6179396662387676,
+          "cluster_recall": 0.6920351473922902,
+          "normal_fraction": 0.5133333333333333,
+          "loss": 0.39349583744494804
+        }
+      ]
+    },
+    "6": {
+      "parameters": {
+        "score_family": "probability",
+        "uncertainty_weight": 0.25,
+        "quota_exponent": 0.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.5502692241834457,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.18687419768934532,
+          "cluster_recall": 0.27148526077097507,
+          "normal_fraction": 0.40540540540540543,
+          "loss": 0.7146595103132789
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.626711596063329,
+          "cluster_recall": 0.6971371882086168,
+          "normal_fraction": 0.5066666666666667,
+          "loss": 0.38587893805361256
+        }
+      ]
+    },
+    "15": {
+      "parameters": {
+        "score_family": "expected_deficit",
+        "uncertainty_weight": 0.25,
+        "quota_exponent": 0.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.563745176990409,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.16076166024818142,
+          "cluster_recall": 0.19787414965986394,
+          "normal_fraction": 0.4864864864864865,
+          "loss": 0.7612654712164157
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.6365639709028669,
+          "cluster_recall": 0.7591836734693878,
+          "normal_fraction": 0.5,
+          "loss": 0.36622488276440235
+        }
+      ]
+    },
+    "7": {
+      "parameters": {
+        "score_family": "probability",
+        "uncertainty_weight": 0.25,
+        "quota_exponent": 0.5,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.5936185516290963,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.16143560119811723,
+          "cluster_recall": 0.2421201814058957,
+          "normal_fraction": 0.4864864864864865,
+          "loss": 0.7520119002972477
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.5685173299101411,
+          "cluster_recall": 0.6716553287981859,
+          "normal_fraction": 0.5533333333333333,
+          "loss": 0.4352252029609448
+        }
+      ]
+    },
+    "24": {
+      "parameters": {
+        "score_family": "mean",
+        "uncertainty_weight": 0.25,
+        "quota_exponent": 0.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.5479957465980299,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.17766367137355585,
+          "cluster_recall": 0.20898526077097507,
+          "normal_fraction": 0.43243243243243246,
+          "loss": 0.738091231508158
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.6462130937098844,
+          "cluster_recall": 0.7651927437641723,
+          "normal_fraction": 0.49333333333333335,
+          "loss": 0.35790026168790157
+        }
+      ]
+    },
+    "2": {
+      "parameters": {
+        "score_family": "probability",
+        "uncertainty_weight": 0.0,
+        "quota_exponent": 1.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.68604326872129,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.12678647839109972,
+          "cluster_recall": 0.21400226757369614,
+          "normal_fraction": 0.5945945945945946,
+          "loss": 0.8000465783695199
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.43252032520325207,
+          "cluster_recall": 0.5022392290249433,
+          "normal_fraction": 0.66,
+          "loss": 0.57203995907306
+        }
+      ]
+    },
+    "19": {
+      "parameters": {
+        "score_family": "mean",
+        "uncertainty_weight": 0.0,
+        "quota_exponent": 0.5,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.6134606372438299,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.16143560119811723,
+          "cluster_recall": 0.2421201814058957,
+          "normal_fraction": 0.4864864864864865,
+          "loss": 0.7520119002972477
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.5353872486093283,
+          "cluster_recall": 0.5992913832199547,
+          "normal_fraction": 0.58,
+          "loss": 0.47490937419041207
+        }
+      ]
+    },
+    "16": {
+      "parameters": {
+        "score_family": "expected_deficit",
+        "uncertainty_weight": 0.25,
+        "quota_exponent": 0.5,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.6181139680195246,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.13576166024818145,
+          "cluster_recall": 0.21910430839002268,
+          "normal_fraction": 0.5675675675675675,
+          "loss": 0.7882356556866001
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.5535729567821995,
+          "cluster_recall": 0.6659863945578232,
+          "normal_fraction": 0.5666666666666667,
+          "loss": 0.447992280352449
+        }
+      ]
+    },
+    "8": {
+      "parameters": {
+        "score_family": "probability",
+        "uncertainty_weight": 0.25,
+        "quota_exponent": 1.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.6629067105210054,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.14476893453145057,
+          "cluster_recall": 0.2820578231292517,
+          "normal_fraction": 0.5405405405405406,
+          "loss": 0.7648351827633875
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.43424261874197695,
+          "cluster_recall": 0.5523809523809524,
+          "normal_fraction": 0.66,
+          "loss": 0.5609782382786233
+        }
+      ]
+    },
+    "25": {
+      "parameters": {
+        "score_family": "mean",
+        "uncertainty_weight": 0.25,
+        "quota_exponent": 0.5,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.6006622628234585,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.16099700470688919,
+          "cluster_recall": 0.2421201814058957,
+          "normal_fraction": 0.4864864864864865,
+          "loss": 0.7522750581919847
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.5537762088147198,
+          "cluster_recall": 0.6600907029478458,
+          "normal_fraction": 0.5666666666666667,
+          "loss": 0.4490494674549323
+        }
+      ]
+    },
+    "13": {
+      "parameters": {
+        "score_family": "expected_deficit",
+        "uncertainty_weight": 0.1,
+        "quota_exponent": 0.5,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.5970804541606394,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.15266367137355583,
+          "cluster_recall": 0.28715986394557824,
+          "normal_fraction": 0.5135135135135135,
+          "loss": 0.7536725270894535
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.5617030380830125,
+          "cluster_recall": 0.6724489795918367,
+          "normal_fraction": 0.56,
+          "loss": 0.4404883812318252
+        }
+      ]
+    },
+    "14": {
+      "parameters": {
+        "score_family": "expected_deficit",
+        "uncertainty_weight": 0.1,
+        "quota_exponent": 1.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.6536779469273051,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.13599700470688916,
+          "cluster_recall": 0.2701530612244898,
+          "normal_fraction": 0.5675675675675675,
+          "loss": 0.777884698444482
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.46652759948652117,
+          "cluster_recall": 0.5863945578231293,
+          "normal_fraction": 0.6333333333333333,
+          "loss": 0.5294711954101281
+        }
+      ]
+    },
+    "20": {
+      "parameters": {
+        "score_family": "mean",
+        "uncertainty_weight": 0.0,
+        "quota_exponent": 1.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.6718562600154843,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.13599700470688916,
+          "cluster_recall": 0.2195578231292517,
+          "normal_fraction": 0.5675675675675675,
+          "loss": 0.7880037460635296
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.4496255883611468,
+          "cluster_recall": 0.5192460317460317,
+          "normal_fraction": 0.6466666666666666,
+          "loss": 0.5557087739674389
+        }
+      ]
+    },
+    "11": {
+      "parameters": {
+        "score_family": "expected_deficit",
+        "uncertainty_weight": 0.0,
+        "quota_exponent": 1.0,
+        "audit_fraction": 0.1
+      },
+      "objective": 0.6718562600154843,
+      "budgets": [
+        {
+          "fraction": 0.1,
+          "budget": 37,
+          "road_recall": 0.13599700470688916,
+          "cluster_recall": 0.2195578231292517,
+          "normal_fraction": 0.5675675675675675,
+          "loss": 0.7880037460635296
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "budget": 150,
+          "road_recall": 0.4496255883611468,
+          "cluster_recall": 0.5192460317460317,
+          "normal_fraction": 0.6466666666666666,
+          "loss": 0.5557087739674389
+        }
+      ]
+    }
+  },
+  "enough_positive_support": true,
+  "positive_rows": 119,
+  "positive_roads": 3,
+  "selected": {
+    "score_family": "mean",
+    "uncertainty_weight": 0.25,
+    "quota_exponent": 0.0,
+    "audit_fraction": 0.1
+  },
+  "reason": "Development-only two-budget BO/random comparison; no heldout labels",
+  "raw_brier": 0.04329787853982242,
+  "calibrated_brier": 0.054791197766737486,
+  "calibration_enabled": false,
+  "audit_fraction_floor": 0.1,
+  "audit_rounding": "ceil",
+  "objective": "Mean dev low-IoU recall across roads/environment groups at10% and41.3% budgets, with review-normal cost. Not measured retraining gain."
+}

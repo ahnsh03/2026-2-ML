@@ -1,0 +1,17 @@
+{
+  "created_utc": "2026-11-26T13:36:57.153666+00:00",
+  "source_commit": "1fe4a675234a26702030b5d573d29e2c61dc3fd7",
+  "f1_heldout_opened": false,
+  "completed_primary_development_endpoints": 2,
+  "changes": {
+    "rf_comparator": "Same geographic folds/base28 and8BO/8random queries, Q-onlyCV objective; GP uses Q+0.25near+0.25far. Query budgets matched, not CPU seconds.",
+    "matched_interpolation": "In addition to raw alpha1.0 and dev-selected per-method coefficients, evaluate the fixed midpoint alpha0.5 for every method/seed. Do not select coefficients on heldout.",
+    "model_identity": "The provisional exact variant used by g1 must also be the variant used by final method-level adoption gates.",
+    "versioned_relative": "Recompute reference quantiles for the selected f1 using612calibration rows. Compare all-supported and near-precision/recall-retained references. Diagnostic only; does not establish visibility normality or alter primary absolute0.7runtime.",
+    "review_population": "Rank all RGB rows, never GT-filter before ranking. Report GT>=100 and union>=100 labels separately after the same picks. All366primaryconfirmation rows haveGT>=2184, so the existing primary acceptance population is unchanged.",
+    "exact_threshold": "Use TP/FP/FN exact ratios for evaluation labels; float32 IoU0.7 roundoff must not flip a boundary case.",
+    "gp_covariance_ablation": "Same means/marginal variances; zero offdiagonal covariance for joint-state Brier and near-minus-far recall interval comparison.",
+    "gt_lineage": "Retain reserved roles and verify decoded pixel hashes in post-selection GT attachments; no automatic admission."
+  },
+  "unchanged": "Original perception/quality/review gates, nine-region geometry, fixed neural training banks/steps/seeds and original target policy remain fixed."
+}

@@ -1,0 +1,34 @@
+{
+  "source_commit": "80cc4a7e208d801f77283eff321b73f59faaf229",
+  "files": [
+    {
+      "source": "docs/guides/환경군집과_검수정책.md",
+      "archive": "docs/archive/guides_20261126/환경군집과_검수정책.md",
+      "source_sha256": "4469d86bc9f245cd3bff15e044400462e1321d863c3e0b36e209f311d42d2cea",
+      "archive_sha256": "506b3647d3b815c15b916fbd5fc559e4a4490de4056300194b0a82f9c2a81424",
+      "processing": "verbatim body preserved except relative link adjustment; references between preserved guides resolve within this archive; dated archive preface added"
+    },
+    {
+      "source": "docs/guides/품질모델_학습과_불확실성.md",
+      "archive": "docs/archive/guides_20261126/품질모델_학습과_불확실성.md",
+      "source_sha256": "f924cc531cdbda8589a2d59788a3cb29851f8c55da51027b55fae874eb2444d0",
+      "archive_sha256": "ad912665ec4dfd06d3b8655e64cbb881f035c6bd5d722e1d2d615580de87950e",
+      "processing": "verbatim body preserved except relative link adjustment; references between preserved guides resolve within this archive; dated archive preface added"
+    },
+    {
+      "source": "docs/guides/인지모델_재학습과_갱신판정.md",
+      "archive": "docs/archive/guides_20261126/인지모델_재학습과_갱신판정.md",
+      "source_sha256": "97eb387e4254911889c0f1ba0b7566d0e7b9a81909a3439d208ffce43cab73b3",
+      "archive_sha256": "46a3b76065e0493699cf8aa3125ca47622a167937a59788ca24029b1602adbd8",
+      "processing": "verbatim body preserved except relative link adjustment; references between preserved guides resolve within this archive; dated archive preface added"
+    },
+    {
+      "source": "docs/guides/일정과_역할.md",
+      "archive": "docs/archive/guides_20261126/일정과_역할.md",
+      "source_sha256": "ccd45b02622c31e4550355dd575b1ccc9c9e3338d40ad8232fd0724915494872",
+      "archive_sha256": "68e09af3aca64c26beaefb8fe6e9f96fc88592667adf957169a6b0bf4921cc08",
+      "processing": "verbatim body preserved except relative link adjustment; references between preserved guides resolve within this archive; dated archive preface added"
+    }
+  ],
+  "scope": "Preserve pre-integration analysis while replacing current guides with the verified cycle handoff."
+}

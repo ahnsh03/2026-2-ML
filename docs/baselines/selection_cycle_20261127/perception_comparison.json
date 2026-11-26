@@ -1,0 +1,1919 @@
+{
+  "baseline_development": 0.6508137294901948,
+  "baseline_retention": {
+    "lane": 0.8954646713489917,
+    "drivable": 0.9834368234593323,
+    "white": 0.8785737753913604,
+    "yellow": 0.9328158678155382,
+    "stopline": 0.8753190097066201
+  },
+  "baseline_heldout": {
+    "confirmation": {
+      "rows": 366,
+      "supported_rows": 366,
+      "macro_road_iou": 0.5789097053201453,
+      "pooled_iou": 0.5572295606973552,
+      "road_mean_iou": {
+        "Road 1": 0.3787609668675313,
+        "Road 2": 0.6384473866056478,
+        "Road 3": 0.7195207624872567
+      }
+    },
+    "main": {
+      "rows": 366,
+      "supported_rows": 323,
+      "macro_road_iou": 0.2389843850396776,
+      "pooled_iou": 0.6083586971949184,
+      "road_mean_iou": {
+        "Road 1": 0.08357012745207629,
+        "Road 2": 0.0,
+        "Road 3": 0.6333830276669565
+      }
+    },
+    "condition_shift": {
+      "rows": 102,
+      "supported_rows": 92,
+      "macro_road_iou": 0.09043966428328341,
+      "pooled_iou": 0.2394644372704703,
+      "road_mean_iou": {
+        "Road 1": 0.01719858156028369,
+        "Road 2": 0.0,
+        "Road 3": 0.25412041128956653
+      }
+    }
+  },
+  "fixed_models": {
+    "f0": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.5789097053201453,
+        "pooled_iou": 0.5572295606973552,
+        "road_mean_iou": {
+          "Road 1": 0.3787609668675313,
+          "Road 2": 0.6384473866056478,
+          "Road 3": 0.7195207624872567
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.2389843850396776,
+        "pooled_iou": 0.6083586971949184,
+        "road_mean_iou": {
+          "Road 1": 0.08357012745207629,
+          "Road 2": 0.0,
+          "Road 3": 0.6333830276669565
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.09043966428328341,
+        "pooled_iou": 0.2394644372704703,
+        "road_mean_iou": {
+          "Road 1": 0.01719858156028369,
+          "Road 2": 0.0,
+          "Road 3": 0.25412041128956653
+        }
+      }
+    },
+    "Random_s261126": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.6980683442434565,
+        "pooled_iou": 0.6707877804582655,
+        "road_mean_iou": {
+          "Road 1": 0.45715103213115194,
+          "Road 2": 0.8285790984765219,
+          "Road 3": 0.8084749021226958
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.2976535428137325,
+        "pooled_iou": 0.7716307189394931,
+        "road_mean_iou": {
+          "Road 1": 0.08693250019762944,
+          "Road 2": 0.0,
+          "Road 3": 0.8060281282435682
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.26524098375434013,
+        "pooled_iou": 0.71303873431533,
+        "road_mean_iou": {
+          "Road 1": 0.042924087074718544,
+          "Road 2": 0.0,
+          "Road 3": 0.7527988641883019
+        }
+      }
+    },
+    "QualityRank_s261126": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.6915287973633587,
+        "pooled_iou": 0.6644634049636632,
+        "road_mean_iou": {
+          "Road 1": 0.45695060333747456,
+          "Road 2": 0.807625280065948,
+          "Road 3": 0.8100105086866535
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.2853791658561839,
+        "pooled_iou": 0.7304376389276361,
+        "road_mean_iou": {
+          "Road 1": 0.09257521844538112,
+          "Road 2": 0.0,
+          "Road 3": 0.7635622791231707
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.25525272568880464,
+        "pooled_iou": 0.6710771718336015,
+        "road_mean_iou": {
+          "Road 1": 0.05457000722606161,
+          "Road 2": 0.0,
+          "Road 3": 0.7111881698403523
+        }
+      }
+    },
+    "ClusterBO_s261126": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.6940330112745275,
+        "pooled_iou": 0.6671283032822526,
+        "road_mean_iou": {
+          "Road 1": 0.4581560881588136,
+          "Road 2": 0.8192714872706808,
+          "Road 3": 0.804671458394088
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.2883177547830026,
+        "pooled_iou": 0.7408142307234236,
+        "road_mean_iou": {
+          "Road 1": 0.08790668906398455,
+          "Road 2": 0.0,
+          "Road 3": 0.7770465752850232
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.25700637365334467,
+        "pooled_iou": 0.6860620418806544,
+        "road_mean_iou": {
+          "Road 1": 0.0382277753381184,
+          "Road 2": 0.0,
+          "Road 3": 0.7327913456219156
+        }
+      }
+    },
+    "ClusterBO_s261127": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.6946403353093641,
+        "pooled_iou": 0.6680975136319928,
+        "road_mean_iou": {
+          "Road 1": 0.46136335242021087,
+          "Road 2": 0.8200516109034807,
+          "Road 3": 0.8025060426044008
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.2883052148922525,
+        "pooled_iou": 0.7408096412828082,
+        "road_mean_iou": {
+          "Road 1": 0.08748441992546623,
+          "Road 2": 0.0,
+          "Road 3": 0.7774312247512913
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.2533730995693002,
+        "pooled_iou": 0.6798743138970647,
+        "road_mean_iou": {
+          "Road 1": 0.03389292044269196,
+          "Road 2": 0.0,
+          "Road 3": 0.7262263782652086
+        }
+      }
+    },
+    "QualityRank_s261127": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.692087765454397,
+        "pooled_iou": 0.6651970478914553,
+        "road_mean_iou": {
+          "Road 1": 0.45970708291455653,
+          "Road 2": 0.8064589843860006,
+          "Road 3": 0.8100972290626336
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.28392967327172297,
+        "pooled_iou": 0.7272674044147783,
+        "road_mean_iou": {
+          "Road 1": 0.09226432772945128,
+          "Road 2": 0.0,
+          "Road 3": 0.7595246920857176
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.2523154272155345,
+        "pooled_iou": 0.6670725650104946,
+        "road_mean_iou": {
+          "Road 1": 0.050472270076172866,
+          "Road 2": 0.0,
+          "Road 3": 0.7064740115704308
+        }
+      }
+    },
+    "Random_s261127": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.6978561433817897,
+        "pooled_iou": 0.6721928365336456,
+        "road_mean_iou": {
+          "Road 1": 0.4586837883414617,
+          "Road 2": 0.827866493660658,
+          "Road 3": 0.8070181481432493
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.29740935090694337,
+        "pooled_iou": 0.7713211382113822,
+        "road_mean_iou": {
+          "Road 1": 0.08658398556265383,
+          "Road 2": 0.0,
+          "Road 3": 0.8056440671581763
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.26367399350743526,
+        "pooled_iou": 0.7111446605528163,
+        "road_mean_iou": {
+          "Road 1": 0.04070318267858741,
+          "Road 2": 0.0,
+          "Road 3": 0.7503187978437184
+        }
+      }
+    },
+    "ReplayOnly_v2_s261126": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.5891621898005649,
+        "pooled_iou": 0.5669857704013943,
+        "road_mean_iou": {
+          "Road 1": 0.39279063203091064,
+          "Road 2": 0.6478592727079476,
+          "Road 3": 0.7268366646628363
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.24210585495403925,
+        "pooled_iou": 0.6190364362230613,
+        "road_mean_iou": {
+          "Road 1": 0.0825547968788342,
+          "Road 2": 0.0,
+          "Road 3": 0.6437627679832836
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.09312646940085863,
+        "pooled_iou": 0.25209424295646404,
+        "road_mean_iou": {
+          "Road 1": 0.015602836879432624,
+          "Road 2": 0.0,
+          "Road 3": 0.26377657132314325
+        }
+      }
+    },
+    "ReplayOnly_v2_s261127": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.5875403061307245,
+        "pooled_iou": 0.5647293955487088,
+        "road_mean_iou": {
+          "Road 1": 0.39015319644368096,
+          "Road 2": 0.6475837283990983,
+          "Road 3": 0.7248839935493944
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.2419110933847458,
+        "pooled_iou": 0.6180289417549442,
+        "road_mean_iou": {
+          "Road 1": 0.08283529019429733,
+          "Road 2": 0.0,
+          "Road 3": 0.6428979899599401
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.09449756947801845,
+        "pooled_iou": 0.2561846901579587,
+        "road_mean_iou": {
+          "Road 1": 0.015646976090014066,
+          "Road 2": 0.0,
+          "Road 3": 0.26784573234404124
+        }
+      }
+    },
+    "Random_s261126_a050": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.6535493276437571,
+        "pooled_iou": 0.626108315796883,
+        "road_mean_iou": {
+          "Road 1": 0.41524464559226,
+          "Road 2": 0.7641820711218291,
+          "Road 3": 0.7812212662171824
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.26574735290245255,
+        "pooled_iou": 0.6774750308607339,
+        "road_mean_iou": {
+          "Road 1": 0.08608350256445697,
+          "Road 2": 0.0,
+          "Road 3": 0.7111585561429007
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.19030226003430775,
+        "pooled_iou": 0.4972893013756232,
+        "road_mean_iou": {
+          "Road 1": 0.023768346797132776,
+          "Road 2": 0.0,
+          "Road 3": 0.5471384333057905
+        }
+      }
+    },
+    "Random_s261127_a050": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.6526205940375062,
+        "pooled_iou": 0.6257211655397188,
+        "road_mean_iou": {
+          "Road 1": 0.4168954442064601,
+          "Road 2": 0.7616475532699534,
+          "Road 3": 0.779318784636105
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.2648130724121461,
+        "pooled_iou": 0.6750967475310569,
+        "road_mean_iou": {
+          "Road 1": 0.08611573003532222,
+          "Road 2": 0.0,
+          "Road 3": 0.7083234872011159
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.18917327426774366,
+        "pooled_iou": 0.4955988706536017,
+        "road_mean_iou": {
+          "Road 1": 0.024498278935398608,
+          "Road 2": 0.0,
+          "Road 3": 0.5430215438678324
+        }
+      }
+    },
+    "QualityRank_s261126_a050": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.6499716339608469,
+        "pooled_iou": 0.6220800393588748,
+        "road_mean_iou": {
+          "Road 1": 0.40656014323924616,
+          "Road 2": 0.7617662725454656,
+          "Road 3": 0.7815884860978288
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.26324476265358115,
+        "pooled_iou": 0.670385911872952,
+        "road_mean_iou": {
+          "Road 1": 0.0863152303135546,
+          "Road 2": 0.0,
+          "Road 3": 0.7034190576471888
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.1866472279825323,
+        "pooled_iou": 0.4824464594642964,
+        "road_mean_iou": {
+          "Road 1": 0.024900693035835027,
+          "Road 2": 0.0,
+          "Road 3": 0.5350409909117619
+        }
+      }
+    },
+    "QualityRank_s261127_a050": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.6488786227483331,
+        "pooled_iou": 0.6207749129972575,
+        "road_mean_iou": {
+          "Road 1": 0.40526044869504874,
+          "Road 2": 0.7595358678173754,
+          "Road 3": 0.7818395517325749
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.26137487497655987,
+        "pooled_iou": 0.6657601439665753,
+        "road_mean_iou": {
+          "Road 1": 0.08600354421066124,
+          "Road 2": 0.0,
+          "Road 3": 0.6981210807190183
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.182993884460757,
+        "pooled_iou": 0.4733982139277999,
+        "road_mean_iou": {
+          "Road 1": 0.0249554367201426,
+          "Road 2": 0.0,
+          "Road 3": 0.5240262166621285
+        }
+      }
+    },
+    "ClusterBO_s261126_a050": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.6477639489365882,
+        "pooled_iou": 0.6200839094513464,
+        "road_mean_iou": {
+          "Road 1": 0.40742806243958196,
+          "Road 2": 0.7543789002725081,
+          "Road 3": 0.7814848840976744
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.2622892764350621,
+        "pooled_iou": 0.6687811386701289,
+        "road_mean_iou": {
+          "Road 1": 0.08576050268449854,
+          "Road 2": 0.0,
+          "Road 3": 0.7011073266206878
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.17965882300719138,
+        "pooled_iou": 0.47457914403482415,
+        "road_mean_iou": {
+          "Road 1": 0.024549592564298447,
+          "Road 2": 0.0,
+          "Road 3": 0.5144268764572757
+        }
+      }
+    },
+    "ClusterBO_s261127_a050": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.6480843565680497,
+        "pooled_iou": 0.6202542159658336,
+        "road_mean_iou": {
+          "Road 1": 0.4082776660390005,
+          "Road 2": 0.7543175828606611,
+          "Road 3": 0.7816578208044876
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.2631143282132695,
+        "pooled_iou": 0.6706772217831741,
+        "road_mean_iou": {
+          "Road 1": 0.08578425658426497,
+          "Road 2": 0.0,
+          "Road 3": 0.7035587280555436
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.17978231735873695,
+        "pooled_iou": 0.4743920370128021,
+        "road_mean_iou": {
+          "Road 1": 0.0246627976703878,
+          "Road 2": 0.0,
+          "Road 3": 0.514684154405823
+        }
+      }
+    },
+    "ReplayOnly_v2_s261126_a050": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.583917207582977,
+        "pooled_iou": 0.5620828639175509,
+        "road_mean_iou": {
+          "Road 1": 0.38649375550515086,
+          "Road 2": 0.6417328371829318,
+          "Road 3": 0.7235250300608486
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.24044656253006624,
+        "pooled_iou": 0.6122677503104188,
+        "road_mean_iou": {
+          "Road 1": 0.083877035423753,
+          "Road 2": 0.0,
+          "Road 3": 0.6374626521664457
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.0921760270683874,
+        "pooled_iou": 0.24615963734802737,
+        "road_mean_iou": {
+          "Road 1": 0.017094017094017092,
+          "Road 2": 0.0,
+          "Road 3": 0.2594340641111451
+        }
+      }
+    },
+    "ReplayOnly_v2_s261127_a050": {
+      "confirmation": {
+        "rows": 366,
+        "supported_rows": 366,
+        "macro_road_iou": 0.5830275589120552,
+        "pooled_iou": 0.5609213386755574,
+        "road_mean_iou": {
+          "Road 1": 0.38532204781633045,
+          "Road 2": 0.6414821507495081,
+          "Road 3": 0.7222784781703269
+        }
+      },
+      "main": {
+        "rows": 366,
+        "supported_rows": 323,
+        "macro_road_iou": 0.24036428520695527,
+        "pooled_iou": 0.6116083022259559,
+        "road_mean_iou": {
+          "Road 1": 0.08428872788671014,
+          "Road 2": 0.0,
+          "Road 3": 0.6368041277341556
+        }
+      },
+      "condition_shift": {
+        "rows": 102,
+        "supported_rows": 92,
+        "macro_road_iou": 0.09303847549754762,
+        "pooled_iou": 0.2484593500821413,
+        "road_mean_iou": {
+          "Road 1": 0.017346208869814018,
+          "Road 2": 0.0,
+          "Road 3": 0.26176921762282884
+        }
+      }
+    }
+  },
+  "development_records": [
+    {
+      "arm": "Random",
+      "seed": 261126,
+      "alpha": 1.0,
+      "development_iou": 0.7736089916408192,
+      "development_gain": 0.12279526215062442,
+      "retention": {
+        "lane": 0.8879609119290407,
+        "drivable": 0.9816006674999939,
+        "white": 0.8695746176499395,
+        "yellow": 0.9285839976916286,
+        "stopline": 0.8673556899395272
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7943529265686279,
+          "drivable": 0.9748026595983236
+        },
+        "left": {
+          "lane": 0.9100424620646508,
+          "drivable": 0.9847432198218707
+        },
+        "right": {
+          "lane": 0.924821930521678,
+          "drivable": 0.9853671965442811
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "retention_lane"
+      ]
+    },
+    {
+      "arm": "QualityRank",
+      "seed": 261126,
+      "alpha": 1.0,
+      "development_iou": 0.776431850266571,
+      "development_gain": 0.12561812077637624,
+      "retention": {
+        "lane": 0.8863777742458678,
+        "drivable": 0.981432020314834,
+        "white": 0.8684732431336271,
+        "yellow": 0.9259432938786022,
+        "stopline": 0.8498100770619424
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7937624933708645,
+          "drivable": 0.9746204684027532
+        },
+        "left": {
+          "lane": 0.908022970746525,
+          "drivable": 0.9847040422998338
+        },
+        "right": {
+          "lane": 0.923239838538606,
+          "drivable": 0.9850712048544732
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "retention_lane",
+        "retention_white",
+        "retention_stopline",
+        "retention_left_lane"
+      ]
+    },
+    {
+      "arm": "ClusterBO",
+      "seed": 261126,
+      "alpha": 1.0,
+      "development_iou": 0.7685469479738075,
+      "development_gain": 0.11773321848361273,
+      "retention": {
+        "lane": 0.8854801034060159,
+        "drivable": 0.981683235422008,
+        "white": 0.8671011654867022,
+        "yellow": 0.9261263445824058,
+        "stopline": 0.8433095817503807
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7925807372706045,
+          "drivable": 0.9747169573663225
+        },
+        "left": {
+          "lane": 0.9077638966407684,
+          "drivable": 0.9849139693812453
+        },
+        "right": {
+          "lane": 0.9217588686588861,
+          "drivable": 0.9855340392174035
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "retention_lane",
+        "retention_white",
+        "retention_stopline",
+        "retention_left_lane"
+      ]
+    },
+    {
+      "arm": "ClusterBO",
+      "seed": 261127,
+      "alpha": 1.0,
+      "development_iou": 0.7662535347055455,
+      "development_gain": 0.11543980521535069,
+      "retention": {
+        "lane": 0.8848842118381514,
+        "drivable": 0.981571621292307,
+        "white": 0.8665536464417788,
+        "yellow": 0.9254549688991901,
+        "stopline": 0.8405054839829046
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7910624283076753,
+          "drivable": 0.9746185479761161
+        },
+        "left": {
+          "lane": 0.9070634056683614,
+          "drivable": 0.9847844053004522
+        },
+        "right": {
+          "lane": 0.9218403298953711,
+          "drivable": 0.9854272748240387
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "retention_lane",
+        "retention_white",
+        "retention_stopline",
+        "retention_left_lane"
+      ]
+    },
+    {
+      "arm": "QualityRank",
+      "seed": 261127,
+      "alpha": 1.0,
+      "development_iou": 0.7765390827785567,
+      "development_gain": 0.12572535328836187,
+      "retention": {
+        "lane": 0.8853850575480904,
+        "drivable": 0.9813115104576704,
+        "white": 0.8672216829755233,
+        "yellow": 0.925529185310189,
+        "stopline": 0.8474008168923869
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7918788577071846,
+          "drivable": 0.9744862534606907
+        },
+        "left": {
+          "lane": 0.9074805184317842,
+          "drivable": 0.9845591526554794
+        },
+        "right": {
+          "lane": 0.9223294766866129,
+          "drivable": 0.9849924795570127
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "retention_lane",
+        "retention_white",
+        "retention_stopline",
+        "retention_left_lane"
+      ]
+    },
+    {
+      "arm": "Random",
+      "seed": 261127,
+      "alpha": 1.0,
+      "development_iou": 0.7720315863464843,
+      "development_gain": 0.1212178568562895,
+      "retention": {
+        "lane": 0.8859643499696257,
+        "drivable": 0.9815291479003497,
+        "white": 0.8674163709131076,
+        "yellow": 0.9269385707306853,
+        "stopline": 0.865600887366906
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7909047408813444,
+          "drivable": 0.9746754275583117
+        },
+        "left": {
+          "lane": 0.9086478426347234,
+          "drivable": 0.9846568370607577
+        },
+        "right": {
+          "lane": 0.9231057275067055,
+          "drivable": 0.9853723936524441
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "retention_lane",
+        "retention_white",
+        "retention_left_lane"
+      ]
+    },
+    {
+      "arm": "ReplayOnly",
+      "seed": 261126,
+      "alpha": 1.0,
+      "development_iou": 0.6641322272855578,
+      "development_gain": 0.013318497795362982,
+      "retention": {
+        "lane": 0.8950588711116473,
+        "drivable": 0.9834626537552448,
+        "white": 0.8777733062789892,
+        "yellow": 0.9332688048327382,
+        "stopline": 0.8724788060755917
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.8090692612947857,
+          "drivable": 0.9779474556951963
+        },
+        "left": {
+          "lane": 0.9167686717842937,
+          "drivable": 0.9858646775591198
+        },
+        "right": {
+          "lane": 0.9274263755508834,
+          "drivable": 0.9866818471147829
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "ReplayOnly",
+      "seed": 261127,
+      "alpha": 1.0,
+      "development_iou": 0.6630049471238718,
+      "development_gain": 0.012191217633677032,
+      "retention": {
+        "lane": 0.8923820702606288,
+        "drivable": 0.9833632954471621,
+        "white": 0.8743946554808182,
+        "yellow": 0.9321435457193015,
+        "stopline": 0.8693083134090236
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.8045599890987843,
+          "drivable": 0.9778439849540292
+        },
+        "left": {
+          "lane": 0.9148141711662194,
+          "drivable": 0.9857847393117601
+        },
+        "right": {
+          "lane": 0.9251301674926291,
+          "drivable": 0.9865649275911957
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "Random",
+      "seed": 261126,
+      "alpha": 0.25,
+      "development_iou": 0.6771238678545369,
+      "development_gain": 0.02631013836434215,
+      "retention": {
+        "lane": 0.8949027346041726,
+        "drivable": 0.9832885333983642,
+        "white": 0.87785318817941,
+        "yellow": 0.932595228012162,
+        "stopline": 0.8762504971395356
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.8005992870664337,
+          "drivable": 0.9772699663541815
+        },
+        "left": {
+          "lane": 0.9185329064872685,
+          "drivable": 0.9859973197611842
+        },
+        "right": {
+          "lane": 0.9305641123355246,
+          "drivable": 0.9867056392739333
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "Random",
+      "seed": 261126,
+      "alpha": 0.5,
+      "development_iou": 0.7189603025277052,
+      "development_gain": 0.06814657303751037,
+      "retention": {
+        "lane": 0.8935076276875318,
+        "drivable": 0.9829540123853839,
+        "white": 0.876167223849607,
+        "yellow": 0.93182699929557,
+        "stopline": 0.8756144578313253
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7996082709802675,
+          "drivable": 0.9767372625674251
+        },
+        "left": {
+          "lane": 0.9170240361525838,
+          "drivable": 0.985785549676702
+        },
+        "right": {
+          "lane": 0.9290266245967013,
+          "drivable": 0.9864453983642338
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "Random",
+      "seed": 261126,
+      "alpha": 0.75,
+      "development_iou": 0.7577394531273537,
+      "development_gain": 0.10692572363715891,
+      "retention": {
+        "lane": 0.891322682470482,
+        "drivable": 0.9824130508819008,
+        "white": 0.8735868166449905,
+        "yellow": 0.9305013352644717,
+        "stopline": 0.8735305096282634
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7975065840505422,
+          "drivable": 0.9759281152017032
+        },
+        "left": {
+          "lane": 0.9143983519812579,
+          "drivable": 0.9854003630466888
+        },
+        "right": {
+          "lane": 0.9272612699294634,
+          "drivable": 0.9860172534376511
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "QualityRank",
+      "seed": 261126,
+      "alpha": 0.25,
+      "development_iou": 0.6754161832561261,
+      "development_gain": 0.024602453765931287,
+      "retention": {
+        "lane": 0.8942294837557934,
+        "drivable": 0.9833076822146948,
+        "white": 0.8770906177771678,
+        "yellow": 0.9321177678196502,
+        "stopline": 0.8752760202363826
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7997817251639704,
+          "drivable": 0.977317468314542
+        },
+        "left": {
+          "lane": 0.9179102246967716,
+          "drivable": 0.9860521704308935
+        },
+        "right": {
+          "lane": 0.9299484448540358,
+          "drivable": 0.9866542366216096
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "QualityRank",
+      "seed": 261126,
+      "alpha": 0.5,
+      "development_iou": 0.7207152466516359,
+      "development_gain": 0.0699015171614411,
+      "retention": {
+        "lane": 0.8925291050211889,
+        "drivable": 0.9829336748559215,
+        "white": 0.8752151050315397,
+        "yellow": 0.9307825485466926,
+        "stopline": 0.8735289344287462
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7989000033013106,
+          "drivable": 0.9767384963964221
+        },
+        "left": {
+          "lane": 0.9159019769973054,
+          "drivable": 0.9858490935683917
+        },
+        "right": {
+          "lane": 0.9280864523064919,
+          "drivable": 0.9863080291417309
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "QualityRank",
+      "seed": 261126,
+      "alpha": 0.75,
+      "development_iou": 0.7636817488184144,
+      "development_gain": 0.11286801932821966,
+      "retention": {
+        "lane": 0.8901973800380162,
+        "drivable": 0.9823422514316764,
+        "white": 0.8726890804243599,
+        "yellow": 0.9288748541000547,
+        "stopline": 0.8670028641211717
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7972896165927739,
+          "drivable": 0.9758660263161004
+        },
+        "left": {
+          "lane": 0.9127565431683935,
+          "drivable": 0.9854494994072069
+        },
+        "right": {
+          "lane": 0.926212145850484,
+          "drivable": 0.9858037115335472
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "retention_lane"
+      ]
+    },
+    {
+      "arm": "ClusterBO",
+      "seed": 261126,
+      "alpha": 0.25,
+      "development_iou": 0.67485771550299,
+      "development_gain": 0.024043986012795227,
+      "retention": {
+        "lane": 0.8949005918119428,
+        "drivable": 0.9832406539094392,
+        "white": 0.8777128098678149,
+        "yellow": 0.9329084677963283,
+        "stopline": 0.875483964109003
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.8001567325621809,
+          "drivable": 0.9771739836584811
+        },
+        "left": {
+          "lane": 0.9186024108259763,
+          "drivable": 0.9859898775535083
+        },
+        "right": {
+          "lane": 0.9307675044883303,
+          "drivable": 0.9866637609455235
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "ClusterBO",
+      "seed": 261126,
+      "alpha": 0.5,
+      "development_iou": 0.712324470738686,
+      "development_gain": 0.06151074124849121,
+      "retention": {
+        "lane": 0.893134398866231,
+        "drivable": 0.9828939007496108,
+        "white": 0.8756257660431443,
+        "yellow": 0.9318367038516563,
+        "stopline": 0.8726442408928196
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7982879463813772,
+          "drivable": 0.9765799997996223
+        },
+        "left": {
+          "lane": 0.9168129596312206,
+          "drivable": 0.9857956835617712
+        },
+        "right": {
+          "lane": 0.9291013267721704,
+          "drivable": 0.9864109119118395
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "ClusterBO",
+      "seed": 261126,
+      "alpha": 0.75,
+      "development_iou": 0.7515087939231558,
+      "development_gain": 0.10069506443296106,
+      "retention": {
+        "lane": 0.8900326274881747,
+        "drivable": 0.9823946183817747,
+        "white": 0.8721423458944962,
+        "yellow": 0.9295792936068554,
+        "stopline": 0.8640521612288117
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7956355154875409,
+          "drivable": 0.9757778508432047
+        },
+        "left": {
+          "lane": 0.9130674320547738,
+          "drivable": 0.9854635957323363
+        },
+        "right": {
+          "lane": 0.9264184359619159,
+          "drivable": 0.9860497956655087
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "retention_lane",
+        "retention_stopline"
+      ]
+    },
+    {
+      "arm": "ClusterBO",
+      "seed": 261127,
+      "alpha": 0.25,
+      "development_iou": 0.6750237652188705,
+      "development_gain": 0.02421003572867575,
+      "retention": {
+        "lane": 0.894782381540761,
+        "drivable": 0.9832108024890561,
+        "white": 0.8776164188051266,
+        "yellow": 0.9327471040581475,
+        "stopline": 0.8753785690527458
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7999696049636416,
+          "drivable": 0.9771480510451107
+        },
+        "left": {
+          "lane": 0.9184436638833596,
+          "drivable": 0.9859582788837297
+        },
+        "right": {
+          "lane": 0.9307366786159191,
+          "drivable": 0.9866315947092659
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "ClusterBO",
+      "seed": 261127,
+      "alpha": 0.5,
+      "development_iou": 0.712421999067573,
+      "development_gain": 0.061608269577378194,
+      "retention": {
+        "lane": 0.8928710395123243,
+        "drivable": 0.9828347984226985,
+        "white": 0.8753890196658747,
+        "yellow": 0.9315197511966964,
+        "stopline": 0.8721205947184923
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7978895412031729,
+          "drivable": 0.9765314217982182
+        },
+        "left": {
+          "lane": 0.9164281484605175,
+          "drivable": 0.9857286205160568
+        },
+        "right": {
+          "lane": 0.9290480965827762,
+          "drivable": 0.9863492087746178
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "ClusterBO",
+      "seed": 261127,
+      "alpha": 0.75,
+      "development_iou": 0.7508093574530186,
+      "development_gain": 0.0999956279628238,
+      "retention": {
+        "lane": 0.8896807950193834,
+        "drivable": 0.982310221734199,
+        "white": 0.871839916899246,
+        "yellow": 0.9291272197678613,
+        "stopline": 0.8623556581986144
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7948831074650465,
+          "drivable": 0.9757044214173849
+        },
+        "left": {
+          "lane": 0.9126190849301524,
+          "drivable": 0.985371590684366
+        },
+        "right": {
+          "lane": 0.9264136840166095,
+          "drivable": 0.9859616132945688
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "retention_lane",
+        "retention_stopline"
+      ]
+    },
+    {
+      "arm": "QualityRank",
+      "seed": 261127,
+      "alpha": 0.25,
+      "development_iou": 0.6751138965661139,
+      "development_gain": 0.024300167075919088,
+      "retention": {
+        "lane": 0.8940435489890695,
+        "drivable": 0.9832778717637518,
+        "white": 0.8768811908436208,
+        "yellow": 0.9319834500331182,
+        "stopline": 0.8748933526428856
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7995302465709981,
+          "drivable": 0.9772912404252129
+        },
+        "left": {
+          "lane": 0.9177988394959191,
+          "drivable": 0.9860179578001813
+        },
+        "right": {
+          "lane": 0.929725029584245,
+          "drivable": 0.9866254877083295
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "QualityRank",
+      "seed": 261127,
+      "alpha": 0.5,
+      "development_iou": 0.720507444463495,
+      "development_gain": 0.06969371497330024,
+      "retention": {
+        "lane": 0.8920866062373625,
+        "drivable": 0.9828746017495594,
+        "white": 0.8746855393672167,
+        "yellow": 0.9305293597667509,
+        "stopline": 0.8724296275484222
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7982955652337572,
+          "drivable": 0.976688862947499
+        },
+        "left": {
+          "lane": 0.9155738016190373,
+          "drivable": 0.9857778016742474
+        },
+        "right": {
+          "lane": 0.9276245193360664,
+          "drivable": 0.986252494091177
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "QualityRank",
+      "seed": 261127,
+      "alpha": 0.75,
+      "development_iou": 0.7642231666482138,
+      "development_gain": 0.11340943715801899,
+      "retention": {
+        "lane": 0.8895160706358677,
+        "drivable": 0.9822550048471672,
+        "white": 0.8718588043871279,
+        "yellow": 0.928519631885663,
+        "stopline": 0.865029568094618
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7960875283452694,
+          "drivable": 0.9757799008357085
+        },
+        "left": {
+          "lane": 0.9123736951426709,
+          "drivable": 0.9853443018913726
+        },
+        "right": {
+          "lane": 0.9255464874352788,
+          "drivable": 0.985735262559373
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "retention_lane",
+        "retention_stopline"
+      ]
+    },
+    {
+      "arm": "Random",
+      "seed": 261127,
+      "alpha": 0.25,
+      "development_iou": 0.6765776483270018,
+      "development_gain": 0.025763918836807065,
+      "retention": {
+        "lane": 0.8943670810230206,
+        "drivable": 0.983273682820207,
+        "white": 0.8772721605158459,
+        "yellow": 0.9321569578237475,
+        "stopline": 0.8758933293702656
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.79970063936295,
+          "drivable": 0.9772403517611832
+        },
+        "left": {
+          "lane": 0.9181515936230037,
+          "drivable": 0.9859832203841028
+        },
+        "right": {
+          "lane": 0.9300951344438351,
+          "drivable": 0.9867057263767534
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "Random",
+      "seed": 261127,
+      "alpha": 0.5,
+      "development_iou": 0.7176270416099139,
+      "development_gain": 0.06681331211971908,
+      "retention": {
+        "lane": 0.8924582369425083,
+        "drivable": 0.9829220525621896,
+        "white": 0.8750459686257562,
+        "yellow": 0.9309312812916906,
+        "stopline": 0.8749139989920901
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7977914467312949,
+          "drivable": 0.9766678817140262
+        },
+        "left": {
+          "lane": 0.9162974061612407,
+          "drivable": 0.9857536168220188
+        },
+        "right": {
+          "lane": 0.9281197346496374,
+          "drivable": 0.9864535703752857
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "Random",
+      "seed": 261127,
+      "alpha": 0.75,
+      "development_iou": 0.7564072855909748,
+      "development_gain": 0.10559355610078003,
+      "retention": {
+        "lane": 0.889711187952364,
+        "drivable": 0.9823645844423579,
+        "white": 0.8718401074916833,
+        "yellow": 0.9291842184291477,
+        "stopline": 0.8721115152793154
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.7947951812326145,
+          "drivable": 0.9758306298413973
+        },
+        "left": {
+          "lane": 0.9132167319427079,
+          "drivable": 0.9853466953778477
+        },
+        "right": {
+          "lane": 0.9258881451024615,
+          "drivable": 0.9860273133652309
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "retention_lane"
+      ]
+    },
+    {
+      "arm": "ReplayOnly",
+      "seed": 261126,
+      "alpha": 0.25,
+      "development_iou": 0.654127679652979,
+      "development_gain": 0.0033139501627842405,
+      "retention": {
+        "lane": 0.8952794663819931,
+        "drivable": 0.9835309615890359,
+        "white": 0.8781097584375097,
+        "yellow": 0.933237539828018,
+        "stopline": 0.8766038264279088
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.8022351595593905,
+          "drivable": 0.977755446113297
+        },
+        "left": {
+          "lane": 0.9189144207304387,
+          "drivable": 0.9860814431787109
+        },
+        "right": {
+          "lane": 0.9301516179230035,
+          "drivable": 0.9868648905293115
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "development_gain"
+      ]
+    },
+    {
+      "arm": "ReplayOnly",
+      "seed": 261126,
+      "alpha": 0.5,
+      "development_iou": 0.657445845583631,
+      "development_gain": 0.006632116093436169,
+      "retention": {
+        "lane": 0.8950338829816645,
+        "drivable": 0.9835678421194781,
+        "white": 0.8776682910690163,
+        "yellow": 0.9334185829225561,
+        "stopline": 0.8769294933707964
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.8043326396016584,
+          "drivable": 0.977910621868031
+        },
+        "left": {
+          "lane": 0.9182676419708298,
+          "drivable": 0.9860576255907344
+        },
+        "right": {
+          "lane": 0.9288234750642286,
+          "drivable": 0.9868421576160139
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "ReplayOnly",
+      "seed": 261126,
+      "alpha": 0.75,
+      "development_iou": 0.6607592591327496,
+      "development_gain": 0.009945529642554796,
+      "retention": {
+        "lane": 0.8949363477117803,
+        "drivable": 0.9835421420278873,
+        "white": 0.8775254472679961,
+        "yellow": 0.933417338428425,
+        "stopline": 0.8757977352906201
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.8067075262378328,
+          "drivable": 0.977969269075779
+        },
+        "left": {
+          "lane": 0.9175111491075462,
+          "drivable": 0.9859865514448606
+        },
+        "right": {
+          "lane": 0.9278313681944174,
+          "drivable": 0.9867761640449343
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "ReplayOnly",
+      "seed": 261127,
+      "alpha": 0.25,
+      "development_iou": 0.6539730338119386,
+      "development_gain": 0.0031593043217438277,
+      "retention": {
+        "lane": 0.894567116386485,
+        "drivable": 0.983497797936288,
+        "white": 0.8772261262171013,
+        "yellow": 0.9329100658994628,
+        "stopline": 0.8762901940872123
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.8011315566835872,
+          "drivable": 0.9777088915763481
+        },
+        "left": {
+          "lane": 0.9184027335908397,
+          "drivable": 0.9860562235309216
+        },
+        "right": {
+          "lane": 0.9294660698517511,
+          "drivable": 0.9868371185847976
+        }
+      },
+      "passes": false,
+      "failed_gates": [
+        "development_gain"
+      ]
+    },
+    {
+      "arm": "ReplayOnly",
+      "seed": 261127,
+      "alpha": 0.5,
+      "development_iou": 0.656986609342615,
+      "development_gain": 0.00617287985242021,
+      "retention": {
+        "lane": 0.8935912526768114,
+        "drivable": 0.9835067724469183,
+        "white": 0.8758624740832066,
+        "yellow": 0.9327820485635178,
+        "stopline": 0.8762776560091011
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.8020422454648912,
+          "drivable": 0.9778206080538717
+        },
+        "left": {
+          "lane": 0.9172809166190541,
+          "drivable": 0.9860068360868978
+        },
+        "right": {
+          "lane": 0.9274254910496851,
+          "drivable": 0.9868005645120429
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    },
+    {
+      "arm": "ReplayOnly",
+      "seed": 261127,
+      "alpha": 0.75,
+      "development_iou": 0.6598283474261964,
+      "development_gain": 0.009014617936001668,
+      "retention": {
+        "lane": 0.892821455567681,
+        "drivable": 0.983458295911933,
+        "white": 0.8748396168179428,
+        "yellow": 0.9325657602682007,
+        "stopline": 0.8741621164245013
+      },
+      "retention_views": {
+        "front": {
+          "lane": 0.8032093845956418,
+          "drivable": 0.977864563155288
+        },
+        "left": {
+          "lane": 0.9160402861136897,
+          "drivable": 0.9859170239590325
+        },
+        "right": {
+          "lane": 0.925899278440424,
+          "drivable": 0.9866985375085108
+        }
+      },
+      "passes": true,
+      "failed_gates": []
+    }
+  ],
+  "development_selected_methods": {
+    "Random": {
+      "variant": "Random@a0.50",
+      "all_seeds_pass": true,
+      "mean_confirmation_gain": 0.07417525552048632,
+      "runs": [
+        {
+          "name": "Random_s261126_a050",
+          "seed": 261126,
+          "alpha": 0.5,
+          "development_passes": true,
+          "confirmation_gain": 0.07463962232361177,
+          "passes": true,
+          "retention": {
+            "lane": 0.8935076276875318,
+            "drivable": 0.9829540123853839,
+            "white": 0.876167223849607,
+            "yellow": 0.93182699929557,
+            "stopline": 0.8756144578313253
+          }
+        },
+        {
+          "name": "Random_s261127_a050",
+          "seed": 261127,
+          "alpha": 0.5,
+          "development_passes": true,
+          "confirmation_gain": 0.07371088871736087,
+          "passes": true,
+          "retention": {
+            "lane": 0.8924582369425083,
+            "drivable": 0.9829220525621896,
+            "white": 0.8750459686257562,
+            "yellow": 0.9309312812916906,
+            "stopline": 0.8749139989920901
+          }
+        }
+      ]
+    },
+    "QualityRank": {
+      "variant": "QualityRank@a0.50",
+      "all_seeds_pass": true,
+      "mean_confirmation_gain": 0.07051542303444469,
+      "runs": [
+        {
+          "name": "QualityRank_s261126_a050",
+          "seed": 261126,
+          "alpha": 0.5,
+          "development_passes": true,
+          "confirmation_gain": 0.0710619286407016,
+          "passes": true,
+          "retention": {
+            "lane": 0.8925291050211889,
+            "drivable": 0.9829336748559215,
+            "white": 0.8752151050315397,
+            "yellow": 0.9307825485466926,
+            "stopline": 0.8735289344287462
+          }
+        },
+        {
+          "name": "QualityRank_s261127_a050",
+          "seed": 261127,
+          "alpha": 0.5,
+          "development_passes": true,
+          "confirmation_gain": 0.06996891742818778,
+          "passes": true,
+          "retention": {
+            "lane": 0.8920866062373625,
+            "drivable": 0.9828746017495594,
+            "white": 0.8746855393672167,
+            "yellow": 0.9305293597667509,
+            "stopline": 0.8724296275484222
+          }
+        }
+      ]
+    },
+    "ClusterBO": {
+      "variant": "ClusterBO@a0.50",
+      "all_seeds_pass": true,
+      "mean_confirmation_gain": 0.06901444743217366,
+      "runs": [
+        {
+          "name": "ClusterBO_s261126_a050",
+          "seed": 261126,
+          "alpha": 0.5,
+          "development_passes": true,
+          "confirmation_gain": 0.06885424361644288,
+          "passes": true,
+          "retention": {
+            "lane": 0.893134398866231,
+            "drivable": 0.9828939007496108,
+            "white": 0.8756257660431443,
+            "yellow": 0.9318367038516563,
+            "stopline": 0.8726442408928196
+          }
+        },
+        {
+          "name": "ClusterBO_s261127_a050",
+          "seed": 261127,
+          "alpha": 0.5,
+          "development_passes": true,
+          "confirmation_gain": 0.06917465124790445,
+          "passes": true,
+          "retention": {
+            "lane": 0.8928710395123243,
+            "drivable": 0.9828347984226985,
+            "white": 0.8753890196658747,
+            "yellow": 0.9315197511966964,
+            "stopline": 0.8721205947184923
+          }
+        }
+      ]
+    },
+    "ReplayOnly": {
+      "variant": "ReplayOnly",
+      "all_seeds_pass": true,
+      "mean_confirmation_gain": 0.009441542645499401,
+      "runs": [
+        {
+          "name": "ReplayOnly_v2_s261126",
+          "seed": 261126,
+          "alpha": 1.0,
+          "development_passes": true,
+          "confirmation_gain": 0.0102524844804196,
+          "passes": true,
+          "retention": {
+            "lane": 0.8950588711116473,
+            "drivable": 0.9834626537552448,
+            "white": 0.8777733062789892,
+            "yellow": 0.9332688048327382,
+            "stopline": 0.8724788060755917
+          }
+        },
+        {
+          "name": "ReplayOnly_v2_s261127",
+          "seed": 261127,
+          "alpha": 1.0,
+          "development_passes": true,
+          "confirmation_gain": 0.008630600810579203,
+          "passes": true,
+          "retention": {
+            "lane": 0.8923820702606288,
+            "drivable": 0.9833632954471621,
+            "white": 0.8743946554808182,
+            "yellow": 0.9321435457193015,
+            "stopline": 0.8693083134090236
+          }
+        }
+      ]
+    }
+  },
+  "selection_comparisons": {
+    "QualityRank": {
+      "vs_random_confirmation_gain": -0.0036598324860416254,
+      "vs_replay_confirmation_gain": 0.06107388038894529
+    },
+    "ClusterBO": {
+      "vs_random_confirmation_gain": -0.005160808088312652,
+      "vs_replay_confirmation_gain": 0.05957290478667426
+    }
+  },
+  "matched_coefficient_comparisons": {
+    "1.0": {
+      "methods": {
+        "Random": {
+          "mean_gain": 0.11905253849247782,
+          "seed_gains": [
+            0.11915863892331124,
+            0.1189464380616444
+          ],
+          "retention_lane_deltas": [
+            -0.007503759419950962,
+            -0.009500321379365961
+          ]
+        },
+        "QualityRank": {
+          "mean_gain": 0.11289857608873255,
+          "seed_gains": [
+            0.11261909204321341,
+            0.11317806013425169
+          ],
+          "retention_lane_deltas": [
+            -0.009086897103123825,
+            -0.010079613800901277
+          ]
+        },
+        "ClusterBO": {
+          "mean_gain": 0.11542696797180052,
+          "seed_gains": [
+            0.11512330595438225,
+            0.11573062998921879
+          ],
+          "retention_lane_deltas": [
+            -0.009984567942975753,
+            -0.010580459510840301
+          ]
+        },
+        "ReplayOnly": {
+          "mean_gain": 0.009441542645499401,
+          "seed_gains": [
+            0.0102524844804196,
+            0.008630600810579203
+          ],
+          "retention_lane_deltas": [
+            -0.0004058002373443781,
+            -0.0030826010883628907
+          ]
+        }
+      },
+      "qualityrank_minus_random": -0.006153962403745272,
+      "clusterbo_minus_random": -0.0036255705206773015,
+      "clusterbo_minus_replay": 0.10598542532630112
+    },
+    "0.5": {
+      "methods": {
+        "Random": {
+          "mean_gain": 0.07417525552048632,
+          "seed_gains": [
+            0.07463962232361177,
+            0.07371088871736087
+          ],
+          "retention_lane_deltas": [
+            -0.0019570436614598785,
+            -0.0030064344064834048
+          ]
+        },
+        "QualityRank": {
+          "mean_gain": 0.07051542303444469,
+          "seed_gains": [
+            0.0710619286407016,
+            0.06996891742818778
+          ],
+          "retention_lane_deltas": [
+            -0.0029355663278027855,
+            -0.0033780651116291915
+          ]
+        },
+        "ClusterBO": {
+          "mean_gain": 0.06901444743217366,
+          "seed_gains": [
+            0.06885424361644288,
+            0.06917465124790445
+          ],
+          "retention_lane_deltas": [
+            -0.0023302724827606314,
+            -0.002593631836667387
+          ]
+        },
+        "ReplayOnly": {
+          "mean_gain": 0.004562677927370806,
+          "seed_gains": [
+            0.005007502262831753,
+            0.004117853591909859
+          ],
+          "retention_lane_deltas": [
+            -0.00043078836732712844,
+            -0.0018734186721802715
+          ]
+        }
+      },
+      "qualityrank_minus_random": -0.0036598324860416254,
+      "clusterbo_minus_random": -0.005160808088312652,
+      "clusterbo_minus_replay": 0.06445176950480286
+    }
+  },
+  "limitations": [
+    "Two optimizer seeds share one fixed admission bank per method.",
+    "Previously opened f0 simulator cohorts are paired heldout diagnostics, not untouched final test.",
+    "Only three primary roads; do not interpret correlated frames as independent repetitions.",
+    "Raw equal-compute endpoints and development-selected common-alpha variants are distinct comparisons.",
+    "Selection attribution uses the fixed alpha1.0 and0.5 comparisons; separately selected pipelines can use different alpha values.",
+    "Continuation controls isolate optimizer work; no GT threshold or policy is selected on these results."
+  ]
+}

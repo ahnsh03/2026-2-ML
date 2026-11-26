@@ -1,0 +1,2981 @@
+{
+  "point": {
+    "confirmation": {
+      "g1_gp": {
+        "rows": 366,
+        "defined_rows_per_target": [
+          366,
+          366,
+          366
+        ],
+        "macro_road_mae": [
+          0.07978943858242736,
+          0.06419617885200452,
+          0.08854330687362294
+        ],
+        "micro_mae": [
+          0.0797894385824274,
+          0.0641961788520045,
+          0.08854330687362291
+        ]
+      },
+      "g1_rf": {
+        "rows": 366,
+        "defined_rows_per_target": [
+          366
+        ],
+        "macro_road_mae": [
+          0.08382166207340021
+        ],
+        "micro_mae": [
+          0.08382166207340022
+        ]
+      },
+      "g0_on_f0": {
+        "rows": 366,
+        "defined_rows_per_target": [
+          366
+        ],
+        "macro_road_mae": [
+          0.049815856822215815
+        ],
+        "micro_mae": [
+          0.049815856822215815
+        ]
+      },
+      "stale_g0_on_f1": {
+        "rows": 366,
+        "defined_rows_per_target": [
+          366
+        ],
+        "macro_road_mae": [
+          0.07717408867726784
+        ],
+        "micro_mae": [
+          0.07717408867726783
+        ]
+      }
+    },
+    "main": {
+      "g1_gp": {
+        "rows": 366,
+        "defined_rows_per_target": [
+          366,
+          141,
+          366
+        ],
+        "macro_road_mae": [
+          0.15864182299164695,
+          0.2808980715682795,
+          0.07501134508558925
+        ],
+        "micro_mae": [
+          0.15864182299164703,
+          0.10252951617823129,
+          0.07501134508558928
+        ]
+      },
+      "g1_rf": {
+        "rows": 366,
+        "defined_rows_per_target": [
+          366
+        ],
+        "macro_road_mae": [
+          0.14941882392429148
+        ],
+        "micro_mae": [
+          0.14941882392429148
+        ]
+      },
+      "g0_on_f0": {
+        "rows": 366,
+        "defined_rows_per_target": [
+          366
+        ],
+        "macro_road_mae": [
+          0.07993391246699456
+        ],
+        "micro_mae": [
+          0.07993391246699458
+        ]
+      },
+      "stale_g0_on_f1": {
+        "rows": 366,
+        "defined_rows_per_target": [
+          366
+        ],
+        "macro_road_mae": [
+          0.08303704695542015
+        ],
+        "micro_mae": [
+          0.08303704695542016
+        ]
+      }
+    },
+    "condition_shift": {
+      "g1_gp": {
+        "rows": 102,
+        "defined_rows_per_target": [
+          102,
+          41,
+          102
+        ],
+        "macro_road_mae": [
+          0.11629345350721532,
+          0.16403651660848625,
+          0.049626090773695064
+        ],
+        "micro_mae": [
+          0.11629345350721529,
+          0.10501122741914551,
+          0.04962609077369504
+        ]
+      },
+      "g1_rf": {
+        "rows": 102,
+        "defined_rows_per_target": [
+          102
+        ],
+        "macro_road_mae": [
+          0.14703765588391543
+        ],
+        "micro_mae": [
+          0.14703765588391549
+        ]
+      },
+      "g0_on_f0": {
+        "rows": 102,
+        "defined_rows_per_target": [
+          102
+        ],
+        "macro_road_mae": [
+          0.034880084698318485
+        ],
+        "micro_mae": [
+          0.03488008469831848
+        ]
+      },
+      "stale_g0_on_f1": {
+        "rows": 102,
+        "defined_rows_per_target": [
+          102
+        ],
+        "macro_road_mae": [
+          0.06372675295358161
+        ],
+        "micro_mae": [
+          0.06372675295358164
+        ]
+      }
+    }
+  },
+  "risk": {
+    "confirmation": {
+      "rows": 366,
+      "positives": 187,
+      "macro_road_brier": 0.06510555002659849,
+      "quality_probability_auc": 0.9729035341917367,
+      "sigma_only_auc": 0.7485137274818511,
+      "sigma_quality_spearman": -0.30967960246008724,
+      "interval_coverage": [
+        {
+          "target": "whole_frame_lane_iou",
+          "rows": 366,
+          "coverage_90": 0.7240437158469946,
+          "mean_width_90": 0.2136785501593498
+        },
+        {
+          "target": "near_lane_recall",
+          "rows": 366,
+          "coverage_90": 0.7923497267759563,
+          "mean_width_90": 0.22691057856001937
+        },
+        {
+          "target": "far_lane_recall",
+          "rows": 366,
+          "coverage_90": 0.46994535519125685,
+          "mean_width_90": 0.16045042948657395
+        }
+      ],
+      "reliability": [
+        {
+          "left": 0.0,
+          "rows": 166,
+          "mean_probability": 0.01128628288968875,
+          "actual_low_fraction": 0.012048192771084338
+        },
+        {
+          "left": 0.2,
+          "rows": 9,
+          "mean_probability": 0.28950616095301557,
+          "actual_low_fraction": 1.0
+        },
+        {
+          "left": 0.4,
+          "rows": 10,
+          "mean_probability": 0.4567950752351856,
+          "actual_low_fraction": 1.0
+        },
+        {
+          "left": 0.6000000000000001,
+          "rows": 20,
+          "mean_probability": 0.7066830539062617,
+          "actual_low_fraction": 1.0
+        },
+        {
+          "left": 0.8,
+          "rows": 161,
+          "mean_probability": 0.9743871696614124,
+          "actual_low_fraction": 0.906832298136646
+        }
+      ],
+      "joint_band_diagnostics": {
+        "rows": 366,
+        "target": "near recall only; precision not certified",
+        "state_counts": [
+          26,
+          0,
+          213,
+          127
+        ],
+        "multiclass_brier": 0.219463494549526,
+        "accuracy": 0.8633879781420765,
+        "independent_task_brier": 0.21945419125601853,
+        "full_minus_independent_brier": 9.303293507456623e-06
+      },
+      "near_minus_far_recall_contrast": {
+        "full_covariance": {
+          "rows": 366,
+          "coverage_90": 0.7923497267759563,
+          "mean_width_90": 0.2749826824268049
+        },
+        "independent_tasks": {
+          "rows": 366,
+          "coverage_90": 0.7978142076502732,
+          "mean_width_90": 0.2779078128122246
+        }
+      },
+      "precision_aware_gt_taxonomy": {
+        "valid_for_low_iou_benchmark": 366,
+        "near_omission": 127,
+        "near_false_positive_issue": 48,
+        "near_precision_or_recall_reduced": 167,
+        "far_omission": 340,
+        "near_precision_and_recall_retained": 199,
+        "near_retained_far_reduced": 173
+      },
+      "sigma_near_defect_vs_far_only_auc": 0.6447682669343395,
+      "sigma_near_defect_mean": 0.02795795406821416,
+      "sigma_far_only_mean": 0.019757453665128807
+    },
+    "main": {
+      "rows": 139,
+      "positives": 57,
+      "macro_road_brier": 3.528208092992379e-06,
+      "quality_probability_auc": 1.0,
+      "sigma_only_auc": 0.8485237483953786,
+      "sigma_quality_spearman": -0.33859567068204305,
+      "interval_coverage": [
+        {
+          "target": "whole_frame_lane_iou",
+          "rows": 139,
+          "coverage_90": 0.8561151079136691,
+          "mean_width_90": 0.23201642102579073
+        },
+        {
+          "target": "near_lane_recall",
+          "rows": 126,
+          "coverage_90": 0.8888888888888888,
+          "mean_width_90": 0.22998138545679178
+        },
+        {
+          "target": "far_lane_recall",
+          "rows": 126,
+          "coverage_90": 0.7301587301587301,
+          "mean_width_90": 0.16261731001823346
+        }
+      ],
+      "reliability": [
+        {
+          "left": 0.0,
+          "rows": 82,
+          "mean_probability": 0.0020639066591165134,
+          "actual_low_fraction": 0.0
+        },
+        {
+          "left": 0.2,
+          "rows": 0,
+          "mean_probability": null,
+          "actual_low_fraction": null
+        },
+        {
+          "left": 0.4,
+          "rows": 0,
+          "mean_probability": null,
+          "actual_low_fraction": null
+        },
+        {
+          "left": 0.6000000000000001,
+          "rows": 0,
+          "mean_probability": null,
+          "actual_low_fraction": null
+        },
+        {
+          "left": 0.8,
+          "rows": 57,
+          "mean_probability": 0.999768223876198,
+          "actual_low_fraction": 1.0
+        }
+      ],
+      "joint_band_diagnostics": {
+        "rows": 126,
+        "target": "near recall only; precision not certified",
+        "state_counts": [
+          0,
+          0,
+          84,
+          42
+        ],
+        "multiclass_brier": 0.03187073335704633,
+        "accuracy": 0.9841269841269841,
+        "independent_task_brier": 0.031870716324222885,
+        "full_minus_independent_brier": 1.703282344334145e-08
+      },
+      "near_minus_far_recall_contrast": {
+        "full_covariance": {
+          "rows": 126,
+          "coverage_90": 0.8253968253968254,
+          "mean_width_90": 0.2783161805274823
+        },
+        "independent_tasks": {
+          "rows": 126,
+          "coverage_90": 0.8253968253968254,
+          "mean_width_90": 0.2816661639948065
+        }
+      },
+      "precision_aware_gt_taxonomy": {
+        "valid_for_low_iou_benchmark": 139,
+        "near_omission": 45,
+        "near_false_positive_issue": 16,
+        "near_precision_or_recall_reduced": 60,
+        "far_omission": 306,
+        "near_precision_and_recall_retained": 92,
+        "near_retained_far_reduced": 84
+      },
+      "sigma_near_defect_vs_far_only_auc": 0.8373015873015873,
+      "sigma_near_defect_mean": 0.042861960307449466,
+      "sigma_far_only_mean": 0.02069414775314028
+    },
+    "condition_shift": {
+      "rows": 39,
+      "positives": 30,
+      "macro_road_brier": 0.010036723229934515,
+      "quality_probability_auc": 1.0,
+      "sigma_only_auc": 0.9814814814814814,
+      "sigma_quality_spearman": -0.6823243711429752,
+      "interval_coverage": [
+        {
+          "target": "whole_frame_lane_iou",
+          "rows": 39,
+          "coverage_90": 0.9487179487179487,
+          "mean_width_90": 0.24077636626710502
+        },
+        {
+          "target": "near_lane_recall",
+          "rows": 35,
+          "coverage_90": 1.0,
+          "mean_width_90": 0.23006739295901027
+        },
+        {
+          "target": "far_lane_recall",
+          "rows": 35,
+          "coverage_90": 0.9714285714285714,
+          "mean_width_90": 0.16269107013695697
+        }
+      ],
+      "reliability": [
+        {
+          "left": 0.0,
+          "rows": 8,
+          "mean_probability": 0.015728698930630503,
+          "actual_low_fraction": 0.0
+        },
+        {
+          "left": 0.2,
+          "rows": 0,
+          "mean_probability": null,
+          "actual_low_fraction": null
+        },
+        {
+          "left": 0.4,
+          "rows": 0,
+          "mean_probability": null,
+          "actual_low_fraction": null
+        },
+        {
+          "left": 0.6000000000000001,
+          "rows": 0,
+          "mean_probability": null,
+          "actual_low_fraction": null
+        },
+        {
+          "left": 0.8,
+          "rows": 31,
+          "mean_probability": 0.9786341650678118,
+          "actual_low_fraction": 0.967741935483871
+        }
+      ],
+      "joint_band_diagnostics": {
+        "rows": 35,
+        "target": "near recall only; precision not certified",
+        "state_counts": [
+          0,
+          0,
+          10,
+          25
+        ],
+        "multiclass_brier": 0.07380433205631962,
+        "accuracy": 0.9428571428571428,
+        "independent_task_brier": 0.07380433205631806,
+        "full_minus_independent_brier": 1.5543122344752192e-15
+      },
+      "near_minus_far_recall_contrast": {
+        "full_covariance": {
+          "rows": 35,
+          "coverage_90": 1.0,
+          "mean_width_90": 0.27836201742931727
+        },
+        "independent_tasks": {
+          "rows": 35,
+          "coverage_90": 1.0,
+          "mean_width_90": 0.2817789739251108
+        }
+      },
+      "precision_aware_gt_taxonomy": {
+        "valid_for_low_iou_benchmark": 39,
+        "near_omission": 27,
+        "near_false_positive_issue": 1,
+        "near_precision_or_recall_reduced": 28,
+        "far_omission": 86,
+        "near_precision_and_recall_retained": 10,
+        "near_retained_far_reduced": 10
+      },
+      "sigma_near_defect_vs_far_only_auc": 0.9785714285714286,
+      "sigma_near_defect_mean": 0.03769044074816403,
+      "sigma_far_only_mean": 0.019314763759928973
+    }
+  },
+  "same_road_budget_review": {
+    "confirmation": [
+      {
+        "policy": "g1_policy",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 21,
+        "low_iou_found": 12,
+        "precision": 0.5714285714285714,
+        "recall": 0.06417112299465241,
+        "macro_road_recall": 0.07079234972677595,
+        "benchmark_nonlow_selected": 9,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 21,
+        "low_iou_found": 21,
+        "precision": 1.0,
+        "recall": 0.11229946524064172,
+        "macro_road_recall": 0.17079234972677595,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 21,
+        "low_iou_found": 19,
+        "precision": 0.9047619047619048,
+        "recall": 0.10160427807486631,
+        "macro_road_recall": 0.1491256830601093,
+        "benchmark_nonlow_selected": 2,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 21,
+        "low_iou_found": 21,
+        "precision": 1.0,
+        "recall": 0.11229946524064172,
+        "macro_road_recall": 0.17079234972677595,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 21,
+        "low_iou_found": 21,
+        "precision": 1.0,
+        "recall": 0.11229946524064172,
+        "macro_road_recall": 0.17079234972677595,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 21,
+        "low_iou_found": 9,
+        "precision": 0.42857142857142855,
+        "recall": 0.0481283422459893,
+        "macro_road_recall": 0.03579234972677595,
+        "benchmark_nonlow_selected": 12,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.05,
+        "mean": {
+          "budget": 21.0,
+          "low_iou_found": 10.72,
+          "precision": 0.5104761904761905,
+          "recall": 0.05732620320855615,
+          "macro_road_recall": 0.05737568306010929
+        },
+        "low_iou_found_range": [
+          7,
+          15
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 39,
+        "low_iou_found": 25,
+        "precision": 0.6410256410256411,
+        "recall": 0.13368983957219252,
+        "macro_road_recall": 0.16051912568306012,
+        "benchmark_nonlow_selected": 14,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 39,
+        "low_iou_found": 39,
+        "precision": 1.0,
+        "recall": 0.20855614973262032,
+        "macro_road_recall": 0.31718579234972677,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 39,
+        "low_iou_found": 35,
+        "precision": 0.8974358974358975,
+        "recall": 0.18716577540106952,
+        "macro_road_recall": 0.2738524590163935,
+        "benchmark_nonlow_selected": 4,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 39,
+        "low_iou_found": 39,
+        "precision": 1.0,
+        "recall": 0.20855614973262032,
+        "macro_road_recall": 0.31718579234972677,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 39,
+        "low_iou_found": 38,
+        "precision": 0.9743589743589743,
+        "recall": 0.20320855614973263,
+        "macro_road_recall": 0.3038524590163934,
+        "benchmark_nonlow_selected": 1,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 39,
+        "low_iou_found": 19,
+        "precision": 0.48717948717948717,
+        "recall": 0.10160427807486631,
+        "macro_road_recall": 0.0855191256830601,
+        "benchmark_nonlow_selected": 20,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.1,
+        "mean": {
+          "budget": 39.0,
+          "low_iou_found": 20.07,
+          "precision": 0.5146153846153846,
+          "recall": 0.10732620320855617,
+          "macro_road_recall": 0.10883579234972678
+        },
+        "low_iou_found_range": [
+          15,
+          25
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 75,
+        "low_iou_found": 43,
+        "precision": 0.5733333333333334,
+        "recall": 0.22994652406417113,
+        "macro_road_recall": 0.24830601092896173,
+        "benchmark_nonlow_selected": 32,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 75,
+        "low_iou_found": 70,
+        "precision": 0.9333333333333333,
+        "recall": 0.37433155080213903,
+        "macro_road_recall": 0.5433060109289617,
+        "benchmark_nonlow_selected": 5,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 75,
+        "low_iou_found": 64,
+        "precision": 0.8533333333333334,
+        "recall": 0.3422459893048128,
+        "macro_road_recall": 0.4783060109289618,
+        "benchmark_nonlow_selected": 11,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 75,
+        "low_iou_found": 70,
+        "precision": 0.9333333333333333,
+        "recall": 0.37433155080213903,
+        "macro_road_recall": 0.5433060109289617,
+        "benchmark_nonlow_selected": 5,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 75,
+        "low_iou_found": 68,
+        "precision": 0.9066666666666666,
+        "recall": 0.36363636363636365,
+        "macro_road_recall": 0.5166393442622951,
+        "benchmark_nonlow_selected": 7,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 75,
+        "low_iou_found": 37,
+        "precision": 0.49333333333333335,
+        "recall": 0.19786096256684493,
+        "macro_road_recall": 0.17330601092896178,
+        "benchmark_nonlow_selected": 38,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.2,
+        "mean": {
+          "budget": 75.0,
+          "low_iou_found": 38.27,
+          "precision": 0.5102666666666666,
+          "recall": 0.20465240641711233,
+          "macro_road_recall": 0.20433934426229508
+        },
+        "low_iou_found_range": [
+          31,
+          45
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 153,
+        "low_iou_found": 90,
+        "precision": 0.5882352941176471,
+        "recall": 0.48128342245989303,
+        "macro_road_recall": 0.534344262295082,
+        "benchmark_nonlow_selected": 63,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 153,
+        "low_iou_found": 116,
+        "precision": 0.7581699346405228,
+        "recall": 0.6203208556149733,
+        "macro_road_recall": 0.8060109289617486,
+        "benchmark_nonlow_selected": 37,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 153,
+        "low_iou_found": 116,
+        "precision": 0.7581699346405228,
+        "recall": 0.6203208556149733,
+        "macro_road_recall": 0.8060109289617486,
+        "benchmark_nonlow_selected": 37,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 153,
+        "low_iou_found": 116,
+        "precision": 0.7581699346405228,
+        "recall": 0.6203208556149733,
+        "macro_road_recall": 0.8060109289617486,
+        "benchmark_nonlow_selected": 37,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 153,
+        "low_iou_found": 116,
+        "precision": 0.7581699346405228,
+        "recall": 0.6203208556149733,
+        "macro_road_recall": 0.8060109289617486,
+        "benchmark_nonlow_selected": 37,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 153,
+        "low_iou_found": 73,
+        "precision": 0.477124183006536,
+        "recall": 0.39037433155080214,
+        "macro_road_recall": 0.3326775956284153,
+        "benchmark_nonlow_selected": 80,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.41279226014512227,
+        "mean": {
+          "budget": 153.0,
+          "low_iou_found": 78.4,
+          "precision": 0.5124183006535948,
+          "recall": 0.41925133689839567,
+          "macro_road_recall": 0.42047759562841525
+        },
+        "low_iou_found_range": [
+          70,
+          85
+        ]
+      }
+    ],
+    "main": [
+      {
+        "policy": "g1_policy",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 21,
+        "low_iou_found": 4,
+        "precision": 0.19047619047619047,
+        "recall": 0.07017543859649122,
+        "macro_road_recall": 0.06691176470588235,
+        "benchmark_nonlow_selected": 4,
+        "benchmark_ungradable_selected": 13
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 21,
+        "low_iou_found": 10,
+        "precision": 0.47619047619047616,
+        "recall": 0.17543859649122806,
+        "macro_road_recall": 0.17573529411764705,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 11
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 21,
+        "low_iou_found": 10,
+        "precision": 0.47619047619047616,
+        "recall": 0.17543859649122806,
+        "macro_road_recall": 0.1926470588235294,
+        "benchmark_nonlow_selected": 1,
+        "benchmark_ungradable_selected": 10
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 21,
+        "low_iou_found": 10,
+        "precision": 0.47619047619047616,
+        "recall": 0.17543859649122806,
+        "macro_road_recall": 0.17573529411764705,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 11
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 21,
+        "low_iou_found": 11,
+        "precision": 0.5238095238095238,
+        "recall": 0.19298245614035087,
+        "macro_road_recall": 0.2051470588235294,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 10
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 21,
+        "low_iou_found": 8,
+        "precision": 0.38095238095238093,
+        "recall": 0.14035087719298245,
+        "macro_road_recall": 0.11691176470588235,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 13
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.05,
+        "mean": {
+          "budget": 21.0,
+          "low_iou_found": 3.18,
+          "precision": 0.1514285714285714,
+          "recall": 0.05578947368421052,
+          "macro_road_recall": 0.05581617647058825
+        },
+        "low_iou_found_range": [
+          0,
+          9
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 39,
+        "low_iou_found": 8,
+        "precision": 0.20512820512820512,
+        "recall": 0.14035087719298245,
+        "macro_road_recall": 0.11691176470588235,
+        "benchmark_nonlow_selected": 6,
+        "benchmark_ungradable_selected": 25
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 39,
+        "low_iou_found": 18,
+        "precision": 0.46153846153846156,
+        "recall": 0.3157894736842105,
+        "macro_road_recall": 0.3095588235294118,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 21
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 39,
+        "low_iou_found": 14,
+        "precision": 0.358974358974359,
+        "recall": 0.24561403508771928,
+        "macro_road_recall": 0.2257352941176471,
+        "benchmark_nonlow_selected": 2,
+        "benchmark_ungradable_selected": 23
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 39,
+        "low_iou_found": 18,
+        "precision": 0.46153846153846156,
+        "recall": 0.3157894736842105,
+        "macro_road_recall": 0.3095588235294118,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 21
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 39,
+        "low_iou_found": 19,
+        "precision": 0.48717948717948717,
+        "recall": 0.3333333333333333,
+        "macro_road_recall": 0.33897058823529413,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 20
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 39,
+        "low_iou_found": 14,
+        "precision": 0.358974358974359,
+        "recall": 0.24561403508771928,
+        "macro_road_recall": 0.19191176470588237,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 25
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.1,
+        "mean": {
+          "budget": 39.0,
+          "low_iou_found": 6.24,
+          "precision": 0.15999999999999998,
+          "recall": 0.10947368421052632,
+          "macro_road_recall": 0.10658088235294114
+        },
+        "low_iou_found_range": [
+          2,
+          12
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 75,
+        "low_iou_found": 15,
+        "precision": 0.2,
+        "recall": 0.2631578947368421,
+        "macro_road_recall": 0.23823529411764705,
+        "benchmark_nonlow_selected": 13,
+        "benchmark_ungradable_selected": 47
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 75,
+        "low_iou_found": 38,
+        "precision": 0.5066666666666667,
+        "recall": 0.6666666666666666,
+        "macro_road_recall": 0.6948529411764706,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 37
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 75,
+        "low_iou_found": 34,
+        "precision": 0.4533333333333333,
+        "recall": 0.5964912280701754,
+        "macro_road_recall": 0.6279411764705882,
+        "benchmark_nonlow_selected": 3,
+        "benchmark_ungradable_selected": 38
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 75,
+        "low_iou_found": 33,
+        "precision": 0.44,
+        "recall": 0.5789473684210527,
+        "macro_road_recall": 0.5477941176470589,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 42
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 75,
+        "low_iou_found": 35,
+        "precision": 0.4666666666666667,
+        "recall": 0.6140350877192983,
+        "macro_road_recall": 0.6066176470588236,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 40
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 75,
+        "low_iou_found": 26,
+        "precision": 0.3466666666666667,
+        "recall": 0.45614035087719296,
+        "macro_road_recall": 0.34191176470588236,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 49
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.2,
+        "mean": {
+          "budget": 75.0,
+          "low_iou_found": 11.48,
+          "precision": 0.15306666666666666,
+          "recall": 0.20140350877192983,
+          "macro_road_recall": 0.2001544117647059
+        },
+        "low_iou_found_range": [
+          5,
+          18
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 153,
+        "low_iou_found": 30,
+        "precision": 0.19607843137254902,
+        "recall": 0.5263157894736842,
+        "macro_road_recall": 0.4426470588235294,
+        "benchmark_nonlow_selected": 25,
+        "benchmark_ungradable_selected": 98
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 153,
+        "low_iou_found": 56,
+        "precision": 0.3660130718954248,
+        "recall": 0.9824561403508771,
+        "macro_road_recall": 0.9705882352941176,
+        "benchmark_nonlow_selected": 11,
+        "benchmark_ungradable_selected": 86
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 153,
+        "low_iou_found": 53,
+        "precision": 0.3464052287581699,
+        "recall": 0.9298245614035088,
+        "macro_road_recall": 0.8823529411764706,
+        "benchmark_nonlow_selected": 11,
+        "benchmark_ungradable_selected": 89
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 153,
+        "low_iou_found": 55,
+        "precision": 0.35947712418300654,
+        "recall": 0.9649122807017544,
+        "macro_road_recall": 0.9411764705882353,
+        "benchmark_nonlow_selected": 11,
+        "benchmark_ungradable_selected": 87
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 153,
+        "low_iou_found": 54,
+        "precision": 0.35294117647058826,
+        "recall": 0.9473684210526315,
+        "macro_road_recall": 0.9117647058823529,
+        "benchmark_nonlow_selected": 11,
+        "benchmark_ungradable_selected": 88
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 139,
+        "positives": 57,
+        "budget": 153,
+        "low_iou_found": 32,
+        "precision": 0.20915032679738563,
+        "recall": 0.5614035087719298,
+        "macro_road_recall": 0.41691176470588237,
+        "benchmark_nonlow_selected": 20,
+        "benchmark_ungradable_selected": 101
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.41279226014512227,
+        "mean": {
+          "budget": 153.0,
+          "low_iou_found": 23.74,
+          "precision": 0.15516339869281043,
+          "recall": 0.4164912280701754,
+          "macro_road_recall": 0.4146249999999999
+        },
+        "low_iou_found_range": [
+          15,
+          31
+        ]
+      }
+    ],
+    "condition_shift": [
+      {
+        "policy": "g1_policy",
+        "fraction": 0.05,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 6,
+        "low_iou_found": 1,
+        "precision": 0.16666666666666666,
+        "recall": 0.03333333333333333,
+        "macro_road_recall": 0.1,
+        "benchmark_nonlow_selected": 2,
+        "benchmark_ungradable_selected": 3
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.05,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 6,
+        "low_iou_found": 2,
+        "precision": 0.3333333333333333,
+        "recall": 0.06666666666666667,
+        "macro_road_recall": 0.04,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 4
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.05,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 6,
+        "low_iou_found": 2,
+        "precision": 0.3333333333333333,
+        "recall": 0.06666666666666667,
+        "macro_road_recall": 0.12000000000000001,
+        "benchmark_nonlow_selected": 1,
+        "benchmark_ungradable_selected": 3
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.05,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 6,
+        "low_iou_found": 3,
+        "precision": 0.5,
+        "recall": 0.1,
+        "macro_road_recall": 0.14,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 3
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.05,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 6,
+        "low_iou_found": 4,
+        "precision": 0.6666666666666666,
+        "recall": 0.13333333333333333,
+        "macro_road_recall": 0.24000000000000002,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 2
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.05,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 6,
+        "low_iou_found": 3,
+        "precision": 0.5,
+        "recall": 0.1,
+        "macro_road_recall": 0.14,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 3
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.05,
+        "mean": {
+          "budget": 6.0,
+          "low_iou_found": 1.79,
+          "precision": 0.2983333333333333,
+          "recall": 0.05966666666666665,
+          "macro_road_recall": 0.056600000000000004
+        },
+        "low_iou_found_range": [
+          0,
+          4
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.1,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 12,
+        "low_iou_found": 3,
+        "precision": 0.25,
+        "recall": 0.1,
+        "macro_road_recall": 0.14,
+        "benchmark_nonlow_selected": 2,
+        "benchmark_ungradable_selected": 7
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.1,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 12,
+        "low_iou_found": 6,
+        "precision": 0.5,
+        "recall": 0.2,
+        "macro_road_recall": 0.28,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 6
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.1,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 12,
+        "low_iou_found": 4,
+        "precision": 0.3333333333333333,
+        "recall": 0.13333333333333333,
+        "macro_road_recall": 0.16,
+        "benchmark_nonlow_selected": 1,
+        "benchmark_ungradable_selected": 7
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.1,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 12,
+        "low_iou_found": 5,
+        "precision": 0.4166666666666667,
+        "recall": 0.16666666666666666,
+        "macro_road_recall": 0.18,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 7
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.1,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 12,
+        "low_iou_found": 8,
+        "precision": 0.6666666666666666,
+        "recall": 0.26666666666666666,
+        "macro_road_recall": 0.48000000000000004,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 4
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.1,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 12,
+        "low_iou_found": 5,
+        "precision": 0.4166666666666667,
+        "recall": 0.16666666666666666,
+        "macro_road_recall": 0.18,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 7
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.1,
+        "mean": {
+          "budget": 12.0,
+          "low_iou_found": 3.49,
+          "precision": 0.29083333333333333,
+          "recall": 0.11633333333333332,
+          "macro_road_recall": 0.117
+        },
+        "low_iou_found_range": [
+          1,
+          6
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.2,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 21,
+        "low_iou_found": 6,
+        "precision": 0.2857142857142857,
+        "recall": 0.2,
+        "macro_road_recall": 0.28,
+        "benchmark_nonlow_selected": 3,
+        "benchmark_ungradable_selected": 12
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.2,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 21,
+        "low_iou_found": 10,
+        "precision": 0.47619047619047616,
+        "recall": 0.3333333333333333,
+        "macro_road_recall": 0.44,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 11
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.2,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 21,
+        "low_iou_found": 9,
+        "precision": 0.42857142857142855,
+        "recall": 0.3,
+        "macro_road_recall": 0.42,
+        "benchmark_nonlow_selected": 1,
+        "benchmark_ungradable_selected": 11
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.2,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 21,
+        "low_iou_found": 9,
+        "precision": 0.42857142857142855,
+        "recall": 0.3,
+        "macro_road_recall": 0.34,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 12
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.2,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 21,
+        "low_iou_found": 11,
+        "precision": 0.5238095238095238,
+        "recall": 0.36666666666666664,
+        "macro_road_recall": 0.54,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 10
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.2,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 21,
+        "low_iou_found": 8,
+        "precision": 0.38095238095238093,
+        "recall": 0.26666666666666666,
+        "macro_road_recall": 0.24000000000000002,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 13
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.2,
+        "mean": {
+          "budget": 21.0,
+          "low_iou_found": 6.13,
+          "precision": 0.2919047619047619,
+          "recall": 0.2043333333333333,
+          "macro_road_recall": 0.2034
+        },
+        "low_iou_found_range": [
+          2,
+          9
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.41279226014512227,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 45,
+        "low_iou_found": 13,
+        "precision": 0.28888888888888886,
+        "recall": 0.43333333333333335,
+        "macro_road_recall": 0.5,
+        "benchmark_nonlow_selected": 5,
+        "benchmark_ungradable_selected": 27
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.41279226014512227,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 45,
+        "low_iou_found": 19,
+        "precision": 0.4222222222222222,
+        "recall": 0.6333333333333333,
+        "macro_road_recall": 0.7,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 26
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.41279226014512227,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 45,
+        "low_iou_found": 17,
+        "precision": 0.37777777777777777,
+        "recall": 0.5666666666666667,
+        "macro_road_recall": 0.66,
+        "benchmark_nonlow_selected": 2,
+        "benchmark_ungradable_selected": 26
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.41279226014512227,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 45,
+        "low_iou_found": 19,
+        "precision": 0.4222222222222222,
+        "recall": 0.6333333333333333,
+        "macro_road_recall": 0.7,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 26
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.41279226014512227,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 45,
+        "low_iou_found": 19,
+        "precision": 0.4222222222222222,
+        "recall": 0.6333333333333333,
+        "macro_road_recall": 0.7,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 26
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.41279226014512227,
+        "population": 102,
+        "eligible_labels": 39,
+        "positives": 30,
+        "budget": 45,
+        "low_iou_found": 16,
+        "precision": 0.35555555555555557,
+        "recall": 0.5333333333333333,
+        "macro_road_recall": 0.4,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 29
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.41279226014512227,
+        "mean": {
+          "budget": 45.0,
+          "low_iou_found": 13.05,
+          "precision": 0.2899999999999999,
+          "recall": 0.435,
+          "macro_road_recall": 0.4346
+        },
+        "low_iou_found_range": [
+          8,
+          18
+        ]
+      }
+    ]
+  },
+  "same_full_population_union_supported_review": {
+    "confirmation": [
+      {
+        "policy": "g1_policy",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 21,
+        "low_iou_found": 12,
+        "precision": 0.5714285714285714,
+        "recall": 0.06417112299465241,
+        "macro_road_recall": 0.07079234972677595,
+        "benchmark_nonlow_selected": 9,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 21,
+        "low_iou_found": 21,
+        "precision": 1.0,
+        "recall": 0.11229946524064172,
+        "macro_road_recall": 0.17079234972677595,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 21,
+        "low_iou_found": 19,
+        "precision": 0.9047619047619048,
+        "recall": 0.10160427807486631,
+        "macro_road_recall": 0.1491256830601093,
+        "benchmark_nonlow_selected": 2,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 21,
+        "low_iou_found": 21,
+        "precision": 1.0,
+        "recall": 0.11229946524064172,
+        "macro_road_recall": 0.17079234972677595,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 21,
+        "low_iou_found": 21,
+        "precision": 1.0,
+        "recall": 0.11229946524064172,
+        "macro_road_recall": 0.17079234972677595,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 21,
+        "low_iou_found": 9,
+        "precision": 0.42857142857142855,
+        "recall": 0.0481283422459893,
+        "macro_road_recall": 0.03579234972677595,
+        "benchmark_nonlow_selected": 12,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.05,
+        "mean": {
+          "budget": 21.0,
+          "low_iou_found": 10.72,
+          "precision": 0.5104761904761905,
+          "recall": 0.05732620320855615,
+          "macro_road_recall": 0.05737568306010929
+        },
+        "low_iou_found_range": [
+          7,
+          15
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 39,
+        "low_iou_found": 25,
+        "precision": 0.6410256410256411,
+        "recall": 0.13368983957219252,
+        "macro_road_recall": 0.16051912568306012,
+        "benchmark_nonlow_selected": 14,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 39,
+        "low_iou_found": 39,
+        "precision": 1.0,
+        "recall": 0.20855614973262032,
+        "macro_road_recall": 0.31718579234972677,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 39,
+        "low_iou_found": 35,
+        "precision": 0.8974358974358975,
+        "recall": 0.18716577540106952,
+        "macro_road_recall": 0.2738524590163935,
+        "benchmark_nonlow_selected": 4,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 39,
+        "low_iou_found": 39,
+        "precision": 1.0,
+        "recall": 0.20855614973262032,
+        "macro_road_recall": 0.31718579234972677,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 39,
+        "low_iou_found": 38,
+        "precision": 0.9743589743589743,
+        "recall": 0.20320855614973263,
+        "macro_road_recall": 0.3038524590163934,
+        "benchmark_nonlow_selected": 1,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 39,
+        "low_iou_found": 19,
+        "precision": 0.48717948717948717,
+        "recall": 0.10160427807486631,
+        "macro_road_recall": 0.0855191256830601,
+        "benchmark_nonlow_selected": 20,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.1,
+        "mean": {
+          "budget": 39.0,
+          "low_iou_found": 20.07,
+          "precision": 0.5146153846153846,
+          "recall": 0.10732620320855617,
+          "macro_road_recall": 0.10883579234972678
+        },
+        "low_iou_found_range": [
+          15,
+          25
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 75,
+        "low_iou_found": 43,
+        "precision": 0.5733333333333334,
+        "recall": 0.22994652406417113,
+        "macro_road_recall": 0.24830601092896173,
+        "benchmark_nonlow_selected": 32,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 75,
+        "low_iou_found": 70,
+        "precision": 0.9333333333333333,
+        "recall": 0.37433155080213903,
+        "macro_road_recall": 0.5433060109289617,
+        "benchmark_nonlow_selected": 5,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 75,
+        "low_iou_found": 64,
+        "precision": 0.8533333333333334,
+        "recall": 0.3422459893048128,
+        "macro_road_recall": 0.4783060109289618,
+        "benchmark_nonlow_selected": 11,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 75,
+        "low_iou_found": 70,
+        "precision": 0.9333333333333333,
+        "recall": 0.37433155080213903,
+        "macro_road_recall": 0.5433060109289617,
+        "benchmark_nonlow_selected": 5,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 75,
+        "low_iou_found": 68,
+        "precision": 0.9066666666666666,
+        "recall": 0.36363636363636365,
+        "macro_road_recall": 0.5166393442622951,
+        "benchmark_nonlow_selected": 7,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 75,
+        "low_iou_found": 37,
+        "precision": 0.49333333333333335,
+        "recall": 0.19786096256684493,
+        "macro_road_recall": 0.17330601092896178,
+        "benchmark_nonlow_selected": 38,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.2,
+        "mean": {
+          "budget": 75.0,
+          "low_iou_found": 38.27,
+          "precision": 0.5102666666666666,
+          "recall": 0.20465240641711233,
+          "macro_road_recall": 0.20433934426229508
+        },
+        "low_iou_found_range": [
+          31,
+          45
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 153,
+        "low_iou_found": 90,
+        "precision": 0.5882352941176471,
+        "recall": 0.48128342245989303,
+        "macro_road_recall": 0.534344262295082,
+        "benchmark_nonlow_selected": 63,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 153,
+        "low_iou_found": 116,
+        "precision": 0.7581699346405228,
+        "recall": 0.6203208556149733,
+        "macro_road_recall": 0.8060109289617486,
+        "benchmark_nonlow_selected": 37,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 153,
+        "low_iou_found": 116,
+        "precision": 0.7581699346405228,
+        "recall": 0.6203208556149733,
+        "macro_road_recall": 0.8060109289617486,
+        "benchmark_nonlow_selected": 37,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 153,
+        "low_iou_found": 116,
+        "precision": 0.7581699346405228,
+        "recall": 0.6203208556149733,
+        "macro_road_recall": 0.8060109289617486,
+        "benchmark_nonlow_selected": 37,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 153,
+        "low_iou_found": 116,
+        "precision": 0.7581699346405228,
+        "recall": 0.6203208556149733,
+        "macro_road_recall": 0.8060109289617486,
+        "benchmark_nonlow_selected": 37,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 366,
+        "positives": 187,
+        "budget": 153,
+        "low_iou_found": 73,
+        "precision": 0.477124183006536,
+        "recall": 0.39037433155080214,
+        "macro_road_recall": 0.3326775956284153,
+        "benchmark_nonlow_selected": 80,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.41279226014512227,
+        "mean": {
+          "budget": 153.0,
+          "low_iou_found": 78.4,
+          "precision": 0.5124183006535948,
+          "recall": 0.41925133689839567,
+          "macro_road_recall": 0.42047759562841525
+        },
+        "low_iou_found_range": [
+          70,
+          85
+        ]
+      }
+    ],
+    "main": [
+      {
+        "policy": "g1_policy",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 21,
+        "low_iou_found": 6,
+        "precision": 0.2857142857142857,
+        "recall": 0.05555555555555555,
+        "macro_road_recall": 0.05430756843800322,
+        "benchmark_nonlow_selected": 4,
+        "benchmark_ungradable_selected": 11
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 21,
+        "low_iou_found": 19,
+        "precision": 0.9047619047619048,
+        "recall": 0.17592592592592593,
+        "macro_road_recall": 0.1826489533011272,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 2
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 21,
+        "low_iou_found": 18,
+        "precision": 0.8571428571428571,
+        "recall": 0.16666666666666666,
+        "macro_road_recall": 0.1814009661835749,
+        "benchmark_nonlow_selected": 1,
+        "benchmark_ungradable_selected": 2
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 21,
+        "low_iou_found": 16,
+        "precision": 0.7619047619047619,
+        "recall": 0.14814814814814814,
+        "macro_road_recall": 0.146256038647343,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 5
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 21,
+        "low_iou_found": 18,
+        "precision": 0.8571428571428571,
+        "recall": 0.16666666666666666,
+        "macro_road_recall": 0.16815619967793882,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 3
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.05,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 21,
+        "low_iou_found": 8,
+        "precision": 0.38095238095238093,
+        "recall": 0.07407407407407407,
+        "macro_road_recall": 0.07282608695652174,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 13
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.05,
+        "mean": {
+          "budget": 21.0,
+          "low_iou_found": 6.29,
+          "precision": 0.29952380952380947,
+          "recall": 0.05824074074074075,
+          "macro_road_recall": 0.05850603864734299
+        },
+        "low_iou_found_range": [
+          1,
+          12
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 39,
+        "low_iou_found": 14,
+        "precision": 0.358974358974359,
+        "recall": 0.12962962962962962,
+        "macro_road_recall": 0.12435587761674717,
+        "benchmark_nonlow_selected": 6,
+        "benchmark_ungradable_selected": 19
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 39,
+        "low_iou_found": 33,
+        "precision": 0.8461538461538461,
+        "recall": 0.3055555555555556,
+        "macro_road_recall": 0.31316425120772945,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 6
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 39,
+        "low_iou_found": 29,
+        "precision": 0.7435897435897436,
+        "recall": 0.26851851851851855,
+        "macro_road_recall": 0.274597423510467,
+        "benchmark_nonlow_selected": 2,
+        "benchmark_ungradable_selected": 8
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 39,
+        "low_iou_found": 29,
+        "precision": 0.7435897435897436,
+        "recall": 0.26851851851851855,
+        "macro_road_recall": 0.26227858293075684,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 10
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 39,
+        "low_iou_found": 33,
+        "precision": 0.8461538461538461,
+        "recall": 0.3055555555555556,
+        "macro_road_recall": 0.3060789049919485,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 6
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.1,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 39,
+        "low_iou_found": 14,
+        "precision": 0.358974358974359,
+        "recall": 0.12962962962962962,
+        "macro_road_recall": 0.12282608695652175,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 25
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.1,
+        "mean": {
+          "budget": 39.0,
+          "low_iou_found": 11.71,
+          "precision": 0.3002564102564102,
+          "recall": 0.10842592592592594,
+          "macro_road_recall": 0.10774597423510465
+        },
+        "low_iou_found_range": [
+          5,
+          18
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 75,
+        "low_iou_found": 24,
+        "precision": 0.32,
+        "recall": 0.2222222222222222,
+        "macro_road_recall": 0.21014492753623185,
+        "benchmark_nonlow_selected": 13,
+        "benchmark_ungradable_selected": 38
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 75,
+        "low_iou_found": 65,
+        "precision": 0.8666666666666667,
+        "recall": 0.6018518518518519,
+        "macro_road_recall": 0.6250805152979065,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 10
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 75,
+        "low_iou_found": 59,
+        "precision": 0.7866666666666666,
+        "recall": 0.5462962962962963,
+        "macro_road_recall": 0.5707729468599034,
+        "benchmark_nonlow_selected": 3,
+        "benchmark_ungradable_selected": 13
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 75,
+        "low_iou_found": 57,
+        "precision": 0.76,
+        "recall": 0.5277777777777778,
+        "macro_road_recall": 0.5162238325281804,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 18
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 75,
+        "low_iou_found": 61,
+        "precision": 0.8133333333333334,
+        "recall": 0.5648148148148148,
+        "macro_road_recall": 0.552938808373591,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 14
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.2,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 75,
+        "low_iou_found": 26,
+        "precision": 0.3466666666666667,
+        "recall": 0.24074074074074073,
+        "macro_road_recall": 0.22282608695652173,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 49
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.2,
+        "mean": {
+          "budget": 75.0,
+          "low_iou_found": 21.93,
+          "precision": 0.29240000000000005,
+          "recall": 0.20305555555555557,
+          "macro_road_recall": 0.20164371980676324
+        },
+        "low_iou_found_range": [
+          13,
+          29
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 153,
+        "low_iou_found": 49,
+        "precision": 0.3202614379084967,
+        "recall": 0.4537037037037037,
+        "macro_road_recall": 0.4295491143317231,
+        "benchmark_nonlow_selected": 25,
+        "benchmark_ungradable_selected": 79
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 153,
+        "low_iou_found": 107,
+        "precision": 0.6993464052287581,
+        "recall": 0.9907407407407407,
+        "macro_road_recall": 0.9855072463768115,
+        "benchmark_nonlow_selected": 11,
+        "benchmark_ungradable_selected": 35
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 153,
+        "low_iou_found": 101,
+        "precision": 0.6601307189542484,
+        "recall": 0.9351851851851852,
+        "macro_road_recall": 0.9198067632850241,
+        "benchmark_nonlow_selected": 11,
+        "benchmark_ungradable_selected": 41
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 153,
+        "low_iou_found": 101,
+        "precision": 0.6601307189542484,
+        "recall": 0.9351851851851852,
+        "macro_road_recall": 0.926892109500805,
+        "benchmark_nonlow_selected": 11,
+        "benchmark_ungradable_selected": 41
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 153,
+        "low_iou_found": 101,
+        "precision": 0.6601307189542484,
+        "recall": 0.9351851851851852,
+        "macro_road_recall": 0.9127214170692431,
+        "benchmark_nonlow_selected": 11,
+        "benchmark_ungradable_selected": 41
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.41279226014512227,
+        "population": 366,
+        "eligible_labels": 190,
+        "positives": 108,
+        "budget": 153,
+        "low_iou_found": 32,
+        "precision": 0.20915032679738563,
+        "recall": 0.2962962962962963,
+        "macro_road_recall": 0.2728260869565217,
+        "benchmark_nonlow_selected": 20,
+        "benchmark_ungradable_selected": 101
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.41279226014512227,
+        "mean": {
+          "budget": 153.0,
+          "low_iou_found": 44.89,
+          "precision": 0.29339869281045744,
+          "recall": 0.4156481481481481,
+          "macro_road_recall": 0.4158530595813204
+        },
+        "low_iou_found_range": [
+          35,
+          56
+        ]
+      }
+    ],
+    "condition_shift": [
+      {
+        "policy": "g1_policy",
+        "fraction": 0.05,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 6,
+        "low_iou_found": 1,
+        "precision": 0.16666666666666666,
+        "recall": 0.016666666666666666,
+        "macro_road_recall": 0.037037037037037035,
+        "benchmark_nonlow_selected": 2,
+        "benchmark_ungradable_selected": 3
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.05,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 6,
+        "low_iou_found": 6,
+        "precision": 1.0,
+        "recall": 0.1,
+        "macro_road_recall": 0.12638176638176638,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.05,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 6,
+        "low_iou_found": 4,
+        "precision": 0.6666666666666666,
+        "recall": 0.06666666666666667,
+        "macro_road_recall": 0.10022792022792021,
+        "benchmark_nonlow_selected": 1,
+        "benchmark_ungradable_selected": 1
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.05,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 6,
+        "low_iou_found": 5,
+        "precision": 0.8333333333333334,
+        "recall": 0.08333333333333333,
+        "macro_road_recall": 0.08934472934472935,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 1
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.05,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 6,
+        "low_iou_found": 6,
+        "precision": 1.0,
+        "recall": 0.1,
+        "macro_road_recall": 0.12638176638176638,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.05,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 6,
+        "low_iou_found": 3,
+        "precision": 0.5,
+        "recall": 0.05,
+        "macro_road_recall": 0.0637037037037037,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 3
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.05,
+        "mean": {
+          "budget": 6.0,
+          "low_iou_found": 3.63,
+          "precision": 0.605,
+          "recall": 0.06049999999999999,
+          "macro_road_recall": 0.05943133903133902
+        },
+        "low_iou_found_range": [
+          0,
+          6
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.1,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 12,
+        "low_iou_found": 5,
+        "precision": 0.4166666666666667,
+        "recall": 0.08333333333333333,
+        "macro_road_recall": 0.08934472934472935,
+        "benchmark_nonlow_selected": 2,
+        "benchmark_ungradable_selected": 5
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.1,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 12,
+        "low_iou_found": 12,
+        "precision": 1.0,
+        "recall": 0.2,
+        "macro_road_recall": 0.25276353276353275,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.1,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 12,
+        "low_iou_found": 9,
+        "precision": 0.75,
+        "recall": 0.15,
+        "macro_road_recall": 0.18957264957264955,
+        "benchmark_nonlow_selected": 1,
+        "benchmark_ungradable_selected": 2
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.1,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 12,
+        "low_iou_found": 10,
+        "precision": 0.8333333333333334,
+        "recall": 0.16666666666666666,
+        "macro_road_recall": 0.1786894586894587,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 2
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.1,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 12,
+        "low_iou_found": 12,
+        "precision": 1.0,
+        "recall": 0.2,
+        "macro_road_recall": 0.25276353276353275,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 0
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.1,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 12,
+        "low_iou_found": 5,
+        "precision": 0.4166666666666667,
+        "recall": 0.08333333333333333,
+        "macro_road_recall": 0.09037037037037036,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 7
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.1,
+        "mean": {
+          "budget": 12.0,
+          "low_iou_found": 6.87,
+          "precision": 0.5725,
+          "recall": 0.11450000000000003,
+          "macro_road_recall": 0.11281196581196581
+        },
+        "low_iou_found_range": [
+          3,
+          11
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.2,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 21,
+        "low_iou_found": 10,
+        "precision": 0.47619047619047616,
+        "recall": 0.16666666666666666,
+        "macro_road_recall": 0.1786894586894587,
+        "benchmark_nonlow_selected": 3,
+        "benchmark_ungradable_selected": 8
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.2,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 21,
+        "low_iou_found": 19,
+        "precision": 0.9047619047619048,
+        "recall": 0.31666666666666665,
+        "macro_road_recall": 0.36826210826210826,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 2
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.2,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 21,
+        "low_iou_found": 17,
+        "precision": 0.8095238095238095,
+        "recall": 0.2833333333333333,
+        "macro_road_recall": 0.3421082621082621,
+        "benchmark_nonlow_selected": 1,
+        "benchmark_ungradable_selected": 3
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.2,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 21,
+        "low_iou_found": 18,
+        "precision": 0.8571428571428571,
+        "recall": 0.3,
+        "macro_road_recall": 0.3312250712250712,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 3
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.2,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 21,
+        "low_iou_found": 19,
+        "precision": 0.9047619047619048,
+        "recall": 0.31666666666666665,
+        "macro_road_recall": 0.36826210826210826,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 2
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.2,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 21,
+        "low_iou_found": 8,
+        "precision": 0.38095238095238093,
+        "recall": 0.13333333333333333,
+        "macro_road_recall": 0.1303703703703704,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 13
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.2,
+        "mean": {
+          "budget": 21.0,
+          "low_iou_found": 12.18,
+          "precision": 0.58,
+          "recall": 0.20299999999999996,
+          "macro_road_recall": 0.20309572649572646
+        },
+        "low_iou_found_range": [
+          7,
+          16
+        ]
+      },
+      {
+        "policy": "g1_policy",
+        "fraction": 0.41279226014512227,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 45,
+        "low_iou_found": 22,
+        "precision": 0.4888888888888889,
+        "recall": 0.36666666666666664,
+        "macro_road_recall": 0.38404558404558403,
+        "benchmark_nonlow_selected": 5,
+        "benchmark_ungradable_selected": 18
+      },
+      {
+        "policy": "global_probability",
+        "fraction": 0.41279226014512227,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 45,
+        "low_iou_found": 38,
+        "precision": 0.8444444444444444,
+        "recall": 0.6333333333333333,
+        "macro_road_recall": 0.6886039886039885,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 7
+      },
+      {
+        "policy": "global_probability_audit",
+        "fraction": 0.41279226014512227,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 45,
+        "low_iou_found": 36,
+        "precision": 0.8,
+        "recall": 0.6,
+        "macro_road_recall": 0.6619373219373219,
+        "benchmark_nonlow_selected": 2,
+        "benchmark_ungradable_selected": 7
+      },
+      {
+        "policy": "gp_low_mean",
+        "fraction": 0.41279226014512227,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 45,
+        "low_iou_found": 38,
+        "precision": 0.8444444444444444,
+        "recall": 0.6333333333333333,
+        "macro_road_recall": 0.6886039886039885,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 7
+      },
+      {
+        "policy": "rf_low_mean",
+        "fraction": 0.41279226014512227,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 45,
+        "low_iou_found": 38,
+        "precision": 0.8444444444444444,
+        "recall": 0.6333333333333333,
+        "macro_road_recall": 0.6886039886039885,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 7
+      },
+      {
+        "policy": "sigma_only",
+        "fraction": 0.41279226014512227,
+        "population": 102,
+        "eligible_labels": 69,
+        "positives": 60,
+        "budget": 45,
+        "low_iou_found": 23,
+        "precision": 0.5111111111111111,
+        "recall": 0.38333333333333336,
+        "macro_road_recall": 0.32678062678062675,
+        "benchmark_nonlow_selected": 0,
+        "benchmark_ungradable_selected": 22
+      },
+      {
+        "policy": "random_100_seeds",
+        "fraction": 0.41279226014512227,
+        "mean": {
+          "budget": 45.0,
+          "low_iou_found": 26.22,
+          "precision": 0.5826666666666666,
+          "recall": 0.43700000000000006,
+          "macro_road_recall": 0.4342404558404558
+        },
+        "low_iou_found_range": [
+          21,
+          33
+        ]
+      }
+    ]
+  },
+  "environment_confirmation": [
+    {
+      "cluster": 0,
+      "rows": 48,
+      "roads": 3,
+      "weather": [
+        0
+      ],
+      "hour": [
+        8,
+        13
+      ],
+      "ood_rows": 0,
+      "mean_actual_iou": 0.7719504267996989
+    },
+    {
+      "cluster": 1,
+      "rows": 48,
+      "roads": 3,
+      "weather": [
+        0,
+        1
+      ],
+      "hour": [
+        20
+      ],
+      "ood_rows": 0,
+      "mean_actual_iou": 0.49207650954343957
+    },
+    {
+      "cluster": 2,
+      "rows": 24,
+      "roads": 3,
+      "weather": [
+        2
+      ],
+      "hour": [
+        20
+      ],
+      "ood_rows": 0,
+      "mean_actual_iou": 0.39867907725964274
+    },
+    {
+      "cluster": 3,
+      "rows": 35,
+      "roads": 3,
+      "weather": [
+        1
+      ],
+      "hour": [
+        8,
+        13
+      ],
+      "ood_rows": 0,
+      "mean_actual_iou": 0.7329968714193514
+    },
+    {
+      "cluster": 4,
+      "rows": 0,
+      "roads": 0,
+      "weather": [],
+      "hour": [],
+      "ood_rows": 0,
+      "mean_actual_iou": null
+    },
+    {
+      "cluster": 5,
+      "rows": 48,
+      "roads": 3,
+      "weather": [
+        4,
+        5
+      ],
+      "hour": [
+        20
+      ],
+      "ood_rows": 0,
+      "mean_actual_iou": 0.3810234988929988
+    },
+    {
+      "cluster": 6,
+      "rows": 150,
+      "roads": 3,
+      "weather": [
+        2,
+        4,
+        5
+      ],
+      "hour": [
+        8,
+        13
+      ],
+      "ood_rows": 0,
+      "mean_actual_iou": 0.7501470137648828
+    },
+    {
+      "cluster": 7,
+      "rows": 13,
+      "roads": 1,
+      "weather": [
+        1
+      ],
+      "hour": [
+        8,
+        13
+      ],
+      "ood_rows": 0,
+      "mean_actual_iou": 0.8601505168995557
+    }
+  ],
+  "quality_adoption_gate_passes": false,
+  "limitations": [
+    "IoU<0.7 is a common evaluation benchmark, not operating safety/visibility truth.",
+    "Gaussian intervals are empirical road-calibrated intervals, without OOD coverage guarantee.",
+    "Near/far auxiliary targets use image bands, not metric-distance zones.",
+    "All selected candidates still require verified GT and explicit training admission.",
+    "Review ranks the full RGB population. GT>=100 and union>=100 label support are reported separately after selection; sparse/undefined GT never filters candidates before ranking.",
+    "Quality-fit IDs/pixels are disjoint from perception adaptation, but their geography is often close to new admissions; only heldout/dev/cal have the adaptation geography embargo.",
+    "Stale g0 on f1 is an intentional offline mismatch diagnostic, not a usable deployed pair.",
+    "No feature, policy, or threshold is selected or retuned on heldout."
+  ]
+}

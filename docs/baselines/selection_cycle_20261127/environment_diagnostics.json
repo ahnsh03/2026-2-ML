@@ -1,0 +1,360 @@
+{
+  "assignment": {
+    "candidate_pool": {
+      "rows": 7442,
+      "weather_nmi": 0.49084631385046346,
+      "hour_nmi": 0.5204805745692987,
+      "geography50m_nmi": 0.03202859694645344,
+      "counts": [
+        1151,
+        1207,
+        711,
+        373,
+        545,
+        990,
+        1969,
+        496
+      ]
+    },
+    "development": {
+      "rows": 1620,
+      "weather_nmi": 0.49561754261572405,
+      "hour_nmi": 0.40245868141189617,
+      "geography50m_nmi": 0.04496179000040646,
+      "counts": [
+        183,
+        245,
+        151,
+        26,
+        32,
+        246,
+        578,
+        159
+      ]
+    },
+    "calibration": {
+      "rows": 2232,
+      "weather_nmi": 0.47642544277137533,
+      "hour_nmi": 0.39889519213448166,
+      "geography50m_nmi": 0.04766046929109499,
+      "counts": [
+        258,
+        328,
+        170,
+        149,
+        63,
+        321,
+        773,
+        170
+      ]
+    }
+  },
+  "within_condition": [
+    {
+      "weather": 0,
+      "hour": 6,
+      "rows": 77,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 0,
+      "hour": 8,
+      "rows": 180,
+      "occupied": 3,
+      "largest_fraction": 0.9666666666666667
+    },
+    {
+      "weather": 0,
+      "hour": 11,
+      "rows": 194,
+      "occupied": 3,
+      "largest_fraction": 0.9690721649484536
+    },
+    {
+      "weather": 0,
+      "hour": 13,
+      "rows": 813,
+      "occupied": 3,
+      "largest_fraction": 0.9704797047970479
+    },
+    {
+      "weather": 0,
+      "hour": 17,
+      "rows": 193,
+      "occupied": 2,
+      "largest_fraction": 0.9896373056994818
+    },
+    {
+      "weather": 0,
+      "hour": 18,
+      "rows": 202,
+      "occupied": 2,
+      "largest_fraction": 0.8960396039603961
+    },
+    {
+      "weather": 0,
+      "hour": 20,
+      "rows": 560,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 0,
+      "hour": 22,
+      "rows": 33,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 0,
+      "hour": 23,
+      "rows": 54,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 1,
+      "hour": 8,
+      "rows": 168,
+      "occupied": 2,
+      "largest_fraction": 0.5416666666666666
+    },
+    {
+      "weather": 1,
+      "hour": 13,
+      "rows": 626,
+      "occupied": 2,
+      "largest_fraction": 0.634185303514377
+    },
+    {
+      "weather": 1,
+      "hour": 19,
+      "rows": 50,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 1,
+      "hour": 20,
+      "rows": 214,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 1,
+      "hour": 22,
+      "rows": 38,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 2,
+      "hour": 8,
+      "rows": 110,
+      "occupied": 3,
+      "largest_fraction": 0.8636363636363636
+    },
+    {
+      "weather": 2,
+      "hour": 11,
+      "rows": 190,
+      "occupied": 2,
+      "largest_fraction": 0.9789473684210527
+    },
+    {
+      "weather": 2,
+      "hour": 13,
+      "rows": 403,
+      "occupied": 2,
+      "largest_fraction": 0.9875930521091811
+    },
+    {
+      "weather": 2,
+      "hour": 17,
+      "rows": 197,
+      "occupied": 2,
+      "largest_fraction": 0.9847715736040609
+    },
+    {
+      "weather": 2,
+      "hour": 18,
+      "rows": 197,
+      "occupied": 3,
+      "largest_fraction": 0.8730964467005076
+    },
+    {
+      "weather": 2,
+      "hour": 20,
+      "rows": 488,
+      "occupied": 3,
+      "largest_fraction": 0.9959016393442623
+    },
+    {
+      "weather": 3,
+      "hour": 13,
+      "rows": 213,
+      "occupied": 2,
+      "largest_fraction": 0.9953051643192489
+    },
+    {
+      "weather": 3,
+      "hour": 18,
+      "rows": 79,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 3,
+      "hour": 20,
+      "rows": 261,
+      "occupied": 2,
+      "largest_fraction": 0.9885057471264368
+    },
+    {
+      "weather": 4,
+      "hour": 6,
+      "rows": 17,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 4,
+      "hour": 13,
+      "rows": 475,
+      "occupied": 2,
+      "largest_fraction": 0.9852631578947368
+    },
+    {
+      "weather": 4,
+      "hour": 18,
+      "rows": 186,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 4,
+      "hour": 19,
+      "rows": 30,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 4,
+      "hour": 20,
+      "rows": 207,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 4,
+      "hour": 23,
+      "rows": 80,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    },
+    {
+      "weather": 5,
+      "hour": 8,
+      "rows": 53,
+      "occupied": 2,
+      "largest_fraction": 0.9622641509433962
+    },
+    {
+      "weather": 5,
+      "hour": 13,
+      "rows": 563,
+      "occupied": 2,
+      "largest_fraction": 0.9875666074600356
+    },
+    {
+      "weather": 5,
+      "hour": 18,
+      "rows": 81,
+      "occupied": 2,
+      "largest_fraction": 0.654320987654321
+    },
+    {
+      "weather": 5,
+      "hour": 20,
+      "rows": 210,
+      "occupied": 1,
+      "largest_fraction": 1.0
+    }
+  ],
+  "shared_initialization_comparison": [
+    {
+      "seed": 261126,
+      "results": {
+        "emeans5": {
+          "seconds": 0.014119928993750364,
+          "actual_iterations": 5,
+          "mean_squared_distance": 3.212427643905392,
+          "occupied": 8
+        },
+        "lloyd5": {
+          "seconds": 0.010298727996996604,
+          "actual_iterations": 5,
+          "mean_squared_distance": 3.5153091428640977,
+          "occupied": 8
+        },
+        "lloyd25": {
+          "seconds": 0.0019537299958756194,
+          "actual_iterations": 8,
+          "mean_squared_distance": 3.515083340116282,
+          "occupied": 8
+        }
+      },
+      "emeans5_vs_lloyd25_ari": 0.9363504511881802
+    },
+    {
+      "seed": 261127,
+      "results": {
+        "emeans5": {
+          "seconds": 0.009604646009393036,
+          "actual_iterations": 5,
+          "mean_squared_distance": 3.4700166817435285,
+          "occupied": 8
+        },
+        "lloyd5": {
+          "seconds": 0.0024248139961855486,
+          "actual_iterations": 5,
+          "mean_squared_distance": 4.288859583618049,
+          "occupied": 8
+        },
+        "lloyd25": {
+          "seconds": 0.007160203997045755,
+          "actual_iterations": 19,
+          "mean_squared_distance": 4.195599157258315,
+          "occupied": 8
+        }
+      },
+      "emeans5_vs_lloyd25_ari": 0.8957646897704771
+    },
+    {
+      "seed": 261128,
+      "results": {
+        "emeans5": {
+          "seconds": 0.012272044987184927,
+          "actual_iterations": 5,
+          "mean_squared_distance": 3.4965973262748022,
+          "occupied": 8
+        },
+        "lloyd5": {
+          "seconds": 0.002415296999970451,
+          "actual_iterations": 5,
+          "mean_squared_distance": 3.642257023134363,
+          "occupied": 8
+        },
+        "lloyd25": {
+          "seconds": 0.002498875997844152,
+          "actual_iterations": 11,
+          "mean_squared_distance": 3.5003966530827477,
+          "occupied": 8
+        }
+      },
+      "emeans5_vs_lloyd25_ari": 0.9870278260244763
+    }
+  ],
+  "scope": "Frozen candidate-selected centers only; no recipe or training admissions changed by these diagnostics. Small7442x24/27 CPU problem, not a reproduction of paper-scale speedups. Geography/metadata are diagnostics, never online quality inputs."
+}

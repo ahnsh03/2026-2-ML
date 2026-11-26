@@ -1,0 +1,53 @@
+{
+  "status": "candidate_only_keep_f0_g0",
+  "perception_gate": true,
+  "quality_gate": false,
+  "fixed_review_mix_accepted": false,
+  "candidate_perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "1dab681c3f731caf59b56f8d840518bfe8177047f94550c1baabd72453bbabab",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "ac271a4b790fc97853b143f7f558a0caf7442feaa482ae1665d8eb93e293d79d"
+  },
+  "policy": {
+    "version": "versioned-review-policy-1",
+    "score_family": "probability",
+    "uncertainty_weight": 0.0,
+    "quota_exponent": 1.0,
+    "audit_fraction": 0.1,
+    "model_sha256": "49ce7e0afa765dbb17e06fce1d2cfd651c92cbe4657afbf68435e4e6f419f8a9",
+    "perception_identity": {
+      "schema_version": "ml-perception-identity-1",
+      "kind": "adaptation",
+      "checkpoint_sha256": "1dab681c3f731caf59b56f8d840518bfe8177047f94550c1baabd72453bbabab",
+      "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+      "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+      "adaptation_run_sha256": "ac271a4b790fc97853b143f7f558a0caf7442feaa482ae1665d8eb93e293d79d"
+    },
+    "environment_sha256": "c2ce0665d3d4b4dd48aa2ea549b4e3875541b4c52b4da3664d31693781c8c886",
+    "calibration_sha256": "4c832b3eb725146d066541e9c78ebb941c6c0f15afd799d64d245b000c75d007",
+    "calibration_enabled": false,
+    "absolute_quality_threshold": 0.7,
+    "relative_thresholds_enabled": false,
+    "audit_rounding": "ceil",
+    "selection_population": "Whole supplied archive buffer; uncertainty ranks are computed after inference batches are concatenated.",
+    "scope": "Candidate review priority only; GT verification and admission are separate.",
+    "environment_quotas_enabled": false,
+    "selection_decision": "predeclared_common_probability_audit_fallback"
+  },
+  "runtime_bundle_manifest_sha256": "b04a9113106df93e86ce127c7376a900753fb74347bcbe227b41652f08957f64",
+  "artifact_sha256": {
+    "quality_gp.npz": "49ce7e0afa765dbb17e06fce1d2cfd651c92cbe4657afbf68435e4e6f419f8a9",
+    "quality_rf_portable.npz": "dad7086086747375ac922c1cdff126802e80f03d69fe0968fcfdb19c36beb316",
+    "calibration.json": "4c832b3eb725146d066541e9c78ebb941c6c0f15afd799d64d245b000c75d007",
+    "environment.json": "c2ce0665d3d4b4dd48aa2ea549b4e3875541b4c52b4da3664d31693781c8c886",
+    "policy.json": "abea2bd113c171afb3b2c88c76c044d092dfa0ef40a2c67e00ad4ef42c48a653",
+    "policy_search.json": "916a69f716739e6f874f2dce2b5a5680345a9bd26f5ae3707cab600f0b1dc0a0"
+  },
+  "default_checkpoint_changed": false,
+  "automatic_admission": false,
+  "live_connection_completed": false,
+  "scope": "Offline paired simulator research result. f1-to-f2 cumulative lineage, ROS shadow replay and independent verification remain next units."
+}

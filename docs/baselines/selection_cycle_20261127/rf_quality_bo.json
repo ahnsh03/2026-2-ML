@@ -1,0 +1,209 @@
+{
+  "bo_indices": [
+    0,
+    12,
+    20,
+    26,
+    3,
+    9,
+    18,
+    21
+  ],
+  "bo_losses": [
+    0.07176281308966012,
+    0.07174473914032935,
+    0.07379625426777763,
+    0.07504620874639656,
+    0.07207986039780817,
+    0.07126064104980219,
+    0.07087843171980267,
+    0.07050998216241873
+  ],
+  "random_indices": [
+    0,
+    12,
+    20,
+    26,
+    25,
+    13,
+    18,
+    21
+  ],
+  "random_losses": [
+    0.07176281308966012,
+    0.07174473914032935,
+    0.07379625426777763,
+    0.07504620874639656,
+    0.07386708625195199,
+    0.07343263743508847,
+    0.07087843171980267,
+    0.07050998216241873
+  ],
+  "shared_initial": [
+    0,
+    12,
+    20,
+    26
+  ],
+  "budget_each": 8,
+  "selected_index": 21,
+  "selected_parameters": {
+    "n_estimators": 128,
+    "max_depth": null,
+    "min_samples_leaf": 2,
+    "max_features": 0.5
+  },
+  "trials": {
+    "0": {
+      "parameters": {
+        "n_estimators": 128,
+        "max_depth": 8,
+        "min_samples_leaf": 1,
+        "max_features": 0.5
+      },
+      "fold_mae": [
+        0.07049346503564723,
+        0.057190273745996695,
+        0.08760470048733646
+      ],
+      "objective": 0.07176281308966012,
+      "seconds": 1.2907594209973468
+    },
+    "12": {
+      "parameters": {
+        "n_estimators": 128,
+        "max_depth": 12,
+        "min_samples_leaf": 2,
+        "max_features": 0.5
+      },
+      "fold_mae": [
+        0.07097084201382178,
+        0.05846296650446448,
+        0.0858004089027018
+      ],
+      "objective": 0.07174473914032935,
+      "seconds": 1.4984343989926856
+    },
+    "20": {
+      "parameters": {
+        "n_estimators": 128,
+        "max_depth": null,
+        "min_samples_leaf": 1,
+        "max_features": 1.0
+      },
+      "fold_mae": [
+        0.07275242761041364,
+        0.06178525893828697,
+        0.08685107625463222
+      ],
+      "objective": 0.07379625426777763,
+      "seconds": 3.1303893750009593
+    },
+    "26": {
+      "parameters": {
+        "n_estimators": 128,
+        "max_depth": null,
+        "min_samples_leaf": 4,
+        "max_features": 1.0
+      },
+      "fold_mae": [
+        0.07348462235110745,
+        0.06246578834777166,
+        0.08918821554031056
+      ],
+      "objective": 0.07504620874639656,
+      "seconds": 2.4792922679916956
+    },
+    "3": {
+      "parameters": {
+        "n_estimators": 128,
+        "max_depth": 8,
+        "min_samples_leaf": 2,
+        "max_features": 0.5
+      },
+      "fold_mae": [
+        0.07270312184565461,
+        0.05834943076781834,
+        0.08518702857995156
+      ],
+      "objective": 0.07207986039780817,
+      "seconds": 1.26321921699855
+    },
+    "9": {
+      "parameters": {
+        "n_estimators": 128,
+        "max_depth": 12,
+        "min_samples_leaf": 1,
+        "max_features": 0.5
+      },
+      "fold_mae": [
+        0.06998566320197536,
+        0.056807013478635565,
+        0.08698924646879566
+      ],
+      "objective": 0.07126064104980219,
+      "seconds": 1.5578277159947902
+    },
+    "18": {
+      "parameters": {
+        "n_estimators": 128,
+        "max_depth": null,
+        "min_samples_leaf": 1,
+        "max_features": 0.5
+      },
+      "fold_mae": [
+        0.06939204655286038,
+        0.057315813264641545,
+        0.08592743534190606
+      ],
+      "objective": 0.07087843171980267,
+      "seconds": 1.761953679000726
+    },
+    "21": {
+      "parameters": {
+        "n_estimators": 128,
+        "max_depth": null,
+        "min_samples_leaf": 2,
+        "max_features": 0.5
+      },
+      "fold_mae": [
+        0.06989149891881224,
+        0.05730526801285798,
+        0.08433317955558597
+      ],
+      "objective": 0.07050998216241873,
+      "seconds": 1.5363232910021907
+    },
+    "25": {
+      "parameters": {
+        "n_estimators": 128,
+        "max_depth": null,
+        "min_samples_leaf": 4,
+        "max_features": 0.75
+      },
+      "fold_mae": [
+        0.07292942109359363,
+        0.059922295505927176,
+        0.08874954215633514
+      ],
+      "objective": 0.07386708625195199,
+      "seconds": 1.9562525849905796
+    },
+    "13": {
+      "parameters": {
+        "n_estimators": 128,
+        "max_depth": 12,
+        "min_samples_leaf": 2,
+        "max_features": 0.75
+      },
+      "fold_mae": [
+        0.07301458075630893,
+        0.06028692196056411,
+        0.08699640958839237
+      ],
+      "objective": 0.07343263743508847,
+      "seconds": 2.009611874993425
+    }
+  },
+  "objective": "Primary whole-frame Q macro-road MAE; same2480training rows/base28/folds/25m embargo. RF4 reuses the selected RF parameters. Equal configuration-query budget, not equal CPU time."
+}
