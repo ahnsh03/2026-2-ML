@@ -37,6 +37,7 @@ def main():
     parser.add_argument('--study', type=Path, required=True)
     study = parser.parse_args().study
     plan = json.loads((study / 'protocol/heldout_evaluation_frozen.json').read_text())
+    dev = json.loads((study / 'reports/perception_development_comparison.json').read_text())
     gates = json.loads((study / 'protocol/evaluation_gate_v2_frozen.json').read_text())['perception_adoption']
     records = {}
     baseline_ids = None
@@ -74,14 +75,29 @@ def main():
     for arm in ['QualityRank', 'ClusterBO']:
         paired[arm] = dict(vs_random_confirmation_gain=outcomes[arm]['mean_confirmation_gain'] - outcomes['Random']['mean_confirmation_gain'],
                           vs_replay_confirmation_gain=outcomes[arm]['mean_confirmation_gain'] - outcomes['ReplayOnly']['mean_confirmation_gain'])
+    matched = {}
+    for alpha in [1.,plan['common_coefficient_comparison_alpha']]:
+        group={}
+        for arm in ['Random','QualityRank','ClusterBO','ReplayOnly']:
+            candidates=[r for r in dev['records'] if r['arm']==arm and r.get('alpha',1.)==alpha]
+            assert len(candidates)==2
+            gains=[records[Path(r['run']).name]['confirmation']['macro_road_iou']-baseline['confirmation']['macro_road_iou'] for r in candidates]
+            group[arm]=dict(mean_gain=float(np.mean(gains)),seed_gains=gains,
+                            retention_lane_deltas=[r['metrics']['retention']['lane']-dev['baseline']['retention']['lane'] for r in candidates])
+        matched[str(alpha)]=dict(methods=group,
+            qualityrank_minus_random=group['QualityRank']['mean_gain']-group['Random']['mean_gain'],
+            clusterbo_minus_random=group['ClusterBO']['mean_gain']-group['Random']['mean_gain'],
+            clusterbo_minus_replay=group['ClusterBO']['mean_gain']-group['ReplayOnly']['mean_gain'])
     output = dict(created_utc=datetime.now(timezone.utc).isoformat(),
         primary='confirmation three roads; pixel-GT support >=50 for frame mean, then equal road mean',
         baseline=baseline, fixed_model_metrics=records, development_selected_methods=outcomes,
         selection_comparisons=paired,
+        matched_coefficient_comparisons=matched,
         limitations=['Two optimizer seeds share one fixed admission bank per method.',
                      'Previously opened f0 simulator cohorts are paired heldout diagnostics, not untouched final test.',
                      'Only three primary roads; do not interpret correlated frames as independent repetitions.',
                      'Raw equal-compute endpoints and development-selected common-alpha variants are distinct comparisons.',
+                     'Selection attribution uses the fixed alpha1.0 and0.5 comparisons; separately selected pipelines can use different alpha values.',
                      'Continuation controls isolate optimizer work; no GT threshold or policy is selected on these results.'])
     dump(study / 'reports/perception_heldout_assessment.json', output)
     print(json.dumps(outcomes, indent=2), flush=True)

@@ -26,7 +26,8 @@ def main():
     study = args.study
     requirements = ['reports/control_development_evaluations_complete.json',
                     'reports/interpolation_complete.json',
-                    'g1_quality/bundle/bundle_manifest.json']
+                    'g1_quality/bundle/bundle_manifest.json',
+                    'g1_quality/relative_reference/_SUCCESS']
     while not all((study / path).exists() for path in requirements):
         time.sleep(15)
     subprocess.run([str(args.python),
@@ -45,6 +46,10 @@ def main():
             top = max(v['mean_development_iou'] for v in pool.values())
             near = [k for k, v in pool.items() if v['mean_development_iou'] >= top - .002]
             variant = max(near, key=lambda k: (pool[k]['alpha'], pool[k]['mean_development_iou']))
+            if arm == provisional['selected']['arm']:
+                # The quality refit is tied to this exact earlier choice. Do
+                # not silently choose a different per-arm coefficient later.
+                variant = provisional['selected']['variant']
             chosen[arm] = dict(variant=variant, passing=bool(passing),
                                records=[r for r in records if r['variant'] == variant])
         models = [dict(name='f0', run=None)]
@@ -52,7 +57,9 @@ def main():
         # retention. Common-alpha choices are separately marked derived models.
         raw = [r for r in records if r.get('alpha', 1.) == 1.]
         derived = [r for value in chosen.values() for r in value['records']]
-        for item in raw + derived + [provisional['selected']]:
+        common_alpha = [r for r in records if r.get('alpha', 1.) == .5]
+        assert len(common_alpha) == 8
+        for item in raw + derived + common_alpha + [provisional['selected']]:
             name = Path(item['run']).name
             if name not in {m['name'] for m in models}:
                 models.append(dict(name=name, run=item['run']))
@@ -63,6 +70,7 @@ def main():
              bundle_manifest_sha256=sha(study / 'g1_quality/bundle/bundle_manifest.json'),
              evaluation_manifest_sha256=sha(study / 'protocol/quality_heldout_diagnostic_cached.jsonl'),
              primary='confirmation three roads,366 frames; main and condition shift reported separately',
+             common_coefficient_comparison_alpha=.5,
              selection='All choices fixed on development; heldout cannot tune alpha, features, thresholds, or policy',
              source_sha256=sha(__file__)))
     plan = json.loads(plan_path.read_text())
@@ -99,7 +107,7 @@ def main():
                    '--keys', 'heldout_diagnostic', '--batch-size', '4']
         with (study / 'logs' / (name + '_heldout_packs.log')).open('a') as log:
             subprocess.run(command, cwd=args.repo, stdout=log, stderr=subprocess.STDOUT, check=True)
-    for script in ['assess_perception.py', 'assess_quality.py', 'finalize_pair.py']:
+    for script in ['assess_perception.py', 'assess_quality.py', 'assess_relative_reference.py', 'finalize_pair.py']:
         with (study / 'logs' / script.replace('.py', '.log')).open('a') as log:
             subprocess.run([str(args.python), 'scripts/experiments/selection_cycle_20261126/' + script,
                             '--study', str(study)], cwd=args.repo,
@@ -119,6 +127,10 @@ def main():
                     '--output', str(study / 'figures_cases')]
     with (study / 'logs/figures_cases.log').open('a') as log:
         subprocess.run(case_command, cwd=args.repo, stdout=log, stderr=subprocess.STDOUT, check=True)
+    seal_command=['docker','run','--name','ml-cycle-completion-seal','--rm',*mounts,'ml-perception:rtx50-cu128','python',
+                  'scripts/experiments/selection_cycle_20261126/seal_complete_study.py','--study',str(study),'--checkpoint',baseline]
+    with (study/'logs/complete_study_seal.log').open('a') as log:
+        subprocess.run(seal_command,cwd=args.repo,stdout=log,stderr=subprocess.STDOUT,check=True)
     with (study / 'logs/export_public_evidence.log').open('a') as log:
         subprocess.run([str(args.python), 'scripts/experiments/selection_cycle_20261126/export_public_evidence.py',
                         '--study', str(study), '--output',

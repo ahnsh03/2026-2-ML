@@ -49,6 +49,8 @@ def join_candidates(
             raise ValueError("selected source ID not found")
         source = sources[sid]
         index = lookup[sid]
+        if 'pixel_sha256' in candidate and 'pixel_sha256' in pack and candidate['pixel_sha256']!=str(pack['pixel_sha256'][index]):
+            raise ValueError('source decoded RGB checksum differs')
         if candidate["rgb_sha256"] != source["expected_sha256"]["rgb"]:
             raise ValueError("source RGB checksum differs")
         counts = pack["counts"][index]
@@ -95,6 +97,8 @@ def join_candidates(
                 source_image=source["image"],
                 semantic=source["semantic"],
                 semantic_sha256=source["expected_sha256"]["semantic"],
+                source_context={key:source.get(key) for key in ['adaptation_role','source_role','parent_session_id','site','source_key','xy','weather','hour','simulator_release']},
+                admission_block_reason='reserved_role_cannot_train_in_this_cycle' if source.get('adaptation_role') in ['quality_fit','development','calibration','heldout_diagnostic','retention'] else 'requires_explicit_role_and_training_manifest_review',
                 true_lane_iou=q,
                 iou_defined=q is not None,
                 near_lane_recall=nr,

@@ -21,12 +21,18 @@ class DiagnosticTargetsTest(unittest.TestCase):
     def test_post_gt_taxonomy_requires_near_precision_and_never_certifies_safety(self):
         c=np.zeros((9,3),int);c[6]=[100,0,0];c[4]=[20,0,180]
         flags=gt_review_flags(c,.4)
-        self.assertTrue(flags['near_retained_far_reduced']);self.assertFalse(flags['operating_failure_established'])
+        self.assertTrue(flags['near_retained_far_reduced']);self.assertTrue(flags['benchmark_low_iou']);self.assertFalse(flags['operating_failure_established'])
         c[6,1]=200;flags=gt_review_flags(c,.24)
         self.assertFalse(flags['near_retained_far_reduced']);self.assertTrue(flags['near_false_positive_issue'])
     def test_hallucinated_lane_can_have_precision_support_without_gt_support(self):
         c=np.zeros((9,3),int);c[6]=[0,200,0];flags=gt_review_flags(c,0.)
         self.assertTrue(flags['near_false_positive_issue']);self.assertIsNone(flags['near_omission'])
-        self.assertFalse(flags['valid_for_low_iou_benchmark']);self.assertIsNone(flags['near_precision_and_recall_retained'])
+        self.assertFalse(flags['valid_for_low_iou_benchmark']);self.assertIsNone(flags['benchmark_low_iou']);self.assertIsNone(flags['near_precision_and_recall_retained'])
+        self.assertTrue(flags['valid_for_union_supported_benchmark']);self.assertTrue(flags['union_supported_low_iou'])
+    def test_threshold_uses_exact_counts_rather_than_float32_roundoff(self):
+        c=np.zeros((9,3),int);c[6]=[70,0,30]
+        flags=gt_review_flags(c,np.float32(.7))
+        self.assertFalse(flags['benchmark_low_iou']);self.assertEqual(flags['exact_whole_iou'],.7)
+        with self.assertRaisesRegex(ValueError,'counts differ'):gt_review_flags(c,.6)
 
 if __name__=='__main__':unittest.main()

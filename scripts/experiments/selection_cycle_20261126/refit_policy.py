@@ -61,6 +61,7 @@ def main():
          audit_fraction_floor=.1,audit_rounding='ceil',objective='Mean dev low-IoU recall across roads/environment groups at10% and41.3% budgets, with review-normal cost. Not measured retraining gain.'))
     # Selection is frozen before any heldout data are used.
     shutil.copy2(a.refit/rec['model'],out/'quality_gp.npz');shutil.copy2(a.refit/'calibration.json',out/'calibration.json');shutil.copy2(a.refit/'environment.json',out/'environment.json')
+    shutil.copy2(a.refit/'quality_rf_portable.npz',out/'quality_rf_portable.npz')
     identity=selected['perception_identity'];policy=dict(version='versioned-review-policy-1',**chosen,model_sha256=sha(out/'quality_gp.npz'),perception_identity=identity,
          environment_sha256=sha(out/'environment.json'),calibration_sha256=sha(out/'calibration.json'),calibration_enabled=bool(use_cal),absolute_quality_threshold=.7,relative_thresholds_enabled=False,
          audit_rounding='ceil',selection_population='Whole supplied archive buffer; uncertainty ranks are computed after inference batches are concatenated.',scope='Candidate review priority only; GT verification and admission are separate.')
@@ -68,7 +69,7 @@ def main():
     manifest=dict(version='roi9-versioned-review-bundle-1',profile=selected['profile'],regions_sha256=selected['regions_sha256'],perception_identity=identity,
           perception_weights=selected['perception_weights'],checkpoint_sha256=selected['checkpoint_sha256'],ordered_features=rec['columns'],target_names=rec['targets'],
           quality_development_acceptable_to_rf=selected['gp_development_acceptable_to_rf'],quality_selection_sha256=sha(a.refit/'quality_selection_frozen.json'),
-          artifact_sha256={name:sha(out/name) for name in ['quality_gp.npz','calibration.json','environment.json','policy.json','policy_search.json']},
+          artifact_sha256={name:sha(out/name) for name in ['quality_gp.npz','quality_rf_portable.npz','calibration.json','environment.json','policy.json','policy_search.json']},
           source_sha256=sha(Path(__file__)),scope='Offline prototype; no live ROS, automatic training admission or operating-normality certification.')
     dump(out/'bundle_manifest.json',manifest);print('PACKAGED',chosen,'calibration',use_cal,flush=True)
 if __name__=='__main__':main()

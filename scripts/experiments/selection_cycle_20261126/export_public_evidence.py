@@ -49,9 +49,9 @@ def main():
          baseline_heldout=sanitized_metrics(held['baseline']),
          fixed_models={name: sanitized_metrics(value) for name, value in held['fixed_model_metrics'].items()},
          development_records=records, development_selected_methods=methods,
-         selection_comparisons=held['selection_comparisons'], limitations=held['limitations']))
+         selection_comparisons=held['selection_comparisons'],matched_coefficient_comparisons=held['matched_coefficient_comparisons'],limitations=held['limitations']))
     dump(output / 'quality_comparison.json', {k: quality[k] for k in [
-         'point', 'risk', 'same_road_budget_review', 'environment_confirmation',
+         'point','risk','same_road_budget_review','same_full_population_union_supported_review','environment_confirmation',
          'quality_adoption_gate_passes', 'limitations']})
     dump(output / 'environment_diagnostics.json', read('reports/environment_diagnostics.json'))
     dump(output / 'admission_summary.json', read('reports/admission_summary.json'))
@@ -73,9 +73,14 @@ def main():
          artifact_sha256=model_manifest['artifact_sha256'], default_checkpoint_changed=False,
          automatic_admission=False, live_connection_completed=False, scope=decision['scope']))
     dump(output / 'runtime_verification.json', read('reports/final_runtime_verification.json'))
+    dump(output / 'complete_study_verification.json',read('reports/complete_study_verification_summary.json'))
     search = read('g1_quality/refit/bo_hyperparameters.json')
     dump(output / 'quality_bo.json', search)
+    dump(output / 'rf_quality_bo.json', read('g1_quality/refit/rf_bo_hyperparameters.json'))
     dump(output / 'policy_bo.json', read('g1_quality/bundle/policy_search.json'))
+    dump(output / 'environment_reference_f1.json', dict(
+         development=read('g1_quality/relative_reference/relative_study_frozen.json'),
+         heldout=read('reports/relative_reference_heldout_assessment.json')))
     dump(output / 'acceptance_gates.json', dict(perception_quality=read('protocol/evaluation_gate_v2_frozen.json'),
          review=read('protocol/review_acceptance_frozen.json'),
          interpolation=read('protocol/interpolation_extension_frozen.json')))
@@ -101,19 +106,22 @@ def main():
          training_runs=len(summaries), derived_evaluations=24,
          original_rgb_overlap=read('reports/original_exposure_audit.json'),
          quality_fit_proximity=read('reports/quality_fit_proximity_diagnostic.json'),
+         original_vs_full_registry_rgb_audit=read('reports/original_vs_full_registry_pixel_audit.json'),
+         original_target_parity={k:v for k,v in read('reports/input_and_control_mask_audit.json').items() if k!='verified_pack_keys'},
          scope='Two optimizer seeds share fixed admissions per method; controls use only original train. No new raw capture.'))
     # The exposure audit can carry a local manifest filename: export only its
     # numerical/hash facts, never source filesystem locations.
     budget = json.loads((output / 'training_budget.json').read_text())
     audit = budget['original_rgb_overlap']
     budget['original_rgb_overlap'] = {k: v for k, v in audit.items() if not isinstance(v, (str, list, dict)) or 'sha256' in k}
+    budget['original_rgb_overlap']['candidate_pixel_overlap_count']=len(audit['candidate_pixel_overlap'])
     dump(output / 'training_budget.json', budget)
     pictures = output / 'figures'
     pictures.mkdir(exist_ok=True)
     for folder in ['figures_initial', 'figures_results']:
         for path in sorted((study / folder).glob('*.png')):
             shutil.copy2(path, pictures / path.name)
-    for pattern in ['case_A_largest_gain.png', 'case_C_largest_loss.png', 'case_D_quality_overestimate.png']:
+    for pattern in ['case_A_maximum_change.png','case_C_minimum_change.png','case_D_largest_prediction_error.png']:
         path = study / 'figures_cases' / pattern
         shutil.copy2(path, pictures / pattern)
     # Explicit denylist complements field-level export. Private sample IDs and

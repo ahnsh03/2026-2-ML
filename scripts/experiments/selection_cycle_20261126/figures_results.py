@@ -37,7 +37,7 @@ def main():
             ax.scatter(i + np.array([-.08, .08]), values, color='black', s=20, zorder=5)
     for ax in axes:
         ax.axhline(0, color=GRAY, linewidth=.8)
-        ax.set_xticks(range(4), methods, rotation=16)
+        ax.set_xticks(range(4),[arm+'\n'+r'$\alpha$='+f"{held['development_selected_methods'][arm]['runs'][0]['alpha']:g}" for arm in methods],fontsize=10)
         ax.grid(axis='y', alpha=.15)
     axes[0].set_ylabel('Lane IoU change vs f0')
     axes[0].set_title('Reserved confirmation roads')
@@ -45,7 +45,7 @@ def main():
     axes[1].axhline(-.005, color='#b64643', linestyle='--', label='Retention limit: -0.005')
     axes[1].legend(frameon=False, fontsize=9)
     save(fig, out, '06_retraining_and_retention',
-         'Two optimizer seeds, one admission bank per method. Same training budget; common alpha chosen on development only.')
+         'Two optimizer seeds share admissions. Each method has a development-selected alpha; matched-alpha comparisons are separate.')
 
     fig = canvas('Retention is a constraint: inspect the interpolation trade-off')
     ax = fig.add_axes([.10, .21, .78, .63])
@@ -89,6 +89,8 @@ def main():
          'Same 366 reserved frames; model selection uses development only. Target is one whole-frame IoU, not nine online ROI IoUs.')
 
     fig = canvas('Same-road review budget: retrieval and review cost')
+    adopted='frozen BO mix' if decision['fixed_review_mix_accepted'] else 'common probability + random audit (fixed fallback)'
+    fig.text(.08,.875,'Adopted review: '+adopted,fontsize=12,color=TEAL)
     axes = [fig.add_axes([.08, .22, .38, .61]), fig.add_axes([.57, .22, .37, .61])]
     styles = [('g1_policy', 'Frozen BO mix', TEAL), ('global_probability_audit', 'Common probability + audit', NAVY),
               ('rf_low_mean', 'RF low mean', GOLD), ('random_100_seeds', 'Random (100 seeds)', GRAY)]
@@ -120,6 +122,7 @@ def main():
     for i, value in enumerate(auc):
         if value is not None:
             ax.text(i, value + .025, f'{value:.3f}', ha='center')
+        else:ax.text(i,.03,'N/A\n(single class)',ha='center',fontsize=9)
     ax = fig.add_axes([.58, .23, .35, .58])
     intervals = risk['interval_coverage']
     coverage = [r['coverage_90'] for r in intervals]
@@ -128,10 +131,35 @@ def main():
     labels = ['Whole IoU', 'Near recall', 'Far recall', 'Near F1'][:len(intervals)]
     ax.set_xticks(range(len(intervals)), labels, rotation=15)
     ax.set_ylabel('Empirical interval coverage')
-    ax.set_ylim(0, 1.03)
+    ax.set_ylim(0, 1.2);ax.set_yticks(np.arange(0,1.01,.2))
+    for i,value in enumerate(coverage):
+        if value is not None:ax.text(i,value+.03,f"w90={intervals[i]['mean_width_90']:.2f}",ha='center',fontsize=9)
+        else:ax.text(i,.03,'N/A',ha='center',fontsize=9)
     ax.legend(frameon=False, fontsize=9)
     save(fig, out, '10_uncertainty_and_coverage',
-         'Empirical calibration has no OOD guarantee. Image-band recalls cannot certify low false positives or driving safety.')
+         'w90 is mean interval width in IoU/recall units. Empirical calibration has no OOD guarantee; recall does not certify precision.')
+
+    fig=canvas('Selection comparison with a fixed adaptation coefficient')
+    for j,alpha in enumerate(['1.0','0.5']):
+        ax=fig.add_axes([.08+j*.49,.23,.37,.59]);values=held['matched_coefficient_comparisons'][alpha]['methods']
+        for i,arm in enumerate(methods):
+            gains=np.array(values[arm]['seed_gains']);ax.bar(i,gains.mean(),color=COLORS[arm],width=.65);ax.scatter(i+np.array([-.08,.08]),gains,s=20,color='black',zorder=5)
+        ax.axhline(0,color=GRAY,linewidth=.8);ax.set_xticks(range(4),methods,rotation=16,fontsize=10);ax.set_ylabel('Confirmation macro-road lane IoU gain');ax.set_title(r'$\alpha$='+alpha+' for every method');ax.grid(axis='y',alpha=.15)
+    save(fig,out,'11_matched_selection','Same new-image budget, replay, optimizer steps and coefficient. Raw alpha1 endpoints may fail retention; no heldout tuning.')
+
+    fig=canvas('What does the GP task covariance contribute?')
+    joint=risk['joint_band_diagnostics'];contrast=risk['near_minus_far_recall_contrast']
+    ax=fig.add_axes([.09,.24,.35,.57]);brier=[joint['multiclass_brier'],joint['independent_task_brier']]
+    ax.bar([0,1],[v or 0 for v in brier],color=[TEAL,GRAY]);ax.set_xticks([0,1],['Full task\ncovariance','Independent\ntasks']);ax.set_ylabel('Joint-state Brier score (lower is better)')
+    for i,v in enumerate(brier):
+        if v is not None:ax.text(i,v+.015,f'{v:.4f}',ha='center')
+        else:ax.text(i,.02,'N/A',ha='center')
+    ax=fig.add_axes([.59,.24,.34,.57]);values=[contrast['full_covariance'],contrast['independent_tasks']];width=[v['mean_width_90'] or 0 for v in values]
+    ax.bar([0,1],width,color=[TEAL,GRAY]);ax.set_xticks([0,1],['Full task\ncovariance','Independent\ntasks']);ax.set_ylabel('Mean90%width: near–far recall contrast');ax.set_ylim(0,max(max(width)*1.3,.2))
+    for i,v in enumerate(values):
+        if v['coverage_90'] is not None:ax.text(i,width[i]+max(max(width)*.03,.01),f"coverage={v['coverage_90']:.1%}",ha='center',fontsize=10)
+        else:ax.text(i,.02,'N/A',ha='center')
+    save(fig,out,'12_task_covariance','Ablation keeps means/marginal variances fixed and zeros cross-task covariance. Image-band states are diagnostics, not operating-normality labels.')
 
     source_files = ['reports/perception_development_comparison.json', 'reports/perception_heldout_assessment.json',
                     'reports/quality_heldout_assessment.json', 'reports/g1_heldout_predictions.npz', 'deployment/candidate_pair.json']

@@ -34,3 +34,17 @@ BF16 forward·FP32 loss reduction·고정 BatchNorm 통계·cosine LR·공통 re
 `retrain_streaming`은 체크포인트·optimizer·RNG를 `latest.pt`에 보존한다. 완료된 `checkpoint.pt`는 manifest·정책·회원 목록·소스 해시와 `_SUCCESS`를 함께 제공해야 새 perception identity로 읽을 수 있다. 중간 checkpoint는 배포 모델이 아니다.
 
 학습은 RTX50 CUDA12.8 환경을 사용한다. RTX40 CUDA11.8 환경을 유지한다. e-means/BO는 [별도 CPU 연구 의존성](../../../docker/research/requirements-cpu.txt)을 설치한 환경에서 실행하고, 군집은 NumPy 중심·표준화로 내보내므로 추론에 Faiss가 필요하지 않다.
+
+## 갱신 후 검증 순서
+
+`quality_pipeline_queue.py`는6개 신규자료 학습과 개발 보간 평가가 끝나면 정확한 후보 가중치를 고정한다. 해당 f1으로fit/dev/cal X/y를 다시 만들고 `refit_quality.py`에서GP·RF를 적합한다. 두 모델은같은2,480행·28열·지리fold/25m분리와각8회BO/8회무작위 설정 탐색을 쓴다. GP는Q+근/원recall, RF는주Q의CV오차를목적함수로한다. 쿼리수가같고CPU시간까지같다는뜻은아니다. RF4는고른RF설정을재사용한다. 선택한단일Q RF는pickle없는NumPy모델도내보낸다.
+
+`refit_policy.py`는개발자료의10%/41.3%예산에서점수종류·불확실성혼합·군집할당을16회BO/16회무작위로비교한다. 감사슬롯은`ceil(예산×0.1)`이며우선순위/감사구분과조건부포함확률을기록한다. `versioned_relative_study.py`는같은f1의26R1보정자료로상대참조를다시적합하고별도의근거리precision/recall저하검색을시험한다. 이는기본검수를바꾸거나야간의낮은절대IoU를정상으로재분류하지않는다.
+
+`final_evaluation_queue.py`는전체8학습·24개개발보간·f1/g1정책완료를기다린다. 원시alpha1.0,미리정한공통alpha0.5,개발에서각방법별로고른계수를구분해평가한다. 품질재적합에쓴정확한후보/계수를나중에바꾸지않는다. `assess_quality.py`는GT로후보모집단을필터링하지않고모든RGB를순위화한다. GT≥100과union≥100의정답지원집계는선별후별도로보고한다. 주확인366행은GT최소2,184픽셀로기존지원기준을모두만족한다.
+
+`finalize_pair.py`는고정한원래성능유지·신규도로·짝품질·검수기준으로채택/보류를기록한다. 혼합검수실패시미리정한공통확률+감사로돌아간다. 원래f0체크포인트를덮어쓰지않는다. `verify_final_runtime.py`는GT경로가없는RGB96장→검수12장→원본GT연결을40CPU/50GPU에서검사한다. 예약된자료역할을정답연결후에도남기며자동입학시키지않는다.
+
+`seal_complete_study.py`는고정학습목록,시드내공통replay순서,최종optimizer스냅샷과가중치일치,24개보간의텐서수식일치,모든평가행파일을검증·봉인한다. `figures_results.py`, `export_perception_cases.py`, `export_public_evidence.py`는집계·16:9그림·GT가일치하는향상/최소변화/최대추정오차사례를내보낸다. 개인경로·원본ID·체크포인트는Git공개집계에포함하지않는다.
+
+새재현은빈실험디렉터리와고정된원본등록/가중치볼륨을사용한다. 완료파일과기존연구출력은덮어쓰지않는다. 개발용f1/g1예행검증은최종확인결과와구분한다. 아직f1→f2누적부모계보나실시간ROS연결을구현한것은아니다.

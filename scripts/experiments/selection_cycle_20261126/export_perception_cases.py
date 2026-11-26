@@ -41,9 +41,9 @@ def main():
     gains = after['y'] - before['y']
     remaining = np.flatnonzero(valid).tolist()
     choices = []
-    criteria = [('largest_gain', gains), ('median_gain', -abs(gains - np.nanmedian(gains[valid]))),
-                ('largest_loss', -gains), ('quality_overestimate', predictions['estimated_iou'] - after['y']),
-                ('far_weakness', predictions['Y'][:, 1] - predictions['Y'][:, 2]),
+    criteria = [('maximum_change', gains), ('median_change', -abs(gains - np.nanmedian(gains[valid]))),
+                ('minimum_change', -gains), ('largest_prediction_error', abs(predictions['estimated_iou'] - after['y'])),
+                ('near_far_gap', predictions['Y'][:, 1] - predictions['Y'][:, 2]),
                 ('highest_uncertainty', predictions['quality_epistemic_sd'])]
     for name, score in criteria:
         i = max(remaining, key=lambda j: score[j] if np.isfinite(score[j]) else -np.inf)

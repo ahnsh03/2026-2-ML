@@ -16,7 +16,7 @@ from sklearn.metrics import roc_auc_score
 from quality_estimation.versioned_review import VersionedReview
 from quality_estimation.spatial_gp import SpatialQualityGP
 from quality_estimation.region_feature_views import feature_matrix
-from quality_estimation.diagnostic_targets import auxiliary_targets,gt_review_flags
+from quality_estimation.diagnostic_targets import auxiliary_targets,gt_review_flags,band_diagnostic_probabilities
 from quality_estimation.cluster_review import select_review
 from quality_estimation.spatial_identity import validate_pack_perception
 from quality_estimation.perception_identity import baseline_identity
@@ -40,21 +40,23 @@ def finite_json(value):
 
 
 def point_metrics(predicted, truth, roads):
-    return dict(rows=len(truth), macro_road_mae=np.asarray(macro(abs(predicted - truth), roads)).tolist(),
+    return dict(rows=len(truth),defined_rows_per_target=np.isfinite(truth).sum(0).tolist(),macro_road_mae=np.asarray(macro(abs(predicted-truth),roads)).tolist(),
                 micro_mae=np.nanmean(abs(predicted - truth), axis=0).tolist())
 
 
-def review_metrics(ix, picked, truth, roads):
+def review_metrics(ix, picked, truth, roads,benchmark_eligible=None):
     local = np.isin(ix, picked)
-    positive = truth[ix] < .7
+    eligible=np.isfinite(truth) if benchmark_eligible is None else np.asarray(benchmark_eligible)&np.isfinite(truth)
+    positive = (truth[ix] < .7)&eligible[ix]
     road_recall = [float(local[(roads[ix] == road) & positive].mean()) for road in np.unique(roads[ix])
                    if ((roads[ix] == road) & positive).sum()]
     found = int(positive[local].sum())
-    return dict(population=len(ix), positives=int(positive.sum()), budget=int(local.sum()), low_iou_found=found,
+    return dict(population=len(ix),eligible_labels=int(eligible[ix].sum()),positives=int(positive.sum()),budget=int(local.sum()),low_iou_found=found,
                 precision=float(found / local.sum()) if local.any() else None,
                 recall=float(found / positive.sum()) if positive.any() else None,
                 macro_road_recall=float(np.mean(road_recall)) if road_recall else None,
-                benchmark_nonlow_selected=int((~positive[local]).sum()))
+                benchmark_nonlow_selected=int((eligible[ix][local]&~positive[local]).sum()),
+                benchmark_ungradable_selected=int((~eligible[ix][local]).sum()))
 
 
 def main():
@@ -78,6 +80,9 @@ def main():
     env_x = feature_matrix(pack, schema, review.environment.columns)
     prediction = review.predict(x, env_x)
     truth = auxiliary_targets(pack['counts'], pack['y'])[:, :len(review.target_names)]
+    counts=pack['counts']
+    flags=[gt_review_flags(c,float(q) if np.isfinite(q) else None) for c,q in zip(counts,pack['y'])]
+    truth[:,0]=[np.nan if f['exact_whole_iou'] is None else f['exact_whole_iou'] for f in flags]
     base_gp = SpatialQualityGP.load(study.parent / 'ml_roi9_gp_20261125/frozen_bundle_final/quality_spatial_gp.npz')
     base_columns = base_gp.feature_names_.tolist()
     base_mean, _ = base_gp.predict(feature_matrix(f0, f0_schema, base_columns))
@@ -100,8 +105,6 @@ def main():
     shift = np.char.startswith(sources, 'drive_calibration_shift_')
     main_mask = np.char.startswith(sources, 'drive_test_')
     assert primary.sum() == 366 and main_mask.sum() == 366 and shift.sum() == 102
-    counts = pack['counts']
-    flags = [gt_review_flags(c,float(q) if np.isfinite(q) else None) for c,q in zip(counts,pack['y'])]
     near_defect = np.array([v['near_precision_or_recall_reduced'] is True for v in flags])
     far_only = np.array([v['near_retained_far_reduced'] is True for v in flags])
     gt_pixels = (counts[:, :, 0] + counts[:, :, 2]).sum(1)
@@ -147,6 +150,16 @@ def main():
                      state_counts=np.bincount(states, minlength=4).tolist(),
                      multiclass_brier=float(np.mean(np.sum((band_probability - np.eye(4)[states]) ** 2, axis=1))) if len(states) else None,
                      accuracy=float(np.mean(band_probability.argmax(1) == states)) if len(states) else None)
+        independent_covariance=cov[aux_valid]*np.eye(len(review.target_names))[None]
+        independent_probability=band_diagnostic_probabilities(mean[aux_valid],independent_covariance)
+        joint['independent_task_brier']=float(np.mean(np.sum((independent_probability-np.eye(4)[states])**2,axis=1))) if len(states) else None
+        joint['full_minus_independent_brier']=joint['multiclass_brier']-joint['independent_task_brier'] if len(states) else None
+        delta=truth[aux_valid,1]-truth[aux_valid,2];delta_mean=prediction['near_minus_far_recall_mean'][aux_valid]
+        delta_sd=prediction['near_minus_far_recall_sd'][aux_valid];independent_sd=np.sqrt(np.maximum(cov[aux_valid,1,1]+cov[aux_valid,2,2],1e-12))
+        contrast={}
+        for key,std in [('full_covariance',delta_sd),('independent_tasks',independent_sd)]:
+            contrast[key]=dict(rows=len(delta),coverage_90=float(np.mean(abs(delta-delta_mean)<=1.6448536269514722*std)) if len(delta) else None,
+                               mean_width_90=float(np.mean(3.2897072539029444*std)) if len(delta) else None)
         distinguish = mask & (near_defect | far_only)
         distinguish_y = near_defect[distinguish]
         taxonomy = {key: int(sum(bool(v[key]) for i,v in enumerate(flags) if mask[i])) for key in [
@@ -157,17 +170,20 @@ def main():
              quality_probability_auc=float(roc_auc_score(low, probability)) if len(np.unique(low)) == 2 else None,
              sigma_only_auc=float(roc_auc_score(low, sigma)) if len(np.unique(low)) == 2 else None,
              sigma_quality_spearman=float(spearmanr(sigma, truth[ix, 0]).statistic) if len(ix) and np.ptp(sigma) else None,
-             interval_coverage=coverages, reliability=bins, joint_band_diagnostics=joint,
+             interval_coverage=coverages,reliability=bins,joint_band_diagnostics=joint,near_minus_far_recall_contrast=contrast,
              precision_aware_gt_taxonomy=taxonomy,
              sigma_near_defect_vs_far_only_auc=float(roc_auc_score(distinguish_y,prediction['quality_epistemic_sd'][distinguish])) if len(np.unique(distinguish_y))==2 else None,
              sigma_near_defect_mean=float(prediction['quality_epistemic_sd'][mask&near_defect].mean()) if (mask&near_defect).any() else None,
              sigma_far_only_mean=float(prediction['quality_epistemic_sd'][mask&far_only].mean()) if (mask&far_only).any() else None)
-    review_table = {}
+    review_table = {};union_review_table={}
     selections = {}
     policies = ['g1_policy', 'global_probability', 'global_probability_audit', 'gp_low_mean', 'rf_low_mean', 'sigma_only']
     for cohort_name, mask in [('confirmation', primary), ('main', main_mask), ('condition_shift', shift)]:
-        ix = np.flatnonzero(mask & (gt_pixels >= 100) & np.isfinite(truth[:, 0]))
-        rows = []
+        # GT is never used to remove images before ranking. The two label
+        # support rules are applied only after the same full-population picks.
+        ix = np.flatnonzero(mask)
+        rows = [];union_rows=[]
+        gt_eligible=gt_pixels>=100;union_eligible=counts.sum((1,2))>=100
         for fraction in [.05, .1, .2, 3072 / 7442]:
             for policy in policies:
                 selected = []
@@ -186,21 +202,27 @@ def main():
                         picked = select_review(pack['ids'][local_ix], score[local_ix], np.zeros(len(local_ix), int), budget,
                                                audit_fraction=.1 if policy == 'global_probability_audit' else 0.,audit_rounding=review.policy.get('audit_rounding','floor'))
                     selected.extend(local_ix[picked].tolist())
-                rows.append(dict(policy=policy, fraction=fraction, **review_metrics(ix, selected, truth[:, 0], sites)))
+                rows.append(dict(policy=policy,fraction=fraction,**review_metrics(ix,selected,truth[:,0],sites,gt_eligible)))
+                union_rows.append(dict(policy=policy,fraction=fraction,**review_metrics(ix,selected,truth[:,0],sites,union_eligible)))
                 if cohort_name == 'confirmation' and fraction == .1:
                     selections[policy] = pack['ids'][selected].tolist()
-            random_metrics = []
+            random_metrics = [];union_random=[]
             for seed in range(100):
                 rng = np.random.default_rng(seed)
                 selected = []
                 for road in sorted(set(sites[ix])):
                     local_ix = ix[sites[ix] == road]
                     selected.extend(rng.choice(local_ix, int(np.ceil(len(local_ix) * fraction)), replace=False).tolist())
-                random_metrics.append(review_metrics(ix, selected, truth[:, 0], sites))
+                random_metrics.append(review_metrics(ix,selected,truth[:,0],sites,gt_eligible))
+                union_random.append(review_metrics(ix,selected,truth[:,0],sites,union_eligible))
             rows.append(dict(policy='random_100_seeds', fraction=fraction,
                  mean={key: float(np.mean([m[key] for m in random_metrics])) for key in ['budget', 'low_iou_found', 'precision', 'recall', 'macro_road_recall'] if random_metrics[0][key] is not None},
                  low_iou_found_range=[min(m['low_iou_found'] for m in random_metrics), max(m['low_iou_found'] for m in random_metrics)]))
+            union_rows.append(dict(policy='random_100_seeds',fraction=fraction,
+                 mean={key:float(np.mean([m[key] for m in union_random])) for key in ['budget','low_iou_found','precision','recall','macro_road_recall'] if union_random[0][key] is not None},
+                 low_iou_found_range=[min(m['low_iou_found'] for m in union_random),max(m['low_iou_found'] for m in union_random)]))
         review_table[cohort_name] = rows
+        union_review_table[cohort_name]=union_rows
     environment = []
     for cluster in range(len(review.environment.centers)):
         mask = primary & (prediction['environment_cluster'] == cluster)
@@ -215,12 +237,13 @@ def main():
     quality_pass = bool(frozen['gp_development_acceptable_to_rf'] and primary_gp <= primary_g0 + gates['primary_heldout_mae_increase_tolerance_vs_g0_f0'])
     output = dict(created_utc=datetime.now(timezone.utc).isoformat(),
         model_perception_identity=review.spec['perception_identity'], point=point, risk=risk,
-        same_road_budget_review=review_table, environment_confirmation=environment,
+        same_road_budget_review=review_table,same_full_population_union_supported_review=union_review_table,environment_confirmation=environment,
         quality_adoption_gate_passes=quality_pass, policy=review.policy,
         limitations=['IoU<0.7 is a common evaluation benchmark, not operating safety/visibility truth.',
                      'Gaussian intervals are empirical road-calibrated intervals, without OOD coverage guarantee.',
                      'Near/far auxiliary targets use image bands, not metric-distance zones.',
                      'All selected candidates still require verified GT and explicit training admission.',
+                     'Review ranks the full RGB population. GT>=100 and union>=100 label support are reported separately after selection; sparse/undefined GT never filters candidates before ranking.',
                      'Quality-fit IDs/pixels are disjoint from perception adaptation, but their geography is often close to new admissions; only heldout/dev/cal have the adaptation geography embargo.',
                      'Stale g0 on f1 is an intentional offline mismatch diagnostic, not a usable deployed pair.',
                      'No feature, policy, or threshold is selected or retuned on heldout.'])

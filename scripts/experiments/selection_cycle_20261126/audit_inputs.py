@@ -8,7 +8,7 @@ from quality_estimation.image_io import decoded_pixel_sha256
 from prepare import dump
 
 def main():
- p=argparse.ArgumentParser();p.add_argument('--study',type=Path,required=True);p.add_argument('--original-data',type=Path,required=True);p.add_argument('--original-hashes',action='store_true');a=p.parse_args();S=a.study;D=a.original_data;cv2.setNumThreads(1)
+ p=argparse.ArgumentParser();p.add_argument('--study',type=Path,required=True);p.add_argument('--original-data',type=Path,required=True);p.add_argument('--original-hashes',action='store_true');p.add_argument('--extra-original-manifest',type=Path);p.add_argument('--report-name',default='input_and_mask_audit.json');a=p.parse_args();S=a.study;D=a.original_data;cv2.setNumThreads(1)
  E=S.parent;N=E/'ml_roi9_drive_20261126';art=json.loads((N/'global_registry_v2/pack_artifacts.json').read_text());verified=[]
  for key,v in art.items():
   for field,h in [('artifact','sha256'),('schema','schema_sha256'),('original_index','original_index_sha256')]:
@@ -20,7 +20,10 @@ def main():
   path=version/(split+'.jsonl')
   if sha256_file(path)!=expected[split]:raise ValueError('original f0 exposure manifest changed')
   for row in map(json.loads,path.read_text().splitlines()):source[row['sample_id']]=dict(row,source_split=split)
- cached=[json.loads(s) for s in (S/'protocol/cached_sources.jsonl').read_text().splitlines()];original=[r for r in cached if r['adaptation_role'] in ['replay','retention']]
+ cached=[json.loads(s) for s in (S/'protocol/cached_sources.jsonl').read_text().splitlines()]
+ if a.extra_original_manifest:cached += [json.loads(s) for s in a.extra_original_manifest.read_text().splitlines()]
+ original=[r for r in cached if r['adaptation_role'] in ['replay','retention','replay_replacement']]
+ if len({r['sample_id'] for r in original})!=len(original):raise ValueError('duplicate original audit membership')
  def compare(row):
   source_row=source[row['sample_id']];target=cv2.imread(str(S/'cache'/row['cache_relative']/'targets.png'),cv2.IMREAD_UNCHANGED)
   for j,name in enumerate(['drivable','road_marking']):
@@ -32,7 +35,7 @@ def main():
  with ThreadPoolExecutor(4) as pool:matched=list(pool.map(compare,original))
  report=dict(verified_pack_keys=verified,verified_pack_count=len(verified),original_manifest_sha256=expected,mask_parity_samples=len(matched),
              two_head_targets_bitwise_equal=True,geometric_padding_equal=True,source_files_copied=False)
- dump(S/'reports/input_and_mask_audit.json',report);print('MASK PARITY',len(matched),flush=True)
+ dump(S/'reports'/a.report_name,report);print('MASK PARITY',len(matched),flush=True)
  if a.original_hashes:
   all_rows=list(source.values());path=S/'reports/original_rgb_exposure.jsonl'
   def identify(row):

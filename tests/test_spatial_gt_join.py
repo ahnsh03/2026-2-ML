@@ -76,6 +76,16 @@ class SpatialGTJoinTests(unittest.TestCase):
         self.assertIsNone(row['near_lane_precision'])
         self.assertEqual(row['near_lane_recall'],0.)
 
+    def test_reserved_role_and_decoded_pixels_survive_gt_attachment(self):
+        self.rows[0].update(adaptation_role='heldout_diagnostic',source_role='after_f0_training')
+        self.pack['pixel_sha256']=np.array(['f'*64]);self.candidates[0]['pixel_sha256']='f'*64
+        row=self.join(self.candidates)[0]
+        self.assertEqual(row['source_context']['adaptation_role'],'heldout_diagnostic')
+        self.assertEqual(row['admission_block_reason'],'reserved_role_cannot_train_in_this_cycle')
+        self.assertFalse(row['admission_approved'])
+        self.candidates[0]['pixel_sha256']='e'*64
+        with self.assertRaisesRegex(ValueError,'decoded RGB'):self.join(self.candidates)
+
 
 if __name__ == "__main__":
     unittest.main()

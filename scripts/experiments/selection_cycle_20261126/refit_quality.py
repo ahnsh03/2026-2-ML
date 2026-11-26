@@ -14,6 +14,7 @@ from quality_estimation.diagnostic_targets import auxiliary_targets,FOUR_TARGET_
 from quality_estimation.versioned_calibration import select_road_calibration,apply_road_calibration
 from quality_estimation.bounded_bo import next_expected_improvement
 from quality_estimation.region_environment import export_environment
+from quality_estimation.portable_forest import PortableForest
 from prepare import dump
 sys.path.insert(0,str(Path(__file__).parents[1]/'roi9_gp_20261125'))
 from study import load
@@ -65,8 +66,30 @@ def main():
     best=min(set(history+random),key=lambda i:(trials[i]['objective'],i));params=parameters[best]
     dump(out/'bo_hyperparameters.json',dict(bo_indices=history,bo_losses=losses,random_indices=random,random_losses=random_losses,shared_initial=initial,budget_each=8,
          selected_index=int(best),selected_parameters=params,trials={str(i):r for i,r in trials.items()},scope='Quality-fit geographic CV only; same training rows and25m embargo. BO surrogate is separate from image-quality GP.'))
+    # Refresh the RF comparator too: the same geographic folds and8+8 search
+    # budget prevent a newly tuned GP from facing only old RF parameters.
+    forest_parameters=[dict(n_estimators=128,max_depth=depth,min_samples_leaf=leaf,max_features=fraction)
+                       for depth,leaf,fraction in itertools.product([8,12,None],[1,2,4],[.5,.75,1.])]
+    forest_trials={}
+    def forest_objective(i):
+        if i in forest_trials:return forest_trials[i]['objective']
+        errors=[];started=time.monotonic()
+        for fit,held in splits:
+            forest=RandomForestRegressor(**forest_parameters[i],random_state=261126,n_jobs=2).fit(x[fit],y[fit,0]);prediction=forest.predict(x[held])
+            errors.append(float(macro(abs(prediction-y[held,0]),train['site'][held])))
+        value=float(np.mean(errors));forest_trials[i]=dict(parameters=forest_parameters[i],fold_mae=errors,objective=value,seconds=time.monotonic()-started)
+        dump(out/f'rf_cv_trial_{i:02d}.json',forest_trials[i]);print('RF CV',i,value,flush=True);return value
+    forest_initial=[0,12,20,26];forest_history=[];forest_losses=[]
+    for _ in range(8):
+        i=next_expected_improvement(coordinates,forest_history,forest_losses,forest_initial);forest_history.append(i);forest_losses.append(forest_objective(i))
+    forest_random=forest_initial+np.random.default_rng(261126).permutation([i for i in range(len(forest_parameters)) if i not in forest_initial]).tolist()[:4]
+    forest_random_losses=[forest_objective(int(i)) for i in forest_random]
+    forest_best=min(set(forest_history+forest_random),key=lambda i:(forest_trials[i]['objective'],i));rf_params=forest_parameters[forest_best]
+    dump(out/'rf_bo_hyperparameters.json',dict(bo_indices=forest_history,bo_losses=forest_losses,random_indices=forest_random,random_losses=forest_random_losses,
+         shared_initial=forest_initial,budget_each=8,selected_index=int(forest_best),selected_parameters=rf_params,trials={str(i):r for i,r in forest_trials.items()},
+         objective='Primary whole-frame Q macro-road MAE; same2480training rows/base28/folds/25m embargo. RF4 reuses the selected RF parameters. Equal configuration-query budget, not equal CPU time.'))
     dev=data['development'];primary=np.array([str(s).startswith('drive26_') for s in dev['site']]);assert primary.sum()==361
-    records=[];models={};predictions={};rf_params=parent['tasks']['quality_rf']['parameters']
+    records=[];models={};predictions={}
     for view,columns in views.items():
         tx=feature_matrix(train,schema,columns);dx=feature_matrix(dev,schema,columns)
         for kind in ['GP3','GP4','RFQ','RF4']:
@@ -91,6 +114,10 @@ def main():
     use_four=bool(gp4['development_macro_mae'][0]<=gp3['development_macro_mae'][0]+.002 and gp4['development_macro_mae'][3]<=rf4['development_macro_mae'][3]-.005)
     selected=gp4 if use_four else gp3;chosen=models[(view,selected['kind'])];columns=selected['columns'];n=len(selected['targets']);rfq=rec(view,'RFQ')
     acceptable=bool(selected['development_macro_mae'][0]<=rfq['development_macro_mae'][0]+.005)
+    forest=PortableForest.from_sklearn(models[(view,'RFQ')],columns,dict(profile=schema['profile'],regions_sha256=schema['regions_sha256'],
+          checkpoint_sha256=identity['checkpoint_sha256'],perception_identity=identity,perception_weights=weights,target='whole_frame_lane_iou'))
+    forest.save(out/'quality_rf_portable.npz');forest_values=forest.predict(feature_matrix(dev,schema,columns))
+    forest_parity=float(abs(forest_values-predictions[(view,'RFQ')][0][:,0]).max());assert forest_parity<1e-12
     cal=data['calibration'];cx=feature_matrix(cal,schema,columns);cm,cc=chosen.predict(cx);truth=targets['calibration'][:,:n].copy();counts=cal['counts'];ng=(counts[:,6:8,0]+counts[:,6:8,2]).sum(1);fg=(counts[:,4:6,0]+counts[:,4:6,2]).sum(1)
     truth[ng+fg<100,0]=np.nan;truth[ng<50,1]=np.nan;truth[fg<50,2]=np.nan
     if n==4:truth[ng<50,3]=np.nan
@@ -103,6 +130,7 @@ def main():
         profile=schema['profile'],regions_sha256=schema['regions_sha256'],checkpoint_sha256=identity['checkpoint_sha256'],selected=selected,
         quality_fit_rows=len(train['ids']),development_rows=len(dev['ids']),primary_development_rows=int(primary.sum()),calibration_rows=len(cal['ids']),
         extra_features_adopted=use_extra,near_f1_joint_adopted=use_four,gp_development_acceptable_to_rf=acceptable,rf_comparator=rfq,
+        rf_portable_sha256=sha(out/'quality_rf_portable.npz'),rf_portable_max_abs=forest_parity,
         records=records,index_sha256=sha(a.index),source_sha256=sha(Path(__file__)),heldout_accessed=False)
     dump(out/'quality_selection_frozen.json',context);(out/'_SUCCESS').write_text(sha(out/'quality_selection_frozen.json')+'\n')
     print('QUALITY SELECTED',view,selected['kind'],'GP acceptable',acceptable,flush=True)

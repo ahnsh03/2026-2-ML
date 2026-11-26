@@ -18,7 +18,11 @@ def gt_review_flags(counts,whole_iou,*,quality_threshold=.7,near_threshold=.8,fa
     """
     c=np.asarray(counts)
     if c.shape!=(9,3) or c.dtype.kind not in 'ui' or (c<0).any():raise ValueError('nine-region integer TP/FP/FN counts required')
+    if not all(0<v<1 for v in [quality_threshold,near_threshold,far_recall_threshold]) or not isinstance(minimum_band_pixels,int) or minimum_band_pixels<1:raise ValueError('invalid diagnostic thresholds/support')
     near=c[6:8].sum(0);far=c[4:6].sum(0);whole=c.sum(0)
+    union=int(whole.sum());exact_q=float(whole[0]/union) if union else None
+    defined=whole_iou is not None and np.isfinite(whole_iou)
+    if defined and (exact_q is None or abs(float(whole_iou)-exact_q)>1e-6):raise ValueError('whole IoU and TP/FP/FN counts differ')
     ng,npred=int(near[0]+near[2]),int(near[0]+near[1]);fg=int(far[0]+far[2])
     nr=float(near[0]/ng) if ng else None;precision=float(near[0]/npred) if npred else None;fr=float(far[0]/fg) if fg else None
     recall_low=nr<near_threshold if ng>=minimum_band_pixels else None
@@ -28,7 +32,12 @@ def gt_review_flags(counts,whole_iou,*,quality_threshold=.7,near_threshold=.8,fa
     near_defect=bool(recall_low or precision_low) if near_supported else None
     retained=bool(nr>=near_threshold and precision>=near_threshold) if ng>=minimum_band_pixels and npred>=minimum_band_pixels else None
     supported_whole=int(whole[0]+whole[2])>=2*minimum_band_pixels
+    union_supported=int(whole.sum())>=2*minimum_band_pixels
     return dict(valid_for_low_iou_benchmark=bool(supported_whole and whole_iou is not None and np.isfinite(whole_iou)),
+                exact_whole_iou=exact_q if defined else None,
+                benchmark_low_iou=bool(exact_q<quality_threshold) if supported_whole and defined else None,
+                valid_for_union_supported_benchmark=bool(union_supported and whole_iou is not None and np.isfinite(whole_iou)),
+                union_supported_low_iou=bool(exact_q<quality_threshold) if union_supported and defined else None,
                 near_omission=recall_low,near_false_positive_issue=precision_low,
                 near_precision_or_recall_reduced=near_defect,far_omission=far_low,
                 near_precision_and_recall_retained=retained,

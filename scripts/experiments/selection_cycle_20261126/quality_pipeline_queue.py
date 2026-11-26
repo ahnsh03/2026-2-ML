@@ -25,5 +25,8 @@ def main():
  policy=[str(a.python),'scripts/experiments/selection_cycle_20261126/refit_policy.py','--study',str(S),'--refit',str(out/'refit'),'--packs',str(out/'packs'),'--output',str(out/'bundle')]
  if not (out/'bundle/bundle_manifest.json').exists():
   with (S/'logs/g1_quality_policy.log').open('a') as log:subprocess.run(policy,cwd=a.repo,stdout=log,stderr=subprocess.STDOUT,check=True)
+ relative=[str(a.python),'scripts/experiments/selection_cycle_20261126/versioned_relative_study.py','--packs',str(out/'packs'),'--bundle',str(out/'bundle'),'--output',str(out/'relative_reference')]
+ if not (out/'relative_reference/_SUCCESS').exists():
+  with (S/'logs/g1_relative_reference.log').open('a') as log:subprocess.run(relative,cwd=a.repo,stdout=log,stderr=subprocess.STDOUT,check=True)
  dump(S/'QUALITY_WORK_IN_PROGRESS.json',dict(status='refit_complete_heldout_pending',adaptation_run=str(run),bundle=str(out/'bundle'),updated_utc=datetime.now(timezone.utc).isoformat()))
 if __name__=='__main__':main()
