@@ -52,6 +52,7 @@ def main():
                 result.update(sample_id=item['sample_id'],rgb_sha256=item['sha256'],uses_ground_truth=False,
                               checkpoint_sha256=checkpoint,profile=profile.version,regions_sha256=profile.regions_sha256,
                               perception_identity=identity,perception_weights=model.weights)
+                result['spatial_scope']='Diagnostic probabilities assume sufficient near/far annotation support. Online GT support is unknown; not an automatic failure/admission decision.'
                 if args.save_heads:
                     name=f'{len(results):06d}_heads.npz'
                     np.savez_compressed(args.output/name,marking_class=probabilities[i].argmax(0).astype(np.uint8),head_maps=reduce_heads(drives[i],probabilities[i],item['geometry']))
