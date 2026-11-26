@@ -32,7 +32,10 @@ def assign_environment(data,schema,profile):
 def support(data):return (data['near_gt']>=50)&(data['far_gt']>=50)&np.isfinite(data['Y']).all(1)
 def global_probability(mean,covariance,threshold=.7):
  return ndtr((np.asarray(threshold)-mean[:,0])/np.sqrt(np.maximum(covariance[:,0,0],1e-12)))
-def group_mean(values,roads):return float(np.mean([np.mean(values[roads==g]) for g in np.unique(roads)]))
+def group_mean(values,roads):
+ values=np.asarray(values);roads=np.asarray(roads);valid=np.isfinite(values)
+ if not valid.any():return None
+ return float(np.mean([np.mean(values[(roads==g)&valid]) for g in np.unique(roads[valid])]))
 def probability_metrics(probability,labels,roads):
  valid=labels>=0;p=probability[valid];y=labels[valid];g=roads[valid]
  if not len(y):return dict(rows=0,brier=None,nll=None)
@@ -43,6 +46,8 @@ def marginal_metrics(mean,covariance,data):
  for j,name in enumerate(['IoU','near_recall','far_recall']):
   v=np.isfinite(y[:,j])
   if j:v&=data['near_gt' if j==1 else 'far_gt']>=50
+  if not v.any():
+   result[name]=dict(rows=0,mae=None,coverage90=None,unbounded_width90=None);continue
   error=abs(y[v,j]-mean[v,j]);covered=error<=1.6448536269514722*sd[v,j]
   result[name]=dict(rows=int(v.sum()),mae=group_mean(abs(np.clip(mean[v,j],0,1)-y[v,j]),roads[v]),coverage90=group_mean(covered,roads[v]),unbounded_width90=group_mean(2*1.6448536269514722*sd[v,j],roads[v]))
  return result

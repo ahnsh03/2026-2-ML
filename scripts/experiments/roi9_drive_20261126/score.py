@@ -52,7 +52,7 @@ def main():
  regression={}
  for name,mean in controls.items():
   errors=abs(np.clip(mean,0,1)-data['Y']);errors[data['near_gt']<50,1]=np.nan;errors[data['far_gt']<50,2]=np.nan
-  regression[name]=dict(macro_mae=macro(errors,roads).tolist(),byroad={str(g):np.nanmean(errors[roads==g],axis=0).tolist() for g in np.unique(roads)})
+  regression[name]=dict(macro_mae=[group_mean(errors[:,j],roads) for j in range(3)],byroad={str(g):[group_mean(errors[roads==g,j],roads[roads==g]) for j in range(3)] for g in np.unique(roads)})
  gm,gc,_=apply_moments(raw_mean,raw_cov,prediction['environment'],read(a.calibration/'global_moments_reference.json'))
  spatial={};lowtruth=(data['Y'][:,0]<.7).astype(int)
  for name,m,c,prob,low in [
@@ -60,7 +60,8 @@ def main():
   ('raw_composed',raw_mean,raw_cov,spatial_probabilities(raw_mean,raw_cov),global_probability(raw_mean,raw_cov)),
   ('global_moments',gm,gc,spatial_probabilities(gm,gc),global_probability(gm,gc)),
   ('selected_calibration',prediction['mean'],prediction['covariance'],prediction['spatial'],prediction['global_probability'])]:
-  spatial[name]=dict(marginals=marginal_metrics(m,c,data),spatial=probability_metrics(prob,labels,roads),global_brier=group_mean((low-lowtruth)**2,roads),byroad={str(g):probability_metrics(prob[roads==g],labels[roads==g],roads[roads==g]) for g in np.unique(roads)})
+  defined=np.isfinite(data['Y'][:,0])
+  spatial[name]=dict(marginals=marginal_metrics(m,c,data),spatial=probability_metrics(prob,labels,roads),global_brier=group_mean((low[defined]-lowtruth[defined])**2,roads[defined]),byroad={str(g):probability_metrics(prob[roads==g],labels[roads==g],roads[roads==g]) for g in np.unique(roads)})
  reviewdata=dict(truth=data['Y'],counts=data['counts'],near_gt=data['near_gt'],far_gt=data['far_gt'],roads=roads,ids=data['ids'])
  scores=dict(low_GP_mean=-raw_mean[:,0],low_RF_mean=-rf_mean[:,0],raw_GP_low_probability=global_probability(raw_mean,raw_cov),calibrated_global_probability=prediction['global_probability'],environment_relative=prediction['environment_relative_probability'],spatial_far_only=prediction['spatial'][:,2],frozen_policy=prediction['priority'])
  if 'optimized_rf_q' in extra_arrays:scores['development_selected_RF_mean']=-extra_arrays['optimized_rf_q']
