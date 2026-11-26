@@ -39,6 +39,8 @@ def main():
  assert len(joined)==len(candidates) and not any(r['admission_approved'] for r in joined)
  (a.output/'candidates_with_gt.jsonl').write_text(''.join(json.dumps(r,allow_nan=False)+'\n' for r in joined))
  result=dict(created_utc=datetime.now(timezone.utc).isoformat(),rgb_replay_rows=len(replay),ordered_feature_union=len(columns),replay_cached_feature_maximum_difference=float(np.max(abs(actual-expected))),replay_raw_GP_mean_maximum_difference=raw_error,replay_raw_covariance_maximum_difference=covariance_error,profile40_cpu_rows=len(cpu),profile40_cpu_mean_maximum_difference=mean_error,profile40_cpu_spatial_probability_maximum_difference=spatial_error,profile40_cpu_feature_maximum_difference=feature_error,profile_compatibility_passed=passed,IoU07_prediction_switches=sum((r['raw_mean'][0]<.7)!=(byid[r['sample_id']]['raw_mean'][0]<.7) for r in cpu),GT_joined_candidates=len(joined),admission_approved=0,queue_actual_budget_fraction=queue['actual_budget_fraction'],queue_sha256=sha(n/'rgb_review_queue_v1/run.json'),scope='GT was attached only after RGB-only inference and queue freezing. Session/window queue budget differs from the main per-segment pooled comparison; no40GPU, live ROS or perception-retraining claim.')
+ result['queue_sha256']=sha(queue_path/'run.json')
+ result['cached_vs_RGB_IoU07_prediction_switches']=sum((r['raw_mean'][0]<.7)!=(reference[r['sample_id']][0][0]<.7) for r in replay)
  save(a.output/'summary.json',result);print(json.dumps(result,indent=2),flush=True)
  if not passed:raise SystemExit('Runtime differences exceed predeclared tolerance; artifacts remain for inspection')
 if __name__=='__main__':main()

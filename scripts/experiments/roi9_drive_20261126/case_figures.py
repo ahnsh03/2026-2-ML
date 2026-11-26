@@ -38,7 +38,7 @@ def main():
    axes[j,2].text(.01,-.06,f'IoU GT {qtext} / GP {np.clip(estimate[0],0,1):.3f}; near/far recall GT '+ '/'.join(aux),transform=axes[j,2].transAxes,fontsize=10)
    records.append(dict(id=sid,source_rgb_sha256=sha(rgbfile),source_gt_sha256=sha(gtfile),heads_sha256=sha(a.replay/r['heads_file']),true_targets=[float(v) if np.isfinite(v) else None for v in q],near_far_gt_pixels=[near,far],predicted_raw_targets=estimate))
   fig.suptitle(pair['site']+' | nearby-position day/night moving frames',fontsize=20)
-  fig.text(.02,.025,f"Recorded camera XY difference: {pair['position_difference_m']:.3f} m. Native components: 1280 x 720. Metrics: 640 x 360 evaluation grid.\nEach row has its own GT; conditions are controlled on a new segment. This pair is illustrative, not a general night-failure definition.",fontsize=10)
+  fig.text(.02,.025,f"Recorded Ego XY difference: {pair['position_difference_m']:.3f} m. Native components: 1280 x 720. Metrics: 640 x 360 evaluation grid.\nEach row has its own GT; conditions are controlled on a new segment. This pair is illustrative, not a general night-failure definition.",fontsize=10)
   fig.savefig(a.output/(pair['site']+'_day_night.png'),dpi=160);fig.savefig(a.output/(pair['site']+'_day_night.svg'));plt.close(fig)
  (a.output/'case_provenance.json').write_text(json.dumps(records,indent=2,allow_nan=False)+'\n');print('hash-bound day/night cases',len(records),flush=True)
 if __name__=='__main__':main()

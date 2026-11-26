@@ -23,6 +23,9 @@ from morai.environment.environment_pb2_grpc import EnvironmentStub
 from morai.sensor.sensor_pb2_grpc import SensorStub
 from morai.sensor.sensor_data_save_config_pb2 import SensorDataSaveConfig
 
+SOURCE_BYTES=Path(__file__).read_bytes()
+SOURCE_SHA256=hashlib.sha256(SOURCE_BYTES).hexdigest()
+
 def utc():return datetime.now(timezone.utc).isoformat()
 def message(m):return MessageToDict(m,preserving_proto_field_name=True,including_default_value_fields=True)
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -120,7 +123,9 @@ class Session:
    result=dict(ego=message(s),mode=message(m),weather=message(self.environment.GetWeather(Empty(),timeout=5)),time=message(self.environment.GetTime(Empty(),timeout=5)))
    result['xy_error_m']=math.hypot(s.transform.location.x-initial['ego']['transform']['location']['x'],s.transform.location.y-initial['ego']['transform']['location']['y'])
    result['yaw_error_deg']=(s.transform.rotation.z-initial['ego']['transform']['rotation']['z']+180)%360-180
-   result['speed_mps']=norm(s.global_velocity)
+   result['native_velocity_norm']=norm(s.global_velocity)
+   result['native_velocity_divisor']=float(getattr(self.args,'native_velocity_divisor',3.6))
+   result['speed_mps']=result['native_velocity_norm']/result['native_velocity_divisor']
    result['verified']=result['xy_error_m']<.1 and abs(result['yaw_error_deg'])<.2 and result['speed_mps']<.02 and m.mode==VEHICLE_CONTROL_KEYBOARD and s.vehicle_state.gear_mode==GEAR_MODE_P
   except BaseException as exc:result['error']=repr(exc);result['verified']=False
   return result
@@ -128,15 +133,19 @@ class Session:
 def run_drive(session,route,w,h,args):
  runid=f"{args.prefix}_{route['route_id']}_w{w}_h{h:02d}";dest=args.output/'runs'/runid
  if (dest/'_SUCCESS').exists():
-  summary=json.loads((dest/'summary.json').read_text());assert summary['plan_sha256']==digest(args.plan);return summary
+  summary=json.loads((dest/'summary.json').read_text());assert summary['plan_sha256']==args.plan_sha256
+  assert json.loads((dest/'design.json').read_text())['plan_sha256']==args.plan_sha256
+  return summary
  for prefix in args.reuse_prefix:
   reused=args.output/'runs'/f"{prefix}_{route['route_id']}_w{w}_h{h:02d}"
   if (reused/'_SUCCESS').exists():
-   summary=json.loads((reused/'summary.json').read_text());assert summary['plan_sha256']==digest(args.plan)
+   summary=json.loads((reused/'summary.json').read_text());assert summary['plan_sha256']==args.plan_sha256
+   assert json.loads((reused/'design.json').read_text())['plan_sha256']==args.plan_sha256
    print('reuse completed',summary['run_id'],flush=True);return summary
  dest.mkdir(parents=True,exist_ok=False)
- (dest/'collector_source.py').write_bytes(Path(__file__).read_bytes())
- save(dest/'design.json',dict(created_utc=utc(),source_sha256=digest(dest/'collector_source.py'),plan_sha256=digest(args.plan),route=route,weather=w,hour=h,target_kph=args.target_kph,capture_interval_s=args.capture_interval,steering_range_deg=args.steering_range_deg,native_velocity_divisor=args.native_velocity_divisor,transport='WindowsUDP26R1+watchdog' if args.udp_relay else 'native_gRPC',scope='Actual moving capture. Camera exposure timestamps unavailable; request and per-file readbacks retained. UDP state timestamp is vehicle telemetry, not camera exposure. Direct ROS and UDP collision feedback are not tested.'))
+ (dest/'collector_source.py').write_bytes(SOURCE_BYTES)
+ (dest/'plan_snapshot.json').write_bytes(args.plan_snapshot_bytes)
+ save(dest/'design.json',dict(created_utc=utc(),source_sha256=digest(dest/'collector_source.py'),plan_sha256=args.plan_sha256,route=route,weather=w,hour=h,target_kph=args.target_kph,capture_interval_s=args.capture_interval,steering_range_deg=args.steering_range_deg,native_velocity_divisor=args.native_velocity_divisor,transport='WindowsUDP26R1+watchdog' if args.udp_relay else 'native_gRPC',scope='Actual moving capture. Camera exposure timestamps unavailable; request and per-file readbacks retained. UDP state timestamp is vehicle telemetry, not camera exposure. Direct ROS and UDP collision feedback are not tested.'))
  save(dest/'condition_receipt.json',session.set_condition(w,h));s0=session.place(route['start_pose']);save(dest/'before.json',message(s0))
  points=np.asarray(route['points']);_,_,stations=geometry(points,[s0.transform.location.x,s0.transform.location.y])
  session.mode(VEHICLE_CONTROL_AUTO_MODE);session.gear(GEAR_MODE_D)
@@ -198,7 +207,7 @@ def run_drive(session,route,w,h,args):
  if not rows:raise RuntimeError('no complete moving samples')
  env=session.environment
  assert env.GetWeather(Empty(),timeout=5).type==w and env.GetTime(Empty(),timeout=5).hour==h
- summary=dict(run_id=runid,role=route['role'],route_id=route['route_id'],requested_link=route['link'],weather=w,hour=h,frames=len(rows),rejected=incomplete,control_rows=len(controls),duration_s=time.monotonic()-started,maximum_cte_m=max(r['cte_m'] for r in controls),maximum_speed_mps=max(r['speed_mps'] for r in controls),start_station_m=controls[0]['station_m'],last_station_m=controls[-1]['station_m'],end_reason=end_reason,plan_sha256=digest(args.plan),source_sha256=digest(Path(__file__)))
+ summary=dict(run_id=runid,role=route['role'],route_id=route['route_id'],requested_link=route['link'],weather=w,hour=h,frames=len(rows),rejected=incomplete,control_rows=len(controls),duration_s=time.monotonic()-started,maximum_cte_m=max(r['cte_m'] for r in controls),maximum_speed_mps=max(r['speed_mps'] for r in controls),start_station_m=controls[0]['station_m'],last_station_m=controls[-1]['station_m'],end_reason=end_reason,plan_sha256=args.plan_sha256,source_sha256=SOURCE_SHA256)
  save(dest/'index.json',{runid:dict(simulator_release='26.R1',rows=rows)});save(dest/'summary.json',summary);(dest/'_SUCCESS').write_text(utc()+'\n');print(json.dumps(summary),flush=True);return summary
 
 def main():
@@ -208,6 +217,7 @@ def main():
  p.add_argument('--reuse-prefix',nargs='*',default=[])
  p.add_argument('--udp-relay',type=Path);p.add_argument('--max-new-runs',type=int,default=0)
  a=p.parse_args();assert 0<a.target_kph<=5 and .8<=a.capture_interval<=4 and 10<=a.steering_range_deg<=45
+ a.plan_snapshot_bytes=a.plan.read_bytes();a.plan_sha256=hashlib.sha256(a.plan_snapshot_bytes).hexdigest()
  a.output.mkdir(parents=True,exist_ok=True);(a.output/'runs').mkdir(exist_ok=True)
  session=Session(a);weather=session.environment.GetWeather(Empty(),timeout=5);initial=dict(utc=utc(),ego=message(session.state()),mode=message(session.actor.GetVehicleControlMode(session.ego,timeout=5)),weather=message(weather),weather_type=weather.type,time=message(session.environment.GetTime(Empty(),timeout=5)))
  actors=session.actor.GetAllActorsState(GetAllActorsFilter(vehicle=True,pedestrian=True,obstacle=True),timeout=5)
@@ -218,7 +228,7 @@ def main():
  completed=[];failure=None;new_runs=0
  try:
   check(session.actor.SetPause(EnableActor(actor_info=session.ego,enable=False),timeout=5))
-  plan=json.loads(a.plan.read_text())
+  plan=json.loads(a.plan_snapshot_bytes)
   for route in plan['routes']:
    if a.routes and route['route_id'] not in a.routes:continue
    if a.roles and route['role'] not in a.roles:continue

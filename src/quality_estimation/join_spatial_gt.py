@@ -111,7 +111,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     for key in ("queue-dir", "packs", "source-index", "output-dir"):
         ap.add_argument("--" + key, type=Path, required=True)
-    ap.add_argument("--key", required=True)
+    source_choice=ap.add_mutually_exclusive_group(required=True)
+    source_choice.add_argument("--key")
+    source_choice.add_argument("--all-keys",action="store_true")
+    ap.add_argument("--data-root",type=Path,help="Verify selected original RGB/Semantic bytes when available")
     a = ap.parse_args()
     run = json.loads((a.queue_dir / "run.json").read_text())
     candidates_path = a.queue_dir / "candidates.jsonl"
@@ -126,30 +129,31 @@ def main():
         for line in candidates_path.read_text().splitlines()
         if line.strip()
     ]
-    pack_path = a.packs / (a.key + ".npz")
-    receipt = json.loads(pack_path.with_suffix(".json").read_text())
     schema_path = a.packs / "schema.json"
     schema = json.loads(schema_path.read_text())
-    if (
-        sha(pack_path) != receipt["sha256"]
-        or sha(schema_path) != receipt["schema_sha256"]
-        or sha(a.source_index) != receipt["index_sha256"]
-    ):
-        raise ValueError("GT pack provenance differs")
-    source = json.loads(a.source_index.read_text())[a.key]["rows"]
-    with np.load(pack_path, allow_pickle=False) as pack:
-        if pack["ids"].tolist() != [r["sample_id"] for r in source]:
-            raise ValueError("GT/source row order differs")
-        joined = join_candidates(
-            candidates,
-            pack,
-            source,
-            checkpoint_sha256=receipt["checkpoint_sha256"],
-            profile=schema["profile"],
-            regions_sha256=schema["regions_sha256"],
-            perception_identity=receipt.get("perception_identity"),
-            perception_weights=receipt.get("perception_weights"),
-        )
+    index=json.loads(a.source_index.read_text());selected_ids={r['sample_id'] for r in candidates}
+    keys=[a.key] if a.key else [key for key,value in index.items() if any(r['sample_id'] in selected_ids for r in value['rows'])]
+    if not keys:raise ValueError('no selected source packs')
+    chunks={key:[] for key in ['ids','counts','y']};source=[];receipt=None;source_digests={}
+    for key in keys:
+        if Path(key).name!=key:raise ValueError('pack key must be a basename')
+        pack_path=a.packs/(key+'.npz');current=json.loads(pack_path.with_suffix('.json').read_text())
+        if sha(pack_path)!=current['sha256'] or sha(schema_path)!=current['schema_sha256'] or sha(a.source_index)!=current['index_sha256']:
+            raise ValueError('GT pack provenance differs')
+        if receipt is not None and any(current.get(field)!=receipt.get(field) for field in ['checkpoint_sha256','perception_identity','perception_weights']):
+            raise ValueError('GT packs belong to different perception versions')
+        receipt=current;rows=index[key]['rows'];source.extend(rows);source_digests[key]=sha(pack_path)
+        with np.load(pack_path,allow_pickle=False) as pack:
+            if pack['ids'].tolist()!=[r['sample_id'] for r in rows]:raise ValueError('GT/source row order differs')
+            for field in chunks:chunks[field].append(pack[field].copy())
+    pack={key:np.concatenate(value) for key,value in chunks.items()}
+    if a.data_root:
+        for row in source:
+            if row['sample_id'] not in selected_ids:continue
+            for field,digest_key in [('image','rgb'),('semantic','semantic')]:
+                path=(a.data_root/row[field]).resolve();path.relative_to(a.data_root.resolve())
+                if sha(path)!=row['expected_sha256'][digest_key]:raise ValueError('selected original RGB/Semantic checksum differs')
+    joined=join_candidates(candidates,pack,source,checkpoint_sha256=receipt['checkpoint_sha256'],profile=schema['profile'],regions_sha256=schema['regions_sha256'],perception_identity=receipt.get('perception_identity'),perception_weights=receipt.get('perception_weights'))
     a.output_dir.mkdir(parents=True, exist_ok=False)
     out = a.output_dir / "gt_review.jsonl"
     out.write_text("".join(json.dumps(row, allow_nan=False) + "\n" for row in joined))
@@ -159,7 +163,9 @@ def main():
         stage="offline_after_candidate_selection",
         rows=len(joined),
         queue_run_sha256=sha(a.queue_dir / "run.json"),
-        source_pack_sha256=sha(pack_path),
+        source_pack_sha256=next(iter(source_digests.values())) if len(source_digests)==1 else None,
+        source_packs_sha256=source_digests,
+        selected_original_bytes_verified=bool(a.data_root),
         source_index_sha256=sha(a.source_index),
         gt_review_sha256=sha(out),
         admission_approved=False,
