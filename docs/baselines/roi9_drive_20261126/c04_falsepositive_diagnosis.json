@@ -1,0 +1,60 @@
+{
+  "sample_id": "udp_main_confirm_e001_confirm26_c04_w0_h13_f0012",
+  "ROI_counts": {
+    "upper_top_left": {
+      "TP": 0,
+      "FP": 0,
+      "FN": 0,
+      "GT": 0
+    },
+    "upper_top_right": {
+      "TP": 0,
+      "FP": 0,
+      "FN": 0,
+      "GT": 0
+    },
+    "upper_bottom_left": {
+      "TP": 0,
+      "FP": 0,
+      "FN": 0,
+      "GT": 0
+    },
+    "upper_bottom_right": {
+      "TP": 0,
+      "FP": 0,
+      "FN": 0,
+      "GT": 0
+    },
+    "far_left": {
+      "TP": 131,
+      "FP": 32,
+      "FN": 198,
+      "GT": 329
+    },
+    "far_right": {
+      "TP": 295,
+      "FP": 15,
+      "FN": 530,
+      "GT": 825
+    },
+    "near_left": {
+      "TP": 1536,
+      "FP": 2475,
+      "FN": 119,
+      "GT": 1655
+    },
+    "near_right": {
+      "TP": 608,
+      "FP": 15,
+      "FN": 44,
+      "GT": 652
+    },
+    "hood": {
+      "TP": 0,
+      "FP": 0,
+      "FN": 0,
+      "GT": 0
+    }
+  },
+  "scope": "Post-evaluation annotation-support diagnosis of a predetermined day/night figure. No fitting or model/feature selection; not ROI IoU input to runtime."
+}

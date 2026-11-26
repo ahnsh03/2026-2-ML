@@ -1,0 +1,43 @@
+{
+  "unit_tests": {
+    "rtx40_container_CPU": 226,
+    "rtx50_container_CPU": 226,
+    "actual_rtx40_GPU_tested": false,
+    "rtx50_GPU_RGB_inference_tested": true
+  },
+  "log_sha256": {
+    "tests_rtx40-cu118_precision_final.log": "47bde58474aeba00e8182101869bee06b68d3d2f746b71c6533150360ed0d01a",
+    "tests_rtx50-cu128_precision_final.log": "40a4f68b20ff94ba43f2f72b4059161785a20d2f276c2792a9171e9dfdae780c"
+  },
+  "GT_cli_candidates": 45,
+  "raw_channel_hashes_verified": 22164,
+  "restored_keyboard_Park_Sunny13": true,
+  "GT_review_precision_added": true,
+  "bundle_v2_final_verified": true,
+  "registry_guard_revalidation": {
+    "completed_runs": 45,
+    "full_rows": 1051,
+    "thinned_rows": 366,
+    "original_indices_bitwise_unchanged": true,
+    "all_start_end_source_bindings_match": true,
+    "design_plan_binding_enforced": true,
+    "optional_saved_plan_snapshot_binding_enforced": true,
+    "source_sha256": "c4208b37a1983d3332f36fa6cc57522bba6c70790cc3da397cd8abb50911b345"
+  },
+  "preserved_existing_JSON_artifacts": [
+    "quality_contract_v1.json",
+    "roi_profile_template.json",
+    "medium_baseline_evidence.json",
+    "medium_v6_baseline_evidence.json",
+    "reference_repos.lock.json",
+    "port_inventory_v1.json"
+  ],
+  "new_documentation_link_failures": 0,
+  "public_private_path_findings": 0,
+  "portable_copied_bundle_RGB8": {
+    "rows": 8,
+    "maximum_raw_mean_difference": 2.6357260733966825e-06,
+    "maximum_spatial_probability_difference": 7.666681278717391e-08,
+    "scope": "Copied bundle+RGB8 only; original study/raw roots not mounted. Perception checkpoint and matching repository code supplied separately.50GPU only;40-profile CPU compatibility tested separately."
+  }
+}
