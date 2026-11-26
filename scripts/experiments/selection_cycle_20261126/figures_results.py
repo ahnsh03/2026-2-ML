@@ -86,11 +86,11 @@ def main():
         value = quality['point']['confirmation']['g1_gp' if label.endswith('GP') else 'g1_rf']['macro_road_mae'][0]
         ax.set_title(f'{label} | road MAE {value:.4f}')
     save(fig, out, '08_quality_gp_rf',
-         'Same 366 reserved frames; model selection uses development only. Target is one whole-frame IoU, not nine online ROI IoUs.')
+         'Candidate pair held: quality MAE gate failed. Same 366 frames; one whole-frame IoU target; development-only selection.')
 
     fig = canvas('Same-road review budget: retrieval and review cost')
     adopted='frozen BO mix' if decision['fixed_review_mix_accepted'] else 'common probability + random audit (fixed fallback)'
-    fig.text(.08,.875,'Adopted review: '+adopted,fontsize=12,color=TEAL)
+    fig.text(.08,.875,'Candidate review: '+adopted,fontsize=12,color=TEAL)
     axes = [fig.add_axes([.08, .22, .38, .61]), fig.add_axes([.57, .22, .37, .61])]
     styles = [('g1_policy', 'Frozen BO mix', TEAL), ('global_probability_audit', 'Common probability + audit', NAVY),
               ('rf_low_mean', 'RF low mean', GOLD), ('random_100_seeds', 'Random (100 seeds)', GRAY)]
@@ -111,7 +111,7 @@ def main():
          'Absolute benchmark IoU < 0.7; per-road ceil budgets. Benchmark-nonlow does not mean operationally safe.')
 
     risk = quality['risk']['confirmation']
-    fig = canvas('Uncertainty supports review; it is not a failure-type label')
+    fig = canvas('Uncertainty diagnostics: ranking, intervals, and failure types')
     ax = fig.add_axes([.08, .23, .36, .58])
     auc = [risk['quality_probability_auc'], risk['sigma_only_auc']]
     ax.bar([0, 1], [v if v is not None else 0 for v in auc], color=[TEAL, GOLD])
@@ -150,12 +150,12 @@ def main():
     fig=canvas('What does the GP task covariance contribute?')
     joint=risk['joint_band_diagnostics'];contrast=risk['near_minus_far_recall_contrast']
     ax=fig.add_axes([.09,.24,.35,.57]);brier=[joint['multiclass_brier'],joint['independent_task_brier']]
-    ax.bar([0,1],[v or 0 for v in brier],color=[TEAL,GRAY]);ax.set_xticks([0,1],['Full task\ncovariance','Independent\ntasks']);ax.set_ylabel('Joint-state Brier score (lower is better)')
+    ax.bar([0,1],[v or 0 for v in brier],color=[TEAL,GRAY]);ax.set_xticks([0,1],['Full task\ncovariance','Cross terms\nzeroed']);ax.set_ylabel('Joint-state Brier score (lower is better)')
     for i,v in enumerate(brier):
         if v is not None:ax.text(i,v+.015,f'{v:.4f}',ha='center')
         else:ax.text(i,.02,'N/A',ha='center')
     ax=fig.add_axes([.59,.24,.34,.57]);values=[contrast['full_covariance'],contrast['independent_tasks']];width=[v['mean_width_90'] or 0 for v in values]
-    ax.bar([0,1],width,color=[TEAL,GRAY]);ax.set_xticks([0,1],['Full task\ncovariance','Independent\ntasks']);ax.set_ylabel('Mean90%width: near–far recall contrast');ax.set_ylim(0,max(max(width)*1.3,.2))
+    ax.bar([0,1],width,color=[TEAL,GRAY]);ax.set_xticks([0,1],['Full task\ncovariance','Cross terms\nzeroed']);ax.set_ylabel('Mean90%width: near–far recall contrast');ax.set_ylim(0,max(max(width)*1.3,.2))
     for i,v in enumerate(values):
         if v['coverage_90'] is not None:ax.text(i,width[i]+max(max(width)*.03,.01),f"coverage={v['coverage_90']:.1%}",ha='center',fontsize=10)
         else:ax.text(i,.02,'N/A',ha='center')

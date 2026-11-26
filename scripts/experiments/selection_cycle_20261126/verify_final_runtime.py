@@ -32,7 +32,8 @@ def main():
     run = study / decision['candidate_perception_run']
     bundle = study / decision['candidate_review_bundle']
     review=VersionedReview(bundle)
-    index = json.loads((study / 'protocol/quality_index_frozen.json').read_text())[args.source_role]['rows']
+    source_part = json.loads((study / 'protocol/quality_index_frozen.json').read_text())[args.source_role]
+    index = source_part['rows']
     prefix='drive_confirmation_test_' if args.source_role=='heldout_diagnostic' else 'drive_development_'
     rows = []
     for site in sorted({r['site'] for r in index if r['source_key'].startswith(prefix)}):
@@ -67,12 +68,43 @@ def main():
     lookup = {sid: i for i, sid in enumerate(pack['ids'])}
     indices = [lookup[sid] for sid in gpu['ids']]
     expected = feature_matrix(pack, schema, gpu['ordered_features'].tolist())[indices]
-    parity = float(abs(gpu['X'] - expected).max())
+    archive_batch_drift = float(abs(gpu['X'] - expected).max())
+    # cuDNN is deterministic for a fixed batch, not necessarily bit-identical
+    # when the same frame moves to another batch. A near-tied argmax pixel can
+    # change a hard occupancy feature. Isolate extraction parity using the exact
+    # same 96-row order/batch composition, and report original-archive drift
+    # separately without altering any frozen training/evaluation pack.
+    matched_index = study / 'protocol/g1_runtime96_matched_index_v2.json'
+    matched_part = dict(source_part, rows=rows)
+    dump(matched_index, dict(runtime96=matched_part))
+    matched_packs = root / 'g1_rgb96_matched_packs_v2'
+    command = ['docker', 'run', '--rm', '--gpus', 'all', '--shm-size', '1g',
+               *mounts, 'ml-perception:rtx50-cu128', 'python',
+               'scripts/experiments/roi9_gp_20261125/extract.py',
+               '--index', str(matched_index), '--data-root', '/mnt',
+               '--adaptation-run', str(run), '--output', str(matched_packs),
+               '--keys', 'runtime96', '--batch-size', '4']
+    with (study / 'logs/verify_rgb96_matched_pack.log').open('a') as log:
+        subprocess.run(command, cwd=args.repo, stdout=log, stderr=subprocess.STDOUT, check=True)
+    matched, matched_schema = load(matched_packs, ['runtime96'])
+    assert np.array_equal(matched['ids'], gpu['ids'])
+    same_batch = feature_matrix(matched, matched_schema, gpu['ordered_features'].tolist())
+    parity = float(abs(gpu['X'] - same_batch).max())
     cross = float(abs(gpu['X'] - cpu['X']).max())
     assert parity < 1e-5, 'RGB-only extraction differs from version-matched X/y pack'
+    rgb_columns = [j for j, name in enumerate(gpu['ordered_features']) if name in schema['rgb']]
+    rgb_archive_drift = float(abs(gpu['X'][:, rgb_columns] - expected[:, rgb_columns]).max())
+    assert rgb_archive_drift < 1e-7, 'RGB statistics differ between archive and replay'
+    columns = gpu['ordered_features'].tolist()
+    archive_prediction = review.predict(
+        expected[:, [columns.index(name) for name in review.columns]],
+        expected[:, [columns.index(name) for name in review.environment.columns]])
     gp_rows = [json.loads(line) for line in (gpu_root / 'predictions.jsonl').read_text().splitlines()]
     cp_rows = [json.loads(line) for line in (cpu_root / 'predictions.jsonl').read_text().splitlines()]
     mean_delta = max(abs(g['estimated_iou'] - c['estimated_iou']) for g, c in zip(gp_rows, cp_rows))
+    archive_mean_delta = float(max(abs(g['estimated_iou'] - p) for g, p in
+                                   zip(gp_rows, archive_prediction['estimated_iou'])))
+    assert archive_mean_delta < .001, 'batch-composition drift changes quality predictions materially'
     assert mean_delta < .001, 'cross-profile quality predictions differ materially'
     assert all(not r['uses_ground_truth'] and not r['admission_approved'] for r in gp_rows + cp_rows)
     candidates = [json.loads(line) for line in (gpu_root / 'candidates.jsonl').read_text().splitlines()]
@@ -121,6 +153,10 @@ np.save(sys.argv[3],f.predict(x))
          completed_utc=datetime.now(timezone.utc).isoformat(), evaluation_role=args.source_role,rows=96, selected=len(candidates),
          audit_slots=len(audit), feature_columns=len(gpu['ordered_features']),
          rgb_only_vs_matched_pack_max_abs=parity, cross_profile_features_max_abs=cross,
+         matched_pack_rows=96, matched_pack_uses_identical_batch_composition=True,
+         original_archive_batch_feature_max_abs=archive_batch_drift,
+         original_archive_batch_rgb_max_abs=rgb_archive_drift,
+         original_archive_batch_iou_prediction_max_abs=archive_mean_delta,
          cross_profile_iou_prediction_max_abs=mean_delta,
          portable_rf_cross_profile_max_abs=forest_deltas,
          uses_ground_truth_for_inference=False, intentionally_unavailable_gt_ignored=True,

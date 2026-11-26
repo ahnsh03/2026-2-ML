@@ -85,12 +85,15 @@ def main():
             ax.imshow(panel)
             ax.set_title(title, fontsize=12, color=NAVY)
             ax.axis('off')
+        fig.text(.04, .07, f'GT image-band recall: near {predictions["Y"][index, 1]:.3f} | far {predictions["Y"][index, 2]:.3f} | GP epistemic sigma(Q) {predictions["quality_epistemic_sd"][index]:.3f}', fontsize=10, color=NAVY)
         fig.text(.04, .035, 'Same RGB and verified GT. White/yellow union metric; stop lines shown in pink but excluded from lane IoU.', fontsize=9, color=GRAY)
         fig.savefig(output / (tag + '.png'), dpi=160)
         plt.close(fig)
         sources.append(dict(case=tag, selection_reason=reason, sample_id=rows[index]['sample_id'],
                             source_rgb_sha256=rows[index]['expected_sha256']['rgb'],
                             old_iou=iou(old), new_iou=iou(new), estimated_iou=float(predictions['estimated_iou'][index]),
+                            near_recall=float(predictions['Y'][index, 1]), far_recall=float(predictions['Y'][index, 2]),
+                            quality_epistemic_sd=float(predictions['quality_epistemic_sd'][index]),
                             network_grid='640x360 after removing letterbox padding; all panels 16:9',
                             perception_identity=identity))
     (output / 'figure_sources_private.json').write_text(json.dumps(sources, indent=2) + '\n')
