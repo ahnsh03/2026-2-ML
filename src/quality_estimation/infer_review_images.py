@@ -20,7 +20,8 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ['manifest','data-root','feature-study','calibration','policy','checkpoint','output']:
         parser.add_argument('--'+name,type=Path,required=True)
-    parser.add_argument('--device',default='cuda');args=parser.parse_args()
+    parser.add_argument('--device',default='cuda')
+    parser.add_argument('--save-heads',action='store_true');args=parser.parse_args()
     if args.output.exists():raise FileExistsError(args.output)
     profile=SpatialProfile.load();checkpoint=sha256_file(args.checkpoint)
     predictor=DriveReviewPredictor(args.feature_study,args.calibration,args.policy,checkpoint_sha256=checkpoint,regions_sha256=profile.regions_sha256)
@@ -44,10 +45,15 @@ def main():
             for i,item in enumerate(items):
                 result={key:value[i].tolist() for key,value in prediction.items()}
                 result.update(sample_id=item['sample_id'],rgb_sha256=item['sha256'],uses_ground_truth=False)
+                if args.save_heads:
+                    name=f'{len(results):06d}_heads.npz'
+                    np.savez_compressed(args.output/name,marking_class=probabilities[i].argmax(0).astype(np.uint8),head_maps=reduce_heads(drives[i],probabilities[i],item['geometry']))
+                    result.update(heads_file=name,heads_sha256=sha256_file(args.output/name))
                 results.append(result);ids.append(item['sample_id'])
             vectors.append(x)
     (args.output/'predictions.jsonl').write_text(''.join(json.dumps(r,allow_nan=False)+'\n' for r in results))
     np.savez_compressed(args.output/'features.npz',X=np.concatenate(vectors),ids=ids,ordered_features=columns)
     metadata=dict(status='complete',rows=len(ids),uses_ground_truth=False,checkpoint_sha256=checkpoint,regions_sha256=profile.regions_sha256,model_sha256=predictor.calibration['model_sha256'],policy_sha256=sha256_file(args.policy),manifest_sha256=sha256_file(args.manifest),source_sha256=sha256_file(Path(__file__)),seconds=time.perf_counter()-start,device=str(device),scope='GT-free RGB replay; no live ROS or FPS claim.')
+    metadata['artifacts_sha256']={p.name:sha256_file(p) for p in args.output.iterdir() if p.is_file()}
     (args.output/'run.json').write_text(json.dumps(metadata,indent=2)+'\n');print(json.dumps(metadata),flush=True)
 if __name__=='__main__':main()
