@@ -75,6 +75,11 @@ def main():
   for value in np.unique(data[field]):
    ix=data[field]==value;part=subset(data,ix)
    condition_metrics[field][str(value)]=dict(rows=int(ix.sum()),roads=len(set(roads[ix])),class_counts=np.bincount(labels[ix][labels[ix]>=0],minlength=4).tolist(),raw=marginal_metrics(raw_mean[ix],raw_cov[ix],part),calibrated=marginal_metrics(prediction['mean'][ix],prediction['covariance'][ix],part),spatial=probability_metrics(prediction['spatial'][ix],labels[ix],roads[ix]))
- save(a.output/'results.json',dict(created_utc=datetime.now(timezone.utc).isoformat(),source_sha256=sha(Path(__file__)),seal_sha256=sha(a.seal),rows=len(roads),roads=len(set(roads)),supported_spatial_rows=int(support(data).sum()),regression=regression,secondary_controls=secondary,calibration=spatial,condition_metrics=condition_metrics,review=review,adoption=adoption,predictions_sha256=sha(a.output/'predictions.npz')))
+ whole_gt=data['counts'][:,:,[0,2]].sum((1,2));whole_pred=data['counts'][:,:,[0,1]].sum((1,2));strata={}
+ for minimum in [50,200,500]:
+  ix=whole_gt>=minimum
+  strata[str(minimum)]=dict(rows=int(ix.sum()),roads=len(set(roads[ix])),GP_iou_mae=group_mean(abs(np.clip(raw_mean[ix,0],0,1)-data['Y'][ix,0]),roads[ix]) if ix.any() else None,RF_iou_mae=group_mean(abs(rf_mean[ix,0]-data['Y'][ix,0]),roads[ix]) if ix.any() else None,near_threshold_rows=int((ix&(abs(data['Y'][:,0]-.7)<=.1)).sum()))
+ support_diagnostics=dict(whole_gt_minimum_sensitivity=strata,whole_gt_below50=int((whole_gt<50).sum()),byroad={str(g):dict(rows=int((roads==g).sum()),median_whole_gt=float(np.median(whole_gt[roads==g])),median_predicted_lane_pixels=float(np.median(whole_pred[roads==g])),spatial_supported=int((support(data)&(roads==g)).sum())) for g in np.unique(roads)},scope='Primary whole-IoU benchmark is unchanged. Tiny/no-marking GT can make IoU unstable and does not define operational failure. These are descriptive support strata, not a new model-selected target.')
+ save(a.output/'results.json',dict(created_utc=datetime.now(timezone.utc).isoformat(),source_sha256=sha(Path(__file__)),seal_sha256=sha(a.seal),rows=len(roads),roads=len(set(roads)),supported_spatial_rows=int(support(data).sum()),regression=regression,secondary_controls=secondary,calibration=spatial,condition_metrics=condition_metrics,support_diagnostics=support_diagnostics,review=review,adoption=adoption,predictions_sha256=sha(a.output/'predictions.npz')))
  print('prospective score complete',len(roads),adoption,flush=True)
 if __name__=='__main__':main()
