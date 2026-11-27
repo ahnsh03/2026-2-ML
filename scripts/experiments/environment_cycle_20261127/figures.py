@@ -58,7 +58,8 @@ def main():
   for j,arm in enumerate(names):
    values=[r['metrics']['macro'] for r in d['matched_neural_methods'] if r['arm']==arm];ax.bar(j,np.mean(values),color=COLORS[j],alpha=.75);
    for k,r in enumerate([r for r in d['matched_neural_methods'] if r['arm']==arm]):ax.scatter(j+(k-(len(values)-1)/2)*.10,r['metrics']['macro'],color='#20252b',marker='X' if r['development_passes'] is False else 'o',s=45,zorder=3)
-  ax.axhline(d['neural']['f0']['macro'],color='#666',linestyle='--',label='Original v6');ax.set(xticks=np.arange(5),xticklabels=labels_,ylim=(0,1),ylabel='Supported road-macro lane IoU',title=f"Fresh comparison at the same alpha={d['matched_alpha']:.2f}");ax.legend();fig.text(.08,.015,'Points are optimizer seeds of one fixed admission bank; balanced/original-only each have one seed.',fontsize=10);fig.tight_layout(rect=(0,.04,1,1));save(fig,out,'09_fresh_selection_comparison')
+  counts=[sum(r['arm']==arm for r in d['matched_neural_methods']) for arm in names];display=[label+f' (n={n})' for label,n in zip(labels_,counts)]
+  ax.axhline(d['neural']['f0']['macro'],color='#666',linestyle='--',label='Original v6');ax.set(xticks=np.arange(5),xticklabels=display,ylim=(0,1),ylabel='Supported road-macro lane IoU',title=f"Fresh comparison at the same alpha={d['matched_alpha']:.2f}");ax.legend();fig.text(.05,.015,'Points are optimizer seeds of one fixed bank. X: a Dev retention/gain gate failed. Original-only has one seed.',fontsize=10);fig.tight_layout(rect=(0,.04,1,1));save(fig,out,'09_fresh_selection_comparison')
  if (S/'reports/fresh_confirmation_assessment.json').exists():
   d=read(S/'reports/fresh_confirmation_assessment.json');e=d['environment'];fig,axes=plt.subplots(1,2,figsize=(12.8,6));weather_names=['Sunny','Cloudy','Foggy','Storm','Rainy','Snowy']
   for ax,key,title in zip(axes,['direct_weather_confusion','cluster_weather_confusion'],['RGB weather classifier','RGB probabilities + e-means']):
@@ -75,5 +76,14 @@ def main():
   for name in ['f0','f1']:
    z=np.load(S/'confirmation'/('packs_'+name)/'fresh_confirmation.npz');q,_,_=labels(z);counts=z['counts'].sum(1);valid=(counts[:,0]+counts[:,2]>=50)&np.isfinite(q);ll=lighting(z['hour']);values[name]=[macro(q[valid&(ll==l)],z['site'][valid&(ll==l)]) for l in [0,1,2]];support[name]=[int((valid&(ll==l)).sum()) for l in [0,1,2]]
   x=np.arange(3);ax.bar(x-.18,values['f0'],.36,label='v6',color=COLORS[0]);ax.bar(x+.18,values['f1'],.36,label='Updated',color=COLORS[2]);ax.set(xticks=x,xticklabels=['Day','Transition','Night'],ylim=(0,1.05),ylabel='Road-macro supported frame IoU',title='Perception transfer across recorded lighting bins');ax.legend();fig.tight_layout();save(fig,out,'12_fresh_perception_lighting');dump(out/'lighting_support.json',support)
+ if (S/'reports/fresh_confirmation_assessment.json').exists() and (S/'g1_quality/interval_calibration_study.json').exists():
+  d=read(S/'reports/fresh_confirmation_assessment.json');kind=d['quality']['f1']['model_kind'];study=read(S/'g1_quality/interval_calibration_study.json')['models'][kind];methods=['pooled','road_envelope'];fig,axes=plt.subplots(1,2,figsize=(12,5.5));x=np.arange(2)
+  for dx,role,color in [(-.18,'cal_leave_road_out',COLORS[0]),(.18,'development',COLORS[2])]:
+   axes[0].bar(x+dx,[study['trials'][m][role]['coverage'] for m in methods],.36,label='Cal road CV' if role=='cal_leave_road_out' else 'Development',color=color)
+   axes[1].bar(x+dx,[study['trials'][m][role]['width'] for m in methods],.36,color=color)
+  axes[0].axhline(.9,color='#555',ls=':',label='90% nominal target');axes[0].set(ylim=(0,1.05),ylabel='Road-macro coverage');axes[0].legend(fontsize=9)
+  axes[1].set(ylabel='Road-macro interval width (IoU)')
+  for ax in axes:ax.set(xticks=x,xticklabels=['Pooled residuals','Cal-road envelope'])
+  fresh=d['quality']['f1'];fig.suptitle(f'{kind}: interval calibration selected before confirmation');fig.text(.06,.015,f"Frozen choice: {study['selected_method']}; fresh coverage={fresh['interval90_macro_road_coverage']:.3f}, mean width={fresh['interval90_mean_width']:.3f}. No conditional guarantee.",fontsize=10);fig.tight_layout(rect=(0,.05,1,.96));save(fig,out,'13_interval_coverage_and_width')
  dump(out/'inventory.json',{p.name:sha(p) for p in out.iterdir() if p.suffix in ['.png','.svg']});print('FIGURES',len(list(out.glob('*.png'))),flush=True)
 if __name__=='__main__':main()
