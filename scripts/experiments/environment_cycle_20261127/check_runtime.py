@@ -24,13 +24,25 @@ def main():
  else:rejected=False
  assert rejected and tag_equal and pred_delta<.01
  gpu_selected=[json.loads(x)['sample_id'] for x in (V/'rtx50-cu128/candidates.jsonl').read_text().splitlines()];cpu_selected=[json.loads(x)['sample_id'] for x in (V/'rtx40-cu118/candidates.jsonl').read_text().splitlines()]
- dump(V/'runtime_verification.json',dict(selection_order_equal=gpu_selected==cpu_selected,selection_overlap=len(set(gpu_selected)&set(cpu_selected)),rows=48,uses_gt=False,manifest_has_semantic_field=False,max_feature_profile_difference=delta,max_iou_prediction_profile_difference=pred_delta,environment_cluster_profile_equal=tag_equal,wrong_perception_identity_rejected=rejected,scope='40-profile CPU and50-profile GPU execution;40-series GPU hardware unavailable. Native CUDA batch arithmetic can alter near-tied hard output pixels.'))
+ receipt=dict(selection_order_equal=gpu_selected==cpu_selected,selection_overlap=len(set(gpu_selected)&set(cpu_selected)),rows=48,uses_gt=False,manifest_has_semantic_field=False,max_feature_profile_difference=delta,max_iou_prediction_profile_difference=pred_delta,environment_cluster_profile_equal=tag_equal,wrong_perception_identity_rejected=rejected,scope='40-profile CPU and50-profile GPU execution;40-series GPU hardware unavailable. Native CUDA batch arithmetic can alter near-tied hard output pixels.')
  if a.adaptation_run:
+  # Quality preparation may run on CPU while the independent neural control
+  # uses the GPU. Before opening fresh, check its model-dependent IoU targets
+  # against actual50GPU inference on48 identical Dev RGB/GT inputs.
+  target_index=V/'target_profile_index.json';dump(target_index,{'runtime48':dict(index['development'],rows=rows)});target_dir=V/'target_profile_cuda'
+  if not (target_dir/'runtime48.json').exists():
+   cmd=['docker','run','--rm','--gpus','all','--name','ml-environment-target-profile',*mounts,'ml-perception:rtx50-cu128','python','scripts/experiments/roi9_gp_20261125/extract.py','--index',str(target_index),'--data-root','/mnt','--adaptation-run',str(a.adaptation_run),'--output',str(target_dir),'--keys','runtime48','--batch-size','4','--device','cuda']
+   with (S/'logs/g1_target_profile_cuda.log').open('a') as log:subprocess.run(cmd,stdout=log,stderr=subprocess.STDOUT,check=True)
+  with np.load(target_dir/'runtime48.npz') as reference,np.load(S/'g1_packs/development.npz') as original:
+   lookup={sid:i for i,sid in enumerate(original['ids'])};positions=[lookup[sid] for sid in reference['ids']];left=original['y'][positions];right=reference['y'];defined=np.isfinite(left)&np.isfinite(right);definition_changes=int((np.isfinite(left)!=np.isfinite(right)).sum());label_delta=float(np.max(abs(left[defined]-right[defined]))) if defined.any() else None
+   assert reference['ids'].tolist()==[row['sample_id'] for row in rows] and definition_changes==0 and label_delta is not None and label_delta<=.005
+  original_receipt=read(S/'g1_packs/development.json');receipt['target_profile_comparison']=dict(rows=len(rows),defined_rows=int(defined.sum()),undefined_status_changes=definition_changes,maximum_iou_target_difference=label_delta,maximum_allowed_difference=.005,source_pack_device=read(S/'reports/quality_cpu_preparation_complete.json')['device'] if (S/'reports/quality_cpu_preparation_complete.json').exists() else original_receipt.get('device','see extraction CLI receipt'),source_pack_receipt_sha256=sha(S/'g1_packs/development.json'),cuda_pack_receipt_sha256=sha(target_dir/'runtime48.json'),scope='Offline GT diagnostic after RGB-only replay; no GT input to the review model.')
   gt=V/'joined_gt'
   if not (gt/'_SUCCESS').exists():
    command=[sys.executable,'-m','quality_estimation.join_spatial_gt','--queue-dir',str(V/'rtx50-cu128'),'--packs',str(S/'g1_packs'),'--source-index',str(S/'protocol/quality_index_frozen.json'),'--all-keys','--data-root','/mnt','--output-dir',str(gt)]
    subprocess.run(command,check=True)
   joined=[json.loads(x) for x in (gt/'gt_review.jsonl').read_text().splitlines()]
   assert len(joined)==8 and all(not r['admission_approved'] and r['source_context']['adaptation_role']=='development' for r in joined)
+ dump(V/'runtime_verification.json',receipt)
  print('RUNTIME VERIFIED',a.quality_dir,delta,pred_delta,flush=True)
 if __name__=='__main__':main()

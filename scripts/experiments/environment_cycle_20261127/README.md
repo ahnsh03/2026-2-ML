@@ -25,6 +25,8 @@ Set `STUDY_ROOT`, `PARENT_STUDY`, `REPO_ROOT`, `CHECKPOINT_ROOT` to your local r
 9. `final_evidence_queue.py`: freeze training-only environment-mean controls (`context_controls.py`) to separate weather/time identity from per-image quality; fresh alignment check, f0/f1 extraction, two-head evaluation, actual RGB/no-GT replay, GT reattachment,40CPU/50GPU compatibility, and acceptance without test retuning.
 10. `artifacts_queue.py`: after actual numeric assessment, export verified RGB/GT cases, standalone PNG/SVG figures and scrubbed public aggregates. No Git commit/push is performed by the worker.
 
+Quality X/y extraction can run in FP32 on CPU while the frozen full-original-only neural control uses the GPU. The resumed extractor verifies exact checkpoint/index/pack hashes. The final worker explicitly waits for the completed control, then compares48 identical Dev IoU targets against actual50GPU extraction (no undefined-status changes; maximum absolute difference<=0.005), as well as RGB-only40CPU/50GPU replay and GT-role preservation. CPU preparation does not open fresh inputs or change any selection/adoption criterion.
+
 `final_evidence_queue.py` checks the selected neural/quality development gates before opening fresh data. A rejected Dev candidate stays unopened for analysis and correction on development inputs. The final independent cohort is never used for this correction.
 
 Each stage preserves manifests, hashes, exact perception identity, model state type, source code digests and raw-data references. `_SUCCESS` is not a substitute for reading the corresponding report. A complete offline research run can reject the proposed update; that does not authorize live connection or automatic training admission.
