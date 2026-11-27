@@ -14,7 +14,7 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('--study',type=Path,required=True);p.add_argument('--checkpoint',type=Path,required=True);a=p.parse_args();S=a.study;C=S/'confirmation'
  if not (S/'reports/fresh_confirmation_assessment.json').exists():raise ValueError('illustrations require completed frozen assessment')
  rows=read(C/'registry/index_frozen.json')['fresh_confirmation']['rows'];z0=np.load(C/'packs_f0/fresh_confirmation.npz');z1=np.load(C/'packs_f1/fresh_confirmation.npz');assert z0['ids'].tolist()==z1['ids'].tolist()==[r['sample_id'] for r in rows];q0=z0['y'];q1=z1['y'];gain=q1-q0;valid=np.flatnonzero(np.isfinite(gain));hours=np.array([r['hour'] for r in rows]);chosen=[]
- for mask,maximize in [(hours>=20,True),(hours<=8,True),(np.ones(len(rows),bool),False)]:
+ for mask,maximize in [(hours>=20,True),(hours==7,True),(np.ones(len(rows),bool),False)]:
   eligible=[i for i in valid if mask[i] and i not in chosen]
   if eligible:chosen.append(max(eligible,key=lambda i:gain[i]) if maximize else min(eligible,key=lambda i:gain[i]))
  while len(chosen)<3:
@@ -38,6 +38,6 @@ def main():
    axes[rownum,j].imshow(image);axes[rownum,j].set_title(title,fontsize=10);axes[rownum,j].axis('off');cv2.imwrite(str(directory/(['rgb','gt','v6_overlay','updated_overlay'][j]+'.png')),cv2.cvtColor(image,cv2.COLOR_RGB2BGR))
   axes[rownum,0].text(0,-.07,f"Case{alias} / weather{rows[i]['weather']} / {rows[i]['hour']:02d}:00",transform=axes[rownum,0].transAxes,fontsize=10)
   records.append(dict(alias=alias,sample_id=rows[i]['sample_id'],native_lane_gt_pixels=int(mask.sum()),rgb_sha256=item['hashes']['rgb'],semantic_sha256=item['hashes']['semantic'],frozen_iou=[float(q0[i]),float(q1[i])],illustration_iou=actual))
- fig.suptitle('Post-assessment illustrations: gains and the smallest change',fontsize=14);fig.tight_layout();fig.savefig(out/'08_paired_gt_cases.png',dpi=160);plt.close(fig);dump(C/'illustration_manifest_private.json',dict(cases=records,selection='Largest night/dawn gains and worst overall delta, post-assessment only; not representative averages.',checkpoint_sha256=sha256_file(a.checkpoint),updated_identity=identity,source_sha256=sha(__file__)))
+ fig.suptitle('Post-assessment illustrations: largest gains and worst change',fontsize=14);fig.tight_layout();fig.savefig(out/'08_paired_gt_cases.png',dpi=160);plt.close(fig);dump(C/'illustration_manifest_private.json',dict(cases=records,selection='Largest night/dawn gains and worst overall delta, post-assessment only; not representative averages.',checkpoint_sha256=sha256_file(a.checkpoint),updated_identity=identity,source_sha256=sha(__file__)))
  print('VERIFIED GT ILLUSTRATIONS',len(records),flush=True)
 if __name__=='__main__':main()
