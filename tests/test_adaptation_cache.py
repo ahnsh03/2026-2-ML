@@ -30,6 +30,10 @@ class AdaptationCacheTest(unittest.TestCase):
             np.testing.assert_array_equal(actual['image'].numpy(),expected['image'])
             for name in ['drivable','road_marking']:np.testing.assert_array_equal(actual['targets'][name].numpy(),expected['targets'][name])
             np.testing.assert_array_equal(actual['valid_mask'].numpy(),expected['valid_mask'])
+            escaped = dict(cached, cache_relative='../outside')
+            with self.assertRaises(ValueError):CachedAdaptationSamples(cache,[escaped],verify=True)
+            many = CachedAdaptationSamples(cache,[cached]*17,verify=True)
+            self.assertEqual(len(many),17)
             path=cache/cached['cache_relative']/'targets.png';path.write_bytes(path.read_bytes()+b'corrupt')
             with self.assertRaisesRegex(ValueError,'cache tensor changed'):CachedAdaptationSamples(cache,[cached],verify=True)
 

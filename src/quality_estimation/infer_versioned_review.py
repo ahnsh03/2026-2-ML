@@ -6,6 +6,7 @@ from torch.utils.data import DataLoader
 from common.bridge import load_target_model,sha256_file
 from .perception_identity import resolve_quality_perception
 from .versioned_review import VersionedReview
+from .environment_review import EnvironmentReview
 from .infer_images import RGBSamples
 from .build_dataset import collate
 from .roi10 import reduce_heads
@@ -17,7 +18,10 @@ def main():
     source=p.add_mutually_exclusive_group(required=True);source.add_argument('--checkpoint',type=Path);source.add_argument('--adaptation-run',type=Path)
     p.add_argument('--batch-size',type=int,default=4);p.add_argument('--device',default='cuda');p.add_argument('--budget',type=int);a=p.parse_args()
     if a.output.exists():raise ValueError('RGB replay output exists')
-    path,identity,_=resolve_quality_perception(a.adaptation_run,a.checkpoint);review=VersionedReview(a.bundle,perception_identity=identity)
+    path,identity,_=resolve_quality_perception(a.adaptation_run,a.checkpoint)
+    version=json.loads((a.bundle/'bundle_manifest.json').read_text())['version']
+    review_type=EnvironmentReview if version=='environment-quality-review-bundle-1' else VersionedReview
+    review=review_type(a.bundle,perception_identity=identity)
     columns=list(dict.fromkeys(review.columns+review.environment.columns));lookup={n:i for i,n in enumerate(columns)}
     take=lambda x,names:x[:,[lookup[n] for n in names]]
     rows=[json.loads(s) for s in a.manifest.read_text().splitlines() if s.strip()]
@@ -37,8 +41,8 @@ def main():
                 record={key:value[j].tolist() for key,value in prediction.items()}
                 record.update(sample_id=item['sample_id'],rgb_sha256=item['sha256'],pixel_sha256=item['pixel_sha256'],checkpoint_sha256=identity['checkpoint_sha256'],
                               perception_identity=identity,perception_weights=perception.weights,profile=review.profile.version,regions_sha256=review.profile.regions_sha256,
-                              model_sha256=sha256_file(a.bundle/'quality_gp.npz'),uses_ground_truth=False,admission_approved=False,
-                              band_diagnostic_near_metric='near_f1' if len(review.target_names)==4 else 'near_recall_only_not_precision')
+                              model_sha256=sha256_file(a.bundle/getattr(review,'model_filename','quality_gp.npz')),uses_ground_truth=False,admission_approved=False,
+                              band_diagnostic_near_metric='whole_frame_quality_only' if len(review.target_names)==1 else 'near_f1' if len(review.target_names)==4 else 'near_recall_only_not_precision')
                 records.append(record)
     predictions={k:np.concatenate(v) for k,v in parts.items()};ids=np.array([r['sample_id'] for r in records]);budget=a.budget if a.budget is not None else int(np.ceil(len(rows)*.1))
     selected,priority=review.select(ids,predictions,budget)

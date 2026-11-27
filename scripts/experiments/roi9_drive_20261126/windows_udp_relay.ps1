@@ -7,7 +7,18 @@ $utf8=New-Object System.Text.UTF8Encoding($false)
 function Write-Atomic($Name,$Value) {
  $path=Join-Path $Root $Name;$tmp=$path+'.tmp'
  [System.IO.File]::WriteAllText($tmp,($Value|ConvertTo-Json -Depth 8 -Compress),$utf8)
- if([System.IO.File]::Exists($path)){[System.IO.File]::Replace($tmp,$path,[System.Management.Automation.Language.NullString]::Value)}else{[System.IO.File]::Move($tmp,$path)}
+ # Windows readers may briefly hold a handle without FILE_SHARE_DELETE.
+ # Retry the same immutable temp bytes, bounded well below the watchdog.
+ $deadline=[DateTime]::UtcNow.AddMilliseconds(120)
+ while($true){
+  try {
+   if([System.IO.File]::Exists($path)){[System.IO.File]::Replace($tmp,$path,[System.Management.Automation.Language.NullString]::Value)}else{[System.IO.File]::Move($tmp,$path)}
+   break
+  } catch {
+   if([DateTime]::UtcNow -ge $deadline){throw}
+   Start-Sleep -Milliseconds 5
+  }
+ }
 }
 function Send-Command([double]$Throttle,[double]$Brake,[double]$Steer,[byte]$Gear) {
  if([double]::IsNaN($Throttle) -or [double]::IsNaN($Brake) -or [double]::IsNaN($Steer) -or $Throttle -lt 0 -or $Throttle -gt 1 -or $Brake -lt 0 -or $Brake -gt 1 -or [math]::Abs($Steer) -gt 1){throw 'Invalid finite command'}

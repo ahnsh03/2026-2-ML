@@ -1,0 +1,72 @@
+"""Open frozen fresh evidence once; accept/reject without test-driven retuning."""
+from pathlib import Path
+from datetime import datetime,timezone
+import argparse,json
+from collections import Counter
+import numpy as np
+from sklearn.metrics import balanced_accuracy_score,confusion_matrix,mean_absolute_error
+from quality_estimation.environment_review import EnvironmentReview
+from quality_estimation.portable_forest import PortableForest
+from quality_estimation.spatial_gp import SpatialQualityGP
+from quality_estimation.region_feature_views import feature_matrix
+from quality_estimation.selected_region_features import extract_selected_features
+from quality_estimation.spatial_features import SpatialProfile
+from quality_estimation.image_io import read_image,color_channels
+from study_data import read,dump,sha,labels,lighting,macro
+
+def load_pack(path,key='fresh_confirmation'):
+ z=np.load(path/(key+'.npz'));return {k:z[k] for k in z.files},read(path/'schema.json')
+def perroad_neural(path):
+ rows=[json.loads(x) for x in (path/'per_frame.jsonl').read_text().splitlines()];sites=np.array([r['site'] for r in rows]);c=np.array([r['counts']['lane'] for r in rows]);support=(c[:,0]+c[:,2]>=50)&(c.sum(1)>0);iou=np.divide(c[:,0],c.sum(1),out=np.full(len(c),np.nan),where=c.sum(1)>0);by={str(site):float(np.mean(iou[(sites==site)&support])) for site in np.unique(sites) if (support&(sites==site)).any()}
+ return dict(macro=float(np.mean(list(by.values()))) if by else None,roads=by,rows=len(rows),supported_rows=int(support.sum()),pooled_lane_iou=float(c[:,0].sum()/c.sum()))
+def ranking(ids,score,budget,audit=.1,seed=271127):
+ from quality_estimation.environment_selection import select_environment_review
+ return select_environment_review(ids,score,np.zeros(len(ids),int),int(budget),audit_fraction=audit,seed=seed)
+def review_table(ids,priority,y,harm,normal,sites):
+ out=[];defined=np.isfinite(y);low=defined&(y<.7)
+ for fraction in [.1,.25,3072/7442]:
+  budget=int(np.ceil(len(ids)*fraction))
+  def result(ix):
+   chosen=np.isin(np.arange(len(ids)),ix);roads=[float(chosen[(sites==s)&low].mean()) for s in np.unique(sites) if ((sites==s)&low).sum()>=5];hr=[float(chosen[(sites==s)&harm].mean()) for s in np.unique(sites) if ((sites==s)&harm).sum()>=5]
+   return dict(selected_rows=len(ix),true_low_iou=int(low[ix].sum()),precision=float(low[ix].sum()/defined[ix].sum()) if defined[ix].sum() else None,macro_road_recall=float(np.mean(roads)) if roads else None,macro_near_deficit_recall=float(np.mean(hr)) if hr else None,near_retained_selected=int(normal[ix].sum()))
+  picked=ranking(ids,priority,budget);r=result(picked);random=[result(np.random.default_rng(seed).choice(len(ids),budget,replace=False)) for seed in range(100)];r.update(fraction=fraction,random_mean={k:float(np.mean([x[k] for x in random if x[k] is not None])) if any(x[k] is not None for x in random) else None for k in r});out.append(r)
+ return out
+
+def main():
+ p=argparse.ArgumentParser();p.add_argument('--study',type=Path,required=True);p.add_argument('--parent',type=Path,required=True);a=p.parse_args();S=a.study;C=S/'confirmation';frozen=read(S/'protocol/fresh_confirmation_opening_frozen.json');rules=read(S/'protocol/study_design_frozen.json');index=read(C/'registry/index_frozen.json');rows=index['fresh_confirmation']['rows'];f0,schema=load_pack(C/'packs_f0');f1,_=load_pack(C/'packs_f1');assert f0['ids'].tolist()==f1['ids'].tolist()==[r['sample_id'] for r in rows]
+ env=read(S/'environment/environment_selection_frozen.json');histcols=env['selected_classifier']['columns'];profile=SpatialProfile.load();hpath=C/'environment_features.npz'
+ if hpath.exists():hx=np.load(hpath)['X']
+ else:
+  from concurrent.futures import ThreadPoolExecutor
+  import cv2
+  cv2.setNumThreads(1)
+  def one(row):
+   bgr,_=read_image(Path('/mnt'),row['image'],cv2.IMREAD_UNCHANGED);rgb=cv2.cvtColor(color_channels(bgr,'RGB'),cv2.COLOR_BGR2RGB);return extract_selected_features(rgb,None,profile,histcols)
+  with ThreadPoolExecutor(max_workers=4) as pool:hx=np.stack(list(pool.map(one,rows)))
+  np.savez_compressed(hpath,X=hx,ids=f0['ids'],columns=histcols)
+ summaries={};predictions={};model_comparisons={}
+ for name,data,dirname in [('f0',f0,'f0_quality'),('f1',f1,'g1_quality')]:
+  review=EnvironmentReview(S/dirname/'bundle');x=feature_matrix(data,schema,review.columns);pred=review.predict(x,hx);predictions[name]=pred;q,harm,normal=labels(data);valid=np.isfinite(q);site=data['site'];error=abs(pred['estimated_iou']-q);interval=(q>=pred['interval90_lower'])&(q<=pred['interval90_upper']);summary=dict(model_kind=review.kind,model_columns=len(review.columns),defined_rows=int(valid.sum()),macro_road_mae=macro(error[valid],site[valid]),per_road_mae={str(s):float(np.nanmean(error[site==s])) for s in np.unique(site)},interval90_coverage=float(interval[valid].mean()),interval90_macro_road_coverage=macro(interval[valid],site[valid]),interval90_mean_width=float(np.mean(pred['interval90_upper']-pred['interval90_lower'])),by_lighting={str(int(l)):dict(rows=int(((lighting(data['hour'])==l)&valid).sum()),mae=float(np.nanmean(error[lighting(data['hour'])==l])),coverage=float(interval[(lighting(data['hour'])==l)&valid].mean())) for l in np.unique(lighting(data['hour']))},review=review_table(data['ids'],pred['review_probability'],q,harm,normal,site),absolute_low_iou_positives=int((valid&(q<.7)).sum()),near_deficit=int(harm.sum()),near_retained=int(normal.sum()),near_deficit_and_low_iou=int((harm&valid&(q<.7)).sum()))
+  summaries[name]=summary;np.savez_compressed(C/f'{name}_quality_predictions.npz',ids=data['ids'],Y=q,**pred)
+  selection=read(S/dirname/'quality_selection_frozen.json');comparison={}
+  for kind in ['GP','RF']:
+   r=selection['selected'][kind];model=SpatialQualityGP.load(S/r['model']) if kind=='GP' else PortableForest.load(S/r['model']);xx=feature_matrix(data,schema,r['columns']);m=model.predict(xx)[0][:,0] if kind=='GP' else model.predict(xx);comparison[kind]=dict(macro_road_mae=macro(abs(np.clip(m,0,1)-q)[valid],site[valid]),columns=len(r['columns']),cv_mae=r['cv_mae'],dev_primary_mae=r['dev_primary_mae'],dev_historical_mae=r['dev_historical_mae'])
+  model_comparisons[name]=comparison
+  spatial={}
+  for band,slice_ in [('far',slice(4,6)),('near',slice(6,8))]:
+   counts=data['counts'][:,slice_].sum(1);tp,fp,fn=counts.sum(0)
+   spatial[band]=dict(pooled_precision=float(tp/(tp+fp)) if tp+fp else None,pooled_recall=float(tp/(tp+fn)) if tp+fn else None)
+  summary['image_band_diagnostics']=spatial
+ # Explicit diagnostic only: an old g0 is evaluated numerically on f1 features.
+ # Runtime version binding rejects this pair; these numbers never deploy it.
+ old=read(S/'f0_quality/quality_selection_frozen.json');rec=old['selected'][old['policy_predictor']];model=SpatialQualityGP.load(S/rec['model']) if old['policy_predictor']=='GP' else PortableForest.load(S/rec['model']);xx=feature_matrix(f1,schema,rec['columns']);stale=model.predict(xx)[0][:,0] if old['policy_predictor']=='GP' else model.predict(xx);q,h,n=labels(f1);valid=np.isfinite(q);stale_mae=macro(abs(np.clip(stale,0,1)-q)[valid],f1['site'][valid])
+ # Environment assignments are independent of which perception version runs.
+ pred=predictions['f1'];truth_weather=f1['weather'].astype(int);truth_lighting=lighting(f1['hour']);mapping=read(S/'g1_quality/bundle/policy.json')['cluster_semantic_mapping'];cw=np.array([mapping[str(int(g))]['weather'] for g in pred['environment_cluster']]);cl=np.array([mapping[str(int(g))]['lighting'] for g in pred['environment_cluster']]);weather_model=PortableForest.load(S/'g1_quality/bundle/weather.npz');light_model=PortableForest.load(S/'g1_quality/bundle/lighting.npz');wp=weather_model.predict(hx);lp=light_model.predict(hx)
+ environment=dict(rows=len(rows),weather_classes=sorted(set(truth_weather.tolist())),direct_weather_balanced_accuracy=float(balanced_accuracy_score(truth_weather,wp)),direct_lighting_balanced_accuracy=float(balanced_accuracy_score(truth_lighting,lp)),cluster_weather_balanced_accuracy=float(balanced_accuracy_score(truth_weather,cw)),cluster_lighting_balanced_accuracy=float(balanced_accuracy_score(truth_lighting,cl)),direct_weather_confusion=confusion_matrix(truth_weather,wp,labels=list(range(6))).tolist(),cluster_weather_confusion=confusion_matrix(truth_weather,cw,labels=list(range(6))).tolist(),lighting_confusion=confusion_matrix(truth_lighting,lp,labels=list(range(3))).tolist(),ood_fraction=float(pred['environment_out_of_distribution'].mean()) if 'environment_out_of_distribution' in pred else None,method='Supervised RGB histogram classifiers plus official e-means probability embedding; not label-free environment discovery.')
+ neural={name:perroad_neural(C/'evaluations'/name) for name in ['f0','f1','replay_control']};deltas={r:neural['f1']['roads'][r]-v for r,v in neural['f0']['roads'].items() if r in neural['f1']['roads']};gain=neural['f1']['macro']-neural['f0']['macro'] if neural['f0']['macro'] is not None and neural['f1']['macro'] is not None else None;nr=rules['nn_adoption'];npass=bool(frozen['perception']['eligible_for_adoption'] and gain is not None and gain>=nr['new_primary_macro_iou_gain_min'] and len(deltas)>=nr['positive_roads_min'] and sum(v>0 for v in deltas.values())>=nr['positive_roads_min'] and min(deltas.values())>=-nr['new_road_iou_loss_max'])
+ g0=old['selected'][old['policy_predictor']];g1select=read(S/'g1_quality/quality_selection_frozen.json');g1=g1select['selected'][g1select['policy_predictor']];qr=rules['quality_adoption'];qpass=bool(g1['dev_primary_mae']<=g0['dev_primary_mae']+qr['primary_mae_increase_max'] and g1['dev_historical_mae']<=g0['dev_historical_mae']+qr['historical_mae_increase_max'] and summaries['f1']['interval90_macro_road_coverage']>=qr['confirm_interval_coverage_min'])
+ alignment=read(C/'alignment/summary.json');alignment_pass=bool(alignment['frames']>=20 and alignment['roads']>=2 and alignment['own_better_than_neighbor_fraction']>=.7)
+ review=summaries['f1']['review'][0];rg=rules['fresh_review_gate'];positive_roads=sum(((f1['site']==s)&valid&(q<.7)).sum()>=5 for s in np.unique(f1['site']));rpass=bool(summaries['f1']['absolute_low_iou_positives']>=rg['minimum_absolute_low_iou_positives'] and positive_roads>=rg['minimum_positive_roads'] and review['macro_road_recall'] is not None and review['macro_road_recall']>=review['random_mean']['macro_road_recall'] and review['precision']>=review['random_mean']['precision'])
+ receipt=dict(created_utc=datetime.now(timezone.utc).isoformat(),neural=neural,neural_gain=gain,neural_road_deltas=deltas,selected_minus_full_replay_macro_iou=neural['f1']['macro']-neural['replay_control']['macro'] if neural['f1']['macro'] is not None and neural['replay_control']['macro'] is not None else None,quality=summaries,quality_model_comparisons=model_comparisons,stale_g0_on_f1_macro_road_mae=stale_mae,environment=environment,neural_passes=npass,quality_passes=qpass,review_passes=rpass,alignment=alignment,alignment_passes=alignment_pass,offline_pair_accepted=npass and qpass and rpass and alignment_pass,source_sha256=sha(__file__),fresh_opening_sha256=sha(S/'protocol/fresh_confirmation_opening_frozen.json'),limitations=['Only three same-map road segments. Random/RF/GP have two optimizer seeds; balanced extraction and full-replay-only control each have one. These positions are buffered from this study tuning/adaptation sources, not proven absent from original v6 training routes.','Absolute IoU<0.7 and supported near precision/recall deficits are distinct from visibility-aware operational normality.','Dawn is an explicit condition transfer; no conditional normality labels were fabricated.','No tuning or model replacement after opening this confirmation cohort.'])
+ dump(S/'reports/fresh_confirmation_assessment.json',receipt);out=S/'deployment';out.mkdir(exist_ok=True);dump(out/'candidate_pair.json',dict(status='offline_pair_accepted' if receipt['offline_pair_accepted'] else 'research_candidate_not_adopted',candidate_perception_run=frozen['perception']['selected']['run'],quality_model_kind=g1select['policy_predictor'],review_bundle=str(S/'g1_quality/bundle'),perception_identity=g1select['perception_identity'],environment_thresholds_adopted=read(S/'g1_quality/bundle/policy.json')['environment_thresholds_adopted'],common_quality_benchmark=.7,original_replay=26001,new_admissions=3072,default_checkpoint_changed=False,live_connection_completed=False,automatic_admission=False,assessment_sha256=sha(S/'reports/fresh_confirmation_assessment.json')));print('FRESH ASSESSMENT',gain,'gates',npass,qpass,rpass,flush=True)
+if __name__=='__main__':main()

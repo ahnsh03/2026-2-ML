@@ -74,16 +74,24 @@ class CachedAdaptationSamples(Dataset):
     def __init__(self, cache, rows, *, verify=False):
         self.cache, self.rows = Path(cache), rows
         if verify:
-            for row in rows:
-                directory=(self.cache/row['cache_relative']).resolve()
-                directory.relative_to(self.cache.resolve())
+            cache_root = self.cache.resolve()
+            def verify_one(row):
+                directory=(cache_root/row['cache_relative']).resolve()
+                directory.relative_to(cache_root)
                 if sha256_file(directory/'receipt.json')!=row['cache_receipt_sha256']:
                     raise ValueError('cache receipt changed')
                 receipt=json.loads((directory/'receipt.json').read_text())
                 if receipt['target_policy_sha256']!=POLICY_SHA256 or receipt['pixel_sha256']!=row['pixel_sha256']:
                     raise ValueError('cache lineage differs')
                 for name,digest in receipt['artifacts'].items():
-                    if sha256_file(directory/name)!=digest:raise ValueError('cache tensor changed')
+                    artifact = (directory/name).resolve()
+                    artifact.relative_to(directory)
+                    if sha256_file(artifact)!=digest:raise ValueError('cache tensor changed')
+            # Storage latency dominates verification of large lossless caches.
+            # Check every receipt and tensor; propagate exceptions before loading.
+            with ThreadPoolExecutor(max_workers=8) as pool:
+                for _ in pool.map(verify_one, rows):
+                    pass
 
     def __len__(self):
         return len(self.rows)
