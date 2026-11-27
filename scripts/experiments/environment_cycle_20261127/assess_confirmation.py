@@ -14,6 +14,7 @@ from quality_estimation.spatial_features import SpatialProfile
 from quality_estimation.image_io import read_image,color_channels
 from quality_estimation.environment_selection import thresholds,calibrated_priority,select_environment_review
 from study_data import read,dump,sha,labels,lighting,macro
+from context_controls import context_controls
 
 def load_pack(path,key='fresh_confirmation'):
  z=np.load(path/(key+'.npz'));return {k:z[k] for k in z.files},read(path/'schema.json')
@@ -60,6 +61,10 @@ def main():
    counts=data['counts'][:,slice_].sum(1);tp,fp,fn=counts.sum(0)
    spatial[band]=dict(pooled_precision=float(tp/(tp+fp)) if tp+fp else None,pooled_recall=float(tp/(tp+fn)) if tp+fn else None)
   summary['image_band_diagnostics']=spatial
+ context_comparisons={}
+ if frozen['context_controls_sha256']!=sha(S/'protocol/context_controls_frozen.json'):raise ValueError('context controls changed after opening')
+ for name,data,dirname in [('f0',f0,'f0_quality'),('f1',f1,'g1_quality')]:context_comparisons[name]=context_controls(S,name,EnvironmentReview(S/dirname/'bundle'),data,predictions[name],review_table)
+ dump(S/'reports/fresh_context_controls.json',dict(versions=context_comparisons,protocol_sha256=frozen['context_controls_sha256'],used_for_acceptance=False,source_sha256=sha(Path(__file__).with_name('context_controls.py'))))
  q0,_,_=labels(f0);q1,_,_=labels(f1);paired=np.isfinite(q0)&np.isfinite(q1)
  paired_quality=dict(rows=int(paired.sum()),f0_only_defined=int((np.isfinite(q0)&~np.isfinite(q1)).sum()),f1_only_defined=int((~np.isfinite(q0)&np.isfinite(q1)).sum()),f0_macro_mae=macro(abs(predictions['f0']['estimated_iou'][paired]-q0[paired]),f0['site'][paired]) if paired.any() else None,f1_macro_mae=macro(abs(predictions['f1']['estimated_iou'][paired]-q1[paired]),f1['site'][paired]) if paired.any() else None,scope='Common defined-image diagnostic; each version still has its own output-dependent IoU target. Version-specific support remains reported separately.')
  # All threshold families were chosen on Cal/Dev before this opening. Report

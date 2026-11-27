@@ -85,5 +85,10 @@ def main():
   axes[1].set(ylabel='Road-macro interval width (IoU)')
   for ax in axes:ax.set(xticks=x,xticklabels=['Pooled residuals','Cal-road envelope'])
   fresh=d['quality']['f1'];fig.suptitle(f'{kind}: interval calibration selected before confirmation');fig.text(.06,.015,f"Frozen choice: {study['selected_method']}; fresh coverage={fresh['interval90_macro_road_coverage']:.3f}, mean width={fresh['interval90_mean_width']:.3f}. No conditional guarantee.",fontsize=10);fig.tight_layout(rect=(0,.05,1,.96));save(fig,out,'13_interval_coverage_and_width')
+ if (S/'reports/fresh_context_controls.json').exists():
+  context=read(S/'reports/fresh_context_controls.json')['versions'];d=read(S/'reports/fresh_confirmation_assessment.json');keys=['rgb_lighting_mean','rgb_tag_mean','rgb_cluster_mean','sim_tag_mean_oracle'];names=['Quality model','RGB light mean','RGB tag mean','RGB cluster mean','Sim-tag oracle'];fig,axes=plt.subplots(1,2,figsize=(13,5.5))
+  for ax,version in zip(axes,['f0','f1']):
+   values=[d['quality'][version]['macro_road_mae']]+[context[version][key]['macro_road_mae'] for key in keys];ax.bar(np.arange(5),values,color=[COLORS[2],COLORS[0],COLORS[0],COLORS[0],COLORS[1]]);ax.set(xticks=np.arange(5),xticklabels=names,ylabel='Road-macro IoU MAE',title=version+' / same quality-fit targets');ax.tick_params(axis='x',rotation=30)
+  fig.suptitle('Per-image quality estimation versus environment identity alone');fig.text(.05,.015,'Fixed group means use shrinkage50, >=30 training rows and >=2 roads; unsupported groups use the global training mean.',fontsize=9);fig.tight_layout(rect=(0,.05,1,.96));save(fig,out,'14_quality_vs_environment_context')
  dump(out/'inventory.json',{p.name:sha(p) for p in out.iterdir() if p.suffix in ['.png','.svg']});print('FIGURES',len(list(out.glob('*.png'))),flush=True)
 if __name__=='__main__':main()
