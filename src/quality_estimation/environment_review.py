@@ -56,6 +56,9 @@ class EnvironmentReview:
   self.interval_bounds=np.asarray(self.calibration.get('interval_residual_bounds',np.quantile(self.residuals,[.05,.95])),float)
   if self.interval_bounds.shape!=(2,) or not np.isfinite(self.interval_bounds).all() or self.interval_bounds[0]>self.interval_bounds[1]:raise ValueError('invalid interval residual bounds')
   if self.policy['grouping'] not in ['global','rgb_cluster','rgb_tag','rgb_weather','rgb_lighting']:raise ValueError('unknown runtime environment grouping')
+  self.score_tie_break=self.policy.get('score_tie_break','identifier')
+  if self.score_tie_break not in ['identifier','standardized_margin']:raise ValueError('unknown review score tie break')
+  if self.score_tie_break!='identifier' and self.spec['version']!='environment-quality-review-bundle-2':raise ValueError('secondary review ranking requires v2')
   if any(not 0<=self.policy[k]<=1 for k in ['balanced_floor','audit_fraction','uncertainty_weight']):raise ValueError('invalid review mixture')
 
  def predict(self,quality_vectors,environment_vectors):
@@ -73,5 +76,6 @@ class EnvironmentReview:
 
  def select(self,ids,predictions,budget,*,seed=271127):
   score=mixture_priority(predictions['review_probability'],predictions['quality_predictive_scale'],self.policy['uncertainty_weight'])
-  chosen=select_environment_review(np.asarray(ids),score,predictions['review_group'],int(budget),balanced_floor=self.policy['balanced_floor'],audit_fraction=self.policy['audit_fraction'],seed=seed)
+  secondary=(predictions['review_threshold']-predictions['estimated_iou'])/predictions['quality_predictive_scale'] if self.score_tie_break=='standardized_margin' else None
+  chosen=select_environment_review(np.asarray(ids),score,predictions['review_group'],int(budget),balanced_floor=self.policy['balanced_floor'],audit_fraction=self.policy['audit_fraction'],seed=seed,secondary_scores=secondary)
   return chosen,score

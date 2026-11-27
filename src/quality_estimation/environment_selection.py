@@ -55,7 +55,7 @@ def calibrated_priority(mean,residuals,*,threshold=.7,scale=None,uncertainty_wei
     return mixture_priority(p,s,uncertainty_weight)
 
 
-def select_environment_review(ids,scores,groups,budget,*,balanced_floor=0.,audit_fraction=.1,seed=271127):
+def select_environment_review(ids,scores,groups,budget,*,balanced_floor=0.,audit_fraction=.1,seed=271127,secondary_scores=None):
     """Reserve a balanced floor, then spend the remainder on global risk.
 
     In contrast to a full per-group quota, partial floors allow environment
@@ -66,10 +66,16 @@ def select_environment_review(ids,scores,groups,budget,*,balanced_floor=0.,audit
         raise ValueError('invalid review mixture')
     # Central validation also covers empty/duplicate IDs and non-finite scores.
     select_review(ids,scores,groups,0)
+    secondary=np.zeros(len(ids)) if secondary_scores is None else np.asarray(secondary_scores,float)
+    if secondary.shape!=scores.shape or not np.isfinite(secondary).all():raise ValueError('invalid secondary review scores')
+    # Resolve exact CDF ties only; a secondary value can never override even a
+    # small difference in primary probability/exploration score. Use the same
+    # ordering within reserved group floors and across the remaining buffer.
+    order=np.lexsort((ids,-secondary,-scores));ordinal=np.empty(len(ids),float);ordinal[order]=np.arange(len(ids),0,-1)
     audit=int(np.floor(budget*audit_fraction));priority=budget-audit;floor=int(np.floor(priority*balanced_floor))
-    chosen=select_review(ids,scores,groups,floor,quota_exponent=0.).tolist()
+    chosen=select_review(ids,ordinal,groups,floor,quota_exponent=0.).tolist()
     remaining=np.setdiff1d(np.arange(len(ids)),chosen)
-    order=remaining[np.lexsort((ids[remaining],-scores[remaining]))]
+    order=remaining[np.lexsort((ids[remaining],-secondary[remaining],-scores[remaining]))]
     chosen+=order[:priority-floor].tolist()
     remaining=np.setdiff1d(np.arange(len(ids)),chosen)
     if audit:chosen+=np.random.default_rng(seed).choice(remaining,audit,replace=False).tolist()

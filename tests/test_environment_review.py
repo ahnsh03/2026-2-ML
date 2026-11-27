@@ -65,4 +65,13 @@ class EnvironmentReviewTest(unittest.TestCase):
    with self.assertRaises(ValueError):EnvironmentReview(root,perception_identity=wrong)
    (root/'policy.json').write_text('{}')
    with self.assertRaisesRegex(ValueError,'artifact changed'):EnvironmentReview(root)
+ def test_v2_secondary_selection_matches_frozen_buffer_rank(self):
+  from quality_estimation.environment_selection import select_environment_review
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);x=self.bundle(root,'GP');spec=json.loads((root/'bundle_manifest.json').read_text());spec['version']='environment-quality-review-bundle-2';cal=json.loads((root/'calibration.json').read_text());cal.update(interval_method='pooled',interval_residual_bounds=[-.2,.2]);policy=json.loads((root/'policy.json').read_text());policy['score_tie_break']='standardized_margin'
+   for name,value in [('calibration.json',cal),('policy.json',policy)]:
+    (root/name).write_text(json.dumps(value));spec['artifact_sha256'][name]=sha256_file(root/name)
+   (root/'bundle_manifest.json').write_text(json.dumps(spec));review=EnvironmentReview(root);pred=review.predict(x,x);ids=np.array([str(i) for i in range(len(x))]);actual,_=review.select(ids,pred,7);expected=select_environment_review(ids,pred['review_probability'],pred['review_group'],7,secondary_scores=(pred['review_threshold']-pred['estimated_iou'])/pred['quality_predictive_scale']);np.testing.assert_array_equal(actual,expected)
+   spec['version']='environment-quality-review-bundle-1';(root/'bundle_manifest.json').write_text(json.dumps(spec))
+   with self.assertRaisesRegex(ValueError,'requires v2'):EnvironmentReview(root)
 if __name__=='__main__':unittest.main()

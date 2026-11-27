@@ -21,4 +21,11 @@ class EnvironmentSelectionTest(unittest.TestCase):
   for floor in [0.,.5,1.]:
    x=select_environment_review(ids,score,groups,12,balanced_floor=floor,audit_fraction=.1);self.assertEqual(set(x),set(range(12)))
   with self.assertRaises(ValueError):select_environment_review(np.array(['a','a']),[0.,1.],[0,1],1)
+ def test_secondary_ranking_resolves_exact_ties_without_overriding_primary(self):
+  ids=np.array(['a','b','c','d']);scores=np.array([.9,.9,.9-1e-12,.1]);secondary=np.array([0.,1.,1e9,2e9]);groups=np.array([0,0,0,1])
+  first=select_environment_review(ids,scores,groups,3,audit_fraction=0.,secondary_scores=secondary)
+  np.testing.assert_array_equal(first,[1,0,2])
+  for floor in [0.,.5,1.]:
+   first=select_environment_review(ids,scores,groups,3,audit_fraction=0.,balanced_floor=floor,secondary_scores=secondary);permutation=np.array([3,2,0,1]);other=select_environment_review(ids[permutation],scores[permutation],groups[permutation],3,audit_fraction=0.,balanced_floor=floor,secondary_scores=secondary[permutation]);np.testing.assert_array_equal(ids[first],ids[permutation][other])
+  with self.assertRaisesRegex(ValueError,'secondary'):select_environment_review(ids,scores,groups,2,secondary_scores=[0.,1.])
 if __name__=='__main__':unittest.main()
