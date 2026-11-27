@@ -23,7 +23,9 @@ Set `STUDY_ROOT`, `PARENT_STUDY`, `REPO_ROOT`, `CHECKPOINT_ROOT` to your local r
 7. `quality_queue.py`: regenerate X/y with f1, then refit GP/RF. `refit_policy.py` rebuilds f1 residual calibration/references and compares RGB grouping against a simulator oracle. Freeze all of this before test opening.
 8. `collect_queue.py`, `register_confirmation.py`: parked-to-parked short26R1 drives, complete four-channel hashes, geometry-only thinning and source-role preservation. The optional local RPC-reset helper is private Windows-layout-specific tooling, passed explicitly as `--reset-script`.
 9. `final_evidence_queue.py`: fresh alignment check, f0/f1 extraction, two-head evaluation, actual RGB/no-GT replay, GT reattachment,40CPU/50GPU compatibility, and acceptance without test retuning.
-10. `figures.py`: standalone PNG/SVG aggregates; fresh figures are produced only after the frozen assessment exists.
+10. `artifacts_queue.py`: after actual numeric assessment, export verified RGB/GT cases, standalone PNG/SVG figures and scrubbed public aggregates. No Git commit/push is performed by the worker.
+
+`final_evidence_queue.py` checks the selected neural/quality development gates before opening fresh data. A rejected Dev candidate stays unopened for analysis and correction on development inputs. The final independent cohort is never used for this correction.
 
 Each stage preserves manifests, hashes, exact perception identity, model state type, source code digests and raw-data references. `_SUCCESS` is not a substitute for reading the corresponding report. A complete offline research run can reject the proposed update; that does not authorize live connection or automatic training admission.
 

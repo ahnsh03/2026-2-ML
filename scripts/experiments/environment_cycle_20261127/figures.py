@@ -4,7 +4,7 @@ import argparse,json
 import numpy as np
 import matplotlib;matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from study_data import read,dump,sha,load_sources,memberships,labels,macro
+from study_data import read,dump,sha,load_sources,memberships,labels,macro,lighting
 
 COLORS=['#527ba5','#e5a14b','#4c9b89','#925c9c','#bf6056','#64707d']
 def save(fig,out,name):
@@ -46,5 +46,21 @@ def main():
   for j,arm in enumerate(names):
    values=[r['metrics']['macro'] for r in d['matched_neural_methods'] if r['arm']==arm];ax.bar(j,np.mean(values),color=COLORS[j],alpha=.75);ax.scatter([j]*len(values),values,color='#20252b',s=35,zorder=3)
   ax.axhline(d['neural']['f0']['macro'],color='#666',linestyle='--',label='Original v6');ax.set(xticks=np.arange(5),xticklabels=labels_,ylim=(0,1),ylabel='Supported road-macro lane IoU',title=f"Fresh comparison at the same alpha={d['matched_alpha']:.2f}");ax.legend();fig.text(.08,.015,'Points are optimizer seeds of one fixed admission bank; balanced/original-only each have one seed.',fontsize=10);fig.tight_layout(rect=(0,.04,1,1));save(fig,out,'09_fresh_selection_comparison')
+ if (S/'reports/fresh_confirmation_assessment.json').exists():
+  d=read(S/'reports/fresh_confirmation_assessment.json');e=d['environment'];fig,axes=plt.subplots(1,2,figsize=(12.8,6));weather_names=['Sunny','Cloudy','Foggy','Storm','Rainy','Snowy']
+  for ax,key,title in zip(axes,['direct_weather_confusion','cluster_weather_confusion'],['RGB weather classifier','RGB probabilities + e-means']):
+   counts=np.array(e[key]);norm=counts/np.maximum(counts.sum(1,keepdims=True),1);im=ax.imshow(norm,vmin=0,vmax=1,cmap='Blues')
+   for i in range(6):
+    for j in range(6):ax.text(j,i,f'{norm[i,j]:.0%}',ha='center',va='center',fontsize=10,color='white' if norm[i,j]>.55 else '#273549')
+   ax.set(xticks=np.arange(6),xticklabels=weather_names,yticks=np.arange(6),yticklabels=weather_names,xlabel='Predicted simulator weather',ylabel='Recorded simulator weather',title=title);ax.tick_params(axis='x',rotation=35)
+  fig.suptitle('Fresh environment transfer: row-normalized confusion');fig.tight_layout();save(fig,out,'10_fresh_weather_confusion')
+  policy=d['relative_policy_confirmations'];names=['global','sim_oracle','sim_lighting_oracle','rgb_tag','rgb_lighting','rgb_weather','rgb_cluster'];display=['Common','Oracle joint','Oracle light','RGB joint','RGB light','RGB weather','RGB cluster'];fig,axes=plt.subplots(1,2,figsize=(13,5.8));chosen=d['environment_policy_grouping']
+  for ax,key,title in zip(axes,['macro_road_recall','precision'],['Low-IoU retrieval: road-macro recall','Low-IoU frames / all review slots']):
+   values=[policy[n]['review'][0][key] for n in names];colors=[COLORS[2] if n==chosen else COLORS[1] if n.startswith('sim_') else COLORS[0] for n in names];ax.bar(np.arange(len(names)),values,color=colors);ax.axhline(policy['global']['review'][0]['random_mean'][key],color='#555',ls=':',label='100-seed random mean');ax.set(xticks=np.arange(len(names)),xticklabels=display,ylim=(0,1.05),ylabel=title);ax.tick_params(axis='x',rotation=30);ax.legend(fontsize=9)
+  budget=policy['global']['review'][0]['selected_rows'];fig.suptitle(f'Frozen policies at10% review budget: {budget} of{e["rows"]} frames');fig.text(.05,.015,'Oracle groups use simulator labels and are offline controls. Confirmation does not tune thresholds.',fontsize=10,color='#555');fig.tight_layout(rect=(0,.05,1,1));save(fig,out,'11_fresh_relative_policy_review')
+  fig,ax=plt.subplots(figsize=(11,5));values={};support={}
+  for name in ['f0','f1']:
+   z=np.load(S/'confirmation'/('packs_'+name)/'fresh_confirmation.npz');q,_,_=labels(z);counts=z['counts'].sum(1);valid=(counts[:,0]+counts[:,2]>=50)&np.isfinite(q);ll=lighting(z['hour']);values[name]=[macro(q[valid&(ll==l)],z['site'][valid&(ll==l)]) for l in [0,1,2]];support[name]=[int((valid&(ll==l)).sum()) for l in [0,1,2]]
+  x=np.arange(3);ax.bar(x-.18,values['f0'],.36,label='v6',color=COLORS[0]);ax.bar(x+.18,values['f1'],.36,label='Updated',color=COLORS[2]);ax.set(xticks=x,xticklabels=['Day','Transition','Night'],ylim=(0,1.05),ylabel='Road-macro supported frame IoU',title='Perception transfer across recorded lighting bins');ax.legend();fig.tight_layout();save(fig,out,'12_fresh_perception_lighting');dump(out/'lighting_support.json',support)
  dump(out/'inventory.json',{p.name:sha(p) for p in out.iterdir() if p.suffix in ['.png','.svg']});print('FIGURES',len(list(out.glob('*.png'))),flush=True)
 if __name__=='__main__':main()

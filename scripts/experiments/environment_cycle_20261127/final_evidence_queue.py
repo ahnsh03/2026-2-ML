@@ -7,6 +7,9 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('--study',type=Path,required=True);p.add_argument('--parent',type=Path,required=True);p.add_argument('--repo',type=Path,required=True);a=p.parse_args();S=a.study;C=S/'confirmation';env=os.environ.copy();env.update(PYTHONPATH=str(a.repo/'src')+':'+str(a.repo/'ros/src/data_collection/src'),OMP_NUM_THREADS='2',OPENBLAS_NUM_THREADS='2')
  while not (S/'g1_quality/_SUCCESS').exists() or not (C/'registry/index_frozen.json').exists():time.sleep(15)
  choice=read(S/'protocol/provisional_f1_frozen.json');run=choice['selected']['run'];mount=['-v',str(a.repo)+':/repo:ro','-v','/mnt/e:/mnt/e','-v','/mnt/d:/mnt/d:ro','-v',str(a.repo.parent/'checkpoints')+':/checkpoints:ro','-w','/repo','-e','PYTHONPATH=/repo/src:/repo/ros/src/data_collection/src','-e','OMP_NUM_THREADS=2','-e','OPENBLAS_NUM_THREADS=2']
+ old=read(S/'f0_quality/quality_selection_frozen.json');new=read(S/'g1_quality/quality_selection_frozen.json');g0=old['selected'][old['policy_predictor']];g1=new['selected'][new['policy_predictor']];rules=read(S/'protocol/study_design_frozen.json')['quality_adoption'];precheck=dict(neural_development_passes=choice['eligible_for_adoption'],quality_primary_passes=g1['dev_primary_mae']<=g0['dev_primary_mae']+rules['primary_mae_increase_max'],quality_historical_passes=g1['dev_historical_mae']<=g0['dev_historical_mae']+rules['historical_mae_increase_max'],fresh_confirmation_opened=False)
+ dump(S/'reports/pre_confirmation_development_check.json',precheck)
+ if not all(v for k,v in precheck.items() if k.endswith('_passes')):raise RuntimeError('Development gates failed; fresh confirmation remains unopened. Inspect and resolve on development data before proceeding.')
  def host(script,args,log):
   with (S/'logs'/log).open('a') as f:subprocess.run([sys.executable,str(Path(__file__).with_name(script)),*args],env=env,cwd=a.repo,stdout=f,stderr=subprocess.STDOUT,check=True)
  def gpu(name,command):
