@@ -36,11 +36,14 @@ def main():
  dump(S/'reports/neural_development_partial.json',dict(baseline=baseline,records=records,confirmation_opened=False))
  first=[r for r in records if r['seed']==271127]
  if len(first)==16 and not (S/'protocol/repeat_choice_frozen.json').exists():
-  eligible=[r for r in first if r['arm']!='RandomFull' and r['passes']];winner=max(eligible or [r for r in first if r['arm']!='RandomFull'],key=lambda r:(r['gain'],r['alpha']))
-  dump(S/'protocol/repeat_choice_frozen.json',dict(selected_arm=winner['arm'],candidate=winner,eligible=bool(eligible),created_utc=datetime.now(timezone.utc).isoformat(),rule='Repeat Random/RF/GP; one balanced diagnostic and one full-original continuation control complete eight runs. No fresh confirmation opened.'))
-  for arm in ['RandomFull','RFGlobalFull','GPGlobalFull']:
+  ranked=[]
+  for arm in sorted({r['arm'] for r in first if r['arm']!='RandomFull'}):
+   values=[r for r in first if r['arm']==arm];passing=[r for r in values if r['passes']];best=max(passing or values,key=lambda r:(r['gain'],r['alpha']));ranked.append(dict(arm=arm,candidate=best,eligible=bool(passing)))
+  ranked.sort(key=lambda r:(not r['eligible'],-r['candidate']['gain'],r['arm']));repeat_arms=['RandomFull']+[r['arm'] for r in ranked[:2]]
+  dump(S/'protocol/repeat_choice_frozen.json',dict(repeated_arms=repeat_arms,ranked_nonrandom=ranked,created_utc=datetime.now(timezone.utc).isoformat(),rule='Repeat Random and the two strongest non-random first-stage Dev banks, including simulator-balanced if competitive. Four first-stage+three repeats+one full-original control=eight long runs. Unrepeated bank is one-seed diagnostic. No fresh confirmation opened.'))
+  for arm in repeat_arms:
    name=arm+'_s271128';plan['queue'].append(dict(name=name,arm=arm,seed=271128,manifest=str(S/f'protocol/{arm}_cached.jsonl'),run=str(S/'runs'/name)))
-  plan['queue_closed']=True;dump(S/'protocol/training_plan.json',plan);print('REPEAT FROZEN',winner['arm'],flush=True)
+  plan['queue_closed']=True;dump(S/'protocol/training_plan.json',plan);print('REPEAT FROZEN',repeat_arms,flush=True)
  if plan.get('queue_closed') and len(records)==len(plan['queue'])*4 and not (S/'protocol/provisional_f1_frozen.json').exists():
   groups=collections.defaultdict(list)
   for r in records:groups[(r['arm'],r['alpha'])].append(r)

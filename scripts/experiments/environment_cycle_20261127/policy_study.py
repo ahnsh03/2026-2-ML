@@ -61,7 +61,15 @@ def main():
   summary[arm]=dict(rows=len(ix),condition_counts={str(k):int(v) for k,v in Counter(sim[ix]).items()},weather_counts={str(k):int(v) for k,v in Counter(weather[ix]).items()},lighting_counts={str(k):int(v) for k,v in Counter(lighting(data['hour'][ix])).items()},unique_5m_cells=len(np.unique(np.floor(data['xy'][ix]/5),axis=0)),absolute_low_iou_fraction=float((q[ix]<.7).mean()),near_deficit_fraction=float(harm[ix].mean()),near_retained_fraction=float(normal[ix].mean()))
  dump(S/'reports/admission_summary.json',summary)
  queue=read(S/'protocol/training_plan.json');names={x['name'] for x in queue['queue']}
- for arm in ['TagBalancedFull','RFGlobalFull','GPGlobalFull','SimTagFull','RGBTagFull']:
+ # Only the four preregistered first-stage banks consume neural trials.
+ # An identical environment-policy bank aliases its canonical endpoint;
+ # a new distinct bank requires a separately budgeted downstream comparison.
+ aliases={}
+ for arm in ['SimTagFull','RGBTagFull']:
+  matches=[base for base in ['RandomFull','TagBalancedFull','RFGlobalFull','GPGlobalFull'] if np.array_equal(indices[arm],indices[base])]
+  aliases[arm]=dict(canonical_neural_arm=matches[0] if matches else None,independent_neural_trial=False,distinct_unbudgeted_bank=not bool(matches))
+ dump(S/'reports/environment_policy_bank_aliases.json',aliases)
+ for arm in ['TagBalancedFull','RFGlobalFull','GPGlobalFull']:
   name=arm+'_s271127'
   if name not in names:queue['queue'].append(dict(name=name,arm=arm,seed=271127,manifest=str(S/f'protocol/{arm}_cached.jsonl'),run=str(S/'runs'/name)))
  dump(S/'protocol/training_plan.json',queue);print('POLICY FROZEN',winner,{k:v['parameters'] for k,v in frozen.items()},flush=True)
