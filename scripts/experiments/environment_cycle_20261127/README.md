@@ -14,7 +14,7 @@ The current unit audits the original mixture, tests RGB environment discovery ag
 
 Set `STUDY_ROOT`, `PARENT_STUDY`, `REPO_ROOT`, `CHECKPOINT_ROOT` to your local registered assets. Private source manifests retain original paths/hashes; do not commit them. These orchestrators use the existing WSL D/E mount convention and separate40/50 container profiles.
 
-1. `cache_full_original.py`: validate original RGB/Semantic and compare **every cached two-head target and valid mask** with the frozen original version. Shared content-addressed cache, no raw copying.
+1. `cache_full_original.py`: validate original RGB/Semantic and compare **every cached two-head target and valid mask** with the frozen original version. Shared content-addressed cache, no raw copying. `audit_replay_exposure.py` reconstructs each frozen sampler and checks completed-run draw receipts.
 2. `freeze_data.py`, `environment_features.py`: frozen quality roles and native RGB histograms. Preserve the source index and metadata, not only precomputed X/y.
 3. `environment_study.py`: geographic CV of supervised RGB weather/lighting classification; [official Faiss e-means](https://github.com/facebookresearch/faiss/blob/main/contrib/e_means/README.md) on raw and learned representations, three clustering seeds, Lloyd/GMM controls. Learned probabilities plus e-means are explicitly **supervised representation learning**, not label-free weather discovery.
 4. `quality_screen.py`: paired GP/RF Q regression, geographically buffered CV and feature ablations. Inputs and regression labels are version-bound.

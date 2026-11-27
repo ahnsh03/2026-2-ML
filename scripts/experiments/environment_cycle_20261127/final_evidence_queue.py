@@ -13,13 +13,14 @@ def main():
   with (S/'logs'/(name+'.log')).open('a') as f:subprocess.run(['docker','run','--rm','--gpus','all','--shm-size','1g','--name','ml-environment-final-eval',*mount,'ml-perception:rtx50-cu128',*command],stdout=f,stderr=subprocess.STDOUT,check=True)
  if not (S/'g1_quality/review_policy_frozen.json').exists():host('refit_policy.py',['--study',str(S),'--parent',str(a.parent)],'refit_g1_policy.log')
  if not (S/'g1_quality/bundle/bundle_manifest.json').exists():host('export_review.py',['--study',str(S),'--parent',str(a.parent),'--quality-dir','g1_quality','--output',str(S/'g1_quality/bundle')],'export_g1_bundle.log')
+ gpu('original_exposure_audit',['python','scripts/experiments/environment_cycle_20261127/audit_replay_exposure.py','--study',str(S)])
  alpha=choice['selected']['alpha'];matched=[]
  for item in read(S/'protocol/training_plan.json')['queue']:
   root=Path(item['run']) if alpha==1. else S/'derived'/(item['name']+f'_a{int(alpha*100):03d}')
   matched.append(dict(name=item['name'],arm=item['arm'],seed=item['seed'],run=str(root),checkpoint_sha256=sha(root/'checkpoint.pt'),evaluation='f1' if str(root)==run else item['name']+'_common_alpha'))
  control=read(S/'reports/full_replay_control_complete.json');control_run=next(r['run'] for r in control['models'] if r['alpha']==alpha)
  matched.append(dict(name='ReplayFull_s271127',arm='ReplayFull',seed=271127,run=control_run,checkpoint_sha256=sha(Path(control_run)/'checkpoint.pt'),evaluation='replay_control'))
- frozen=dict(study_design_sha256=sha(S/'protocol/study_design_frozen.json'),perception=choice,matched_neural_models=matched,matched_alpha=alpha,quality_selection_sha256=sha(S/'g1_quality/quality_selection_frozen.json'),review_manifest_sha256=sha(S/'g1_quality/bundle/bundle_manifest.json'),confirmation_index_sha256=sha(C/'registry/index_frozen.json'),opened_after_complete_freeze=True,replay_control_alpha=choice['selected']['alpha'],replay_control_rule='Predeclared first-seed full26001-only24k endpoint at the selected f1 coefficient; no control checkpoint/alpha selected on confirmation.')
+ frozen=dict(source_sha256=sha(__file__),study_design_sha256=sha(S/'protocol/study_design_frozen.json'),perception=choice,matched_neural_models=matched,matched_alpha=alpha,quality_selection_sha256=sha(S/'g1_quality/quality_selection_frozen.json'),review_manifest_sha256=sha(S/'g1_quality/bundle/bundle_manifest.json'),confirmation_index_sha256=sha(C/'registry/index_frozen.json'),opened_after_complete_freeze=True,replay_control_alpha=choice['selected']['alpha'],replay_control_rule='Predeclared first-seed full26001-only24k endpoint at the selected f1 coefficient; no control checkpoint/alpha selected on confirmation.')
  opening=S/'protocol/fresh_confirmation_opening_frozen.json'
  if opening.exists():
   if read(opening)!=frozen:raise ValueError('frozen perception/quality/policy or confirmation membership changed')
@@ -49,24 +50,6 @@ def main():
  for name,adaptation in [('f0',None),('f1',run)]:
   packs=C/('packs_'+name);cmd=['python','scripts/experiments/roi9_gp_20261125/extract.py','--index',str(C/'registry/index_frozen.json'),'--data-root','/mnt','--output',str(packs),'--batch-size','4']
   cmd+=['--adaptation-run',str(adaptation)] if adaptation else ['--checkpoint','/checkpoints/twinlite_medium_morai_v6_road_marking_init_b_b12_e18_20260908/best_mean.pt'];gpu('fresh_extract_'+name,cmd)
- # Native supervised two-head evaluation uses the same thinned input/cache for
- # f0/f1, and retains all rows regardless of GT lane-pixel support.
- manifest=C/'registry/sources.jsonl';manifest.write_text(''.join(json.dumps(r,allow_nan=False)+'\n' for r in read(C/'registry/index_frozen.json')['fresh_confirmation']['rows']))
- cached=C/'registry/cached.jsonl'
- if not cached.exists():gpu('fresh_cache',['python','-m','quality_estimation.adaptation_cache','--manifest',str(manifest),'--data-root','/mnt','--cache',str(a.parent/'cache'),'--output',str(cached),'--workers','8'])
- for name,adaptation in [('f0',None),('f1',run)]:
-  out=C/'evaluations'/name
-  if (out/'_SUCCESS').exists():continue
-  cmd=['python','-m','quality_estimation.evaluate_cached_perception','--manifest',str(cached),'--cache',str(a.parent/'cache'),'--output',str(out),'--batch-size','4','--workers','2','--role','heldout_diagnostic'];cmd+=['--adaptation-run',str(adaptation)] if adaptation else ['--checkpoint','/checkpoints/twinlite_medium_morai_v6_road_marking_init_b_b12_e18_20260908/best_mean.pt'];gpu('fresh_perception_'+name,cmd)
- for item in matched:
-  out=C/'evaluations'/item['evaluation']
-  if (out/'_SUCCESS').exists():continue
-  gpu('fresh_'+item['evaluation'],['python','-m','quality_estimation.evaluate_cached_perception','--manifest',str(cached),'--cache',str(a.parent/'cache'),'--output',str(out),'--batch-size','4','--workers','2','--role','heldout_diagnostic','--adaptation-run',item['run']])
- host('check_runtime.py',['--study',str(S),'--parent',str(a.parent),'--repo',str(a.repo),'--quality-dir','g1_quality','--adaptation-run',run],'check_runtime_g1.log')
- while not (S/'reports/full_replay_control_complete.json').exists():time.sleep(15)
- control=read(S/'reports/full_replay_control_complete.json');alpha=choice['selected']['alpha'];control_run=next(r['run'] for r in control['models'] if r['alpha']==alpha);control_out=C/'evaluations/replay_control'
- if not (control_out/'_SUCCESS').exists():
-  gpu('fresh_replay_control',['python','-m','quality_estimation.evaluate_cached_perception','--manifest',str(cached),'--cache',str(a.parent/'cache'),'--output',str(control_out),'--batch-size','4','--workers','2','--role','heldout_diagnostic','--adaptation-run',control_run])
  host('assess_confirmation.py',['--study',str(S),'--parent',str(a.parent)],'assess_confirmation.log')
  (S/'reports/final_evidence_complete.json').write_text(json.dumps({'status':'complete','fresh_confirmation_after_freeze':True})+'\n');print('FINAL EVIDENCE COMPLETE',flush=True)
 if __name__=='__main__':main()

@@ -22,6 +22,8 @@ def main():
     version=json.loads((a.bundle/'bundle_manifest.json').read_text())['version']
     review_type=EnvironmentReview if version=='environment-quality-review-bundle-1' else VersionedReview
     review=review_type(a.bundle,perception_identity=identity)
+    quality_model_path=a.bundle/getattr(review,'model_filename','quality_gp.npz')
+    quality_model_sha256=sha256_file(quality_model_path)
     columns=list(dict.fromkeys(review.columns+review.environment.columns));lookup={n:i for i,n in enumerate(columns)}
     take=lambda x,names:x[:,[lookup[n] for n in names]]
     rows=[json.loads(s) for s in a.manifest.read_text().splitlines() if s.strip()]
@@ -41,9 +43,10 @@ def main():
                 record={key:value[j].tolist() for key,value in prediction.items()}
                 record.update(sample_id=item['sample_id'],rgb_sha256=item['sha256'],pixel_sha256=item['pixel_sha256'],checkpoint_sha256=identity['checkpoint_sha256'],
                               perception_identity=identity,perception_weights=perception.weights,profile=review.profile.version,regions_sha256=review.profile.regions_sha256,
-                              model_sha256=sha256_file(a.bundle/getattr(review,'model_filename','quality_gp.npz')),uses_ground_truth=False,admission_approved=False,
+                              model_sha256=quality_model_sha256,uses_ground_truth=False,admission_approved=False,
                               band_diagnostic_near_metric='whole_frame_quality_only' if len(review.target_names)==1 else 'near_f1' if len(review.target_names)==4 else 'near_recall_only_not_precision')
                 records.append(record)
+    if sha256_file(quality_model_path)!=quality_model_sha256:raise ValueError('quality model changed during RGB replay')
     predictions={k:np.concatenate(v) for k,v in parts.items()};ids=np.array([r['sample_id'] for r in records]);budget=a.budget if a.budget is not None else int(np.ceil(len(rows)*.1))
     selected,priority=review.select(ids,predictions,budget)
     rounding=np.ceil if review.policy.get('audit_rounding','floor')=='ceil' else np.floor
