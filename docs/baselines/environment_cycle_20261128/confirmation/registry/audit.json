@@ -1,0 +1,19 @@
+{
+  "created_utc": "2026-11-27T11:12:02.659249+00:00",
+  "conditions": 72,
+  "raw_frames": 1815,
+  "thinned_frames": 618,
+  "verified_4channel_files": 7260,
+  "minimum_original_training_ego_distance_m": 46.35512938952071,
+  "minimum_old_source_distance_m": 30.830539209360587,
+  "maximum_cte_m": 0.21911917299310915,
+  "maximum_speed_mps": 1.5688874327393094,
+  "all_successful_epochs_restoration_verified": true,
+  "source_sha256": "b0574b6c0a43d349e42c84f682030e84f29ac8a086398864b71891abce7f6674",
+  "index_sha256": "92749d4f46f40c1c7b7429d352542252aafdfdaf4295bb43833b19c7d4feb7a0",
+  "plans_sha256": [
+    "559819e202726f86609f66121659881b4b0bb7abf9c1d24251724229a7353313",
+    "e8af67510852aeb6372e60ade51266cb72bd93feedc30375717cd9829ddded7e"
+  ],
+  "scope": "Same-map locations buffered from registered tuning/adaptation captures; original-v6-training-route exclusion is not established.3m XY thinning before target/prediction inspection. No exposure timestamps; content alignment still separate."
+}

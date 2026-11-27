@@ -1,0 +1,24 @@
+{
+  "status": "research_candidate_not_adopted",
+  "candidate_perception_run": "${STUDY_ROOT}/runs/GPGlobalFull_s271127",
+  "quality_model_kind": "GP",
+  "review_bundle": "${STUDY_ROOT}/g1_quality/bundle",
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+  },
+  "environment_tags_accepted": false,
+  "semantic_environment_clusters_accepted": false,
+  "environment_thresholds_adopted": false,
+  "common_quality_benchmark": 0.7,
+  "original_replay": 26001,
+  "new_admissions": 3072,
+  "default_checkpoint_changed": false,
+  "live_connection_completed": false,
+  "automatic_admission": false,
+  "assessment_sha256": "4aba54ebf6860ade0bce332af9b4fc88a8ff09119b078a98228e48694023593b"
+}

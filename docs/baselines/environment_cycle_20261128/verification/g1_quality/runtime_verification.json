@@ -1,0 +1,23 @@
+{
+  "selection_order_equal": true,
+  "selection_overlap": 8,
+  "rows": 48,
+  "uses_gt": false,
+  "manifest_has_semantic_field": false,
+  "max_feature_profile_difference": 3.2782554626464844e-05,
+  "max_iou_prediction_profile_difference": 7.470461955816354e-06,
+  "environment_cluster_profile_equal": true,
+  "wrong_perception_identity_rejected": true,
+  "scope": "40-profile CPU and50-profile GPU execution;40-series GPU hardware unavailable. Native CUDA batch arithmetic can alter near-tied hard output pixels.",
+  "target_profile_comparison": {
+    "rows": 48,
+    "defined_rows": 48,
+    "undefined_status_changes": 0,
+    "maximum_iou_target_difference": 0.0,
+    "maximum_allowed_difference": 0.005,
+    "source_pack_device": "cpu",
+    "source_pack_receipt_sha256": "2bc8876d818f41194170313fa4f828583ff821ffd64ebf03e50a68d96b09a935",
+    "cuda_pack_receipt_sha256": "3fefbaa614d411a4cb5a1126b7114ebbc04713dfd4ff8d9bc97f2f7732917fd0",
+    "scope": "Offline GT diagnostic after RGB-only replay; no GT input to the review model."
+  }
+}

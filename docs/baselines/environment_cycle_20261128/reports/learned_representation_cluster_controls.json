@@ -1,0 +1,73 @@
+{
+  "training_rows": 7442,
+  "development_rows": 361,
+  "dimensions": 9,
+  "clusters": 16,
+  "representation": "Same supervised RGB OOB probability embedding for training, full-forest predictions for Dev; square-root transform.",
+  "records": [
+    {
+      "method": "official_e_means",
+      "seed": 271127,
+      "weather_balanced_accuracy": 1.0,
+      "lighting_balanced_accuracy": 1.0,
+      "minimum_cluster_rows": 84,
+      "seconds": null
+    },
+    {
+      "method": "lloyd",
+      "seed": 271127,
+      "weather_balanced_accuracy": 1.0,
+      "lighting_balanced_accuracy": 1.0,
+      "minimum_cluster_rows": 197,
+      "seconds": 0.01538883100147359
+    },
+    {
+      "method": "lloyd",
+      "seed": 271128,
+      "weather_balanced_accuracy": 1.0,
+      "lighting_balanced_accuracy": 1.0,
+      "minimum_cluster_rows": 197,
+      "seconds": 0.012428365997038782
+    },
+    {
+      "method": "lloyd",
+      "seed": 271129,
+      "weather_balanced_accuracy": 1.0,
+      "lighting_balanced_accuracy": 1.0,
+      "minimum_cluster_rows": 197,
+      "seconds": 0.007900413998868316
+    },
+    {
+      "method": "diagonal_gmm",
+      "seed": 271127,
+      "weather_balanced_accuracy": 0.7136779184247539,
+      "lighting_balanced_accuracy": 0.6890235433016182,
+      "minimum_cluster_rows": 184,
+      "seconds": 0.11876974199549295
+    },
+    {
+      "method": "diagonal_gmm",
+      "seed": 271128,
+      "weather_balanced_accuracy": 0.7136779184247539,
+      "lighting_balanced_accuracy": 0.6890235433016182,
+      "minimum_cluster_rows": 184,
+      "seconds": 0.13392369099892676
+    },
+    {
+      "method": "diagonal_gmm",
+      "seed": 271129,
+      "weather_balanced_accuracy": 0.7136779184247539,
+      "lighting_balanced_accuracy": 0.6890235433016182,
+      "minimum_cluster_rows": 184,
+      "seconds": 0.12429834698559716
+    }
+  ],
+  "seed_stability_ari": {
+    "lloyd": 1.0,
+    "diagonal_gmm": 1.0,
+    "official_e_means": 0.9455584057845373
+  },
+  "selected_runtime_unchanged": true,
+  "source_sha256": "5962de0154761a65374e8f25a66479b15e44bd955784e11af62fa9a074bea71f",
+  "scope": "Diagnostic on existing Dev only. Unequal iteration/initialization budgets, no fair speedup claim. Improvements over raw RGB do not isolate a clustering-algorithm effect. No fresh confirmation or IoU labels accessed."
+}

@@ -1,0 +1,14 @@
+{
+  "rows": 48,
+  "all_preexisting_prediction_fields_identical": true,
+  "additional_diagnostic_keys": [
+    "environment_out_of_distribution",
+    "gp_uncertainty_available"
+  ],
+  "candidate_preexisting_fields_and_order_identical": true,
+  "all_feature_arrays_identical": true,
+  "before_seconds": 31.481871947005857,
+  "after_seconds": 19.5001945750264,
+  "speed_comparison_scope": "Sequential48-frame GPU replay while perception training active; informal throughput diagnostic, not controlled latency benchmark.",
+  "optimization": "Hash immutable quality weights once at start and verify again at end, rather than reading and hashing once for every output record."
+}

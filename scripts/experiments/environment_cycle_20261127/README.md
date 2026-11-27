@@ -2,6 +2,8 @@
 
 The current unit audits the original mixture, tests RGB environment discovery against simulator tags, compares same-v6-start selection policies, and rebuilds quality estimation after a perception update. Raw data and weights stay outside Git. The preceding subset-replay study remains under `selection_cycle_20261126/`.
 
+**Completed, update not adopted.** Eight neural runs, version-matched quality/policy refitting, the independent618-frame cohort and standalone40-profile CPU/actual50GPU replay are complete. Neural and quality-retention gates passed, but review retrieval failed.59/62 review slots went to near-unsupported scenes and0/114 supported near-deficit frames were selected. See the [result report](../../../docs/experiments/환경검증_전체원본재생_20261128.md) and [public tables/16 figures](../../../docs/baselines/environment_cycle_20261128/README.md). These commands reproduce the frozen research cycle; they do not authorize online deployment or retuning on the opened cohort.
+
 ## Frozen comparison
 
 - Original train: **26,001** images, supported by the checkpoint's embedded train-manifest digest. Use the complete original pool, including all three camera views. The old4,096 subset used equal run/view quotas and changed original proportions.
@@ -24,6 +26,13 @@ Set `STUDY_ROOT`, `PARENT_STUDY`, `REPO_ROOT`, `CHECKPOINT_ROOT` to your local r
 8. `collect_queue.py`, `register_confirmation.py`: parked-to-parked short26R1 drives, complete four-channel hashes, geometry-only thinning and source-role preservation. The optional local RPC-reset helper is private Windows-layout-specific tooling, passed explicitly as `--reset-script`.
 9. `final_evidence_queue.py`: freeze training-only environment-mean controls (`context_controls.py`) to separate weather/time identity from per-image quality; fresh alignment check, f0/f1 extraction, two-head evaluation, actual RGB/no-GT replay, GT reattachment,40CPU/50GPU compatibility, and acceptance without test retuning.
 10. `artifacts_queue.py`: after actual numeric assessment, export verified RGB/GT cases, standalone PNG/SVG figures and scrubbed public aggregates. No Git commit/push is performed by the worker.
+11. `audit_confirmation_support.py`: post-assessment audit of sparse marking support, frozen selection allocation and per-road GP/RF errors. Reproduces the saved selection without GT, then attaches support diagnostics. It does not refit models, change thresholds or alter the original acceptance. Its negative evidence motivates a future, separately registered development/confirmation protocol.
+12. `audit_policy_search.py`: audit all frozen Dev BO/random trials and propose the best eligible evaluated-union candidate as **development analysis only**. Simulator oracles cannot become runtime candidates, unequal/corrupt histories are rejected, existing files cannot be overwritten, and no confirmation data is opened. This tool does not build a deployable bundle or replace the rejected pair.
+
+```bash
+python3 scripts/experiments/environment_cycle_20261127/audit_policy_search.py \
+  --policy "$FROZEN_POLICY" --output "$NEW_DEV_SEARCH_AUDIT"
+```
 
 Quality X/y extraction can run in FP32 on CPU while the frozen full-original-only neural control uses the GPU. The resumed extractor verifies exact checkpoint/index/pack hashes. The final worker explicitly waits for the completed control, then compares48 identical Dev IoU targets against actual50GPU extraction (no undefined-status changes; maximum absolute difference<=0.005), as well as RGB-only40CPU/50GPU replay and GT-role preservation. CPU preparation does not open fresh inputs or change any selection/adoption criterion. `check_runtime.py --prepare-cpu-only` can prepare its48-row CPU RGB replay before the control finishes, without marking compatibility/GT verification complete. Cached replays must match the exact bundle, input and perception identity, including artifact hashes.
 
@@ -36,3 +45,5 @@ Each stage preserves manifests, hashes, exact perception identity, model state t
 Weather-tag accuracy, clustering stability, IoU MAE, calibrated review retrieval and downstream perception gain answer different questions. The current moving Dev set confounds near-deficit with night; it cannot prove rejection of normal night scenes. Supported near precision/recall is a diagnostic proxy rather than visibility-aware operating truth. Unsupported relative references fall back to the common0.7 benchmark; no environmental normality is fabricated.
 
 The e-means study uses5CPU NumPy passes and reassigns every vector to its nearest final centroid. The official documentation distinguishes last-epoch labels from final-centroid assignments. This small study does not claim the paper's large-scale10x speedup.
+
+The frozen policy scripts choose their candidate from **BO history only**; matched random search is a control, unlike quality HPO which selects over the evaluated union. For f1 RGB-weather review, random search reached Dev loss0.37581 versus BO0.39159 and common0.39474, but was not eligible under that selection rule. Thus neither BO superiority nor the absence of any useful relative policy is established. Keep the frozen artifacts unchanged. A future separately registered study should select over the BO/random union and isolate balance reservation from threshold changes before opening a new confirmation cohort.

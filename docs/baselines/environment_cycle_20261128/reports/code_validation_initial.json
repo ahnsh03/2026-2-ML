@@ -1,0 +1,16 @@
+{
+  "git_commit": "b3441da",
+  "profiles": {
+    "rtx50-cu128": {
+      "tests": 265,
+      "passed": true
+    },
+    "rtx40-cu118": {
+      "tests": 265,
+      "passed": true
+    }
+  },
+  "powershell_atomic_sharing_test_passed": true,
+  "source_snapshot": "source/snapshot_b3441da",
+  "runtime48": "verification/f0_quality/runtime_verification.json"
+}

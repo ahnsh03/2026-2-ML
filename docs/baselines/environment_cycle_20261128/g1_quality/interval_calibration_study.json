@@ -1,0 +1,163 @@
+{
+  "models": {
+    "GP": {
+      "selected_method": "road_envelope",
+      "interval_residual_bounds": [
+        -3.753798073603615,
+        2.0008898788286764
+      ],
+      "trials": {
+        "pooled": {
+          "cal_leave_road_out": {
+            "coverage": 0.8418765827002532,
+            "width": 0.14688498486423757,
+            "interval_score": 0.3063119367955236
+          },
+          "development": {
+            "coverage": 0.7197576907934145,
+            "width": 0.16179218732784553,
+            "interval_score": 0.4333006109140287,
+            "rows": 361
+          },
+          "development_by_lighting": {
+            "0": {
+              "coverage": 0.8857619345424222,
+              "width": 0.1645314023724641,
+              "interval_score": 0.1971093042765473,
+              "rows": 242
+            },
+            "2": {
+              "coverage": 0.3796961916987591,
+              "width": 0.15627012994582215,
+              "interval_score": 0.916769597152121,
+              "rows": 119
+            }
+          },
+          "bounds": [
+            -2.7977027018017204,
+            0.7605002106178129
+          ],
+          "objective": 0.36980627385477616
+        },
+        "road_envelope": {
+          "cal_leave_road_out": {
+            "coverage": 0.943062774890044,
+            "width": 0.22816403793738793,
+            "interval_score": 0.2845491877454224
+          },
+          "development": {
+            "coverage": 0.8888429302608459,
+            "width": 0.261527279497039,
+            "interval_score": 0.3409578162922627,
+            "rows": 361
+          },
+          "development_by_lighting": {
+            "0": {
+              "coverage": 0.9959349593495935,
+              "width": 0.265887659268351,
+              "interval_score": 0.2702193115232268,
+              "rows": 242
+            },
+            "2": {
+              "coverage": 0.6698759092854086,
+              "width": 0.25273596145553945,
+              "interval_score": 0.485748972897974,
+              "rows": 119
+            }
+          },
+          "bounds": [
+            -3.753798073603615,
+            2.0008898788286764
+          ],
+          "objective": 0.31275350201884256
+        }
+      },
+      "calibration_rows": 612,
+      "calibration_roads": 5,
+      "defined_primary_development_rows": 361,
+      "model_sha256": "7f6f50d98555a64ae80229821007cbb6d412f692cbe9014e76f35cf2d4c4cc99"
+    },
+    "RF": {
+      "selected_method": "pooled",
+      "interval_residual_bounds": [
+        -0.056525418807839005,
+        0.04078089078820683
+      ],
+      "trials": {
+        "pooled": {
+          "cal_leave_road_out": {
+            "coverage": 0.8762628282020526,
+            "width": 0.08819248182982183,
+            "interval_score": 0.2154420960665655
+          },
+          "development": {
+            "coverage": 0.4936312831189363,
+            "width": 0.09730630959604582,
+            "interval_score": 0.5907103722060069,
+            "rows": 361
+          },
+          "development_by_lighting": {
+            "0": {
+              "coverage": 0.5613925370022931,
+              "width": 0.09730630959604582,
+              "interval_score": 0.3461229356778004,
+              "rows": 242
+            },
+            "2": {
+              "coverage": 0.35399015832263586,
+              "width": 0.0973063095960458,
+              "interval_score": 1.0893175008991205,
+              "rows": 119
+            }
+          },
+          "bounds": [
+            -0.056525418807839005,
+            0.04078089078820683
+          ],
+          "objective": 0.4030762341362862
+        },
+        "road_envelope": {
+          "cal_leave_road_out": {
+            "coverage": 0.9544582167133147,
+            "width": 0.21971524249837512,
+            "interval_score": 0.24420338722527513
+          },
+          "development": {
+            "coverage": 0.6250936407046376,
+            "width": 0.2670214573109918,
+            "interval_score": 0.6064185239061467,
+            "rows": 361
+          },
+          "development_by_lighting": {
+            "0": {
+              "coverage": 0.7085678549093183,
+              "width": 0.2670237621257419,
+              "interval_score": 0.4265820179195943,
+              "rows": 242
+            },
+            "2": {
+              "coverage": 0.4532413350449294,
+              "width": 0.267016732440754,
+              "interval_score": 0.9752919223163726,
+              "rows": 119
+            }
+          },
+          "bounds": [
+            -0.21894208825193232,
+            0.04808167387380958
+          ],
+          "objective": 0.4253109555657109
+        }
+      },
+      "calibration_rows": 612,
+      "calibration_roads": 5,
+      "defined_primary_development_rows": 361,
+      "model_sha256": "488f939ceb52e2bbc2e31437971ace1ddeabce610f0da998adb2fbb53a70b195"
+    }
+  },
+  "quality_selection_sha256": "dfb9cf7cfecaf1300f931584bc701baa626edc7d8f7bfdca14b76d19f6546098",
+  "source_sha256": "c5b46977c30134ed2b6de4051ca9a3dc1136daf34b8b2f3a13a0a5f9fa03375f",
+  "target_coverage": 0.9,
+  "selection_rule": "Two fixed recipes. Adopt road envelope only for mean Cal-leave-road-out/primary-Dev90% interval-score improvement>=0.005 and nondecreasing Dev coverage. Width is penalized by the proper interval score, not optimized by coverage alone.",
+  "scope": "Cal road strata only; no road ID or GT at runtime. Fresh remains unopened. Signed residual CDF review scores and point means are unchanged. f0 study is diagnostic and does not replace its frozen bank/bundle. New g1 export binds the selected bounds. Empirical validation, not a finite-sample or conditional-coverage guarantee."
+}

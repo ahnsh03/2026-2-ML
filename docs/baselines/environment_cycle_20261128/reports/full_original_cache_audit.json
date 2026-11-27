@@ -1,0 +1,11 @@
+{
+  "rows": 26001,
+  "unique_decoded_pixels": 26001,
+  "all_original_two_head_targets_bitwise_equal": true,
+  "all_original_padding_bitwise_equal": true,
+  "raw_files_copied": false,
+  "original_manifest_sha256": "b810d264d1476aec60cb773a1ccf2dcdff13e83262966ecab07987084fd553c5",
+  "cached_manifest_sha256": "6fff2840566559dde92adcda8a8aacb76c89fa9c7da210a630240e9dc035aaa4",
+  "seconds": 715.6991618569882,
+  "source_sha256": "f888630da98d3d527edbd58538d7e1dd923043b97db405bfee4e318bb9c5b1ec"
+}

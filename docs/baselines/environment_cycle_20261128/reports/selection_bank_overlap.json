@@ -1,0 +1,31 @@
+{
+  "rows_per_bank": 3072,
+  "sample_set_jaccard": {
+    "RandomFull": {
+      "RandomFull": 1.0,
+      "TagBalancedFull": 0.2559280457890433,
+      "RFGlobalFull": 0.25927444148391066,
+      "GPGlobalFull": 0.2613426401149661
+    },
+    "TagBalancedFull": {
+      "RandomFull": 0.2559280457890433,
+      "TagBalancedFull": 1.0,
+      "RFGlobalFull": 0.38471940500338064,
+      "GPGlobalFull": 0.4459872911273241
+    },
+    "RFGlobalFull": {
+      "RandomFull": 0.25927444148391066,
+      "TagBalancedFull": 0.38471940500338064,
+      "RFGlobalFull": 1.0,
+      "GPGlobalFull": 0.6759410801963993
+    },
+    "GPGlobalFull": {
+      "RandomFull": 0.2613426401149661,
+      "TagBalancedFull": 0.4459872911273241,
+      "RFGlobalFull": 0.6759410801963993,
+      "GPGlobalFull": 1.0
+    }
+  },
+  "source_sha256": "2e4b1e5f02bf55eb67b6f3618092453c1de293a3d3c472adf82bfde6cad99086",
+  "scope": "Overlap of fixed new-admission sets. Optimizer repeats do not resample banks; ordered identity is checked separately."
+}

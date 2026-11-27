@@ -1,0 +1,27 @@
+{
+  "status": "verified",
+  "adoption_status": "research_candidate_not_adopted",
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+  },
+  "rows": 8,
+  "source_git": "98792f88eafb9f04a1ab133012c66f728f445ad8",
+  "release_manifest_sha256": "90e1b0bb8b9e846e55478a1c714108e41d3d7bf740ab0ea39ea4e3d98ee3ded0",
+  "max_iou_prediction_difference": 2.664687306364044e-07,
+  "max_feature_difference": 2.9802322387695312e-08,
+  "environment_cluster_equal": true,
+  "selection_order_equal": true,
+  "selection_overlap": 4,
+  "uses_ground_truth": false,
+  "original_workspace_mounted": false,
+  "original_data_volumes_mounted": false,
+  "upstream_objects_self_contained": true,
+  "actual_40_gpu_tested": false,
+  "actual_50_gpu_tested": true,
+  "scope": "Only the release volume and a fresh output directory mounted. File/context verification repeated after both runs. Does not imply offline candidate adoption or live ROS acceptance."
+}

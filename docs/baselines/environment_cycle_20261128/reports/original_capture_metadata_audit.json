@@ -1,0 +1,102 @@
+{
+  "original_train_unique_pose_rows": 8667,
+  "recorded_ego_pose_rows": 8667,
+  "runs": [
+    {
+      "run": "Run1",
+      "original_train_poses": 641,
+      "matched_recorded_ego_positions": 641,
+      "explicit_environment_fields": {}
+    },
+    {
+      "run": "Run2",
+      "original_train_poses": 518,
+      "matched_recorded_ego_positions": 518,
+      "explicit_environment_fields": {}
+    },
+    {
+      "run": "Run3",
+      "original_train_poses": 503,
+      "matched_recorded_ego_positions": 503,
+      "explicit_environment_fields": {}
+    },
+    {
+      "run": "Run4",
+      "original_train_poses": 499,
+      "matched_recorded_ego_positions": 499,
+      "explicit_environment_fields": {}
+    },
+    {
+      "run": "Run5",
+      "original_train_poses": 326,
+      "matched_recorded_ego_positions": 326,
+      "explicit_environment_fields": {}
+    },
+    {
+      "run": "Run6",
+      "original_train_poses": 492,
+      "matched_recorded_ego_positions": 492,
+      "explicit_environment_fields": {}
+    },
+    {
+      "run": "Run7",
+      "original_train_poses": 496,
+      "matched_recorded_ego_positions": 496,
+      "explicit_environment_fields": {}
+    },
+    {
+      "run": "Run8",
+      "original_train_poses": 477,
+      "matched_recorded_ego_positions": 477,
+      "explicit_environment_fields": {}
+    },
+    {
+      "run": "Run9",
+      "original_train_poses": 2770,
+      "matched_recorded_ego_positions": 2770,
+      "explicit_environment_fields": {}
+    },
+    {
+      "run": "Run10",
+      "original_train_poses": 958,
+      "matched_recorded_ego_positions": 958,
+      "explicit_environment_fields": {}
+    },
+    {
+      "run": "Run11",
+      "original_train_poses": 681,
+      "matched_recorded_ego_positions": 681,
+      "explicit_environment_fields": {}
+    },
+    {
+      "run": "Run12",
+      "original_train_poses": 306,
+      "matched_recorded_ego_positions": 306,
+      "explicit_environment_fields": {}
+    }
+  ],
+  "confirmation_original_training_proximity": [
+    {
+      "route": "ConfirmationRoad1",
+      "minimum_nearest_original_ego_m": 57.313378869314135,
+      "median_nearest_original_ego_m": 57.48335405448668,
+      "fraction_planned_points_within5m_of_original_ego": 0.0
+    },
+    {
+      "route": "ConfirmationRoad2",
+      "minimum_nearest_original_ego_m": 45.96999898296097,
+      "median_nearest_original_ego_m": 51.987634751134536,
+      "fraction_planned_points_within5m_of_original_ego": 0.0
+    },
+    {
+      "route": "ConfirmationRoad3",
+      "minimum_nearest_original_ego_m": 188.5102685451362,
+      "median_nearest_original_ego_m": 197.89003004328046,
+      "fraction_planned_points_within5m_of_original_ego": 0.0
+    }
+  ],
+  "source_sha256": "6eb623a9e84f1d5a1c5358096669bc18d882b0c125bc9941aeb7c9ab27b464dd",
+  "train_manifest_sha256": "277f9161f39a0df0c99aaf9f23b07043b8d62af368bda1d425a5ea52c7ac8d85",
+  "plan_sha256": "559819e202726f86609f66121659881b4b0bb7abf9c1d24251724229a7353313",
+  "scope": "Original recorded ego positions are a location-overlap diagnostic, not camera extrinsic/exposure proof. Original weather/hour are not reconstructed from filenames or host timestamps. Fresh buffers from current quality/adaptation sources do not imply exclusion from original v6 training routes."
+}

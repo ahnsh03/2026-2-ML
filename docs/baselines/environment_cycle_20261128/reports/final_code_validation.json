@@ -1,0 +1,29 @@
+{
+  "created_utc": "2026-11-27T21:56:47.742838+00:00",
+  "profiles": {
+    "40": {
+      "tests": 282,
+      "passed": true,
+      "unit_test_device": "CPU",
+      "log_sha256": "e2dd8f6d273aac36be64eec35ed09db413d8fbeae1f8ef4f1b7a84c761dd9444",
+      "elapsed_seconds": 9.469333298999118
+    },
+    "50": {
+      "tests": 282,
+      "passed": true,
+      "unit_test_device": "CPU",
+      "log_sha256": "6c3f3ca9e1767bea781dc35c201f6801383b52487f79bc50d6fe72e50e6a4b20",
+      "elapsed_seconds": 10.041079854010604
+    }
+  },
+  "scope": "Complete CPU unit suites in both dependency profiles; prior actual50GPU runtime reports are preserved separately. No actual40GPU hardware.",
+  "base_git": "82c2bdbdfd29a1b8a02887090958cfea53de4e24",
+  "additional_source_sha256": {
+    "scripts/experiments/environment_cycle_20261127/audit_policy_search.py": "3c337048fcc58cbf1eccb576cdb83ae0f82fbcfaedb980a5084d5db89de57224",
+    "tests/test_policy_search_audit.py": "2596efe1112b2eb5b4015b05beb51bca7beb1368c9e5672595ab169645cf5f60"
+  },
+  "new_development_search_audit_sha256": "dd0835d02ecfc3f7733ef1ac66698b0174dfeb2a79af54a7af3c6316bc244f29",
+  "frozen_policy_unchanged": true,
+  "original_assessment_unchanged": true,
+  "candidate_adopted": false
+}

@@ -1,0 +1,317 @@
+{
+  "variants": [
+    {
+      "seed": 271127,
+      "new_rows": 3072,
+      "original_rows": 26001,
+      "new_draws": 48000,
+      "original_draws": 336000,
+      "original_min_draws_per_image": 12,
+      "original_max_draws_per_image": 13,
+      "new_min_draws_per_image": 15,
+      "new_max_draws_per_image": 16,
+      "source_total_variation": 0.0001714734872834793,
+      "sources": [
+        {
+          "source": "Source1",
+          "rows": 1923,
+          "population_fraction": 0.0739586938963886,
+          "draw_fraction": 0.07399107142857143
+        },
+        {
+          "source": "Source2",
+          "rows": 1554,
+          "population_fraction": 0.059766932041075346,
+          "draw_fraction": 0.05975
+        },
+        {
+          "source": "Source3",
+          "rows": 1509,
+          "population_fraction": 0.05803622937579324,
+          "draw_fraction": 0.05799702380952381
+        },
+        {
+          "source": "Source4",
+          "rows": 1497,
+          "population_fraction": 0.05757470866505134,
+          "draw_fraction": 0.05760119047619048
+        },
+        {
+          "source": "Source5",
+          "rows": 978,
+          "population_fraction": 0.03761393792546441,
+          "draw_fraction": 0.03759821428571428
+        },
+        {
+          "source": "Source6",
+          "rows": 1476,
+          "population_fraction": 0.05676704742125303,
+          "draw_fraction": 0.0567797619047619
+        },
+        {
+          "source": "Source7",
+          "rows": 1488,
+          "population_fraction": 0.05722856813199492,
+          "draw_fraction": 0.05727678571428572
+        },
+        {
+          "source": "Source8",
+          "rows": 1431,
+          "population_fraction": 0.055036344755970926,
+          "draw_fraction": 0.05503869047619048
+        },
+        {
+          "source": "Source9",
+          "rows": 8310,
+          "population_fraction": 0.319603092188762,
+          "draw_fraction": 0.3195863095238095
+        },
+        {
+          "source": "Source10",
+          "rows": 2874,
+          "population_fraction": 0.11053421022268374,
+          "draw_fraction": 0.11053869047619047
+        },
+        {
+          "source": "Source11",
+          "rows": 2043,
+          "population_fraction": 0.07857390100380754,
+          "draw_fraction": 0.07849107142857142
+        },
+        {
+          "source": "Source12",
+          "rows": 918,
+          "population_fraction": 0.035306334371754934,
+          "draw_fraction": 0.035351190476190474
+        }
+      ],
+      "views": {
+        "front": {
+          "rows": 8667,
+          "draws": 112008
+        },
+        "left": {
+          "rows": 8667,
+          "draws": 111981
+        },
+        "right": {
+          "rows": 8667,
+          "draws": 112011
+        }
+      }
+    },
+    {
+      "seed": 271128,
+      "new_rows": 3072,
+      "original_rows": 26001,
+      "new_draws": 48000,
+      "original_draws": 336000,
+      "original_min_draws_per_image": 12,
+      "original_max_draws_per_image": 13,
+      "new_min_draws_per_image": 15,
+      "new_max_draws_per_image": 16,
+      "source_total_variation": 0.00015708702137827435,
+      "sources": [
+        {
+          "source": "Source1",
+          "rows": 1923,
+          "population_fraction": 0.0739586938963886,
+          "draw_fraction": 0.0739375
+        },
+        {
+          "source": "Source2",
+          "rows": 1554,
+          "population_fraction": 0.059766932041075346,
+          "draw_fraction": 0.059788690476190474
+        },
+        {
+          "source": "Source3",
+          "rows": 1509,
+          "population_fraction": 0.05803622937579324,
+          "draw_fraction": 0.05799404761904762
+        },
+        {
+          "source": "Source4",
+          "rows": 1497,
+          "population_fraction": 0.05757470866505134,
+          "draw_fraction": 0.05761309523809524
+        },
+        {
+          "source": "Source5",
+          "rows": 978,
+          "population_fraction": 0.03761393792546441,
+          "draw_fraction": 0.037642857142857145
+        },
+        {
+          "source": "Source6",
+          "rows": 1476,
+          "population_fraction": 0.05676704742125303,
+          "draw_fraction": 0.05675297619047619
+        },
+        {
+          "source": "Source7",
+          "rows": 1488,
+          "population_fraction": 0.05722856813199492,
+          "draw_fraction": 0.057241071428571426
+        },
+        {
+          "source": "Source8",
+          "rows": 1431,
+          "population_fraction": 0.055036344755970926,
+          "draw_fraction": 0.0550625
+        },
+        {
+          "source": "Source9",
+          "rows": 8310,
+          "population_fraction": 0.319603092188762,
+          "draw_fraction": 0.3196160714285714
+        },
+        {
+          "source": "Source10",
+          "rows": 2874,
+          "population_fraction": 0.11053421022268374,
+          "draw_fraction": 0.11055059523809524
+        },
+        {
+          "source": "Source11",
+          "rows": 2043,
+          "population_fraction": 0.07857390100380754,
+          "draw_fraction": 0.07854761904761905
+        },
+        {
+          "source": "Source12",
+          "rows": 918,
+          "population_fraction": 0.035306334371754934,
+          "draw_fraction": 0.03525297619047619
+        }
+      ],
+      "views": {
+        "front": {
+          "rows": 8667,
+          "draws": 112030
+        },
+        "left": {
+          "rows": 8667,
+          "draws": 112005
+        },
+        "right": {
+          "rows": 8667,
+          "draws": 111965
+        }
+      }
+    },
+    {
+      "seed": 271127,
+      "new_rows": 0,
+      "original_rows": 26001,
+      "new_draws": 0,
+      "original_draws": 384000,
+      "original_min_draws_per_image": 14,
+      "original_max_draws_per_image": 15,
+      "new_min_draws_per_image": null,
+      "new_max_draws_per_image": null,
+      "source_total_variation": 0.0001604514610014894,
+      "sources": [
+        {
+          "source": "Source1",
+          "rows": 1923,
+          "population_fraction": 0.0739586938963886,
+          "draw_fraction": 0.073921875
+        },
+        {
+          "source": "Source2",
+          "rows": 1554,
+          "population_fraction": 0.059766932041075346,
+          "draw_fraction": 0.0597421875
+        },
+        {
+          "source": "Source3",
+          "rows": 1509,
+          "population_fraction": 0.05803622937579324,
+          "draw_fraction": 0.058018229166666664
+        },
+        {
+          "source": "Source4",
+          "rows": 1497,
+          "population_fraction": 0.05757470866505134,
+          "draw_fraction": 0.05757552083333333
+        },
+        {
+          "source": "Source5",
+          "rows": 978,
+          "population_fraction": 0.03761393792546441,
+          "draw_fraction": 0.037625
+        },
+        {
+          "source": "Source6",
+          "rows": 1476,
+          "population_fraction": 0.05676704742125303,
+          "draw_fraction": 0.056729166666666664
+        },
+        {
+          "source": "Source7",
+          "rows": 1488,
+          "population_fraction": 0.05722856813199492,
+          "draw_fraction": 0.05726041666666667
+        },
+        {
+          "source": "Source8",
+          "rows": 1431,
+          "population_fraction": 0.055036344755970926,
+          "draw_fraction": 0.055049479166666665
+        },
+        {
+          "source": "Source9",
+          "rows": 8310,
+          "population_fraction": 0.319603092188762,
+          "draw_fraction": 0.3197057291666667
+        },
+        {
+          "source": "Source10",
+          "rows": 2874,
+          "population_fraction": 0.11053421022268374,
+          "draw_fraction": 0.11049739583333333
+        },
+        {
+          "source": "Source11",
+          "rows": 2043,
+          "population_fraction": 0.07857390100380754,
+          "draw_fraction": 0.07856770833333333
+        },
+        {
+          "source": "Source12",
+          "rows": 918,
+          "population_fraction": 0.035306334371754934,
+          "draw_fraction": 0.035307291666666664
+        }
+      ],
+      "views": {
+        "front": {
+          "rows": 8667,
+          "draws": 128014
+        },
+        "left": {
+          "rows": 8667,
+          "draws": 128005
+        },
+        "right": {
+          "rows": 8667,
+          "draws": 127981
+        }
+      }
+    }
+  ],
+  "verified_complete_run_receipts": [
+    "GPGlobalFull_s271127",
+    "GPGlobalFull_s271128",
+    "RFGlobalFull_s271127",
+    "RandomFull_s271127",
+    "RandomFull_s271128",
+    "ReplayFull_s271127",
+    "TagBalancedFull_s271127",
+    "TagBalancedFull_s271128"
+  ],
+  "original_manifest_sha256": "6fff2840566559dde92adcda8a8aacb76c89fa9c7da210a630240e9dc035aaa4",
+  "source_sha256": "07585a2c00da4bc705a3a7055ebe288b3de2b01056d786b5351c347872088336",
+  "scope": "Exact deterministic sampler reconstruction, checked against complete-run draw totals and source snapshots; not independent per-image disk-read telemetry. Incomplete/future runs are not counted as completed."
+}

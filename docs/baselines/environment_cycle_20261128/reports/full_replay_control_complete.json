@@ -1,0 +1,31 @@
+{
+  "models": [
+    {
+      "name": "ReplayFull_s271127",
+      "alpha": 1.0,
+      "run": "${STUDY_ROOT}/runs/ReplayFull_s271127",
+      "evaluation": "${STUDY_ROOT}/evaluations/ReplayFull_s271127/development_retention"
+    },
+    {
+      "name": "ReplayFull_s271127_a025",
+      "alpha": 0.25,
+      "run": "${STUDY_ROOT}/derived/ReplayFull_s271127_a025",
+      "evaluation": "${STUDY_ROOT}/evaluations/ReplayFull_s271127_a025/development_retention"
+    },
+    {
+      "name": "ReplayFull_s271127_a050",
+      "alpha": 0.5,
+      "run": "${STUDY_ROOT}/derived/ReplayFull_s271127_a050",
+      "evaluation": "${STUDY_ROOT}/evaluations/ReplayFull_s271127_a050/development_retention"
+    },
+    {
+      "name": "ReplayFull_s271127_a075",
+      "alpha": 0.75,
+      "run": "${STUDY_ROOT}/derived/ReplayFull_s271127_a075",
+      "evaluation": "${STUDY_ROOT}/evaluations/ReplayFull_s271127_a075/development_retention"
+    }
+  ],
+  "optimizer_seeds": 1,
+  "completed_utc": "2026-11-27T21:21:54.424509+00:00",
+  "fresh_confirmation_not_used": true
+}

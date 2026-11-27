@@ -1,0 +1,107 @@
+{
+  "frozen_utc": "2026-11-27T09:52:13.373466+00:00",
+  "new_per_arm": 3072,
+  "original_replay": 26001,
+  "starts": "identical v6 EMA",
+  "first_stage_seed": 271127,
+  "arms": [
+    "RandomFull",
+    "TagBalancedFull",
+    "RFGlobalFull",
+    "GPGlobalFull",
+    "ReplayFull"
+  ],
+  "repeat_seed": 271128,
+  "repeats": "Repeat Random and the two highest eligible non-random first-stage Dev banks among RFGlobal,GPGlobal,TagBalanced; if a bank has no passing variant use its best diagnostic variant after eligible banks. Rank by best passing macro gain then fixed arm name. Four first-stage+three repeats+one full-original-only control=eight runs. One remaining bank has one diagnostic seed.",
+  "steps": 24000,
+  "batch_new": 2,
+  "batch_original": 14,
+  "no_augmentation": true,
+  "bn_running_moments_frozen": true,
+  "nn_adoption": {
+    "new_primary_macro_iou_gain_min": 0.005,
+    "positive_roads_min": 2,
+    "new_road_iou_loss_max": 0.02,
+    "old_lane_pooled_loss_max": 0.005,
+    "old_drivable_pooled_loss_max": 0.005,
+    "old_class_view_iou_loss_max": 0.01,
+    "repeat_both_seeds_required": true
+  },
+  "quality_adoption": {
+    "primary_mae_increase_max": 0.01,
+    "historical_mae_increase_max": 0.01,
+    "confirm_interval_coverage_min": 0.8,
+    "confirm_mae_increase_max": 0.01
+  },
+  "new_fresh_confirmation": "geometry chosen before labels; not opened for model or threshold choice; any failure is reported without tuning on it",
+  "scope": "Eight fixed-v6 long neural runs compare four distinct new-admission banks with a full-original-only continuation control. Bounded BO optimizes retrieval proxies, not exhaustive neural hyperparameter optimality.",
+  "common_alpha_grid": [
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "interpolation": "Same static parameter interpolation grid for every arm/seed, no extra training. Selection-method attribution reported at identical alpha; final pair may choose alpha on Dev only.",
+  "unique_first_stage_arms": [
+    "RandomFull",
+    "TagBalancedFull",
+    "RFGlobalFull",
+    "GPGlobalFull"
+  ],
+  "repeat_rule": "Repeat Random and the two highest eligible non-random first-stage Dev banks among RFGlobal,GPGlobal,TagBalanced; if a bank has no passing variant use its best diagnostic variant after eligible banks. Rank by best passing macro gain then fixed arm name. Four first-stage+three repeats+one full-original-only control=eight runs. One remaining bank has one diagnostic seed.",
+  "policy_aliases": {
+    "SimTagFull": "GPGlobalFull",
+    "RGBTagFull": "GPGlobalFull"
+  },
+  "amended_before_first_nn_dev_utc": "2026-11-27T09:58:44.064114+00:00",
+  "fresh_review_gate": {
+    "fraction": 0.1,
+    "minimum_absolute_low_iou_positives": 20,
+    "minimum_positive_roads": 2,
+    "macro_recall_at_least_random_100_seed_mean": true,
+    "selected_precision_at_least_random_100_seed_mean": true
+  },
+  "control_protocol": "ReplayOnly arm with empty new manifest and full26001 original pool, batch0new+16original; identical24ksteps/LR/BN/teacher, no source-code changes to trainer.",
+  "control_interpretation": "Single-seed continuation control limits causal certainty. Compare at identical alpha; final selection never consults fresh data.",
+  "control_amendment_utc": "2026-11-27T10:25:54.010038+00:00",
+  "fresh_alignment_gate": {
+    "minimum_audited_frames": 20,
+    "minimum_roads": 2,
+    "minimum_own_boundary_better_than_neighbor_fraction": 0.7,
+    "scope": "RGB/GT registration diagnostic, not hardware exposure-time proof."
+  },
+  "review_precision_denominator": "All reviewed slots; defined-only IoU precision reported separately. Undefined zero-union IoU is never filled with0or1.",
+  "fixed_alpha_confirmation": "Before opening fresh labels, freeze all seven primary optimizer endpoints and the full-replay control at the same selected alpha; assess all eight methods/seeds, require both selected-method seeds pass.",
+  "amendments": [
+    {
+      "utc": "2026-11-27T11:43:09.466630+00:00",
+      "previous_sha256": "241041d6d1407ce720b45f875e65abe5a7f804db2ea88cfa5248bbd4aa0a6564",
+      "reason": "Add stricter fresh quality-MAE retention gate in addition to predeclared Dev retention and interval coverage. Before g1 fit or any fresh content/metrics; first Random neural Dev already available. No threshold relaxed.",
+      "new_rule": "Fresh g1 road-macro MAE must be <=f0/g0+0.010."
+    },
+    {
+      "utc": "2026-11-27T11:47:30.988319+00:00",
+      "previous_sha256": "644e5f1391016c43d31118885c274dc37a7c5d93bcd945395f9abb98fa65fcd9",
+      "reason": "Consolidate superseded six-arm header with the already registered unique-bank/repeat/control plan. No training queue, bank, optimizer setting, or adoption threshold changed. Before g1 fit and fresh opening."
+    },
+    {
+      "utc": "2026-11-27T12:41:17.969839+00:00",
+      "previous_sha256": "807306e2d235dc1bdfb5f64baee921657e65d2fe67ff80e368ea502b18a3f2e5",
+      "reason": "Random and balanced first-stage results are available; balanced is competitive. Include it in budget-neutral adaptive repeat allocation rather than excluding a potentially strongest bank. RF/GP first-stage Dev and all fresh results remain unopened. No bank/optimizer/adoption threshold changed.",
+      "rule": "Repeat Random and the two highest eligible non-random first-stage Dev banks among RFGlobal,GPGlobal,TagBalanced; if a bank has no passing variant use its best diagnostic variant after eligible banks. Rank by best passing macro gain then fixed arm name. Four first-stage+three repeats+one full-original-only control=eight runs. One remaining bank has one diagnostic seed."
+    }
+  ],
+  "initial_six_arm_proposal": [
+    "RandomFull",
+    "TagBalancedFull",
+    "RFGlobalFull",
+    "GPGlobalFull",
+    "SimTagFull",
+    "RGBTagFull"
+  ],
+  "environment_policy_aliases": {
+    "SimTagFull": "GPGlobalFull",
+    "RGBTagFull": "GPGlobalFull"
+  },
+  "repeat_allocation": "Adaptive funnel on Dev only. No fresh data used. Repeated-method comparisons have two optimizer/data-order seeds; unrepeated methods stay diagnostic."
+}

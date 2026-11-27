@@ -1,0 +1,35 @@
+{
+  "RandomFull": {
+    "rows": 3072,
+    "unique_pixels": 3072,
+    "original_id_and_pixel_overlap": 0,
+    "manifest_sha256": "131ba63c47c492008fd846d3b8fed4442eff41e02c144de7c26c3c8aad004746"
+  },
+  "TagBalancedFull": {
+    "rows": 3072,
+    "unique_pixels": 3072,
+    "original_id_and_pixel_overlap": 0,
+    "manifest_sha256": "e9a2ac31582ba18426ce2566e35cff64e6163c476485f46a4918a253566f0111"
+  },
+  "RFGlobalFull": {
+    "rows": 3072,
+    "unique_pixels": 3072,
+    "original_id_and_pixel_overlap": 0,
+    "manifest_sha256": "5e444a91930ed62434f5fa997b71e7e7b44625f43f53f5d33f92f6700ab13703"
+  },
+  "GPGlobalFull": {
+    "rows": 3072,
+    "unique_pixels": 3072,
+    "original_id_and_pixel_overlap": 0,
+    "manifest_sha256": "c6345dc8de1a28512433f3eddda49ccde75cd29b8eeaf6997d77884929d5afda"
+  },
+  "original": {
+    "rows": 26001,
+    "unique_pixels": 26001
+  },
+  "storage": {
+    "raw_original_copies": 0,
+    "cache": "Shared content-addressed lossless derived tensors",
+    "E_free_bytes": 79750856704
+  }
+}

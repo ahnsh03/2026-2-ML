@@ -10,13 +10,13 @@
 
 전방 RGB와 TwinLiteNet+ Medium v6 출력으로 전체 차선 IoU를 추정하고 취약 장면을 검수·재학습하는 데이터 플라이휠을 개발한다. 팀원의 시작점은 [팀 문서 목차](docs/README.md), 내부 마감과 인계는 [일정과 역할](docs/guides/일정과_역할.md)이다. 11월 24일 ROI 결정, 27일 첫 결합, 30일 오프라인 판정 후 12월 4일에 영상·영어 발표·공개 사이트를 완성한다.
 
-**현재 진행 단위:** 원본26,001장 전체 재생, RGB400 환경 분류와 e-means16군집, 같은 v6에서 시작하는8회 재학습과 새3도로 확인을 진행 중이다. [비교 설계와 진행 기록](docs/experiments/환경검증_전체원본재생_20261128.md)을 먼저 확인한다. 아래 숫자는 직전 완료 단위의 결과이며 새 후보의 채택은 아직 확정하지 않았다.
+**11월28일 오프라인 검증 완료·통합 교체 보류:** 원본26,001장을 모두 보존하고 신규3,072장 은행4개를 비교해8회 재학습했다. 현재 후보는9영역·GP52열·공통0.7 검수와 정확한 동점의 표준화 margin이다. 독립 확인에서 인지·품질 유지 기준은 통과했지만 검수 정책은 실패해 온라인으로 넘기지 않는다. [상세 결과와 보류 사유](docs/experiments/환경검증_전체원본재생_20261128.md) · [표·16개 그림·해시](docs/baselines/environment_cycle_20261128/README.md)
 
-직전 단위에서는 **9영역·품질28열 GP와 환경 RGB27열·e-means8군집을 통합했다.** 신규3,072장+기존replay4,096장으로 방법3개×2시드와 기존자료 대조2회, 총8회(각약68분) 학습을 마쳤다. 개발에서 선택한 인지 후보의 주 확인IoU는0.57891→0.64997, 기존lane 손실은0.00294였다. 품질/군집 선별의 재학습 이득은 무작위보다 크지 않았다.
+확인618장 중 두 구간은 근거리 표시 GT가 없었다.62장 검수에서59장이 근거리 진단 미지원 장면에 몰렸고 실제 근거리 결함114장은 회수하지 못했다. 날씨 분류91.21%와 달리 시각 기반 조명 분류는69.86%였다. GP는 Dev에서RF보다 좋았지만 새 확인 MAE는 GP0.03653/RF0.03047로 역전됐다. 낮은 IoU 예측, 유용한 데이터 선별, 재학습 이득을 따로 판단한다.
 
-**새 f1/g1의 통합 교체는 보류하고 기존 f0/g0를 유지한다.** 새GP MAE0.07979가 유지 기준을 넘었고 군집·σ혼합 검수도 공통확률보다 나빴다. 후보 검수는 공통Q0.7확률순+감사로 되돌렸으며 환경별 하향 임계·자동 학습 승격은 채택하지 않았다. [통합 결과·보류 사유·다음 단위](docs/experiments/군집_검수_동일예산_재학습_20261127.md) · [공개 표·그림·해시](docs/baselines/selection_cycle_20261127/README.md)
+**다음은 장면·타깃 가용성과 검수 정답 보완→새 독립 확인→조건 통과 후26R1 ROS shadow 연결**이다. 기본 v6 파일과 이전 버전 쌍은 덮어쓰지 않았다.40/50 프로필은 유지하며 두 의존성 이미지의 CPU282검사와 실제50GPU 재생을 검증했다.40계열 실제 GPU·실시간 지연·f1→f2 누적 갱신은 후속이다. [개발 환경](docs/guides/개발환경.md) · [역할·일정](docs/guides/일정과_역할.md)
 
-현재 시뮬레이터는 **26R1**이다.5070Ti용 `rtx50`과40GPU용 `rtx40`을 분리하고 RGB단독→검수→사후GT·40CPU/50GPU·portable RF를 검증했다. liveROS·f1→f2 누적 학습은 후속이며 g1의 새 버전 오차와 보정을 먼저 보완한다. [개발 환경](docs/guides/개발환경.md) · [통신 인수](config/morai/README.md) · [담당·일정](docs/guides/일정과_역할.md)
+직전4,096장 재생의 [27일 결과](docs/experiments/군집_검수_동일예산_재학습_20261127.md)는 별도 실험이다. 이번 실험과 수치·가중치를 섞지 않는다.
 
 이전7/10영역·RGB54·환경80/160열과26일 저속28+31 보정은 [날짜별 실험 이력](docs/experiments/README.md)으로 보존한다. 새 품질·환경·인지 버전을 이전 아티팩트와 섞지 않는다.
 
@@ -48,19 +48,17 @@ scripts/run_container.sh python3 -m visualization.visualize_inference --split va
 데이터·가중치·외부 제공 proto의 준비 조건과 수집 명령은 [개발 환경](docs/guides/개발환경.md)을 따른다.
 이 코드는 다른 프로젝트 저장소를 import하거나 경유하지 않는다.
 
-## X/y 데이터셋 생성
+## 현재9영역 품질 파이프라인
 
-`ML_OUTPUT_ROOT`를 용량이 충분한 외부 출력 볼륨으로 설정하고 실행한다. 기존 출력 폴더는 덮어쓰지 않는다.
+버전별 X/y 생성, GP/RF 적합, RGB 단독 검수와 사후 GT 연결은 [데이터·특징·정답 가이드](docs/guides/데이터_등록과_특징정답.md)와 [실험 재현 순서](scripts/experiments/environment_cycle_20261127/README.md)를 따른다. 특징 순서는 각 번들 manifest가 정본이다. f0의28열과 새 f1 후보의52열을 혼용하지 않는다.
+
+모델·RGB예제를 포함한 로컬 배포 묶음을 `ML_RELEASE_ROOT`로 지정하면 먼저 아래 검증을 실행할 수 있다. 연구 후보 묶음의 정상 실행은 채택 통과와 다르다.
 
 ```bash
-scripts/run_container.sh python3 -m quality_estimation.build_dataset \
-  --output-dir /outputs/quality_front
-scripts/run_container.sh python3 -m quality_estimation.verify_dataset \
-  --dataset-dir /outputs/quality_front --report /outputs/reports/quality_front_validation.json
+python3 scripts/verify_environment_release.py --root "$ML_RELEASE_ROOT"
 ```
 
-X에는 GT가 들어가지 않으며 y와 sample_id로 대응한다. 기존 인지 train/val 노출 역할을 보존하고
-품질 회귀 split은 별도로 정해야 한다. 세부 정의·산출물은 [X/y 데이터셋](docs/archive/X_y_데이터셋.md)을 따른다.
+초기 `build_dataset` CLI와 X/y 설계는 [이력](docs/archive/X_y_데이터셋.md)으로 보존한다. 현재9영역 번들의 시작점으로 사용하지 않는다.
 
 ## 문서와 데이터 관리
 

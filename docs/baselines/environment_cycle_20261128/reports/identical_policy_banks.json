@@ -1,0 +1,10 @@
+{
+  "ordered_ids_equal": true,
+  "policies": [
+    "SimTagFull",
+    "RGBTagFull",
+    "GPGlobalFull"
+  ],
+  "unique_admission_banks": 4,
+  "reason": "Relative-threshold BO did not improve multibudget primary-road retrieval; selected common0.7. Do not spend two additional long runs on identical tensors or count them as independent evidence."
+}

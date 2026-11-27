@@ -1,0 +1,13 @@
+{
+  "created_utc": "2026-11-27T09:41:48.639429+00:00",
+  "old_quality_fit_used": 1666,
+  "opened_diagnostic_rows_promoted": 834,
+  "quality_fit": 2500,
+  "development": 937,
+  "calibration": 612,
+  "source_index_sha256": "0cbd113440fe9916e98b6cf74c72a6ab63050e9eb3987eeb708a5cb16fa962c8",
+  "new_index_sha256": "9b979d9c7cd3b6f29828c145b1c29004bc0357becb5ce4e9dc897157e27f664a",
+  "old_diagnostics_no_longer_test": true,
+  "fresh_confirmation_required": true,
+  "scope": "Q-only regression retains GT-sparse defined IoU; near/far undefined labels do not remove primary Q rows. All primary metadata and source hashes retained."
+}

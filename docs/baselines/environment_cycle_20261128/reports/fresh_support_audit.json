@@ -1,0 +1,108 @@
+{
+  "f1_quality_mae_by_road": {
+    "GP": {
+      "env28_c00": 0.02711227618798677,
+      "env28_c01": 0.02358125001778415,
+      "env28_c02": 0.0589051140016564
+    },
+    "RF": {
+      "env28_c00": 0.03178956768525004,
+      "env28_c01": 0.007676226746573013,
+      "env28_c02": 0.05195865319136494
+    }
+  },
+  "rows": 618,
+  "budget": 62,
+  "selected_near_unsupported": 59,
+  "selected_near_deficits": 0,
+  "near_deficit_support_rows": 114,
+  "by_road": {
+    "env28_c00": {
+      "rows": 205,
+      "median_whole_gt_pixels": 75.0,
+      "median_near_gt_pixels": 0.0,
+      "whole_gt_ge50": 203,
+      "whole_gt_ge100": 4,
+      "near_gt_ge50": 0,
+      "near_precision_or_recall_supported": 36,
+      "near_deficits": 36,
+      "near_retained": 0,
+      "selected": 22,
+      "selected_near_deficits": 0,
+      "selected_near_retained": 0
+    },
+    "env28_c01": {
+      "rows": 207,
+      "median_whole_gt_pixels": 43.0,
+      "median_near_gt_pixels": 0.0,
+      "whole_gt_ge50": 32,
+      "whole_gt_ge100": 0,
+      "near_gt_ge50": 0,
+      "near_precision_or_recall_supported": 7,
+      "near_deficits": 7,
+      "near_retained": 0,
+      "selected": 37,
+      "selected_near_deficits": 0,
+      "selected_near_retained": 0
+    },
+    "env28_c02": {
+      "rows": 206,
+      "median_whole_gt_pixels": 2169.5,
+      "median_near_gt_pixels": 1906.0,
+      "whole_gt_ge50": 206,
+      "whole_gt_ge100": 206,
+      "near_gt_ge50": 206,
+      "near_precision_or_recall_supported": 206,
+      "near_deficits": 71,
+      "near_retained": 135,
+      "selected": 3,
+      "selected_near_deficits": 0,
+      "selected_near_retained": 3
+    }
+  },
+  "strata": {
+    "all_defined": {
+      "rows": 618,
+      "low_iou_positives": 480,
+      "selected_rows": 62,
+      "selected_low_iou": 59,
+      "low_iou_recall": 0.12291666666666666
+    },
+    "whole_gt_ge100": {
+      "rows": 210,
+      "low_iou_positives": 72,
+      "selected_rows": 4,
+      "selected_low_iou": 1,
+      "low_iou_recall": 0.013888888888888888
+    },
+    "union_ge100": {
+      "rows": 274,
+      "low_iou_positives": 136,
+      "selected_rows": 5,
+      "selected_low_iou": 2,
+      "low_iou_recall": 0.014705882352941176
+    },
+    "near_supported": {
+      "rows": 249,
+      "low_iou_positives": 111,
+      "selected_rows": 3,
+      "selected_low_iou": 0,
+      "low_iou_recall": 0.0
+    }
+  },
+  "frozen_selection_reproduced": true,
+  "gt_used_for_selection": false,
+  "policy_changed": false,
+  "models_retrained": false,
+  "original_acceptance_changed": false,
+  "source_sha256": "245174dea14835fb9dd951f1f09a7415fa74a5b4c36297e445bf1aba54f0f970",
+  "original_assessment_sha256": "4aba54ebf6860ade0bce332af9b4fc88a8ff09119b078a98228e48694023593b",
+  "interpretation": "Two fresh sections have no supported near markings. Accurate mathematical low IoU on sparse far markings does not establish a useful near-perception failure. Preserve original failed test and hold adoption; add scene/target-availability coverage and a new independent confirmation before policy revision.",
+  "future_only": [
+    "Stratify marked-road, unmarked-road and far-only scenes before freezing the next test; require multiple supported marked-road sections.",
+    "Preserve Q, GT/prediction support and near FP/FN reason codes separately. Existing post-GT support flags are diagnostics, not online GT inputs.",
+    "Do not suppress every empty prediction: missing all visible markings is a real failure. Expected marking availability must use RGB/scene evidence and false-positive cases need a separate safeguard.",
+    "Weather-only probability embeddings do not encode marking availability. Compare a separate scene representation and eligibility/review-value model before more threshold BO.",
+    "Add07:00 examples or revise the lighting-label specification on new Dev data; do not tune on this confirmation."
+  ]
+}

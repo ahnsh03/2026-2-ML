@@ -1,0 +1,40 @@
+{
+  "loaded_fields": [
+    "ids",
+    "role",
+    "weather",
+    "hour",
+    "rgb",
+    "output",
+    "relations",
+    "uncertainty",
+    "morphology"
+  ],
+  "candidate_gt_loaded": false,
+  "candidate_semantic_images_read": false,
+  "quality_models": {
+    "GPGlobalFull": {
+      "reproduced_ordered_ids": true,
+      "rows": 3072,
+      "prediction_max_difference": 5.040412531798211e-14,
+      "manifest_sha256": "c6345dc8de1a28512433f3eddda49ccde75cd29b8eeaf6997d77884929d5afda"
+    },
+    "RFGlobalFull": {
+      "reproduced_ordered_ids": true,
+      "rows": 3072,
+      "prediction_max_difference": 4.440892098500626e-16,
+      "manifest_sha256": "5e444a91930ed62434f5fa997b71e7e7b44625f43f53f5d33f92f6700ab13703"
+    },
+    "TagBalancedFull": {
+      "reproduced_ordered_ids": true,
+      "rows": 3072
+    },
+    "RandomFull": {
+      "ordered_ids_preserved_from_frozen_parent_random_bank": true,
+      "rows": 3072,
+      "parent_manifest_sha256": "131ba63c47c492008fd846d3b8fed4442eff41e02c144de7c26c3c8aad004746"
+    }
+  },
+  "source_sha256": "2e4b1e5f02bf55eb67b6f3618092453c1de293a3d3c472adf82bfde6cad99086",
+  "policy_sha256": "5c031b473e53c2867a2c13a4f8697be167ba7b08098015ca6ad8a055e9bfd977"
+}

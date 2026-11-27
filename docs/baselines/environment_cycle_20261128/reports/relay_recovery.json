@@ -1,0 +1,9 @@
+{
+  "failure": "Windows atomic Replace sharing violation while readers briefly held state.json",
+  "old_source_sha256": "cffdf09042a127b5cbdc45f64cc80993f76b7e539e1a50d8df0e702bb277c280",
+  "new_source_sha256": "f1785d215bf8e008c6e56b0d43fa44f3b504c35efe64df763ad48ba4a79b0bbc",
+  "repair": "Bounded120ms atomic replacement retries; 0.6s command watchdog and wire protocol unchanged",
+  "previous_completed_condition_restoration_verified": true,
+  "failed_next_epoch_initialization_before_any_motion": true,
+  "native_recovery_verified": true
+}

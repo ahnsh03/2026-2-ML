@@ -1,0 +1,100 @@
+{
+  "models": {
+    "GP": {
+      "defined_rows": 361,
+      "calibration_rows": 612,
+      "macro_mae": 0.04020070635644826,
+      "interval90_macro_coverage": 0.6853220397664689,
+      "interval90_mean_width": 0.16365510379393494,
+      "low_iou_macro_brier": 0.02885714128116733,
+      "low_iou_probability_auc": 0.9968705834847568,
+      "gp_uncertainty_available": true,
+      "by_lighting": {
+        "0": {
+          "rows": 242,
+          "mae": 0.02694908501859189,
+          "coverage": 0.8223140495867769,
+          "brier": 0.04174611164864365
+        },
+        "2": {
+          "rows": 119,
+          "mae": 0.06670434832827934,
+          "coverage": 0.42016806722689076,
+          "brier": 6.653023533074078e-07
+        }
+      },
+      "review": [
+        {
+          "fraction": 0.1,
+          "selected_rows": 37,
+          "precision": 0.972972972972973,
+          "macro_road_recall": 0.2681120144534779
+        },
+        {
+          "fraction": 0.25,
+          "selected_rows": 91,
+          "precision": 0.9120879120879121,
+          "macro_road_recall": 0.6473351400180669
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "selected_rows": 150,
+          "precision": 0.84,
+          "macro_road_recall": 0.991869918699187
+        }
+      ],
+      "predictive_sd_error_spearman": -0.28894925595465837,
+      "sd_alone_low_iou_auc": 0.1552257890840568,
+      "prediction_sha256": "b31afb9ee6cd01577fd897fb8288c4e3dae0ab30177ac4a67cdcbe1bb7271ed9"
+    },
+    "RF": {
+      "defined_rows": 361,
+      "calibration_rows": 612,
+      "macro_mae": 0.04159694008182342,
+      "interval90_macro_coverage": 0.7721830807906723,
+      "interval90_mean_width": 0.1194665879229242,
+      "low_iou_macro_brier": 0.019164225540261776,
+      "low_iou_probability_auc": 0.998738138501918,
+      "gp_uncertainty_available": false,
+      "by_lighting": {
+        "0": {
+          "rows": 242,
+          "mae": 0.030707160520270633,
+          "coverage": 0.9049586776859504,
+          "brier": 0.027626306332167446
+        },
+        "2": {
+          "rows": 119,
+          "mae": 0.0637104376602499,
+          "coverage": 0.5042016806722689,
+          "brier": 6.653023533074078e-07
+        }
+      },
+      "review": [
+        {
+          "fraction": 0.1,
+          "selected_rows": 37,
+          "precision": 0.972972972972973,
+          "macro_road_recall": 0.2681120144534779
+        },
+        {
+          "fraction": 0.25,
+          "selected_rows": 91,
+          "precision": 0.9120879120879121,
+          "macro_road_recall": 0.6473351400180669
+        },
+        {
+          "fraction": 0.41279226014512227,
+          "selected_rows": 150,
+          "precision": 0.8333333333333334,
+          "macro_road_recall": 0.9851851851851853
+        }
+      ],
+      "prediction_sha256": "e10f38cc8a78ab2e3e47f2261ffb5f5bf2e1b386d8fad14dcde99d17ebfe88dc"
+    }
+  },
+  "selected_predictor": "GP",
+  "quality_selection_sha256": "d4ecf409ea08fbf133576b561eecd5a2bf92f1b513396901a532e1fbf2f5c56c",
+  "source_sha256": "45362290880bf99e1e01223977a679e1efa87c0b488bfda4aedb632ca2e040c2",
+  "scope": "Same frozen Cal residual recipe and moving Dev membership for both selected point models. No fresh input opened; not used to change the frozen family-selection rule. Lighting and near-deficit remain confounded in this Dev cohort. Predictive-SD/error correlation is distinct from SD/perception-quality correlation."
+}

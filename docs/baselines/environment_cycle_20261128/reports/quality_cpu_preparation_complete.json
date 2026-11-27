@@ -1,0 +1,7 @@
+{
+  "scope": "CPU extraction/GP-RF fit parallel to GPU original-only control. Same frozen f1/index/FP32 recipe. CPU/GPU target parity will be checked before fresh opening.",
+  "perception_run": "${STUDY_ROOT}/runs/GPGlobalFull_s271127",
+  "choice_sha256": "ec495ea6bff074940afd9632e360c8c70c5e0ac7f9ca4c0b01f8c2b82b60ec62",
+  "device": "cpu",
+  "source_sha256": "0e060a2f8ab02f5cea226a327789ae2b96f66554ffe33187759b3457b9ec5322"
+}

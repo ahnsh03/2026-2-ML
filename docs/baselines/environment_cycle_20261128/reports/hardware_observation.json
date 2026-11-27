@@ -1,0 +1,15 @@
+{
+  "observed_utc": "2026-11-27T16:30:45.274352+00:00",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti",
+  "total_mib": 16303,
+  "observed_used_mib": 14725,
+  "observed_utilization_percent": 94,
+  "observed_temperature_c": 55,
+  "training_batch": 16,
+  "new_original_batch": [
+    2,
+    14
+  ],
+  "precision": "BF16 forward / FP32 loss",
+  "scope": "Single nvidia-smi observation during repeat training, including desktop/simulator usage. Not allocator peak or a40-series training-memory claim. Keep full feature extraction sequential to avoid VRAM contention."
+}

@@ -19,7 +19,7 @@
 
 ## Q와 보정
 
-주 정답은 패딩을 제외한 전체 화면 white/yellow 차선 합집합의 IoU다. stopline은 주 Q에서 제외한다. TP+FP+FN=0이면 미정의이며0이나1로 채우지 않는다. 근거리·원거리 영상 띠의 GT precision/recall은 **오프라인 진단**이다. 이 형식은 ROI별 온라인 IoU나 별도의 근·원거리 성능 예측을 요구하지 않는다.
+주 정답은 패딩을 제외한 전체 화면 white/yellow 차선·노면표시 합집합의 IoU다. Semantic 클래스에는 방향 화살표 같은 노면표시도 포함된다. API의 `whole_frame_lane_iou` 이름과 픽셀 계산은 유지한다. stopline은 주 Q에서 제외한다. TP+FP+FN=0이면 미정의이며0이나1로 채우지 않는다. 근거리·원거리 영상 띠의 GT precision/recall은 **오프라인 진단**이다. 이 형식은 ROI별 온라인 IoU나 별도의 근·원거리 성능 예측을 요구하지 않는다.
 
 GP는 평균과 관측 분산을 내보낸다. 잡음 분산을 뺀 잠재 표준편차도 진단용으로 제공한다. RF의 트리 간 차이는 GP 불확실성으로 해석하지 않는다. RF에서는 `gp_uncertainty_available=false`이고, 잔차 단위 계산에 쓰는 scale1은 예측 표준편차1을 뜻하지 않는다.
 

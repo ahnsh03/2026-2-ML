@@ -1,0 +1,504 @@
+{
+  "version": "development-policy-search-audit-1",
+  "status": "development_analysis_only",
+  "common_objective": 0.3947424802013217,
+  "studies": {
+    "rgb_cluster": {
+      "queries_per_method": 16,
+      "original_selected_loss": 0.3947424802013217,
+      "best": {
+        "bo": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "1": 0.7,
+            "2": 0.7,
+            "3": 0.7,
+            "4": 0.7,
+            "5": 0.7,
+            "7": 0.7,
+            "9": 0.7,
+            "10": 0.7,
+            "11": 0.7,
+            "13": 0.7,
+            "14": 0.7,
+            "15": 0.7
+          }
+        },
+        "random": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "1": 0.7,
+            "2": 0.7,
+            "3": 0.7,
+            "4": 0.7,
+            "5": 0.7,
+            "7": 0.7,
+            "9": 0.7,
+            "10": 0.7,
+            "11": 0.7,
+            "13": 0.7,
+            "14": 0.7,
+            "15": 0.7
+          }
+        },
+        "evaluated_union": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "1": 0.7,
+            "2": 0.7,
+            "3": 0.7,
+            "4": 0.7,
+            "5": 0.7,
+            "7": 0.7,
+            "9": 0.7,
+            "10": 0.7,
+            "11": 0.7,
+            "13": 0.7,
+            "14": 0.7,
+            "15": 0.7
+          }
+        }
+      },
+      "random_beats_bo": false
+    },
+    "rgb_lighting": {
+      "queries_per_method": 16,
+      "original_selected_loss": 0.3947424802013217,
+      "best": {
+        "bo": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "1": 0.7,
+            "2": 0.7
+          }
+        },
+        "random": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "1": 0.7,
+            "2": 0.7
+          }
+        },
+        "evaluated_union": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "1": 0.7,
+            "2": 0.7
+          }
+        }
+      },
+      "random_beats_bo": false
+    },
+    "rgb_tag": {
+      "queries_per_method": 16,
+      "original_selected_loss": 0.3947424802013217,
+      "best": {
+        "bo": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "2": 0.7,
+            "3": 0.7,
+            "5": 0.7,
+            "6": 0.7,
+            "8": 0.7,
+            "12": 0.7,
+            "13": 0.7,
+            "14": 0.7,
+            "15": 0.7,
+            "17": 0.7
+          }
+        },
+        "random": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "2": 0.7,
+            "3": 0.7,
+            "5": 0.7,
+            "6": 0.7,
+            "8": 0.7,
+            "12": 0.7,
+            "13": 0.7,
+            "14": 0.7,
+            "15": 0.7,
+            "17": 0.7
+          }
+        },
+        "evaluated_union": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "2": 0.7,
+            "3": 0.7,
+            "5": 0.7,
+            "6": 0.7,
+            "8": 0.7,
+            "12": 0.7,
+            "13": 0.7,
+            "14": 0.7,
+            "15": 0.7,
+            "17": 0.7
+          }
+        }
+      },
+      "random_beats_bo": false
+    },
+    "rgb_weather": {
+      "queries_per_method": 16,
+      "original_selected_loss": 0.3915855759605759,
+      "best": {
+        "bo": {
+          "index": 48,
+          "loss": 0.3915855759605759,
+          "parameters": {
+            "quantile": 0.4,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7094027107764538,
+            "1": 0.7066775244299673,
+            "2": 0.6917568343226315,
+            "4": 0.6915514773372179,
+            "5": 0.5139359376618791
+          }
+        },
+        "random": {
+          "index": 68,
+          "loss": 0.3758143039850357,
+          "parameters": {
+            "quantile": 0.4,
+            "shrinkage": 100.0,
+            "balanced_floor": 0.5,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7037040981846636,
+            "1": 0.7025682786269105,
+            "2": 0.6967151294669133,
+            "4": 0.696595371464252,
+            "5": 0.6275628459599681
+          }
+        },
+        "evaluated_union": {
+          "index": 68,
+          "loss": 0.3758143039850357,
+          "parameters": {
+            "quantile": 0.4,
+            "shrinkage": 100.0,
+            "balanced_floor": 0.5,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7037040981846636,
+            "1": 0.7025682786269105,
+            "2": 0.6967151294669133,
+            "4": 0.696595371464252,
+            "5": 0.6275628459599681
+          }
+        }
+      },
+      "random_beats_bo": true
+    },
+    "sim_lighting_oracle": {
+      "queries_per_method": 16,
+      "original_selected_loss": 0.3947424802013217,
+      "best": {
+        "bo": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "2": 0.7
+          }
+        },
+        "random": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "2": 0.7
+          }
+        },
+        "evaluated_union": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "2": 0.7
+          }
+        }
+      },
+      "random_beats_bo": false
+    },
+    "sim_oracle": {
+      "queries_per_method": 16,
+      "original_selected_loss": 0.3947424802013217,
+      "best": {
+        "bo": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "2": 0.7,
+            "3": 0.7,
+            "5": 0.7,
+            "6": 0.7,
+            "8": 0.7,
+            "12": 0.7,
+            "14": 0.7,
+            "15": 0.7,
+            "17": 0.7
+          }
+        },
+        "random": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "2": 0.7,
+            "3": 0.7,
+            "5": 0.7,
+            "6": 0.7,
+            "8": 0.7,
+            "12": 0.7,
+            "14": 0.7,
+            "15": 0.7,
+            "17": 0.7
+          }
+        },
+        "evaluated_union": {
+          "index": 0,
+          "loss": 0.3947424802013217,
+          "parameters": {
+            "quantile": 0.1,
+            "shrinkage": 20.0,
+            "balanced_floor": 0.0,
+            "uncertainty_weight": 0.0,
+            "retained_only": false
+          },
+          "thresholds": {
+            "0": 0.7,
+            "2": 0.7,
+            "3": 0.7,
+            "5": 0.7,
+            "6": 0.7,
+            "8": 0.7,
+            "12": 0.7,
+            "14": 0.7,
+            "15": 0.7,
+            "17": 0.7
+          }
+        }
+      },
+      "random_beats_bo": false
+    }
+  },
+  "proposed_candidate": {
+    "grouping": "rgb_weather",
+    "trial_index": 68,
+    "development_loss": 0.3758143039850357,
+    "development_gain": 0.018928176216286008,
+    "runtime_policy": {
+      "grouping": "rgb_weather",
+      "reference": {
+        "version": "environment-selection-reference-1",
+        "absolute_threshold": 0.7,
+        "global_quantile": 0.738870792616721,
+        "quantile": 0.4,
+        "shrinkage": 100.0,
+        "groups": {
+          "0": {
+            "threshold": 0.7037040981846636,
+            "rows": 125,
+            "roads": 5,
+            "cells": 32,
+            "supported": true,
+            "reference_quantile": 0.7541501976284585,
+            "shrinkage_weight": 0.24242424242424243
+          },
+          "1": {
+            "threshold": 0.7025682786269105,
+            "rows": 115,
+            "roads": 5,
+            "cells": 30,
+            "supported": true,
+            "reference_quantile": 0.75,
+            "shrinkage_weight": 0.23076923076923078
+          },
+          "2": {
+            "threshold": 0.6967151294669133,
+            "rows": 120,
+            "roads": 5,
+            "cells": 33,
+            "supported": true,
+            "reference_quantile": 0.7256317689530686,
+            "shrinkage_weight": 0.24812030075187969
+          },
+          "4": {
+            "threshold": 0.696595371464252,
+            "rows": 132,
+            "roads": 5,
+            "cells": 34,
+            "supported": true,
+            "reference_quantile": 0.7254525507405376,
+            "shrinkage_weight": 0.2537313432835821
+          },
+          "5": {
+            "threshold": 0.6275628459599681,
+            "rows": 120,
+            "roads": 5,
+            "cells": 31,
+            "supported": true,
+            "reference_quantile": 0.4327653997378768,
+            "shrinkage_weight": 0.2366412213740458
+          }
+        },
+        "interpretation": "Distribution-relative review reference; never operational normality or a replacement for fixed absolute quality evaluation."
+      },
+      "balanced_floor": 0.5,
+      "uncertainty_weight": 0.0,
+      "audit_fraction": 0.1,
+      "environment_thresholds_adopted": false,
+      "decision": "Development-only BO/random union candidate; requires new confirmation, not adopted.",
+      "score_tie_break": "standardized_margin"
+    }
+  },
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+  },
+  "quality_selection_sha256": "dfb9cf7cfecaf1300f931584bc701baa626edc7d8f7bfdca14b76d19f6546098",
+  "selection_rule": "Equal-budget evaluated BO/random union; minimize Dev loss, then balance/uncertainty complexity.",
+  "minimum_development_gain": 0.01,
+  "requires_new_confirmation": true,
+  "fresh_assessment_read": false,
+  "raw_gt_read": false,
+  "original_policy_modified": false,
+  "inference_bundle_created": false,
+  "interpretation": "Frozen Dev aggregates only. No new evidence of independent transfer or downstream retraining benefit.",
+  "source_policy_sha256": "dfe5b351cf5b2ec76ac6c8ed4deaa2ec09e3eb55948ee934b817a5939f87c387",
+  "source_sha256": "3c337048fcc58cbf1eccb576cdb83ae0f82fbcfaedb980a5084d5db89de57224"
+}

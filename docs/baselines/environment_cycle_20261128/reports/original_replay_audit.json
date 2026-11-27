@@ -1,0 +1,105 @@
+{
+  "created_utc": "2026-11-27T09:30:23.359926+00:00",
+  "original_rows": 26001,
+  "original_view_counts": {
+    "front": 8667,
+    "left": 8667,
+    "right": 8667
+  },
+  "previous_replay_rows": 4096,
+  "previous_extraction": "Equal quota per run/view followed by temporal linspace; NOT population-simple-random nor original-condition-proportional.",
+  "runs": [
+    {
+      "run": "Run 1",
+      "original_rows": 1923,
+      "old_replay_rows": 342,
+      "original_fraction": 0.0739586938963886,
+      "old_replay_fraction": 0.08349609375
+    },
+    {
+      "run": "Run 2",
+      "original_rows": 1554,
+      "old_replay_rows": 342,
+      "original_fraction": 0.059766932041075346,
+      "old_replay_fraction": 0.08349609375
+    },
+    {
+      "run": "Run 3",
+      "original_rows": 1509,
+      "old_replay_rows": 342,
+      "original_fraction": 0.05803622937579324,
+      "old_replay_fraction": 0.08349609375
+    },
+    {
+      "run": "Run 4",
+      "original_rows": 1497,
+      "old_replay_rows": 342,
+      "original_fraction": 0.05757470866505134,
+      "old_replay_fraction": 0.08349609375
+    },
+    {
+      "run": "Run 5",
+      "original_rows": 978,
+      "old_replay_rows": 342,
+      "original_fraction": 0.03761393792546441,
+      "old_replay_fraction": 0.08349609375
+    },
+    {
+      "run": "Run 6",
+      "original_rows": 1476,
+      "old_replay_rows": 342,
+      "original_fraction": 0.05676704742125303,
+      "old_replay_fraction": 0.08349609375
+    },
+    {
+      "run": "Run 7",
+      "original_rows": 1488,
+      "old_replay_rows": 342,
+      "original_fraction": 0.05722856813199492,
+      "old_replay_fraction": 0.08349609375
+    },
+    {
+      "run": "Run 8",
+      "original_rows": 1431,
+      "old_replay_rows": 342,
+      "original_fraction": 0.055036344755970926,
+      "old_replay_fraction": 0.08349609375
+    },
+    {
+      "run": "Run 9",
+      "original_rows": 8310,
+      "old_replay_rows": 342,
+      "original_fraction": 0.319603092188762,
+      "old_replay_fraction": 0.08349609375
+    },
+    {
+      "run": "Run 10",
+      "original_rows": 2874,
+      "old_replay_rows": 340,
+      "original_fraction": 0.11053421022268374,
+      "old_replay_fraction": 0.0830078125
+    },
+    {
+      "run": "Run 11",
+      "original_rows": 2043,
+      "old_replay_rows": 339,
+      "original_fraction": 0.07857390100380754,
+      "old_replay_fraction": 0.082763671875
+    },
+    {
+      "run": "Run 12",
+      "original_rows": 918,
+      "old_replay_rows": 339,
+      "original_fraction": 0.035306334371754934,
+      "old_replay_fraction": 0.082763671875
+    }
+  ],
+  "legacy_four_run_rows": 14145,
+  "other_eight_run_rows": 11856,
+  "original_manifest_sha256": "277f9161f39a0df0c99aaf9f23b07043b8d62af368bda1d425a5ea52c7ac8d85",
+  "decision": "Use all original26001 as shared replay; cycle permutations preserve original relative frequencies. New2/original14 per batch is explicit mild new-image oversampling, not uniform concatenation.",
+  "scope": "Do not infer unrecorded environment settings from sensor capture wall-clock or filenames.",
+  "checkpoint_embedded_training_manifest_verified": true,
+  "checkpoint_ema_updates": 23837,
+  "checkpoint_epoch": 11
+}

@@ -1,0 +1,53 @@
+{
+  "package": "faiss-cpu",
+  "version": "1.16.0",
+  "implementation_source_sha256": "fc7750ba735b502d7831a27ccebb8c22b91c0405d74717a12c90df22eb85e06b",
+  "official_source": "https://github.com/facebookresearch/faiss/blob/main/contrib/e_means/README.md",
+  "paper": "https://arxiv.org/abs/2611.09501",
+  "training_rows": 7442,
+  "dimensions": 9,
+  "clusters": 16,
+  "passes": 5,
+  "cpu_threads": 2,
+  "recipe": {
+    "name": "canonical_v1",
+    "batch_law": "quality",
+    "batch_law_requested": "auto",
+    "batch_law_reason": "d <= 16",
+    "batch_size": 64,
+    "batch_size_requested": null,
+    "alpha0": 0.1482287603592771,
+    "alpha0_source": "step_law",
+    "nepochs": 5,
+    "steps_per_pass": 117,
+    "total_steps": 585,
+    "epoch_rows": [
+      7442,
+      7442,
+      7442,
+      7442,
+      7442
+    ],
+    "epoch_steps": [
+      117,
+      117,
+      117,
+      117,
+      117
+    ],
+    "tail_policy": "keep",
+    "alpha_min_factor": 0.1,
+    "check_unused_every": 5,
+    "unused_threshold": 0.1,
+    "split_epsilon": 0.0001,
+    "init_usage": 1.52587890625e-05,
+    "seed": 271127,
+    "backend": "faiss",
+    "assignment_chunk_size": 65536
+  },
+  "oob_probability_embedding_sha256": "1ae34f8237b200a754eed35c6582a855e0ad18dcb6e4aec4c51c7900b8ec347a",
+  "reproduced_centroid_max_difference": 0.0,
+  "reproduced_nearest_assignments_equal": true,
+  "source_sha256": "0374ebae094eb9b7edf6b1f477c827d68e2936ce2ea3c0691ac2c96f601b5c93",
+  "scope": "Re-fitted exactly the fixed supervised RGB classifier/OOB representation. No candidate IoU or fresh data accessed. Final nearest-centroid reassignment matches documented official label semantics; no10x speedup claim."
+}

@@ -1,0 +1,14 @@
+{
+  "checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+  "epoch": 11,
+  "ema_updates": 23837,
+  "dataset_provenance": {
+    "dataset_version": "twinlite_morai_v6_road_marking_actor_negative",
+    "dataset_metadata_sha256": "1debe749d4a7eb7e5c0faf979f0e2a383bd46654956b52813fe11ded6647a9cc",
+    "split_manifest_sha256": {
+      "train": "277f9161f39a0df0c99aaf9f23b07043b8d62af368bda1d425a5ea52c7ac8d85",
+      "val": "4add24d993fabacb4a99f9d36caaee7c7d4ffc7c391e33d4c5d087a4d64092d4"
+    }
+  },
+  "max_train_samples": null
+}

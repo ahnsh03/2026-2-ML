@@ -1,0 +1,24 @@
+{
+  "profiles": {
+    "40": {
+      "tests": 275,
+      "passed": true,
+      "unit_test_device": "CPU",
+      "log_sha256": "80b9ef0ecfa2e6f9736a672aef8404448dd06ef5b94e271ca47fadccc635e384"
+    },
+    "50": {
+      "tests": 275,
+      "passed": true,
+      "unit_test_device": "CPU",
+      "log_sha256": "88f8133d69433254a358f2162d350ecf601924221b7e774b449f6e9d2f72ca3e"
+    }
+  },
+  "scope": "CPU suite in both dependency profiles; actual50GPU RGB replay separately verified.",
+  "feature_prediction_selection_unchanged_in_actual_replay": true,
+  "interval_v2_actual_rgb_replay_verified": true,
+  "secondary_tie_ranking_actual_rgb_verified": true,
+  "policy_refit_v2_export_integration_verified_on_open_f0": true,
+  "40_gpu_hardware_available": false,
+  "training_only_context_mean_controls_verified": true,
+  "g1_cpu48_rgb_replay_and_cache_identity_verified": true
+}

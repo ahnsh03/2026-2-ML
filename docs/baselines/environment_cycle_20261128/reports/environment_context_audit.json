@@ -1,0 +1,202 @@
+{
+  "fit": {
+    "0": {
+      "rows": 1251,
+      "near_deficit": 167,
+      "near_retained": 927,
+      "zero_lane_gt": 0,
+      "retained_q_quantiles": [
+        0.7086724711378306,
+        0.8305270863836017,
+        0.9041822323523854
+      ]
+    },
+    "1": {
+      "rows": 230,
+      "near_deficit": 213,
+      "near_retained": 0,
+      "zero_lane_gt": 0,
+      "retained_q_quantiles": null
+    },
+    "2": {
+      "rows": 1019,
+      "near_deficit": 858,
+      "near_retained": 56,
+      "zero_lane_gt": 0,
+      "retained_q_quantiles": [
+        0.6616251482799526,
+        0.7446000544937916,
+        0.7885063000376622
+      ]
+    }
+  },
+  "calibration": {
+    "0": {
+      "rows": 410,
+      "near_deficit": 2,
+      "near_retained": 328,
+      "zero_lane_gt": 0,
+      "retained_q_quantiles": [
+        0.8230815401350627,
+        0.88862836150572,
+        0.9117690944739263
+      ]
+    },
+    "1": {
+      "rows": 0,
+      "near_deficit": 0,
+      "near_retained": 0,
+      "zero_lane_gt": 0,
+      "retained_q_quantiles": null
+    },
+    "2": {
+      "rows": 202,
+      "near_deficit": 173,
+      "near_retained": 0,
+      "zero_lane_gt": 0,
+      "retained_q_quantiles": null
+    }
+  },
+  "primary_dev": {
+    "0": {
+      "rows": 242,
+      "near_deficit": 0,
+      "near_retained": 242,
+      "zero_lane_gt": 0,
+      "retained_q_quantiles": [
+        0.7468488157834671,
+        0.8562214199037017,
+        0.9119405943047658
+      ]
+    },
+    "1": {
+      "rows": 0,
+      "near_deficit": 0,
+      "near_retained": 0,
+      "zero_lane_gt": 0,
+      "retained_q_quantiles": null
+    },
+    "2": {
+      "rows": 119,
+      "near_deficit": 119,
+      "near_retained": 0,
+      "zero_lane_gt": 0,
+      "retained_q_quantiles": null
+    }
+  },
+  "historical_dev": {
+    "0": {
+      "rows": 288,
+      "near_deficit": 47,
+      "near_retained": 241,
+      "zero_lane_gt": 0,
+      "retained_q_quantiles": [
+        0.6881392153869639,
+        0.7697574893009985,
+        0.8372463191404695
+      ]
+    },
+    "1": {
+      "rows": 72,
+      "near_deficit": 72,
+      "near_retained": 0,
+      "zero_lane_gt": 0,
+      "retained_q_quantiles": null
+    },
+    "2": {
+      "rows": 216,
+      "near_deficit": 216,
+      "near_retained": 0,
+      "zero_lane_gt": 0,
+      "retained_q_quantiles": null
+    }
+  },
+  "regression_baselines": {
+    "primary": {
+      "context_only_oracle_mae": 0.13888308002391983,
+      "constant_mean_mae": 0.3094597011691595,
+      "GP": {
+        "macro_road_mae": 0.04020070635644826,
+        "per_environment_mae": {
+          "0": 0.023025761694372933,
+          "2": 0.059362142921962256,
+          "3": 0.02398258329753613,
+          "5": 0.05990294665489602,
+          "6": 0.03024948378313734,
+          "8": 0.08157868860395064,
+          "12": 0.027222112205150337,
+          "14": 0.06034127738910913,
+          "15": 0.029944279670889775,
+          "17": 0.07201249706562321
+        }
+      },
+      "RF": {
+        "macro_road_mae": 0.04159694008182342,
+        "per_environment_mae": {
+          "0": 0.030770031410391155,
+          "2": 0.057128237093761004,
+          "3": 0.028069162052979844,
+          "5": 0.0613779453784574,
+          "6": 0.03049548279021377,
+          "8": 0.062491668958957934,
+          "12": 0.03456260633883477,
+          "14": 0.06647592284611388,
+          "15": 0.029049292299231016,
+          "17": 0.07059173993920324
+        }
+      }
+    },
+    "historical": {
+      "context_only_oracle_mae": 0.10137851795692084,
+      "constant_mean_mae": 0.24623519673351357,
+      "GP": {
+        "macro_road_mae": 0.043651343322955526,
+        "per_environment_mae": {
+          "0": 0.029549894056753106,
+          "1": 0.031400093463606754,
+          "2": 0.05091444542411438,
+          "3": 0.02982785917727196,
+          "4": 0.0400879857631501,
+          "5": 0.05250490840777974,
+          "6": 0.028717368851619768,
+          "7": 0.023526432657568864,
+          "8": 0.05885222502119122,
+          "9": 0.07071833662585714,
+          "10": 0.03312815644499683,
+          "11": 0.04459513501222456,
+          "12": 0.03161052664801133,
+          "13": 0.03187030069503094,
+          "14": 0.03707868815990618,
+          "15": 0.045943490708954836,
+          "16": 0.09361713901639951,
+          "17": 0.054776087037197156
+        }
+      },
+      "RF": {
+        "macro_road_mae": 0.053524209824793494,
+        "per_environment_mae": {
+          "0": 0.03540307745226154,
+          "1": 0.0629077451888523,
+          "2": 0.06772536147827535,
+          "3": 0.035291160061846426,
+          "4": 0.06526365475159822,
+          "5": 0.06967772983714537,
+          "6": 0.0386831862194802,
+          "7": 0.05346531520052267,
+          "8": 0.05441538460585283,
+          "9": 0.05800896559242195,
+          "10": 0.055555205911848676,
+          "11": 0.06641233887089376,
+          "12": 0.038080379735618085,
+          "13": 0.06621239267254882,
+          "14": 0.06349239228195822,
+          "15": 0.047312369624589866,
+          "16": 0.08510369812193778,
+          "17": 0.06812262792517686
+        }
+      }
+    }
+  },
+  "scope": "Day/night near-deficit confounding is measured explicitly. Supported near-retained precision/recall is a proxy, not visibility-aware operating-normality truth. Context-only baseline uses known simulator tags, not a learned weather-classification claim.",
+  "source_sha256": "11e1111b879b2f77ca165fbe3fec5d16fc401300a7f0782c12a0ad95d4955f90"
+}

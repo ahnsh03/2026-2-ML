@@ -1,0 +1,16 @@
+{
+  "frozen_utc": "2026-11-27T18:55:56.111644+00:00",
+  "prior_rows": 50.0,
+  "min_rows": 30,
+  "min_roads": 2,
+  "groups": [
+    "rgb_lighting_mean",
+    "rgb_tag_mean",
+    "rgb_cluster_mean",
+    "sim_tag_mean_oracle"
+  ],
+  "fit": "The identical defined quality-fit targets used by each version GP/RF. No Cal, Dev or fresh targets for fitting. RGB groups from frozen classifiers and e-means centers.",
+  "score": "1 - predicted group-mean IoU, plus the same10%random audit; no new calibrated-probability claim.",
+  "role": "Descriptive fresh confirmation controls only. All acceptance gates, frozen neural banks, family/feature/alpha/threshold choice remain unchanged. No model choice on this result.",
+  "reason": "Separate coarse environmental identity from per-image quality estimation; moving Dev is strongly confounded with lighting."
+}

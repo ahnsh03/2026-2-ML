@@ -1,0 +1,1209 @@
+{
+  "versions": {
+    "f0": {
+      "rgb_lighting_mean": {
+        "uses_simulator_metadata_at_inference": false,
+        "macro_road_mae": 0.433625916772061,
+        "model": {
+          "global_mean": 0.46826740003524575,
+          "means": {
+            "0": 0.6531930773567027,
+            "1": 0.2896053224206086,
+            "2": 0.29000535663516347
+          },
+          "support": {
+            "0": {
+              "rows": 1251,
+              "roads": 206
+            },
+            "1": {
+              "rows": 232,
+              "roads": 50
+            },
+            "2": {
+              "rows": 1017,
+              "roads": 228
+            }
+          },
+          "defined_training_rows": 2500,
+          "prior_rows": 50.0,
+          "min_rows": 30,
+          "min_roads": 2
+        },
+        "review": [
+          {
+            "selected_rows": 62,
+            "true_low_iou": 62,
+            "precision": 1.0,
+            "defined_only_precision": 1.0,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.12360031027846512,
+            "macro_near_deficit_recall": 0.03529411764705882,
+            "near_retained_selected": 0,
+            "fraction": 0.1,
+            "random_mean": {
+              "selected_rows": 62.0,
+              "true_low_iou": 49.35,
+              "precision": 0.795967741935484,
+              "defined_only_precision": 0.795967741935484,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.10023416205176545,
+              "macro_near_deficit_recall": 0.10602728047740834,
+              "near_retained_selected": 12.18
+            }
+          },
+          {
+            "selected_rows": 155,
+            "true_low_iou": 151,
+            "precision": 0.9741935483870968,
+            "defined_only_precision": 0.9741935483870968,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.32591807077491064,
+            "macro_near_deficit_recall": 0.15447570332480817,
+            "near_retained_selected": 4,
+            "fraction": 0.25,
+            "random_mean": {
+              "selected_rows": 155.0,
+              "true_low_iou": 123.18,
+              "precision": 0.7947096774193548,
+              "defined_only_precision": 0.7947096774193548,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.2529889144181297,
+              "macro_near_deficit_recall": 0.25369224211423697,
+              "near_retained_selected": 30.67
+            }
+          },
+          {
+            "selected_rows": 256,
+            "true_low_iou": 247,
+            "precision": 0.96484375,
+            "defined_only_precision": 0.96484375,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.5454533404029692,
+            "macro_near_deficit_recall": 0.31918158567774935,
+            "near_retained_selected": 9,
+            "fraction": 0.41279226014512227,
+            "random_mean": {
+              "selected_rows": 256.0,
+              "true_low_iou": 203.59,
+              "precision": 0.7952734375,
+              "defined_only_precision": 0.7952734375,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.41325344153803856,
+              "macro_near_deficit_recall": 0.42080647911338454,
+              "near_retained_selected": 50.54
+            }
+          }
+        ],
+        "scope": "Fit on the same defined quality-fit targets as GP/RF, with fixed shrinkage; no test/Cal targets in estimation. RGB groups computed by the frozen RGB classifiers/centers. Simulator-group control is offline only. Not used for acceptance or post-test model choice."
+      },
+      "rgb_tag_mean": {
+        "uses_simulator_metadata_at_inference": false,
+        "macro_road_mae": 0.43148211200479825,
+        "model": {
+          "global_mean": 0.46826740003524575,
+          "means": {
+            "0": 0.6447549876832412,
+            "1": 0.3931488787663765,
+            "2": 0.32291777986144143,
+            "3": 0.6526731746136244,
+            "4": 0.39194626715553105,
+            "5": 0.3295938683180065,
+            "6": 0.6384574099204373,
+            "7": 0.41196282111875243,
+            "8": 0.38734743174553965,
+            "9": 0.5487654111177117,
+            "10": 0.29338654703451106,
+            "11": 0.3705650980297244,
+            "12": 0.6213097613298926,
+            "13": 0.3636149607990628,
+            "14": 0.2563857004072776,
+            "15": 0.6152042616564166,
+            "16": 0.41410953157116304,
+            "17": 0.2931552734186537
+          },
+          "support": {
+            "0": {
+              "rows": 217,
+              "roads": 72
+            },
+            "1": {
+              "rows": 32,
+              "roads": 32
+            },
+            "2": {
+              "rows": 194,
+              "roads": 77
+            },
+            "3": {
+              "rows": 219,
+              "roads": 75
+            },
+            "4": {
+              "rows": 30,
+              "roads": 30
+            },
+            "5": {
+              "rows": 170,
+              "roads": 76
+            },
+            "6": {
+              "rows": 218,
+              "roads": 77
+            },
+            "7": {
+              "rows": 36,
+              "roads": 36
+            },
+            "8": {
+              "rows": 170,
+              "roads": 74
+            },
+            "9": {
+              "rows": 149,
+              "roads": 69
+            },
+            "10": {
+              "rows": 61,
+              "roads": 37
+            },
+            "11": {
+              "rows": 122,
+              "roads": 72
+            },
+            "12": {
+              "rows": 230,
+              "roads": 73
+            },
+            "13": {
+              "rows": 39,
+              "roads": 37
+            },
+            "14": {
+              "rows": 192,
+              "roads": 77
+            },
+            "15": {
+              "rows": 218,
+              "roads": 75
+            },
+            "16": {
+              "rows": 34,
+              "roads": 34
+            },
+            "17": {
+              "rows": 169,
+              "roads": 81
+            }
+          },
+          "defined_training_rows": 2500,
+          "prior_rows": 50.0,
+          "min_rows": 30,
+          "min_roads": 2
+        },
+        "review": [
+          {
+            "selected_rows": 62,
+            "true_low_iou": 61,
+            "precision": 0.9838709677419355,
+            "defined_only_precision": 0.9838709677419355,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.14203242213581557,
+            "macro_near_deficit_recall": 0.14782608695652175,
+            "near_retained_selected": 1,
+            "fraction": 0.1,
+            "random_mean": {
+              "selected_rows": 62.0,
+              "true_low_iou": 49.35,
+              "precision": 0.795967741935484,
+              "defined_only_precision": 0.795967741935484,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.10023416205176545,
+              "macro_near_deficit_recall": 0.10602728047740834,
+              "near_retained_selected": 12.18
+            }
+          },
+          {
+            "selected_rows": 155,
+            "true_low_iou": 154,
+            "precision": 0.9935483870967742,
+            "defined_only_precision": 0.9935483870967742,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.37408143827815094,
+            "macro_near_deficit_recall": 0.21722080136402386,
+            "near_retained_selected": 2,
+            "fraction": 0.25,
+            "random_mean": {
+              "selected_rows": 155.0,
+              "true_low_iou": 123.18,
+              "precision": 0.7947096774193548,
+              "defined_only_precision": 0.7947096774193548,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.2529889144181297,
+              "macro_near_deficit_recall": 0.25369224211423697,
+              "near_retained_selected": 30.67
+            }
+          },
+          {
+            "selected_rows": 256,
+            "true_low_iou": 236,
+            "precision": 0.921875,
+            "defined_only_precision": 0.921875,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.5373841365225246,
+            "macro_near_deficit_recall": 0.2682011935208866,
+            "near_retained_selected": 20,
+            "fraction": 0.41279226014512227,
+            "random_mean": {
+              "selected_rows": 256.0,
+              "true_low_iou": 203.59,
+              "precision": 0.7952734375,
+              "defined_only_precision": 0.7952734375,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.41325344153803856,
+              "macro_near_deficit_recall": 0.42080647911338454,
+              "near_retained_selected": 50.54
+            }
+          }
+        ],
+        "scope": "Fit on the same defined quality-fit targets as GP/RF, with fixed shrinkage; no test/Cal targets in estimation. RGB groups computed by the frozen RGB classifiers/centers. Simulator-group control is offline only. Not used for acceptance or post-test model choice."
+      },
+      "rgb_cluster_mean": {
+        "uses_simulator_metadata_at_inference": false,
+        "macro_road_mae": 0.42412310062162467,
+        "model": {
+          "global_mean": 0.46826740003524575,
+          "means": {
+            "0": 0.38734743174553965,
+            "1": 0.41196282111875243,
+            "2": 0.6152042616564166,
+            "3": 0.6422502201730146,
+            "4": 0.6384574099204373,
+            "5": 0.6517527030232211,
+            "6": 0.3705650980297244,
+            "7": 0.5462840628768516,
+            "8": 0.29385279991326985,
+            "9": 0.2931552734186537,
+            "10": 0.32291777986144143,
+            "11": 0.2563857004072776,
+            "12": 0.5467620308247948,
+            "13": 0.6213097613298926,
+            "14": 0.32953685291408924,
+            "15": 0.3636149607990628
+          },
+          "support": {
+            "0": {
+              "rows": 170,
+              "roads": 74
+            },
+            "1": {
+              "rows": 36,
+              "roads": 36
+            },
+            "2": {
+              "rows": 218,
+              "roads": 75
+            },
+            "3": {
+              "rows": 187,
+              "roads": 64
+            },
+            "4": {
+              "rows": 218,
+              "roads": 77
+            },
+            "5": {
+              "rows": 218,
+              "roads": 74
+            },
+            "6": {
+              "rows": 122,
+              "roads": 72
+            },
+            "7": {
+              "rows": 31,
+              "roads": 22
+            },
+            "8": {
+              "rows": 155,
+              "roads": 49
+            },
+            "9": {
+              "rows": 169,
+              "roads": 81
+            },
+            "10": {
+              "rows": 194,
+              "roads": 77
+            },
+            "11": {
+              "rows": 192,
+              "roads": 77
+            },
+            "12": {
+              "rows": 150,
+              "roads": 69
+            },
+            "13": {
+              "rows": 230,
+              "roads": 73
+            },
+            "14": {
+              "rows": 171,
+              "roads": 76
+            },
+            "15": {
+              "rows": 39,
+              "roads": 37
+            }
+          },
+          "defined_training_rows": 2500,
+          "prior_rows": 50.0,
+          "min_rows": 30,
+          "min_roads": 2
+        },
+        "review": [
+          {
+            "selected_rows": 62,
+            "true_low_iou": 61,
+            "precision": 0.9838709677419355,
+            "defined_only_precision": 0.9838709677419355,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.14203242213581557,
+            "macro_near_deficit_recall": 0.14782608695652175,
+            "near_retained_selected": 1,
+            "fraction": 0.1,
+            "random_mean": {
+              "selected_rows": 62.0,
+              "true_low_iou": 49.35,
+              "precision": 0.795967741935484,
+              "defined_only_precision": 0.795967741935484,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.10023416205176545,
+              "macro_near_deficit_recall": 0.10602728047740834,
+              "near_retained_selected": 12.18
+            }
+          },
+          {
+            "selected_rows": 155,
+            "true_low_iou": 152,
+            "precision": 0.9806451612903225,
+            "defined_only_precision": 0.9806451612903225,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.35558550331880134,
+            "macro_near_deficit_recall": 0.18312020460358056,
+            "near_retained_selected": 3,
+            "fraction": 0.25,
+            "random_mean": {
+              "selected_rows": 155.0,
+              "true_low_iou": 123.18,
+              "precision": 0.7947096774193548,
+              "defined_only_precision": 0.7947096774193548,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.2529889144181297,
+              "macro_near_deficit_recall": 0.25369224211423697,
+              "near_retained_selected": 30.67
+            }
+          },
+          {
+            "selected_rows": 256,
+            "true_low_iou": 240,
+            "precision": 0.9375,
+            "defined_only_precision": 0.9375,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.5183403047798594,
+            "macro_near_deficit_recall": 0.34927536231884054,
+            "near_retained_selected": 16,
+            "fraction": 0.41279226014512227,
+            "random_mean": {
+              "selected_rows": 256.0,
+              "true_low_iou": 203.59,
+              "precision": 0.7952734375,
+              "defined_only_precision": 0.7952734375,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.41325344153803856,
+              "macro_near_deficit_recall": 0.42080647911338454,
+              "near_retained_selected": 50.54
+            }
+          }
+        ],
+        "scope": "Fit on the same defined quality-fit targets as GP/RF, with fixed shrinkage; no test/Cal targets in estimation. RGB groups computed by the frozen RGB classifiers/centers. Simulator-group control is offline only. Not used for acceptance or post-test model choice."
+      },
+      "sim_tag_mean_oracle": {
+        "uses_simulator_metadata_at_inference": true,
+        "macro_road_mae": 0.4087301618287235,
+        "model": {
+          "global_mean": 0.46826740003524575,
+          "means": {
+            "0": 0.6457050047472654,
+            "1": 0.3931488787663765,
+            "2": 0.32291777986144143,
+            "3": 0.6517527030232211,
+            "4": 0.39194626715553105,
+            "5": 0.3295938683180065,
+            "6": 0.6384574099204373,
+            "7": 0.41196282111875243,
+            "8": 0.38734743174553965,
+            "9": 0.5487654111177117,
+            "10": 0.29338654703451106,
+            "11": 0.3705650980297244,
+            "12": 0.6213097613298926,
+            "13": 0.3629519431372658,
+            "14": 0.2575010326095723,
+            "15": 0.6152042616564166,
+            "16": 0.41410953157116304,
+            "17": 0.2931552734186537
+          },
+          "support": {
+            "0": {
+              "rows": 218,
+              "roads": 73
+            },
+            "1": {
+              "rows": 32,
+              "roads": 32
+            },
+            "2": {
+              "rows": 194,
+              "roads": 77
+            },
+            "3": {
+              "rows": 218,
+              "roads": 74
+            },
+            "4": {
+              "rows": 30,
+              "roads": 30
+            },
+            "5": {
+              "rows": 170,
+              "roads": 76
+            },
+            "6": {
+              "rows": 218,
+              "roads": 77
+            },
+            "7": {
+              "rows": 36,
+              "roads": 36
+            },
+            "8": {
+              "rows": 170,
+              "roads": 74
+            },
+            "9": {
+              "rows": 149,
+              "roads": 69
+            },
+            "10": {
+              "rows": 61,
+              "roads": 37
+            },
+            "11": {
+              "rows": 122,
+              "roads": 72
+            },
+            "12": {
+              "rows": 230,
+              "roads": 73
+            },
+            "13": {
+              "rows": 37,
+              "roads": 37
+            },
+            "14": {
+              "rows": 194,
+              "roads": 77
+            },
+            "15": {
+              "rows": 218,
+              "roads": 75
+            },
+            "16": {
+              "rows": 34,
+              "roads": 34
+            },
+            "17": {
+              "rows": 169,
+              "roads": 81
+            }
+          },
+          "defined_training_rows": 2500,
+          "prior_rows": 50.0,
+          "min_rows": 30,
+          "min_roads": 2
+        },
+        "review": [
+          {
+            "selected_rows": 62,
+            "true_low_iou": 61,
+            "precision": 0.9838709677419355,
+            "defined_only_precision": 0.9838709677419355,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.14203242213581557,
+            "macro_near_deficit_recall": 0.14782608695652175,
+            "near_retained_selected": 1,
+            "fraction": 0.1,
+            "random_mean": {
+              "selected_rows": 62.0,
+              "true_low_iou": 49.35,
+              "precision": 0.795967741935484,
+              "defined_only_precision": 0.795967741935484,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.10023416205176545,
+              "macro_near_deficit_recall": 0.10602728047740834,
+              "near_retained_selected": 12.18
+            }
+          },
+          {
+            "selected_rows": 155,
+            "true_low_iou": 151,
+            "precision": 0.9741935483870968,
+            "defined_only_precision": 0.9741935483870968,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.35391235615254707,
+            "macro_near_deficit_recall": 0.28312020460358056,
+            "near_retained_selected": 4,
+            "fraction": 0.25,
+            "random_mean": {
+              "selected_rows": 155.0,
+              "true_low_iou": 123.18,
+              "precision": 0.7947096774193548,
+              "defined_only_precision": 0.7947096774193548,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.2529889144181297,
+              "macro_near_deficit_recall": 0.25369224211423697,
+              "near_retained_selected": 30.67
+            }
+          },
+          {
+            "selected_rows": 256,
+            "true_low_iou": 240,
+            "precision": 0.9375,
+            "defined_only_precision": 0.9375,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.5540193825851302,
+            "macro_near_deficit_recall": 0.4786871270247229,
+            "near_retained_selected": 14,
+            "fraction": 0.41279226014512227,
+            "random_mean": {
+              "selected_rows": 256.0,
+              "true_low_iou": 203.59,
+              "precision": 0.7952734375,
+              "defined_only_precision": 0.7952734375,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.41325344153803856,
+              "macro_near_deficit_recall": 0.42080647911338454,
+              "near_retained_selected": 50.54
+            }
+          }
+        ],
+        "scope": "Fit on the same defined quality-fit targets as GP/RF, with fixed shrinkage; no test/Cal targets in estimation. RGB groups computed by the frozen RGB classifiers/centers. Simulator-group control is offline only. Not used for acceptance or post-test model choice."
+      }
+    },
+    "f1": {
+      "rgb_lighting_mean": {
+        "uses_simulator_metadata_at_inference": false,
+        "macro_road_mae": 0.4895114003230743,
+        "model": {
+          "global_mean": 0.6220574780621809,
+          "means": {
+            "0": 0.6720642793732865,
+            "1": 0.5565255376081628,
+            "2": 0.5784034562273964
+          },
+          "support": {
+            "0": {
+              "rows": 1251,
+              "roads": 206
+            },
+            "1": {
+              "rows": 232,
+              "roads": 50
+            },
+            "2": {
+              "rows": 1017,
+              "roads": 228
+            }
+          },
+          "defined_training_rows": 2500,
+          "prior_rows": 50.0,
+          "min_rows": 30,
+          "min_roads": 2
+        },
+        "review": [
+          {
+            "selected_rows": 62,
+            "true_low_iou": 58,
+            "precision": 0.9354838709677419,
+            "defined_only_precision": 0.9354838709677419,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.11061011420003375,
+            "macro_near_deficit_recall": 0.06977047470005217,
+            "near_retained_selected": 4,
+            "fraction": 0.1,
+            "random_mean": {
+              "selected_rows": 62.0,
+              "true_low_iou": 48.41,
+              "precision": 0.7808064516129033,
+              "defined_only_precision": 0.7808064516129033,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.10150867185568702,
+              "macro_near_deficit_recall": 0.10586481854087486,
+              "near_retained_selected": 13.27
+            }
+          },
+          {
+            "selected_rows": 155,
+            "true_low_iou": 142,
+            "precision": 0.9161290322580645,
+            "defined_only_precision": 0.9161290322580645,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.305329835480793,
+            "macro_near_deficit_recall": 0.3235896862657426,
+            "near_retained_selected": 13,
+            "fraction": 0.25,
+            "random_mean": {
+              "selected_rows": 155.0,
+              "true_low_iou": 119.8,
+              "precision": 0.7729032258064515,
+              "defined_only_precision": 0.7729032258064515,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.2519055810847963,
+              "macro_near_deficit_recall": 0.25680546240405394,
+              "near_retained_selected": 34.32
+            }
+          },
+          {
+            "selected_rows": 256,
+            "true_low_iou": 234,
+            "precision": 0.9140625,
+            "defined_only_precision": 0.9140625,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.5236396149127732,
+            "macro_near_deficit_recall": 0.49757806095834267,
+            "near_retained_selected": 22,
+            "fraction": 0.41279226014512227,
+            "random_mean": {
+              "selected_rows": 256.0,
+              "true_low_iou": 198.77,
+              "precision": 0.7764453125,
+              "defined_only_precision": 0.7764453125,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.4138098140870582,
+              "macro_near_deficit_recall": 0.41678422386168856,
+              "near_retained_selected": 56.01
+            }
+          }
+        ],
+        "scope": "Fit on the same defined quality-fit targets as GP/RF, with fixed shrinkage; no test/Cal targets in estimation. RGB groups computed by the frozen RGB classifiers/centers. Simulator-group control is offline only. Not used for acceptance or post-test model choice."
+      },
+      "rgb_tag_mean": {
+        "uses_simulator_metadata_at_inference": false,
+        "macro_road_mae": 0.48701262465660533,
+        "model": {
+          "global_mean": 0.6220574780621809,
+          "means": {
+            "0": 0.6754933794171222,
+            "1": 0.6389103637482538,
+            "2": 0.6034867727325571,
+            "3": 0.6811929701254446,
+            "4": 0.6495326461171278,
+            "5": 0.6368221529551675,
+            "6": 0.6686820082225514,
+            "7": 0.6311545116134714,
+            "8": 0.6039336516397104,
+            "9": 0.6482132611496348,
+            "10": 0.4847422800142034,
+            "11": 0.6829327680008592,
+            "12": 0.6535227391737448,
+            "13": 0.5983637825259924,
+            "14": 0.5808335909505259,
+            "15": 0.6533013864589742,
+            "16": 0.5566815699901388,
+            "17": 0.43117645044011393
+          },
+          "support": {
+            "0": {
+              "rows": 217,
+              "roads": 72
+            },
+            "1": {
+              "rows": 32,
+              "roads": 32
+            },
+            "2": {
+              "rows": 194,
+              "roads": 77
+            },
+            "3": {
+              "rows": 219,
+              "roads": 75
+            },
+            "4": {
+              "rows": 30,
+              "roads": 30
+            },
+            "5": {
+              "rows": 170,
+              "roads": 76
+            },
+            "6": {
+              "rows": 218,
+              "roads": 77
+            },
+            "7": {
+              "rows": 36,
+              "roads": 36
+            },
+            "8": {
+              "rows": 170,
+              "roads": 74
+            },
+            "9": {
+              "rows": 149,
+              "roads": 69
+            },
+            "10": {
+              "rows": 61,
+              "roads": 37
+            },
+            "11": {
+              "rows": 122,
+              "roads": 72
+            },
+            "12": {
+              "rows": 230,
+              "roads": 73
+            },
+            "13": {
+              "rows": 39,
+              "roads": 37
+            },
+            "14": {
+              "rows": 192,
+              "roads": 77
+            },
+            "15": {
+              "rows": 218,
+              "roads": 75
+            },
+            "16": {
+              "rows": 34,
+              "roads": 34
+            },
+            "17": {
+              "rows": 169,
+              "roads": 81
+            }
+          },
+          "defined_training_rows": 2500,
+          "prior_rows": 50.0,
+          "min_rows": 30,
+          "min_roads": 2
+        },
+        "review": [
+          {
+            "selected_rows": 62,
+            "true_low_iou": 58,
+            "precision": 0.9354838709677419,
+            "defined_only_precision": 0.9354838709677419,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.13661343646684548,
+            "macro_near_deficit_recall": 0.24886355168045307,
+            "near_retained_selected": 4,
+            "fraction": 0.1,
+            "random_mean": {
+              "selected_rows": 62.0,
+              "true_low_iou": 48.41,
+              "precision": 0.7808064516129033,
+              "defined_only_precision": 0.7808064516129033,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.10150867185568702,
+              "macro_near_deficit_recall": 0.10586481854087486,
+              "near_retained_selected": 13.27
+            }
+          },
+          {
+            "selected_rows": 155,
+            "true_low_iou": 142,
+            "precision": 0.9161290322580645,
+            "defined_only_precision": 0.9161290322580645,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.3578549199814249,
+            "macro_near_deficit_recall": 0.3894477978985022,
+            "near_retained_selected": 13,
+            "fraction": 0.25,
+            "random_mean": {
+              "selected_rows": 155.0,
+              "true_low_iou": 119.8,
+              "precision": 0.7729032258064515,
+              "defined_only_precision": 0.7729032258064515,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.2519055810847963,
+              "macro_near_deficit_recall": 0.25680546240405394,
+              "near_retained_selected": 34.32
+            }
+          },
+          {
+            "selected_rows": 256,
+            "true_low_iou": 218,
+            "precision": 0.8515625,
+            "defined_only_precision": 0.8515625,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.4972305971994076,
+            "macro_near_deficit_recall": 0.48831880169908337,
+            "near_retained_selected": 38,
+            "fraction": 0.41279226014512227,
+            "random_mean": {
+              "selected_rows": 256.0,
+              "true_low_iou": 198.77,
+              "precision": 0.7764453125,
+              "defined_only_precision": 0.7764453125,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.4138098140870582,
+              "macro_near_deficit_recall": 0.41678422386168856,
+              "near_retained_selected": 56.01
+            }
+          }
+        ],
+        "scope": "Fit on the same defined quality-fit targets as GP/RF, with fixed shrinkage; no test/Cal targets in estimation. RGB groups computed by the frozen RGB classifiers/centers. Simulator-group control is offline only. Not used for acceptance or post-test model choice."
+      },
+      "rgb_cluster_mean": {
+        "uses_simulator_metadata_at_inference": false,
+        "macro_road_mae": 0.4838634437664591,
+        "model": {
+          "global_mean": 0.6220574780621809,
+          "means": {
+            "0": 0.6039336516397104,
+            "1": 0.6311545116134714,
+            "2": 0.6533013864589742,
+            "3": 0.6760511694315764,
+            "4": 0.6686820082225514,
+            "5": 0.6804271730259208,
+            "6": 0.6829327680008592,
+            "7": 0.6434803166048747,
+            "8": 0.538839858503509,
+            "9": 0.43117645044011393,
+            "10": 0.6034867727325571,
+            "11": 0.5808335909505259,
+            "12": 0.6467005175757247,
+            "13": 0.6535227391737448,
+            "14": 0.637580646509946,
+            "15": 0.5983637825259924
+          },
+          "support": {
+            "0": {
+              "rows": 170,
+              "roads": 74
+            },
+            "1": {
+              "rows": 36,
+              "roads": 36
+            },
+            "2": {
+              "rows": 218,
+              "roads": 75
+            },
+            "3": {
+              "rows": 187,
+              "roads": 64
+            },
+            "4": {
+              "rows": 218,
+              "roads": 77
+            },
+            "5": {
+              "rows": 218,
+              "roads": 74
+            },
+            "6": {
+              "rows": 122,
+              "roads": 72
+            },
+            "7": {
+              "rows": 31,
+              "roads": 22
+            },
+            "8": {
+              "rows": 155,
+              "roads": 49
+            },
+            "9": {
+              "rows": 169,
+              "roads": 81
+            },
+            "10": {
+              "rows": 194,
+              "roads": 77
+            },
+            "11": {
+              "rows": 192,
+              "roads": 77
+            },
+            "12": {
+              "rows": 150,
+              "roads": 69
+            },
+            "13": {
+              "rows": 230,
+              "roads": 73
+            },
+            "14": {
+              "rows": 171,
+              "roads": 76
+            },
+            "15": {
+              "rows": 39,
+              "roads": 37
+            }
+          },
+          "defined_training_rows": 2500,
+          "prior_rows": 50.0,
+          "min_rows": 30,
+          "min_roads": 2
+        },
+        "review": [
+          {
+            "selected_rows": 62,
+            "true_low_iou": 59,
+            "precision": 0.9516129032258065,
+            "defined_only_precision": 0.9516129032258065,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.12834877794643249,
+            "macro_near_deficit_recall": 0.33001713987629483,
+            "near_retained_selected": 3,
+            "fraction": 0.1,
+            "random_mean": {
+              "selected_rows": 62.0,
+              "true_low_iou": 48.41,
+              "precision": 0.7808064516129033,
+              "defined_only_precision": 0.7808064516129033,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.10150867185568702,
+              "macro_near_deficit_recall": 0.10586481854087486,
+              "near_retained_selected": 13.27
+            }
+          },
+          {
+            "selected_rows": 155,
+            "true_low_iou": 145,
+            "precision": 0.9354838709677419,
+            "defined_only_precision": 0.9354838709677419,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.35290513518945926,
+            "macro_near_deficit_recall": 0.3661040315969893,
+            "near_retained_selected": 10,
+            "fraction": 0.25,
+            "random_mean": {
+              "selected_rows": 155.0,
+              "true_low_iou": 119.8,
+              "precision": 0.7729032258064515,
+              "defined_only_precision": 0.7729032258064515,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.2519055810847963,
+              "macro_near_deficit_recall": 0.25680546240405394,
+              "near_retained_selected": 34.32
+            }
+          },
+          {
+            "selected_rows": 256,
+            "true_low_iou": 231,
+            "precision": 0.90234375,
+            "defined_only_precision": 0.90234375,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.5019733756587352,
+            "macro_near_deficit_recall": 0.48204039049109476,
+            "near_retained_selected": 25,
+            "fraction": 0.41279226014512227,
+            "random_mean": {
+              "selected_rows": 256.0,
+              "true_low_iou": 198.77,
+              "precision": 0.7764453125,
+              "defined_only_precision": 0.7764453125,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.4138098140870582,
+              "macro_near_deficit_recall": 0.41678422386168856,
+              "near_retained_selected": 56.01
+            }
+          }
+        ],
+        "scope": "Fit on the same defined quality-fit targets as GP/RF, with fixed shrinkage; no test/Cal targets in estimation. RGB groups computed by the frozen RGB classifiers/centers. Simulator-group control is offline only. Not used for acceptance or post-test model choice."
+      },
+      "sim_tag_mean_oracle": {
+        "uses_simulator_metadata_at_inference": true,
+        "macro_road_mae": 0.47885158032127545,
+        "model": {
+          "global_mean": 0.6220574780621809,
+          "means": {
+            "0": 0.6762804436461546,
+            "1": 0.6389103637482538,
+            "2": 0.6034867727325571,
+            "3": 0.6804271730259208,
+            "4": 0.6495326461171278,
+            "5": 0.6368221529551675,
+            "6": 0.6686820082225514,
+            "7": 0.6311545116134714,
+            "8": 0.6039336516397104,
+            "9": 0.6482132611496348,
+            "10": 0.4847422800142034,
+            "11": 0.6829327680008592,
+            "12": 0.6535227391737448,
+            "13": 0.5972604779699426,
+            "14": 0.5813706724239983,
+            "15": 0.6533013864589742,
+            "16": 0.5566815699901388,
+            "17": 0.43117645044011393
+          },
+          "support": {
+            "0": {
+              "rows": 218,
+              "roads": 73
+            },
+            "1": {
+              "rows": 32,
+              "roads": 32
+            },
+            "2": {
+              "rows": 194,
+              "roads": 77
+            },
+            "3": {
+              "rows": 218,
+              "roads": 74
+            },
+            "4": {
+              "rows": 30,
+              "roads": 30
+            },
+            "5": {
+              "rows": 170,
+              "roads": 76
+            },
+            "6": {
+              "rows": 218,
+              "roads": 77
+            },
+            "7": {
+              "rows": 36,
+              "roads": 36
+            },
+            "8": {
+              "rows": 170,
+              "roads": 74
+            },
+            "9": {
+              "rows": 149,
+              "roads": 69
+            },
+            "10": {
+              "rows": 61,
+              "roads": 37
+            },
+            "11": {
+              "rows": 122,
+              "roads": 72
+            },
+            "12": {
+              "rows": 230,
+              "roads": 73
+            },
+            "13": {
+              "rows": 37,
+              "roads": 37
+            },
+            "14": {
+              "rows": 194,
+              "roads": 77
+            },
+            "15": {
+              "rows": 218,
+              "roads": 75
+            },
+            "16": {
+              "rows": 34,
+              "roads": 34
+            },
+            "17": {
+              "rows": 169,
+              "roads": 81
+            }
+          },
+          "defined_training_rows": 2500,
+          "prior_rows": 50.0,
+          "min_rows": 30,
+          "min_roads": 2
+        },
+        "review": [
+          {
+            "selected_rows": 62,
+            "true_low_iou": 57,
+            "precision": 0.9193548387096774,
+            "defined_only_precision": 0.9193548387096774,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.1349402893005912,
+            "macro_near_deficit_recall": 0.27664132945823083,
+            "near_retained_selected": 5,
+            "fraction": 0.1,
+            "random_mean": {
+              "selected_rows": 62.0,
+              "true_low_iou": 48.41,
+              "precision": 0.7808064516129033,
+              "defined_only_precision": 0.7808064516129033,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.10150867185568702,
+              "macro_near_deficit_recall": 0.10586481854087486,
+              "near_retained_selected": 13.27
+            }
+          },
+          {
+            "selected_rows": 155,
+            "true_low_iou": 137,
+            "precision": 0.8838709677419355,
+            "defined_only_precision": 0.8838709677419355,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.32024133796325177,
+            "macro_near_deficit_recall": 0.38423131380877856,
+            "near_retained_selected": 18,
+            "fraction": 0.25,
+            "random_mean": {
+              "selected_rows": 155.0,
+              "true_low_iou": 119.8,
+              "precision": 0.7729032258064515,
+              "defined_only_precision": 0.7729032258064515,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.2519055810847963,
+              "macro_near_deficit_recall": 0.25680546240405394,
+              "near_retained_selected": 34.32
+            }
+          },
+          {
+            "selected_rows": 256,
+            "true_low_iou": 223,
+            "precision": 0.87109375,
+            "defined_only_precision": 0.87109375,
+            "undefined_iou_selected": 0,
+            "macro_road_recall": 0.521787532027068,
+            "macro_near_deficit_recall": 0.5673485356583948,
+            "near_retained_selected": 33,
+            "fraction": 0.41279226014512227,
+            "random_mean": {
+              "selected_rows": 256.0,
+              "true_low_iou": 198.77,
+              "precision": 0.7764453125,
+              "defined_only_precision": 0.7764453125,
+              "undefined_iou_selected": 0.0,
+              "macro_road_recall": 0.4138098140870582,
+              "macro_near_deficit_recall": 0.41678422386168856,
+              "near_retained_selected": 56.01
+            }
+          }
+        ],
+        "scope": "Fit on the same defined quality-fit targets as GP/RF, with fixed shrinkage; no test/Cal targets in estimation. RGB groups computed by the frozen RGB classifiers/centers. Simulator-group control is offline only. Not used for acceptance or post-test model choice."
+      }
+    }
+  },
+  "protocol_sha256": "5cea33113dee2957619f60aa1dd05ca10fee190b95c4d31f9ab8eb36b284dfd0",
+  "used_for_acceptance": false,
+  "source_sha256": "2295f38573566d39ab67a6ede74e3b8aaf50fe48d1d32c62b8597e35a4ab08ce"
+}
