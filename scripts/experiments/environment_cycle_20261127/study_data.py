@@ -1,13 +1,20 @@
 """Frozen membership, feature views and buffered geographic folds for this study."""
 from pathlib import Path
-import json,hashlib
+import json,hashlib,uuid,time
 import numpy as np
 from scipy.spatial import cKDTree
 from sklearn.model_selection import GroupKFold
 from quality_estimation.region_feature_views import feature_matrix
 
 def read(path):return json.loads(Path(path).read_text())
-def dump(path,obj):Path(path).parent.mkdir(parents=True,exist_ok=True);Path(path).write_text(json.dumps(obj,indent=2,allow_nan=False)+'\n')
+def dump(path,obj):
+ path=Path(path);path.parent.mkdir(parents=True,exist_ok=True);temporary=path.with_name(path.name+'.tmp.'+uuid.uuid4().hex)
+ temporary.write_text(json.dumps(obj,indent=2,allow_nan=False)+'\n');deadline=time.monotonic()+1.
+ while True:
+  try:temporary.replace(path);return
+  except PermissionError:
+   if time.monotonic()>=deadline:raise
+   time.sleep(.01)
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def lighting(hour):
  h=np.asarray(hour);return np.where((h>=8)&(h<18),0,np.where(((h>=6)&(h<8))|((h>=18)&(h<20)),1,2)).astype(int)

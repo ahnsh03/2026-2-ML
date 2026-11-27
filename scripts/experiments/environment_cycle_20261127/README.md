@@ -16,7 +16,7 @@ Set `STUDY_ROOT`, `PARENT_STUDY`, `REPO_ROOT`, `CHECKPOINT_ROOT` to your local r
 
 1. `cache_full_original.py`: validate original RGB/Semantic and compare **every cached two-head target and valid mask** with the frozen original version. Shared content-addressed cache, no raw copying.
 2. `freeze_data.py`, `environment_features.py`: frozen quality roles and native RGB histograms. Preserve the source index and metadata, not only precomputed X/y.
-3. `environment_study.py`: geographic CV of supervised RGB weather/lighting classification; official Faiss e-means on raw and learned representations, three clustering seeds, Lloyd/GMM controls. Learned probabilities plus e-means are explicitly **supervised representation learning**, not label-free weather discovery.
+3. `environment_study.py`: geographic CV of supervised RGB weather/lighting classification; [official Faiss e-means](https://github.com/facebookresearch/faiss/blob/main/contrib/e_means/README.md) on raw and learned representations, three clustering seeds, Lloyd/GMM controls. Learned probabilities plus e-means are explicitly **supervised representation learning**, not label-free weather discovery.
 4. `quality_screen.py`: paired GP/RF Q regression, geographically buffered CV and feature ablations. Inputs and regression labels are version-bound.
 5. `policy_study.py`: Cal-only relative references, Dev-only BO16 vs matched random16 at three review budgets; exact simulator tags and RGB clusters. `context_audit.py` exposes normality-label support and context-only regression controls.
 6. `orchestrate.py`: runs/resumes frozen training queue. `development_queue.py` + `assess_development.py` evaluate symmetric coefficients, schedule all repeated unique banks, and freeze f1 without fresh confirmation.
@@ -30,3 +30,5 @@ Each stage preserves manifests, hashes, exact perception identity, model state t
 ## Interpretation
 
 Weather-tag accuracy, clustering stability, IoU MAE, calibrated review retrieval and downstream perception gain answer different questions. The current moving Dev set confounds near-deficit with night; it cannot prove rejection of normal night scenes. Supported near precision/recall is a diagnostic proxy rather than visibility-aware operating truth. Unsupported relative references fall back to the common0.7 benchmark; no environmental normality is fabricated.
+
+The e-means study uses5CPU NumPy passes and reassigns every vector to its nearest final centroid. The official documentation distinguishes last-epoch labels from final-centroid assignments. This small study does not claim the paper's large-scale10x speedup.

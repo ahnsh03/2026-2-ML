@@ -32,18 +32,23 @@ class EnvironmentReviewTest(unittest.TestCase):
     root=Path(tmp);x=self.bundle(root,kind);review=EnvironmentReview(root);full=review.predict(x,x);parts=[review.predict(x[i:i+4],x[i:i+4]) for i in range(0,len(x),4)];joined={k:np.concatenate([p[k] for p in parts]) for k in full}
     for key in full:np.testing.assert_allclose(full[key],joined[key],atol=1e-10)
     ids=np.array([str(i) for i in range(len(x))]);a,pa=review.select(ids,full,7);b,pb=review.select(ids,joined,7);np.testing.assert_array_equal(a,b);np.testing.assert_allclose(pa,pb)
- def test_exploration_matches_frozen_full_buffer_policy(self):
-  from quality_estimation.environment_selection import calibrated_priority
+ def test_unsupported_rgb_groups_use_common_threshold(self):
   with tempfile.TemporaryDirectory() as tmp:
-   root=Path(tmp);x=self.bundle(root,'GP');review=EnvironmentReview(root);review.policy['uncertainty_weight']=.25;pred=review.predict(x,x);ids=np.array([str(i) for i in range(len(x))]);chosen,score=review.select(ids,pred,7)
-   expected=calibrated_priority(pred['estimated_iou'],review.residuals,scale=pred['quality_predictive_scale'],uncertainty_weight=.25)
-   np.testing.assert_allclose(score,expected,atol=1e-12)
+   root=Path(tmp);x=self.bundle(root,'GP');review=EnvironmentReview(root);review.policy['grouping']='rgb_lighting'
+   review.policy['reference']={'absolute_threshold':.7,'groups':{str(i):{'threshold':.5+i*.05} for i in range(3)}}
+   review.policy['cluster_distance_limits']={'0':0.,'1':0.};pred=review.predict(x,x)
+   self.assertTrue(pred['environment_ood'].all());np.testing.assert_array_equal(pred['review_threshold'],np.full(len(x),.7))
  def test_exploration_matches_frozen_search_on_complete_buffer(self):
   from quality_estimation.environment_selection import calibrated_priority
   with tempfile.TemporaryDirectory() as tmp:
    root=Path(tmp);x=self.bundle(root,'GP');review=EnvironmentReview(root);review.policy['uncertainty_weight']=.25;pred=review.predict(x,x);ids=np.array([str(i) for i in range(len(x))]);_,priority=review.select(ids,pred,7)
    expected=calibrated_priority(pred['estimated_iou'],review.residuals,threshold=pred['review_threshold'],scale=pred['quality_predictive_scale'],uncertainty_weight=.25)
    np.testing.assert_allclose(priority,expected,atol=1e-12)
+ def test_coarse_rgb_groups_match_predicted_tags_without_metadata(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);x=self.bundle(root,'GP');review=EnvironmentReview(root)
+   for grouping,field in [('rgb_weather','predicted_weather'),('rgb_lighting','predicted_lighting')]:
+    review.policy['grouping']=grouping;pred=review.predict(x,x);np.testing.assert_array_equal(pred['review_group'],pred[field])
  def test_identity_and_tamper_rejected(self):
   with tempfile.TemporaryDirectory() as tmp:
    root=Path(tmp);self.bundle(root,'GP');wrong=dict(baseline_identity(),checkpoint_sha256='0'*64)

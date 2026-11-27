@@ -1,0 +1,38 @@
+{
+  "source_head": "b3441dab54a99d7b496129b0968c52defd65eca4",
+  "scope": "Pre full-original-replay guide bytes; relative links inside originals refer to their former guides directory. Use current guides for execution.",
+  "files": {
+    "docs/guides/ROI와_특징추출.md": {
+      "preserved": "docs/archive/guides_20261127/ROI와_특징추출.md",
+      "sha256": "189da88dee369b4bc0f676853f028d970cece2717dffa0fb228e887fd57b6a2c"
+    },
+    "docs/guides/개발환경.md": {
+      "preserved": "docs/archive/guides_20261127/개발환경.md",
+      "sha256": "c39fcadce80484d9773bb917ad0ae35184cc9a3a772d8fd00dd3d43119c0c79f"
+    },
+    "docs/guides/데이터_등록과_특징정답.md": {
+      "preserved": "docs/archive/guides_20261127/데이터_등록과_특징정답.md",
+      "sha256": "fc3338644f474d7d2df24b6dbc883a3d72a1565d694151b046275f6432f5fa20"
+    },
+    "docs/guides/온라인_연결과_최종제출.md": {
+      "preserved": "docs/archive/guides_20261127/온라인_연결과_최종제출.md",
+      "sha256": "47e559c35911f3b4fb4610a3a091c1eb3e348f5aee6d0125724435fcd4162a0f"
+    },
+    "docs/guides/인지모델_재학습과_갱신판정.md": {
+      "preserved": "docs/archive/guides_20261127/인지모델_재학습과_갱신판정.md",
+      "sha256": "f89117771240ccbf09a12745b93330e02909754334eb902c1055913bc7d37dba"
+    },
+    "docs/guides/일정과_역할.md": {
+      "preserved": "docs/archive/guides_20261127/일정과_역할.md",
+      "sha256": "cba1a57acc1e559fda61846fde15fd1346fc153933fff09060a1f709378c4dda"
+    },
+    "docs/guides/품질모델_학습과_불확실성.md": {
+      "preserved": "docs/archive/guides_20261127/품질모델_학습과_불확실성.md",
+      "sha256": "167629bb261caa62b95f58ffbefc1a1d6cee115994c40ff62979959df6ae45e9"
+    },
+    "docs/guides/환경군집과_검수정책.md": {
+      "preserved": "docs/archive/guides_20261127/환경군집과_검수정책.md",
+      "sha256": "a06ce1ebccd9bf1ca0f5c61194c48ec5f0aae2f45dce8a08a206d28f71149626"
+    }
+  }
+}

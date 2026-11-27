@@ -23,26 +23,29 @@ def main():
     if valid.sum()>=5:dest.append(float(chosen[valid].mean()))
   road=float(np.mean(rr)) if rr else 0.;environment=float(np.mean(ee)) if ee else 0.;cost=float(normal[picked].mean());return dict(loss=.45*(1-road)+.35*(1-environment)+.2*cost,road_near_deficit_recall=road,environment_near_deficit_recall=environment,near_retained_selected_fraction=cost)
  fractions=[.1,.25,3072/7442]
- def score_policy(groups,ref,params):
-  tau=thresholds(ref,groups[dev],unsupported=~confidence[dev]) if ref else .7;priority=calibrated_priority(mean[dev],resid,threshold=tau,scale=scale[dev],uncertainty_weight=params.get('uncertainty_weight',0.));result=[]
+ # Use exactly the runtime confidence/distance fallback for RGB groups. The
+ # simulator-label oracle deliberately has no RGB-classifier limitation.
+ distance=cdist(np.sqrt(np.maximum(np.c_[wp,lp],0))[:,z['active']],z['centers'],'sqeuclidean');nearest=np.sqrt(distance.min(1));group=distance.argmin(1);limits=read(S/'f0_quality/bundle/policy.json')['cluster_distance_limits'];ood=(~confidence)|(nearest>np.array([limits.get(str(int(g)),0.) for g in group]))
+ def score_policy(groups,ref,params,*,rgb_support=True):
+  tau=thresholds(ref,groups[dev],unsupported=ood[dev] if rgb_support else None) if ref else .7;priority=calibrated_priority(mean[dev],resid,threshold=tau,scale=scale[dev],uncertainty_weight=params.get('uncertainty_weight',0.));result=[]
   for f in fractions:
    ix=dev[select_environment_review(data['ids'][dev],priority,groups[dev],int(np.ceil(len(dev)*f)),balanced_floor=params.get('balanced_floor',0.))];result.append(dict(fraction=f,**metrics(ix)))
   return float(np.mean([r['loss'] for r in result])),result
  common,common_metrics=score_policy(np.zeros(len(mean),int),None,{})
  parameters=[dict(quantile=qq,shrinkage=s,balanced_floor=f,uncertainty_weight=u,retained_only=r) for qq,s,f,u,r in itertools.product([.1,.25,.4],[20.,100.],[0.,.25,.5],[0.,.1],[False,True])];coords=np.clip(np.array([[(v['quantile']-.1)/.3,np.log(v['shrinkage']/20)/np.log(5),v['balanced_floor']/.5,v['uncertainty_weight']/.1,float(v['retained_only'])] for v in parameters]),0.,1.);studies={}
- for name,groups in [('sim_oracle',sim_tag),('rgb_tag',rgb_tag),('rgb_cluster',cluster)]:
+ for name,groups in [('sim_oracle',sim_tag),('sim_lighting_oracle',lighting(data['hour'])),('rgb_tag',rgb_tag),('rgb_lighting',lp.argmax(1)),('rgb_weather',wp.argmax(1)),('rgb_cluster',cluster)]:
   trials={}
   def evaluate(j):
    if j in trials:return trials[j]['loss']
    v=parameters[j];eligible=normal[cal] if v['retained_only'] else None
    if eligible is not None and not eligible.any():eligible=None
-   reference=fit_environment_reference(q[cal],groups[cal],data['site'][cal],data['xy'][cal],quantile=v['quantile'],shrinkage=v['shrinkage'],eligible=eligible);loss,detail=score_policy(groups,reference,v);trials[j]=dict(parameters=v,reference=reference,loss=loss,metrics=detail);return loss
+   reference=fit_environment_reference(q[cal],groups[cal],data['site'][cal],data['xy'][cal],quantile=v['quantile'],shrinkage=v['shrinkage'],eligible=eligible);loss,detail=score_policy(groups,reference,v,rgb_support=not name.startswith('sim_'));trials[j]=dict(parameters=v,reference=reference,loss=loss,metrics=detail);return loss
   initial=[0,len(parameters)//3,2*len(parameters)//3,len(parameters)-1];history=[];losses=[]
   for _ in range(16):
    j=next_expected_improvement(coords,history,losses,initial);history.append(j);losses.append(evaluate(j))
   random=initial+np.random.default_rng(271127).permutation([i for i in range(len(parameters)) if i not in initial]).tolist()[:12];random_losses=[evaluate(int(j)) for j in random];j=min(history,key=lambda j:(trials[j]['loss'],parameters[j]['balanced_floor'],parameters[j]['uncertainty_weight']));studies[name]=dict(selected=trials[j],bo_indices=history,bo_losses=losses,random_indices=random,random_losses=random_losses,trials=trials)
  positive_support=bool(harm[dev].sum()>=20 and sum(harm[dev][data['site'][dev]==site].sum()>=5 for site in np.unique(data['site'][dev]))>=2)
- eligible=[(name,v['selected']) for name,v in studies.items() if positive_support and name!='sim_oracle' and v['selected']['loss']<=common-.01];winner=min(eligible,key=lambda nv:nv[1]['loss']) if eligible else None
+ eligible=[(name,v['selected']) for name,v in studies.items() if positive_support and not name.startswith('sim_') and v['selected']['loss']<=common-.01];winner=min(eligible,key=lambda nv:nv[1]['loss']) if eligible else None
  if winner:
   name,v=winner;runtime=dict(grouping=name,reference=v['reference'],balanced_floor=v['parameters']['balanced_floor'],uncertainty_weight=v['parameters']['uncertainty_weight'],audit_fraction=.1,environment_thresholds_adopted=True,decision='Version-specific relative policy improved mean Dev retrieval proxy by>=0.01; frozen before fresh confirmation.')
  else:runtime=dict(grouping='global',reference={'absolute_threshold':.7,'groups':{}},balanced_floor=0.,uncertainty_weight=0.,audit_fraction=.1,environment_thresholds_adopted=False,decision='No RGB-only group policy improved mean Dev retrieval proxy by>=0.01; retain common calibrated probability plus10%audit.')

@@ -52,7 +52,7 @@ class EnvironmentReview:
   if self.policy['absolute_quality_threshold']!=.7:raise ValueError('absolute quality benchmark differs')
   self.residuals=np.asarray(self.calibration['signed_residuals'],float)
   if self.residuals.ndim!=1 or not len(self.residuals) or not np.isfinite(self.residuals).all() or (np.diff(self.residuals)<0).any():raise ValueError('invalid calibration residual distribution')
-  if self.policy['grouping'] not in ['global','rgb_cluster','rgb_tag']:raise ValueError('unknown runtime environment grouping')
+  if self.policy['grouping'] not in ['global','rgb_cluster','rgb_tag','rgb_weather','rgb_lighting']:raise ValueError('unknown runtime environment grouping')
   if any(not 0<=self.policy[k]<=1 for k in ['balanced_floor','audit_fraction','uncertainty_weight']):raise ValueError('invalid review mixture')
 
  def predict(self,quality_vectors,environment_vectors):
@@ -62,7 +62,7 @@ class EnvironmentReview:
   else:mean=np.clip(self.model.predict(quality_vectors),0,1);sd=np.ones(len(mean));epistemic=np.zeros(len(mean))
   wp=self.weather.predict_proba(environment_vectors);lp=self.lighting.predict_proba(environment_vectors);embedding=np.sqrt(np.maximum(np.c_[wp,lp],0))[:,self.active];distance=cdist(embedding,self.centers,'sqeuclidean');groups=distance.argmin(1);nearest=np.sqrt(distance.min(1));w=wp.argmax(1);l=lp.argmax(1)
   limits=np.array([self.policy['cluster_distance_limits'].get(str(int(g)),0.) for g in groups]);ood=(nearest>limits)|(wp.max(1)<self.policy.get('minimum_tag_confidence',.6))|(lp.max(1)<self.policy.get('minimum_tag_confidence',.6))
-  tags=w*3+l;review_groups=groups if self.policy['grouping']=='rgb_cluster' else tags if self.policy['grouping']=='rgb_tag' else np.zeros(len(mean),int)
+  tags=w*3+l;review_groups=groups if self.policy['grouping']=='rgb_cluster' else tags if self.policy['grouping']=='rgb_tag' else w if self.policy['grouping']=='rgb_weather' else l if self.policy['grouping']=='rgb_lighting' else np.zeros(len(mean),int)
   tau=thresholds(self.policy['reference'],review_groups,unsupported=ood) if self.policy['grouping']!='global' else np.full(len(mean),.7)
   low=calibrated_priority(mean,self.residuals,scale=sd);priority=calibrated_priority(mean,self.residuals,threshold=tau,scale=sd)
   low_res,high_res=np.quantile(self.residuals,[.05,.95]);lo=np.clip(mean+low_res*sd,0,1);hi=np.clip(mean+high_res*sd,0,1)

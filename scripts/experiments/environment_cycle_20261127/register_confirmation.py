@@ -29,11 +29,13 @@ def main():
    xy=np.array(row['xy'])
    if last is None or np.linalg.norm(xy-last)>=3:thin.append(row);last=xy
  data,_,_=load_sources(a.parent);distance=cKDTree(data['xy']).query(np.array([r['xy'] for r in allrows]))[0];assert distance.min()>=25
+ original_positions=S/'protocol/original_training_ego_xy.npz';original_clearance=None
+ if original_positions.exists():original_clearance=float(cKDTree(np.load(original_positions)['ego_xy']).query(np.array([r['xy'] for r in allrows]))[0].min())
  assert len({r['sample_id'] for r in thin})==len(thin)
  for prefix in sorted({r['run_id'].split('_env28_')[0] for r in good}):
   result=read(C/(prefix+'_completion.json'));assert result['restoration']['verified'];restores.append(prefix)
  index={'fresh_confirmation':{'simulator_release':'26.R1','rows':thin}};dump(out/'index_frozen.json',index);dump(out/'index_all.json',{'fresh_confirmation':{'simulator_release':'26.R1','rows':allrows}})
  dump(out/'alignment/index_full.json',{run:{'simulator_release':'26.R1','rows':[r for r in allrows if r['parent_session_id']==run]} for run in sorted({r['parent_session_id'] for r in allrows})})
- dump(out/'audit.json',dict(created_utc=datetime.now(timezone.utc).isoformat(),conditions=len(good),raw_frames=len(allrows),thinned_frames=len(thin),verified_4channel_files=len(checks),minimum_old_source_distance_m=float(distance.min()),maximum_cte_m=max(r['maximum_cte_m'] for r in good),maximum_speed_mps=max(r['maximum_speed_mps'] for r in good),all_successful_epochs_restoration_verified=True,source_sha256=sha(__file__),index_sha256=sha(out/'index_frozen.json'),plans_sha256=sorted(accepted),scope='Same-map locations buffered from registered tuning/adaptation captures; original-v6-training-route exclusion is not established.3m XY thinning before target/prediction inspection. No exposure timestamps; content alignment still separate.'))
+ dump(out/'audit.json',dict(created_utc=datetime.now(timezone.utc).isoformat(),conditions=len(good),raw_frames=len(allrows),thinned_frames=len(thin),verified_4channel_files=len(checks),minimum_original_training_ego_distance_m=original_clearance,minimum_old_source_distance_m=float(distance.min()),maximum_cte_m=max(r['maximum_cte_m'] for r in good),maximum_speed_mps=max(r['maximum_speed_mps'] for r in good),all_successful_epochs_restoration_verified=True,source_sha256=sha(__file__),index_sha256=sha(out/'index_frozen.json'),plans_sha256=sorted(accepted),scope='Same-map locations buffered from registered tuning/adaptation captures; original-v6-training-route exclusion is not established.3m XY thinning before target/prediction inspection. No exposure timestamps; content alignment still separate.'))
  print('CONFIRMATION REGISTERED',len(allrows),len(thin),flush=True)
 if __name__=='__main__':main()

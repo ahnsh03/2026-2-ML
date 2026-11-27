@@ -38,6 +38,10 @@ def main():
  for view,(columns,all_x) in views.items():
   for kind in ['GP','RF']:
    grid=parameters[kind];coords=np.array([[i/max(len(grid)-1,1)] for i in range(len(grid))]);cache={}
+   if a.packs:
+    if kind=='GP':coords=np.array([[np.log(v['length_multiplier']/1.4)/np.log(4),np.log(v['noise_variance']/.02)/np.log(5)] for v in grid])
+    else:coords=np.array([[float(v['max_depth'] is None),(v['min_samples_leaf']-1)/5,(v['max_features']-.5)/.5] for v in grid])
+    coords=np.clip(coords,0.,1.)
    def make(params):return SpatialQualityGP(**params) if kind=='GP' else RandomForestRegressor(**params,random_state=271127,n_jobs=2)
    def objective(i):
     if i in cache:return cache[i]['loss']
@@ -75,8 +79,8 @@ def main():
  for kind in ['GP','RF']:
   base_rec=next(r for r in records if r['kind']==kind and r['view']=='base28');eligible=[r for r in records if r['kind']==kind and (r['view']=='base28' or (r['cv_mae']<=base_rec['cv_mae'] and r['dev_primary_mae']<=base_rec['dev_primary_mae']-.002 and r['dev_historical_mae']<=base_rec['dev_historical_mae']+.005))]
   selected[kind]=min(eligible,key=lambda r:(r['dev_primary_mae'],len(r['columns'])))
- gp,rf=selected['GP'],selected['RF'];rf_better=rf['dev_primary_mae']<gp['dev_primary_mae']-.003 and rf['cv_mae']<gp['cv_mae'] and sum(rf['dev_road_mae'][k]<gp['dev_road_mae'][k] for k in gp['dev_road_mae'])>=2
- winner='RF' if rf_better else 'GP';dump(out/'quality_selection_frozen.json',dict(records=records,selected=selected,policy_predictor=winner,rf_consistently_better=bool(rf_better),fit_rows=len(fit),requested_fit_rows=requested_fit,undefined_fit_excluded=requested_fit-len(fit),development_rows=937,primary_development_rows=361,search=search,perception_identity=identity,perception_weights=weights,source_sha256=sha(__file__),scope='Q-only regression with common defined-label GP/RF membership; old heldout explicitly promoted. No fresh confirmation opened.'))
+ gp,rf=selected['GP'],selected['RF'];rf_better=rf['dev_primary_mae']<gp['dev_primary_mae']-.003 and rf['cv_mae']<gp['cv_mae'] and rf['dev_historical_mae']<=gp['dev_historical_mae']+.005 and sum(rf['dev_road_mae'][k]<gp['dev_road_mae'][k] for k in gp['dev_road_mae'])>=2
+ winner='RF' if rf_better else 'GP';dump(out/'quality_selection_frozen.json',dict(records=records,selected=selected,policy_predictor=winner,rf_consistently_better=bool(rf_better),family_rule='RF needs primary Dev advantage>0.003, better geographic CV, at least2of3roads better, and historical Dev MAE no more than0.005aboveGP. Otherwise prefer GP within the predeclared comparison.',fit_rows=len(fit),requested_fit_rows=requested_fit,undefined_fit_excluded=requested_fit-len(fit),development_rows=937,primary_development_rows=361,search=search,perception_identity=identity,perception_weights=weights,source_sha256=sha(__file__),scope='Q-only regression with common defined-label GP/RF membership; old heldout explicitly promoted. No fresh confirmation opened.'))
  (out/'_SUCCESS').write_text(sha(out/'quality_selection_frozen.json')+'\n');print('QUALITY SCREEN COMPLETE',winner,flush=True)
 
 if __name__=='__main__':main()
