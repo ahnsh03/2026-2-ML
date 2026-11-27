@@ -20,7 +20,7 @@ def main():
     if a.output.exists():raise ValueError('RGB replay output exists')
     path,identity,_=resolve_quality_perception(a.adaptation_run,a.checkpoint)
     version=json.loads((a.bundle/'bundle_manifest.json').read_text())['version']
-    review_type=EnvironmentReview if version=='environment-quality-review-bundle-1' else VersionedReview
+    review_type=EnvironmentReview if version in ['environment-quality-review-bundle-1','environment-quality-review-bundle-2'] else VersionedReview
     review=review_type(a.bundle,perception_identity=identity)
     quality_model_path=a.bundle/getattr(review,'model_filename','quality_gp.npz')
     quality_model_sha256=sha256_file(quality_model_path)

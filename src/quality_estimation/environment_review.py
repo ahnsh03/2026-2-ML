@@ -20,7 +20,7 @@ from .cluster_review import mixture_priority
 class EnvironmentReview:
  def __init__(self,bundle,*,perception_identity=None):
   root=Path(bundle).resolve();self.root=root;self.spec=json.loads((root/'bundle_manifest.json').read_text());self.model_filename='quality_model.npz'
-  if self.spec['version']!='environment-quality-review-bundle-1':raise ValueError('unknown environment review bundle')
+  if self.spec['version'] not in ['environment-quality-review-bundle-1','environment-quality-review-bundle-2']:raise ValueError('unknown environment review bundle')
   identity=validate_identity(self.spec['perception_identity'])
   if perception_identity is not None and identity!=validate_identity(perception_identity):raise ValueError('perception/quality version pair differs')
   required={self.model_filename,'weather.npz','lighting.npz','centers.npz','calibration.json','policy.json'}
@@ -52,6 +52,9 @@ class EnvironmentReview:
   if self.policy['absolute_quality_threshold']!=.7:raise ValueError('absolute quality benchmark differs')
   self.residuals=np.asarray(self.calibration['signed_residuals'],float)
   if self.residuals.ndim!=1 or not len(self.residuals) or not np.isfinite(self.residuals).all() or (np.diff(self.residuals)<0).any():raise ValueError('invalid calibration residual distribution')
+  if self.spec['version']=='environment-quality-review-bundle-2' and ('interval_residual_bounds' not in self.calibration or self.calibration.get('interval_method') not in ['pooled','road_envelope']):raise ValueError('explicit interval calibration required for v2')
+  self.interval_bounds=np.asarray(self.calibration.get('interval_residual_bounds',np.quantile(self.residuals,[.05,.95])),float)
+  if self.interval_bounds.shape!=(2,) or not np.isfinite(self.interval_bounds).all() or self.interval_bounds[0]>self.interval_bounds[1]:raise ValueError('invalid interval residual bounds')
   if self.policy['grouping'] not in ['global','rgb_cluster','rgb_tag','rgb_weather','rgb_lighting']:raise ValueError('unknown runtime environment grouping')
   if any(not 0<=self.policy[k]<=1 for k in ['balanced_floor','audit_fraction','uncertainty_weight']):raise ValueError('invalid review mixture')
 
@@ -65,7 +68,7 @@ class EnvironmentReview:
   tags=w*3+l;review_groups=groups if self.policy['grouping']=='rgb_cluster' else tags if self.policy['grouping']=='rgb_tag' else w if self.policy['grouping']=='rgb_weather' else l if self.policy['grouping']=='rgb_lighting' else np.zeros(len(mean),int)
   tau=thresholds(self.policy['reference'],review_groups,unsupported=ood) if self.policy['grouping']!='global' else np.full(len(mean),.7)
   low=calibrated_priority(mean,self.residuals,scale=sd);priority=calibrated_priority(mean,self.residuals,threshold=tau,scale=sd)
-  low_res,high_res=np.quantile(self.residuals,[.05,.95]);lo=np.clip(mean+low_res*sd,0,1);hi=np.clip(mean+high_res*sd,0,1)
+  low_res,high_res=self.interval_bounds;lo=np.clip(mean+low_res*sd,0,1);hi=np.clip(mean+high_res*sd,0,1)
   return dict(estimated_iou=mean,quality_predictive_scale=sd,quality_epistemic_sd=epistemic,gp_uncertainty_available=np.full(len(mean),self.kind=='GP',bool),interval90_lower=lo,interval90_upper=hi,low_quality_probability=low,review_probability=priority,environment_cluster=groups,environment_out_of_distribution=ood,review_group=review_groups,environment_ood=ood,environment_distance=nearest,predicted_weather=w,predicted_lighting=l,weather_confidence=wp.max(1),lighting_confidence=lp.max(1),review_threshold=tau)
 
  def select(self,ids,predictions,budget,*,seed=271127):

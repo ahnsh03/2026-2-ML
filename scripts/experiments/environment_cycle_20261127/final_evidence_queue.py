@@ -14,6 +14,8 @@ def main():
   with (S/'logs'/log).open('a') as f:subprocess.run([sys.executable,str(Path(__file__).with_name(script)),*args],env=env,cwd=a.repo,stdout=f,stderr=subprocess.STDOUT,check=True)
  def gpu(name,command):
   with (S/'logs'/(name+'.log')).open('a') as f:subprocess.run(['docker','run','--rm','--gpus','all','--shm-size','1g','--name','ml-environment-final-eval',*mount,'ml-perception:rtx50-cu128',*command],stdout=f,stderr=subprocess.STDOUT,check=True)
+ if not (S/'g1_quality/uncertainty_diagnostics.json').exists():host('diagnose_uncertainty.py',['--study',str(S),'--quality-dir','g1_quality'],'diagnose_g1_uncertainty.log')
+ if not (S/'g1_quality/interval_calibration_study.json').exists():host('fit_interval_envelope.py',['--study',str(S),'--quality-dir','g1_quality'],'fit_g1_interval.log')
  if not (S/'g1_quality/review_policy_frozen.json').exists():host('refit_policy.py',['--study',str(S),'--parent',str(a.parent)],'refit_g1_policy.log')
  if not (S/'g1_quality/bundle/bundle_manifest.json').exists():host('export_review.py',['--study',str(S),'--parent',str(a.parent),'--quality-dir','g1_quality','--output',str(S/'g1_quality/bundle')],'export_g1_bundle.log')
  gpu('original_exposure_audit',['python','scripts/experiments/environment_cycle_20261127/audit_replay_exposure.py','--study',str(S)])

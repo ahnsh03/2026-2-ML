@@ -49,6 +49,16 @@ class EnvironmentReviewTest(unittest.TestCase):
    root=Path(tmp);x=self.bundle(root,'GP');review=EnvironmentReview(root)
    for grouping,field in [('rgb_weather','predicted_weather'),('rgb_lighting','predicted_lighting')]:
     review.policy['grouping']=grouping;pred=review.predict(x,x);np.testing.assert_array_equal(pred['review_group'],pred[field])
+ def test_v2_interval_bounds_change_only_intervals_and_reject_invalid_bounds(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);x=self.bundle(root,'GP');before=EnvironmentReview(root).predict(x,x);cal=json.loads((root/'calibration.json').read_text());spec=json.loads((root/'bundle_manifest.json').read_text());spec['version']='environment-quality-review-bundle-2'
+   def save(bounds):
+    cal.update(interval_method='road_envelope',interval_residual_bounds=bounds);(root/'calibration.json').write_text(json.dumps(cal));spec['artifact_sha256']['calibration.json']=sha256_file(root/'calibration.json');(root/'bundle_manifest.json').write_text(json.dumps(spec))
+   save([-1.,1.]);after=EnvironmentReview(root).predict(x,x)
+   for key in ['estimated_iou','review_probability','quality_predictive_scale','environment_cluster']:np.testing.assert_array_equal(before[key],after[key])
+   self.assertTrue(np.all(after['interval90_lower']<=before['interval90_lower']));self.assertTrue(np.all(after['interval90_upper']>=before['interval90_upper']))
+   save([1.,-1.])
+   with self.assertRaisesRegex(ValueError,'invalid interval'):EnvironmentReview(root)
  def test_identity_and_tamper_rejected(self):
   with tempfile.TemporaryDirectory() as tmp:
    root=Path(tmp);self.bundle(root,'GP');wrong=dict(baseline_identity(),checkpoint_sha256='0'*64)

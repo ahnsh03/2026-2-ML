@@ -1,6 +1,6 @@
-# 9영역 Q·환경 검수 번들 v1
+# 9영역 Q·환경 검수 번들 v1·v2
 
-구현: [EnvironmentReview](../../src/quality_estimation/environment_review.py), [선별·보정 연산](../../src/quality_estimation/environment_selection.py), [RGB 단독 재생](../../src/quality_estimation/infer_versioned_review.py). 이 계약은 새 `environment-quality-review-bundle-1` 형식이다. 기존 `roi9-versioned-review-bundle-1`의3/4과제 GP 번들과 이전 X56 경로는 각 원래 형식으로 읽는다.
+구현: [EnvironmentReview](../../src/quality_estimation/environment_review.py), [선별·보정 연산](../../src/quality_estimation/environment_selection.py), [RGB 단독 재생](../../src/quality_estimation/infer_versioned_review.py). 이 계약은 `environment-quality-review-bundle-1`과 명시적 구간 보정을 추가한 `environment-quality-review-bundle-2`를 설명한다. 기존 `roi9-versioned-review-bundle-1`의3/4과제 GP 번들과 이전 X56 경로는 각 원래 형식으로 읽는다. 파일명은 기존 링크를 보존하기 위해 유지한다.
 
 ## 입력과 버전
 
@@ -14,7 +14,7 @@
 | `quality_model.npz` | 주 Q 하나를 예측하는 GP 또는 RF |
 | `weather.npz`, `lighting.npz` | RGB만 사용하는 감독 분류기 |
 | `centers.npz` | 학습된 RGB 분류 확률 표현의 e-means 중심·활성 차원 |
-| `calibration.json` | 해당 인지·품질 버전에서 얻은 Cal 부호 잔차 분포 |
+| `calibration.json` | 해당 인지·품질 버전의 Cal 부호 잔차 분포와 v2 구간 경계·선정 근거 SHA |
 | `policy.json` | 공통/환경별 참조, 균형 할당 비중, 무작위 감사, 불확실성 탐색 비중 |
 
 ## Q와 보정
@@ -23,7 +23,11 @@
 
 GP는 평균과 관측 분산을 내보낸다. 잡음 분산을 뺀 잠재 표준편차도 진단용으로 제공한다. RF의 트리 간 차이는 GP 불확실성으로 해석하지 않는다. RF에서는 `gp_uncertainty_available=false`이고, 잔차 단위 계산에 쓰는 scale1은 예측 표준편차1을 뜻하지 않는다.
 
-Cal에서 `(y-mean)/scale`의 부호 잔차 분포를 고정한다. GP의 scale은 관측 표준편차, RF는1이다. 이 경험적 분포로 저IoU 검수 점수와90% 구간을 만든다. 실제 구간 포함률은 독립 확인 자료에서 측정하며, 환경별 포함률이나 독립 표본 보장을 가정하지 않는다.
+Cal에서 `(y-mean)/scale`의 부호 잔차 분포를 고정한다. GP의 scale은 관측 표준편차, RF는1이다. 저IoU 검수 점수는 이 경험적 CDF로 계산한다. GP 표준편차가 크다는 것만으로 저IoU라고 판단하지 않으며, 오차·야간 포함률·구간 폭을 별도로 검증한다.
+
+v1의 구간은 전체 Cal 잔차의5·95분위수로 계산한다. v2는 `interval_method`와 길이2의 유한·오름차순 `interval_residual_bounds`를 필수로 저장한다. `pooled`와 `road_envelope` 두 후보 중, Cal 도로 제외 교차검증과 primary Dev의 평균90% interval score가0.005 이상 개선되고 Dev 포함률이 떨어지지 않을 때 후자를 선택한다. score는 `폭 + 20×구간 밖 거리`이므로 무조건 넓히는 방식에 불이익을 준다. `road_envelope`는 충분한 표본을 가진 Cal 도로별5분위수의 최솟값·95분위수의 최댓값이다. 실행 시에는 두 고정 경계만 사용하며 도로 ID나 GT를 요구하지 않는다. 출력 구간은 `[mean + lower×scale, mean + upper×scale]`를 `[0,1]`로 자른 값이다.
+
+v2 구간 보정은 점 추정·표준편차·검수 CDF·순위를 변경하지 않는다. 따라서 구간 경계가 검수 CDF의5·95분위수와 다를 수 있다. 이는 경험적 예측 구간이며 GP의 베이지안 credible interval이나 환경별90% 보장을 뜻하지 않는다. 최종 포함률과 폭은 미개봉 확인 자료에서 함께 보고한다. 인지 버전이 바뀌면 새 Cal·Dev에서 다시 선택하고, 기존 f0 번들·선별 은행은 진단 실험으로 덮어쓰지 않는다. v1 전용 구현이 v2를 조용히 오독하지 않도록 형식 번호를 올렸다.
 
 ## 환경과 검수
 
