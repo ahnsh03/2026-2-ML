@@ -51,7 +51,8 @@ def select_supported_review(ids,mean,sd,groups,budget,*,beta=0.,balanced_floor=0
     floor=int(np.floor(n_core*balanced_floor));reasons=['environment_floor']*floor+['utility_priority']*(n_core-floor)
     reasons += ['conditional_information_audit'if information_mode=='conditional'else'uncertainty_audit']*n_information
     reasons += ['random_audit']*n_random
-    probability=[1.]*(n_core+n_information)+[n_random/len(remaining)]*n_random
+    probability=[1.]*(n_core+n_information)
+    if n_random:probability += [n_random/len(remaining)]*n_random
     if len(selected)!=budget or len(set(selected.tolist()))!=budget:raise RuntimeError('supported-review budget changed')
     return selected,score,dict(reasons=reasons,conditional_inclusion_probability=probability,
         priority_slots=n_core,information_slots=n_information,random_audit_slots=n_random,

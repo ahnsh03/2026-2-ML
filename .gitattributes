@@ -1,4 +1,6 @@
 # Generated SVG path spacing is preserved so published raster/vector hashes match.
+models/perception/**/checkpoint.pt binary
+models/review/**/*.npz binary
 docs/baselines/scene_cycle_20261128/confirmation/**/*.svg -whitespace linguist-generated
 # CSV exports retain RFC-style CRLF bytes used by their publication hashes.
 docs/baselines/scene_cycle_20261128/confirmation/tables/*.csv whitespace=trailing-space,space-before-tab,cr-at-eol

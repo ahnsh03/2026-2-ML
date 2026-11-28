@@ -76,7 +76,38 @@ def identity_from_adaptation(directory):
     return validate_identity(identity)
 
 
-def resolve_quality_perception(adaptation_run=None, checkpoint=None):
+def resolve_public_perception(directory, registry=None):
+    """Load an inference-only release pinned to the reviewed repository registry.
+
+    This is not an adaptation run: membership is deliberately unavailable and
+    training still requires load_adaptation() plus the full replay ledger.
+    """
+    directory = Path(directory).resolve()
+    manifest = directory / "release.json"
+    spec = json.loads(manifest.read_text())
+    _require(spec.get("schema_version") == "public-perception-release-1", "unknown public model release")
+    registry = Path(registry) if registry else Path(__file__).resolve().parents[2]/"config/perception_releases.json"
+    catalog = json.loads(registry.read_text())
+    _require(catalog.get("schema_version") == "perception-development-releases-1", "unknown perception registry")
+    entry = catalog["releases"].get(spec.get("version"))
+    _require(entry is not None and entry["kind"] == "adaptation", "public release is not registered")
+    _require(entry.get("repository_release_manifest_sha256") == sha256_file(manifest), "public release manifest differs")
+    identity = validate_identity(spec["perception_identity"])
+    _require(identity["checkpoint_sha256"] == entry["checkpoint_sha256"]
+             and identity["adaptation_run_sha256"] == entry["adaptation_run_sha256"], "public release lineage differs")
+    _require(spec.get("perception_weights") == "model_state_dict" and spec.get("inference_only") is True,
+             "public release is not an inference-only model state")
+    _require(spec.get("checkpoint") == "checkpoint.pt", "public checkpoint path differs")
+    path = (directory / spec["checkpoint"]).resolve()
+    _require(path.parent == directory and sha256_file(path) == identity["checkpoint_sha256"],
+             "public checkpoint bytes differ")
+    return path, identity, []
+
+
+def resolve_quality_perception(adaptation_run=None, checkpoint=None, *, release=None):
+    if release is not None:
+        _require(adaptation_run is None and checkpoint is None, "choose exactly one perception source")
+        return resolve_public_perception(release)
     if adaptation_run is not None:
         _require(checkpoint is None, "choose adaptation run or baseline checkpoint, not both")
         path, _, membership = load_adaptation(adaptation_run)

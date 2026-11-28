@@ -1,0 +1,21 @@
+{
+  "schema_version": "public-perception-release-1",
+  "version": "m-v6-r2-20261128",
+  "architecture": "TwinLiteNetPlus Medium",
+  "checkpoint": "checkpoint.pt",
+  "perception_weights": "model_state_dict",
+  "inference_only": true,
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+  },
+  "training_rows": 31121,
+  "parent_version": "m-v6-r1-20261128",
+  "checkpoint_storage": "Exact verified source bytes; optimizer and private training ledgers are not included",
+  "original_adoption_decision_sha256": "293b5ca3557bff437d543751cb38eb87d41e1a4a6bb12c2d6680651c60e8e60c",
+  "scope": "Inference/X-y generation only. Continuing training requires the external complete adaptation/replay ledger; do not infer training membership from this model folder."
+}

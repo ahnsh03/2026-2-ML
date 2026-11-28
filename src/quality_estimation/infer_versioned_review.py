@@ -16,10 +16,10 @@ from .selected_region_features import extract_selected_features
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for key in ['bundle','manifest','data-root','output']:p.add_argument('--'+key,type=Path,required=True)
-    source=p.add_mutually_exclusive_group(required=True);source.add_argument('--checkpoint',type=Path);source.add_argument('--adaptation-run',type=Path)
+    source=p.add_mutually_exclusive_group(required=True);source.add_argument('--checkpoint',type=Path);source.add_argument('--adaptation-run',type=Path);source.add_argument('--perception-release',type=Path)
     p.add_argument('--batch-size',type=int,default=4);p.add_argument('--device',default='cuda');p.add_argument('--budget',type=int);a=p.parse_args()
     if a.output.exists():raise ValueError('RGB replay output exists')
-    path,identity,_=resolve_quality_perception(a.adaptation_run,a.checkpoint)
+    path,identity,_=resolve_quality_perception(a.adaptation_run,a.checkpoint,release=a.perception_release)
     version=json.loads((a.bundle/'bundle_manifest.json').read_text())['version']
     review_type=SupportAwareReview if version=='support-aware-review-bundle-1' else EnvironmentReview if version in ['environment-quality-review-bundle-1','environment-quality-review-bundle-2'] else VersionedReview
     review=review_type(a.bundle,perception_identity=identity)

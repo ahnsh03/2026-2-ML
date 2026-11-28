@@ -29,7 +29,9 @@
         "adoption_decision_sha256": "293b5ca3557bff437d543751cb38eb87d41e1a4a6bb12c2d6680651c60e8e60c",
         "review_criteria_pass": true,
         "live_connection_completed": false
-      }
+      },
+      "repository_model_release": "models/perception/m-v6-r2-20261128",
+      "repository_release_manifest_sha256": "7bf61e628f1484200006aa04306ed592ef4c1e8b19d226b96228117c4d7ddd7a"
     }
   }
 }

@@ -8,6 +8,8 @@
 
 ## 목표와 현재 상태
 
+**11월29일09시까지 [GP 대비·새벽 QA·shadow 작업](docs/experiments/대비특징_검수와_shadow_20261129.md)을 진행한다.** RF/GP를 둘 다 유지하며 최종 선택은 대용량 선별·재학습 비교 후로 미룬다. 아래 r2는 현재 검증 기준이다. [배포 모델](models/README.md)은 pull 후 사용할 수 있고 이후 실험 후보와 분리한다.
+
 **11월28일 누적 갱신·새 확인을 완료하고 `m-v6-r2-20261128`을 개발 인지 기준으로 승격했다.**9영역·GP52 전체 IoU 추정·RF74 지원 오류 검수·e-means 맥락의 오프라인 쌍이 채택 기준과 독립 실행 묶음 재생을 통과했다. [결과·한계](docs/experiments/표시가용성_누적갱신_20261128.md) · [표·시각화·해시](docs/baselines/scene_cycle_20261128/confirmation/README.md) · [버전 등록부](config/perception_releases.json)
 
 | 새 확인590장 | 결과 |
@@ -71,6 +73,6 @@ python3 scripts/verify_environment_release.py --root "$ML_RELEASE_ROOT"
 - 공통 설계·평가·역할·개발 방법은 이 저장소의 `docs/`에 둔다. 미확정 설계와 측정된 결과를 구분한다.
 - 강의 원문·개인 분석·과목별 발표 준비는 저장소 밖 로컬 워크스페이스에서 관리한다.
   팀 개발에 필요한 결론은 공통 문서에 반영해 로컬 자료 없이도 읽을 수 있게 한다.
-- 원본 데이터·영상·마스크·feature·체크포인트·실험 출력은 Git에 올리지 않는다.
+- 원본 데이터·영상·마스크·feature·전체 학습 원장·실험 출력은 Git에 올리지 않는다. 사용자가11월28일 명시한 [검증된 배포 인지 가중치](models/README.md)는 버전·해시를 고정해 예외로 포함한다.
 - 개인 경로와 컨테이너 이미지 이름은 Git에서 제외한 `config/local.env`에 기록한다.
 - 코드 출처·revision과 공개 가능한 재현 근거는 [이관 기록](docs/archive/외부코드_선별.md)에 남긴다.

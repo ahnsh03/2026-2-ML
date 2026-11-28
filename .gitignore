@@ -3,9 +3,13 @@
 outputs/
 data/
 *.pt
+# Verified inference releases explicitly authorized for team pull-and-run use.
+!models/perception/m-v6-r2-20261128/checkpoint.pt
 *.pth
 *.onnx
 *.npz
+!models/review/m-v6-r2-20261128/primary/*.npz
+!models/review/m-v6-r2-20261128/primary/environment/*.npz
 *.npy
 *.parquet
 *.bag
@@ -17,6 +21,8 @@ data/
 !config/roi9_front_v1/regions.png
 !docs/**/*.png
 !docs/**/*.jpg
+!models/examples/front.png
+!models/examples/front.jpg
 
 # 개인 PC 경로·이미지 이름 (예시는 config/local.env.example)
 config/local.env

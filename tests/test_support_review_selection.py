@@ -4,6 +4,18 @@ from quality_estimation.support_review_selection import select_supported_review,
 
 
 class SupportReviewSelectionTest(unittest.TestCase):
+    def test_single_frame_flush_has_no_audit_denominator(self):
+        selected,_,details=select_supported_review(np.array(['last']),np.array([.7]),np.array([0.]),np.array([0]),1)
+        self.assertEqual(selected.tolist(),[0])
+        self.assertEqual(details['conditional_inclusion_probability'],[1.])
+        self.assertEqual(details['random_audit_slots'],0)
+
+    def test_full_priority_budget_preserves_all_ids(self):
+        ids=np.array(['a','b','c'])
+        selected,_,details=select_supported_review(ids,np.array([.2,.8,.4]),np.zeros(3),np.zeros(3),3,audit_fraction=0.)
+        self.assertEqual(set(ids[selected]),set(ids))
+        self.assertEqual(details['conditional_inclusion_probability'],[1.,1.,1.])
+
     def test_conditional_information_avoids_redundant_high_variance_frames(self):
         ids=np.array(['a','b','c']);cov=np.array([[1,.99,0],[.99,1,0],[0,0,.5]])
         chosen=conditional_variance_audit(ids,cov,[0],1,.01)

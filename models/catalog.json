@@ -1,0 +1,10 @@
+{
+  "schema_version": "team-runtime-model-catalog-1",
+  "perception_version": "m-v6-r2-20261128",
+  "perception_release": "models/perception/m-v6-r2-20261128",
+  "reference_review_bundle": "models/review/m-v6-r2-20261128/primary",
+  "reference_adoption": "models/review/m-v6-r2-20261128/adoption.json",
+  "review_bundle_manifest_sha256": "874cd2c15d39b41fe80beb61ece0619bbb95c3f47fa02b846ddcb4141cb60a14",
+  "reference_status": "Previously confirmed r2 reference; RF/GP final choice deferred until larger selection/retraining comparisons",
+  "default_demo_manifest": "models/examples/rgb.jsonl"
+}
