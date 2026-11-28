@@ -20,6 +20,8 @@ from .adaptation_cache import CachedAdaptationSamples
 from .artifacts import write_json
 from .distillation import masked_replay_distillation
 from .perception_data import POLICY_SHA256
+from .perception_identity import resolve_quality_perception
+from .adaptation_lineage import validate_cumulative_membership
 
 
 class BalancedBatches(Sampler):
@@ -46,7 +48,8 @@ def atomic_checkpoint(path,state):
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for name in ['new-manifest','replay-manifest','protocol','cache','output-dir']:p.add_argument('--'+name,type=Path,required=True)
-    p.add_argument('--checkpoint');p.add_argument('--arm',required=True);p.add_argument('--resume',action='store_true')
+    p.add_argument('--checkpoint');p.add_argument('--parent-adaptation-run',type=Path)
+    p.add_argument('--arm',required=True);p.add_argument('--resume',action='store_true')
     a=p.parse_args();protocol=json.loads(a.protocol.read_text());out=a.output_dir
     if out.exists() and not a.resume:raise ValueError('training output exists')
     new=[json.loads(s) for s in a.new_manifest.read_text().splitlines() if s.strip()]
@@ -57,10 +60,18 @@ def main():
     if control:
         if any(r.get('adaptation_role')!='replay_replacement' or r.get('source_role')!='f0_train' for r in new):raise ValueError('replay replacement must be original f0 train')
     elif any(r.get('adaptation_role')!='candidate_pool' for r in new):raise ValueError('non-candidate admission')
-    if any(r.get('source_role')!='f0_train' for r in replay):raise ValueError('unverified replay membership')
+    if a.parent_adaptation_run is None and any(r.get('source_role')!='f0_train' for r in replay):raise ValueError('unverified replay membership')
     if a.arm not in protocol['selection_arms']:raise ValueError('arm not preregistered')
-    checkpoint=resolve_checkpoint(a.checkpoint)
-    if sha256_file(checkpoint)!=DEFAULT_CHECKPOINT_SHA256:raise ValueError('paired study must start from f0')
+    parent_identity=None;lineage=None
+    if a.parent_adaptation_run is not None:
+        if control:raise ValueError('legacy replay-replacement control cannot be cumulative')
+        checkpoint,parent_identity,parent_membership=resolve_quality_perception(a.parent_adaptation_run,a.checkpoint)
+        lineage=validate_cumulative_membership(new,replay,parent_membership)
+        expected=protocol.get('parent_perception_identity')
+        if expected!=parent_identity:raise ValueError('cumulative protocol must bind exact parent identity')
+    else:
+        checkpoint=resolve_checkpoint(a.checkpoint)
+        if sha256_file(checkpoint)!=DEFAULT_CHECKPOINT_SHA256:raise ValueError('paired study must start from f0')
     out.mkdir(parents=True,exist_ok=True)
     if not a.resume:
         for source,name in [(a.protocol,'protocol.json'),(a.new_manifest,'new_manifest.jsonl'),(a.replay_manifest,'replay_manifest.jsonl')]:shutil.copyfile(source,out/name)
@@ -74,10 +85,28 @@ def main():
                   final_test_accessed=False,quality_regressor_recalibrated_for_f1=False,
                   selection='fixed optimizer step; no test/checkpoint selection',strict_bitwise_determinism=False,
                   precision=protocol['precision'],allowed_nondeterministic_operations=['adaptive_avg_pool2d_backward_cuda'])
+    if parent_identity is not None:
+        metadata.update(parent_perception_identity=parent_identity,training_start_checkpoint_sha256=sha256_file(checkpoint),
+                        cumulative_membership=lineage,update_mode='cumulative_parent_update')
+        parent_run=json.loads((a.parent_adaptation_run/'run.json').read_text())
+        metadata['generation']=int(parent_run.get('generation',1))+1
+        if not a.resume:
+            write_json(out/'parent_lineage.json',dict(parent_perception_identity=parent_identity,
+                parent_run=parent_run,membership_audit=lineage,
+                parent_artifacts_verified_at_start=True))
+        else:
+            saved_parent=json.loads((out/'parent_lineage.json').read_text())
+            if (saved_parent['parent_perception_identity']!=parent_identity or saved_parent['parent_run']!=parent_run
+                    or saved_parent['membership_audit']!=lineage):raise ValueError('resume parent lineage changed')
+        metadata['source_sha256']['adaptation_lineage.py']=sha256_file(Path(__file__).with_name('adaptation_lineage.py'))
     for source in [Path(__file__),Path(__file__).with_name('adaptation_cache.py')]:
         destination=out/'source'/source.name;destination.parent.mkdir(exist_ok=True)
         if not destination.exists():shutil.copyfile(source,destination)
         if sha256_file(destination)!=sha256_file(source):raise ValueError('resume source changed')
+    if parent_identity is not None:
+        source=Path(__file__).with_name('adaptation_lineage.py');destination=out/'source'/source.name
+        if not destination.exists():shutil.copyfile(source,destination)
+        if sha256_file(destination)!=sha256_file(source):raise ValueError('resume lineage source changed')
     write_json(out/'run.json',metadata)
     os.environ['CUBLAS_WORKSPACE_CONFIG']=':4096:8';cv2.setNumThreads(1);torch.set_num_threads(2)
     torch.manual_seed(protocol['seed']);np.random.seed(protocol['seed'])
@@ -142,12 +171,15 @@ def main():
         state=dict(model_state_dict={k:v.detach().cpu() for k,v in model.state_dict().items()},task_spec=ROAD_MARKING_TASK.as_dict(),
                    upstream_commit=loaded.upstream_commit,epoch=None,adaptation_steps=protocol['steps'],initial_checkpoint_sha256=DEFAULT_CHECKPOINT_SHA256,
                    source_weights=loaded.weights,adaptation_protocol_sha256=sha256_file(a.protocol))
+        if parent_identity is not None:state['parent_perception_identity']=parent_identity
         atomic_checkpoint(out/'checkpoint.pt',state)
         logged=[json.loads(line) for line in (out/'training_steps.jsonl').read_text().splitlines() if line.strip()]
         write_json(out/'summary.json',dict(metadata,status='complete',elapsed_seconds=prior_seconds+time.monotonic()-began,
                    new_draws=0 if control else protocol['steps']*protocol['new_per_batch'],replay_draws=protocol['steps']*(protocol['replay_per_batch']+(protocol['new_per_batch'] if control else 0)),
                    first_loss=logged[0]['losses']['loss'],last_loss=logged[-1]['losses']['loss'],checkpoint_sha256=sha256_file(out/'checkpoint.pt'),batch_norm_buffers_unchanged=True))
         hashes={name:sha256_file(out/name) for name in ['checkpoint.pt','training_membership.json','protocol.json','summary.json','new_manifest.jsonl','replay_manifest.jsonl','training_steps.jsonl','source/retrain_streaming.py','source/adaptation_cache.py']}
+        if parent_identity is not None:
+            for name in ['parent_lineage.json','source/adaptation_lineage.py']:hashes[name]=sha256_file(out/name)
         write_json(out/'run.json',dict(metadata,status='complete',checkpoint_sha256=hashes['checkpoint.pt'],artifact_sha256=hashes))
         (out/'_SUCCESS').write_text(sha256_file(out/'run.json')+'\n')
     except BaseException as exc:
