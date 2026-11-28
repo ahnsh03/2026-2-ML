@@ -60,7 +60,7 @@ def main():
     axes[1].bar([n for n,_ in cases],[v for _,v in cases],color=['#357BAC','#B38145','#888E98','#528459']);axes[1].set_ylabel('Road-macro supported-error utility recall');axes[1].set_title('Same 10% review budget; Dev selection')
     for ext in ['png','svg']:fig.savefig(a.output/('04_review_model_development.'+ext),dpi=180,bbox_inches='tight')
     plt.close(fig)
-    document=dict(records=report,source_pack_sha256=sha256_file(a.pack),selection_sha256=sha256_file(a.selection/'selection.json'),
+    document=dict(records=report,perception_identity=selection['perception_identity'],source_pack_sha256=sha256_file(a.pack),selection_sha256=sha256_file(a.selection/'selection.json'),
         source_sha256=sha256_file(Path(__file__)),scope='Offline diagnostic on opened development. Cannot substitute for frozen independent confirmation.')
     (a.output/'uncertainty_diagnostic.json').write_text(json.dumps(document,indent=2,allow_nan=False)+'\n')
 

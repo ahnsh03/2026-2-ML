@@ -91,8 +91,8 @@ def main():
         with np.load(a.review_assessment.parent/(name+'_predictions.npz'))as z:
             if z['ids'].tolist()!=data['ids'].tolist():raise ValueError('quality scatter membership differs')
             mean=z['estimated_iou'];scale=z['quality_predictive_scale']
-        points=ax.scatter(truth[valid],mean[valid],c=data['hour'][valid],s=12,alpha=.65,cmap='viridis',vmin=7,vmax=20);ax.plot([0,1],[0,1],'--',color='#555555');ax.set_xlim(0,1);ax.set_ylim(0,1);ax.set_aspect('equal');ax.set_xlabel('True whole-frame marking IoU');ax.set_ylabel('Predicted whole-frame IoU');ax.set_title(label+' quality on identical images')
-    fig.colorbar(points,ax=axes,label='Collected SDK hour',ticks=[7,13,20],shrink=.75)
+        points=ax.scatter(truth[valid],mean[valid],c=data['hour'][valid],s=12,alpha=.65,cmap='viridis',vmin=float(data['hour'].min()),vmax=float(data['hour'].max()));ax.plot([0,1],[0,1],'--',color='#555555');ax.set_xlim(0,1);ax.set_ylim(0,1);ax.set_aspect('equal');ax.set_xlabel('True whole-frame marking IoU');ax.set_ylabel('Predicted whole-frame IoU');ax.set_title(label+' quality on identical images')
+    fig.colorbar(points,ax=axes,label='Collected SDK hour',ticks=np.unique(data['hour']).tolist(),shrink=.75)
     fig.suptitle('Frozen RF/GP predictions; includes all defined IoU labels\nNear FP/FN review uses separate support-aware targets',fontsize=12)
     save(fig,'12_quality_scatter_fresh_confirmation')
     report=dict(files={path.name:sha256_file(path)for path in files},source_sha256=sha256_file(Path(__file__)),
