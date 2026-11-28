@@ -10,6 +10,10 @@ data/
 *.npz
 !models/review/m-v6-r2-20261128/primary/*.npz
 !models/review/m-v6-r2-20261128/primary/environment/*.npz
+!models/review/m-v6-r2-20261128/GP_only/*.npz
+!models/review/m-v6-r2-20261128/GP_only/environment/*.npz
+!models/review/m-v6-r2-20261128/RF_only/*.npz
+!models/review/m-v6-r2-20261128/RF_only/environment/*.npz
 *.npy
 *.parquet
 *.bag

@@ -1,0 +1,31 @@
+{
+  "mode": "supported_utility",
+  "grouping": "global",
+  "beta": 0.0,
+  "balanced_floor": 0,
+  "audit_fraction": 0.1,
+  "information_fraction": 0.0,
+  "information_mode": "pointwise",
+  "utility_weights": [
+    1.0,
+    0.25,
+    0.5
+  ],
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+  },
+  "model_sha256": {
+    "error_model_0.npz": "55813be7e19978748a945f1d927dee36613effb64366c0e3dbeb664666a17817",
+    "error_model_1.npz": "0322ddeb1cd21a1ace706279121e39867266255fc68a03742cb637c0321a4234",
+    "error_model_2.npz": "44b8f28498f70d512fbfe148f9801aa5e36705e143444bdac97ce8212a472e5f",
+    "quality_model.npz": "e4bbf89ef62ea2bc92078b0342eb86c22d000779c5d8fb9ca206f7e5e6ab367d"
+  },
+  "source_settings_sha256": "8c589c16b81e022ba7e037c04853dc9aaf8d2b0ba3031452a2e13f0531974d80",
+  "adopted": false,
+  "purpose": "frozen_confirmation_candidate"
+}

@@ -22,7 +22,7 @@
 
 96조건에서1,674프레임/4채널을 수집한 뒤3m thinning으로590장을 고정했다. 같은 지도 내 품질 fit과 최소46.25m 이격했지만 원래 인지학습 위치와는 최소0.10m이므로 완전한 새 도로/도시 일반화를 주장하지 않는다.05시 오류 회수는18/50,07시는0/4로 남은 약점이다. 자세한 분모와 원본 보고서를 보존했다.
 
-**다음은26R1 ROS shadow·실시간 버퍼/지연 검증과 영어 최종 제출이다.** RGB590장 선별·GT 사후 연결, 원래 작업공간 없이48장 release 재생을40프로필 CPU/5070 Ti GPU에서 확인했고 두 의존성 이미지의 전체331검사를 통과했다. 실제40계열 GPU·live ROS·자동 학습 편입은 완료하지 않았다. [작업·역할](docs/guides/일정과_역할.md) · [온라인 인계](docs/guides/온라인_연결과_최종제출.md)
+**26R1 ROS 전방 수신과 초기 상주 추론을 연결했으며 다음은 장시간/주행 shadow 검증과 영어 최종 제출이다.** [간단 실행 명령](docs/guides/shadow_실행.md). RGB590장 선별·GT 사후 연결, 원래 작업공간 없이48장 release 재생을40프로필 CPU/5070 Ti GPU에서 확인했고 후속 shadow 소스를 포함한 두 의존성 이미지의 CPU345검사를 통과했다. 실제40계열 GPU·장시간/주행 shadow·자동 학습 편입은 후속이다. [작업·역할](docs/guides/일정과_역할.md) · [온라인 인계](docs/guides/온라인_연결과_최종제출.md)
 
 기계학습·캡스톤 통합 프로젝트는 전방 RGB와 인지 출력에서 품질을 추정하고, 유용한 취약 데이터를 선별해 기존 성능을 보존하며 인지를 개선하는 데이터 플라이휠이다. **12월4일** 영상·수치·영어 발표·공개 페이지를 내부 마감한다. 팀원의 시작점은 [문서 목차](docs/README.md)다.
 
@@ -43,7 +43,7 @@ third_party/ TwinLiteNet+ 서브모듈
 
 ## 빠른 시작 — M v6 추론 결과 시각화
 
-이 대조용 추론·시각화 명령의 기본값은 원래 M v6다. 현행 개발 인지는 `ML_ACTIVE_PERCEPTION_RUN` 또는 명시적인 `--adaptation-run`과 해당 버전의 품질 번들을 함께 사용한다. [현재 버전 검사](src/quality_estimation/active_perception.py)는 등록된 가중치·계보를 확인한다. X/y 생성·회귀 학습·RGB 단독 품질 추론 CLI도 사용할 수 있다.
+이 대조용 추론·시각화 명령의 기본값은 원래 M v6다. 현행 개발 인지는 [models](models/README.md)의 검증된 배포 모델을 기본으로 해석한다. 재학습/개인 전체 ledger를 사용할 때에는 `ML_ACTIVE_PERCEPTION_RUN` 또는 명시적인 `--adaptation-run`과 해당 버전 품질 번들을 함께 사용한다. [현재 버전 검사](src/quality_estimation/active_perception.py)는 등록된 가중치·계보를 확인한다. X/y 생성·회귀 학습·RGB 단독 품질 추론 CLI도 사용할 수 있다.
 
 ```bash
 git submodule update --init

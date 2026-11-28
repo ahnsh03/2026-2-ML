@@ -17,3 +17,5 @@ PYTHONPATH=src python3 -m quality_estimation.active_perception
 이 폴더는 전체 추가학습 run이 아니다. 새 인지 재학습은 기존31,121장 구성과 중복/역할 검사를 보존한 외부 원장을 준비하고 `--parent-adaptation-run`을 사용한다. 배포 파일만으로 replay를 생략한 학습을 시작하지 않는다. [검증 성적·범위](../docs/baselines/scene_cycle_20261128/confirmation/README.md)
 
 아키텍처 출처는 TwinLiteNet+이며 [MIT 라이선스 고지](LICENSE.upstream)를 함께 보존한다. 모델은 프로젝트에서 재학습한 가중치다.
+
+RF/GP 비교 번들 `GP_only`, `RF_only`도 같은 r2 신원과 원래 동결 해시로 포함한다. 주 번들 대체 채택을 뜻하지 않으며 [shadow 실행](../docs/guides/shadow_실행.md)은 세 결과를 구분해 기록한다.

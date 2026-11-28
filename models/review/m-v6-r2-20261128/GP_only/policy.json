@@ -1,0 +1,29 @@
+{
+  "mode": "supported_utility",
+  "grouping": "global",
+  "beta": 0,
+  "balanced_floor": 0,
+  "audit_fraction": 0.1,
+  "information_fraction": 0.0,
+  "information_mode": "pointwise",
+  "utility_weights": [
+    1.0,
+    0.25,
+    0.5
+  ],
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+  },
+  "model_sha256": {
+    "error_model.npz": "46713dde595379d891c671910ebeb7058d4e36d240e47f823b21f546f8babaee",
+    "quality_model.npz": "73fb8eac76ce8cea677776bfe0a00b05b5c06318887cb98ea70210b9b0c1f893"
+  },
+  "source_settings_sha256": "20fa31adc7ec5fa4ca8fd236d0bfc6b611958ca1d4750dca54a0f6fc46929ecc",
+  "adopted": false,
+  "purpose": "frozen_confirmation_candidate"
+}

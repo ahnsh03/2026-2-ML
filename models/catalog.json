@@ -6,5 +6,15 @@
   "reference_adoption": "models/review/m-v6-r2-20261128/adoption.json",
   "review_bundle_manifest_sha256": "874cd2c15d39b41fe80beb61ece0619bbb95c3f47fa02b846ddcb4141cb60a14",
   "reference_status": "Previously confirmed r2 reference; RF/GP final choice deferred until larger selection/retraining comparisons",
-  "default_demo_manifest": "models/examples/rgb.jsonl"
+  "default_demo_manifest": "models/examples/rgb.jsonl",
+  "comparison_review_bundles": {
+    "GP_only": {
+      "path": "models/review/m-v6-r2-20261128/GP_only",
+      "bundle_manifest_sha256": "84a27354b1bcba4dd1908e1a0b5f211633dda1dd653a7820371834a75a6cbdfa"
+    },
+    "RF_only": {
+      "path": "models/review/m-v6-r2-20261128/RF_only",
+      "bundle_manifest_sha256": "1355653335a1e0d2ddc77efe23cf81b2424555174b74dc4a5bbe5b914d311efd"
+    }
+  }
 }
