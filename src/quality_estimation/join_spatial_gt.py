@@ -6,6 +6,7 @@ from pathlib import Path
 import numpy as np
 from .spatial_identity import validate_pack_perception
 from .diagnostic_targets import gt_review_flags
+from .review_targets import support_aware_targets
 
 
 def sha(path):
@@ -78,6 +79,12 @@ def join_candidates(
         near_precision=float(near[0]/near_predicted) if near_predicted else None
         far_precision=float(far[0]/far_predicted) if far_predicted else None
         supported = ns >= 50 and fs >= 50
+        support_target=support_aware_targets(counts[None])
+        support_flags=dict(near_fn=bool(support_target['near']['false_negative'][0]),near_fp=bool(support_target['near']['false_positive'][0]),
+                           far_fn=bool(support_target['far']['false_negative'][0]),far_fp=bool(support_target['far']['false_positive'][0]),
+                           offroad_fp=bool(support_target['offroad']['false_positive'][0]),review_utility=float(support_target['review_utility'][0]),
+                           scene_gt_class=int(support_target['scene_gt_class'][0]),support_pixels=50,correct_fraction=.8,
+                           interpretation='Offline supported error definition; zero is not a safety or normality label.')
         spatial = (
             (
                 "near_recall_retained_far_recall_reduced"
@@ -98,7 +105,7 @@ def join_candidates(
                 semantic=source["semantic"],
                 semantic_sha256=source["expected_sha256"]["semantic"],
                 source_context={key:source.get(key) for key in ['adaptation_role','source_role','parent_session_id','site','source_key','xy','weather','hour','simulator_release']},
-                admission_block_reason='reserved_role_cannot_train_in_this_cycle' if source.get('adaptation_role') in ['quality_fit','development','calibration','heldout_diagnostic','retention'] else 'requires_explicit_role_and_training_manifest_review',
+                admission_block_reason='reserved_role_cannot_train_in_this_cycle' if source.get('adaptation_role') in ['quality_fit','development','calibration','heldout_diagnostic','confirmation','retention'] else 'requires_explicit_role_and_training_manifest_review',
                 true_lane_iou=q,
                 iou_defined=q is not None,
                 near_lane_recall=nr,
@@ -113,6 +120,7 @@ def join_candidates(
                 spatial_diagnostic_scope="Recall-only omission diagnostic. Retained recall does not establish low false positives or normal near-band quality.",
                 benchmark_low_iou=(q < 0.7) if q is not None else None,
                 gt_review_flags=gt_review_flags(counts,q),
+                supported_error_targets=support_flags,
                 status="gt_attached_awaiting_operating_policy_review",
                 admission_approved=False,
                 label_definition="White/yellow union on all nonpadding pixels. Near/far image-band recalls diagnose omissions; low IoU alone is not an operational failure label.",
@@ -148,7 +156,7 @@ def main():
     index=json.loads(a.source_index.read_text());selected_ids={r['sample_id'] for r in candidates}
     keys=[a.key] if a.key else [key for key,value in index.items() if any(r['sample_id'] in selected_ids for r in value['rows'])]
     if not keys:raise ValueError('no selected source packs')
-    chunks={key:[] for key in ['ids','counts','y']};source=[];receipt=None;source_digests={}
+    chunks={key:[] for key in ['ids','counts','y']};source=[];receipt=None;source_digests={};pixel_chunks=[]
     for key in keys:
         if Path(key).name!=key:raise ValueError('pack key must be a basename')
         pack_path=a.packs/(key+'.npz');current=json.loads(pack_path.with_suffix('.json').read_text())
@@ -160,7 +168,9 @@ def main():
         with np.load(pack_path,allow_pickle=False) as pack:
             if pack['ids'].tolist()!=[r['sample_id'] for r in rows]:raise ValueError('GT/source row order differs')
             for field in chunks:chunks[field].append(pack[field].copy())
+            if 'pixel_sha256'in pack:pixel_chunks.append(pack['pixel_sha256'].copy())
     pack={key:np.concatenate(value) for key,value in chunks.items()}
+    if len(pixel_chunks)==len(keys):pack['pixel_sha256']=np.concatenate(pixel_chunks)
     if a.data_root:
         for row in source:
             if row['sample_id'] not in selected_ids:continue
@@ -180,6 +190,7 @@ def main():
         source_pack_sha256=next(iter(source_digests.values())) if len(source_digests)==1 else None,
         source_packs_sha256=source_digests,
         selected_original_bytes_verified=bool(a.data_root),
+        decoded_pixel_identity_verified='pixel_sha256'in pack and all('pixel_sha256'in row for row in candidates),
         source_index_sha256=sha(a.source_index),
         gt_review_sha256=sha(out),
         admission_approved=False,

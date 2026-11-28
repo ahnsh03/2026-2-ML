@@ -26,6 +26,8 @@ class SupportAwareReview:
         self.root=Path(bundle).resolve();self.spec=json.loads((self.root/'bundle_manifest.json').read_text())
         if self.spec['version']!='support-aware-review-bundle-1':raise ValueError('unknown support-aware bundle')
         self.identity=validate_identity(self.spec['perception_identity'])
+        if self.spec.get('perception_weights')!=('ema_state_dict'if self.identity['kind']=='baseline'else'model_state_dict'):
+            raise ValueError('support-aware perception weight state differs')
         if perception_identity is not None and validate_identity(perception_identity)!=self.identity:raise ValueError('perception/review pair differs')
         self.verify_unchanged();self.profile=SpatialProfile.load()
         if self.spec['profile']!=self.profile.version or self.spec['regions_sha256']!=self.profile.regions_sha256:
@@ -78,7 +80,8 @@ class SupportAwareReview:
                 raise ValueError('support-aware GP input/target/geometry differs')
         elif kind=='RF':
             model=PortableForest.load(path);model.validate_context(columns,self.profile.version,self.profile.regions_sha256,self.identity['checkpoint_sha256'])
-            if model.metadata['context']['perception_identity']!=self.identity or model.metadata['context']['target']!=names[0]:
+            if (model.metadata['context']['perception_identity']!=self.identity or model.metadata['context']['target']!=names[0]
+                    or model.metadata['context'].get('perception_weights')!=self.spec['perception_weights']):
                 raise ValueError('support-aware RF target/identity differs')
         else:raise ValueError('unsupported model family')
         return model

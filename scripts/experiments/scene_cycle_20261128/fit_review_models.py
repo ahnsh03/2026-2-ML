@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestRegressor
 
 from quality_estimation.region_feature_views import feature_matrix
 from quality_estimation.spatial_gp import SpatialQualityGP
-from quality_estimation.spatial_identity import bind_model_perception
+from quality_estimation.spatial_identity import bind_model_perception,validate_pack_perception
 from quality_estimation.portable_forest import PortableForest
 from quality_estimation.review_targets import support_aware_targets,ERROR_TARGET_NAMES
 from quality_estimation.bounded_bo import next_expected_improvement
@@ -63,6 +63,9 @@ def main():
     else:dump(receipt,context)
     z=np.load(args.fit_pack);data={k:z[k]for k in z.files};schema=read(args.schema)
     identity_doc=read(args.identity);identity=identity_doc.get('perception_identity',identity_doc)
+    fit_receipt=read(args.fit_pack.with_suffix('.json'))
+    validate_pack_perception(fit_receipt,identity,'model_state_dict')
+    if fit_receipt['sha256']!=sha(args.fit_pack):raise ValueError('fitting pack changed')
     base=read(args.base_features)['selected']['GP']['columns'];views=make_views(schema,base)
     target=support_aware_targets(data['counts']);targets=dict(quality=target['whole_frame_iou'][:,None],errors=target['error_targets'])
     split=folds(data['xy']);records=[];all_search={}

@@ -53,6 +53,14 @@ def main():
         seed=parent['seed'],steps=parent['steps'],gradient_updates_performed_here=0,additional_training_seconds=0,new_rows=parent['new_rows'],replay_rows=parent['replay_rows'],
         train_parent_groups=parent['train_parent_groups'],checkpoint_sha256=sha256_file(out/'checkpoint.pt'),source_sha256=sha256_file(Path(__file__)),
         quality_regressor_recalibrated_for_f1=False,scope='One static derived network. All coefficients evaluated on development/retention only; heldout labels cannot select alpha.')
-    metadata['artifact_sha256']={name:sha256_file(out/name) for name in ['checkpoint.pt','training_membership.json','protocol.json','parent_run.json','source/blend_perception.py']}
+    # Interpolation is a derivation of this training generation, not another
+    # training update. Retain its cumulative ancestry for the next update.
+    metadata['generation']=int(parent.get('generation',1))
+    for name in ['parent_perception_identity','training_start_checkpoint_sha256','cumulative_membership','update_mode']:
+        if name in parent:metadata[name]=parent[name]
+    artifacts=['checkpoint.pt','training_membership.json','protocol.json','parent_run.json','source/blend_perception.py']
+    if (a.parent_run/'parent_lineage.json').exists():
+        shutil.copy2(a.parent_run/'parent_lineage.json',out/'parent_lineage.json');artifacts.append('parent_lineage.json')
+    metadata['artifact_sha256']={name:sha256_file(out/name) for name in artifacts}
     write_json(out/'run.json',metadata);(out/'_SUCCESS').write_text(sha256_file(out/'run.json')+'\n');print('DERIVED',a.alpha,metadata['checkpoint_sha256'],flush=True)
 if __name__=='__main__':main()

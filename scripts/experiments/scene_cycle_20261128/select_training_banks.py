@@ -6,6 +6,7 @@ import json
 import numpy as np
 from common.bridge import sha256_file
 from quality_estimation.support_aware_review import SupportAwareReview
+from quality_estimation.perception_identity import identity_from_adaptation
 
 
 def main():
@@ -24,6 +25,8 @@ def main():
     forbidden={'semantic','mask','ground_truth','y','counts','gt_pixels','scene_gt_class'}
     if any(forbidden&set(row)for row in rows):raise ValueError('RGB-only selector manifest contains GT fields')
     if [r['sample_id']for r in rows]!=ids.tolist():raise ValueError('RGB-only selector membership differs')
+    if a.parent_membership.name!='training_membership.json'or identity_from_adaptation(a.parent_membership.parent)!=review.identity:
+        raise ValueError('selection parent lineage differs from review bundle')
     members=json.loads(a.parent_membership.read_text());seen={r['sample_id']for r in members};pixels={r['pixel_sha256']for r in members}
     if seen&set(ids)or pixels&{r['pixel_sha256']for r in rows}:raise ValueError('already admitted candidate reused')
     prediction=review.predict(x,ex);selected,priority,details=review.select_with_features(ids,prediction,a.budget,x,seed=a.seed)

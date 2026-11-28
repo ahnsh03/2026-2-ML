@@ -41,7 +41,7 @@ class SupportAwareReviewTests(unittest.TestCase):
         else:
             for j,target in enumerate(ERROR_TARGET_NAMES):
                 model=RandomForestRegressor(n_estimators=3,random_state=4).fit(x,y[:,j])
-                PortableForest.from_sklearn(model,cols,dict(context,checkpoint_sha256=identity['checkpoint_sha256'],perception_identity=identity,target=target)).save(root/f'error_model_{j}.npz')
+                PortableForest.from_sklearn(model,cols,dict(context,checkpoint_sha256=identity['checkpoint_sha256'],perception_identity=identity,perception_weights='model_state_dict',target=target)).save(root/f'error_model_{j}.npz')
         hashes={p.name:sha256_file(p)for p in root.glob('*.npz')}
         write(root/'calibration.json',dict(perception_identity=identity,model_sha256=hashes,signed_quality_residuals=[-.2,0.,.2],interval_residual_bounds=[-.2,.2]))
         write(root/'policy.json',dict(perception_identity=identity,model_sha256=hashes,mode='supported_utility',grouping='global',beta=0.,balanced_floor=0.,
@@ -80,6 +80,12 @@ class SupportAwareReviewTests(unittest.TestCase):
             with self.assertRaises(ValueError):env.predict(np.full(e.shape,np.nan))
             path=root/'environment/environment_manifest.json';spec=json.loads(path.read_text());spec['ordered_features']=spec['ordered_features'][::-1];path.write_text(json.dumps(spec))
             with self.assertRaisesRegex(ValueError,'feature order'):SceneEnvironment(root/'environment')
+
+    def test_state_dictionary_cannot_change_under_same_checkpoint_identity(self):
+        with tempfile.TemporaryDirectory()as temporary:
+            root=Path(temporary);self.fixture(root,'RF');path=root/'bundle_manifest.json';spec=json.loads(path.read_text())
+            spec['perception_weights']='ema_state_dict';path.write_text(json.dumps(spec))
+            with self.assertRaisesRegex(ValueError,'weight state'):SupportAwareReview(root)
 
 
 if __name__=='__main__':unittest.main()

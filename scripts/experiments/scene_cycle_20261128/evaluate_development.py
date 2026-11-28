@@ -3,6 +3,7 @@ from pathlib import Path
 import argparse
 import json
 import sys
+import time
 import numpy as np
 from scipy.spatial.distance import cdist
 from sklearn.metrics import balanced_accuracy_score
@@ -82,6 +83,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     for n in ['study','models','dev-pack','dev-environment','cal-pack','cal-environment','environment-prototype','output']:
         parser.add_argument('--'+n,type=Path,required=True)
+    parser.add_argument('--fit-pack',type=Path,help='Optional same-version fitting pack for environment-only confounding controls')
     args=parser.parse_args();s=args.study;out=args.output;out.mkdir(exist_ok=False)
     frozen=read(s/'protocol/review_development_grid.json');schema=read(s/'schema.json');fit=read(args.models/'fit_complete.json');identity=fit['perception_identity']
     dev=load_pack(args.dev_pack,identity);cal=load_pack(args.cal_pack,identity)
@@ -93,15 +95,18 @@ def main():
     with np.load(envfit['_directory']/record['model'])as z:env.centers=z['centers'];env.active=z['active']
     env.representation=record['representation'];env.spec['cluster_distance_limits']=record['cluster_distance_limits']
     de=env.predict(dv);ce=env.predict(cv);target=support_aware_targets(dev['counts']);ct=support_aware_targets(cal['counts'])
-    records={r['tag']:r for r in fit['records']};predictions={};models={};qmetrics={}
+    records={r['tag']:r for r in fit['records']};predictions={};models={};qmetrics={};cost={}
     for tag,r in records.items():
         dx=feature_matrix(dev,schema,r['columns']);cx=feature_matrix(cal,schema,r['columns'])
         if r['kind']=='GP':
             model=SpatialQualityGP.load(args.models/r['models'][0]);models[tag]=model
+            began=time.perf_counter()
             mean,cov=model.predict(dx,observation=r['task']=='quality');cm,cc=model.predict(cx,observation=r['task']=='quality')
         else:
             model=[PortableForest.load(args.models/p)for p in r['models']];models[tag]=model
+            began=time.perf_counter()
             mean=np.column_stack([m.predict(dx)for m in model]);cm=np.column_stack([m.predict(cx)for m in model]);cov=cc=None
+        cost[tag]=time.perf_counter()-began
         if r['task']=='quality':
             q=np.clip(mean[:,0],0,1);cq=np.clip(cm[:,0],0,1);scale=np.sqrt(np.maximum(cov[:,0,0],1e-6))if cov is not None else np.ones(len(q))
             cs=np.sqrt(np.maximum(cc[:,0,0],1e-6))if cc is not None else np.ones(len(cq));valid=np.isfinite(ct['whole_frame_iou'])
@@ -109,9 +114,11 @@ def main():
             qmetrics[tag]=dict(mae=macro(err,dev['site']),pooled_mae=float(np.nanmean(err)))
             predictions[tag]=dict(mean=q,scale=scale,residuals=residuals)
         else:
-            if cov is None:utility=mean@np.array([1.,.25,.5]);sd=np.zeros(len(mean))
-            else:utility,sd=gaussian_utility(mean,cov)
-            predictions[tag]=dict(mean=mean,utility=utility,sd=sd,x=dx)
+            if cov is None:utility=mean@np.array([1.,.25,.5]);sd=np.zeros(len(mean));contrast_sd=sd.copy()
+            else:
+                utility,sd=gaussian_utility(mean,cov)
+                _,contrast_sd=gaussian_utility(mean,cov,np.array([1.,-1.,0.]))
+            predictions[tag]=dict(mean=mean,utility=utility,sd=sd,x=dx,contrast_sd=contrast_sd)
         print('DEVELOPMENT MODEL',tag,qmetrics.get(tag,{}),flush=True)
     qtag=min(qmetrics,key=lambda t:qmetrics[t]['mae']);qpred=predictions[qtag]
     grouping_map={'cluster':'environment_cluster','weather':'predicted_weather','lighting':'predicted_lighting','appearance':'appearance_bin'}
@@ -144,6 +151,7 @@ def main():
                                     information_fraction=info,information_mode=mode,utility_weights=[1.,.25,.5])
                         assess(tag,policy,p['utility'],p['sd'],cov,noise)
         prediction_archive[tag+'_error_mean']=p['mean'];prediction_archive[tag+'_utility']=p['utility'];prediction_archive[tag+'_sd']=p['sd']
+        prediction_archive[tag+'_near_minus_far_sd']=p['contrast_sd']
     # Conventional low-IoU controls use the same selected quality head and exact review budget.
     first_error=next(t for t,r in records.items()if r['task']=='errors'and r['kind']=='RF')
     for grouping in frozen['grouping']:
@@ -155,15 +163,45 @@ def main():
     def key(r):
         m=r['metrics'];p=r['policy'];return (m['utility_road_macro'],m['near_error_road_macro']or 0.,-p['information_fraction'],-abs(p['beta']),-p['balanced_floor'],p['grouping']=='global')
     plain=[r for r in candidates if r['policy']['beta']==0 and r['policy']['information_fraction']==0]
-    base=max(plain,key=key);best=max(candidates,key=key)
-    gain=best['metrics']['utility_road_macro']-base['metrics']['utility_road_macro']
-    if (best['policy']['beta']!=0 or best['policy']['information_fraction']>0)and gain<frozen['uncertainty_minimum_utility_gain']:best=base
+    plain_max=max(r['metrics']['utility_road_macro']for r in plain)
+    def practical_choice(values):
+        maximum=max(r['metrics']['utility_road_macro']for r in values)
+        near=[r for r in values if r['metrics']['utility_road_macro']>=maximum-.01]
+        def simpler(r):
+            p=r['policy'];return (cost[r['error_tag']],p['information_fraction'],abs(p['beta']),p['balanced_floor'],p['grouping']!='global',-r['metrics']['utility_road_macro'])
+        return min(near,key=simpler)
+    base=practical_choice(plain);best_overall=max(candidates,key=key)
+    gain=best_overall['metrics']['utility_road_macro']-plain_max
+    eligible_uncertain=[r for r in candidates if(r['policy']['beta']!=0 or r['policy']['information_fraction']>0)
+                       and r['metrics']['utility_road_macro']>=plain_max+frozen['uncertainty_minimum_utility_gain']]
+    best=practical_choice(eligible_uncertain)if eligible_uncertain else base
+    environment_controls=[]
+    if args.fit_pack is not None:
+        fd=load_pack(args.fit_pack,identity);ft=support_aware_targets(fd['counts']);hv=s/'fit_environment_rgb400.npz'
+        with np.load(hv)as z:
+            lookup={str(key):i for i,key in enumerate(z['ids'])};indices=[lookup[str(key)]for key in fd['ids']]
+            fh=z['X'][indices]
+        fe=env.predict(np.c_[fh,fd['rgb'][:,[schema['rgb'].index(n)for n in PHOTO_COLUMNS]]])
+        for name in frozen['grouping']+['sdk_weather_lighting_oracle']:
+            fg=np.zeros(len(fh),int)if name=='global'else fd['weather']*3+lighting(fd['hour'])if name=='sdk_weather_lighting_oracle'else fe[grouping_map[name]].copy()
+            dg=np.zeros(len(dv),int)if name=='global'else dev['weather']*3+lighting(dev['hour'])if name=='sdk_weather_lighting_oracle'else de[grouping_map[name]].copy()
+            if name not in ['global','sdk_weather_lighting_oracle']:fg[fe['environment_ood']]=-1;dg[de['environment_ood']]=-1
+            overall=float(ft['review_utility'].mean());priors={}
+            for group in np.unique(fg):
+                mask=fg==group;n=int(mask.sum());supported=n>=30 and len(np.unique(fd['site'][mask]))>=2 and group>=0
+                priors[int(group)]=(float((ft['review_utility'][mask].sum()+50*overall)/(n+50))if supported else overall)
+            score=np.array([priors.get(int(g),overall)for g in dg])
+            for floor in [0.,.25]:
+                chosen,_,_=select_supported_review(dev['ids'],score,np.zeros(len(dv)),dg,budget,balanced_floor=floor,audit_fraction=.1,seed=281128)
+                environment_controls.append(dict(grouping=name,balanced_floor=floor,uses_perception_outputs=False,
+                    uses_sdk_at_prediction=name=='sdk_weather_lighting_oracle',metrics=metrics(chosen,dev,target)))
     rng=np.random.default_rng(281128);random=[metrics(rng.choice(len(dv),budget,replace=False),dev,target)for _ in range(100)]
     randommean={k:float(np.mean([r[k]for r in random if r[k]is not None]))if any(r[k]is not None for r in random)else None for k in random[0]}
     document=dict(version='support-aware-development-selection-1',perception_identity=identity,quality_scores=qmetrics,
-        selected_quality_tag=qtag,selected=best,plain_best=base,uncertainty_gain_vs_plain=gain,random100_mean=randommean,
+        selected_quality_tag=qtag,selected=best,plain_best=base,maximum_plain_utility=plain_max,uncertainty_gain_vs_plain=gain,random100_mean=randommean,
+        prediction_seconds_dev_plus_cal=cost,practical_utility_tie_margin=.01,
         environment_selected=selected_env,environment_candidates=envresults,rgb_classifier_development_scores=classifier_scores,
-        environment_ood_fraction=float(de['environment_ood'].mean()),candidates=candidates,
+        environment_ood_fraction=float(de['environment_ood'].mean()),candidates=candidates,environment_only_controls=environment_controls,
         source_sha256=sha256_file(Path(__file__)),frozen_grid_sha256=sha256_file(s/'protocol/review_development_grid.json'),
         input_sha256={str(p):sha256_file(p)for p in [args.dev_pack,args.dev_environment,args.cal_pack,args.cal_environment,args.models/'fit_complete.json']},
         scope='Development selection only. No independent confirmation accessed. Zero supported-error utility is not operational safety.')

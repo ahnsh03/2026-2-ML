@@ -6,6 +6,7 @@ from package_inference_release import git
 from verify_inference_release import digest
 from verify_environment_release import verify
 from quality_estimation.environment_review import EnvironmentReview
+from quality_estimation.support_aware_review import SupportAwareReview
 from quality_estimation.perception_identity import resolve_quality_perception
 
 
@@ -14,7 +15,10 @@ def main():
  source=p.add_mutually_exclusive_group(required=True);source.add_argument('--checkpoint',type=Path);source.add_argument('--adaptation-run',type=Path);a=p.parse_args();repo=a.repo.resolve();out=a.output.resolve()
  source_paths=['src','config','docker','scripts','.gitmodules','ros/src/data_collection/src/data_collection']
  if git(repo,'status','--porcelain','--',*source_paths):raise ValueError('commit the packaged source before release; documentation changes may remain')
- checkpoint,identity,_=resolve_quality_perception(a.adaptation_run,a.checkpoint);review=EnvironmentReview(a.bundle,perception_identity=identity)
+ checkpoint,identity,_=resolve_quality_perception(a.adaptation_run,a.checkpoint)
+ version=json.loads((a.bundle/'bundle_manifest.json').read_text())['version']
+ review_type=SupportAwareReview if version=='support-aware-review-bundle-1'else EnvironmentReview
+ review=review_type(a.bundle,perception_identity=identity)
  if a.examples<1:raise ValueError('positive example count required')
  out.mkdir(parents=True,exist_ok=False);code=out/'code';code.mkdir();commit=git(repo,'rev-parse','HEAD');archive=out/'source_archive.tar'
  subprocess.run(['git','-C',str(repo),'archive','--format=tar','--output',str(archive),commit,*source_paths],check=True)

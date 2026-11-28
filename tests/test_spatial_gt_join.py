@@ -75,6 +75,16 @@ class SpatialGTJoinTests(unittest.TestCase):
         row=self.join(self.candidates)[0]
         self.assertIsNone(row['near_lane_precision'])
         self.assertEqual(row['near_lane_recall'],0.)
+        self.assertTrue(row['supported_error_targets']['near_fn'])
+        self.assertFalse(row['supported_error_targets']['near_fp'])
+
+    def test_confirmation_remains_reserved_and_empty_gt_can_still_have_fp(self):
+        self.counts[:]=0;self.counts[0,6]=[0,80,0];self.pack['y']=np.array([0.],np.float32)
+        self.rows[0]['adaptation_role']='confirmation';row=self.join(self.candidates)[0]
+        self.assertTrue(row['supported_error_targets']['near_fp']);self.assertFalse(row['supported_error_targets']['near_fn'])
+        self.assertEqual(row['supported_error_targets']['review_utility'],1.)
+        self.assertEqual(row['admission_block_reason'],'reserved_role_cannot_train_in_this_cycle')
+        self.assertFalse(row['admission_approved'])
 
     def test_reserved_role_and_decoded_pixels_survive_gt_attachment(self):
         self.rows[0].update(adaptation_role='heldout_diagnostic',source_role='after_f0_training')
