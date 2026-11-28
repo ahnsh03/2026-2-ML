@@ -26,7 +26,7 @@
 | GT 연결·누적 학습 | `quality_estimation.adaptation_cache`, `quality_estimation.retrain_streaming` | 선별 후 원본GT를 연결하고 전체 부모 replay를 보존한다. `--parent-adaptation-run`과 동결 부모 신원이 일치해야 한다. |
 | 인지 비교 | `compare_perception.py` | 같은 backend/manifest의 원래v6·부모·후속 원시/보간 후보. Dev·유지 검사만으로 선택한다. |
 | 새 버전 재적합 | 위 X/y/회귀/Cal/정책 도구 | 선택 인지 가중치로 모두 다시 생성한다. 같은 열이라는 이유로 이전 품질모델을 재사용하지 않는다. |
-| 독립 확인 | 수집→등록→평가 | 인지·Q/오류·환경·보정·정책을 고정한 뒤 새72조건을 수집한다. 확인 결과로 재튜닝하지 않는다. |
+| 독립 확인 | 수집→등록→평가 | 인지·Q/오류·환경·보정·정책을 고정한 뒤 새96조건(05/07/13/20시)을 수집한다. 확인 결과로 재튜닝하지 않는다. |
 | 시각화 | `plot_search.py`, `plot_review_diagnostics.py`, `export_cases.py` | 동일 예산 BO 곡선·Q/오류·GP 불확실성·실제 GT/예측/FP/FN. 인지/팩 신원·RGB 픽셀·재추론 TP/FP/FN을 검사하고 각 사진은16:9를 유지한다. |
 
 순서상 의존성이 있는 작업은 직렬로 실행한다. GPU 주행 수집과 장시간 학습의 동시 실행에서 UDP stale이 반복되어 이번 실행은 수집 후 학습으로 자원을 분리했다. CPU 재가공은 인지 학습과 병행할 수 있다.

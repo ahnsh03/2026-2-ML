@@ -24,6 +24,11 @@ def main():
         raise ValueError('selected perception lacks paired GPU retention verification')
     if(gpu['cpu_choice_sha256']!=sha256_file(s/'protocol/perception_development_choice.json')
             or gpu['study_design_sha256']!=sha256_file(s/'protocol/study_design_frozen.json')):raise ValueError('GPU verification belongs to another selection/design')
+    design=read(s/'protocol/study_design_frozen.json');plan=read(s/'confirmation/plan_frozen.json')
+    if design['confirmation']['plan_sha256']!=sha256_file(s/'confirmation/plan_frozen.json'):
+        raise ValueError('confirmation plan and recorded design differ')
+    if sorted({h for route in plan['routes']for _,h in route['conditions']})!=design['confirmation']['hours']:
+        raise ValueError('confirmation clock coverage differs from design')
     source_paths=['src','config','docker','scripts','.gitmodules','ros/src/data_collection/src/data_collection']
     if subprocess.check_output(['git','-C',str(repo),'status','--porcelain','--',*source_paths],text=True).strip():raise ValueError('commit runtime/source before confirmation freeze')
     _,identity,_=resolve_quality_perception(Path(ready['perception_run']),None)
