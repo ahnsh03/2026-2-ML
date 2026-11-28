@@ -57,3 +57,4 @@ PYTHONPATH=src:ros/src/data_collection/src python3 -m quality_estimation.join_sp
 - 출력 모델·칼리브레이션·정책 파일은 불변 경로와 해시로 구분한다. 실제40프로파일 CPU와50실기 GPU, 모델 버전 혼합 거부, standalone·GT 재연결은 학습/정책의 채택과 별도로 검사한다.
 - `freeze_confirmation.py --quality-guard`에는 사전 기록한 고정GT 모집단의 기준을 명시한다. 이번 단위는 `quality_handoff_guard_gt_supported_v2.json`을 사용한다. 전체 정의된 Q와 빈GT FP는 계속 별도 평가한다.
 - 새 확인 전에 primary·RF-only·GP-only·GP 정보 검수·공통Q0.7·부모r1·Lloyd 환경 대조의7개 번들을 고정한다. 마지막 대조는 같은 표현/K/시드의 환경 군집만 바꾸며, 확인 후 대체 모델을 고르는 용도로 쓰지 않는다. `assess_environment_context.py`는 fit에서 고정한 군집 해석표로 RGB 직접 분류와 군집별 날씨·SDK시각·표시 맥락을 각각 보고한다. SDK 조명 구간은 기존 학습과 같은 day/twilight/night 순서를 사용한다.
+- `plot_confirmation.py`는 이미 고정·평가한 인지/품질/검수/환경 보고서를 같은 freeze 해시로 연결해 PNG/SVG를 만든다. 원래v6·부모·후속의 새 구간 IoU, 같은 GT 모집단 Q/구간, 고정 예산 검수와 환경 혼동행렬을 분리한다. 그림 생성으로 모델이나 기준을 다시 고르지 않는다.

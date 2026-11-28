@@ -37,6 +37,8 @@ def main():
     a=p.parse_args();freeze=read(a.freeze);assessment=read(a.review_assessment);schema=read(a.schema)
     if assessment['confirmation_freeze_sha256']!=sha256_file(a.freeze):
         raise ValueError('environment diagnostic requires the frozen confirmation assessment')
+    if assessment['environment_features_sha256']!=sha256_file(a.environment_features):
+        raise ValueError('confirmation environment features changed after scoring')
     if a.output.exists():raise ValueError('preserve existing environment confirmation')
     results={}
     for name in ['primary','Lloyd_environment_control']:
@@ -45,7 +47,8 @@ def main():
         if sha256_file(bundle/'bundle_manifest.json')!=candidate['bundle_manifest_sha256']:
             raise ValueError('frozen environment source changed')
         validate_pack_perception(receipt,candidate['perception_identity'],'model_state_dict')
-        if receipt['sha256']!=sha256_file(pack):raise ValueError('confirmation pack changed')
+        if receipt['sha256']!=sha256_file(pack) or receipt['sha256']!=assessment['results'][name]['source_pack_sha256']:
+            raise ValueError('confirmation pack changed')
         env=SceneEnvironment(bundle/'environment')
         with np.load(pack)as z:data={k:z[k]for k in z.files}
         vectors=environment_vectors(data,a.environment_features,schema,env.hist_columns)
@@ -53,7 +56,7 @@ def main():
         truth=dict(weather=data['weather'].astype(int),lighting=lighting(data['hour']),
                    presence=(target['scene_gt_class']==2).astype(int),appearance=pred['appearance_bin'])
         direct=dict(weather=pred['predicted_weather'],lighting=pred['predicted_lighting'],
-                    presence=(pred['expected_near_marking_score']>=.5).astype(int))
+                    presence=(pred['expected_near_marking_score']>.5).astype(int))
         classes=dict(weather=6,lighting=3,presence=2,appearance=3)
         mapped={task:np.asarray(env.spec['semantic_mapping'][task],int)[groups]for task in truth}
         result=dict(rows=len(groups),representation=env.representation,method=env.spec['method'],k=env.spec['k'],seed=env.spec['seed'],
