@@ -65,3 +65,15 @@ PYTHONPATH=src:ros/src/data_collection/src python3 -m quality_estimation.join_sp
 - 인지 확인에는 Dev에서 미리 선택한 후보뿐 아니라 같은18,000update의 Risk/Random 원시 endpoint도 사전 고정한다. 새 구간의 paired condition-block 차이로 데이터 선별 효과를 별도 보고하고, 이 대조를 보고 채택 모델을 사후 변경하지 않는다. `assess_perception_confirmation.py --source-index`는 새 등록 RGB의 ID·픽셀·순서·역할과 수집 전 모델 고정 시점을 함께 검사한다.
 - `decide_offline_adoption.py`는 같은 freeze/등록 모집단의 인지·검수 보고서에서 사전 선언한 주 정책/부모 fallback만 판정한다. 인지 개선과 검수+품질 보정을 따로 판단하며, 더 좋은 진단용 대조를 사후 채택하지 않는다. 판정 JSON 생성은 버전 등록·standalone 재생·온라인 연결이나 자동 학습 편입을 대신하지 않는다.
 - 인지 비교도 전체 IoU뿐 아니라 `image_band_errors(_by_hour)`의 근/원 FP/FN·빈GT FP·무출력 FN·지원 수·pooled precision/recall을 보고한다. 미지원 precision/recall을1로 채우지 않는다. 새 분류 집계는 사전 IoU 채택 기준을 바꾸지 않는 보충 분석이다.
+
+
+## 26R1 수집 종료 순서
+
+전용 UDP relay의 마지막 failsafe Park 패킷도 조종 모드를 UDP/Auto로 바꿀 수 있다. 따라서 epoch별 복원 성공만으로 전체 종료 후 Keyboard 복원을 가정하지 않는다.
+
+1. 수집 완료·epoch 복원을 확인하고 relay의 STOP을 요청한다. `relay_stopped.json`이 생길 때까지 기다린다.
+2. Windows의 [probe_native_state.ps1](../roi9_drive_20261126/probe_native_state.ps1)로 새 수동 관측을 저장한다. `Receipt`는 기존 파일이 없는 Windows 경로, 출력 폴더는 미리 준비한다. 패킷을 보내지 않으며 Park/정지·신선도를 확인한다.
+3. MORAI SDK가 있는 수집 환경에서 [restore_parked_mode.py](../roi9_drive_20261126/restore_parked_mode.py)에 `--relay-root`, `--native-receipt`, `--initial-state`, `--output`의 컨테이너 내부 경로를 전달한다. 모든 UDP 송신자가 멈춘 뒤 SDK Keyboard/Park가 마지막 모드 기록이 되도록 한다.15초 이내 native 정지 관측과 원래 Keyboard 상태가 필요하며 pose 차이가0.1m를 넘으면 임의 이동으로 감추지 않고 거부한다.
+4. 전용 수집기를 종료한 뒤 새 파일로 passive probe를 반복한다. 이전모드·gear·속도·위치·창 상태를 대조한다. 작은 per-epoch settling 오차가 누적됐으면 최초 cohort 상태와도 별도로 비교하고 명시적으로 복원 기록을 남긴다.
+
+이 종료 보완은 수집 데이터·모델·검수·채택 결과를 변경하지 않는다. SDK proto는 로컬 제공물을 사용하며 공개 Git에 포함하지 않는다.
