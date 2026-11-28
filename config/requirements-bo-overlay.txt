@@ -1,0 +1,10 @@
+# Optional offline BO study overlay for the existing Torch2.7.1 research image.
+# Install into a separate target directory with --no-deps; never alter inference profiles.
+botorch==0.18.1
+gpytorch==1.15.2
+linear_operator==0.6.1
+pyre_extensions==0.0.32
+typing-inspect==0.9.0
+mypy-extensions==1.1.0
+ninja==1.13.0
+multipledispatch==1.0.0

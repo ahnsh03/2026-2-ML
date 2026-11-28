@@ -7,6 +7,7 @@ from common.bridge import load_target_model,sha256_file
 from .perception_identity import resolve_quality_perception
 from .versioned_review import VersionedReview
 from .environment_review import EnvironmentReview
+from .support_aware_review import SupportAwareReview
 from .infer_images import RGBSamples
 from .build_dataset import collate
 from .roi10 import reduce_heads
@@ -20,7 +21,7 @@ def main():
     if a.output.exists():raise ValueError('RGB replay output exists')
     path,identity,_=resolve_quality_perception(a.adaptation_run,a.checkpoint)
     version=json.loads((a.bundle/'bundle_manifest.json').read_text())['version']
-    review_type=EnvironmentReview if version in ['environment-quality-review-bundle-1','environment-quality-review-bundle-2'] else VersionedReview
+    review_type=SupportAwareReview if version=='support-aware-review-bundle-1' else EnvironmentReview if version in ['environment-quality-review-bundle-1','environment-quality-review-bundle-2'] else VersionedReview
     review=review_type(a.bundle,perception_identity=identity)
     quality_model_path=a.bundle/getattr(review,'model_filename','quality_gp.npz')
     quality_model_sha256=sha256_file(quality_model_path)
@@ -44,17 +45,25 @@ def main():
                 record.update(sample_id=item['sample_id'],rgb_sha256=item['sha256'],pixel_sha256=item['pixel_sha256'],checkpoint_sha256=identity['checkpoint_sha256'],
                               perception_identity=identity,perception_weights=perception.weights,profile=review.profile.version,regions_sha256=review.profile.regions_sha256,
                               model_sha256=quality_model_sha256,uses_ground_truth=False,admission_approved=False,
-                              band_diagnostic_near_metric='whole_frame_quality_only' if len(review.target_names)==1 else 'near_f1' if len(review.target_names)==4 else 'near_recall_only_not_precision')
+                              band_diagnostic_near_metric=getattr(review,'near_metric_name','whole_frame_quality_only' if len(review.target_names)==1 else 'near_f1' if len(review.target_names)==4 else 'near_recall_only_not_precision'))
                 records.append(record)
     if sha256_file(quality_model_path)!=quality_model_sha256:raise ValueError('quality model changed during RGB replay')
+    if hasattr(review,'verify_unchanged'):review.verify_unchanged()
     predictions={k:np.concatenate(v) for k,v in parts.items()};ids=np.array([r['sample_id'] for r in records]);budget=a.budget if a.budget is not None else int(np.ceil(len(rows)*.1))
-    selected,priority=review.select(ids,predictions,budget)
+    selection_details=None
+    if hasattr(review,'select_with_features'):
+        selected,priority,selection_details=review.select_with_features(ids,predictions,budget,take(np.concatenate(vectors),review.columns))
+    else:selected,priority=review.select(ids,predictions,budget)
     rounding=np.ceil if review.policy.get('audit_rounding','floor')=='ceil' else np.floor
     audit=int(rounding(budget*review.policy['audit_fraction']));priority_count=budget-audit
     candidates=[dict(records[i],priority=float(priority[i]),selection_rank=j+1,review_population=len(rows),budget=budget,
                      selection_component='priority' if j<priority_count else 'random_audit',
                      conditional_inclusion_probability=1. if j<priority_count else audit/(len(rows)-priority_count),
                      selection_scope='Whole provided archive buffer; not independently ranked inference batches.') for j,i in enumerate(selected)]
+    if selection_details is not None:
+        for j,candidate in enumerate(candidates):
+            candidate['selection_component']=selection_details['reasons'][j]
+            candidate['conditional_inclusion_probability']=selection_details['conditional_inclusion_probability'][j]
     for name,value in [('predictions.jsonl',records),('candidates.jsonl',candidates)]:
         (a.output/name).write_text(''.join(json.dumps(r,allow_nan=False)+'\n' for r in value))
     np.savez_compressed(a.output/'features.npz',X=np.concatenate(vectors),ids=ids,ordered_features=columns)
@@ -63,5 +72,10 @@ def main():
                   bundle_manifest_sha256=sha256_file(a.bundle/'bundle_manifest.json'),manifest_sha256=sha256_file(a.manifest),source_sha256=sha256_file(Path(__file__)),
                   candidates_sha256=sha256_file(a.output/'candidates.jsonl'),seconds=time.monotonic()-started,scope='Offline RGB replay; no live ROS or automatic training admission.')
     metadata['artifact_sha256']={f.name:sha256_file(f) for f in a.output.iterdir() if f.is_file()}
+    if selection_details is not None:
+        metadata['support_review_selection']=selection_details
+        metadata['priority_slots']=selection_details['priority_slots']
+        metadata['information_slots']=selection_details['information_slots']
+        metadata['audit_slots']=selection_details['random_audit_slots']
     (a.output/'run.json').write_text(json.dumps(metadata,indent=2)+'\n');(a.output/'_SUCCESS').write_text(sha256_file(a.output/'run.json')+'\n')
 if __name__=='__main__':main()
