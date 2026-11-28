@@ -60,3 +60,4 @@ PYTHONPATH=src:ros/src/data_collection/src python3 -m quality_estimation.join_sp
 - `plot_confirmation.py`는 이미 고정·평가한 인지/품질/검수/환경 보고서를 같은 freeze 해시로 연결해 PNG/SVG를 만든다. 원래v6·부모·후속의 새 구간 IoU, 같은 GT 모집단 Q/구간, 고정 예산 검수와 환경 혼동행렬을 분리한다. 그림 생성으로 모델이나 기준을 다시 고르지 않는다.
 - 확인 보고서의 `support_by_hour/segment/weather_hour`에는 GT와 예측 지원량, 무출력 FN, 빈GT FP, 근거리 precision/recall 유지와 원거리 오류, 각 집합의 선별 수를 함께 남긴다. 07시 자료를 무조건 실패나 정상으로 분류하지 않으며 양성이 없는 recall은 미정의로 유지한다.
 - 인지 확인에는 Dev에서 미리 선택한 후보뿐 아니라 같은18,000update의 Risk/Random 원시 endpoint도 사전 고정한다. 새 구간의 paired condition-block 차이로 데이터 선별 효과를 별도 보고하고, 이 대조를 보고 채택 모델을 사후 변경하지 않는다. `assess_perception_confirmation.py --source-index`는 새 등록 RGB의 ID·픽셀·순서·역할과 수집 전 모델 고정 시점을 함께 검사한다.
+- `decide_offline_adoption.py`는 같은 freeze/등록 모집단의 인지·검수 보고서에서 사전 선언한 주 정책/부모 fallback만 판정한다. 인지 개선과 검수+품질 보정을 따로 판단하며, 더 좋은 진단용 대조를 사후 채택하지 않는다. 판정 JSON 생성은 버전 등록·standalone 재생·온라인 연결이나 자동 학습 편입을 대신하지 않는다.
