@@ -1,0 +1,17 @@
+{
+  "created_utc": "2026-11-28T03:42:03.124116+00:00",
+  "reason": "Before any cumulative endpoint or independent confirmation is opened, make cross-version quality denominators independent of model predictions. Removing FP on an empty-GT frame makes Q undefined; never let this alone alter the retention population. All-defined Q metrics and unmarked FP review metrics remain reported.",
+  "maximum_macro_mae_increase_vs_parent_pipeline": 0.01,
+  "minimum_interval90_macro_coverage": 0.8,
+  "parent_reference": "Frozen r1 perception plus its own new74-column GP quality head; never apply old quality model to changed perception outputs.",
+  "scope": "Additional conservative handoff guard on identical GT-supported frames. Training Q still uses all defined labels; review still includes GT-empty FP. No neural or review acceptance gate is relaxed.",
+  "supersedes_guard_sha256": "b2ea4afe29c5166cec90470634b5d9467b05f5af6d30aa49ad53e8169536e276",
+  "population": "whole_gt_pixels_at_least50",
+  "minimum_whole_gt_pixels": 50,
+  "publication_projection": {
+    "original_sha256": "fbc36eb689b77e6c9a4ce1ad2dccfba336f947a0adb0be780fae1834a2294f48",
+    "source_alias": "STUDY/protocol/quality_handoff_guard_gt_supported_v2.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

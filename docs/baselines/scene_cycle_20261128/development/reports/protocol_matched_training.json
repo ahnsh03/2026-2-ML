@@ -1,0 +1,65 @@
+{
+  "frozen_utc": "2026-11-28T02:19:51.639762+00:00",
+  "training": {
+    "schema_version": "long-adaptation-1",
+    "selection_arms": [
+      "Coverage2048",
+      "Risk2048",
+      "Random2048",
+      "Smoke"
+    ],
+    "seed": 281128,
+    "steps": 18000,
+    "new_per_batch": 2,
+    "replay_per_batch": 14,
+    "batch_size": 16,
+    "learning_rate": 3e-06,
+    "minimum_lr_factor": 0.2,
+    "warmup_steps": 200,
+    "weight_decay": 0.0001,
+    "gradient_clip_norm": 10.0,
+    "precision": "BF16",
+    "loss_precision": "FP32 reductions",
+    "workers": 4,
+    "checkpoint_every": 500,
+    "replay_distillation_weight": 0.5,
+    "distillation_temperature": 2.0,
+    "augmentation": "none",
+    "normalization": "BN running moments frozen, affine trainable",
+    "parent_perception_identity": {
+      "schema_version": "ml-perception-identity-1",
+      "kind": "adaptation",
+      "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+      "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+      "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+      "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+    },
+    "cumulative_replay_rows": 29073,
+    "new_rows": 2048,
+    "original_replay_rows": 26001,
+    "previous_admitted_replay_rows": 3072,
+    "source_git": "946019c70a7c200fa8d7dd8bd4a43843118ed4ca",
+    "scope": "Prospective risk vs environment-matched random comparison; same final pool, parent r1, full replay and optimizer schedule. Coverage24k is a separate diagnostic.",
+    "selection_protocol_sha256": "811cd115ec4839ee6cf1d3bed7bd6dd25c35c00e48a559396d49c9409817b9f9"
+  },
+  "arms": [
+    "Risk2048",
+    "Random2048"
+  ],
+  "new_bank_rows": 2048,
+  "random_matching": [
+    "SDK weather",
+    "SDK lighting band",
+    "old/new pool origin"
+  ],
+  "candidate_gt_hidden_until_admission": true,
+  "selection_overlap_allowed": true,
+  "sibling_updates": true,
+  "independent_confirmation_unopened": true,
+  "publication_projection": {
+    "original_sha256": "0ca942932004bcaaa63887ca9ad8cd4abb1dd181508afe3152661280fa8ccdb4",
+    "source_alias": "STUDY/protocol/matched_training_frozen.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

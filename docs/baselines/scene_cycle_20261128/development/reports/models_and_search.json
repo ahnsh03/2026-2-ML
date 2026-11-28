@@ -1,0 +1,6855 @@
+{
+  "records": [
+    {
+      "tag": "env52_quality_GP",
+      "view": "env52",
+      "task": "quality",
+      "kind": "GP",
+      "columns": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement",
+        "upper_top_left.intensity",
+        "upper_top_left.intensity_std",
+        "upper_top_left.glare_fraction",
+        "upper_top_left.dark_fraction",
+        "upper_top_left.intensity_p90_minus_p10",
+        "upper_top_left.saturation_median",
+        "upper_top_left.blue_minus_red",
+        "upper_top_left.hue_cos",
+        "upper_top_left.hue_sin",
+        "upper_top_right.intensity",
+        "upper_top_right.intensity_std",
+        "upper_top_right.glare_fraction",
+        "upper_top_right.dark_fraction",
+        "upper_top_right.intensity_p90_minus_p10",
+        "upper_top_right.saturation_median",
+        "upper_top_right.blue_minus_red",
+        "upper_top_right.hue_cos",
+        "upper_top_right.hue_sin",
+        "hood.intensity_std",
+        "hood.glare_fraction",
+        "hood.intensity_p90_minus_p10",
+        "hood.saturation_median",
+        "hood.hue_cos",
+        "hood.hue_sin"
+      ],
+      "targets": [
+        "whole_frame_lane_iou"
+      ],
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.03,
+        "task_correlation": 0.0,
+        "kernel_mode": "isotropic"
+      },
+      "cv_loss": 0.06468829927174409,
+      "fitted_rows": 2500,
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+      },
+      "models": [
+        "models/env52_quality_GP.npz"
+      ],
+      "model_sha256": {
+        "models/env52_quality_GP.npz": "4f760bcb74872d9162d2be382e21a06e8956106445526b39231a17b3b2d331f0"
+      },
+      "fit_pack_sha256": "b8845c51e72c81d031d29b699f18e2d514637a230666697992d2ec1865537cbd",
+      "source_sha256": "10ba72037b82b17a46d1094a4d353fc8cee0fd39fa77c87d2d9a5849962e5d9b"
+    },
+    {
+      "tag": "env52_quality_RF",
+      "view": "env52",
+      "task": "quality",
+      "kind": "RF",
+      "columns": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement",
+        "upper_top_left.intensity",
+        "upper_top_left.intensity_std",
+        "upper_top_left.glare_fraction",
+        "upper_top_left.dark_fraction",
+        "upper_top_left.intensity_p90_minus_p10",
+        "upper_top_left.saturation_median",
+        "upper_top_left.blue_minus_red",
+        "upper_top_left.hue_cos",
+        "upper_top_left.hue_sin",
+        "upper_top_right.intensity",
+        "upper_top_right.intensity_std",
+        "upper_top_right.glare_fraction",
+        "upper_top_right.dark_fraction",
+        "upper_top_right.intensity_p90_minus_p10",
+        "upper_top_right.saturation_median",
+        "upper_top_right.blue_minus_red",
+        "upper_top_right.hue_cos",
+        "upper_top_right.hue_sin",
+        "hood.intensity_std",
+        "hood.glare_fraction",
+        "hood.intensity_p90_minus_p10",
+        "hood.saturation_median",
+        "hood.hue_cos",
+        "hood.hue_sin"
+      ],
+      "targets": [
+        "whole_frame_lane_iou"
+      ],
+      "parameters": {
+        "n_estimators": 160,
+        "max_depth": 12,
+        "min_samples_leaf": 1,
+        "max_features": 0.5
+      },
+      "cv_loss": 0.07788784967964536,
+      "fitted_rows": 2500,
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+      },
+      "models": [
+        "models/env52_quality_RF_0.npz"
+      ],
+      "model_sha256": {
+        "models/env52_quality_RF_0.npz": "7703b73137755d73f041ad5a4fa30994fa736fba6cbe0461f8acc9123f0ff14f"
+      },
+      "fit_pack_sha256": "b8845c51e72c81d031d29b699f18e2d514637a230666697992d2ec1865537cbd",
+      "source_sha256": "10ba72037b82b17a46d1094a4d353fc8cee0fd39fa77c87d2d9a5849962e5d9b"
+    },
+    {
+      "tag": "env52_errors_GP",
+      "view": "env52",
+      "task": "errors",
+      "kind": "GP",
+      "columns": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement",
+        "upper_top_left.intensity",
+        "upper_top_left.intensity_std",
+        "upper_top_left.glare_fraction",
+        "upper_top_left.dark_fraction",
+        "upper_top_left.intensity_p90_minus_p10",
+        "upper_top_left.saturation_median",
+        "upper_top_left.blue_minus_red",
+        "upper_top_left.hue_cos",
+        "upper_top_left.hue_sin",
+        "upper_top_right.intensity",
+        "upper_top_right.intensity_std",
+        "upper_top_right.glare_fraction",
+        "upper_top_right.dark_fraction",
+        "upper_top_right.intensity_p90_minus_p10",
+        "upper_top_right.saturation_median",
+        "upper_top_right.blue_minus_red",
+        "upper_top_right.hue_cos",
+        "upper_top_right.hue_sin",
+        "hood.intensity_std",
+        "hood.glare_fraction",
+        "hood.intensity_p90_minus_p10",
+        "hood.saturation_median",
+        "hood.hue_cos",
+        "hood.hue_sin"
+      ],
+      "targets": [
+        "near_supported_error",
+        "far_supported_error",
+        "offroad_supported_fp"
+      ],
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.03,
+        "task_correlation": 0.0,
+        "kernel_mode": "additive"
+      },
+      "cv_loss": 0.22208545523802656,
+      "fitted_rows": 2500,
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+      },
+      "models": [
+        "models/env52_errors_GP.npz"
+      ],
+      "model_sha256": {
+        "models/env52_errors_GP.npz": "4e4a33c379b919302e255e69995914245c42fe10350e48e2813302490fafc280"
+      },
+      "fit_pack_sha256": "b8845c51e72c81d031d29b699f18e2d514637a230666697992d2ec1865537cbd",
+      "source_sha256": "10ba72037b82b17a46d1094a4d353fc8cee0fd39fa77c87d2d9a5849962e5d9b"
+    },
+    {
+      "tag": "env52_errors_RF",
+      "view": "env52",
+      "task": "errors",
+      "kind": "RF",
+      "columns": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement",
+        "upper_top_left.intensity",
+        "upper_top_left.intensity_std",
+        "upper_top_left.glare_fraction",
+        "upper_top_left.dark_fraction",
+        "upper_top_left.intensity_p90_minus_p10",
+        "upper_top_left.saturation_median",
+        "upper_top_left.blue_minus_red",
+        "upper_top_left.hue_cos",
+        "upper_top_left.hue_sin",
+        "upper_top_right.intensity",
+        "upper_top_right.intensity_std",
+        "upper_top_right.glare_fraction",
+        "upper_top_right.dark_fraction",
+        "upper_top_right.intensity_p90_minus_p10",
+        "upper_top_right.saturation_median",
+        "upper_top_right.blue_minus_red",
+        "upper_top_right.hue_cos",
+        "upper_top_right.hue_sin",
+        "hood.intensity_std",
+        "hood.glare_fraction",
+        "hood.intensity_p90_minus_p10",
+        "hood.saturation_median",
+        "hood.hue_cos",
+        "hood.hue_sin"
+      ],
+      "targets": [
+        "near_supported_error",
+        "far_supported_error",
+        "offroad_supported_fp"
+      ],
+      "parameters": {
+        "n_estimators": 160,
+        "max_depth": 12,
+        "min_samples_leaf": 1,
+        "max_features": 0.5
+      },
+      "cv_loss": 0.22542631727989393,
+      "fitted_rows": 2500,
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+      },
+      "models": [
+        "models/env52_errors_RF_0.npz",
+        "models/env52_errors_RF_1.npz",
+        "models/env52_errors_RF_2.npz"
+      ],
+      "model_sha256": {
+        "models/env52_errors_RF_0.npz": "25dae65b993f332c28a1b2784ef9316120b41a30ab752c2a4ee55588bc5fd3e6",
+        "models/env52_errors_RF_1.npz": "caa2a70bb3510f9363b87f61ac106ba6ef328b4f783f348ef1304d2ff41cca5d",
+        "models/env52_errors_RF_2.npz": "eae218f77ad7d8cd8d92e0a6fb6f25734e81a732e4488876662df83d281a18bb"
+      },
+      "fit_pack_sha256": "b8845c51e72c81d031d29b699f18e2d514637a230666697992d2ec1865537cbd",
+      "source_sha256": "10ba72037b82b17a46d1094a4d353fc8cee0fd39fa77c87d2d9a5849962e5d9b"
+    },
+    {
+      "tag": "review_support_quality_GP",
+      "view": "review_support",
+      "task": "quality",
+      "kind": "GP",
+      "columns": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement",
+        "upper_top_left.intensity",
+        "upper_top_left.intensity_std",
+        "upper_top_left.glare_fraction",
+        "upper_top_left.dark_fraction",
+        "upper_top_left.intensity_p90_minus_p10",
+        "upper_top_left.saturation_median",
+        "upper_top_left.blue_minus_red",
+        "upper_top_left.hue_cos",
+        "upper_top_left.hue_sin",
+        "upper_top_right.intensity",
+        "upper_top_right.intensity_std",
+        "upper_top_right.glare_fraction",
+        "upper_top_right.dark_fraction",
+        "upper_top_right.intensity_p90_minus_p10",
+        "upper_top_right.saturation_median",
+        "upper_top_right.blue_minus_red",
+        "upper_top_right.hue_cos",
+        "upper_top_right.hue_sin",
+        "hood.intensity_std",
+        "hood.glare_fraction",
+        "hood.intensity_p90_minus_p10",
+        "hood.saturation_median",
+        "hood.hue_cos",
+        "hood.hue_sin",
+        "upper_top_left.lane_fraction",
+        "upper_top_left.lane_weighted_probability",
+        "upper_top_right.lane_fraction",
+        "upper_top_right.lane_weighted_probability",
+        "upper_bottom_left.lane_fraction",
+        "upper_bottom_left.lane_weighted_probability",
+        "upper_bottom_right.lane_fraction",
+        "upper_bottom_right.lane_weighted_probability",
+        "hood.lane_fraction",
+        "hood.lane_weighted_probability",
+        "far_left.lane_fraction",
+        "far_left.lane_weighted_entropy",
+        "far_left.lane_weighted_probability",
+        "far_right.lane_fraction",
+        "far_right.lane_weighted_entropy",
+        "far_right.lane_weighted_probability",
+        "near_left.lane_drivable_disagreement",
+        "near_right.lane_drivable_disagreement",
+        "global.lane_drivable_disagreement",
+        "near.internal_gap",
+        "far.internal_gap",
+        "near.soft_outside"
+      ],
+      "targets": [
+        "whole_frame_lane_iou"
+      ],
+      "parameters": {
+        "length_multiplier": 1.4,
+        "noise_variance": 0.03,
+        "task_correlation": 0.0,
+        "kernel_mode": "additive"
+      },
+      "cv_loss": 0.06724900159161236,
+      "fitted_rows": 2500,
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+      },
+      "models": [
+        "models/review_support_quality_GP.npz"
+      ],
+      "model_sha256": {
+        "models/review_support_quality_GP.npz": "666761a324e20ac41d0478388dc4c6e6aab7cff29b841b24d9f89a62398955d4"
+      },
+      "fit_pack_sha256": "b8845c51e72c81d031d29b699f18e2d514637a230666697992d2ec1865537cbd",
+      "source_sha256": "10ba72037b82b17a46d1094a4d353fc8cee0fd39fa77c87d2d9a5849962e5d9b"
+    },
+    {
+      "tag": "review_support_quality_RF",
+      "view": "review_support",
+      "task": "quality",
+      "kind": "RF",
+      "columns": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement",
+        "upper_top_left.intensity",
+        "upper_top_left.intensity_std",
+        "upper_top_left.glare_fraction",
+        "upper_top_left.dark_fraction",
+        "upper_top_left.intensity_p90_minus_p10",
+        "upper_top_left.saturation_median",
+        "upper_top_left.blue_minus_red",
+        "upper_top_left.hue_cos",
+        "upper_top_left.hue_sin",
+        "upper_top_right.intensity",
+        "upper_top_right.intensity_std",
+        "upper_top_right.glare_fraction",
+        "upper_top_right.dark_fraction",
+        "upper_top_right.intensity_p90_minus_p10",
+        "upper_top_right.saturation_median",
+        "upper_top_right.blue_minus_red",
+        "upper_top_right.hue_cos",
+        "upper_top_right.hue_sin",
+        "hood.intensity_std",
+        "hood.glare_fraction",
+        "hood.intensity_p90_minus_p10",
+        "hood.saturation_median",
+        "hood.hue_cos",
+        "hood.hue_sin",
+        "upper_top_left.lane_fraction",
+        "upper_top_left.lane_weighted_probability",
+        "upper_top_right.lane_fraction",
+        "upper_top_right.lane_weighted_probability",
+        "upper_bottom_left.lane_fraction",
+        "upper_bottom_left.lane_weighted_probability",
+        "upper_bottom_right.lane_fraction",
+        "upper_bottom_right.lane_weighted_probability",
+        "hood.lane_fraction",
+        "hood.lane_weighted_probability",
+        "far_left.lane_fraction",
+        "far_left.lane_weighted_entropy",
+        "far_left.lane_weighted_probability",
+        "far_right.lane_fraction",
+        "far_right.lane_weighted_entropy",
+        "far_right.lane_weighted_probability",
+        "near_left.lane_drivable_disagreement",
+        "near_right.lane_drivable_disagreement",
+        "global.lane_drivable_disagreement",
+        "near.internal_gap",
+        "far.internal_gap",
+        "near.soft_outside"
+      ],
+      "targets": [
+        "whole_frame_lane_iou"
+      ],
+      "parameters": {
+        "n_estimators": 160,
+        "max_depth": 12,
+        "min_samples_leaf": 3,
+        "max_features": 0.5
+      },
+      "cv_loss": 0.07926154169148587,
+      "fitted_rows": 2500,
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+      },
+      "models": [
+        "models/review_support_quality_RF_0.npz"
+      ],
+      "model_sha256": {
+        "models/review_support_quality_RF_0.npz": "30f8205c7f62f9c8a361e6d6a5ecfdf88246e7ea5a873806f3c9b3c2b738c320"
+      },
+      "fit_pack_sha256": "b8845c51e72c81d031d29b699f18e2d514637a230666697992d2ec1865537cbd",
+      "source_sha256": "10ba72037b82b17a46d1094a4d353fc8cee0fd39fa77c87d2d9a5849962e5d9b"
+    },
+    {
+      "tag": "review_support_errors_GP",
+      "view": "review_support",
+      "task": "errors",
+      "kind": "GP",
+      "columns": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement",
+        "upper_top_left.intensity",
+        "upper_top_left.intensity_std",
+        "upper_top_left.glare_fraction",
+        "upper_top_left.dark_fraction",
+        "upper_top_left.intensity_p90_minus_p10",
+        "upper_top_left.saturation_median",
+        "upper_top_left.blue_minus_red",
+        "upper_top_left.hue_cos",
+        "upper_top_left.hue_sin",
+        "upper_top_right.intensity",
+        "upper_top_right.intensity_std",
+        "upper_top_right.glare_fraction",
+        "upper_top_right.dark_fraction",
+        "upper_top_right.intensity_p90_minus_p10",
+        "upper_top_right.saturation_median",
+        "upper_top_right.blue_minus_red",
+        "upper_top_right.hue_cos",
+        "upper_top_right.hue_sin",
+        "hood.intensity_std",
+        "hood.glare_fraction",
+        "hood.intensity_p90_minus_p10",
+        "hood.saturation_median",
+        "hood.hue_cos",
+        "hood.hue_sin",
+        "upper_top_left.lane_fraction",
+        "upper_top_left.lane_weighted_probability",
+        "upper_top_right.lane_fraction",
+        "upper_top_right.lane_weighted_probability",
+        "upper_bottom_left.lane_fraction",
+        "upper_bottom_left.lane_weighted_probability",
+        "upper_bottom_right.lane_fraction",
+        "upper_bottom_right.lane_weighted_probability",
+        "hood.lane_fraction",
+        "hood.lane_weighted_probability",
+        "far_left.lane_fraction",
+        "far_left.lane_weighted_entropy",
+        "far_left.lane_weighted_probability",
+        "far_right.lane_fraction",
+        "far_right.lane_weighted_entropy",
+        "far_right.lane_weighted_probability",
+        "near_left.lane_drivable_disagreement",
+        "near_right.lane_drivable_disagreement",
+        "global.lane_drivable_disagreement",
+        "near.internal_gap",
+        "far.internal_gap",
+        "near.soft_outside"
+      ],
+      "targets": [
+        "near_supported_error",
+        "far_supported_error",
+        "offroad_supported_fp"
+      ],
+      "parameters": {
+        "length_multiplier": 2.8,
+        "noise_variance": 0.03,
+        "task_correlation": 0.0,
+        "kernel_mode": "additive"
+      },
+      "cv_loss": 0.17481750239195448,
+      "fitted_rows": 2500,
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+      },
+      "models": [
+        "models/review_support_errors_GP.npz"
+      ],
+      "model_sha256": {
+        "models/review_support_errors_GP.npz": "029ea78c2bbd97fc74a6a89b7863fdcbb786a0584b612a8d811219ff3b2ddaaf"
+      },
+      "fit_pack_sha256": "b8845c51e72c81d031d29b699f18e2d514637a230666697992d2ec1865537cbd",
+      "source_sha256": "10ba72037b82b17a46d1094a4d353fc8cee0fd39fa77c87d2d9a5849962e5d9b"
+    },
+    {
+      "tag": "review_support_errors_RF",
+      "view": "review_support",
+      "task": "errors",
+      "kind": "RF",
+      "columns": [
+        "near_left.chroma",
+        "near_left.blue_minus_red",
+        "near_left.edge_density",
+        "near_right.median_residual",
+        "hood.intensity",
+        "hood.dark_channel",
+        "hood.dark_fraction",
+        "hood.intensity_median",
+        "hood.blue_minus_red",
+        "hood.edge_density",
+        "near_left.drivable_fraction",
+        "near_left.lane_fraction",
+        "near_left.lane_probability",
+        "near_left.lane_weighted_entropy",
+        "near_left.lane_weighted_probability",
+        "near_right.drivable_fraction",
+        "near_right.lane_fraction",
+        "near_right.lane_probability",
+        "near_right.lane_weighted_entropy",
+        "near_right.lane_weighted_probability",
+        "global.lane_fraction",
+        "global.lane_probability",
+        "global.lane_weighted_entropy",
+        "global.lane_weighted_probability",
+        "global.top_entropy",
+        "near_minus_far.lane_fraction",
+        "near_minus_far.lane_probability",
+        "near_minus_far.lane_drivable_disagreement",
+        "upper_top_left.intensity",
+        "upper_top_left.intensity_std",
+        "upper_top_left.glare_fraction",
+        "upper_top_left.dark_fraction",
+        "upper_top_left.intensity_p90_minus_p10",
+        "upper_top_left.saturation_median",
+        "upper_top_left.blue_minus_red",
+        "upper_top_left.hue_cos",
+        "upper_top_left.hue_sin",
+        "upper_top_right.intensity",
+        "upper_top_right.intensity_std",
+        "upper_top_right.glare_fraction",
+        "upper_top_right.dark_fraction",
+        "upper_top_right.intensity_p90_minus_p10",
+        "upper_top_right.saturation_median",
+        "upper_top_right.blue_minus_red",
+        "upper_top_right.hue_cos",
+        "upper_top_right.hue_sin",
+        "hood.intensity_std",
+        "hood.glare_fraction",
+        "hood.intensity_p90_minus_p10",
+        "hood.saturation_median",
+        "hood.hue_cos",
+        "hood.hue_sin",
+        "upper_top_left.lane_fraction",
+        "upper_top_left.lane_weighted_probability",
+        "upper_top_right.lane_fraction",
+        "upper_top_right.lane_weighted_probability",
+        "upper_bottom_left.lane_fraction",
+        "upper_bottom_left.lane_weighted_probability",
+        "upper_bottom_right.lane_fraction",
+        "upper_bottom_right.lane_weighted_probability",
+        "hood.lane_fraction",
+        "hood.lane_weighted_probability",
+        "far_left.lane_fraction",
+        "far_left.lane_weighted_entropy",
+        "far_left.lane_weighted_probability",
+        "far_right.lane_fraction",
+        "far_right.lane_weighted_entropy",
+        "far_right.lane_weighted_probability",
+        "near_left.lane_drivable_disagreement",
+        "near_right.lane_drivable_disagreement",
+        "global.lane_drivable_disagreement",
+        "near.internal_gap",
+        "far.internal_gap",
+        "near.soft_outside"
+      ],
+      "targets": [
+        "near_supported_error",
+        "far_supported_error",
+        "offroad_supported_fp"
+      ],
+      "parameters": {
+        "n_estimators": 160,
+        "max_depth": null,
+        "min_samples_leaf": 3,
+        "max_features": 0.5
+      },
+      "cv_loss": 0.1610707204706198,
+      "fitted_rows": 2500,
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+      },
+      "models": [
+        "models/review_support_errors_RF_0.npz",
+        "models/review_support_errors_RF_1.npz",
+        "models/review_support_errors_RF_2.npz"
+      ],
+      "model_sha256": {
+        "models/review_support_errors_RF_0.npz": "a486bb67538b03f37764a460bc887350d39ee18dd6dee63a810a2a36581c056c",
+        "models/review_support_errors_RF_1.npz": "44fc3e125b82ea3697a73fc6ea81a199ce56c9b89cb8d158f7ea34dc0eabf0ba",
+        "models/review_support_errors_RF_2.npz": "5453e542181f4351beacf577d729494a9d74c751bca9abeedb9aada48ef09ac5"
+      },
+      "fit_pack_sha256": "b8845c51e72c81d031d29b699f18e2d514637a230666697992d2ec1865537cbd",
+      "source_sha256": "10ba72037b82b17a46d1094a4d353fc8cee0fd39fa77c87d2d9a5849962e5d9b"
+    }
+  ],
+  "search": {
+    "env52_quality_GP": {
+      "query_budget_per_method_per_seed": 8,
+      "search_seeds": [
+        281128,
+        281129,
+        281130
+      ],
+      "histories": [
+        {
+          "method": "random",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            10,
+            2,
+            6,
+            7
+          ],
+          "losses": [
+            0.06664500003827695,
+            0.06643343754289395,
+            0.06468829927174409,
+            0.06610923487796674,
+            0.07107826439860913,
+            0.06544377137332016,
+            0.06598441012906245,
+            0.068193335907766
+          ],
+          "incumbent": [
+            0.06664500003827695,
+            0.06643343754289395,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            8,
+            6,
+            11,
+            2
+          ],
+          "losses": [
+            0.06664500003827695,
+            0.06643343754289395,
+            0.06468829927174409,
+            0.06610923487796674,
+            0.06696550366516538,
+            0.06598441012906245,
+            0.07186435568348255,
+            0.06544377137332016
+          ],
+          "incumbent": [
+            0.06664500003827695,
+            0.06643343754289395,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            8,
+            6,
+            11,
+            1
+          ],
+          "losses": [
+            0.06664500003827695,
+            0.06643343754289395,
+            0.06468829927174409,
+            0.06610923487796674,
+            0.06696550366516538,
+            0.06598441012906245,
+            0.07186435568348255,
+            0.06765283823263395
+          ],
+          "incumbent": [
+            0.06664500003827695,
+            0.06643343754289395,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.2625334420008585,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -10.21743929154401,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.061572406004415825,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -10.922705700496184,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07750790199497715,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -11.553032356921939,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07763937101117335,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.458676452482035,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            1,
+            4,
+            6,
+            11
+          ],
+          "losses": [
+            0.06696550366516538,
+            0.06544377137332016,
+            0.068193335907766,
+            0.06643343754289395,
+            0.06765283823263395,
+            0.06468829927174409,
+            0.06598441012906245,
+            0.07186435568348255
+          ],
+          "incumbent": [
+            0.06696550366516538,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            6,
+            0,
+            10,
+            4
+          ],
+          "losses": [
+            0.06696550366516538,
+            0.06544377137332016,
+            0.068193335907766,
+            0.06643343754289395,
+            0.06598441012906245,
+            0.06610923487796674,
+            0.07107826439860913,
+            0.06468829927174409
+          ],
+          "incumbent": [
+            0.06696550366516538,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06468829927174409
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            6,
+            0,
+            1,
+            9
+          ],
+          "losses": [
+            0.06696550366516538,
+            0.06544377137332016,
+            0.068193335907766,
+            0.06643343754289395,
+            0.06598441012906245,
+            0.06610923487796674,
+            0.06765283823263395,
+            0.0692440646332888
+          ],
+          "incumbent": [
+            0.06696550366516538,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06544377137332016
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.04916632399545051,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.965207748996733,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.06147526699351147,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -10.52990735244845,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.14149674199870788,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -11.91711718675709,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.11764406602014787,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.796728837929908,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            11,
+            10,
+            8,
+            1
+          ],
+          "losses": [
+            0.06610923487796674,
+            0.068193335907766,
+            0.06598441012906245,
+            0.0692440646332888,
+            0.07186435568348255,
+            0.07107826439860913,
+            0.06696550366516538,
+            0.06765283823263395
+          ],
+          "incumbent": [
+            0.06610923487796674,
+            0.06610923487796674,
+            0.06598441012906245,
+            0.06598441012906245,
+            0.06598441012906245,
+            0.06598441012906245,
+            0.06598441012906245,
+            0.06598441012906245
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            2,
+            4,
+            8,
+            10
+          ],
+          "losses": [
+            0.06610923487796674,
+            0.068193335907766,
+            0.06598441012906245,
+            0.0692440646332888,
+            0.06544377137332016,
+            0.06468829927174409,
+            0.06696550366516538,
+            0.07107826439860913
+          ],
+          "incumbent": [
+            0.06610923487796674,
+            0.06610923487796674,
+            0.06598441012906245,
+            0.06598441012906245,
+            0.06544377137332016,
+            0.06468829927174409,
+            0.06468829927174409,
+            0.06468829927174409
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            8,
+            2,
+            1,
+            10
+          ],
+          "losses": [
+            0.06610923487796674,
+            0.068193335907766,
+            0.06598441012906245,
+            0.0692440646332888,
+            0.06696550366516538,
+            0.06544377137332016,
+            0.06765283823263395,
+            0.07107826439860913
+          ],
+          "incumbent": [
+            0.06610923487796674,
+            0.06610923487796674,
+            0.06598441012906245,
+            0.06598441012906245,
+            0.06598441012906245,
+            0.06544377137332016,
+            0.06544377137332016,
+            0.06544377137332016
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.08269517900771461,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.20820679022652,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.11518784702639095,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.350916325785319,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.05164703499758616,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -20.220264310527103,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.11467089300276712,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -22.509795562585133,
+              "warnings": []
+            }
+          ]
+        }
+      ],
+      "selected_index": 4,
+      "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+      "unique_cv_trials": 12
+    },
+    "env52_quality_RF": {
+      "query_budget_per_method_per_seed": 8,
+      "search_seeds": [
+        281128,
+        281129,
+        281130
+      ],
+      "histories": [
+        {
+          "method": "random",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            10,
+            2,
+            6,
+            7
+          ],
+          "losses": [
+            0.08353060022298718,
+            0.08407977066132442,
+            0.07993212303281232,
+            0.07788784967964536,
+            0.07975791009036036,
+            0.07819150368347233,
+            0.07832088075877032,
+            0.083116949145633
+          ],
+          "incumbent": [
+            0.08353060022298718,
+            0.08353060022298718,
+            0.07993212303281232,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            2,
+            6,
+            8,
+            10
+          ],
+          "losses": [
+            0.08353060022298718,
+            0.08407977066132442,
+            0.07993212303281232,
+            0.07788784967964536,
+            0.07819150368347233,
+            0.07832088075877032,
+            0.07813442361205977,
+            0.07975791009036036
+          ],
+          "incumbent": [
+            0.08353060022298718,
+            0.08353060022298718,
+            0.07993212303281232,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            6,
+            8,
+            2,
+            10
+          ],
+          "losses": [
+            0.08353060022298718,
+            0.08407977066132442,
+            0.07993212303281232,
+            0.07788784967964536,
+            0.07832088075877032,
+            0.07813442361205977,
+            0.07819150368347233,
+            0.07975791009036036
+          ],
+          "incumbent": [
+            0.08353060022298718,
+            0.08353060022298718,
+            0.07993212303281232,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.06308501199237071,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.555133593159756,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.0937489309872035,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -14.513639328190616,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.11446647401317023,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.685776311035633,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.08090942000853829,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -17.61211835744043,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            1,
+            4,
+            6,
+            11
+          ],
+          "losses": [
+            0.07813442361205977,
+            0.07819150368347233,
+            0.083116949145633,
+            0.08407977066132442,
+            0.08337134658502167,
+            0.07993212303281232,
+            0.07832088075877032,
+            0.08410541519278568
+          ],
+          "incumbent": [
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07813442361205977
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            0,
+            6,
+            10,
+            4
+          ],
+          "losses": [
+            0.07813442361205977,
+            0.07819150368347233,
+            0.083116949145633,
+            0.08407977066132442,
+            0.07788784967964536,
+            0.07832088075877032,
+            0.07975791009036036,
+            0.07993212303281232
+          ],
+          "incumbent": [
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            10,
+            6,
+            0,
+            4
+          ],
+          "losses": [
+            0.07813442361205977,
+            0.07819150368347233,
+            0.083116949145633,
+            0.08407977066132442,
+            0.07975791009036036,
+            0.07832088075877032,
+            0.07788784967964536,
+            0.07993212303281232
+          ],
+          "incumbent": [
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07813442361205977,
+            0.07788784967964536,
+            0.07788784967964536
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.09184210299281403,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.987166609734219,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07111705900751986,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.5960385805237305,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.08468961200560443,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.429444383271491,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.06931699300184846,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -22.100923560228633,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            11,
+            10,
+            8,
+            1
+          ],
+          "losses": [
+            0.07788784967964536,
+            0.083116949145633,
+            0.07832088075877032,
+            0.08341699173344509,
+            0.08410541519278568,
+            0.07975791009036036,
+            0.07813442361205977,
+            0.08337134658502167
+          ],
+          "incumbent": [
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            2,
+            8,
+            10,
+            4
+          ],
+          "losses": [
+            0.07788784967964536,
+            0.083116949145633,
+            0.07832088075877032,
+            0.08341699173344509,
+            0.07819150368347233,
+            0.07813442361205977,
+            0.07975791009036036,
+            0.07993212303281232
+          ],
+          "incumbent": [
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            4,
+            8,
+            2,
+            10
+          ],
+          "losses": [
+            0.07788784967964536,
+            0.083116949145633,
+            0.07832088075877032,
+            0.08341699173344509,
+            0.07993212303281232,
+            0.07813442361205977,
+            0.07819150368347233,
+            0.07975791009036036
+          ],
+          "incumbent": [
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536,
+            0.07788784967964536
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.06186594400787726,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.8328479972933955,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.0900025480077602,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -14.579807221022637,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.09859859899734147,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.644809793155273,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10222519299713895,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -17.38560009735839,
+              "warnings": []
+            }
+          ]
+        }
+      ],
+      "selected_index": 0,
+      "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+      "unique_cv_trials": 12
+    },
+    "env52_errors_GP": {
+      "query_budget_per_method_per_seed": 8,
+      "search_seeds": [
+        281128,
+        281129,
+        281130
+      ],
+      "histories": [
+        {
+          "method": "random",
+          "seed": 281128,
+          "initial": [
+            7,
+            11,
+            9,
+            0
+          ],
+          "indices": [
+            7,
+            11,
+            9,
+            0,
+            10,
+            4,
+            18,
+            13
+          ],
+          "losses": [
+            0.22592262884005962,
+            0.22211472297313514,
+            0.22208545523802656,
+            0.22629805906219355,
+            0.22485586454448422,
+            0.22982968712969076,
+            0.23250553993183662,
+            0.22860051350891042
+          ],
+          "incumbent": [
+            0.22592262884005962,
+            0.22211472297313514,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281128,
+          "initial": [
+            7,
+            11,
+            9,
+            0
+          ],
+          "indices": [
+            7,
+            11,
+            9,
+            0,
+            17,
+            1,
+            3,
+            19
+          ],
+          "losses": [
+            0.22592262884005962,
+            0.22211472297313514,
+            0.22208545523802656,
+            0.22629805906219355,
+            0.22892798436482065,
+            0.22316613267929322,
+            0.223211458246272,
+            0.22889146190096507
+          ],
+          "incumbent": [
+            0.22592262884005962,
+            0.22211472297313514,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281128,
+          "initial": [
+            7,
+            11,
+            9,
+            0
+          ],
+          "indices": [
+            7,
+            11,
+            9,
+            0,
+            17,
+            13,
+            8,
+            22
+          ],
+          "losses": [
+            0.22592262884005962,
+            0.22211472297313514,
+            0.22208545523802656,
+            0.22629805906219355,
+            0.22892798436482065,
+            0.22860051350891042,
+            0.2248679429781616,
+            0.24289664582272508
+          ],
+          "incumbent": [
+            0.22592262884005962,
+            0.22211472297313514,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10989284300012514,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.157787492548929,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.08982739801285788,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.710579495099461,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.11169910299940966,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.010909039758992,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.12217452202457935,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.605810972271826,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281129,
+          "initial": [
+            22,
+            5,
+            17,
+            11
+          ],
+          "indices": [
+            22,
+            5,
+            17,
+            11,
+            23,
+            15,
+            1,
+            13
+          ],
+          "losses": [
+            0.24289664582272508,
+            0.22588416856202806,
+            0.22892798436482065,
+            0.22211472297313514,
+            0.23939604021520444,
+            0.22860262330280504,
+            0.22316613267929322,
+            0.22860051350891042
+          ],
+          "incumbent": [
+            0.24289664582272508,
+            0.22588416856202806,
+            0.22588416856202806,
+            0.22211472297313514,
+            0.22211472297313514,
+            0.22211472297313514,
+            0.22211472297313514,
+            0.22211472297313514
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281129,
+          "initial": [
+            22,
+            5,
+            17,
+            11
+          ],
+          "indices": [
+            22,
+            5,
+            17,
+            11,
+            3,
+            19,
+            13,
+            1
+          ],
+          "losses": [
+            0.24289664582272508,
+            0.22588416856202806,
+            0.22892798436482065,
+            0.22211472297313514,
+            0.223211458246272,
+            0.22889146190096507,
+            0.22860051350891042,
+            0.22316613267929322
+          ],
+          "incumbent": [
+            0.24289664582272508,
+            0.22588416856202806,
+            0.22588416856202806,
+            0.22211472297313514,
+            0.22211472297313514,
+            0.22211472297313514,
+            0.22211472297313514,
+            0.22211472297313514
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281129,
+          "initial": [
+            22,
+            5,
+            17,
+            11
+          ],
+          "indices": [
+            22,
+            5,
+            17,
+            11,
+            3,
+            23,
+            18,
+            4
+          ],
+          "losses": [
+            0.24289664582272508,
+            0.22588416856202806,
+            0.22892798436482065,
+            0.22211472297313514,
+            0.223211458246272,
+            0.23939604021520444,
+            0.23250553993183662,
+            0.22982968712969076
+          ],
+          "incumbent": [
+            0.24289664582272508,
+            0.22588416856202806,
+            0.22588416856202806,
+            0.22211472297313514,
+            0.22211472297313514,
+            0.22211472297313514,
+            0.22211472297313514,
+            0.22211472297313514
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.059854959981748834,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -6.483272957007615,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10526494699297473,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -6.410236441623561,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10858281000400893,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -6.522026491991316,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10417161000077613,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.398108391890368,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281130,
+          "initial": [
+            1,
+            23,
+            15,
+            18
+          ],
+          "indices": [
+            1,
+            23,
+            15,
+            18,
+            14,
+            21,
+            10,
+            13
+          ],
+          "losses": [
+            0.22316613267929322,
+            0.23939604021520444,
+            0.22860262330280504,
+            0.23250553993183662,
+            0.2320951237992722,
+            0.23954648776912454,
+            0.22485586454448422,
+            0.22860051350891042
+          ],
+          "incumbent": [
+            0.22316613267929322,
+            0.22316613267929322,
+            0.22316613267929322,
+            0.22316613267929322,
+            0.22316613267929322,
+            0.22316613267929322,
+            0.22316613267929322,
+            0.22316613267929322
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281130,
+          "initial": [
+            1,
+            23,
+            15,
+            18
+          ],
+          "indices": [
+            1,
+            23,
+            15,
+            18,
+            9,
+            17,
+            7,
+            5
+          ],
+          "losses": [
+            0.22316613267929322,
+            0.23939604021520444,
+            0.22860262330280504,
+            0.23250553993183662,
+            0.22208545523802656,
+            0.22892798436482065,
+            0.22592262884005962,
+            0.22588416856202806
+          ],
+          "incumbent": [
+            0.22316613267929322,
+            0.22316613267929322,
+            0.22316613267929322,
+            0.22316613267929322,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281130,
+          "initial": [
+            1,
+            23,
+            15,
+            18
+          ],
+          "indices": [
+            1,
+            23,
+            15,
+            18,
+            9,
+            17,
+            5,
+            3
+          ],
+          "losses": [
+            0.22316613267929322,
+            0.23939604021520444,
+            0.22860262330280504,
+            0.23250553993183662,
+            0.22208545523802656,
+            0.22892798436482065,
+            0.22588416856202806,
+            0.223211458246272
+          ],
+          "incumbent": [
+            0.22316613267929322,
+            0.22316613267929322,
+            0.22316613267929322,
+            0.22316613267929322,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656,
+            0.22208545523802656
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.046200698998291045,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.517552553877985,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.05814000699319877,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.114527692263096,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.14855811701272614,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.070859235239791,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.12506423000013456,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.294610472024207,
+              "warnings": []
+            }
+          ]
+        }
+      ],
+      "selected_index": 9,
+      "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+      "unique_cv_trials": 19
+    },
+    "env52_errors_RF": {
+      "query_budget_per_method_per_seed": 8,
+      "search_seeds": [
+        281128,
+        281129,
+        281130
+      ],
+      "histories": [
+        {
+          "method": "random",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            10,
+            2,
+            6,
+            7
+          ],
+          "losses": [
+            0.23254761723687287,
+            0.23510753826926786,
+            0.22788332478208587,
+            0.22542631727989393,
+            0.22788332478208587,
+            0.22660270668485502,
+            0.22550065489941826,
+            0.23563649566818387
+          ],
+          "incumbent": [
+            0.23254761723687287,
+            0.23254761723687287,
+            0.22788332478208587,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            2,
+            6,
+            8,
+            10
+          ],
+          "losses": [
+            0.23254761723687287,
+            0.23510753826926786,
+            0.22788332478208587,
+            0.22542631727989393,
+            0.22660270668485502,
+            0.22550065489941826,
+            0.2265969569951024,
+            0.22788332478208587
+          ],
+          "incumbent": [
+            0.23254761723687287,
+            0.23254761723687287,
+            0.22788332478208587,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            6,
+            8,
+            2,
+            7
+          ],
+          "losses": [
+            0.23254761723687287,
+            0.23510753826926786,
+            0.22788332478208587,
+            0.22542631727989393,
+            0.22550065489941826,
+            0.2265969569951024,
+            0.22660270668485502,
+            0.23563649566818387
+          ],
+          "incumbent": [
+            0.23254761723687287,
+            0.23254761723687287,
+            0.22788332478208587,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.05685885899583809,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.965425278793181,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.14197036900441162,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.265336005787393,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.11125637200893834,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -14.349452083824147,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.09074111300287768,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -29.761110547155056,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            1,
+            4,
+            6,
+            11
+          ],
+          "losses": [
+            0.2265969569951024,
+            0.22660270668485502,
+            0.23563649566818387,
+            0.23510753826926786,
+            0.23555162196735047,
+            0.22788332478208587,
+            0.22550065489941826,
+            0.2351079408279404
+          ],
+          "incumbent": [
+            0.2265969569951024,
+            0.2265969569951024,
+            0.2265969569951024,
+            0.2265969569951024,
+            0.2265969569951024,
+            0.2265969569951024,
+            0.22550065489941826,
+            0.22550065489941826
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            0,
+            6,
+            10,
+            4
+          ],
+          "losses": [
+            0.2265969569951024,
+            0.22660270668485502,
+            0.23563649566818387,
+            0.23510753826926786,
+            0.22542631727989393,
+            0.22550065489941826,
+            0.22788332478208587,
+            0.22788332478208587
+          ],
+          "incumbent": [
+            0.2265969569951024,
+            0.2265969569951024,
+            0.2265969569951024,
+            0.2265969569951024,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            10,
+            0,
+            6,
+            4
+          ],
+          "losses": [
+            0.2265969569951024,
+            0.22660270668485502,
+            0.23563649566818387,
+            0.23510753826926786,
+            0.22788332478208587,
+            0.22542631727989393,
+            0.22550065489941826,
+            0.22788332478208587
+          ],
+          "incumbent": [
+            0.2265969569951024,
+            0.2265969569951024,
+            0.2265969569951024,
+            0.2265969569951024,
+            0.2265969569951024,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10553697301656939,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.788382553936939,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07743720099097118,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.499260397205686,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07992418398498558,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.753503673848837,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07107032500789501,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -36.329468953076464,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            11,
+            10,
+            8,
+            1
+          ],
+          "losses": [
+            0.22542631727989393,
+            0.23563649566818387,
+            0.22550065489941826,
+            0.23254289905092307,
+            0.2351079408279404,
+            0.22788332478208587,
+            0.2265969569951024,
+            0.23555162196735047
+          ],
+          "incumbent": [
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            2,
+            8,
+            4,
+            10
+          ],
+          "losses": [
+            0.22542631727989393,
+            0.23563649566818387,
+            0.22550065489941826,
+            0.23254289905092307,
+            0.22660270668485502,
+            0.2265969569951024,
+            0.22788332478208587,
+            0.22788332478208587
+          ],
+          "incumbent": [
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            2,
+            10,
+            5,
+            8
+          ],
+          "losses": [
+            0.22542631727989393,
+            0.23563649566818387,
+            0.22550065489941826,
+            0.23254289905092307,
+            0.22660270668485502,
+            0.22788332478208587,
+            0.23510753826926786,
+            0.2265969569951024
+          ],
+          "incumbent": [
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393,
+            0.22542631727989393
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07919951001531444,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.072852068710617,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.11110636600642465,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.897388920382362,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.1058748490177095,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.87010630245088,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.08371369101223536,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -10.139538510474333,
+              "warnings": []
+            }
+          ]
+        }
+      ],
+      "selected_index": 0,
+      "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+      "unique_cv_trials": 12
+    },
+    "review_support_quality_GP": {
+      "query_budget_per_method_per_seed": 8,
+      "search_seeds": [
+        281128,
+        281129,
+        281130
+      ],
+      "histories": [
+        {
+          "method": "random",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            10,
+            2,
+            6,
+            7
+          ],
+          "losses": [
+            0.06966515815761477,
+            0.06945592475073999,
+            0.06790100299223896,
+            0.06738252362678675,
+            0.07672020856412742,
+            0.06876617196788792,
+            0.07104857244331356,
+            0.07293193600106902
+          ],
+          "incumbent": [
+            0.06966515815761477,
+            0.06945592475073999,
+            0.06790100299223896,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            8,
+            2,
+            11,
+            6
+          ],
+          "losses": [
+            0.06966515815761477,
+            0.06945592475073999,
+            0.06790100299223896,
+            0.06738252362678675,
+            0.07185144554997873,
+            0.06876617196788792,
+            0.07763524224840226,
+            0.07104857244331356
+          ],
+          "incumbent": [
+            0.06966515815761477,
+            0.06945592475073999,
+            0.06790100299223896,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            2,
+            10,
+            1,
+            8
+          ],
+          "losses": [
+            0.06966515815761477,
+            0.06945592475073999,
+            0.06790100299223896,
+            0.06738252362678675,
+            0.06876617196788792,
+            0.07672020856412742,
+            0.06724900159161236,
+            0.07185144554997873
+          ],
+          "incumbent": [
+            0.06966515815761477,
+            0.06945592475073999,
+            0.06790100299223896,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06724900159161236,
+            0.06724900159161236
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10085644299397245,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.749374761329422,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07850169399171136,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -11.368411266174585,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.11516537799616344,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.13979838324151,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.13924285999382846,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.324710978600926,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            1,
+            4,
+            6,
+            11
+          ],
+          "losses": [
+            0.07185144554997873,
+            0.06876617196788792,
+            0.07293193600106902,
+            0.06945592475073999,
+            0.06724900159161236,
+            0.06790100299223896,
+            0.07104857244331356,
+            0.07763524224840226
+          ],
+          "incumbent": [
+            0.07185144554997873,
+            0.06876617196788792,
+            0.06876617196788792,
+            0.06876617196788792,
+            0.06724900159161236,
+            0.06724900159161236,
+            0.06724900159161236,
+            0.06724900159161236
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            6,
+            1,
+            0,
+            4
+          ],
+          "losses": [
+            0.07185144554997873,
+            0.06876617196788792,
+            0.07293193600106902,
+            0.06945592475073999,
+            0.07104857244331356,
+            0.06724900159161236,
+            0.06738252362678675,
+            0.06790100299223896
+          ],
+          "incumbent": [
+            0.07185144554997873,
+            0.06876617196788792,
+            0.06876617196788792,
+            0.06876617196788792,
+            0.06876617196788792,
+            0.06724900159161236,
+            0.06724900159161236,
+            0.06724900159161236
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            6,
+            1,
+            0,
+            4
+          ],
+          "losses": [
+            0.07185144554997873,
+            0.06876617196788792,
+            0.07293193600106902,
+            0.06945592475073999,
+            0.07104857244331356,
+            0.06724900159161236,
+            0.06738252362678675,
+            0.06790100299223896
+          ],
+          "incumbent": [
+            0.07185144554997873,
+            0.06876617196788792,
+            0.06876617196788792,
+            0.06876617196788792,
+            0.06876617196788792,
+            0.06724900159161236,
+            0.06724900159161236,
+            0.06724900159161236
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.047909865010296926,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.260814269202932,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.05243348301155493,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.101223182034499,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.1057449420040939,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.517080998002678,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.08010794597794302,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -13.592804260862792,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            11,
+            10,
+            8,
+            1
+          ],
+          "losses": [
+            0.06738252362678675,
+            0.07293193600106902,
+            0.07104857244331356,
+            0.07423139555858634,
+            0.07763524224840226,
+            0.07672020856412742,
+            0.07185144554997873,
+            0.06724900159161236
+          ],
+          "incumbent": [
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06724900159161236
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            4,
+            8,
+            1,
+            2
+          ],
+          "losses": [
+            0.06738252362678675,
+            0.07293193600106902,
+            0.07104857244331356,
+            0.07423139555858634,
+            0.06790100299223896,
+            0.07185144554997873,
+            0.06724900159161236,
+            0.06876617196788792
+          ],
+          "incumbent": [
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06724900159161236,
+            0.06724900159161236
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            4,
+            8,
+            2,
+            1
+          ],
+          "losses": [
+            0.06738252362678675,
+            0.07293193600106902,
+            0.07104857244331356,
+            0.07423139555858634,
+            0.06790100299223896,
+            0.07185144554997873,
+            0.06876617196788792,
+            0.06724900159161236
+          ],
+          "incumbent": [
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06738252362678675,
+            0.06724900159161236
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.0760392980009783,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.136571232650486,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.08419862599112093,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -12.560830364005998,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07012495599337853,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -10.34313098330551,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.08537925500422716,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -10.740353394786442,
+              "warnings": []
+            }
+          ]
+        }
+      ],
+      "selected_index": 1,
+      "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+      "unique_cv_trials": 12
+    },
+    "review_support_quality_RF": {
+      "query_budget_per_method_per_seed": 8,
+      "search_seeds": [
+        281128,
+        281129,
+        281130
+      ],
+      "histories": [
+        {
+          "method": "random",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            10,
+            2,
+            6,
+            7
+          ],
+          "losses": [
+            0.08411398924598591,
+            0.08509158555923574,
+            0.08185265788902676,
+            0.08054757824762994,
+            0.08145939402648661,
+            0.07926154169148587,
+            0.07939648698698194,
+            0.0836472919564551
+          ],
+          "incumbent": [
+            0.08411398924598591,
+            0.08411398924598591,
+            0.08185265788902676,
+            0.08054757824762994,
+            0.08054757824762994,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            2,
+            8,
+            6,
+            10
+          ],
+          "losses": [
+            0.08411398924598591,
+            0.08509158555923574,
+            0.08185265788902676,
+            0.08054757824762994,
+            0.07926154169148587,
+            0.0795559787158015,
+            0.07939648698698194,
+            0.08145939402648661
+          ],
+          "incumbent": [
+            0.08411398924598591,
+            0.08411398924598591,
+            0.08185265788902676,
+            0.08054757824762994,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            6,
+            8,
+            7,
+            10
+          ],
+          "losses": [
+            0.08411398924598591,
+            0.08509158555923574,
+            0.08185265788902676,
+            0.08054757824762994,
+            0.07939648698698194,
+            0.0795559787158015,
+            0.0836472919564551,
+            0.08145939402648661
+          ],
+          "incumbent": [
+            0.08411398924598591,
+            0.08411398924598591,
+            0.08185265788902676,
+            0.08054757824762994,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.0708324309962336,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.802457472351538,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.09815118799451739,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.913775739899886,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10047594099887647,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -11.854756764974217,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07440395999583416,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -13.6586997314349,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            1,
+            4,
+            6,
+            11
+          ],
+          "losses": [
+            0.0795559787158015,
+            0.07926154169148587,
+            0.0836472919564551,
+            0.08509158555923574,
+            0.0837647051735252,
+            0.08185265788902676,
+            0.07939648698698194,
+            0.08510222064570551
+          ],
+          "incumbent": [
+            0.0795559787158015,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            0,
+            6,
+            4,
+            10
+          ],
+          "losses": [
+            0.0795559787158015,
+            0.07926154169148587,
+            0.0836472919564551,
+            0.08509158555923574,
+            0.08054757824762994,
+            0.07939648698698194,
+            0.08185265788902676,
+            0.08145939402648661
+          ],
+          "incumbent": [
+            0.0795559787158015,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            4,
+            0,
+            6,
+            10
+          ],
+          "losses": [
+            0.0795559787158015,
+            0.07926154169148587,
+            0.0836472919564551,
+            0.08509158555923574,
+            0.08185265788902676,
+            0.08054757824762994,
+            0.07939648698698194,
+            0.08145939402648661
+          ],
+          "incumbent": [
+            0.0795559787158015,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587,
+            0.07926154169148587
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07587330602109432,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.85253607715998,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.11403319198871031,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.926689036251643,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.08583739900495857,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -14.941620075245806,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07274293500813656,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -13.268071005995298,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            11,
+            10,
+            8,
+            1
+          ],
+          "losses": [
+            0.08054757824762994,
+            0.0836472919564551,
+            0.07939648698698194,
+            0.0838900684394059,
+            0.08510222064570551,
+            0.08145939402648661,
+            0.0795559787158015,
+            0.0837647051735252
+          ],
+          "incumbent": [
+            0.08054757824762994,
+            0.08054757824762994,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            8,
+            10,
+            4,
+            5
+          ],
+          "losses": [
+            0.08054757824762994,
+            0.0836472919564551,
+            0.07939648698698194,
+            0.0838900684394059,
+            0.0795559787158015,
+            0.08145939402648661,
+            0.08185265788902676,
+            0.08509158555923574
+          ],
+          "incumbent": [
+            0.08054757824762994,
+            0.08054757824762994,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            10,
+            4,
+            8,
+            5
+          ],
+          "losses": [
+            0.08054757824762994,
+            0.0836472919564551,
+            0.07939648698698194,
+            0.0838900684394059,
+            0.08145939402648661,
+            0.08185265788902676,
+            0.0795559787158015,
+            0.08509158555923574
+          ],
+          "incumbent": [
+            0.08054757824762994,
+            0.08054757824762994,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194,
+            0.07939648698698194
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10897981000016443,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.134086726990287,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.09980396702303551,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -12.317775088120516,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10186984000029042,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -15.208567949850345,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.09962306599481963,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -16.327877050266952,
+              "warnings": []
+            }
+          ]
+        }
+      ],
+      "selected_index": 2,
+      "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+      "unique_cv_trials": 12
+    },
+    "review_support_errors_GP": {
+      "query_budget_per_method_per_seed": 8,
+      "search_seeds": [
+        281128,
+        281129,
+        281130
+      ],
+      "histories": [
+        {
+          "method": "random",
+          "seed": 281128,
+          "initial": [
+            7,
+            11,
+            9,
+            0
+          ],
+          "indices": [
+            7,
+            11,
+            9,
+            0,
+            10,
+            4,
+            18,
+            13
+          ],
+          "losses": [
+            0.17790703415156905,
+            0.17488110747555144,
+            0.17481750239195448,
+            0.18005910934820765,
+            0.17818576731178248,
+            0.18185798166847547,
+            0.1823225942280744,
+            0.17924833892083555
+          ],
+          "incumbent": [
+            0.17790703415156905,
+            0.17488110747555144,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281128,
+          "initial": [
+            7,
+            11,
+            9,
+            0
+          ],
+          "indices": [
+            7,
+            11,
+            9,
+            0,
+            17,
+            1,
+            3,
+            19
+          ],
+          "losses": [
+            0.17790703415156905,
+            0.17488110747555144,
+            0.17481750239195448,
+            0.18005910934820765,
+            0.18029897183932486,
+            0.17498734421021292,
+            0.17511127298651816,
+            0.1802330271744215
+          ],
+          "incumbent": [
+            0.17790703415156905,
+            0.17488110747555144,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281128,
+          "initial": [
+            7,
+            11,
+            9,
+            0
+          ],
+          "indices": [
+            7,
+            11,
+            9,
+            0,
+            17,
+            13,
+            8,
+            6
+          ],
+          "losses": [
+            0.17790703415156905,
+            0.17488110747555144,
+            0.17481750239195448,
+            0.18005910934820765,
+            0.18029897183932486,
+            0.17924833892083555,
+            0.17821724610131773,
+            0.18184633776130266
+          ],
+          "incumbent": [
+            0.17790703415156905,
+            0.17488110747555144,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.09682177100330591,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.994901050993125,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.06256472601671703,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.862413475974986,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.0794891890254803,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.376128596410823,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10928988599334843,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.861868402703411,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281129,
+          "initial": [
+            22,
+            5,
+            17,
+            11
+          ],
+          "indices": [
+            22,
+            5,
+            17,
+            11,
+            23,
+            15,
+            1,
+            13
+          ],
+          "losses": [
+            0.19192821420548656,
+            0.17784520069459098,
+            0.18029897183932486,
+            0.17488110747555144,
+            0.1904359774270703,
+            0.17922560741843482,
+            0.17498734421021292,
+            0.17924833892083555
+          ],
+          "incumbent": [
+            0.19192821420548656,
+            0.17784520069459098,
+            0.17784520069459098,
+            0.17488110747555144,
+            0.17488110747555144,
+            0.17488110747555144,
+            0.17488110747555144,
+            0.17488110747555144
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281129,
+          "initial": [
+            22,
+            5,
+            17,
+            11
+          ],
+          "indices": [
+            22,
+            5,
+            17,
+            11,
+            3,
+            19,
+            1,
+            9
+          ],
+          "losses": [
+            0.19192821420548656,
+            0.17784520069459098,
+            0.18029897183932486,
+            0.17488110747555144,
+            0.17511127298651816,
+            0.1802330271744215,
+            0.17498734421021292,
+            0.17481750239195448
+          ],
+          "incumbent": [
+            0.19192821420548656,
+            0.17784520069459098,
+            0.17784520069459098,
+            0.17488110747555144,
+            0.17488110747555144,
+            0.17488110747555144,
+            0.17488110747555144,
+            0.17481750239195448
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281129,
+          "initial": [
+            22,
+            5,
+            17,
+            11
+          ],
+          "indices": [
+            22,
+            5,
+            17,
+            11,
+            19,
+            3,
+            1,
+            9
+          ],
+          "losses": [
+            0.19192821420548656,
+            0.17784520069459098,
+            0.18029897183932486,
+            0.17488110747555144,
+            0.1802330271744215,
+            0.17511127298651816,
+            0.17498734421021292,
+            0.17481750239195448
+          ],
+          "incumbent": [
+            0.19192821420548656,
+            0.17784520069459098,
+            0.17784520069459098,
+            0.17488110747555144,
+            0.17488110747555144,
+            0.17488110747555144,
+            0.17488110747555144,
+            0.17481750239195448
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.06843338999897242,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -6.664197224524101,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.12923021201277152,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -6.969688031860716,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.11262903999886476,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.210254054761977,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.12154725598520599,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.698321448975214,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281130,
+          "initial": [
+            1,
+            23,
+            15,
+            18
+          ],
+          "indices": [
+            1,
+            23,
+            15,
+            18,
+            14,
+            21,
+            10,
+            13
+          ],
+          "losses": [
+            0.17498734421021292,
+            0.1904359774270703,
+            0.17922560741843482,
+            0.1823225942280744,
+            0.18278249057513282,
+            0.19057409116240573,
+            0.17818576731178248,
+            0.17924833892083555
+          ],
+          "incumbent": [
+            0.17498734421021292,
+            0.17498734421021292,
+            0.17498734421021292,
+            0.17498734421021292,
+            0.17498734421021292,
+            0.17498734421021292,
+            0.17498734421021292,
+            0.17498734421021292
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281130,
+          "initial": [
+            1,
+            23,
+            15,
+            18
+          ],
+          "indices": [
+            1,
+            23,
+            15,
+            18,
+            9,
+            17,
+            7,
+            5
+          ],
+          "losses": [
+            0.17498734421021292,
+            0.1904359774270703,
+            0.17922560741843482,
+            0.1823225942280744,
+            0.17481750239195448,
+            0.18029897183932486,
+            0.17790703415156905,
+            0.17784520069459098
+          ],
+          "incumbent": [
+            0.17498734421021292,
+            0.17498734421021292,
+            0.17498734421021292,
+            0.17498734421021292,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281130,
+          "initial": [
+            1,
+            23,
+            15,
+            18
+          ],
+          "indices": [
+            1,
+            23,
+            15,
+            18,
+            9,
+            17,
+            7,
+            5
+          ],
+          "losses": [
+            0.17498734421021292,
+            0.1904359774270703,
+            0.17922560741843482,
+            0.1823225942280744,
+            0.17481750239195448,
+            0.18029897183932486,
+            0.17790703415156905,
+            0.17784520069459098
+          ],
+          "incumbent": [
+            0.17498734421021292,
+            0.17498734421021292,
+            0.17498734421021292,
+            0.17498734421021292,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448,
+            0.17481750239195448
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.06715442400309257,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.419944645622727,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.06601933797355741,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.057783516887721,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.05673005199059844,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.357270871760307,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.11174947099061683,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.205974645487162,
+              "warnings": []
+            }
+          ]
+        }
+      ],
+      "selected_index": 9,
+      "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+      "unique_cv_trials": 20
+    },
+    "review_support_errors_RF": {
+      "query_budget_per_method_per_seed": 8,
+      "search_seeds": [
+        281128,
+        281129,
+        281130
+      ],
+      "histories": [
+        {
+          "method": "random",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            10,
+            2,
+            6,
+            7
+          ],
+          "losses": [
+            0.1678088041034166,
+            0.16904279243255227,
+            0.16549929118813256,
+            0.16216340515930228,
+            0.16550015787708858,
+            0.1611254786655164,
+            0.16198530469906527,
+            0.16701644852580536
+          ],
+          "incumbent": [
+            0.1678088041034166,
+            0.1678088041034166,
+            0.16549929118813256,
+            0.16216340515930228,
+            0.16216340515930228,
+            0.1611254786655164,
+            0.1611254786655164,
+            0.1611254786655164
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            2,
+            8,
+            6,
+            10
+          ],
+          "losses": [
+            0.1678088041034166,
+            0.16904279243255227,
+            0.16549929118813256,
+            0.16216340515930228,
+            0.1611254786655164,
+            0.1610707204706198,
+            0.16198530469906527,
+            0.16550015787708858
+          ],
+          "incumbent": [
+            0.1678088041034166,
+            0.1678088041034166,
+            0.16549929118813256,
+            0.16216340515930228,
+            0.1611254786655164,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281128,
+          "initial": [
+            3,
+            5,
+            4,
+            0
+          ],
+          "indices": [
+            3,
+            5,
+            4,
+            0,
+            6,
+            8,
+            10,
+            2
+          ],
+          "losses": [
+            0.1678088041034166,
+            0.16904279243255227,
+            0.16549929118813256,
+            0.16216340515930228,
+            0.16198530469906527,
+            0.1610707204706198,
+            0.16550015787708858,
+            0.1611254786655164
+          ],
+          "incumbent": [
+            0.1678088041034166,
+            0.1678088041034166,
+            0.16549929118813256,
+            0.16216340515930228,
+            0.16198530469906527,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.05470946698915213,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.721934304166165,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.09205176201066934,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -11.093863590077138,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.0748362599988468,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.344383271607548,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10481854699901305,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -9.531803396540017,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            1,
+            4,
+            6,
+            11
+          ],
+          "losses": [
+            0.1610707204706198,
+            0.1611254786655164,
+            0.16701644852580536,
+            0.16904279243255227,
+            0.16712957004497575,
+            0.16549929118813256,
+            0.16198530469906527,
+            0.16903706500071178
+          ],
+          "incumbent": [
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            0,
+            6,
+            10,
+            4
+          ],
+          "losses": [
+            0.1610707204706198,
+            0.1611254786655164,
+            0.16701644852580536,
+            0.16904279243255227,
+            0.16216340515930228,
+            0.16198530469906527,
+            0.16550015787708858,
+            0.16549929118813256
+          ],
+          "incumbent": [
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281129,
+          "initial": [
+            8,
+            2,
+            7,
+            5
+          ],
+          "indices": [
+            8,
+            2,
+            7,
+            5,
+            10,
+            6,
+            0,
+            3
+          ],
+          "losses": [
+            0.1610707204706198,
+            0.1611254786655164,
+            0.16701644852580536,
+            0.16904279243255227,
+            0.16550015787708858,
+            0.16198530469906527,
+            0.16216340515930228,
+            0.1678088041034166
+          ],
+          "incumbent": [
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.09414798801299185,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.492956451523279,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.09841810399666429,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.816412242633476,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.1024089400016237,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -10.953177351753663,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.07589866701164283,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -19.063712294643302,
+              "warnings": []
+            }
+          ]
+        },
+        {
+          "method": "random",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            11,
+            10,
+            8,
+            1
+          ],
+          "losses": [
+            0.16216340515930228,
+            0.16701644852580536,
+            0.16198530469906527,
+            0.16782915367794896,
+            0.16903706500071178,
+            0.16550015787708858,
+            0.1610707204706198,
+            0.16712957004497575
+          ],
+          "incumbent": [
+            0.16216340515930228,
+            0.16216340515930228,
+            0.16198530469906527,
+            0.16198530469906527,
+            0.16198530469906527,
+            0.16198530469906527,
+            0.1610707204706198,
+            0.1610707204706198
+          ],
+          "proposals": [
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            },
+            {
+              "stage": "matched_random"
+            }
+          ]
+        },
+        {
+          "method": "fixed_ei",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            8,
+            10,
+            2,
+            4
+          ],
+          "losses": [
+            0.16216340515930228,
+            0.16701644852580536,
+            0.16198530469906527,
+            0.16782915367794896,
+            0.1610707204706198,
+            0.16550015787708858,
+            0.1611254786655164,
+            0.16549929118813256
+          ],
+          "incumbent": [
+            0.16216340515930228,
+            0.16216340515930228,
+            0.16198530469906527,
+            0.16198530469906527,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198
+          ],
+          "proposals": [
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            },
+            {
+              "stage": "fixed_Matern52_EI"
+            }
+          ]
+        },
+        {
+          "method": "botorch_logei",
+          "seed": 281130,
+          "initial": [
+            0,
+            7,
+            6,
+            9
+          ],
+          "indices": [
+            0,
+            7,
+            6,
+            9,
+            10,
+            8,
+            2,
+            5
+          ],
+          "losses": [
+            0.16216340515930228,
+            0.16701644852580536,
+            0.16198530469906527,
+            0.16782915367794896,
+            0.16550015787708858,
+            0.1610707204706198,
+            0.1611254786655164,
+            0.16904279243255227
+          ],
+          "incumbent": [
+            0.16216340515930228,
+            0.16216340515930228,
+            0.16198530469906527,
+            0.16198530469906527,
+            0.16198530469906527,
+            0.1610707204706198,
+            0.1610707204706198,
+            0.1610707204706198
+          ],
+          "proposals": [
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "common_initial_design"
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.12089094499242492,
+              "training_observations": 4,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -7.554145353588791,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.10141514497809112,
+              "training_observations": 5,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -10.319277897165547,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.08551007299683988,
+              "training_observations": 6,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -8.88866643059508,
+              "warnings": []
+            },
+            {
+              "stage": "BoTorch_LogEI_default_SingleTaskGP",
+              "version": "0.18.1",
+              "cpu_only": true,
+              "seconds": 0.09469020698452368,
+              "training_observations": 7,
+              "active_coordinates": [
+                0,
+                1,
+                2
+              ],
+              "surrogate_failure": null,
+              "selected_log_ei": -12.158457575289077,
+              "warnings": []
+            }
+          ]
+        }
+      ],
+      "selected_index": 8,
+      "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+      "unique_cv_trials": 12
+    }
+  },
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+  },
+  "fit_pack_sha256": "b8845c51e72c81d031d29b699f18e2d514637a230666697992d2ec1865537cbd",
+  "scope": "Fit/CV only. New Dev/Cal selection and independent confirmation remain separate.",
+  "source_sha256": "10ba72037b82b17a46d1094a4d353fc8cee0fd39fa77c87d2d9a5849962e5d9b",
+  "publication_projection": {
+    "original_sha256": "b2b78e96d88ef61bcfa232464db13a3278f878cdd02c5a3756c74acc5d8d8886",
+    "source_alias": "STUDY/parent_models/fit_complete.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-11-28T02:41:07.206456+00:00",
+  "cohort": "calibration",
+  "conditions": 36,
+  "raw_frames": 637,
+  "thinned_frames": 223,
+  "four_channel_files_verified": 2548,
+  "minimum_quality_fit_distance_m": 27.16266198428407,
+  "minimum_original_perception_ego_distance_m": 26.7239003790144,
+  "maximum_cte_m": 0.1358773448176117,
+  "maximum_speed_mps": 1.5613718337631273,
+  "all_successful_epochs_restored": true,
+  "index_sha256": "7d74ef2ab20a163ef04445e5f2697c730f232c7f10dbc7fc8c6e6405180281d3",
+  "plan_sha256": "3889d45645fa6024ed594aed559c26efdf05f75f9c51a0893cde7be1e64a8736",
+  "source_sha256": "aa54975baa4daed58a1eca8b14ad9a0ca840921a728cb99aed90950a571f56ac",
+  "semantic_labels_inspected_for_membership": false,
+  "model_predictions_inspected_for_membership": false,
+  "scope": "3m XY thinning only. Same-map qualified segments; original perception-training proximity is reported without claiming complete geographic/FOV independence. Scout frames are excluded.",
+  "publication_projection": {
+    "original_sha256": "b9f34c95023e83d0e7164b06610a2e458d55a8bf269532a37da827abcaa1150b",
+    "source_alias": "STUDY/calibration/registry/audit.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

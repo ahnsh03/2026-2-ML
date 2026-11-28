@@ -1,0 +1,40 @@
+{
+  "rows": 334,
+  "selected": 34,
+  "utility_recall": 0.37054631828978624,
+  "utility_road_macro": 0.3958118547843898,
+  "near_error_recall": 0.6888888888888889,
+  "near_error_road_macro": 0.7413419913419913,
+  "near_fn_recall": 0.7352941176470589,
+  "near_fp_recall": 0.6153846153846154,
+  "dawn_near_error_recall": null,
+  "no_supported_error_selected_fraction": 0.0,
+  "selected_zero_near_gt_fraction": 0.17647058823529413,
+  "near_error_positives": 45,
+  "near_error_positive_roads": 3,
+  "actual_rgb_quality_mae": 0.042546594473665905,
+  "offline_pack_reference": {
+    "rows": 334,
+    "selected": 34,
+    "utility_recall": 0.37054631828978624,
+    "utility_road_macro": 0.3958118547843898,
+    "near_error_recall": 0.6888888888888889,
+    "near_error_road_macro": 0.7413419913419913,
+    "near_fn_recall": 0.7352941176470589,
+    "near_fp_recall": 0.6153846153846154,
+    "dawn_near_error_recall": null,
+    "no_supported_error_selected_fraction": 0.0,
+    "selected_zero_near_gt_fraction": 0.17647058823529413,
+    "near_error_positives": 45,
+    "near_error_positive_roads": 3
+  },
+  "scope": "Actual RGB-only CPU40 replay on opened new Dev. GT joined afterward; not new independent confirmation.",
+  "all_records_gt_free_and_unapproved": true,
+  "selection_order_matches_full_feature_pack": true,
+  "publication_projection": {
+    "original_sha256": "50828caa57b36350a43c58ba7fa1c1281e8af0a3a57dc1de1ffa69bb18eefd48",
+    "source_alias": "STUDY/reports/actual_parent_rgb_review.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

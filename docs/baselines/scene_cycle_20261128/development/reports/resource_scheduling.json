@@ -1,0 +1,17 @@
+{
+  "training_container": "ml-scene-training",
+  "pause_reason": "Repeated stale UDP under concurrent GPU training; bounded same-condition probe succeeded with training paused.",
+  "probe_sha256": "f2ab73924eec5a60e364feacbe58bb38adc41d563deb85dfa2832e615da39e62",
+  "schedule_started_utc": "2026-11-28T02:02:34.609961+00:00",
+  "training_was_paused": true,
+  "collection_returncode": 0,
+  "collection_ended_utc": "2026-11-28T02:55:18.448185+00:00",
+  "training_unpaused_utc": "2026-11-28T02:55:18.490659+00:00",
+  "training_unpaused": true,
+  "publication_projection": {
+    "original_sha256": "87d54fa330c4f03aee43d765c4066e161994215655afdff7613ef1340797fc93",
+    "source_alias": "STUDY/reports/resource_schedule.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "records": [
+    {
+      "model": "env52_errors_GP",
+      "rows": 334,
+      "supported_both_rows": 227,
+      "utility_sd_spearman": -0.05594909848162093,
+      "sd_auc_near_and_far_errors": 0.4528795811518324,
+      "sd_auc_near_retained_far_error": 0.5471204188481675,
+      "error_mean_auc_near": 0.9497885428681276,
+      "negative_gaussian_contrast_rows": 218,
+      "negative_contrast_far_only_precision": 0.8761467889908257,
+      "negative_contrast_far_only_recall": 1.0,
+      "contrast_scope": "Uncalibrated Gaussian score contrast excludes zero; not a calibrated90% categorical failure interval.",
+      "quartile_sd_means": [
+        0.01939336414191961,
+        0.024281684820739266,
+        0.0309155278516984,
+        0.04300954378578343
+      ],
+      "quartile_outcome_fractions": [
+        [
+          0.10714285714285714,
+          0.5595238095238095,
+          0.10714285714285714
+        ],
+        [
+          0.17857142857142858,
+          0.6904761904761905,
+          0.17857142857142858
+        ],
+        [
+          0.04819277108433735,
+          0.6265060240963856,
+          0.060240963855421686
+        ],
+        [
+          0.0963855421686747,
+          0.40963855421686746,
+          0.1927710843373494
+        ]
+      ],
+      "interpretation": "SD measures model uncertainty. No monotone physical failure/near-versus-far guarantee; no safety label from absent support."
+    },
+    {
+      "model": "review_support_errors_GP",
+      "rows": 334,
+      "supported_both_rows": 227,
+      "utility_sd_spearman": 0.11331601600178755,
+      "sd_auc_near_and_far_errors": 0.4610238510762071,
+      "sd_auc_near_retained_far_error": 0.538976148923793,
+      "error_mean_auc_near": 0.9647827758554401,
+      "negative_gaussian_contrast_rows": 215,
+      "negative_contrast_far_only_precision": 0.8883720930232558,
+      "negative_contrast_far_only_recall": 1.0,
+      "contrast_scope": "Uncalibrated Gaussian score contrast excludes zero; not a calibrated90% categorical failure interval.",
+      "quartile_sd_means": [
+        0.02144589648979222,
+        0.026934825209463404,
+        0.03361628467791364,
+        0.05000128706017052
+      ],
+      "quartile_outcome_fractions": [
+        [
+          0.10714285714285714,
+          0.4523809523809524,
+          0.10714285714285714
+        ],
+        [
+          0.14285714285714285,
+          0.75,
+          0.14285714285714285
+        ],
+        [
+          0.10843373493975904,
+          0.5903614457831325,
+          0.14457831325301204
+        ],
+        [
+          0.07228915662650602,
+          0.4939759036144578,
+          0.14457831325301204
+        ]
+      ],
+      "interpretation": "SD measures model uncertainty. No monotone physical failure/near-versus-far guarantee; no safety label from absent support."
+    }
+  ],
+  "source_pack_sha256": "b16cd84ea1aa29caaf2252a815b6e1a55a7e81884e60a422f14221ffc01722f2",
+  "selection_sha256": "d3c177601364b91b0460d9b11a5cb89f26090a1dc9f00a75b67b4f0afe76dc00",
+  "source_sha256": "441c4ae16ad4e73b83af80464818a343c23970faad78d9854f09c9c04fa773af",
+  "scope": "Offline diagnostic on opened development. Cannot substitute for frozen independent confirmation.",
+  "publication_projection": {
+    "original_sha256": "9463d071df25167ef7b6896e3d8ee92b7612b9c3f21b1a78f38dc071588194ba",
+    "source_alias": "STUDY/figures_refined/uncertainty_diagnostic.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

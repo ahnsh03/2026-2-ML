@@ -1,0 +1,241 @@
+{
+  "records": [
+    {
+      "model": "env52_quality_GP",
+      "budget": 8,
+      "methods": {
+        "fixed_ei": {
+          "mean_final_gain_vs_random": 0.0004320369524394528,
+          "seed_gains": [
+            0.0,
+            0.0,
+            0.0012961108573183583
+          ],
+          "winning_seeds": 1,
+          "surrogate_failures": 0,
+          "worth_using": false
+        },
+        "botorch_logei": {
+          "mean_final_gain_vs_random": -7.161111527792992e-05,
+          "seed_gains": [
+            0.0,
+            -0.000755472101576074,
+            0.0005406387557422843
+          ],
+          "winning_seeds": 1,
+          "surrogate_failures": 0,
+          "worth_using": false
+        }
+      }
+    },
+    {
+      "model": "env52_quality_RF",
+      "budget": 8,
+      "methods": {
+        "fixed_ei": {
+          "mean_final_gain_vs_random": 8.219131080480317e-05,
+          "seed_gains": [
+            0.0,
+            0.0002465739324144095,
+            0.0
+          ],
+          "winning_seeds": 1,
+          "surrogate_failures": 0,
+          "worth_using": false
+        },
+        "botorch_logei": {
+          "mean_final_gain_vs_random": 8.219131080480317e-05,
+          "seed_gains": [
+            0.0,
+            0.0002465739324144095,
+            0.0
+          ],
+          "winning_seeds": 1,
+          "surrogate_failures": 0,
+          "worth_using": false
+        }
+      }
+    },
+    {
+      "model": "env52_errors_GP",
+      "budget": 8,
+      "methods": {
+        "fixed_ei": {
+          "mean_final_gain_vs_random": 0.00036022581375555474,
+          "seed_gains": [
+            0.0,
+            0.0,
+            0.0010806774412666642
+          ],
+          "winning_seeds": 1,
+          "surrogate_failures": 0,
+          "worth_using": false
+        },
+        "botorch_logei": {
+          "mean_final_gain_vs_random": 0.00036022581375555474,
+          "seed_gains": [
+            0.0,
+            0.0,
+            0.0010806774412666642
+          ],
+          "winning_seeds": 1,
+          "surrogate_failures": 0,
+          "worth_using": false
+        }
+      }
+    },
+    {
+      "model": "env52_errors_RF",
+      "budget": 8,
+      "methods": {
+        "fixed_ei": {
+          "mean_final_gain_vs_random": 2.477920650810946e-05,
+          "seed_gains": [
+            0.0,
+            7.433761952432838e-05,
+            0.0
+          ],
+          "winning_seeds": 1,
+          "surrogate_failures": 0,
+          "worth_using": false
+        },
+        "botorch_logei": {
+          "mean_final_gain_vs_random": 2.477920650810946e-05,
+          "seed_gains": [
+            0.0,
+            7.433761952432838e-05,
+            0.0
+          ],
+          "winning_seeds": 1,
+          "surrogate_failures": 0,
+          "worth_using": false
+        }
+      }
+    },
+    {
+      "model": "review_support_quality_GP",
+      "budget": 8,
+      "methods": {
+        "fixed_ei": {
+          "mean_final_gain_vs_random": 0.0,
+          "seed_gains": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "winning_seeds": 0,
+          "surrogate_failures": 0,
+          "worth_using": false
+        },
+        "botorch_logei": {
+          "mean_final_gain_vs_random": 4.45073450581294e-05,
+          "seed_gains": [
+            0.0001335220351743882,
+            0.0,
+            0.0
+          ],
+          "winning_seeds": 1,
+          "surrogate_failures": 0,
+          "worth_using": false
+        }
+      }
+    },
+    {
+      "model": "review_support_quality_RF",
+      "budget": 8,
+      "methods": {
+        "fixed_ei": {
+          "mean_final_gain_vs_random": 0.0,
+          "seed_gains": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "winning_seeds": 0,
+          "surrogate_failures": 0,
+          "worth_using": false
+        },
+        "botorch_logei": {
+          "mean_final_gain_vs_random": -4.498176516535649e-05,
+          "seed_gains": [
+            -0.00013494529549606948,
+            0.0,
+            0.0
+          ],
+          "winning_seeds": 0,
+          "surrogate_failures": 0,
+          "worth_using": false
+        }
+      }
+    },
+    {
+      "model": "review_support_errors_GP",
+      "budget": 8,
+      "methods": {
+        "fixed_ei": {
+          "mean_final_gain_vs_random": 7.781563395179807e-05,
+          "seed_gains": [
+            0.0,
+            6.360508359695705e-05,
+            0.00016984181825843714
+          ],
+          "winning_seeds": 2,
+          "surrogate_failures": 0,
+          "worth_using": false
+        },
+        "botorch_logei": {
+          "mean_final_gain_vs_random": 7.781563395179807e-05,
+          "seed_gains": [
+            0.0,
+            6.360508359695705e-05,
+            0.00016984181825843714
+          ],
+          "winning_seeds": 2,
+          "surrogate_failures": 0,
+          "worth_using": false
+        }
+      }
+    },
+    {
+      "model": "review_support_errors_RF",
+      "budget": 8,
+      "methods": {
+        "fixed_ei": {
+          "mean_final_gain_vs_random": 1.8252731632204904e-05,
+          "seed_gains": [
+            5.475819489661471e-05,
+            0.0,
+            0.0
+          ],
+          "winning_seeds": 1,
+          "surrogate_failures": 0,
+          "worth_using": false
+        },
+        "botorch_logei": {
+          "mean_final_gain_vs_random": 1.8252731632204904e-05,
+          "seed_gains": [
+            5.475819489661471e-05,
+            0.0,
+            0.0
+          ],
+          "winning_seeds": 1,
+          "surrogate_failures": 0,
+          "worth_using": false
+        }
+      }
+    }
+  ],
+  "scope": "Matched budget/common initial design on buffered geographic CV only. The final model is best from the evaluated union; usefulness gate applies to future search, not selection provenance.",
+  "sources": [
+    "https://botorch.org/docs/next/tutorials/closed_loop_botorch_only",
+    "https://papers.nips.cc/paper/2012/hash/05311655a15b75fab86956663e1819cd-Abstract.html",
+    "https://papers.nips.cc/paper_files/paper/2023/file/419f72cbd568ad62183f8132a3605a2a-Paper-Conference.pdf"
+  ],
+  "warning": "Official RBF/ARD/prior/learned-noise LogEI baseline changes multiple surrogate/acquisition choices from legacy fixed Matern EI; do not attribute all differences to acquisition alone.",
+  "publication_projection": {
+    "original_sha256": "6bf0da942c31f40f4d4cbe22d8b41dc18135df49537eafe7ae4f9f147d8e06d7",
+    "source_alias": "STUDY/reports/bo_effectiveness_parent.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "created_utc": "2026-11-28T02:44:10.796680+00:00",
+  "reason": "The best photo12 e-means K16 has Dev semantic score .81015 but seed ARI .6923, below the prespecified .7 stability gate. Test adequate optimization before rejecting grouping.",
+  "representation": "photo12",
+  "k": [
+    12,
+    16
+  ],
+  "nepochs": [
+    10,
+    20
+  ],
+  "seeds": [
+    281128,
+    281129,
+    281130
+  ],
+  "fit": "same geographically cross-fitted3118 representations; no Dev labels in center fitting",
+  "selection": "Keep Lloyd/default-pass controls. New e-means replaces context only if mean Dev semantic score is at least the existing winner and ARI>=.7. Threshold/selection improvement remains a separate test.",
+  "independent_confirmation_unopened": true,
+  "scope": "Exploratory Dev refinement; not an independent performance claim or a change to already selected global review scores.",
+  "publication_projection": {
+    "original_sha256": "d92631ec09158b5e008138660fc111940cb5b209598269ec30286438515c8727",
+    "source_alias": "STUDY/protocol/emeans_pass_refinement.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

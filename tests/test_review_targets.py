@@ -32,6 +32,15 @@ class ReviewTargetsTest(unittest.TestCase):
         r=support_aware_targets(np.zeros((1,9,3)))
         self.assertTrue(np.isnan(r['whole_frame_iou'][0]));self.assertEqual(r['review_utility'][0],0)
 
+    def test_gt_supported_comparison_population_survives_prediction_changes(self):
+        before=np.zeros((2,9,3),int);after=before.copy()
+        before[0,6]=[0,80,0]  # Removing this FP makes Q undefined, not perfect.
+        before[1,6]=[0,0,60];after[1,6]=[60,5,0]
+        left=support_aware_targets(before);right=support_aware_targets(after)
+        self.assertTrue(np.isfinite(left['whole_frame_iou'][0]));self.assertTrue(np.isnan(right['whole_frame_iou'][0]))
+        np.testing.assert_array_equal(left['whole_gt_pixels']>=50,[False,True])
+        np.testing.assert_array_equal(left['whole_gt_pixels']>=50,right['whole_gt_pixels']>=50)
+
     def test_posterior_utility_uses_cross_task_covariance(self):
         mean=np.array([[.2,.8,.1]]);cov=np.array([[[.04,.01,0],[.01,.09,0],[0,0,.01]]])
         u,sd=gaussian_utility(mean,cov)

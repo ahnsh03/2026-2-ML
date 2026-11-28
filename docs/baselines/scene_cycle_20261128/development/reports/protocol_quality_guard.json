@@ -1,0 +1,14 @@
+{
+  "created_utc": "2026-11-28T03:12:21.173923+00:00",
+  "reason": "Conservative full-pipeline handoff guard inherited from the prior offline cycle; declare before any new independent confirmation. Neural-only promotion remains independent.",
+  "maximum_macro_mae_increase_vs_parent_pipeline": 0.01,
+  "minimum_interval90_macro_coverage": 0.8,
+  "parent_reference": "Frozen r1 perception plus its own new74-column GP quality head; never apply old quality model to changed perception outputs.",
+  "scope": "Practical cross-version quality comparison, not statistical equivalence. Report interval widths and segment/lighting coverage. These additional guards do not relax the frozen review or neural gates.",
+  "publication_projection": {
+    "original_sha256": "b2ea4afe29c5166cec90470634b5d9467b05f5af6d30aa49ad53e8169536e276",
+    "source_alias": "STUDY/protocol/quality_handoff_guard_frozen.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

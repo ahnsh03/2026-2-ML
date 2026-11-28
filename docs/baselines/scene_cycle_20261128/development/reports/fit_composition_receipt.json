@@ -1,0 +1,31 @@
+{
+  "created_utc": "2026-11-28T03:06:47.060170+00:00",
+  "status": "derived_identity_receipt_after_full_array_reconstitution",
+  "sha256": "3138b6d96abb4854dabc2509ff236318af7c8982d5d31c6fd46cdbe3759b8018",
+  "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+  },
+  "perception_weights": "model_state_dict",
+  "schema_sha256": "d4b108571a88f8c81b5e543c6d5e36b250d50d68315783b6ebe2c9eb89aae1c8",
+  "source_packs_sha256": {
+    "g1_packs/quality_fit.npz": "e336e246216a3f0dd82d97a1aeff85f2c73c038a95b31c1d36da3fd8dde6cc4f",
+    "confirmation/packs_f1/fresh_confirmation.npz": "9daa931f6160773ae29a323d9868dfd3a077f1e9c1bd60cb3bdcf7edbb29155d"
+  },
+  "source_receipts_sha256": {
+    "g1_packs/quality_fit.json": "3199ae19a4ea17888d44c09a00cc8dbb4d34e645a0f735485375eacb8c2102fb",
+    "confirmation/packs_f1/fresh_confirmation.json": "706320af0f20b4cc0278666492cccfd890dc797e068cda0652e6d20ba0df1116"
+  },
+  "scope": "Added after experiments solely for role-audit provenance. Every array equals the exact originally verified source concatenation; no target or membership changed.",
+  "publication_projection": {
+    "original_sha256": "eb414f9fd38bb968cc78195b871667428db1a7c68e8f6693f68d5fa9cc1262a6",
+    "source_alias": "STUDY/fit_all_parent_features.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

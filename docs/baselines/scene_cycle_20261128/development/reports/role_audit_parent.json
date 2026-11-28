@@ -1,0 +1,278 @@
+{
+  "created_utc": "2026-11-28T03:06:48.211508+00:00",
+  "roles": {
+    "quality_fit_all": {
+      "rows": 3118,
+      "unique_ids": 3118,
+      "unique_pixels": 3118,
+      "sha256": "3138b6d96abb4854dabc2509ff236318af7c8982d5d31c6fd46cdbe3759b8018",
+      "receipt_sha256": "eb414f9fd38bb968cc78195b871667428db1a7c68e8f6693f68d5fa9cc1262a6"
+    },
+    "calibration_old": {
+      "rows": 612,
+      "unique_ids": 612,
+      "unique_pixels": 612,
+      "sha256": "afbbc3eaaf8271d386e5a0d90b39bdc4c64b55b4e3c6a59f3d1c859c9f76a259",
+      "receipt_sha256": "c1f35b7d3e9e151e967e1c9e18f169bb347fa8cfeba76b6dac22c067e03f7a8d"
+    },
+    "development_old": {
+      "rows": 937,
+      "unique_ids": 937,
+      "unique_pixels": 937,
+      "sha256": "82948c99bc12901cccd22567f884280f0f4c1989c65a775f41c0f20cd5f16cfd",
+      "receipt_sha256": "2bc8876d818f41194170313fa4f828583ff821ffd64ebf03e50a68d96b09a935"
+    },
+    "development_new_raw": {
+      "rows": 994,
+      "unique_ids": 994,
+      "unique_pixels": 994,
+      "sha256": "24c0e01d27a9e59b8446968ce47aabb9b2592c78bde508b03f2086a7dc861f73"
+    },
+    "calibration_new_raw": {
+      "rows": 637,
+      "unique_ids": 637,
+      "unique_pixels": 637,
+      "sha256": "eea80b37d8d8d7b908a206b90bf4988801e9d985c4ce650e0dca3a1419137a76"
+    },
+    "adaptation_new_raw": {
+      "rows": 424,
+      "unique_ids": 424,
+      "unique_pixels": 424,
+      "sha256": "a4dd7432e821267e6c5c043ad96139898a07a7fee068ca74e81b025e24637951"
+    },
+    "candidate_existing_unused": {
+      "rows": 4370,
+      "unique_ids": 4370,
+      "unique_pixels": 4370,
+      "sha256": "d4f2e0b8a77e29a2d437c58351d902299042abd47d72990e5745028dc7680ec0",
+      "receipt_sha256": "42d15b91ec94d5fda0efd3234b53f84628a9d28a51fc92be83863edf60837e39"
+    },
+    "original_retention": {
+      "rows": 1404,
+      "unique_ids": 1404,
+      "unique_pixels": 1404,
+      "manifest_sha256": "aa8071ca6720c675c6fbb94daaf4cadd491af1aff4689a328b8345f5374c5166"
+    }
+  },
+  "pairwise_checks": [
+    {
+      "left": "quality_fit_all",
+      "right": "calibration_old",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "quality_fit_all",
+      "right": "development_old",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "quality_fit_all",
+      "right": "development_new_raw",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "quality_fit_all",
+      "right": "calibration_new_raw",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "quality_fit_all",
+      "right": "adaptation_new_raw",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "quality_fit_all",
+      "right": "candidate_existing_unused",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "quality_fit_all",
+      "right": "original_retention",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "calibration_old",
+      "right": "development_old",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "calibration_old",
+      "right": "development_new_raw",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "calibration_old",
+      "right": "calibration_new_raw",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "calibration_old",
+      "right": "adaptation_new_raw",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "calibration_old",
+      "right": "candidate_existing_unused",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "calibration_old",
+      "right": "original_retention",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "development_old",
+      "right": "development_new_raw",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "development_old",
+      "right": "calibration_new_raw",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "development_old",
+      "right": "adaptation_new_raw",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "development_old",
+      "right": "candidate_existing_unused",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "development_old",
+      "right": "original_retention",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "development_new_raw",
+      "right": "calibration_new_raw",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "development_new_raw",
+      "right": "adaptation_new_raw",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "development_new_raw",
+      "right": "candidate_existing_unused",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "development_new_raw",
+      "right": "original_retention",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "calibration_new_raw",
+      "right": "adaptation_new_raw",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "calibration_new_raw",
+      "right": "candidate_existing_unused",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "calibration_new_raw",
+      "right": "original_retention",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "adaptation_new_raw",
+      "right": "candidate_existing_unused",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "adaptation_new_raw",
+      "right": "original_retention",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    },
+    {
+      "left": "candidate_existing_unused",
+      "right": "original_retention",
+      "id_overlap": 0,
+      "pixel_overlap": 0
+    }
+  ],
+  "training": [
+    {
+      "run": "GPGlobalFull_s271127",
+      "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+      "training_rows": 29073,
+      "training_membership_sha256": "ccf2f14ea17f5cd5b6b5bef989d6ae84335877a99e15c816df9a4ce2aa45f09c",
+      "role_overlaps": {
+        "quality_fit_all": {
+          "id_overlap": 0,
+          "pixel_overlap": 0
+        },
+        "calibration_old": {
+          "id_overlap": 0,
+          "pixel_overlap": 0
+        },
+        "development_old": {
+          "id_overlap": 0,
+          "pixel_overlap": 0
+        },
+        "development_new_raw": {
+          "id_overlap": 0,
+          "pixel_overlap": 0
+        },
+        "calibration_new_raw": {
+          "id_overlap": 0,
+          "pixel_overlap": 0
+        },
+        "adaptation_new_raw": {
+          "id_overlap": 0,
+          "pixel_overlap": 0
+        },
+        "candidate_existing_unused": {
+          "id_overlap": 0,
+          "pixel_overlap": 0
+        },
+        "original_retention": {
+          "id_overlap": 0,
+          "pixel_overlap": 0
+        }
+      }
+    }
+  ],
+  "all_reserved_role_overlaps_zero": true,
+  "source_sha256": "1302e78f04fb0bbe9d391b10662a7b0c605341a0c6b7eba80f4e3e0bae06cbc8",
+  "scope": "ID/decoded-pixel role and exact model-membership audit. Captured raw Dev/Cal/confirmation frames stay reserved even when not3m-thinned for scoring. Not a camera-FOV or new-city independence proof.",
+  "publication_projection": {
+    "original_sha256": "d1646cd2d1a565323c360f23a7a5d5dbc95c96c5825def99cb8866740efcf0c6",
+    "source_alias": "STUDY/reports/role_audit_parent.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

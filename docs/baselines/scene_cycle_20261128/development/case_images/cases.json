@@ -1,0 +1,158 @@
+{
+  "cases": [
+    {
+      "case": "near_fn",
+      "sample_id": "development28e019_scene28_s00_w5_h20_f0012",
+      "site": "scene28_s00",
+      "weather": 5,
+      "hour": 20,
+      "display_hw": [
+        360,
+        640
+      ],
+      "source_camera_hw": [
+        720,
+        1280
+      ],
+      "display_grid": "model-input crop12:372; true GT nearest-neighbor target raster",
+      "recommended_aspect_ratio": "16:9; preserve proportions",
+      "true_gt_pixels": 3284,
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+      },
+      "recomputed_lane_iou": 0.2513444664590999,
+      "source_manifest_sha256": "9a5a736f2a18d61782c47132a2a3c9a72208e86734b8b833a363f675f296bb9c",
+      "source_pack_sha256": "b16cd84ea1aa29caaf2252a815b6e1a55a7e81884e60a422f14221ffc01722f2",
+      "image_sha256": {
+        "near_fn/errors.png": "64d1b21f45929ba4fa9bf785711b9661a4fa6a38484ed8ca7a49d8378629a454",
+        "near_fn/gt.png": "6a18531c7c8e18b099fdabae3f1b7835e1ce19541a5f07af08d637f0cc6127a6",
+        "near_fn/gt_mask.png": "dd5415d869522b280ffea62bc86436fa3d01752f5d136a2d1574e75e33cca041",
+        "near_fn/prediction.png": "b77fc2f8ee4fd15c30be8d1519af524ad77609a74059019dc02bb4a91b48ee15",
+        "near_fn/rgb.png": "cbe8aee7fb8d4e57dc120c525309f2dc0ca7a55a8fdce5a7942260c005134ae3"
+      },
+      "scope": "Opened Dev case illustration, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim."
+    },
+    {
+      "case": "near_fp",
+      "sample_id": "development28e058_scene28_s06_w5_h20_f0015",
+      "site": "scene28_s06",
+      "weather": 5,
+      "hour": 20,
+      "display_hw": [
+        360,
+        640
+      ],
+      "source_camera_hw": [
+        720,
+        1280
+      ],
+      "display_grid": "model-input crop12:372; true GT nearest-neighbor target raster",
+      "recommended_aspect_ratio": "16:9; preserve proportions",
+      "true_gt_pixels": 19,
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+      },
+      "recomputed_lane_iou": 0.0,
+      "source_manifest_sha256": "9a5a736f2a18d61782c47132a2a3c9a72208e86734b8b833a363f675f296bb9c",
+      "source_pack_sha256": "b16cd84ea1aa29caaf2252a815b6e1a55a7e81884e60a422f14221ffc01722f2",
+      "image_sha256": {
+        "near_fp/errors.png": "4b650fb7059d840d44a1cb66889ddba36705635d8bff4caa778fca386f34724f",
+        "near_fp/gt.png": "8d1542746c0a8f1f6d4890f7535c47c9aab56677a269001f3e7f83885fc10e55",
+        "near_fp/gt_mask.png": "20ba96054897cff847be7b2f6bbf6d4b3af358ce7969c3552d17c3cc444a6d47",
+        "near_fp/prediction.png": "49164b6fca0882c5b1fa00fadeeedf24ec05c983f0d5e480fab4b3af0e3ab237",
+        "near_fp/rgb.png": "9d160a4a04899a1d5cabdce7cce3101b929c2e01969cb639a3ee61122bff6f51"
+      },
+      "scope": "Opened Dev case illustration, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim."
+    },
+    {
+      "case": "near_retained_far_error",
+      "sample_id": "resourceprobe28_scene28_s02_w4_h07_f0019",
+      "site": "scene28_s02",
+      "weather": 4,
+      "hour": 7,
+      "display_hw": [
+        360,
+        640
+      ],
+      "source_camera_hw": [
+        720,
+        1280
+      ],
+      "display_grid": "model-input crop12:372; true GT nearest-neighbor target raster",
+      "recommended_aspect_ratio": "16:9; preserve proportions",
+      "true_gt_pixels": 1734,
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+      },
+      "recomputed_lane_iou": 0.6994877632327832,
+      "source_manifest_sha256": "9a5a736f2a18d61782c47132a2a3c9a72208e86734b8b833a363f675f296bb9c",
+      "source_pack_sha256": "b16cd84ea1aa29caaf2252a815b6e1a55a7e81884e60a422f14221ffc01722f2",
+      "image_sha256": {
+        "near_retained_far_error/errors.png": "eb1b56788628d4749d7d734ebfb844bde0ca0227136a5dc4390af9a969a6ccb1",
+        "near_retained_far_error/gt.png": "c7862412e282500aa33de9b694f5cfce3d26b1f046f8284cb7c33ca1e1bc4d6a",
+        "near_retained_far_error/gt_mask.png": "a0e2e7f1f4dff43e887f8c98c74a652c7ba25dca9fec6607b6e2d73eaff84e80",
+        "near_retained_far_error/prediction.png": "8f1c994dbcc99bfae5f8f37511eae4ce7345a5df24ca0c9bda18659e4cca18ab",
+        "near_retained_far_error/rgb.png": "b60bdf870ac0945b1afef2cee041daa62cd23d1a4709ea651d32951a765aeb49"
+      },
+      "scope": "Opened Dev case illustration, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim."
+    },
+    {
+      "case": "07h_near_retained",
+      "sample_id": "development28e000_scene28_s00_w0_h07_f0003",
+      "site": "scene28_s00",
+      "weather": 0,
+      "hour": 7,
+      "display_hw": [
+        360,
+        640
+      ],
+      "source_camera_hw": [
+        720,
+        1280
+      ],
+      "display_grid": "model-input crop12:372; true GT nearest-neighbor target raster",
+      "recommended_aspect_ratio": "16:9; preserve proportions",
+      "true_gt_pixels": 3166,
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+      },
+      "recomputed_lane_iou": 0.9281939695368355,
+      "source_manifest_sha256": "9a5a736f2a18d61782c47132a2a3c9a72208e86734b8b833a363f675f296bb9c",
+      "source_pack_sha256": "b16cd84ea1aa29caaf2252a815b6e1a55a7e81884e60a422f14221ffc01722f2",
+      "image_sha256": {
+        "07h_near_retained/errors.png": "150ea81c683d64abf43e4e294b175cc2b2d717f4cffd798f06c90e22f1cdcbc3",
+        "07h_near_retained/gt.png": "dcae7de0aee3f145b97bbfe653eee879c3ba7e74fed1cd177ca140680a6330a6",
+        "07h_near_retained/gt_mask.png": "3f97cb05249dea55331c574dad5e58563d19f50feda19b06ff1c77b93793cfd4",
+        "07h_near_retained/prediction.png": "8c3f047dedf583b64c424571fb77fb6a71376dfd17b402aabbe407b4cc32e568",
+        "07h_near_retained/rgb.png": "1a9ff58f781ac23a5f9afd522c6ab295dd3c477aa7d574a06c82d504d3d11dfc"
+      },
+      "scope": "Opened Dev case illustration, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim."
+    }
+  ],
+  "source_sha256": "c4994291900acd90d8823de954ac0740e4149d9f17401683820149655f70d85d",
+  "baseline_case_index_sha256": null,
+  "publication_projection": {
+    "original_sha256": "19670abde1db7799fd616a73758893b7fb069971e36a1504e28fa575b34b6613",
+    "private_path_prefixes_replaced": true
+  }
+}

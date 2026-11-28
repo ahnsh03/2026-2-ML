@@ -1,0 +1,52 @@
+{
+  "version": "support-aware-matched-admissions-1",
+  "candidate_rows": 4794,
+  "bank_rows": 2048,
+  "budget_fraction": 0.42720066750104296,
+  "source_bundle_sha256": "fe3930448df0d61097e5b666108f143535c6249bf1af6e97483ccf3119d45cc6",
+  "feature_only_pool_sha256": "cc72d3291920a0dc2dd56496ef6d6ef5f9a4f8e174399c824070651730650ff0",
+  "rgb_only_manifest_sha256": "57528cdc2d577be4288f861c7f12e3109e08005a73f5c8c8bb27a53011ac9f96",
+  "parent_membership_sha256": "ccf2f14ea17f5cd5b6b5bef989d6ae84335877a99e15c816df9a4ce2aa45f09c",
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+  },
+  "matched_environment_source_counts": {
+    "(0, 1, 'existing_unused')": 10,
+    "(3, 1, 'new_scene28')": 38,
+    "(5, 1, 'new_scene28')": 42,
+    "(2, 0, 'existing_unused')": 368,
+    "(2, 2, 'existing_unused')": 140,
+    "(0, 0, 'existing_unused')": 489,
+    "(0, 2, 'existing_unused')": 111,
+    "(5, 1, 'existing_unused')": 1,
+    "(1, 0, 'existing_unused')": 276,
+    "(5, 0, 'existing_unused')": 212,
+    "(4, 1, 'new_scene28')": 39,
+    "(4, 2, 'existing_unused')": 8,
+    "(3, 0, 'existing_unused')": 81,
+    "(0, 1, 'new_scene28')": 32,
+    "(2, 1, 'existing_unused')": 1,
+    "(3, 2, 'existing_unused')": 1,
+    "(1, 1, 'new_scene28')": 25,
+    "(4, 0, 'existing_unused')": 152,
+    "(4, 1, 'existing_unused')": 1,
+    "(1, 2, 'existing_unused')": 2,
+    "(2, 1, 'new_scene28')": 19
+  },
+  "risk_random_overlap": 907,
+  "parent_training_overlap": 0,
+  "uses_candidate_gt_for_selection": false,
+  "source_sha256": "467a1964edd33dc3fa4179a07ed0aa8add2b5eaac84d39fb730b0852e489fcf6",
+  "scope": "Closed offline buffer. Random arm matches risk-arm SDK weather/lighting/source quotas. Both start from the same parent with equal replay and updates; overlap is allowed and reported. GT join is a later operation.",
+  "publication_projection": {
+    "original_sha256": "0c1831a675c310d21c92ac98b4147f9e7782c726b9e7f5255e6f862bc4c2f637",
+    "source_alias": "STUDY/matched_bank_selection/selection.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

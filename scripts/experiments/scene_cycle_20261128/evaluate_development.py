@@ -84,11 +84,13 @@ def main():
     for n in ['study','models','dev-pack','dev-environment','cal-pack','cal-environment','environment-prototype','output']:
         parser.add_argument('--'+n,type=Path,required=True)
     parser.add_argument('--fit-pack',type=Path,help='Optional same-version fitting pack for environment-only confounding controls')
+    parser.add_argument('--environment-fit',type=Path,help='Explicit separately versioned environment refinement; never overwrite its control')
     args=parser.parse_args();s=args.study;out=args.output;out.mkdir(exist_ok=False)
     frozen=read(s/'protocol/review_development_grid.json');schema=read(s/'schema.json');fit=read(args.models/'fit_complete.json');identity=fit['perception_identity']
     dev=load_pack(args.dev_pack,identity);cal=load_pack(args.cal_pack,identity)
     if set(dev['ids'])&set(cal['ids'])or set(dev['pixel_sha256'])&set(cal['pixel_sha256']):raise ValueError('Dev/Cal overlap')
-    envfit=read(s/'environment_fit/fit_complete.json');envfit['_directory']=s/'environment_fit';env=SceneEnvironment(args.environment_prototype)
+    environment_fit=args.environment_fit or s/'environment_fit'
+    envfit=read(environment_fit/'fit_complete.json');envfit['_directory']=environment_fit;env=SceneEnvironment(args.environment_prototype)
     dv=environment_vectors(dev,args.dev_environment,schema,env.hist_columns);cv=environment_vectors(cal,args.cal_environment,schema,env.hist_columns)
     selected_env,record,envresults,classifier_scores=environment_candidates(envfit,env,dv,dev)
     # Reuse verified model/transforms; only candidate centers and their OOD limits vary.
@@ -203,7 +205,7 @@ def main():
         environment_selected=selected_env,environment_candidates=envresults,rgb_classifier_development_scores=classifier_scores,
         environment_ood_fraction=float(de['environment_ood'].mean()),candidates=candidates,environment_only_controls=environment_controls,
         source_sha256=sha256_file(Path(__file__)),frozen_grid_sha256=sha256_file(s/'protocol/review_development_grid.json'),
-        input_sha256={str(p):sha256_file(p)for p in [args.dev_pack,args.dev_environment,args.cal_pack,args.cal_environment,args.models/'fit_complete.json']},
+        input_sha256={str(p):sha256_file(p)for p in [args.dev_pack,args.dev_environment,args.cal_pack,args.cal_environment,args.models/'fit_complete.json',environment_fit/'fit_complete.json']},
         scope='Development selection only. No independent confirmation accessed. Zero supported-error utility is not operational safety.')
     dump(out/'selection.json',document);dump(out/'policy.json',best['policy'])
     dump(out/'environment_key.json',dict(key=','.join(str(selected_env[n])for n in ['representation','method','k','seed'])))

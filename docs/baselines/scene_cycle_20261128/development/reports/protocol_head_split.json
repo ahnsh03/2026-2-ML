@@ -1,0 +1,23 @@
+{
+  "recorded_utc": "2026-11-28T02:57:25.067021+00:00",
+  "stage": "After new Dev, before matched banks and independent confirmation",
+  "reason": "Whole-Q MAE and supported-error utility have different objectives. The implemented bundle has always supported independently chosen RF/GP heads. Make the comparison scope explicit rather than describing the mixed candidate as one winning family.",
+  "primary": "Best whole-Q head plus supported-error head selected on Dev under existing quality/budget gates.",
+  "controls": [
+    "RF-only: best RF Q head and best RF utility policy",
+    "GP-only: best GP Q head and best GP utility policy",
+    "GP-only conditional-variance audit diagnostic fixed before confirmation"
+  ],
+  "all_heads_bind_same_perception_identity": true,
+  "shared_fit_rows_and_same_task_features_for_family_comparison": true,
+  "unchanged_quality_tolerance": 0.01,
+  "unchanged_review_gates": true,
+  "independent_confirmation_accessed": false,
+  "scope": "No claim that GP wins data selection when RF error head wins. No post-confirmation family/threshold switching.",
+  "publication_projection": {
+    "original_sha256": "ab97fd83518880a795129983a81082961f2e43217376dd352e43067efbd9981a",
+    "source_alias": "STUDY/protocol/head_decomposition_amendment.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

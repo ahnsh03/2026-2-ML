@@ -1,0 +1,112 @@
+{
+  "records": {
+    "whole_pool": {
+      "rows": 4794,
+      "mean_supported_error_utility": 0.38042344597413436,
+      "near_error_rows": 674,
+      "near_fn_rows": 427,
+      "near_fp_rows": 315,
+      "far_error_rows": 4581,
+      "offroad_fp_rows": 9,
+      "near_gt_supported_rows": 4556,
+      "mean_defined_lane_iou": 0.7074817114055523,
+      "spatial_5m_cells": 263,
+      "weather": {
+        "0": 1549,
+        "1": 801,
+        "2": 1065,
+        "3": 255,
+        "4": 510,
+        "5": 614
+      },
+      "by_weather_utility": {
+        "0": 0.36910910264686897,
+        "1": 0.3529962546816479,
+        "2": 0.4288732394366197,
+        "3": 0.44803921568627453,
+        "4": 0.34558823529411764,
+        "5": 0.36156351791530944
+      }
+    },
+    "Risk2048": {
+      "rows": 2048,
+      "mean_supported_error_utility": 0.537109375,
+      "near_error_rows": 588,
+      "near_fn_rows": 381,
+      "near_fp_rows": 275,
+      "far_error_rows": 2030,
+      "offroad_fp_rows": 9,
+      "near_gt_supported_rows": 2006,
+      "mean_defined_lane_iou": 0.6491873857089163,
+      "spatial_5m_cells": 258,
+      "weather": {
+        "0": 642,
+        "1": 303,
+        "2": 528,
+        "3": 120,
+        "4": 200,
+        "5": 255
+      },
+      "by_weather_utility": {
+        "0": 0.5249221183800623,
+        "1": 0.49174917491749176,
+        "2": 0.5696022727272727,
+        "3": 0.6979166666666666,
+        "4": 0.5075,
+        "5": 0.5019607843137255
+      }
+    },
+    "Random2048": {
+      "rows": 2048,
+      "mean_supported_error_utility": 0.393798828125,
+      "near_error_rows": 315,
+      "near_fn_rows": 211,
+      "near_fp_rows": 142,
+      "far_error_rows": 1954,
+      "offroad_fp_rows": 6,
+      "near_gt_supported_rows": 1943,
+      "mean_defined_lane_iou": 0.699864383799137,
+      "spatial_5m_cells": 255,
+      "weather": {
+        "0": 642,
+        "1": 303,
+        "2": 528,
+        "3": 120,
+        "4": 200,
+        "5": 255
+      },
+      "by_weather_utility": {
+        "0": 0.36682242990654207,
+        "1": 0.34983498349834985,
+        "2": 0.4431818181818182,
+        "3": 0.49583333333333335,
+        "4": 0.36125,
+        "5": 0.3892156862745098
+      }
+    }
+  },
+  "near_event_auc_on_candidate_pool": 0.8920293638904093,
+  "whole_q_mae_on_candidate_pool": 0.04784225997884498,
+  "risk_minus_matched_random_utility": 0.143310546875,
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+  },
+  "selection_sha256": "0c1831a675c310d21c92ac98b4147f9e7782c726b9e7f5255e6f862bc4c2f637",
+  "source_pack_sha256": {
+    "candidate_pool.npz": "d4f2e0b8a77e29a2d437c58351d902299042abd47d72990e5745028dc7680ec0",
+    "adaptation.npz": "1cdceaadf02b1c3fd694a944e73853e2a8ca72dd56a92a8f6331601624eebe24"
+  },
+  "source_sha256": "6fa3deb704e87b040f309ee1788b275da6c5120240650f5c302a04b80a3a497c",
+  "scope": "Post-admission GT audit on the opened training pool. Cannot replace independent confirmation or prove perception retraining improvement. Frozen admissions are not retuned by this audit.",
+  "publication_projection": {
+    "original_sha256": "513b0b320e2a0cc96a6ccb0221c098f3ab6e3286d0b44e60d9c4e29c451bcbf5",
+    "source_alias": "STUDY/bank_gt_audit/summary.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

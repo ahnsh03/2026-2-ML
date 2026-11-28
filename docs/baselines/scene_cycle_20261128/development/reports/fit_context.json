@@ -1,0 +1,23 @@
+{
+  "fit_pack_sha256": "b8845c51e72c81d031d29b699f18e2d514637a230666697992d2ec1865537cbd",
+  "schema_sha256": "d4b108571a88f8c81b5e543c6d5e36b250d50d68315783b6ebe2c9eb89aae1c8",
+  "identity_sha256": "0259861d0f0139ccb73672ee3b1890547fdceac9e4f09318ef0f3f25525ae539",
+  "base_features_sha256": "dfb9cf7cfecaf1300f931584bc701baa626edc7d8f7bfdca14b76d19f6546098",
+  "budget": 8,
+  "search_seeds": [
+    281128,
+    281129,
+    281130
+  ],
+  "source_sha256": "10ba72037b82b17a46d1094a4d353fc8cee0fd39fa77c87d2d9a5849962e5d9b",
+  "component_sha256": {
+    "botorch_search.py": "1407507df6cd674be2dc7f7d36aa74cd6a44965db4cdd7b27c2d290cfe271770",
+    "review_targets.py": "74a0e9709170d7ad63c74db0b5c55a0faefd8af5b883f157bd6a0e4a58107b93"
+  },
+  "publication_projection": {
+    "original_sha256": "c9756605048d5d00a55680162bfbe38e0dae5b9668044260b834a68b7516acb3",
+    "source_alias": "STUDY/parent_models/run_context.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}

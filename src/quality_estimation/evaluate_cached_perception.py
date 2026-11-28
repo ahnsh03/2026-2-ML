@@ -30,11 +30,11 @@ def main():
     for name in ['manifest','cache','output']:p.add_argument('--'+name,type=Path,required=True)
     model=p.add_mutually_exclusive_group(required=True);model.add_argument('--checkpoint',type=Path);model.add_argument('--adaptation-run',type=Path)
     p.add_argument('--device',default='cuda');p.add_argument('--batch-size',type=int,default=4);p.add_argument('--workers',type=int,default=2)
-    p.add_argument('--role',choices=['development_retention','heldout_diagnostic'],required=True)
+    p.add_argument('--role',choices=['development_retention','heldout_diagnostic','confirmation'],required=True)
     a=p.parse_args();rows=[json.loads(s) for s in a.manifest.read_text().splitlines() if s.strip()]
     if a.output.exists():raise ValueError('evaluation output exists')
     if not rows or len({r['sample_id'] for r in rows})!=len(rows):raise ValueError('empty or duplicate evaluation rows')
-    permitted=['development','retention'] if a.role=='development_retention' else ['heldout_diagnostic']
+    permitted={'development_retention':['development','retention'],'heldout_diagnostic':['heldout_diagnostic'],'confirmation':['confirmation']}[a.role]
     if any(r['adaptation_role'] not in permitted for r in rows):raise ValueError('evaluation role differs from frozen manifest')
     checkpoint,identity,membership=resolve_quality_perception(a.adaptation_run,a.checkpoint)
     ids={r['sample_id'] for r in membership};pixels={r['pixel_sha256'] for r in membership}
@@ -68,6 +68,6 @@ def main():
     metadata=dict(status='complete',perception_identity=identity,checkpoint_sha256=sha256_file(checkpoint),perception_weights=loaded.weights,
                   manifest_sha256=sha256_file(a.manifest),source_sha256=sha256_file(Path(__file__)),role=a.role,rows=len(records),
                   metrics=summarize(records),grouped=grouped,elapsed_seconds=time.monotonic()-start,device=str(device),precision='FP32; TF32 off; deterministic cuDNN',
-                  scope='Previously opened cohorts excluded from new adaptation; paired diagnostic, not independent safety/visibility truth.')
+                  scope='Newly captured frozen confirmation; no post-test retuning or safety/visibility claim.'if a.role=='confirmation'else'Previously opened cohorts excluded from new adaptation; paired diagnostic, not independent safety/visibility truth.')
     write_json(a.output/'summary.json',metadata);(a.output/'_SUCCESS').write_text(sha256_file(a.output/'summary.json')+'\n')
 if __name__=='__main__':main()

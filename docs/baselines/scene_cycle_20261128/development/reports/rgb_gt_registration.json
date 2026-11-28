@@ -1,0 +1,542 @@
+{
+  "frames": 37,
+  "supported_segments": 3,
+  "own_better_than_neighbor_fraction": 1.0,
+  "median_own_cost_px": 0.5309938788414001,
+  "median_neighbor_cost_px": 2.1915156841278076,
+  "median_best_shift_linf_px": 0.0,
+  "records": [
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0001",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5237975120544434,
+      "neighbor_mean_cost_px": 0.7479610741138458,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3473
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0002",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5394467115402222,
+      "neighbor_mean_cost_px": 1.432310551404953,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3461
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0003",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5254998207092285,
+      "neighbor_mean_cost_px": 2.4111249446868896,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3570
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0004",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5275876522064209,
+      "neighbor_mean_cost_px": 3.251104235649109,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3657
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0005",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5224855542182922,
+      "neighbor_mean_cost_px": 2.1867996156215668,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3512
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0006",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5307508111000061,
+      "neighbor_mean_cost_px": 0.8727295398712158,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3545
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0007",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5309938788414001,
+      "neighbor_mean_cost_px": 0.8333235085010529,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3539
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0008",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5290208458900452,
+      "neighbor_mean_cost_px": 1.8113583028316498,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3546
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0009",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5255164504051208,
+      "neighbor_mean_cost_px": 2.4586910605430603,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3653
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0010",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5176340937614441,
+      "neighbor_mean_cost_px": 1.2572701573371887,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3609
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0011",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5290979743003845,
+      "neighbor_mean_cost_px": 0.7735309600830078,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3595
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0012",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5166935920715332,
+      "neighbor_mean_cost_px": 0.7460744380950928,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3577
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0013",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5271700024604797,
+      "neighbor_mean_cost_px": 0.8349990248680115,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3582
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0014",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5189977288246155,
+      "neighbor_mean_cost_px": 1.2774527370929718,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3574
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0015",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5223431587219238,
+      "neighbor_mean_cost_px": 2.59999942779541,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3624
+    },
+    {
+      "sample_id": "development28e001_scene28_s00_w0_h13_f0016",
+      "site": "scene28_s00",
+      "epoch": "development28e001_scene28_s00_w0_h13",
+      "own_cost_px": 0.5168005228042603,
+      "neighbor_mean_cost_px": 3.573188304901123,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3722
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0001",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.5593600273132324,
+      "neighbor_mean_cost_px": 2.841753125190735,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3948
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0002",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.530945360660553,
+      "neighbor_mean_cost_px": 3.2630535364151,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 4029
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0003",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.5335366129875183,
+      "neighbor_mean_cost_px": 3.2702895402908325,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 4117
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0004",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.5456168055534363,
+      "neighbor_mean_cost_px": 3.5461143255233765,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 4259
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0005",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.5435767769813538,
+      "neighbor_mean_cost_px": 3.691530227661133,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 4206
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0006",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.5351195335388184,
+      "neighbor_mean_cost_px": 4.120565414428711,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 4073
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0007",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.5371150970458984,
+      "neighbor_mean_cost_px": 4.219349384307861,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3833
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0008",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.5540130138397217,
+      "neighbor_mean_cost_px": 4.050094246864319,
+      "best_shift_xy": [
+        0,
+        0
+      ],
+      "translation_gain_px": 0.0,
+      "boundary_pixels": 3705
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0009",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.5690302848815918,
+      "neighbor_mean_cost_px": 4.143227815628052,
+      "best_shift_xy": [
+        0,
+        1
+      ],
+      "translation_gain_px": 0.016492784023284912,
+      "boundary_pixels": 3519
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0010",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.573954701423645,
+      "neighbor_mean_cost_px": 3.8375855684280396,
+      "best_shift_xy": [
+        0,
+        1
+      ],
+      "translation_gain_px": 0.040842652320861816,
+      "boundary_pixels": 3435
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0011",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.5816279649734497,
+      "neighbor_mean_cost_px": 3.566322684288025,
+      "best_shift_xy": [
+        0,
+        -1
+      ],
+      "translation_gain_px": 0.05027085542678833,
+      "boundary_pixels": 3485
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0012",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.5844419002532959,
+      "neighbor_mean_cost_px": 2.7586846351623535,
+      "best_shift_xy": [
+        0,
+        -1
+      ],
+      "translation_gain_px": 0.06864237785339355,
+      "boundary_pixels": 3657
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0013",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.595517635345459,
+      "neighbor_mean_cost_px": 2.1915156841278076,
+      "best_shift_xy": [
+        0,
+        -1
+      ],
+      "translation_gain_px": 0.09088140726089478,
+      "boundary_pixels": 3637
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0014",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.5961946249008179,
+      "neighbor_mean_cost_px": 1.646651804447174,
+      "best_shift_xy": [
+        0,
+        -1
+      ],
+      "translation_gain_px": 0.11430102586746216,
+      "boundary_pixels": 3540
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0015",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.6020309329032898,
+      "neighbor_mean_cost_px": 2.117286801338196,
+      "best_shift_xy": [
+        0,
+        -1
+      ],
+      "translation_gain_px": 0.14887654781341553,
+      "boundary_pixels": 3349
+    },
+    {
+      "sample_id": "development28e021_scene28_s02_w0_h13_f0016",
+      "site": "scene28_s02",
+      "epoch": "development28e021_scene28_s02_w0_h13",
+      "own_cost_px": 0.6015762090682983,
+      "neighbor_mean_cost_px": 3.10025954246521,
+      "best_shift_xy": [
+        0,
+        -1
+      ],
+      "translation_gain_px": 0.1576479971408844,
+      "boundary_pixels": 3537
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0001",
+      "site": "scene28_s06",
+      "epoch": "development28e042_scene28_s06_w0_h13",
+      "own_cost_px": 0.49238377809524536,
+      "neighbor_mean_cost_px": 0.932498961687088,
+      "best_shift_xy": [
+        1,
+        0
+      ],
+      "translation_gain_px": 0.301032692193985,
+      "boundary_pixels": 92
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0002",
+      "site": "scene28_s06",
+      "epoch": "development28e042_scene28_s06_w0_h13",
+      "own_cost_px": 0.5675897598266602,
+      "neighbor_mean_cost_px": 1.0187152922153473,
+      "best_shift_xy": [
+        -1,
+        0
+      ],
+      "translation_gain_px": 0.37767134606838226,
+      "boundary_pixels": 88
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0003",
+      "site": "scene28_s06",
+      "epoch": "development28e042_scene28_s06_w0_h13",
+      "own_cost_px": 0.5491250157356262,
+      "neighbor_mean_cost_px": 0.9895642399787903,
+      "best_shift_xy": [
+        -1,
+        0
+      ],
+      "translation_gain_px": 0.44844625890254974,
+      "boundary_pixels": 80
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0008",
+      "site": "scene28_s06",
+      "epoch": "development28e042_scene28_s06_w0_h13",
+      "own_cost_px": 0.4924218952655792,
+      "neighbor_mean_cost_px": 1.0094283819198608,
+      "best_shift_xy": [
+        1,
+        0
+      ],
+      "translation_gain_px": 0.3068859577178955,
+      "boundary_pixels": 64
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0012",
+      "site": "scene28_s06",
+      "epoch": "development28e042_scene28_s06_w0_h13",
+      "own_cost_px": 0.40466102957725525,
+      "neighbor_mean_cost_px": 0.8894082009792328,
+      "best_shift_xy": [
+        -1,
+        0
+      ],
+      "translation_gain_px": 0.2913559451699257,
+      "boundary_pixels": 59
+    }
+  ],
+  "skipped": [
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0004",
+      "reason": "insufficient_same_epoch_neighbors"
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0005",
+      "reason": "insufficient_native_boundary"
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0006",
+      "reason": "insufficient_native_boundary"
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0007",
+      "reason": "insufficient_same_epoch_neighbors"
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0009",
+      "reason": "insufficient_same_epoch_neighbors"
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0010",
+      "reason": "insufficient_native_boundary"
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0011",
+      "reason": "insufficient_same_epoch_neighbors"
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0013",
+      "reason": "insufficient_same_epoch_neighbors"
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0014",
+      "reason": "insufficient_native_boundary"
+    },
+    {
+      "sample_id": "development28e042_scene28_s06_w0_h13_f0015",
+      "reason": "insufficient_native_boundary"
+    }
+  ],
+  "index_sha256": "24c0e01d27a9e59b8446968ce47aabb9b2592c78bde508b03f2086a7dc861f73",
+  "source_sha256": "48dde6f13be9afcb50ca44b00d9b80c742e6bb53ecc3743b502f81368f549a0f",
+  "scope": "Sunny13 moving content-edge evidence only. Same epoch and <=5m neighbors; white/yellow GT, no perception predictions. Does not certify exposure synchronization, visibility or all-weather GT correctness.",
+  "publication_projection": {
+    "original_sha256": "8155c1b5bd3deaf958d3ddee4b6b7e19c65e967ce60365d8fff41f461738129e",
+    "source_alias": "STUDY/development/alignment/summary.json",
+    "private_path_prefixes_replaced": true,
+    "stage": "Development/post-admission audit; independent confirmation pending"
+  }
+}
