@@ -1,0 +1,44 @@
+{
+  "version": "wontae-roi9-comparisons-20261128-v1",
+  "recipe_sha256": "4fca30ab7180140fcae8ca4c92af1985ebde56e4b7ad1033798352019a94cbfc",
+  "threads": 1,
+  "seeds": [20261124, 20261125, 20261126],
+  "rf": {
+    "model_seed": 23411,
+    "trees": 128,
+    "baseline": {"n_estimators": 128, "min_samples_leaf": 2, "max_features": 0.5, "max_depth": null},
+    "min_samples_leaf": [1, 2, 4, 8, 16],
+    "max_features": [0.3, 0.5, 0.7, 1.0],
+    "max_depth": [8, 12, 20, null],
+    "budget": 20,
+    "shared_initial": 4,
+    "bo": {"length_scale": 0.25, "alpha": 0.000001, "xi": 0.0},
+    "objective": "mean clipped MAE over the provided three training CV folds",
+    "encoding": "log2 leaf size, linear feature fraction, ordered index of depth choices; each axis normalized to [0,1]"
+  },
+  "clusters": {
+    "counts": [8, 16, 32],
+    "seeds": [23411, 23412, 23413],
+    "passes": 5,
+    "initialization": "same kmeans++ centers for e-means and Lloyd, one initialization per seed",
+    "features": "RGB54; variance removal and scaling fitted on training only",
+    "freeze_for_review": {"k": 16, "seed": 23411},
+    "limit": "same passes and starts do not imply equal work; report time and final squared-distance loss. No large-scale speedup claim."
+  },
+  "review": {
+    "budgets_percent": [5, 10, 20],
+    "window_frames": 64,
+    "audit_fraction": 0.2,
+    "failure_threshold": 0.7,
+    "static_cohorts": ["development", "fresh_all", "fresh_uncertainty"],
+    "window_cohorts": ["motion", "stream_new", "switch", "other_road"],
+    "models": "frozen handoff RF/GP and frozen handoff e-means K16; keeps policy comparison independent of new RF tuning",
+    "policies": ["random", "rf_mean", "gp_mean", "gp_mean_audit", "gp_sigma_audit", "gp_sigma_only", "gp_lcb", "gp_environment"],
+    "sigma_mixture": "existing queue: 20% audit; of remaining priority slots 3/4 low GP mean, rest largest remaining sigma; exact integer allocation follows review_queue",
+    "lcb": "rank raw GP mean minus 1 observation sigma; uncalibrated heuristic",
+    "rounding": "static ceil(n*p); chronological cumulative ceil(n_seen*p) per run, carry differences across windows",
+    "dedup": "static first sample ID per decoded pixel; stream first occurrence per run",
+    "primary_contrast": "gp_sigma_audit versus gp_mean_audit at 10%, with identical pool/window/budget/audit fraction/seed",
+    "limit": "all cohorts previously inspected; descriptive diagnostics, no policy tuning using these labels"
+  }
+}

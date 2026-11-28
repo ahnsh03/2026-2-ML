@@ -1,0 +1,27 @@
+{
+  "source_run": "roi9_comparisons_20261128_v1/report",
+  "files": {
+    "REPORT.txt": {
+      "original_sha256": "d7a902c76863ad439a4691c907fc2c5463ea657a400949dcc4026e6320dca7bf",
+      "published_sha256": "d7a902c76863ad439a4691c907fc2c5463ea657a400949dcc4026e6320dca7bf"
+    },
+    "model_comparison.csv": {
+      "original_sha256": "30a5f587786ea4c7a84c202c0050b12204ba0d8e93efbafac336053746f2c5fa",
+      "published_sha256": "748df8d06da2907b4c1528c5f2d198d725e3bd6ba0209334d9b890bbdad9951d"
+    },
+    "cluster_comparison.csv": {
+      "original_sha256": "0e1b59f406be47da07fdc7b4e278d1528961cd20bd0d319818cc0b5d2540fd69",
+      "published_sha256": "4e2f547275dfd7001bb1d789c34f23e1bf3180c59110389c36a4584bfb37ff07"
+    },
+    "review_10percent.csv": {
+      "original_sha256": "ddf24ef967e0e1ec1ed7992784ec3bb8fda5e3c3f8fe13a5ed8e8e1600a4f665",
+      "published_sha256": "0174d20ac596d36ae7910825ed163a0e5c2c626d41b5252082d280253b7ee521"
+    },
+    "sigma_contrast_10percent.csv": {
+      "original_sha256": "d06faa74a2383880cbb9c97a5d8da9678124bb658f8f62a72fb5c35c65c8b69b",
+      "published_sha256": "59da1a11cacbb7a25d0b1b6219c6318ef73315946b365bf167ab3d00972bd4ef"
+    }
+  },
+  "scope": "Small aggregate evidence only; raw data, predictions, fitted models and local environments remain outside git.",
+  "publication_transforms": "Personal local paths replaced in text reports; CSV line endings normalized to LF. Original hashes remain unchanged."
+}
