@@ -40,6 +40,17 @@ def main():
     gain=neural['marked_gain_vs_parent'];ci=neural['paired_condition_bootstrap']['gain95_interval']
     fig.suptitle(f'Frozen perception comparison | candidate - parent = {gain:+.4f} (conditional block CI {ci[0]:+.4f}, {ci[1]:+.4f})\nSame map, new qualified segments; original-retention check is separate',fontsize=12)
     save(fig,'08_perception_fresh_confirmation')
+    matched=neural.get('matched_selection_effect')
+    if matched is not None:
+        fig,axes=plt.subplots(1,2,figsize=(13,4.6),layout='constrained')
+        for i,(name,label,color)in enumerate([('random_raw','Matched random18k','#9299A2'),('risk_raw','Risk-selected18k','#528459')]):
+            axes[0].bar(x+(i-.5)*.34,[scores[name]['marked_by_segment'][s]for s in sites],.34,label=label,color=color)
+        axes[0].set_xticks(x,[s.replace('scene28_','')for s in sites]);axes[0].set_ylim(0,1);axes[0].set_ylabel('Supported mean whole-frame marking IoU');axes[0].legend(frameon=False,fontsize=9)
+        values=[scores['risk_raw']['all_frame_pooled'][h]-scores['random_raw']['all_frame_pooled'][h]if scores['risk_raw']['all_frame_pooled'][h]is not None and scores['random_raw']['all_frame_pooled'][h]is not None else np.nan for h in heads]
+        axes[1].bar(heads,values,color=['#528459'if v>=0 else'#B24B45'for v in values]);axes[1].axhline(0,color='#777777',linewidth=.8);axes[1].set_ylabel('Pooled IoU: risk - matched random');axes[1].set_title('New confirmation, all frames')
+        interval=matched['paired_condition_bootstrap']['gain95_interval'];gain=matched['marked_macro_risk_minus_random']
+        fig.suptitle(f'Matched data-selection experiment | marking gain {gain:+.4f} (conditional CI {interval[0]:+.4f}, {interval[1]:+.4f})\nSame parent,2048 new images,full replay,18000updates; one training seed; not a post-test adoption pool',fontsize=12)
+        save(fig,'13_matched_retraining_fresh_confirmation')
     results=review['results'];names=['RF_only','GP_only','primary','parent_r1'];labels=['RF quality','GP quality','Primary pair','Parent pair']
     fig,axes=plt.subplots(1,2,figsize=(12,4.5),layout='constrained');colors=['#B38145','#357BAC','#528459','#9299A2']
     axes[0].bar(labels,[results[n]['gt_supported_quality_segment_macro_mae']for n in names],color=colors)

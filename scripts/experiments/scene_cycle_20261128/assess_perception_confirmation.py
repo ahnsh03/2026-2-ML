@@ -1,5 +1,6 @@
 """Check a frozen cumulative neural update on new paired confirmation segments."""
 from pathlib import Path
+from datetime import datetime
 import argparse
 import json
 import numpy as np
@@ -7,6 +8,14 @@ from common.bridge import sha256_file
 
 
 def read(path):return json.loads(Path(path).read_text())
+
+
+def validate_source_membership(rows,source):
+    if len(rows)!=len(source):raise ValueError('neural/source confirmation counts differ')
+    for row,expected in zip(rows,source):
+        if(row['sample_id']!=expected['sample_id'] or row['pixel_sha256']!=expected['pixel_sha256']
+                or row['adaptation_role']!='confirmation'):
+            raise ValueError('neural confirmation membership is not the newly frozen RGB population')
 
 
 def supported_metrics(rows,marked):
@@ -41,14 +50,21 @@ def condition_bootstrap(selected,parent,marked):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    for n in ['freeze','evaluations','study-design','output']:p.add_argument('--'+n,type=Path,required=True)
+    for n in ['freeze','evaluations','source-index','study-design','output']:p.add_argument('--'+n,type=Path,required=True)
     a=p.parse_args();freeze=read(a.freeze);design=read(a.study_design);sources=read(a.evaluations);loaded={};summaries={};expected_ids=None;manifest=None
     if freeze['study_design_sha256']!=sha256_file(a.study_design):raise ValueError('neural confirmation design changed')
+    cohort=a.source_index.parent.parent;complete=read(cohort/'COLLECTION_COMPLETE.json');before=list(cohort.glob('*_before.json'))
+    if complete['plan_sha256']!=freeze['confirmation_plan_sha256'] or not before:
+        raise ValueError('neural confirmation collection plan is not frozen')
+    if any(datetime.fromisoformat(read(path)['utc'])<datetime.fromisoformat(freeze['frozen_utc'])for path in before):
+        raise ValueError('neural confirmation collection began before candidate freeze')
+    source=read(a.source_index)['confirmation']['rows']
     for name,directory in sources.items():
         directory=Path(directory);summary=read(directory/'summary.json')
         if(directory/'_SUCCESS').read_text().strip()!=sha256_file(directory/'summary.json')or summary['role']!='confirmation':raise ValueError('neural confirmation incomplete or wrong role')
         if summary['perception_identity']!=freeze['perception_models'][name]['perception_identity']:raise ValueError('frozen neural identity differs')
         rows=[json.loads(line)for line in (directory/'per_frame.jsonl').read_text().splitlines()];ids=[r['sample_id']for r in rows]
+        validate_source_membership(rows,source)
         if len(set(ids))!=len(ids)or len(ids)!=summary['rows']:raise ValueError('neural confirmation membership differs')
         if expected_ids is not None and(ids!=expected_ids or summary['manifest_sha256']!=manifest):raise ValueError('neural models evaluated on different pixels')
         if summaries and any(summary[k]!=next(iter(summaries.values()))[k]for k in ['device','precision']):raise ValueError('paired neural backend differs')
@@ -68,9 +84,17 @@ def main():
         if min(deltas.values())< -gate['per_segment_loss_max']:fail.append('marked_worst_segment')
         if not freeze['preconfirmation_perception_checks']['cpu_development_passes']:fail.append('development_check')
         if not freeze['preconfirmation_perception_checks']['gpu_original_retention_passes']:fail.append('original_retention_check')
+    matched=None
+    if 'risk_raw'in loaded and 'random_raw'in loaded:
+        matched=dict(marked_macro_risk_minus_random=scores['risk_raw']['marked_macro']-scores['random_raw']['marked_macro'],
+            marked_segment_deltas={site:scores['risk_raw']['marked_by_segment'][site]-scores['random_raw']['marked_by_segment'][site]for site in marked},
+            paired_condition_bootstrap=condition_bootstrap(loaded['risk_raw'],loaded['random_raw'],marked),
+            scope='Frozen raw18k endpoints, same parent/replay/environment counts and optimizer seed. Conditional segment evidence, not repeated-training evidence or a post-test adoption pool.')
     document=dict(version='cumulative-neural-confirmation-1',scores=scores,marked_gain_vs_parent=gain,marked_segment_deltas=deltas,
         selected_is_existing_parent=unchanged,new_child_passes=not fail and not unchanged,retained_parent_valid=unchanged,failed_gates=fail,
         paired_condition_bootstrap=condition_bootstrap(selected,parent,marked),source_freeze_sha256=sha256_file(a.freeze),source_sha256=sha256_file(Path(__file__)),
+        matched_selection_effect=matched,
+        source_index_sha256=sha256_file(a.source_index),
         evaluation_summary_sha256={name:sha256_file(Path(path)/'summary.json')for name,path in sources.items()},
         source_per_frame_sha256={name:sha256_file(Path(path)/'per_frame.jsonl')for name,path in sources.items()},
         no_post_confirmation_retuning=True,automatic_adoption_performed=False,

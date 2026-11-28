@@ -29,6 +29,24 @@ def main():
     _,identity,_=resolve_quality_perception(Path(ready['perception_run']),None)
     if identity!=ready['perception_identity']:raise ValueError('selected perception lineage changed')
     _,parent_identity,_=resolve_quality_perception(a.parent_run,None);_,base_identity,_=resolve_quality_perception(None,a.baseline_checkpoint)
+    perception_models=dict(v6=dict(perception_identity=base_identity,checkpoint=str(a.baseline_checkpoint)),
+        r1=dict(perception_identity=parent_identity,run=str(a.parent_run)),
+        selected=dict(perception_identity=identity,run=ready['perception_run']))
+    # Independently estimate the matched selection effect on new segments too.
+    # These raw controls never become a post-test adoption candidate pool.
+    matched_controls={}
+    for arm,name in [('Risk2048','risk_raw'),('Random2048','random_raw')]:
+        run=s/'runs'/(arm+'_s281128')
+        if not (run/'_SUCCESS').exists():
+            matched_controls[name]=dict(status='unavailable',arm=arm)
+            continue
+        _,current_identity,_=resolve_quality_perception(run,None);metadata=read(run/'run.json')
+        if(metadata['arm']!=arm or metadata.get('parent_perception_identity')!=parent_identity or metadata['steps']!=18000
+                or metadata['new_rows']!=2048 or metadata['replay_rows']!=29073
+                or metadata['protocol_sha256']!=sha256_file(s/'protocol/training_matched.json')):
+            raise ValueError('unmatched neural training control')
+        perception_models[name]=dict(perception_identity=current_identity,run=str(run))
+        matched_controls[name]=dict(status='frozen',arm=arm,alpha=1.,run_sha256=sha256_file(run/'run.json'))
     selection=read(Path(ready['selection'])/'selection.json');models=Path(ready['models']);cal=Path(ready['calibration_pack']);envfit=Path(ready['environment_fit'])
     selected_pack=s/'confirmation/packs_selected/confirmation.npz';parent_pack=selected_pack if identity==parent_identity else s/'confirmation/packs_parent/confirmation.npz'
     for path in [selected_pack,parent_pack]:
@@ -68,7 +86,7 @@ def main():
         study_design_sha256=sha256_file(s/'protocol/study_design_frozen.json'),confirmation_plan_sha256=sha256_file(s/'confirmation/plan_frozen.json'),
         source_git=subprocess.check_output(['git','-C',str(repo),'rev-parse','HEAD'],text=True).strip(),source_sha256=sha256_file(Path(__file__)),
         primary_review_name='primary',parent_review_name='parent_r1',review_candidates=candidates,
-        perception_models=dict(v6=dict(perception_identity=base_identity,checkpoint=str(a.baseline_checkpoint)),r1=dict(perception_identity=parent_identity,run=str(a.parent_run)),selected=dict(perception_identity=identity,run=ready['perception_run'])),
+        perception_models=perception_models,matched_training_controls=matched_controls,
         marked_confirmation_sites=[r['route_id']for r in plan['routes']if r['expected_support_stratum']=='marked'],
         preconfirmation_perception_checks=dict(cpu_development_passes=unchanged or choice['selected']['passes'],gpu_original_retention_passes=True,gpu_report_sha256=sha256_file(a.gpu_check)),
         development_choice_sha256=sha256_file(s/'protocol/perception_development_choice.json'),models_ready_sha256=sha256_file(a.models_ready),
