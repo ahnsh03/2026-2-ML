@@ -58,3 +58,4 @@ PYTHONPATH=src:ros/src/data_collection/src python3 -m quality_estimation.join_sp
 - `freeze_confirmation.py --quality-guard`에는 사전 기록한 고정GT 모집단의 기준을 명시한다. 이번 단위는 `quality_handoff_guard_gt_supported_v2.json`을 사용한다. 전체 정의된 Q와 빈GT FP는 계속 별도 평가한다.
 - 새 확인 전에 primary·RF-only·GP-only·GP 정보 검수·공통Q0.7·부모r1·Lloyd 환경 대조의7개 번들을 고정한다. 마지막 대조는 같은 표현/K/시드의 환경 군집만 바꾸며, 확인 후 대체 모델을 고르는 용도로 쓰지 않는다. `assess_environment_context.py`는 fit에서 고정한 군집 해석표로 RGB 직접 분류와 군집별 날씨·SDK시각·표시 맥락을 각각 보고한다. SDK 조명 구간은 기존 학습과 같은 day/twilight/night 순서를 사용한다.
 - `plot_confirmation.py`는 이미 고정·평가한 인지/품질/검수/환경 보고서를 같은 freeze 해시로 연결해 PNG/SVG를 만든다. 원래v6·부모·후속의 새 구간 IoU, 같은 GT 모집단 Q/구간, 고정 예산 검수와 환경 혼동행렬을 분리한다. 그림 생성으로 모델이나 기준을 다시 고르지 않는다.
+- 확인 보고서의 `support_by_hour/segment/weather_hour`에는 GT와 예측 지원량, 무출력 FN, 빈GT FP, 근거리 precision/recall 유지와 원거리 오류, 각 집합의 선별 수를 함께 남긴다. 07시 자료를 무조건 실패나 정상으로 분류하지 않으며 양성이 없는 recall은 미정의로 유지한다.

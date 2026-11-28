@@ -26,6 +26,23 @@ def review_gate(value,random,gate):
     return dict(passes=not failed,failed_gates=failed)
 
 
+def support_summary(selected,target,where):
+    """Offline denominators; near retained never means operationally safe."""
+    where=np.asarray(where,bool);picked=np.zeros(len(where),bool);picked[np.asarray(selected,int)]=True
+    near=target['near'];far=target['far'];retained=(near['gt_pixels']>=50)&(near['predicted_pixels']>=50)&~near['error']
+    values=dict(near_gt_supported=near['gt_pixels']>=50,near_prediction_supported=near['predicted_pixels']>=50,
+        near_error=near['error'],near_fn=near['false_negative'],near_fp=near['false_positive'],
+        near_no_output_fn=near['false_negative']&(near['predicted_pixels']==0),
+        near_gt_empty_fp=near['false_positive']&(near['gt_pixels']==0),
+        near_retained=retained,near_retained_far_error=retained&far['error'],
+        no_supported_error=target['review_utility']==0,offroad_fp=target['offroad']['false_positive'],
+        whole_iou_defined=np.isfinite(target['whole_frame_iou']))
+    return dict(rows=int(where.sum()),selected_rows=int((where&picked).sum()),
+        **{name:int((where&value).sum())for name,value in values.items()},
+        **{name+'_selected':int((where&picked&value).sum())for name,value in values.items()},
+        scope='Fixed offline support/error definition. Retained near recall and precision are not visibility or safety ground truth.')
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for n in ['freeze','source-index','environment-features','schema','study-design','output']:p.add_argument('--'+n,type=Path,required=True)
@@ -71,6 +88,9 @@ def main():
             policy=review.policy,review=value,random100_mean=random_mean,review_gate=review_gate(value,random_mean,design['review_acceptance']),
             by_hour={str(int(hour)):dict(rows=int((data['hour']==hour).sum()),near_error_positives=int(target['near']['error'][data['hour']==hour].sum()),
                 near_error_selected=int(np.sum(target['near']['error'][selected]&(data['hour'][selected]==hour))),selected_rows=int((data['hour'][selected]==hour).sum()))for hour in np.unique(data['hour'])},
+            support_by_hour={str(int(hour)):support_summary(selected,target,data['hour']==hour)for hour in np.unique(data['hour'])},
+            support_by_segment={str(site):support_summary(selected,target,data['site']==site)for site in np.unique(data['site'])},
+            support_by_weather_hour={str(int(weather))+'_'+str(int(hour)):support_summary(selected,target,(data['weather']==weather)&(data['hour']==hour))for weather,hour in sorted(set(zip(data['weather'],data['hour'])))},
             selected_ids=data['ids'][selected].tolist(),selection_details=details,
             source_pack_sha256=sha256_file(path),bundle_manifest_sha256=candidate['bundle_manifest_sha256'],
             scope='Frozen independent same-map confirmation segments. Supported error labels are not operational visibility/safety labels.')

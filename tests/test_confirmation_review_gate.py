@@ -2,6 +2,7 @@ import importlib.util
 from pathlib import Path
 import sys
 import unittest
+import numpy as np
 
 path=Path(__file__).resolve().parents[1]/'scripts/experiments/scene_cycle_20261128/assess_confirmation.py'
 original_path=sys.path.copy();sys.path.insert(0,str(path.parent))
@@ -29,6 +30,18 @@ class ConfirmationReviewGateTests(unittest.TestCase):
     def test_undefined_recall_is_not_filled_with_zero_or_one(self):
         value=dict(near_error_positives=0,near_error_positive_roads=0,utility_recall=None,near_error_road_macro=None)
         self.assertFalse(module.review_gate(value,dict(utility_recall=None,near_error_road_macro=None),self.gate)['passes'])
+
+    def test_support_denominators_keep_empty_gt_fp_and_missing_output_fn(self):
+        from quality_estimation.review_targets import support_aware_targets
+        counts=np.zeros((3,9,3),int)
+        counts[0,6]=[80,0,20];counts[1,6]=[0,60,0];counts[2,6]=[0,0,100]
+        result=module.support_summary([0,1],support_aware_targets(counts),np.ones(3,bool))
+        self.assertEqual(result['near_retained'],1)
+        self.assertEqual(result['near_gt_empty_fp'],1)
+        self.assertEqual(result['near_no_output_fn'],1)
+        self.assertEqual(result['near_fp_selected'],1)
+        self.assertEqual(result['near_fn_selected'],0)
+        self.assertEqual(result['no_supported_error_selected'],1)
 
 
 if __name__=='__main__':unittest.main()

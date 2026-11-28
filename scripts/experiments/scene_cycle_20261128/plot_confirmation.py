@@ -47,12 +47,12 @@ def main():
     axes[1].bar(labels,[results[n]['gt_supported_interval90_segment_macro_coverage']for n in names],color=colors);axes[1].axhline(.9,color='#555555',linestyle='--',label='Nominal 90%');axes[1].set_ylim(0,1.04);axes[1].set_ylabel('Segment-macro interval coverage');axes[1].set_title('Empirical residual intervals');axes[1].legend(frameon=False)
     fig.suptitle('Quality regression and coverage on frozen new confirmation\nParent pair uses its own perception target; GP/RF comparison uses the same frozen candidate',fontsize=12)
     save(fig,'09_quality_fresh_confirmation')
-    names=['primary','RF_only','GP_only','GP_information_control','global_q07_control','parent_r1'];labels=['Primary','RF only','GP only','GP info','Q < 0.7','Parent']
+    names=['primary','RF_only','GP_only','GP_information_control','global_q07_control','parent_r1'];labels=['Primary','RF only','GP only','GP info','Q < 0.7','Parent*']
     fig,axes=plt.subplots(1,2,figsize=(13,4.7),layout='constrained');xx=np.arange(len(names));primary=results['primary'];random=primary['random100_mean']
     for ax,key,title in [(axes[0],'near_error_road_macro','Near-error segment-macro recall'),(axes[1],'utility_recall','Weighted supported-error recall')]:
         values=[results[n]['review'][key]for n in names];ax.bar(xx,[np.nan if v is None else v for v in values],color=['#528459','#B38145','#357BAC','#7285AD','#9299A2','#BDC4CE']);ax.set_xticks(xx,labels,rotation=15);ax.set_ylim(0,1);ax.set_ylabel('Recall at the fixed 10% budget');ax.set_title(title)
         if random[key]is not None:ax.axhline(random[key],color='#444444',linestyle='--',label='Random100 mean (candidate target)');ax.legend(frameon=False,fontsize=8)
-    m=primary['review'];fig.suptitle(f"Fixed review policies | {m['selected']} selected / {m['rows']} frames, {m['near_error_positives']} supported near errors\nFN/FP support and policy acceptance are reported separately; zero event is not a safety label",fontsize=12)
+    m=primary['review'];fig.suptitle(f"Fixed review policies | {m['selected']} selected / {m['rows']} frames, {m['near_error_positives']} supported near errors\nParent* uses its own error outcomes; zero event is not a safety label",fontsize=12)
     save(fig,'10_review_fresh_confirmation')
     fig,axes=plt.subplots(1,3,figsize=(14,4.5),layout='constrained')
     env=environment['results']
