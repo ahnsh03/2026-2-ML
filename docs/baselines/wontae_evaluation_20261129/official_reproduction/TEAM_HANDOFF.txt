@@ -1,0 +1,48 @@
+장원태 · 공식 r2 자료 독립 재현 인계 보고서 · 2026-11-29
+
+결론: 요청한 1~5단계를 수행했다. 공식 48/590 입력·선택·GT 성능은 재현됐고, 특징 한 값의 수치 비교 기준 미달은 별도 보존했다.
+
+1. 자료 복사·검증
+NAS 원본은 읽기만 했다. 로컬에 별도로 복사했으며 원본은 변경하지 않았다.
+원본: \\Aim-nas\aim_2026\개인 폴더\안승현\ML\ml_scene_cycle_20261128
+48장 release manifest의 501개 파일 해시 검증. RGB590+GT590 파일 총1180개를 공식 기대 SHA-256과 대조.
+48장 배포 묶음, 590장 입력/GT 목록·source index·pack/schema·기준 출력·지표를 보존했다.
+590장 RGB·GT는 분리 저장했다. RGB 추론 컨테이너에는 GT 저장소를 마운트하지 않았다.
+
+2. 공식48장 standalone
+원래 code commit 287b1b5·r2 가중치·GP52/RF74 번들·batch4·budget24 유지.
+실제 RTX5070/CUDA12.8에서 배포 묶음과 새 출력 폴더만 마운트해 실행했다. 원래 작업공간/원본 볼륨은 마운트하지 않았다.
+선택24장 ID/순서/사유 및 환경 군집 일치. Q 최대 차이 5.214202966e-07.
+특징 최대 차이 9.775161743e-06; 비교 기준1e-4 이내.
+
+3. 공식590장 GT 없는 재생·동결
+원래 RGB manifest 바이트·순서와 모델/정책을 유지했다. batch4·budget59, 원래 무작위 감사5개 유지.
+Primary(GP52/RF74)와 RF_only(RF52)를 각각 실행하고, 선택 파일 SHA를 저장한 다음 GT 평가를 시작했다.
+Primary 선택59장 ID/순서/사유와 군집은 원래 GPU 기준과 일치. Q 최대 차이 7.479472348e-06.
+RF52의 공식 prediction NPZ 대비 Q 최대 차이 0. RF_only 선택 순서 일치: True.
+
+4. GT 연결·성능 재계산
+공식 join_spatial_gt로 선택59장의 원본바이트/픽셀/ROI/인지 버전을 검사해 연결했고, 기준 GT 레코드와 일치했다.
+추가로 원본 Semantic을 새로 디코딩하고 r2를 재추론해590장의 ROI별 TP/FP/FN을 독립 재계산했다. 공식 pack과590/590장 정확히 일치했다.
+README의0.03136/0.02421은 단순 프레임 평균이 아니라 구간별 MAE의 동일 가중 평균이다. 아래에 둘 다 기록한다.
+GP52: 기준 구간평균 MAE 0.031364429 / 재현 0.031364419; 기준 프레임평균 0.031251916 / 재현 0.031251906
+RF52: 기준 구간평균 MAE 0.024211633 / 재현 0.024211633; 기준 프레임평균 0.024180328 / 재현 0.024180328
+근거리 오류107장 중53장 회수: recall 0.495327103, 검수59장 precision 0.898305085.
+시간대 분모·회수 수: {"5": {"rows": 146, "near_errors": 50, "selected_near_errors": 18}, "7": {"rows": 149, "near_errors": 4, "selected_near_errors": 0}, "13": {"rows": 150, "near_errors": 1, "selected_near_errors": 0}, "20": {"rows": 145, "near_errors": 52, "selected_near_errors": 35}}
+
+수치 차이: 숨기지 않고 보존
+confirmation28e011_scene28_s01_w2_h20_f0015 / far_left.lane_weighted_entropy: 기준과 차이 0.0001485496759.
+590×475 특징 중 한 값만1e-4를 넘었다. strict comparison 상태는 differences_detected로 남겼다.
+같은 GPU·같은 원래4장 배치의 특징 반복 차이는 0였다. 환경 군집·검수 순위·오류 점수·GT counts에는 영향이 없었다.
+GPU/수치 환경 차이가 가능한 원인이지만 요인 분리 실험은 하지 않았다. 원인을 확정했다고 쓰지 않는다.
+
+5. 인계
+summary.json, quality_comparison.csv, review_comparison.json, feature_deviation.json이 핵심 결과다.
+source/와 REPRODUCE.sh에 검증/GT 재계산 코드와 재생 명령을 보존했다. 원본/모델/정책/기준 출력은 고정했으며 재튜닝하지 않았다.
+실제 ROS, 실제40GPU, 새 도시 일반화, 새 모델 학습·채택을 검증한 결과가 아니다.
+이 문서는 로컬 인계 준비물이다. 팀원에게 메시지를 전송하거나 PR을 게시하지 않았다.
+
+실행 환경·로더 기록
+NVIDIA GeForce RTX 5070, 610.88, 12.0
+Initial raw Semantic decode included alpha; fixed by existing color_channels(Semantic), without changing labels/model/thresholds. Failed log retained as recompute_gt590_initial_channels.log.
+RF_only 번들도 reference_models/RF_only에 원본 해시로 고정해 후속 main 변경과 분리했다.

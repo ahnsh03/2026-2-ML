@@ -1,0 +1,31 @@
+{
+  "source_run": "r2_official_reproduction_20261129/report",
+  "files": {
+    "TEAM_HANDOFF.txt": {
+      "original_sha256": "d38060e82745eccc67a3cf3e73bf3a332fe431142e6bbc1a79df1ca4a2b252fa",
+      "published_sha256": "d38060e82745eccc67a3cf3e73bf3a332fe431142e6bbc1a79df1ca4a2b252fa"
+    },
+    "quality_comparison.csv": {
+      "original_sha256": "fb7f4c828af74c39577564df15b83d5336006edfb207461209f13b6f32f19856",
+      "published_sha256": "7a1da4db66476492de806a494de149a0dabd36a7ca451359a5cb19b73d5e3c34"
+    },
+    "review_comparison.json": {
+      "original_sha256": "8645881cc5913784cbd836cec7a7f71312075f72989a3f4bf8b898322d0c3592",
+      "published_sha256": "8645881cc5913784cbd836cec7a7f71312075f72989a3f4bf8b898322d0c3592"
+    },
+    "feature_deviation.json": {
+      "original_sha256": "dfaa330502edca3c837a2ae437de4e86fb609dac51038f03b100b6fa5ffdae26",
+      "published_sha256": "dfaa330502edca3c837a2ae437de4e86fb609dac51038f03b100b6fa5ffdae26"
+    },
+    "environment.json": {
+      "original_sha256": "aaec8d77700c29c7fd52ae6e65e1da36e89594c30dc18982db79deca4bbaf841",
+      "published_sha256": "aaec8d77700c29c7fd52ae6e65e1da36e89594c30dc18982db79deca4bbaf841"
+    },
+    "REPRODUCE.sh": {
+      "original_sha256": "5ea7599a0e2d83c7198ecba76917e0496c8b0b819d07795143a1d361d5be933c",
+      "published_sha256": "5ea7599a0e2d83c7198ecba76917e0496c8b0b819d07795143a1d361d5be933c"
+    }
+  },
+  "scope": "Small aggregate evidence only; raw data, predictions, fitted models and local environments remain outside git.",
+  "publication_transforms": "Personal local paths replaced in text reports; CSV line endings normalized to LF. Original hashes remain unchanged."
+}

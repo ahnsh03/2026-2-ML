@@ -1,0 +1,8 @@
+{
+  "repo_head": "e4990c654d699fa0d81203c66441ae71521d09ef",
+  "submodule_commit": "90f1b8695ae311d5123b05f8534b2e11e42499d2",
+  "gpu": "NVIDIA GeForce RTX 5070, 610.88, 12.0",
+  "docker_image_id": "sha256:e3be3d329c7c78c2a3b1aa0c67d6e294b1a6bef914041ebe18ba36d2f871f9cc",
+  "rf_bundle_snapshot_sha256": "1355653335a1e0d2ddc77efe23cf81b2424555174b74dc4a5bbe5b914d311efd",
+  "initial_gt_loader_issue": "Initial raw Semantic decode included alpha; fixed by existing color_channels(Semantic), without changing labels/model/thresholds. Failed log retained as recompute_gt590_initial_channels.log."
+}

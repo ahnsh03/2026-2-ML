@@ -1,0 +1,18 @@
+{
+  "scope": "Post-replay numerical diagnosis only; does not change official selections or evaluation",
+  "row": 71,
+  "column": 63,
+  "sample_id": "confirmation28e011_scene28_s01_w2_h20_f0015",
+  "feature": "far_left.lane_weighted_entropy",
+  "observed_max_difference": 0.00014854967594146729,
+  "original_batch_start": 68,
+  "batch_rows": 4,
+  "ids": [
+    "confirmation28e011_scene28_s01_w2_h20_f0006",
+    "confirmation28e011_scene28_s01_w2_h20_f0009",
+    "confirmation28e011_scene28_s01_w2_h20_f0012",
+    "confirmation28e011_scene28_s01_w2_h20_f0015"
+  ],
+  "same_gpu_original_batch_repeat_max_feature_difference": 0.0,
+  "interpretation": "One cross-machine reference deviation; exact original batch repeats on this GPU. Cause not isolated; hardware/numerical effects possible. No policy/model changes."
+}
