@@ -49,6 +49,8 @@ PYTHONPATH=src:ros/src/data_collection/src python3 -m quality_estimation.join_sp
 
 ## 공정 비교와 해석
 
+확인 보고서의 기존 `dawn_near_error_recall`은 SDK07시만 뜻한다.05시를 포함한 일반 새벽 회수율로 읽지 않는다. `audit_clock_labels.py --review-assessment ... --output ...`는 원본을 보존한 채 `support_by_hour`에서05/07/13/20시를 명시해 집계하고 기존07시 정의와 대조한다. 이는 표기 보완이며 모델·선택·채택 기준을 변경하지 않는다.
+
 - Coverage2048/24,000update는 먼저 시작한 진단이다. Risk2048와 matched Random2048은 같은 최종 후보 풀·같은 부모·전체29,073 replay·각18,000update를 사용한다. Coverage와의 차이를 순수 선별 이득으로 읽지 않는다.
 - 검수 성능 평가의 예산10%와 실제2,048장 학습 은행의 풀 대비 비율은 다르다. 각 비율·교집합·조건별 수·선별 영수증을 보고한다.
 - BO는8쿼리·공통 초기4점·3시드에서 무작위와 비교했다. 채택 기준을 넘지 못한 방법을 후속 갱신에 강제하지 않는다. 새 버전의 무작위 탐색은 별도로 기록한다.
