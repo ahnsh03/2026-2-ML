@@ -1,0 +1,15 @@
+{
+  "source_run": "gp_roi9_v2_search_20261128_v1",
+  "files": {
+    "REPORT.txt": {
+      "original_sha256": "1192814b3dd3ce7df24848da17c3d0ab6e834a9a1134fa865ef0c91144191a14",
+      "published_sha256": "1192814b3dd3ce7df24848da17c3d0ab6e834a9a1134fa865ef0c91144191a14"
+    },
+    "summary.csv": {
+      "original_sha256": "594228fa0c8316e1300d90aca097b34975b518319559e8397562b7d47d094142",
+      "published_sha256": "d1de973ed31c855608e192f01bc2f57e13e5fe01c412eb9e84e627ac9c3102cf"
+    }
+  },
+  "scope": "Small aggregate evidence only; raw data, predictions, fitted models and local environments remain outside git.",
+  "publication_transforms": "Personal local paths replaced in text reports; CSV line endings normalized to LF. Original hashes remain unchanged."
+}

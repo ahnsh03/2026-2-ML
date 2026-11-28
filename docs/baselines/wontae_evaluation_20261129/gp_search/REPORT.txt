@@ -1,0 +1,25 @@
+ROI9 v2 GP reproduction and matched BO/random search
+
+Training 1728 rows; features 27; provided CV folds 3.
+Existing recipe reproduced before search; X and y retain handoff float32 dtype.
+Every arm uses only training-fold MAE, identical first four points, 20 trials, 3 seeds.
+All choices frozen before non-training scores; no cross-arm evaluation cache.
+
+Method | mean CV MAE | development MAE | fresh480 MAE | extra144 MAE
+baseline | 0.075158 | 0.040862 | 0.059562 | 0.170261
+random | 0.075158 | 0.040862 | 0.059562 | 0.170261
+bo | 0.075158 | 0.040862 | 0.059562 | 0.170261
+
+Limits:
+CV conditions on historically selected fixed columns; not nested feature-selection performance. Three search seeds are optimizer repetitions, not independent roads.
+all non-training cohorts previously inspected; diagnostic only; no new calibration or untouched final test
+Nominal 90% intervals use raw means and normal quantile 1.6448536269514722.
+Reference reproduction separately checks the handoff's 1.645 quantile.
+MAE selection does not calibrate uncertainty; compare coverage and interval width.
+Do not select a new setting using the diagnostic cohorts. No deployment decision is made.
+Model files are research pipelines with recipe/protocol sidecars, not stream deployment bundles.
+
+Read summary.csv, figures/, input_audit.json, folds.json and frozen_choices.json.
+Per-frame predictions include training in-sample scores; use baseline_oof.csv for OOF training errors.
+membership.csv maps prediction IDs to roles, original cohorts and metadata.
+Reproduction: command.txt from repository root, with a NEW output directory.

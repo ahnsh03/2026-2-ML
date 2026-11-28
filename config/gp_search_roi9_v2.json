@@ -1,0 +1,21 @@
+{
+  "version": "wontae-roi9-v2-gp-search-20261127",
+  "feature_scope": "frozen roi9 v2 27 ordered columns; no feature selection repeated",
+  "recipe_sha256": "4fca30ab7180140fcae8ca4c92af1985ebde56e4b7ad1033798352019a94cbfc",
+  "baseline": {"length_multiplier": 2.8, "noise_variance": 0.05},
+  "bounds": {"length_multiplier": [0.1, 10.0], "noise_variance": [0.001, 0.3]},
+  "grid_points_per_axis": 41,
+  "budget": 20,
+  "shared_initial": 4,
+  "seeds": [20261124, 20261125, 20261126],
+  "cv": "handoff train_cv_fold 0,1,2; train rows only; fixed 27 columns",
+  "objective": "equal-weight mean of three held-out fold clipped MAEs",
+  "bo": {"surrogate": "fixed Matern 2.5 GP on normalized log parameters", "length_scale": 0.25, "alpha": 0.000001, "acquisition": "expected improvement for minimization", "xi": 0.0},
+  "threads": 1,
+  "prediction_batch_rows": 512,
+  "interval_quantile": 1.6448536269514722,
+  "handoff_reference_quantile": 1.645,
+  "evaluation_use": "all non-training cohorts previously inspected; diagnostic only; no new calibration or untouched final test",
+  "selection_rule": "each arm selects by training CV only; freeze all choices before non-training diagnostics",
+  "limitation": "CV conditions on historically selected fixed columns; not nested feature-selection performance. Three search seeds are optimizer repetitions, not independent roads."
+}

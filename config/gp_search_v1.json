@@ -1,0 +1,17 @@
+{
+  "version": "wontae-gp-search-v1",
+  "feature_scope": "historical X56; not the current roi9 27-column recipe",
+  "baseline": {"length_multiplier": 1.0, "noise_variance": 0.1},
+  "bounds": {"length_multiplier": [0.1, 10.0], "noise_variance": [0.001, 0.3]},
+  "grid_points_per_axis": 41,
+  "budget": 20,
+  "shared_initial": 4,
+  "seeds": [20261124, 20261125, 20261126],
+  "spatial_bins": 3,
+  "purge_distance_m": 20.0,
+  "objective": "equal-weight mean of spatial-and-parent-purged fold clipped MAE",
+  "bo": {"surrogate": "fixed Matern 2.5 GP on normalized log parameters", "length_scale": 0.25, "alpha": 0.000001, "acquisition": "expected improvement for minimization", "xi": 0.0},
+  "development_use": "historically inspected and position-overlapping diagnostic only; never search objective",
+  "uncertainty": "unadjusted raw mean +/- normal 90% quantile times observation std; no calibration fitted",
+  "threads": 1
+}
