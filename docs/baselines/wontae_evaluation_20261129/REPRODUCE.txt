@@ -1,0 +1,36 @@
+장원태 개인 비교·독립 재현 인계 · 2026-11-29
+
+이 디렉터리는 기존 로컬 실행에서 가져온 소형 결과표다. 각 하위 publication_manifest.json에서 원본/게시본 SHA-256을 구분한다.
+원본 RGB/GT, 프레임별 예측, 학습 모델과 가상환경은 git에 포함하지 않는다. 현재 운영 번들을 변경하지 않는다.
+
+gp_search/: 27열 ROI9 v2 GP 기존설정/Random/BO, 학습1728장·3fold·20회·3시드.
+roi9_comparisons/: 같은 입력의 RF 탐색, RGB54 군집, 고정 인계 모델의 sigma 검수.
+official_reproduction/: r2 GP52/RF74 48/590장 실제 RTX5070 독립 재현. 특징 한 값의1e-4 초과는 유지한다.
+uncertainty/: 동일590장의 GP posterior/보정 구간·GP 정보 검수 재계산. 이미 확인한 자료의 진단이다.
+27열·RGB54 연구와 최신52/74열·photo12 운영 결과를 섞지 않는다.
+
+실행 조건
+저장소 루트에서 PYTHONPATH=src를 설정한다. 연구 실행은 Python3.12, numpy/scipy/scikit-learn/joblib/matplotlib/threadpoolctl 필요.
+군집 실행은 faiss와 contrib.e_means 지원도 필요하다. 사용했던 환경의 정확한 버전은 각 원본 실행 protocol/summary 메타데이터에 있다.
+ROS 수집기 테스트는 ROS1 Noetic의 시스템 Python에서 별도로 실행한다.
+모든 output은 새 디렉터리여야 한다. HANDOFF는 roi9_v2_wontae_handoff 디렉터리다.
+
+27열 연구 실행 예시 (HANDOFF, GP_RUN, COMPARISON_RUN은 외부 경로로 지정)
+PYTHONPATH=src OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 scripts/run_roi9_gp_search.py --handoff "$HANDOFF" --output-dir "$GP_RUN"
+PYTHONPATH=src python3 scripts/run_roi9_rf_search.py --handoff "$HANDOFF" --output-dir "$COMPARISON_RUN/rf"
+PYTHONPATH=src python3 scripts/run_roi9_clusters.py --handoff "$HANDOFF" --output-dir "$COMPARISON_RUN/clusters"
+PYTHONPATH=src python3 scripts/run_roi9_review.py --handoff "$HANDOFF" --output-dir "$COMPARISON_RUN/review"
+PYTHONPATH=src python3 scripts/summarize_roi9_comparisons.py --runs "$COMPARISON_RUN" --gp-run "$GP_RUN"
+
+공식 재현
+OFFICIAL_INPUTS는 NAS에서 해시 검증해 복사한 r2_official_reproduction_20261129 전체 디렉터리다.
+release/, data_rgb/, data_gt/, nas_metadata/, reference_models/, report/source/가 있어야 한다.
+REPRODUCE.sh는 Docker ml-perception:rtx50-cu128와 GPU가 필요하다. 48/590장 추론과 선택 동결 뒤 원본 GT 재계산을 수행한다.
+bash docs/baselines/wontae_evaluation_20261129/official_reproduction/REPRODUCE.sh "$OFFICIAL_INPUTS" "$NEW_REPLAY"
+공식 기준과 결과 비교는 scripts/compare_official_review_replay.py --help 참조. 차이를 숨기거나 기준을 완화하지 않는다.
+
+독립 GP 진단 (공식 재현 디렉터리에 590장 결과가 준비된 상태)
+PYTHONPATH=src OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 scripts/audit_reproduced_r2_uncertainty.py --root "$OFFICIAL_INPUTS" --gp-bundle models/review/m-v6-r2-20261128/GP_only --output "$NEW_AUDIT"
+재선택·정답 집계·기준 대조를 수행한다. 별도의 새 독립 시험, 재튜닝 또는 ROS 검증을 뜻하지 않는다.
+
+현재 단계에서 큰 후보 풀 비교는 사용자 요청 변경으로 착수 전 중단했다. 이 게시물은 그 결과를 포함하지 않는다.

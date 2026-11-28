@@ -1,0 +1,15 @@
+{
+  "source_run": "r2_gp_uncertainty_20261129",
+  "files": {
+    "REPORT.txt": {
+      "original_sha256": "b5c8647df3beca539ed80fa3cf489d00848d21a92cba5b5d13449669d15acd12",
+      "published_sha256": "b5c8647df3beca539ed80fa3cf489d00848d21a92cba5b5d13449669d15acd12"
+    },
+    "quality_by_population.csv": {
+      "original_sha256": "71413b9479781a0d74032b809e37ca7d2e805e55849d19ebbd98feac92d79b82",
+      "published_sha256": "9984b6bc6ed2b0d4c4189ac449b2efe63a298f1c6f1c434d741687dd166eb5e4"
+    }
+  },
+  "scope": "Small aggregate evidence only; raw data, predictions, fitted models and local environments remain outside git.",
+  "publication_transforms": "Personal local paths replaced in text reports; CSV line endings normalized to LF. Original hashes remain unchanged."
+}
