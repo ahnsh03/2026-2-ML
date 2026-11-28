@@ -1,0 +1,12 @@
+# Optional CPU HPO overlay for the existing RTX50/Python3.11/Torch2.7.1 image.
+# Install with --no-deps --target into a separate study directory. Do not alter
+# the RTX40/Torch2.1.2 environment or install a new CUDA/Torch dependency here.
+# NumPy2.2.6/SciPy1.15.3/sklearn1.9.1 come from the RTX50 runtime lock.
+botorch==0.18.1
+gpytorch==1.15.2
+linear_operator==0.6.1
+pyre_extensions==0.0.32
+typing-inspect==0.9.0
+mypy-extensions==1.1.0
+ninja==1.13.0
+multipledispatch==1.0.0

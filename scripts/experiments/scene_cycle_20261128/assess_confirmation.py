@@ -93,6 +93,7 @@ def main():
             support_by_weather_hour={str(int(weather))+'_'+str(int(hour)):support_summary(selected,target,(data['weather']==weather)&(data['hour']==hour))for weather,hour in sorted(set(zip(data['weather'],data['hour'])))},
             selected_ids=data['ids'][selected].tolist(),selection_details=details,
             source_pack_sha256=sha256_file(path),bundle_manifest_sha256=candidate['bundle_manifest_sha256'],
+            diagnostic_scope=candidate.get('diagnostic_scope'),
             scope='Frozen independent same-map confirmation segments. Supported error labels are not operational visibility/safety labels.')
         results[name]=result;predictions[name]=pred;sets[name]=data
         np.savez_compressed(a.output/(name+'_predictions.npz'),ids=data['ids'],**pred)

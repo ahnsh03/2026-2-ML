@@ -56,7 +56,7 @@ PYTHONPATH=src:ros/src/data_collection/src python3 -m quality_estimation.join_sp
 - GP는 Q 경험 구간과 오류 선형 대비/잠재 공분산을 제공한다. σ를 실패 확률이나 근/원 오류 유형의 정답으로 읽지 않는다. σ 혼합이 Dev에서0.01 이상 이득이 없으면 기본 선별에 넣지 않는다.
 - 출력 모델·칼리브레이션·정책 파일은 불변 경로와 해시로 구분한다. 실제40프로파일 CPU와50실기 GPU, 모델 버전 혼합 거부, standalone·GT 재연결은 학습/정책의 채택과 별도로 검사한다.
 - `freeze_confirmation.py --quality-guard`에는 사전 기록한 고정GT 모집단의 기준을 명시한다. 이번 단위는 `quality_handoff_guard_gt_supported_v2.json`을 사용한다. 전체 정의된 Q와 빈GT FP는 계속 별도 평가한다.
-- 새 확인 전에 primary·RF-only·GP-only·GP 정보 검수·공통Q0.7·부모r1·Lloyd 환경 대조의7개 번들을 고정한다. 마지막 대조는 같은 표현/K/시드의 환경 군집만 바꾸며, 확인 후 대체 모델을 고르는 용도로 쓰지 않는다. `assess_environment_context.py`는 fit에서 고정한 군집 해석표로 RGB 직접 분류와 군집별 날씨·SDK시각·표시 맥락을 각각 보고한다. SDK 조명 구간은 기존 학습과 같은 day/twilight/night 순서를 사용한다.
+- 새 확인 전에 primary·RF-only·GP-only·GP 정보 검수·공통Q0.7·부모r1·Lloyd 환경 대조의7개 번들을 고정한다. 마지막 대조는 같은 표현/K/시드의 군집 의미를 검사하며 공통 정책으로 둔다. e-means 군집 ID별 보정값을 Lloyd의 무관한 ID에 옮기거나 검수 정책 대체 후보로 해석하지 않는다. `assess_environment_context.py`는 fit에서 고정한 군집 해석표로 RGB 직접 분류와 군집별 날씨·SDK시각·표시 맥락을 각각 보고한다. SDK 조명 구간은 기존 학습과 같은 day/twilight/night 순서를 사용한다.
 - `plot_confirmation.py`는 이미 고정·평가한 인지/품질/검수/환경 보고서를 같은 freeze 해시로 연결해 PNG/SVG를 만든다. 원래v6·부모·후속의 새 구간 IoU, 같은 GT 모집단 Q/구간, 고정 예산 검수와 환경 혼동행렬을 분리한다. 그림 생성으로 모델이나 기준을 다시 고르지 않는다.
 - 확인 보고서의 `support_by_hour/segment/weather_hour`에는 GT와 예측 지원량, 무출력 FN, 빈GT FP, 근거리 precision/recall 유지와 원거리 오류, 각 집합의 선별 수를 함께 남긴다. 07시 자료를 무조건 실패나 정상으로 분류하지 않으며 양성이 없는 recall은 미정의로 유지한다.
 - 인지 확인에는 Dev에서 미리 선택한 후보뿐 아니라 같은18,000update의 Risk/Random 원시 endpoint도 사전 고정한다. 새 구간의 paired condition-block 차이로 데이터 선별 효과를 별도 보고하고, 이 대조를 보고 채택 모델을 사후 변경하지 않는다. `assess_perception_confirmation.py --source-index`는 새 등록 RGB의 ID·픽셀·순서·역할과 수집 전 모델 고정 시점을 함께 검사한다.

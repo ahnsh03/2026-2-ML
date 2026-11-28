@@ -69,7 +69,11 @@ def main():
     # comparator fixed before capture, never a post-confirmation replacement.
     rep,_,k,seed=key.split(',')
     lloyd_key=','.join([rep,'lloyd',k,seed])
-    build('Lloyd_environment_control',selection['selected_quality_tag'],chosen['error_tag'],chosen['policy'],models,cal,envfit,lloyd_key,selected_pack)
+    context_policy=dict(chosen['policy'],grouping='global',balanced_floor=0.,reference=dict(absolute_threshold=.7,groups={}))
+    # Cluster IDs are arbitrary. Never transfer e-means cluster-indexed Cal
+    # thresholds onto unrelated Lloyd IDs. This comparator scores semantics.
+    build('Lloyd_environment_control',selection['selected_quality_tag'],chosen['error_tag'],context_policy,models,cal,envfit,lloyd_key,selected_pack)
+    candidates[-1]['diagnostic_scope']='Environment semantic comparator with global policy; not a matched review-ranking comparison to a grouped primary policy.'
     for family in ['RF','GP']:
         error=error_policy(family);build(family+'_only',qhead(family),error['error_tag'],error['policy'],models,cal,envfit,key,selected_pack)
         if family=='GP':
