@@ -56,6 +56,38 @@ scripts/run_container.sh python3 -m visualization.visualize_inference --split va
 데이터·가중치·외부 제공 proto의 준비 조건과 수집 명령은 [개발 환경](docs/guides/개발환경.md)을 따른다.
 이 코드는 다른 프로젝트 저장소를 import하거나 경유하지 않는다.
 
+## 키보드로 전방 RGB 한 장씩 수집
+
+MORAI Bridge가 연결된 ROS1 환경에서 `/image_jpeg/compressed`를 구독해 카메라
+이미지만 저장한다. 시뮬레이터 UI는 포함되지 않으며, 수신 JPEG/PNG 바이트를 재압축 없이 저장한다.
+기존 ROS master와 브리지를 실행해 둔 상태에서 같은 master에 연결된 터미널로 실행한다.
+
+```bash
+rostopic type /image_jpeg/compressed  # sensor_msgs/CompressedImage인지 확인
+python3 ros/src/data_collection/scripts/keyboard_camera_capture.py --condition clear_day
+```
+
+수집 터미널을 클릭하고 **Space 또는 S**를 누르면 최신 수신 프레임 한 장을 저장한다.
+Enter는 필요 없다. **Q 또는 Ctrl-C**로 종료한다. 전역 단축키가 아니므로 MORAI 창에
+포커스가 있으면 저장되지 않는다. 차량을 정차하고 날씨·시각을 설정한 뒤 수집한다.
+누른 시점의 최신 수신 프레임을 저장하며, 시뮬레이터에 새 촬영을 요청하는 기능은 아니다.
+
+기본 저장 위치는 `$ML_DATA_ROOT/rgb_samples/<조건>/`이며, 변수가 없으면
+`~/rgb_samples/<조건>/`이다. `--output`으로 상위 폴더, `--topic`으로 토픽을
+변경할 수 있다. `--condition night`, `--condition fog` 등으로 재실행하면 조건을 구분한다.
+이미지 옆 JSON에는 조건, 해상도, 토픽, ROS 촬영 시각과 저장 시각을 기록한다.
+2초 이상 새 수신이 없거나 동일 수신 프레임을 다시 저장하려 하면 저장을 거절한다.
+이 검사는 로컬 수신 시각 기준이며 브리지의 전송 지연이나 반복 송신까지 판별하지는 않는다.
+
+이 레포의 ROS 컨테이너를 이미 사용하는 경우:
+
+```bash
+scripts/run_ros.sh exec python3 /ml/ros/src/data_collection/scripts/keyboard_camera_capture.py --condition clear_day
+```
+
+필요 패키지는 ROS1 `rospy`, `sensor_msgs`, Python OpenCV와 NumPy다.
+이미지는 RGB 특징 계산 검증용이며, 동기화된 Semantic GT 수집은 별도다.
+
 ## 현재9영역 품질 파이프라인
 
 버전별 X/y 생성, GP/RF 적합, RGB 단독 검수와 사후 GT 연결은 [데이터·특징·정답 가이드](docs/guides/데이터_등록과_특징정답.md)와 [표시 가용성·누적 갱신 재현](scripts/experiments/scene_cycle_20261128/README.md)을 따른다. [직전 주기 재현](scripts/experiments/environment_cycle_20261127/README.md)은 보존한다. 특징 순서는 각 번들 manifest가 정본이다. 현재 Q52/오류74열의 입력 합집합은74열이며 이전 f0/f1과 인지 신원·목표·정책을 섞지 않는다.
