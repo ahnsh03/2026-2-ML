@@ -1,0 +1,541 @@
+{
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+  },
+  "cases": [
+    {
+      "case": 1,
+      "sample_id": "confirmation29_release26_site00_w0_h05",
+      "reason": "First lexicographic unselected near_fn at SDKhour5",
+      "sdk_hour": 5,
+      "sdk_weather": 0,
+      "true_iou": 0.6038258940948157,
+      "gt_and_prediction_counts_match": true,
+      "counts": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          35,
+          2,
+          204
+        ],
+        [
+          11,
+          0,
+          50
+        ],
+        [
+          543,
+          8,
+          1039
+        ],
+        [
+          1589,
+          7,
+          116
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "rgb_sha256": "5543005b57b6dab7fda63c17f7fa51c1fd0ed32e88ad16dada083e3dd54757ac",
+      "semantic_sha256": "38f03c35b171d670d6c399f9da721a9303511ce5feb685302c792523cfc9aa6d"
+    },
+    {
+      "case": 2,
+      "sample_id": "confirmation29_release26_site20_w5_h05",
+      "reason": "First lexicographic unselected near_fp at SDKhour5",
+      "sdk_hour": 5,
+      "sdk_weather": 5,
+      "true_iou": 0.18144666939109114,
+      "gt_and_prediction_counts_match": true,
+      "counts": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          13,
+          17,
+          142
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          21,
+          138,
+          396
+        ],
+        [
+          410,
+          1,
+          1309
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "rgb_sha256": "eb65d98232077b4b5349d783c7ba6128a3ee10dd90f9a3c055fa5514934040c8",
+      "semantic_sha256": "949ffe4f7c65546bdb5b4252a6f18960eb0560982727c9ae1e6c12497b58b969"
+    },
+    {
+      "case": 3,
+      "sample_id": "confirmation29_release26_site00_w0_h06",
+      "reason": "First lexicographic unselected near_fn at SDKhour6",
+      "sdk_hour": 6,
+      "sdk_weather": 0,
+      "true_iou": 0.7335553705245629,
+      "gt_and_prediction_counts_match": true,
+      "counts": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          37,
+          1,
+          202
+        ],
+        [
+          0,
+          0,
+          61
+        ],
+        [
+          1333,
+          11,
+          250
+        ],
+        [
+          1273,
+          0,
+          432
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "rgb_sha256": "3b6bc6a3a0aa423aa1187ecb154e782c4160bba98091b5c2b5ec31e4df809319",
+      "semantic_sha256": "0f07a6afb561d3b9d7b29b10fdf32d0fbcdfd70cf27fbec419ec58fd8c4f1ebb"
+    },
+    {
+      "case": 4,
+      "sample_id": "confirmation29_release26_site11_w0_h06",
+      "reason": "First lexicographic unselected near_fp at SDKhour6",
+      "sdk_hour": 6,
+      "sdk_weather": 0,
+      "true_iou": 0.5082690187431091,
+      "gt_and_prediction_counts_match": true,
+      "counts": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          11,
+          14
+        ],
+        [
+          0,
+          0,
+          21
+        ],
+        [
+          238,
+          31,
+          231
+        ],
+        [
+          484,
+          186,
+          132
+        ],
+        [
+          200,
+          3,
+          263
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "rgb_sha256": "8e4a858440c1d24db8879ccbf45525c666c0a4d5d28e2d07a90d89988a7014e8",
+      "semantic_sha256": "45b96f81d06ca52ffae2e98a10050d87dcad21e2f787472620f9fcee1f600a4d"
+    },
+    {
+      "case": 5,
+      "sample_id": "confirmation29_release26_site02_w3_h07",
+      "reason": "First lexicographic unselected near_fn at SDKhour7",
+      "sdk_hour": 7,
+      "sdk_weather": 3,
+      "true_iou": 0.7011443661971831,
+      "gt_and_prediction_counts_match": true,
+      "counts": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          72,
+          0,
+          221
+        ],
+        [
+          0,
+          0,
+          36
+        ],
+        [
+          912,
+          4,
+          139
+        ],
+        [
+          609,
+          0,
+          279
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "rgb_sha256": "e676e9ed2abeb0a5ee83211b9deb30a3e3664a1eeaf4f8ea9c9d77f8ba013c84",
+      "semantic_sha256": "100165f671f336f8dbcadd2ad9941221692c8b07a47860d6c721208ccbfbeb8b"
+    },
+    {
+      "case": 6,
+      "sample_id": "confirmation29_release26_site40_w4_h07",
+      "reason": "First lexicographic unselected near_fp at SDKhour7",
+      "sdk_hour": 7,
+      "sdk_weather": 4,
+      "true_iou": 0.37327188940092165,
+      "gt_and_prediction_counts_match": true,
+      "counts": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          71,
+          0,
+          133
+        ],
+        [
+          41,
+          3,
+          48
+        ],
+        [
+          367,
+          995,
+          215
+        ],
+        [
+          493,
+          6,
+          232
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "rgb_sha256": "c3bc26f6ba273e1de74f42cf94b83304e624bb63665943d4ef938e8347407a1e",
+      "semantic_sha256": "557dfe3c03fa1a01e3e4ef82155a29cc318fc6388f8dc1025ca78d1fb542fe7a"
+    },
+    {
+      "case": 7,
+      "sample_id": "confirmation29_release26_site00_w0_h07",
+      "reason": "First lexicographic near-retained/far-error example",
+      "sdk_hour": 7,
+      "sdk_weather": 0,
+      "true_iou": 0.8851963746223565,
+      "gt_and_prediction_counts_match": true,
+      "counts": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          41,
+          2,
+          198
+        ],
+        [
+          11,
+          0,
+          50
+        ],
+        [
+          1525,
+          14,
+          58
+        ],
+        [
+          1646,
+          34,
+          59
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "rgb_sha256": "90ae839045817f0aa687eb61f88d3ce2a3aaf40bea1051795bb922d09912c5ce",
+      "semantic_sha256": "384a50d01193acb62ded52c000555a2bc861fdef1c8e47e7ad60e840b4bc4607"
+    },
+    {
+      "case": 8,
+      "sample_id": "confirmation29_release26_site00_w0_h13",
+      "reason": "Fixed same-pose Sunny hour sequence",
+      "sdk_hour": 13,
+      "sdk_weather": 0,
+      "true_iou": 0.9011354195513708,
+      "gt_and_prediction_counts_match": true,
+      "counts": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          53,
+          2,
+          186
+        ],
+        [
+          25,
+          1,
+          37
+        ],
+        [
+          1516,
+          8,
+          66
+        ],
+        [
+          1660,
+          9,
+          45
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "rgb_sha256": "32657a2aaedafd38d992c0b9d144f39e2e3cdd5da3fddd12c6c93454fc474709",
+      "semantic_sha256": "f255eacb6d41b7ac1b9c63b33a82fa436cd5c000f6a3da4da820804720d47abd"
+    },
+    {
+      "case": 9,
+      "sample_id": "confirmation29_release26_site00_w0_h20",
+      "reason": "Fixed same-pose Sunny hour sequence",
+      "sdk_hour": 20,
+      "sdk_weather": 0,
+      "true_iou": 0.7516592920353983,
+      "gt_and_prediction_counts_match": true,
+      "counts": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          3
+        ],
+        [
+          35,
+          11,
+          204
+        ],
+        [
+          1,
+          5,
+          60
+        ],
+        [
+          1247,
+          4,
+          336
+        ],
+        [
+          1435,
+          5,
+          270
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "rgb_sha256": "5023b181736b2d73784fda94c426b21d3865b92f4d01bdcd5c5f24c7782fcf19",
+      "semantic_sha256": "d9674ce27fe3eb7496c9c2b6e775b1fbe91f5981f5082c2533bdfa402c3f75de"
+    }
+  ],
+  "input_sha256": {
+    "new_confirmation_registry/index.json": "4a09104601e8a30cfd926e0ff09d29378b57ccf29f04dfd75e4a89180e944697",
+    "visibility_qa/summary.json": "823932f6da9800d089b85d4129e57d00254678ee5048c4585cec34433ac15a84",
+    "new_confirmation_packs/confirmation.npz": "2204d8daaa75e4c9cbc24b8fdd3a1cde9c667262874a1ef23c0878b10c8cfc0b"
+  },
+  "source_sha256": "b2959afe40f032d1d6866d6bcf8cc3dbde8710bc02a64218d1d65cc035a83652",
+  "scope": "First-eligible unselected errors plus fixed same-pose hour series. Counts match exact scored GT/prediction. All component panels preserve16:9. Offline visibility cues are not physical visibility labels."
+}

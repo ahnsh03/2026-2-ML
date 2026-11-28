@@ -1,0 +1,21 @@
+{
+  "tests_per_CPU_profile": 353,
+  "profiles": {
+    "rtx40-cu118": {
+      "tests": 353,
+      "passed": true,
+      "log_sha256": "21ade4fdb2ece3c19401a15ca0deca7ecbcec9310e2677dabae10e73d7b8b7b6"
+    },
+    "rtx50-cu128": {
+      "tests": 353,
+      "passed": true,
+      "log_sha256": "1b7f95e62bd622eb336fb066643517650e71876487e5b7e2c4ef405c784737c2"
+    }
+  },
+  "actual_GPU": "NVIDIA GeForce RTX5070Ti; CUDA12.8; capability12.0",
+  "actual_rtx40_GPU": "not_available_not_tested",
+  "changed_markdown_missing_file_links": 0,
+  "bridge_mount_mismatch": "rejected_before_receiver_start",
+  "scope": "CPU suite compatibility does not establish actual40-series CUDA behavior; native50GPU receipts separate.",
+  "changed_python_syntax_files": 18
+}

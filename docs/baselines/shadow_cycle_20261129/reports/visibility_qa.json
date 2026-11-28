@@ -1,0 +1,142 @@
+{
+  "schema": "offline-marking-visibility-cue-qa-1",
+  "rows": 534,
+  "all_displayed_gt_counts_match": true,
+  "by_hour": {
+    "5": {
+      "rows": 108,
+      "near_errors": 68,
+      "very_low_contrast_cue": 6,
+      "median_near_luma": 0.07058823529411765,
+      "median_abs_marking_luma_difference": 0.2254901960784314,
+      "selected_errors": {
+        "frozen_RF": 7,
+        "frozen_GP": 14,
+        "RF_rank_plus_z_0.25": 12
+      },
+      "missed_errors": {
+        "frozen_RF": 61,
+        "frozen_GP": 54,
+        "RF_rank_plus_z_0.25": 56
+      }
+    },
+    "6": {
+      "rows": 108,
+      "near_errors": 75,
+      "very_low_contrast_cue": 3,
+      "median_near_luma": 0.0392156862745098,
+      "median_abs_marking_luma_difference": 0.10980392156862745,
+      "selected_errors": {
+        "frozen_RF": 16,
+        "frozen_GP": 11,
+        "RF_rank_plus_z_0.25": 8
+      },
+      "missed_errors": {
+        "frozen_RF": 59,
+        "frozen_GP": 64,
+        "RF_rank_plus_z_0.25": 67
+      }
+    },
+    "7": {
+      "rows": 108,
+      "near_errors": 8,
+      "very_low_contrast_cue": 0,
+      "median_near_luma": 0.2,
+      "median_abs_marking_luma_difference": 0.2882352941176471,
+      "selected_errors": {
+        "frozen_RF": 1,
+        "frozen_GP": 2,
+        "RF_rank_plus_z_0.25": 2
+      },
+      "missed_errors": {
+        "frozen_RF": 7,
+        "frozen_GP": 6,
+        "RF_rank_plus_z_0.25": 6
+      }
+    },
+    "13": {
+      "rows": 102,
+      "near_errors": 3,
+      "very_low_contrast_cue": 0,
+      "median_near_luma": 0.2549019607843137,
+      "median_abs_marking_luma_difference": 0.3529411764705882,
+      "selected_errors": {
+        "frozen_RF": 1,
+        "frozen_GP": 1,
+        "RF_rank_plus_z_0.25": 2
+      },
+      "missed_errors": {
+        "frozen_RF": 2,
+        "frozen_GP": 2,
+        "RF_rank_plus_z_0.25": 1
+      }
+    },
+    "20": {
+      "rows": 108,
+      "near_errors": 92,
+      "very_low_contrast_cue": 14,
+      "median_near_luma": 0.01568627450980392,
+      "median_abs_marking_luma_difference": 0.054901960784313725,
+      "selected_errors": {
+        "frozen_RF": 25,
+        "frozen_GP": 23,
+        "RF_rank_plus_z_0.25": 26
+      },
+      "missed_errors": {
+        "frozen_RF": 67,
+        "frozen_GP": 69,
+        "RF_rank_plus_z_0.25": 66
+      }
+    }
+  },
+  "case_choices": [
+    {
+      "sample_id": "confirmation29_release26_site00_w0_h05",
+      "reason": "First lexicographic unselected near_fn at SDKhour5",
+      "hour": 5,
+      "event": "near_fn"
+    },
+    {
+      "sample_id": "confirmation29_release26_site20_w5_h05",
+      "reason": "First lexicographic unselected near_fp at SDKhour5",
+      "hour": 5,
+      "event": "near_fp"
+    },
+    {
+      "sample_id": "confirmation29_release26_site00_w0_h06",
+      "reason": "First lexicographic unselected near_fn at SDKhour6",
+      "hour": 6,
+      "event": "near_fn"
+    },
+    {
+      "sample_id": "confirmation29_release26_site11_w0_h06",
+      "reason": "First lexicographic unselected near_fp at SDKhour6",
+      "hour": 6,
+      "event": "near_fp"
+    },
+    {
+      "sample_id": "confirmation29_release26_site02_w3_h07",
+      "reason": "First lexicographic unselected near_fn at SDKhour7",
+      "hour": 7,
+      "event": "near_fn"
+    },
+    {
+      "sample_id": "confirmation29_release26_site40_w4_h07",
+      "reason": "First lexicographic unselected near_fp at SDKhour7",
+      "hour": 7,
+      "event": "near_fp"
+    },
+    {
+      "sample_id": "confirmation29_release26_site00_w0_h07",
+      "reason": "First lexicographic near-retained/far-error example",
+      "event": "near_retained_far_error"
+    }
+  ],
+  "source_sha256": "2d1412caddc1bbaedb5e50c31920d035acfb331f2f3bdb3883dcdce28a8c58f7",
+  "input_sha256": {
+    "index": "4a09104601e8a30cfd926e0ff09d29378b57ccf29f04dfd75e4a89180e944697",
+    "pack": "2204d8daaa75e4c9cbc24b8fdd3a1cde9c667262874a1ef23c0878b10c8cfc0b",
+    "assessment": "d24e951de62e99cd5282d4f149e120f475d5067df47bd62f8c74812e926a9340"
+  },
+  "scope": "GT-conditioned paint/background luminance is an OFFLINE descriptive cue. Absolute difference<=0.02 is a fixed diagnostic flag, not physical visibility, normality/safety truth or a new failure threshold. No QA feature enters the online model; no selection policy is tuned."
+}

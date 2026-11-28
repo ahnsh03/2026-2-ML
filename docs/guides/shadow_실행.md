@@ -24,6 +24,15 @@ ML_GPU_PROFILE="auto"  # 또는 rtx40 / rtx50
 ML_GPU_PROFILE=rtx40 ML_SHADOW_DEVICE=cpu ./scripts/shadow.sh demo
 ```
 
+40계열 실물 GPU에서의 인계 검사는 CPU 옵션 없이 실행한다. 출력 폴더의 context.json에 실제 GPU 이름·capability와 번들 해시가 남아야 한다.
+
+```bash
+ML_GPU_PROFILE=rtx40 ./scripts/shadow.sh demo
+ML_GPU_PROFILE=rtx40 ./scripts/shadow.sh replay "$SHADOW_SESSION" --processed-only
+```
+
+세션 재생에는 해당 PC에서 접근 가능한 보존 RGB 원본이 필요하다. 실제40GPU가 없는 PC의 성공 결과를 실물 재현으로 기록하지 않는다.
+
 ## ROS 기본 연결
 
 ```bash
@@ -48,7 +57,7 @@ ML_GPU_PROFILE=rtx40 ML_SHADOW_DEVICE=cpu ./scripts/shadow.sh demo
 ./scripts/shadow.sh status                   # 수신·추론·생략·선별 상태
 ./scripts/shadow.sh stop                     # 수신 종료, 마지막 버퍼 선별
 ./scripts/shadow.sh replay /path/to/session  # 보존한 RGB 전체를 재생
-./scripts/shadow.sh replay /path/to/session --processed-only  # 실시간 처리 모집단만
+./scripts/shadow.sh replay /path/to/session --processed-only  # 실시간 처리 모집단·추론 배치까지
 ```
 
 기간·수집률·버퍼는 필요한 경우만 지정한다.
@@ -89,3 +98,15 @@ replay는 원래 세션의 버퍼 크기·예산을 이어받는다. 전체 원�
 센서 stamp를 저장했다는 이유로 카메라 노출 시각이나 UTC 동기 오차를 검증한 것으로 해석하지 않는다. 처리 시간과 원본 수신 이후 대기 시간도 분리한다. 단일 ROI 오류 점수와 GP z는 실패 확률이나 안전 판정이 아니다.
 
 이 명령은 최대 저장량1GiB·여유 공간5GiB를 기본 한도로 사용한다. 시뮬레이터 차량 상태나 날씨를 변경하는 코드는 포함하지 않는다. 주행은 별도의 검증된 제어기로 실행하며 shadow 결과를 제어 명령에 연결하지 않는다.
+
+
+## 확인된 범위와 재생 수치
+
+26R1 ROS300초/저속6구간에서293장을 저장·추론했고 처리 평균0.0808초/프레임이었다.20Hz 입력을1Hz로 표본화한 결과이며 최대 처리량이나 종단 지연 보장은 아니다. 창100/100/93장마다10/10/10개를 각 번들에서 선별했다. [결과·한계](../experiments/대비특징_검수와_shadow_20261129.md)
+
+일반 replay는 보존 RGB 전체를 기본 배치로 처리한다. --processed-only는 원래 처리 ID·창·추론 배치도 보존한다. GPU 배치가 바뀌면 작은 특징 차이가 RF split을 바꿀 수 있어 엄밀한 재생에는 후자를 쓴다.293장과 최종 소스146장 모두 특징/예측 차이0·선택 ID/순서/사유 일치였다.
+
+기존 bridge가 다른 checkout/ML_SHADOW_ROOT를 마운트했으면 시작 전에 거부한다. 원래 설정으로 실행하거나 별도 ML_SHADOW_ROS_CONTAINER를 지정하고 그 bridge로 카메라를 연결한다. 다른 세션의 원본 경로로 조용히 저장하지 않는다. 실제40계열 GPU는 아직 미검증이며 팀원 장비에서 demo·세션 재생이 필요하다.
+
+
+기본10분 실행도586장 전체 추론·생략0·sequence gap0으로 종료했다. 수신 콜백→점수 기록 P95는0.2024초였고 시뮬 노출/전송 지연은 제외한다. [10분 영수증](../baselines/shadow_cycle_20261129/reports/endurance_10min.json). --hz1은 최대 저장률이며 실제20Hz 송신과 간격 조건 때문에 정확히600장을 저장하는 의미는 아니다.

@@ -19,7 +19,7 @@ usage() {
 ./scripts/shadow.sh status
 ./scripts/shadow.sh stop                       # flush last review window
 ./scripts/shadow.sh replay /path/to/session    # all original RGB offline
-./scripts/shadow.sh replay /path/to/session --processed-only # same live IDs/windows
+./scripts/shadow.sh replay /path/to/session --processed-only # same live IDs/windows/batches
 ./scripts/shadow.sh bridge                     # start ROS bridge before GUI setup
 
 One-time: set ML_SHADOW_ROOT in config/local.env to your output drive.
@@ -36,6 +36,15 @@ ensure_bridge() {
     if [[ "$(docker inspect -f '{{index .Config.Labels "org.ml-shadow.owner"}}' "$name")" != team-repo ]]; then
       echo "[ERROR] $name is not managed by this script; choose ML_SHADOW_ROS_CONTAINER." >&2;return 1
     fi
+    # A persistent bridge must archive into the same volume the worker reads.
+    if ! docker inspect -f '{{json .Mounts}}' "$name" | python3 -c '
+import json,os,sys
+mounts={m["Destination"]:os.path.realpath(m["Source"]) for m in json.load(sys.stdin)}
+expected={"/workspace":os.path.realpath(sys.argv[1]),"/shadow":os.path.realpath(sys.argv[2])}
+if any(mounts.get(k)!=v for k,v in expected.items()):
+    print("[ERROR] Existing ROS bridge uses a different checkout/output root. Restore its configuration or choose a distinct ML_SHADOW_ROS_CONTAINER before connecting the simulator.",file=sys.stderr)
+    sys.exit(1)
+' "$repo" "$root"; then return 1; fi
     if [[ "$(docker inspect -f '{{.State.Running}}' "$name")" != true ]]; then docker start "$name" >/dev/null; fi
   else
     if ! docker image inspect "$image" >/dev/null 2>&1; then docker build -t "$image" "$repo/docker/shadow-ros"; fi
@@ -79,7 +88,9 @@ replay)
   mkdir -p "$root";out="$root/replay-$(date -u +%Y%m%dT%H%M%S)-$$";mkdir "$out";manifest_flags=()
   if [[ "$processed" == true ]]; then
     [[ -f "$source_session/review/processed_rgb.jsonl" ]] || { echo '[ERROR] Exact live population missing' >&2;exit 1; }
-    cp "$source_session/review/processed_rgb.jsonl" "$out/processed_source.jsonl";manifest_flags=(--manifest /result/processed_source.jsonl)
+    cp "$source_session/review/processed_rgb.jsonl" "$out/processed_source.jsonl"
+    PYTHONPATH="$repo/src" python3 -m quality_estimation.shadow_replay --review "$source_session/review" --output "$out/batch_plan.json"
+    manifest_flags=(--manifest /result/processed_source.jsonl --replay-batches /result/batch_plan.json)
   fi
   run_worker "$archive" "$out" --window "$replay_window" --fraction "$replay_fraction" "${manifest_flags[@]}";echo "Output: $out" ;;
 

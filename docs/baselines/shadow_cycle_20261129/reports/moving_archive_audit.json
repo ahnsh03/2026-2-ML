@@ -1,0 +1,110 @@
+{
+  "raw_frames": 293,
+  "inferred": 293,
+  "inference_skipped": 0,
+  "all_raw_bytes_and_membership_verified": true,
+  "receiver_to_score_seconds": {
+    "minimum": 0.090293,
+    "median": 0.147436,
+    "p95": 0.1961444,
+    "maximum": 0.205676
+  },
+  "windows": [
+    {
+      "family": "GP",
+      "window": 0,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "GP",
+      "window": 1,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "GP",
+      "window": 2,
+      "population": 93,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "RF",
+      "window": 0,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "RF",
+      "window": 1,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "RF",
+      "window": 2,
+      "population": 93,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "primary",
+      "window": 0,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "primary",
+      "window": 1,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "primary",
+      "window": 2,
+      "population": 93,
+      "budget": 10,
+      "candidates": 10
+    }
+  ],
+  "receiver": {
+    "status": "stopped",
+    "reason": "duration",
+    "error": null,
+    "saved_frames": 293,
+    "raw_bytes": 33606199,
+    "counters": {
+      "received_messages": 5995,
+      "sequence_gaps": 0,
+      "sampling_skipped_messages": 5697,
+      "latest_slot_overwrites": 5
+    },
+    "seconds": 300.01033093297156,
+    "stopped_utc": "2026-11-28T14:00:46.064118+00:00",
+    "archive_sha256": "7c69b4e80b8d7f3f9d2a19571a22b1be4555015431ebee7791a034a344f03dd4"
+  },
+  "worker": {
+    "status": "complete",
+    "reason": "archive_complete",
+    "processed": 293,
+    "inference_skipped": 0,
+    "archive_rows_seen": 293,
+    "selection_windows": 3,
+    "seconds": 317.9833164240117,
+    "mean_processing_seconds_per_frame": 0.08078558038031752,
+    "error": null,
+    "finished_utc": "2026-11-28T14:00:46.249991+00:00",
+    "context_sha256": "5139b9fc3e9546e20b42709e63d806397c2d9241fe7e8d1148f67b60c99c8f05",
+    "input_manifest_sha256": "55bfdbf9174e20c7a4a8c4ee889a30dc354bcfad5b26ffb07183000162c82366"
+  },
+  "context_sha256": "5139b9fc3e9546e20b42709e63d806397c2d9241fe7e8d1148f67b60c99c8f05",
+  "source_sha256": "753dad5a1bd4cf522fc7668b6ee928d4adc8317f300413b135a5380bea18f6e6",
+  "scope": "Same Docker host receiver/worker UTC. Includes queue and inference after callback; excludes simulator exposure/network time before callback. No GT accuracy or automatic admission."
+}

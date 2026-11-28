@@ -1,0 +1,66 @@
+{
+  "protocol_sha256": "8b55457e98ad88928fdd403479984c744c1a9487985de57d7aa1840861f4b126",
+  "records": [
+    {
+      "tag": "GP_raw",
+      "kind": "GP",
+      "view": "raw",
+      "pooled_mae": 0.046620681425404153,
+      "road_macro_mae": 0.04654201157583019,
+      "interval90_coverage": 0.7844311377245509,
+      "interval90_mean_width": 0.2584083027939502,
+      "raw_parent_max_prediction_difference": 0.0
+    },
+    {
+      "tag": "GP_mean",
+      "kind": "GP",
+      "view": "mean",
+      "pooled_mae": 0.04136824395803411,
+      "road_macro_mae": 0.04124011533263555,
+      "interval90_coverage": 0.7664670658682635,
+      "interval90_mean_width": 0.25435620908577267,
+      "raw_parent_max_prediction_difference": null
+    },
+    {
+      "tag": "GP_z",
+      "kind": "GP",
+      "view": "z",
+      "pooled_mae": 0.040597939980579666,
+      "road_macro_mae": 0.040476354271025035,
+      "interval90_coverage": 0.7455089820359282,
+      "interval90_mean_width": 0.25204977730913297,
+      "raw_parent_max_prediction_difference": null
+    },
+    {
+      "tag": "RF_raw",
+      "kind": "RF",
+      "view": "raw",
+      "pooled_mae": 0.05206607722821715,
+      "road_macro_mae": 0.051686041115606436,
+      "interval90_coverage": 0.5658682634730539,
+      "interval90_mean_width": 0.25800172904585866,
+      "raw_parent_max_prediction_difference": 2.220446049250313e-16
+    },
+    {
+      "tag": "RF_mean",
+      "kind": "RF",
+      "view": "mean",
+      "pooled_mae": 0.051840236653937985,
+      "road_macro_mae": 0.05146309123805886,
+      "interval90_coverage": 0.6077844311377245,
+      "interval90_mean_width": 0.250629411052003,
+      "raw_parent_max_prediction_difference": null
+    },
+    {
+      "tag": "RF_z",
+      "kind": "RF",
+      "view": "z",
+      "pooled_mae": 0.04948469205783523,
+      "road_macro_mae": 0.049130461004316985,
+      "interval90_coverage": 0.6616766467065869,
+      "interval90_mean_width": 0.25498494170629504,
+      "raw_parent_max_prediction_difference": null
+    }
+  ],
+  "confirmation_accessed": false
+}

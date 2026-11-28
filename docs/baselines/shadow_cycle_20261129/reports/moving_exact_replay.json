@@ -1,0 +1,95 @@
+{
+  "rows": 293,
+  "same_worker_source": false,
+  "matched_core_scorer_and_models": true,
+  "maximum_prediction_difference": {
+    "primary": {
+      "estimated_iou": 0.0,
+      "quality_predictive_scale": 0.0,
+      "interval90_lower": 0.0,
+      "interval90_upper": 0.0,
+      "low_quality_probability": 0.0,
+      "review_score": 0.0,
+      "error_task_scores": 0.0,
+      "utility_raw_mean": 0.0,
+      "utility_latent_sd": 0.0,
+      "near_minus_far_error_score": 0.0,
+      "near_minus_far_error_latent_sd": 0.0,
+      "review_threshold": 0.0,
+      "environment_distance": 0.0,
+      "weather_confidence": 0.0,
+      "lighting_confidence": 0.0,
+      "expected_near_marking_score": 0.0,
+      "observed_illumination": 0.0
+    },
+    "GP": {
+      "estimated_iou": 0.0,
+      "quality_predictive_scale": 0.0,
+      "interval90_lower": 0.0,
+      "interval90_upper": 0.0,
+      "low_quality_probability": 0.0,
+      "review_score": 0.0,
+      "error_task_scores": 0.0,
+      "utility_raw_mean": 0.0,
+      "utility_latent_sd": 0.0,
+      "near_minus_far_error_score": 0.0,
+      "near_minus_far_error_latent_sd": 0.0,
+      "review_threshold": 0.0,
+      "environment_distance": 0.0,
+      "weather_confidence": 0.0,
+      "lighting_confidence": 0.0,
+      "expected_near_marking_score": 0.0,
+      "observed_illumination": 0.0
+    },
+    "RF": {
+      "estimated_iou": 0.0,
+      "quality_predictive_scale": 0.0,
+      "interval90_lower": 0.0,
+      "interval90_upper": 0.0,
+      "low_quality_probability": 0.0,
+      "review_score": 0.0,
+      "error_task_scores": 0.0,
+      "utility_raw_mean": 0.0,
+      "utility_latent_sd": 0.0,
+      "near_minus_far_error_score": 0.0,
+      "near_minus_far_error_latent_sd": 0.0,
+      "review_threshold": 0.0,
+      "environment_distance": 0.0,
+      "weather_confidence": 0.0,
+      "lighting_confidence": 0.0,
+      "expected_near_marking_score": 0.0,
+      "observed_illumination": 0.0
+    }
+  },
+  "feature_difference": {
+    "X": 0.0
+  },
+  "selection_ids_order_reasons_match": true,
+  "live_hardware": {
+    "device": "cuda",
+    "cuda_runtime": "12.8",
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+    "capability": [
+      12,
+      0
+    ]
+  },
+  "replay_hardware": {
+    "device": "cuda",
+    "cuda_runtime": "12.8",
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+    "capability": [
+      12,
+      0
+    ]
+  },
+  "source_hashes": {
+    "live/context.json": "5139b9fc3e9546e20b42709e63d806397c2d9241fe7e8d1148f67b60c99c8f05",
+    "live/predictions.jsonl": "49505a93cf69d3fbd725096740e85fd3f0b8019aac9456af7ac6df587f623117",
+    "live/candidates.jsonl": "61dff7ecbcb4bb1383601a16c3e4a278d187cc1204b2da9a3867cdcaa2288290",
+    "replay/context.json": "46a0e51b6763eb9109bedb6e2d72e86b2c69ed7c4997a7e47dcfae212bbb68bf",
+    "replay/predictions.jsonl": "1bfbb8e9148ca7c1b405c0ff13d7c5c6f8bb563bdd9652c44acaa81c5dba3e8e",
+    "replay/candidates.jsonl": "61dff7ecbcb4bb1383601a16c3e4a278d187cc1204b2da9a3867cdcaa2288290"
+  },
+  "scope": "Same processed RGB, windows and models. Runtime equivalence; no GT accuracy claim."
+}

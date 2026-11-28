@@ -1,0 +1,18 @@
+{
+  "utc": "2026-11-28T14:49:13.296666+00:00",
+  "read_only": true,
+  "keyboard_park": true,
+  "xy_error_m": 0.004916462580883845,
+  "speed_mps": 4.064896179266315e-05,
+  "weather": {
+    "type": "WEATHER_TYPE_SUNNY",
+    "instantly": false
+  },
+  "time": {
+    "hour": 13,
+    "data_only": false,
+    "instantly": false
+  },
+  "verified": true,
+  "context": "After default ROS endurance; simulator remains running with front ROS enabled"
+}

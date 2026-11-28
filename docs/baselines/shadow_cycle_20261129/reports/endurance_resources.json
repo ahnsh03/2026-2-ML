@@ -1,0 +1,21 @@
+{
+  "samples": 55,
+  "active_worker_memory_samples": 54,
+  "sampling_interval_seconds_approx": 10,
+  "worker_RAM_MiB_min_max": [
+    1101.824,
+    1143.808
+  ],
+  "worker_CPU_percent_median_p95_max": [
+    17.59,
+    21.210999999999977,
+    27.42
+  ],
+  "whole_card_VRAM_MiB_min_max": [
+    14465.0,
+    14486.0
+  ],
+  "whole_card_scope": "Includes simulator/display/other GPU users; not worker-specific allocated CUDA memory",
+  "limitations": "10-minute one-pose functional run at max1Hz archive, not a multi-hour leak guarantee or max-throughput test",
+  "source_sha256": "766212027d14626eedd23c29433ab0a17b638716ed757785730738a63354e069"
+}

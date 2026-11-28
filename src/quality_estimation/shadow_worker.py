@@ -15,6 +15,7 @@ from .infer_images import load_rgb_row
 from .roi10 import reduce_heads
 from .selected_region_features import extract_selected_features
 from .runtime_catalog import verify_repository_bundle
+from .shadow_replay import validate_batch_plan
 
 
 class PersistentReviewScorer:
@@ -42,9 +43,13 @@ class PersistentReviewScorer:
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for k in ['archive','output','perception-release','bundle']:p.add_argument('--'+k,type=Path,required=True)
-    p.add_argument('--manifest',type=Path,help='Optional immutable RGB subset for exact processed-population replay');p.add_argument('--gp-bundle',type=Path);p.add_argument('--rf-bundle',type=Path);p.add_argument('--device',default='cuda');p.add_argument('--batch-size',type=int,default=4);p.add_argument('--window',type=int,default=100);p.add_argument('--fraction',type=float,default=.1);p.add_argument('--watch',action='store_true');p.add_argument('--maximum-seconds',type=float,default=3600);p.add_argument('--input-timeout',type=float,default=60)
+    p.add_argument('--manifest',type=Path,help='Optional immutable RGB subset for exact processed-population replay');p.add_argument('--replay-batches',type=Path,help='Original live batch membership; offline replay only');p.add_argument('--gp-bundle',type=Path);p.add_argument('--rf-bundle',type=Path);p.add_argument('--device',default='cuda');p.add_argument('--batch-size',type=int,default=4);p.add_argument('--window',type=int,default=100);p.add_argument('--fraction',type=float,default=.1);p.add_argument('--watch',action='store_true');p.add_argument('--maximum-seconds',type=float,default=3600);p.add_argument('--input-timeout',type=float,default=60)
     a=p.parse_args()
     if a.batch_size<1 or a.window<1 or not 0<a.fraction<=1 or a.maximum_seconds<=0 or a.input_timeout<=0:raise ValueError('invalid runtime bounds')
+    batch_plan=None;replay_sizes=None;replay_batch=0;replay_manifest_sha=None;batch_plan_sha=None
+    if a.replay_batches:
+        if a.watch or not a.manifest:raise ValueError('replay batch plan requires a fixed offline manifest')
+        batch_plan=json.loads(a.replay_batches.read_text());replay_sizes=validate_batch_plan(batch_plan,[json.loads(line)for line in a.manifest.read_text().splitlines()]);replay_manifest_sha=sha256_file(a.manifest);batch_plan_sha=sha256_file(a.replay_batches)
     a.output.mkdir(parents=True,exist_ok=False);started=time.monotonic();atomic_json(a.output/'status.json',dict(status='initializing',updated_utc=utc()))
     bundles={'primary':a.bundle}
     if a.gp_bundle:bundles['GP']=a.gp_bundle
@@ -57,16 +62,16 @@ def main():
     warmup_seconds=time.monotonic()-warmup_started
     source_digest=sha256_file(Path(__file__));identity=scorer.identity
     repo_root=Path(__file__).resolve().parents[2]
-    components=['src/quality_estimation/selected_region_features.py','src/quality_estimation/region_candidates.py',
+    components=['src/quality_estimation/shadow_replay.py','src/quality_estimation/selected_region_features.py','src/quality_estimation/region_candidates.py',
                 'src/quality_estimation/support_aware_review.py','src/quality_estimation/support_review_selection.py',
                 'src/quality_estimation/scene_environment.py','src/quality_estimation/spatial_gp.py',
                 'src/quality_estimation/portable_forest.py','src/quality_estimation/roi10.py',
-                'src/quality_estimation/road_structure_features.py','src/camera_semantic_perception/geometry.py']
+                'src/quality_estimation/road_structure_features.py','src/camera_semantic_perception/geometry.py','src/quality_estimation/shadow_replay.py']
     implementation_sha256={name:sha256_file(repo_root/name)for name in components}
     context=dict(code_git_head=git_head(repo_root),implementation_sha256=implementation_sha256,schema='persistent-review-shadow-1',started_utc=utc(),perception_identity=identity,bundle_manifest_sha256=scorer.bundle_hashes,
-        warmup_seconds=warmup_seconds,feature_columns=scorer.columns,window=a.window,budget_fraction=a.fraction,device=a.device,torch=torch.__version__,numpy=np.__version__,opencv=cv2.__version__,
+        warmup_seconds=warmup_seconds,feature_columns=scorer.columns,window=a.window,budget_fraction=a.fraction,device=a.device,torch=torch.__version__,numpy=np.__version__,opencv=cv2.__version__,replay_batch_plan_sha256=batch_plan_sha,
         camera=dict(view='front',width=1280,height=720,profile=scorer.reviews['primary'].profile.version,regions_sha256=scorer.reviews['primary'].profile.regions_sha256),
-        uses_ground_truth=False,emits_vehicle_commands=False,automatic_training_admission=False,queue='bounded_latest_batch'if a.watch else'complete_replay',source_sha256=source_digest)
+        runtime_hardware=dict(device=str(scorer.device),cuda_runtime=torch.version.cuda,gpu_name=torch.cuda.get_device_name(scorer.device)if scorer.device.type=='cuda'else None,capability=list(torch.cuda.get_device_capability(scorer.device))if scorer.device.type=='cuda'else None),uses_ground_truth=False,emits_vehicle_commands=False,automatic_training_admission=False,queue='bounded_latest_batch'if a.watch else'complete_replay',source_sha256=source_digest)
     atomic_json(a.output/'context.json',context);atomic_json(a.output/'READY.json',dict(utc=utc(),context_sha256=sha256_file(a.output/'context.json')))
     atomic_json(a.output/'status.json',dict(status='waiting_input',updated_utc=utc(),context_sha256=sha256_file(a.output/'context.json')))
     seen=0;processed=0;skipped=0;windows=0;buffer=[];features=[];all_features=[];ids=[];latencies=[];reason='end_of_archive';error=None
@@ -103,7 +108,9 @@ def main():
                     omitted=pending[:-a.batch_size]
                     for row in omitted:streams['inference_skipped'].write(json.dumps(dict(sample_id=row['sample_id'],reason='bounded_latest_queue',raw_preserved=True))+'\n')
                     seen+=len(omitted);skipped+=len(omitted);pending=pending[-a.batch_size:]
-                batch=pending[:a.batch_size];tick=time.monotonic();items,x,pred=scorer.score(a.archive,batch);duration=time.monotonic()-tick
+                size=replay_sizes[replay_batch]if replay_sizes else a.batch_size
+                batch=pending[:size];tick=time.monotonic();items,x,pred=scorer.score(a.archive,batch);duration=time.monotonic()-tick
+                if replay_sizes:replay_batch+=1
                 for i,(row,item)in enumerate(zip(batch,items)):
                     result=dict(sample_id=item['sample_id'],rgb_sha256=item['sha256'],pixel_sha256=item['pixel_sha256'],processed_utc=utc(),
                         batch_seconds=duration,batch_rows=len(batch),review={name:{key:value[i].tolist()for key,value in pp.items()}for name,pp in pred.items()},
@@ -124,6 +131,7 @@ def main():
         for r in scorer.reviews.values():r.verify_unchanged()
         if any(sha256_file(repo_root/name)!=value for name,value in implementation_sha256.items()):raise ValueError('runtime implementation changed during session')
         if sha256_file(Path(__file__))!=source_digest:raise ValueError('worker source changed during execution')
+        if replay_sizes and(replay_batch!=len(replay_sizes)or sha256_file(a.manifest)!=replay_manifest_sha or sha256_file(a.replay_batches)!=batch_plan_sha):raise ValueError('replay inputs changed or planned batches were not completed')
     except BaseException as e:error=dict(type=type(e).__name__,message=str(e));reason='worker_error';raise
     finally:
         for s in streams.values():s.close()

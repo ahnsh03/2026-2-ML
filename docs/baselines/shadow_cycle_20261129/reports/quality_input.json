@@ -1,0 +1,94 @@
+{
+  "schema": "blinded-quality-input-assessment-1",
+  "rows": 534,
+  "perception_identity": {
+    "schema_version": "ml-perception-identity-1",
+    "kind": "adaptation",
+    "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+    "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+    "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+    "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+  },
+  "tag": "GP_quality57_oof",
+  "quality_mae": 0.08436137932950231,
+  "quality_road_macro_mae": 0.08436137932950233,
+  "quality_mae_by_segment": {
+    "new29_s0": 0.07474260763671435,
+    "new29_s1": 0.16843589157518007,
+    "new29_s2": 0.0677214876081014,
+    "new29_s3": 0.04614012707229698,
+    "new29_s4": 0.11542273538719447,
+    "new29_s5": 0.033705426697526616
+  },
+  "interval90_coverage": 0.6348314606741573,
+  "interval90_mean_width": 0.382230403034299,
+  "by_hour": {
+    "5": {
+      "rows": 108,
+      "mae": 0.10197839743835584
+    },
+    "6": {
+      "rows": 108,
+      "mae": 0.09866780814439427
+    },
+    "7": {
+      "rows": 108,
+      "mae": 0.07425119886660146
+    },
+    "13": {
+      "rows": 102,
+      "mae": 0.07147742810440111
+    },
+    "20": {
+      "rows": 108,
+      "mae": 0.0747162890256977
+    }
+  },
+  "paired_road_mae_improvement": {
+    "frozen_GP": {
+      "mae_improvement": -0.008861745424875186,
+      "segment_differences": [
+        -0.004000802901498027,
+        -0.025606402760683183,
+        0.0019777685006465567,
+        -0.0012063973753591098,
+        -0.020314679711387867,
+        -0.004019958300969486
+      ],
+      "paired_road_bootstrap95": [
+        -0.017473067632241827,
+        -0.001082862391894013
+      ]
+    },
+    "RF_only": {
+      "mae_improvement": 0.0011390777450769063,
+      "segment_differences": [
+        -0.0262816978189611,
+        0.07221093214136173,
+        -0.0104055023421665,
+        0.008044804240409882,
+        -0.03793705833633179,
+        0.0012029885861492146
+      ],
+      "paired_road_bootstrap95": [
+        -0.022947815942609678,
+        0.032464224428095524
+      ]
+    }
+  },
+  "gate": {
+    "passes": false,
+    "failed": [
+      "GP52_mae_gain",
+      "segment_consistency"
+    ],
+    "improved_segments_vs_GP52": 1
+  },
+  "source_sha256": "f200a05027abb76b5fca3c21b364ff34e5f0b6d0c9e1a796877b3e14e991489e",
+  "input_sha256": {
+    "freeze": "fc3b422b3b7b216fa35b341deed7ee9179c0dd19ac17636900da61a1b53d7e7a",
+    "pack": "2204d8daaa75e4c9cbc24b8fdd3a1cde9c667262874a1ef23c0878b10c8cfc0b",
+    "parent_bundle": "84a27354b1bcba4dd1908e1a0b5f211633dda1dd653a7820371834a75a6cbdfa"
+  },
+  "scope": "Quality-input ablation added while the fixed534 collection was underway, before any confirmation feature/target/model output access. The selector25%rank candidate and all test geometry/membership remain unchanged. This is a blinded additional quality hypothesis, not a pre-collection freeze. Point-quality improvement is separate from review selection and perception retraining. Empirical interval, no uncertain-input integration guarantee."
+}

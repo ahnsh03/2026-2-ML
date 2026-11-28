@@ -4,3 +4,4 @@ models/review/**/*.npz binary
 docs/baselines/scene_cycle_20261128/confirmation/**/*.svg -whitespace linguist-generated
 # CSV exports retain RFC-style CRLF bytes used by their publication hashes.
 docs/baselines/scene_cycle_20261128/confirmation/tables/*.csv whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/baselines/shadow_cycle_20261129/**/*.svg -whitespace linguist-generated

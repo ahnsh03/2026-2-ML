@@ -1,0 +1,173 @@
+{
+  "raw_frames": 586,
+  "inferred": 586,
+  "inference_skipped": 0,
+  "all_raw_bytes_and_membership_verified": true,
+  "receiver_to_score_seconds": {
+    "minimum": 0.092565,
+    "median": 0.1555085,
+    "p95": 0.20240950000000002,
+    "maximum": 0.244416
+  },
+  "windows": [
+    {
+      "family": "GP",
+      "window": 0,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "GP",
+      "window": 1,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "GP",
+      "window": 2,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "GP",
+      "window": 3,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "GP",
+      "window": 4,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "GP",
+      "window": 5,
+      "population": 86,
+      "budget": 9,
+      "candidates": 9
+    },
+    {
+      "family": "RF",
+      "window": 0,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "RF",
+      "window": 1,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "RF",
+      "window": 2,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "RF",
+      "window": 3,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "RF",
+      "window": 4,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "RF",
+      "window": 5,
+      "population": 86,
+      "budget": 9,
+      "candidates": 9
+    },
+    {
+      "family": "primary",
+      "window": 0,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "primary",
+      "window": 1,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "primary",
+      "window": 2,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "primary",
+      "window": 3,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "primary",
+      "window": 4,
+      "population": 100,
+      "budget": 10,
+      "candidates": 10
+    },
+    {
+      "family": "primary",
+      "window": 5,
+      "population": 86,
+      "budget": 9,
+      "candidates": 9
+    }
+  ],
+  "receiver": {
+    "status": "stopped",
+    "reason": "duration",
+    "error": null,
+    "saved_frames": 586,
+    "raw_bytes": 71194010,
+    "counters": {
+      "received_messages": 11994,
+      "sequence_gaps": 0,
+      "sampling_skipped_messages": 11395,
+      "latest_slot_overwrites": 13
+    },
+    "seconds": 600.0042236760492,
+    "stopped_utc": "2026-11-28T14:48:56.437005+00:00",
+    "archive_sha256": "267bdb430c1fabc0bc1c002fd480627a927234c2133d05fedb8cc0eb7ae766d4"
+  },
+  "worker": {
+    "status": "complete",
+    "reason": "archive_complete",
+    "processed": 586,
+    "inference_skipped": 0,
+    "archive_rows_seen": 586,
+    "selection_windows": 6,
+    "seconds": 618.1106219929643,
+    "mean_processing_seconds_per_frame": 0.08335261893360923,
+    "error": null,
+    "finished_utc": "2026-11-28T14:48:56.621352+00:00",
+    "context_sha256": "471f1f2b89524eba7f586a38e9c628c54dff010b45602b3fa414bf09c61388ce",
+    "input_manifest_sha256": "364f8cdd6187f29c11267507dd6f9bd3ec9807759d4d711dddfa39429c83b665"
+  },
+  "context_sha256": "471f1f2b89524eba7f586a38e9c628c54dff010b45602b3fa414bf09c61388ce",
+  "source_sha256": "753dad5a1bd4cf522fc7668b6ee928d4adc8317f300413b135a5380bea18f6e6",
+  "scope": "Same Docker host receiver/worker UTC. Includes queue and inference after callback; excludes simulator exposure/network time before callback. No GT accuracy or automatic admission."
+}

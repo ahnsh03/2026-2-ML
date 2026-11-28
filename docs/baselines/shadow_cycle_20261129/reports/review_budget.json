@@ -1,0 +1,21 @@
+{
+  "schema": "review-budget-context-1",
+  "rows": 534,
+  "near_error_rows": 246,
+  "budget": 54,
+  "near_error_prevalence": 0.4606741573033708,
+  "budget_only_maximum_near_recall": 0.21951219512195122,
+  "reference_RF": {
+    "near_error_recall": 0.2032520325203252,
+    "near_errors_selected": 50,
+    "selected_precision": 0.9259259259259259,
+    "fraction_of_budget_only_ceiling": 0.9259259259259259
+  },
+  "GP74": {
+    "near_error_recall": 0.2073170731707317,
+    "near_errors_selected": 51,
+    "selected_precision": 0.9444444444444444
+  },
+  "assessment_sha256": "d24e951de62e99cd5282d4f149e120f475d5067df47bd62f8c74812e926a9340",
+  "scope": "Descriptive budget-only upper bound, ignoring audit constraints. Different error prevalence makes raw recall across cohorts incomparable. This does not change the frozen adoption gates."
+}

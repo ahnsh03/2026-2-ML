@@ -1,0 +1,70 @@
+{
+  "schema": "shadow-boundary-verification-1",
+  "hardware": {
+    "actual_gpu": "5070Ti",
+    "rtx40": "CPU dependency/runtime only; actual GPU absent"
+  },
+  "native_simulator": {
+    "ros20hz": {
+      "source": "reports/ros_front_rate.txt",
+      "saved": 23,
+      "inferred": 20,
+      "initialization_skips": 3,
+      "maximum_quality_delta": 1.384130163817332e-06,
+      "selected_ids_and_order_match": true
+    },
+    "udp15sec": {
+      "complete_frames": 300,
+      "saved_frames": 15,
+      "assembly_errors": 0
+    }
+  },
+  "controlled_transport_replay": {
+    "not_new_simulator_or_accuracy_data": true,
+    "exclude_from_training": true,
+    "ros_overload": {
+      "received_messages": 1223,
+      "wrong_camera": 12,
+      "wrong_geometry": 12,
+      "invalid_jpeg": 12,
+      "sequence_gaps": 0,
+      "saved": 594,
+      "inferred": 170,
+      "latest_skipped": 424,
+      "windows": [
+        100,
+        70
+      ],
+      "selection_budgets_per_family": [
+        10,
+        7
+      ],
+      "clean_stop": true
+    },
+    "windows_udp": {
+      "detached": true,
+      "complete_frames": 40,
+      "inferred": 40,
+      "latest_skipped": 0,
+      "invalid_packet": 1,
+      "sequence_or_stamp_error": 1,
+      "abandoned_frame": 1,
+      "clean_stop": true,
+      "exact_replay": {
+        "rows": 40,
+        "quality_max_difference": {
+          "primary": 1.9984014443252818e-15,
+          "GP": 1.9984014443252818e-15,
+          "RF": 0.0
+        },
+        "selection_id_order_match": true,
+        "source": "Controlled UDP replay with same20frame windows; CPU40 runtime, no new simulator exposure."
+      }
+    }
+  },
+  "tests": {
+    "rtx40_cpu": 347,
+    "rtx50_cpu": 347
+  },
+  "scope": "Actual native26R1 stream probes and controlled protocol stress receipts are separate populations. No live GT/ROI IoU, no vehicle command publishing or automatic training admission."
+}

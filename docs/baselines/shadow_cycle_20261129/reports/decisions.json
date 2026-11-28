@@ -1,0 +1,247 @@
+{
+  "schema": "normalization-shadow-cycle-decisions-1",
+  "decision_utc": "2026-11-28T14:31:19.616958+00:00",
+  "perception_version": "m-v6-r2-20261128",
+  "perception_updated_this_unit": false,
+  "rf_gp_final_family_choice": "deferred_until_online_and_large_selection_retraining_confirmation",
+  "input_recipe_default": "Existing raw quality52 and supported-error74 retained",
+  "gp_rank_normalization": {
+    "adopt": false,
+    "reason": {
+      "passes": false,
+      "failed": [
+        "road_macro_utility_gain"
+      ],
+      "utility_road_macro_gain": 0.0053439412045700185,
+      "near_recall_gain": 0.0
+    },
+    "robustness": "Four negative/two positive physical-segment utility differences; no confirmed gain. Window100 near-error capture also lower."
+  },
+  "gp_derived_quality_inputs": {
+    "adopt": false,
+    "reason": {
+      "passes": false,
+      "failed": [
+        "GP52_mae_gain",
+        "segment_consistency"
+      ],
+      "improved_segments_vs_GP52": 1
+    },
+    "new_mae": 0.08436137932950231,
+    "reference_gp52_mae": 0.07549963390462712,
+    "paired_mae_gain95": [
+      -0.017473067632241827,
+      -0.001082862391894013
+    ]
+  },
+  "transport_default": "ROS1 camera via separate thin bridge and GPU worker; UDP fallback retained",
+  "weights_in_team_git": true,
+  "actual_rtx40_gpu_test": "not_available_connected_hardware; CPU compatibility/runtime tested only",
+  "shadow_moving_verification": "completed_native_ROS293_frames_6_short_routes",
+  "uses_quality_for_vehicle_control": false,
+  "automatic_training_admission": false,
+  "source_hashes": {
+    "new_confirmation_assessment/summary.json": "d24e951de62e99cd5282d4f149e120f475d5067df47bd62f8c74812e926a9340",
+    "quality_input_confirmation/summary.json": "7ddca3526336f4170937d984dcdb9e6fafcaa26de861834b5dcf6c7332d1b3d3",
+    "visibility_qa/summary.json": "823932f6da9800d089b85d4129e57d00254678ee5048c4585cec34433ac15a84",
+    "reports/shadow_boundary_verification.json": "a439e1ee375593ff10d8b109dc08904b195e9ab2c9904b414ae209f5c45cc7a6"
+  },
+  "supersedes_sha256": "26825e2af4735451d31fc3be49d3f2be4b51c9ae1bedc49a8d6af57fe1380e48",
+  "tests_each_CPU_profile": 353,
+  "runtime_verification": {
+    "20261128T135007-1719799": {
+      "archive": {
+        "status": "stopped",
+        "reason": "duration",
+        "error": null,
+        "saved_frames": 176,
+        "raw_bytes": 21401903,
+        "counters": {
+          "received_messages": 3593,
+          "sequence_gaps": 0,
+          "sampling_skipped_messages": 3415,
+          "latest_slot_overwrites": 2
+        },
+        "seconds": 180.01263172598556,
+        "stopped_utc": "2026-11-28T13:53:29.854295+00:00",
+        "archive_sha256": "062db5778837e85febc8d877c4851840b4a3e42f7d290d07e952e5c4eb7c72e1"
+      },
+      "review": {
+        "status": "complete",
+        "reason": "archive_complete",
+        "processed": 176,
+        "inference_skipped": 0,
+        "archive_rows_seen": 176,
+        "selection_windows": 2,
+        "seconds": 199.86200773296878,
+        "mean_processing_seconds_per_frame": 0.09322881305772833,
+        "error": null,
+        "finished_utc": "2026-11-28T13:53:30.027283+00:00",
+        "context_sha256": "f54139aeb57c649d357a8e2fee9aa9352eb02431ed0518c46534778a531c4200",
+        "input_manifest_sha256": "40c5e9841a33d6ec1242219f8ecb37866c6d51b9381a03a19cd757a405844d53"
+      },
+      "hardware": {
+        "device": "cuda",
+        "cuda_runtime": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+        "capability": [
+          12,
+          0
+        ]
+      },
+      "windows": [
+        {
+          "window": 0,
+          "population": 100,
+          "budget_per_family": 10
+        },
+        {
+          "window": 1,
+          "population": 76,
+          "budget_per_family": 8
+        }
+      ],
+      "receiver_receipt_sha256": "b8650fd66bea8aa9868072ed6d48746c09f488eadabb88ea7f7006ea7baa84fd",
+      "review_receipt_sha256": "4397768fa05a42d5bc42c795a24c28acf5978f7354e67c5c044bd8e85130ca95"
+    },
+    "20261128T135526-1723011": {
+      "archive": {
+        "status": "stopped",
+        "reason": "duration",
+        "error": null,
+        "saved_frames": 293,
+        "raw_bytes": 33606199,
+        "counters": {
+          "received_messages": 5995,
+          "sequence_gaps": 0,
+          "sampling_skipped_messages": 5697,
+          "latest_slot_overwrites": 5
+        },
+        "seconds": 300.01033093297156,
+        "stopped_utc": "2026-11-28T14:00:46.064118+00:00",
+        "archive_sha256": "7c69b4e80b8d7f3f9d2a19571a22b1be4555015431ebee7791a034a344f03dd4"
+      },
+      "review": {
+        "status": "complete",
+        "reason": "archive_complete",
+        "processed": 293,
+        "inference_skipped": 0,
+        "archive_rows_seen": 293,
+        "selection_windows": 3,
+        "seconds": 317.9833164240117,
+        "mean_processing_seconds_per_frame": 0.08078558038031752,
+        "error": null,
+        "finished_utc": "2026-11-28T14:00:46.249991+00:00",
+        "context_sha256": "5139b9fc3e9546e20b42709e63d806397c2d9241fe7e8d1148f67b60c99c8f05",
+        "input_manifest_sha256": "55bfdbf9174e20c7a4a8c4ee889a30dc354bcfad5b26ffb07183000162c82366"
+      },
+      "hardware": {
+        "device": "cuda",
+        "cuda_runtime": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+        "capability": [
+          12,
+          0
+        ]
+      },
+      "windows": [
+        {
+          "window": 0,
+          "population": 100,
+          "budget_per_family": 10
+        },
+        {
+          "window": 1,
+          "population": 100,
+          "budget_per_family": 10
+        },
+        {
+          "window": 2,
+          "population": 93,
+          "budget_per_family": 10
+        }
+      ],
+      "receiver_receipt_sha256": "2ae53387981bd85c1312a825fd0d2a57001d3df28d26036e8d4e52e4ee2e9dd1",
+      "review_receipt_sha256": "a4d8d96610054f723890d0c9be4b8c1bac977876ab9a18adc7a10284e36936d0"
+    },
+    "20261128T141127-1730806": {
+      "archive": {
+        "status": "stopped",
+        "reason": "duration",
+        "error": null,
+        "saved_frames": 146,
+        "raw_bytes": 16088188,
+        "counters": {
+          "received_messages": 2996,
+          "sequence_gaps": 0,
+          "sampling_skipped_messages": 2848,
+          "latest_slot_overwrites": 2
+        },
+        "seconds": 150.0071805260377,
+        "stopped_utc": "2026-11-28T14:14:16.524625+00:00",
+        "archive_sha256": "52c60f15cf4681dc5ee439be2ab5171d95b50d3c1e6c90750543d6093385b4c4"
+      },
+      "review": {
+        "status": "complete",
+        "reason": "archive_complete",
+        "processed": 146,
+        "inference_skipped": 0,
+        "archive_rows_seen": 146,
+        "selection_windows": 2,
+        "seconds": 167.6722885449999,
+        "mean_processing_seconds_per_frame": 0.08588177149266975,
+        "error": null,
+        "finished_utc": "2026-11-28T14:14:16.651641+00:00",
+        "context_sha256": "24c10b89e487c47552606898ab0bdbbaf466158b93bd7c8e5fb8f30f1d0f52fe",
+        "input_manifest_sha256": "4f26893a0eb084b4c814bec41536201745b41ad1f8b3881bace098dc7f0713e9"
+      },
+      "hardware": {
+        "device": "cuda",
+        "cuda_runtime": "12.8",
+        "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+        "capability": [
+          12,
+          0
+        ]
+      },
+      "windows": [
+        {
+          "window": 0,
+          "population": 100,
+          "budget_per_family": 10
+        },
+        {
+          "window": 1,
+          "population": 46,
+          "budget_per_family": 5
+        }
+      ],
+      "receiver_receipt_sha256": "aa59b9fe277771a634ac542d07dad363bcdc3d2c4ad9213f50fe7bc3300fc952",
+      "review_receipt_sha256": "6903ce76e49c761566f4383fad279a7c356b9936102343751e2454b386063143"
+    }
+  },
+  "drive_summary": {
+    "routes": 6,
+    "distance_m": 88.45244751645338,
+    "target_kph": 4,
+    "maximum_speed_kph": 5.573159571933143,
+    "maximum_cte_m": 0.18608816073618084,
+    "reported_collision": false,
+    "failure": null,
+    "restored_keyboard_park": true,
+    "camera_transport": "ROS1",
+    "vehicle_drive_transport": "UDP with26R1 sign correction; SDK placement/restoration",
+    "scope": "Six short same-map paths, no paired GT or generalized driving safety claim."
+  },
+  "camera_final_configuration": "Front Capture Mode off, ROS connected; bridge left ready",
+  "photometric_restoration_verified": true,
+  "default600s_endurance": {
+    "raw_frames": 586,
+    "inferred": 586,
+    "inference_skipped": 0,
+    "seconds": 600.0042236760492,
+    "raw_bytes": 71194010,
+    "sequence_gaps": 0
+  },
+  "final_restoration_verified": true
+}

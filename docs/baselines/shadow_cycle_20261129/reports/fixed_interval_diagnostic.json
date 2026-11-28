@@ -1,0 +1,88 @@
+{
+  "schema": "confirmation-fixed-interval-diagnostic-1",
+  "arms": {
+    "GP52": {
+      "total": {
+        "rows": 534,
+        "coverage90": 0.7078651685393258,
+        "mean_width": 0.38500414888735857,
+        "mae": 0.07549963390462712
+      },
+      "by_hour": {
+        "5": {
+          "rows": 108,
+          "coverage90": 0.8333333333333334,
+          "mean_width": 0.3889737773401493,
+          "mae": 0.09233524509220202
+        },
+        "6": {
+          "rows": 108,
+          "coverage90": 0.6018518518518519,
+          "mean_width": 0.4368298405382294,
+          "mae": 0.09561000858380354
+        },
+        "7": {
+          "rows": 108,
+          "coverage90": 0.7314814814814815,
+          "mean_width": 0.37458286390599727,
+          "mae": 0.06482374491505366
+        },
+        "13": {
+          "rows": 102,
+          "coverage90": 0.7156862745098039,
+          "mean_width": 0.37520010350627137,
+          "mae": 0.05813276537214542
+        },
+        "20": {
+          "rows": 108,
+          "coverage90": 0.6574074074074074,
+          "mean_width": 0.3488894899583071,
+          "mae": 0.0656315795303487
+        }
+      },
+      "prediction_sha256": "16703fb5d5ad41da80cf8b8b29e3cfd77c0a1188068c43b8efbb1fd6b5ac2e17"
+    },
+    "RF52": {
+      "total": {
+        "rows": 534,
+        "coverage90": 0.6722846441947565,
+        "mean_width": 0.3552206312751127,
+        "mae": 0.08550045707457923
+      },
+      "by_hour": {
+        "5": {
+          "rows": 108,
+          "coverage90": 0.7314814814814815,
+          "mean_width": 0.3560410756479459,
+          "mae": 0.09360622518338281
+        },
+        "6": {
+          "rows": 108,
+          "coverage90": 0.5740740740740741,
+          "mean_width": 0.354032329197372,
+          "mae": 0.08044711659553191
+        },
+        "7": {
+          "rows": 108,
+          "coverage90": 0.6666666666666666,
+          "mean_width": 0.3570694536287583,
+          "mae": 0.08500344706505951
+        },
+        "13": {
+          "rows": 102,
+          "coverage90": 0.7156862745098039,
+          "mean_width": 0.3574991545326343,
+          "mae": 0.09378402874121114
+        },
+        "20": {
+          "rows": 108,
+          "coverage90": 0.6759259259259259,
+          "mean_width": 0.35158772799427074,
+          "mae": 0.0751216662136348
+        }
+      },
+      "prediction_sha256": "dd189306841da42ca178f098a12a45411e98b9b7d7fadd691d9e2b133e18a2d6"
+    }
+  },
+  "scope": "Post-confirmation descriptive diagnostic of frozen Cal road envelopes. No threshold/model/interval retuning or visibility exemption. Six physical scene blocks; empirical90% intervals are not a coverage guarantee."
+}

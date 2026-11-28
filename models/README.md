@@ -19,3 +19,12 @@ PYTHONPATH=src python3 -m quality_estimation.active_perception
 아키텍처 출처는 TwinLiteNet+이며 [MIT 라이선스 고지](LICENSE.upstream)를 함께 보존한다. 모델은 프로젝트에서 재학습한 가중치다.
 
 RF/GP 비교 번들 `GP_only`, `RF_only`도 같은 r2 신원과 원래 동결 해시로 포함한다. 주 번들 대체 채택을 뜻하지 않으며 [shadow 실행](../docs/guides/shadow_실행.md)은 세 결과를 구분해 기록한다.
+
+
+| 번들 | 전체 IoU 추정 | 지원 오류 검수 |
+|---|---|---|
+| primary | GP52 | RF74 |
+| GP_only | GP52 | GP74 |
+| RF_only | RF52 | RF52 |
+
+Q52의 RF/GP 대조와 오류74의 RF/GP 대조를 구분한다. RF_only의 오류52는74열 비교와 같은 입력이 아니다. [새534장 확인](../docs/experiments/대비특징_검수와_shadow_20261129.md)에서 GP 대비 순위·GP57 입력은 제외했다. 해당 후보는 배포 폴더를 덮어쓰지 않았다.

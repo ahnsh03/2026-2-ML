@@ -1,0 +1,25 @@
+{
+  "source_sha256": "c91857ffaca18e47332e378b73fbdf6078798ce24f81758285244915c9b973c2",
+  "input_sha256": {
+    "new_confirmation_assessment/summary.json": "d24e951de62e99cd5282d4f149e120f475d5067df47bd62f8c74812e926a9340",
+    "quality_input_confirmation/summary.json": "7ddca3526336f4170937d984dcdb9e6fafcaa26de861834b5dcf6c7332d1b3d3",
+    "quality_oof_development_envelope/summary.json": "8465ba3baaf7e311ee936669c7346b9b766aaf60fbdd2f4f8edcae75f1aa1bbf",
+    "visibility_qa/summary.json": "823932f6da9800d089b85d4129e57d00254678ee5048c4585cec34433ac15a84",
+    "contrast_development/summary.json": "41235c2f68156b662d6af1edc3cd4c288a86fc572a8d57ef20e54f3eb158f27a",
+    "shadow_drive/completion.json": "6aecfae0d0fb0b36ccfc7e3f7bdf4d14ce0eb68bfd95991dd511e79eb1cc6c66",
+    "sessions/20261128T135526-1723011/review/status.json": "a4d8d96610054f723890d0c9be4b8c1bac977876ab9a18adc7a10284e36936d0"
+  },
+  "artifacts": {
+    "01_contrast_confirmation.png": "30eae8f3b2f3c78120c982739a23951aec6ab1273b4a53d1fb4788fcf10ccd3b",
+    "01_contrast_confirmation.svg": "d360093dd7bf4a11489eb38841d281d5f0865823cf76b4b0969d330b36fc671d",
+    "02_quality_input_confirmation.png": "3834f7d09b2dc5a35cc26b07444474e6331ae4d93dd00c953131511fa2536bff",
+    "02_quality_input_confirmation.svg": "48f07fb252c3271ebe22cdf57371b801ff60411d3ff6ea01c0714d8e45614a91",
+    "03_review_budget_context.png": "94b81c3aa492e303c23db14c9dd4472a897881a67fd3718796127c25412ecf70",
+    "03_review_budget_context.svg": "34fc9192c545fb73c48a319ec4fa836040da8dceb29fadee7d2ced194bf91a9f",
+    "04_dawn_visibility_qa.png": "9c6d5c3d2f61c1aef1807cce7baa67842b0f4e83dadfc5062e14ddb53b0fd97b",
+    "04_dawn_visibility_qa.svg": "90b48cdeb345f270e440c2fead30d8e3eb27590135e1310f9d385f86b95edd5a",
+    "05_native_ros_shadow.png": "9ac0781d5a505b79044cb63a45e476b1cfeb6d3d5555d4bb70c9a1140eb21825",
+    "05_native_ros_shadow.svg": "fcfd126f4b2d611a01ed2adc7db757f34d7b75ef0cf4cc0e8c04ed5c51feed2c"
+  },
+  "scope": "Frozen confirmation and functional runtime are separate populations; no new perception training."
+}
