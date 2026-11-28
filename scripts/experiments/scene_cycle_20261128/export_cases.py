@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 from common.bridge import load_target_model,sha256_file
 from quality_estimation.adaptation_cache import CachedAdaptationSamples
 from quality_estimation.perception_identity import resolve_quality_perception
+from quality_estimation.spatial_identity import validate_pack_perception
 from quality_estimation.review_targets import support_aware_targets
 
 
@@ -18,9 +19,17 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for n in ['pack','manifest','cache','adaptation-run','output']:p.add_argument('--'+n,type=Path,required=True)
     p.add_argument('--case-index',type=Path,help='Reuse baseline case IDs for a paired before/after illustration')
-    a=p.parse_args();a.output.mkdir(parents=True,exist_ok=False);cv2.setNumThreads(1);torch.set_num_threads(2)
+    a=p.parse_args();cv2.setNumThreads(1);torch.set_num_threads(2)
+    checkpoint,identity,_=resolve_quality_perception(a.adaptation_run,None)
+    receipt=json.loads(a.pack.with_suffix('.json').read_text())
+    validate_pack_perception(receipt,identity,'model_state_dict')
+    if receipt['sha256']!=sha256_file(a.pack):raise ValueError('case pack changed')
     with np.load(a.pack)as z:data={k:z[k]for k in z.files}
     rows=[json.loads(line)for line in a.manifest.read_text().splitlines()];lookup={r['sample_id']:r for r in rows}
+    if len(lookup)!=len(rows):raise ValueError('duplicate case source IDs')
+    for key,pixel in zip(data['ids'],data['pixel_sha256']):
+        if str(key)not in lookup or lookup[str(key)]['pixel_sha256']!=str(pixel):raise ValueError('case source RGB differs from feature pack')
+    a.output.mkdir(parents=True,exist_ok=False)
     t=support_aware_targets(data['counts']);used=set();chosen=[]
     definitions=[('near_fn',t['near']['false_negative'],data['counts'][:,6:8,2].sum(1)),
         ('near_fp',t['near']['false_positive'],data['counts'][:,6:8,1].sum(1)),
@@ -36,7 +45,7 @@ def main():
             if case['source_manifest_sha256']!=sha256_file(a.manifest):raise ValueError('paired case source membership differs')
             chosen.append(('baseline_'+case['case'],indices[case['sample_id']]))
     selected=[lookup[str(data['ids'][i])]for _,i in chosen];dataset=CachedAdaptationSamples(a.cache,selected,verify=True)
-    checkpoint,identity,_=resolve_quality_perception(a.adaptation_run,None);model=load_target_model(checkpoint,torch.device('cpu'),weights='model')
+    model=load_target_model(checkpoint,torch.device('cpu'),weights='model')
     plt.rcParams.update({'font.family':'DejaVu Sans'});images=[];records=[]
     with torch.inference_mode():
         for j,(name,i)in enumerate(chosen):
@@ -44,11 +53,12 @@ def main():
             if int(gt.sum())!=int((data['counts'][i,:,0]+data['counts'][i,:,2]).sum()):raise ValueError('true GT mask does not match selected frame counts')
             gt_image=np.zeros_like(rgb);gt_image[gt]=[0,220,255];pred_image=np.zeros_like(rgb);pred_image[pred]=[70,225,120]
             errors=(rgb.astype(float)*.55).astype(np.uint8);errors[pred & gt]=[60,190,90];errors[pred & ~gt]=[255,70,70];errors[~pred & gt]=[255,225,30]
+            tp=int((pred & gt).sum());fp=int((pred & ~gt).sum());fn=int((~pred & gt).sum());quality=tp/(tp+fp+fn)if tp+fp+fn else None
+            if data['counts'][i].sum(0).tolist()!=[tp,fp,fn]:raise ValueError('case prediction/error raster differs from the versioned feature pack')
             folder=a.output/name;folder.mkdir()
             panels=[rgb,gt_image,pred_image,errors]
             for filename,value in zip(['rgb.png','gt.png','prediction.png','errors.png'],panels):cv2.imwrite(str(folder/filename),cv2.cvtColor(value,cv2.COLOR_RGB2BGR))
             cv2.imwrite(str(folder/'gt_mask.png'),gt.astype(np.uint8)*255)
-            tp=int((pred & gt).sum());fp=int((pred & ~gt).sum());fn=int((~pred & gt).sum());quality=tp/(tp+fp+fn)if tp+fp+fn else None
             record=dict(case=name,sample_id=str(data['ids'][i]),site=str(data['site'][i]),weather=int(data['weather'][i]),hour=int(data['hour'][i]),
                 display_hw=[360,640],source_camera_hw=[720,1280],display_grid='model-input crop12:372; true GT nearest-neighbor target raster',recommended_aspect_ratio='16:9; preserve proportions',true_gt_pixels=int(gt.sum()),perception_identity=identity,
                 recomputed_lane_iou=quality,source_manifest_sha256=sha256_file(a.manifest),source_pack_sha256=sha256_file(a.pack),
