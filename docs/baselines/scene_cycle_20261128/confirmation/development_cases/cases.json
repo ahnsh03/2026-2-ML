@@ -1,0 +1,162 @@
+{
+  "evidence": {
+    "cases": [
+      {
+        "case": "paired_near_fn",
+        "sample_id": "development28e019_scene28_s00_w5_h20_f0012",
+        "site": "scene28_s00",
+        "weather": 5,
+        "hour": 20,
+        "display_hw": [
+          360,
+          640
+        ],
+        "source_camera_hw": [
+          720,
+          1280
+        ],
+        "display_grid": "model-input crop12:372; true GT nearest-neighbor target raster",
+        "recommended_aspect_ratio": "16:9; preserve proportions",
+        "true_gt_pixels": 3284,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "recomputed_lane_iou": 0.25092250922509224,
+        "source_manifest_sha256": "9a5a736f2a18d61782c47132a2a3c9a72208e86734b8b833a363f675f296bb9c",
+        "source_pack_sha256": "873d2094e0f070aba0725e1c68ca2b888304accf600c7179a8cfa825bb2aaa31",
+        "image_sha256": {
+          "paired_near_fn/errors.png": "208bb6c53b8447e6298465689678c4f18f458979acdd31c18831af8ae73d7903",
+          "paired_near_fn/gt.png": "6a18531c7c8e18b099fdabae3f1b7835e1ce19541a5f07af08d637f0cc6127a6",
+          "paired_near_fn/gt_mask.png": "dd5415d869522b280ffea62bc86436fa3d01752f5d136a2d1574e75e33cca041",
+          "paired_near_fn/prediction.png": "8d7072b05c7bc71a834b2e362a222770be7b56d7e0573d842403a567c1096591",
+          "paired_near_fn/rgb.png": "cbe8aee7fb8d4e57dc120c525309f2dc0ca7a55a8fdce5a7942260c005134ae3"
+        },
+        "scope": "Paired fixed Dev examples for the final retained perception, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim."
+      },
+      {
+        "case": "paired_near_fp",
+        "sample_id": "development28e058_scene28_s06_w5_h20_f0015",
+        "site": "scene28_s06",
+        "weather": 5,
+        "hour": 20,
+        "display_hw": [
+          360,
+          640
+        ],
+        "source_camera_hw": [
+          720,
+          1280
+        ],
+        "display_grid": "model-input crop12:372; true GT nearest-neighbor target raster",
+        "recommended_aspect_ratio": "16:9; preserve proportions",
+        "true_gt_pixels": 19,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "recomputed_lane_iou": 0.0,
+        "source_manifest_sha256": "9a5a736f2a18d61782c47132a2a3c9a72208e86734b8b833a363f675f296bb9c",
+        "source_pack_sha256": "873d2094e0f070aba0725e1c68ca2b888304accf600c7179a8cfa825bb2aaa31",
+        "image_sha256": {
+          "paired_near_fp/errors.png": "9c8b2e1dd9fdea59973325f5fa8c1a92946e16bb4387b44b83cece2384d31b99",
+          "paired_near_fp/gt.png": "8d1542746c0a8f1f6d4890f7535c47c9aab56677a269001f3e7f83885fc10e55",
+          "paired_near_fp/gt_mask.png": "20ba96054897cff847be7b2f6bbf6d4b3af358ce7969c3552d17c3cc444a6d47",
+          "paired_near_fp/prediction.png": "8c5ebce070e88934470fd23b2e09cfd29d982d6eca386e41a498c711001cb31f",
+          "paired_near_fp/rgb.png": "9d160a4a04899a1d5cabdce7cce3101b929c2e01969cb639a3ee61122bff6f51"
+        },
+        "scope": "Paired fixed Dev examples for the final retained perception, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim."
+      },
+      {
+        "case": "paired_near_retained_far_error",
+        "sample_id": "resourceprobe28_scene28_s02_w4_h07_f0019",
+        "site": "scene28_s02",
+        "weather": 4,
+        "hour": 7,
+        "display_hw": [
+          360,
+          640
+        ],
+        "source_camera_hw": [
+          720,
+          1280
+        ],
+        "display_grid": "model-input crop12:372; true GT nearest-neighbor target raster",
+        "recommended_aspect_ratio": "16:9; preserve proportions",
+        "true_gt_pixels": 1734,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "recomputed_lane_iou": 0.6944127708095781,
+        "source_manifest_sha256": "9a5a736f2a18d61782c47132a2a3c9a72208e86734b8b833a363f675f296bb9c",
+        "source_pack_sha256": "873d2094e0f070aba0725e1c68ca2b888304accf600c7179a8cfa825bb2aaa31",
+        "image_sha256": {
+          "paired_near_retained_far_error/errors.png": "9c4198f42da40ada3c7ade9220a4bbdb73ab3ffdf5fa63fd24fbc1bfd2844848",
+          "paired_near_retained_far_error/gt.png": "c7862412e282500aa33de9b694f5cfce3d26b1f046f8284cb7c33ca1e1bc4d6a",
+          "paired_near_retained_far_error/gt_mask.png": "a0e2e7f1f4dff43e887f8c98c74a652c7ba25dca9fec6607b6e2d73eaff84e80",
+          "paired_near_retained_far_error/prediction.png": "380f2b3ed26591743da166bdbc72efae4be3f09288260c2c142abcdd228b404d",
+          "paired_near_retained_far_error/rgb.png": "b60bdf870ac0945b1afef2cee041daa62cd23d1a4709ea651d32951a765aeb49"
+        },
+        "scope": "Paired fixed Dev examples for the final retained perception, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim."
+      },
+      {
+        "case": "paired_07h_near_retained",
+        "sample_id": "development28e000_scene28_s00_w0_h07_f0003",
+        "site": "scene28_s00",
+        "weather": 0,
+        "hour": 7,
+        "display_hw": [
+          360,
+          640
+        ],
+        "source_camera_hw": [
+          720,
+          1280
+        ],
+        "display_grid": "model-input crop12:372; true GT nearest-neighbor target raster",
+        "recommended_aspect_ratio": "16:9; preserve proportions",
+        "true_gt_pixels": 3166,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "recomputed_lane_iou": 0.9319241529375194,
+        "source_manifest_sha256": "9a5a736f2a18d61782c47132a2a3c9a72208e86734b8b833a363f675f296bb9c",
+        "source_pack_sha256": "873d2094e0f070aba0725e1c68ca2b888304accf600c7179a8cfa825bb2aaa31",
+        "image_sha256": {
+          "paired_07h_near_retained/errors.png": "4f2f1bd78d7c88231b988340169775f58e70b6f056d6026972437155f48b6961",
+          "paired_07h_near_retained/gt.png": "dcae7de0aee3f145b97bbfe653eee879c3ba7e74fed1cd177ca140680a6330a6",
+          "paired_07h_near_retained/gt_mask.png": "3f97cb05249dea55331c574dad5e58563d19f50feda19b06ff1c77b93793cfd4",
+          "paired_07h_near_retained/prediction.png": "083a1c5e8713e57275621780fc1cc19ac69507c7d3a679c236d823a9803461db",
+          "paired_07h_near_retained/rgb.png": "1a9ff58f781ac23a5f9afd522c6ab295dd3c477aa7d574a06c82d504d3d11dfc"
+        },
+        "scope": "Paired fixed Dev examples for the final retained perception, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim."
+      }
+    ],
+    "source_sha256": "f8f3c69eb0f65af752b4f4c1ddb81164f94bf4641ccf5834109baeb8e64fff87",
+    "baseline_case_index_sha256": "19670abde1db7799fd616a73758893b7fb069971e36a1504e28fa575b34b6613",
+    "case_index_sha256": "19670abde1db7799fd616a73758893b7fb069971e36a1504e28fa575b34b6613"
+  },
+  "publication_projection": {
+    "original_sha256": "52c88439852caf2affc943638f07f5e9ad50bbaf60dd9f095c18cadcbac6ad80",
+    "source_alias": "STUDY/figures/selected_development_cases/cases.json",
+    "private_paths_replaced": true
+  }
+}

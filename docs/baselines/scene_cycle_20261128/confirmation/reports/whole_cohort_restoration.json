@@ -1,0 +1,116 @@
+{
+  "evidence": {
+    "utc": "2026-11-28T08:51:07.514745+00:00",
+    "before_mode": {
+      "mode": "VEHICLE_CONTROL_AUTO_MODE"
+    },
+    "before_first_epoch_pose_error_m": 0.2434875560245976,
+    "restoration": {
+      "ego": {
+        "actor_info": {
+          "id": {
+            "value": "Ego"
+          },
+          "object_type": "OBJECT_TYPE_VEHICLE",
+          "client_key": ""
+        },
+        "bounding_box": {
+          "extent": {
+            "x": 1.0804173946380615,
+            "y": 2.3175039291381836,
+            "z": 0.8220231533050537
+          },
+          "location": {
+            "x": -110.8076171875,
+            "y": -391.6382751464844,
+            "z": 29.342519760131836
+          },
+          "rotation": {
+            "x": -359.7728271484375,
+            "y": 0.22367076575756073,
+            "z": 60.03887939453125
+          }
+        },
+        "transform": {
+          "location": {
+            "x": -111.60382080078125,
+            "y": -392.94390869140625,
+            "z": 28.89496612548828
+          },
+          "rotation": {
+            "x": -359.7728271484375,
+            "y": 0.22367076575756073,
+            "z": 60.03887939453125
+          }
+        },
+        "velocity": {
+          "x": -0.0011190131772309542,
+          "y": 0.013114568777382374,
+          "z": -0.001612568856216967
+        },
+        "angular_velocity": {
+          "x": 0.0005823972751386464,
+          "y": 5.0375248974887654e-05,
+          "z": -0.0004210014012642205
+        },
+        "acceleration": {
+          "x": 0.00915029551833868,
+          "y": 0.008432303555309772,
+          "z": -0.14789554476737976
+        },
+        "vehicle_state": {
+          "gear_mode": "GEAR_MODE_P",
+          "current_link_info": {
+            "id": {
+              "value": "A2256W000748"
+            },
+            "waypoint_idx": 81
+          },
+          "remaining_distance": -1.0,
+          "is_pass_des_pos": true,
+          "tl_id": {
+            "value": "Not Detected"
+          },
+          "tl_color": "TL_COLOR_NOT_DETECTED",
+          "throttle": 0.0,
+          "steer": 0.0,
+          "brake": 0.0,
+          "front_wheel_angle": 0.0,
+          "remaining_link_count": 0,
+          "collision_objects": []
+        },
+        "global_velocity": {
+          "x": 0.0008672812255099416,
+          "y": -0.001777311903424561,
+          "z": 0.013112340122461319
+        }
+      },
+      "mode": {
+        "mode": "VEHICLE_CONTROL_KEYBOARD"
+      },
+      "weather": {
+        "type": "WEATHER_TYPE_SUNNY",
+        "instantly": false
+      },
+      "time": {
+        "hour": 13,
+        "data_only": false,
+        "instantly": false
+      },
+      "xy_error_m": 0.0026863371616156467,
+      "yaw_error_deg": 0.0008393945312548112,
+      "native_velocity_norm": 0.013260636403027028,
+      "native_velocity_divisor": 3.6,
+      "speed_mps": 0.003683510111951952,
+      "verified": true
+    },
+    "initial_state_sha256": "3baeced8926dc59ba357d822e5e2ad03cf25eb2ebf09592c21f09fec0d88f0fc",
+    "source_sha256": "fb00fe92eb67fb542885a76915f38a707fa9c4f694559ef70677ce45d9fd92d0",
+    "scope": "Explicit whole-cohort initial-state restoration after the final UDP sender stopped. Corrects accumulated sub-centimeter per-epoch Park settling drift; no new experiment or data capture."
+  },
+  "publication_projection": {
+    "original_sha256": "0c1c215b8a05093ed83e28126d84763e5eab64947db97f1cb4cf8e733f7ce34b",
+    "source_alias": "STUDY/reports/final_whole_cohort_restoration.json",
+    "private_paths_replaced": false
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "evidence": {
+    "gear": 1,
+    "position": {
+      "y": -392.943939,
+      "z": 28.8936386,
+      "x": -111.603752
+    },
+    "ctrl_mode": 1,
+    "window_minimized": false,
+    "utc": "2026-11-28T08:52:17.2458749Z",
+    "responding": true,
+    "window_maximized": false,
+    "packet_length": 245,
+    "signed_speed_kph": 8.37306e-06,
+    "scope": "Read-only UDP/window observation after relay and collector shutdown",
+    "simulator_pid": 26040,
+    "control_commands_sent": 0
+  },
+  "publication_projection": {
+    "original_sha256": "b5fab67140bfd11da1692fe98c52827263ac5c4e8efb1848bed641fb4b6b1755",
+    "source_alias": "STUDY/reports/native_state_final_verified.json",
+    "private_paths_replaced": false
+  }
+}

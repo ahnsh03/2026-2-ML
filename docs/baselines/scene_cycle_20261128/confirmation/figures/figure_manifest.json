@@ -1,0 +1,33 @@
+{
+  "evidence": {
+    "files": {
+      "08_perception_fresh_confirmation.png": "532a3619a3690757654699b30cf51113ef591909a23a1cee2c0b757db4645572",
+      "08_perception_fresh_confirmation.svg": "35ce0ad7d90143b75ac98e0c737fb405abafeb2717f007975a50640e29863f9c",
+      "13_matched_retraining_fresh_confirmation.png": "f926463ff0ec8241ed3256ca5d0d2703da77f0984fca4e65a7865f0b25c84a24",
+      "13_matched_retraining_fresh_confirmation.svg": "a67afbbd8bb30695655e0686eeaf5a661a42f872b13932de2a8c7e0c0f4d4b71",
+      "14_neural_band_errors_fresh_confirmation.png": "09bae873edf93cc68ead729faf4d3924c5785e94fe84ff81637e7d7cfcfb1a50",
+      "14_neural_band_errors_fresh_confirmation.svg": "6ad8ee13dfb781ec86d56fbcb700a53f530420e346e01d64aefbe49e68ed4b59",
+      "09_quality_fresh_confirmation.png": "1c0f813f7fc18611210f31d80578eb46e3f5f8d1f54baf5837383d12c04adc64",
+      "09_quality_fresh_confirmation.svg": "edd6a88b197daa62c9dc6d057d1b5efeb742e50ce0d1e15060f1656255fd2aac",
+      "10_review_fresh_confirmation.png": "7404c1c7925fe273fa42a571f6689b99158745c59fc4f22bd358779d5661862e",
+      "10_review_fresh_confirmation.svg": "a08881aee4291f5b0dfd80de93d1f04ce0a1a303b8be0628aaf44c5219483489",
+      "11_environment_fresh_confirmation.png": "990a31fdb8b580584af298d8364f98a5c2a0b953838c79c5eff56b103de4bd62",
+      "11_environment_fresh_confirmation.svg": "75f3784dbc7a8878c99f85c9afe167d8a75e15c4117caf523692feb35abf9da1",
+      "12_quality_scatter_fresh_confirmation.png": "365f813cb35f72a4586fe829d6ad884c3a765fd76b96cc82f1bc9a174029729c",
+      "12_quality_scatter_fresh_confirmation.svg": "083a83de8a1faabeefacc1dee0dd62ce960fad66626d7dfb7c71a70aada0b2fc"
+    },
+    "source_sha256": "510e6c2441d9ab13452254811f31a1d31540af2be998d4643c50298b3a8b1696",
+    "inputs": {
+      "confirmation_models_policy_frozen.json": "10494ffbc6f47881fc88d265b9feb05c2eefc9a55062391f884242e5c1d0859f",
+      "summary.json": "1e9b5f17d7ea0de4155bc5fddd66356d3c1a1996864fbb3c3a0a38e7fcd330bb",
+      "neural_confirmation.json": "6587908679b4a8a0204fc63b8b80934aa37435f621d2eb1ecfa99bd0af08c429",
+      "environment_confirmation.json": "a5e374ba2b4cec9b37a66e663c6ec820c46a0339f06a1da71793aab3d40f94e7"
+    },
+    "scope": "Already scored fixed confirmation, no model selection or threshold tuning. SVG/PNG figures, keep original panel proportions."
+  },
+  "publication_projection": {
+    "original_sha256": "80439d7f34b9722962ba720d82fe09966db968665ace566f02d4c539ab069238",
+    "source_alias": "STUDY/confirmation/figures/figure_manifest.json",
+    "private_paths_replaced": true
+  }
+}

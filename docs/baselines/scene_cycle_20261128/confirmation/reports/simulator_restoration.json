@@ -1,0 +1,753 @@
+{
+  "evidence": {
+    "completed_utc": "2026-11-28T08:08:11.091046+00:00",
+    "conditions": 96,
+    "failed_epochs": 0,
+    "all_restorations_verified": true,
+    "maximum_xy_error_m": 0.002730008974329171,
+    "maximum_restored_speed_mps": 0.005552078890641442,
+    "final_state": {
+      "ego": {
+        "actor_info": {
+          "id": {
+            "value": "Ego"
+          },
+          "object_type": "OBJECT_TYPE_VEHICLE",
+          "client_key": ""
+        },
+        "transform": {
+          "location": {
+            "x": -111.38372,
+            "y": -392.845917,
+            "z": 28.8922119
+          },
+          "rotation": {
+            "x": -359.741547,
+            "y": 0.243339553,
+            "z": 59.7682953
+          }
+        },
+        "vehicle_state": {
+          "gear_mode": "GEAR_MODE_P",
+          "current_link_info": {
+            "id": {
+              "value": "A2256W000748"
+            },
+            "waypoint_idx": 0
+          },
+          "throttle": 0.0,
+          "steer": 0.0,
+          "brake": 0.0,
+          "front_wheel_angle": 0.0,
+          "remaining_distance": 0.0,
+          "remaining_link_count": 0,
+          "is_pass_des_pos": false,
+          "tl_color": "TL_COLOR_UNSPECIFIED",
+          "collision_objects": []
+        },
+        "global_velocity": {
+          "x": -0.000908170361,
+          "y": 0.000573541445,
+          "z": 0.0145432465
+        }
+      },
+      "mode": {
+        "mode": "VEHICLE_CONTROL_KEYBOARD"
+      },
+      "weather": {
+        "type": "WEATHER_TYPE_SUNNY",
+        "instantly": false
+      },
+      "time": {
+        "hour": 13,
+        "data_only": false,
+        "instantly": false
+      },
+      "xy_error_m": 0.002562229107627816,
+      "yaw_error_deg": -0.0007171999999968648,
+      "native_velocity_norm": 0.014582857811605166,
+      "native_velocity_divisor": 3.6,
+      "speed_mps": 0.004050793836556991,
+      "verified": true
+    },
+    "receipts": [
+      {
+        "receipt": "confirmation28e000_completion.json",
+        "sha256": "7c3da95a3b0c4a15c2620cd8a0a0020c2b081afd1be57a980502a851044b1481",
+        "xy_error_m": 0.002607538494432188,
+        "speed_mps": 0.003538734381253205,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e001_completion.json",
+        "sha256": "a60f63c08a7c9a22a80030654d618a7ef24d70b77720998181be71b628179c9b",
+        "xy_error_m": 0.0022186879005480463,
+        "speed_mps": 0.004936492850660279,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e002_completion.json",
+        "sha256": "f07788290cb940a3999375e027150bfc0371b7327d01499c1aba907627ecf2a6",
+        "xy_error_m": 0.002600886195120394,
+        "speed_mps": 0.005400749989281371,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e003_completion.json",
+        "sha256": "1778c0fc464c96486ab3d096fbbd60458f78c2144d26a20f3c2341352fdc9caf",
+        "xy_error_m": 0.0023104943194040637,
+        "speed_mps": 0.0035347118495896467,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e004_completion.json",
+        "sha256": "bdcd78762c9e7639b27c5ca7d4d2957eabc1112854d569356c4a06fb443bfa0b",
+        "xy_error_m": 0.002416016763176849,
+        "speed_mps": 0.00211312574459394,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e005_completion.json",
+        "sha256": "31d5b02fba2308d54cc3097d756180f680a9d978c916e6f785c2e65c074e62a5",
+        "xy_error_m": 0.002119713424036093,
+        "speed_mps": 0.0026780653526041385,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e006_completion.json",
+        "sha256": "e1026c52ecd978eefc8bd83e13ea070e4595adbec55dfead2650149cf8d13861",
+        "xy_error_m": 0.0025073773150647628,
+        "speed_mps": 0.0026938027076521555,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e007_completion.json",
+        "sha256": "0f8db2928c7206d88b8a9a46719138ec09d2c5eb7f6d1c7e606593278a9749fe",
+        "xy_error_m": 0.0025860618708549435,
+        "speed_mps": 0.004299621010145024,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e008_completion.json",
+        "sha256": "33dab36e7da0a62d87e6e6e34af1bcbfe741a37797b160296367767592159125",
+        "xy_error_m": 0.002131955440435751,
+        "speed_mps": 0.0026743648691118283,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e009_completion.json",
+        "sha256": "e94bc9f42c95024d3cfbbca482e064811a76c0eb508315aa9d04181547030644",
+        "xy_error_m": 0.002626932812238149,
+        "speed_mps": 0.0035171522683247088,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e010_completion.json",
+        "sha256": "8558c57f358c7ea4d3639c08378e972092330725170cb3ce7179dcdab5063c6d",
+        "xy_error_m": 0.0024507672268113886,
+        "speed_mps": 0.0017976911331701922,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e011_completion.json",
+        "sha256": "e7feb1dc7f036cad55ca51b36b3265ff6e22d3d640b32504fbcfe94c01b7d00e",
+        "xy_error_m": 0.002406791432594037,
+        "speed_mps": 0.0054052406971877255,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e012_completion.json",
+        "sha256": "83d80f2dc663446800ca255c9ad7a0110068cc2e6154019e01f70417081d8063",
+        "xy_error_m": 0.002593858901327282,
+        "speed_mps": 0.003528914778803378,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e013_completion.json",
+        "sha256": "b5b68ff06edf88b0c30e6bca050984323acb14170524e1b38756aaa23ae4f130",
+        "xy_error_m": 0.0024630233454138797,
+        "speed_mps": 0.003169431891961334,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e014_completion.json",
+        "sha256": "344079856478f736c4c7cae259815a6f15b0c6e29d896f27996e678b3d7e1941",
+        "xy_error_m": 0.0022077219027918666,
+        "speed_mps": 0.004926059068910305,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e015_completion.json",
+        "sha256": "5d0107240fee36c22b2ae4c4513e0bfd45189cefa6b2640b0f9cac7e64f11d5d",
+        "xy_error_m": 0.002592720000333953,
+        "speed_mps": 0.005523917630643724,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e016_completion.json",
+        "sha256": "11703353d004ca82f1e9bc330ea00a67a29e7e71d4b95601aeb221f243def19a",
+        "xy_error_m": 0.0026110197241762533,
+        "speed_mps": 0.00412213161451362,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e017_completion.json",
+        "sha256": "63a57e0595797689e5ca23ad3163b02f983bd18cf91955bef21da2f99b1028b7",
+        "xy_error_m": 0.002656335069232943,
+        "speed_mps": 0.0037452459952313907,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e018_completion.json",
+        "sha256": "8c072396498736597eff1fc270a98aead241cae0130c2dae7ab31415ef1a1452",
+        "xy_error_m": 0.002229759852545628,
+        "speed_mps": 0.00495133647794197,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e019_completion.json",
+        "sha256": "45c138660db0087dca8fef7860faa9de13830d1ad91dd2b9ac736ade451a0f67",
+        "xy_error_m": 0.0024671027542313264,
+        "speed_mps": 0.0017766656163563344,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e020_completion.json",
+        "sha256": "e266b68497615beff32576137541016c7137020d8e3920fb2c7bda15c7066cca",
+        "xy_error_m": 0.0021473856197758803,
+        "speed_mps": 0.0026499242551376702,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e021_completion.json",
+        "sha256": "2f37b36d9183baad4f9377d9d14aca7d041a17151b17dd02e1ea6e9015d1b8c9",
+        "xy_error_m": 0.0024565443208021537,
+        "speed_mps": 0.0017747499390467097,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e022_completion.json",
+        "sha256": "e42ba497a92a0d71b937403bafbb24f172795241c455f078fba8f7f6d8260e2b",
+        "xy_error_m": 0.002186144094052461,
+        "speed_mps": 0.0026261036896926444,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e023_completion.json",
+        "sha256": "af426939c98c5f41ae52235e84e2413f42faf1fd4afbf8af4c66b363b3f66c90",
+        "xy_error_m": 0.002100446143085919,
+        "speed_mps": 0.002663874271206963,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e024_completion.json",
+        "sha256": "adc5acd3f9b5df6cda242f1ed714a2d2402bf9d9a9e4eb9c69ed9432bb33017e",
+        "xy_error_m": 0.0023138859090205163,
+        "speed_mps": 0.002678706005879312,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e025_completion.json",
+        "sha256": "417b299bcdf1b6aedd31e92360816e53fabd7b834e865dea6d902470259f526d",
+        "xy_error_m": 0.0022399564727913785,
+        "speed_mps": 0.003556874422092006,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e026_completion.json",
+        "sha256": "ae2c81726a9f262a39cc465a376ae121f52624fba0e92422a142e445ba5c400b",
+        "xy_error_m": 0.0024739959579668856,
+        "speed_mps": 0.0017658880752926057,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e027_completion.json",
+        "sha256": "7d321af4c30ec10cee6a12911e8153600386f0149209042e3e53d660e8993083",
+        "xy_error_m": 0.0022430381182594783,
+        "speed_mps": 0.004945244033976902,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e028_completion.json",
+        "sha256": "3641e7e4fe42a7b7d20f1a119b23ecfdd3af876aa13daeb02691c2cfbae5aab0",
+        "xy_error_m": 0.0025577337625345277,
+        "speed_mps": 0.0035092536707324244,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e029_completion.json",
+        "sha256": "4702ca5de0c724dbbd69dc5988e8be22ac91a22119e061efaa82dc130d07be1c",
+        "xy_error_m": 0.0021079359572822565,
+        "speed_mps": 0.001802792679382411,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e030_completion.json",
+        "sha256": "a9f91cca164af046c1fd3da18ec63daad71d30b66593d6fb4f2f1c02860bd83f",
+        "xy_error_m": 0.00214311222291212,
+        "speed_mps": 0.0023716342795819323,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e031_completion.json",
+        "sha256": "503e1003cd69b8232ca5105ac0c47ca159bc7725b6a2062feaa896f976795d94",
+        "xy_error_m": 0.0024200712799608576,
+        "speed_mps": 0.002379696808569301,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e032_completion.json",
+        "sha256": "e6f4ed74a5cdca3f5a6390e763f15b6b8c1b8b1eab80af4f962ba8f47985ec87",
+        "xy_error_m": 0.002145428861539914,
+        "speed_mps": 0.0026589709201169077,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e033_completion.json",
+        "sha256": "5277bd2d153e1d3e2832999812971ec3b8c590d5981bd9be90d007b479d18db2",
+        "xy_error_m": 0.0025258948909296815,
+        "speed_mps": 0.003513674455655101,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e034_completion.json",
+        "sha256": "a1cb42befa5ea488eb30097bc13651d59842b99171e623bc749a0f5eb811ce6e",
+        "xy_error_m": 0.002176045036309717,
+        "speed_mps": 0.001796441325161149,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e035_completion.json",
+        "sha256": "17c6fd908e92646d79c2fd5fe7663c6f94ad49fb6ba174288e282af912abed01",
+        "xy_error_m": 0.002463255772330547,
+        "speed_mps": 0.0017988249620926938,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e036_completion.json",
+        "sha256": "3abc8b9d47c75cb7a4d77d99f4cfa613b6637a22e42f6a527e467d054dfca817",
+        "xy_error_m": 0.0024763186386263865,
+        "speed_mps": 0.001789824312761657,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e037_completion.json",
+        "sha256": "ff729fd8a7abf62779732239930c2780a34905849ed1b7dcccc509508280a54c",
+        "xy_error_m": 0.0021676092821375924,
+        "speed_mps": 0.0015222286813330638,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e038_completion.json",
+        "sha256": "1f5aec01cfc15c7806b6466cb8eec57c8c8f9cb1c2758ff385cc2af448ccb429",
+        "xy_error_m": 0.002136610633679573,
+        "speed_mps": 0.0026424892855618546,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e039_completion.json",
+        "sha256": "0509c6c7101fd88d816e50515460d91c8404b31baa235069fe33058ae6d3b875",
+        "xy_error_m": 0.002602437703388115,
+        "speed_mps": 0.005552078890641442,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e040_completion.json",
+        "sha256": "6a851262e9b03ea32c1fc960f605e2542d268290024c5246d427777daaa251ef",
+        "xy_error_m": 0.0024641176920041866,
+        "speed_mps": 0.002661104602602797,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e041_completion.json",
+        "sha256": "9bec88ede8efda8854e6a00efe0f14ece12589934c67113904dc8daec895ba6b",
+        "xy_error_m": 0.002485262561573551,
+        "speed_mps": 0.002363302453758775,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e042_completion.json",
+        "sha256": "943122dd8feeac08ee0e22da8f70567213cdf050bc066c961abc2dee4c31ddcc",
+        "xy_error_m": 0.0026364400239791913,
+        "speed_mps": 0.0035063105342926807,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e043_completion.json",
+        "sha256": "9424b76c2b1e819d4bd9940f1eb259e12683c8ebe035f40e9987818ac5563b1b",
+        "xy_error_m": 0.0022863009425666925,
+        "speed_mps": 0.003509023726632854,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e044_completion.json",
+        "sha256": "e3c1a769a6fbb95a2a9e7fe84af4c64492e3118dbabe1e25f15e124ec51aa50d",
+        "xy_error_m": 0.002195338014973723,
+        "speed_mps": 0.001807598117887374,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e045_completion.json",
+        "sha256": "3c057b3c0d4b6f181a948db0fa109f0682c5f50c77efcce9038c649e82b857ea",
+        "xy_error_m": 0.0022643961667496537,
+        "speed_mps": 0.0031404383028377464,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e046_completion.json",
+        "sha256": "04d60c4562462abe2f2adfc3b5feffac384ee8551a0b731bf4bc321eed6b4680",
+        "xy_error_m": 0.002296891812852598,
+        "speed_mps": 0.004894657602956588,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e047_completion.json",
+        "sha256": "a48b4c1b03e996558a6122c7994e0068fe705d96eadd8ef8ffb3a09ff369f285",
+        "xy_error_m": 0.0023097673042872433,
+        "speed_mps": 0.0014761805872025421,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e048_completion.json",
+        "sha256": "546a10f2cf8d0e4a2db0038adeda298d8f906b284df7689acaea95de6a37fb7c",
+        "xy_error_m": 0.0025187101857856915,
+        "speed_mps": 0.0017829219663064268,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e049_completion.json",
+        "sha256": "8d49cc8b0fd698957bf34646595a8e97a215879f29355436616fa8440f429b2a",
+        "xy_error_m": 0.002680328711179783,
+        "speed_mps": 0.005381069087678354,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e050_completion.json",
+        "sha256": "556c9bc248de6c61d5aefd3e6781c1ffdb9347abe526b32e5557e9ee7c85c6bc",
+        "xy_error_m": 0.0026685885782692324,
+        "speed_mps": 0.00349028557754804,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e051_completion.json",
+        "sha256": "6ca26156dfc0ab987ce89d7a9140e0535914247f46c571843f11c939012e1493",
+        "xy_error_m": 0.002664231596541524,
+        "speed_mps": 9.031199465519082e-05,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e052_completion.json",
+        "sha256": "eb15a70ed6d544df67575b9aa11f4e059cdd4b78028d5cb5a33ffb5aac43b941",
+        "xy_error_m": 0.0027150443826904863,
+        "speed_mps": 0.004079984785857113,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e053_completion.json",
+        "sha256": "c4feef454bfe3ce929facfdc05bc0e438944184706b254a5384fe3681f8e3a36",
+        "xy_error_m": 0.0024284068851776817,
+        "speed_mps": 0.002375641274750221,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e054_completion.json",
+        "sha256": "be2e53c41936496c1cfc9e9370dfb0e149a16c942c0ba51818820aadce9a8e4a",
+        "xy_error_m": 0.002532771012173126,
+        "speed_mps": 0.0053507180447644334,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e055_completion.json",
+        "sha256": "23fd74ad8156afeb645760e141d671e563562c98d2f4ade25931f1f69913a994",
+        "xy_error_m": 0.0026830946684661106,
+        "speed_mps": 0.004097191051390099,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e056_completion.json",
+        "sha256": "5aab717a6c3806012b7e567a2141c1a34452fd0fcc7a17c92b55750a7212a316",
+        "xy_error_m": 0.0024603034365818888,
+        "speed_mps": 0.004916030092812765,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e057_completion.json",
+        "sha256": "d66b4cbaae0f198a79359cb0fbfa56e31e1b6eda918d5a7a5787a4d8900d3984",
+        "xy_error_m": 0.002518802294725511,
+        "speed_mps": 0.0017707656172346426,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e058_completion.json",
+        "sha256": "29bf571b1ace5a6e18b35e37402a5a65aacd5e3f58ccdb37e58c6e18afd56f3c",
+        "xy_error_m": 0.002653361829854878,
+        "speed_mps": 0.00552320407096583,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e059_completion.json",
+        "sha256": "c8c715f0e6eb2fa42fc5cdfaa10b3489e53bc0c102e550589a8dca798000ae0d",
+        "xy_error_m": 0.002550882396341351,
+        "speed_mps": 0.0017744966043381411,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e060_completion.json",
+        "sha256": "e26b2e6eb561a50624b0f356eb7320c4c8ea6a43564b1b73c217d689b1ffa60b",
+        "xy_error_m": 0.0022480213522125033,
+        "speed_mps": 0.001801027114023173,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e061_completion.json",
+        "sha256": "84f9ae9cca64116503943e3e571f433ac330e14f878266edd27e66ead1905502",
+        "xy_error_m": 0.0026155551991838303,
+        "speed_mps": 0.001708719882796922,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e062_completion.json",
+        "sha256": "24417a4346b5b0aa56438ceea4e5fbad8ed2003528cab262ed1e009412f075cb",
+        "xy_error_m": 0.002301260958669367,
+        "speed_mps": 0.002633491746487256,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e063_completion.json",
+        "sha256": "9ccedd05b280b1dfc5e691e505aff0c586da2704d07e78d514680651cd25f951",
+        "xy_error_m": 0.0022745944693590824,
+        "speed_mps": 0.0017828905927376603,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e064_completion.json",
+        "sha256": "4f0857cbb3cdfbbd79fa5f1d7043d1ca29cb44ead587f65bb728c0ba21e87c63",
+        "xy_error_m": 0.0025395924870036664,
+        "speed_mps": 0.0017630930765316856,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e065_completion.json",
+        "sha256": "5c52a15f046052f2e6d10b9163d176c805c0eb20465b8ae4e311bc638c9d7ecd",
+        "xy_error_m": 0.0027011932548470165,
+        "speed_mps": 0.003477839741177027,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e066_completion.json",
+        "sha256": "ff72710a3ece4639f868acc5d4a1c40f80b890fb969bb824a1949d9c9d339645",
+        "xy_error_m": 0.0023858587552471645,
+        "speed_mps": 0.004047181334209001,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e067_completion.json",
+        "sha256": "9a66e168816f6bdeab9873a3371f681f36b7264543268a222e1cbb7895551c60",
+        "xy_error_m": 0.002597277998217892,
+        "speed_mps": 0.005375654447908021,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e068_completion.json",
+        "sha256": "2ac098ca2bf3505c85e350b1eb1e83a38e34db1033debd1315451e4a40d1fc16",
+        "xy_error_m": 0.0023183755088504784,
+        "speed_mps": 0.004910159971732264,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e069_completion.json",
+        "sha256": "df0f6550663b4c8183f616368db4a64a9074d410d6cca3902b77276e649f569e",
+        "xy_error_m": 0.002521994845343733,
+        "speed_mps": 0.001791096270039165,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e070_completion.json",
+        "sha256": "b261f9b6e17f3d816c0e18dff7105b3bd15316210c62271cc6a1626611b9d0b5",
+        "xy_error_m": 0.0021723816423355044,
+        "speed_mps": 0.0026378754643828863,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e071_completion.json",
+        "sha256": "3a46829b6ccb929b0fa2e7776aeb81587c065af2e23503a3afd77b71bb4260da",
+        "xy_error_m": 0.0021673439966954844,
+        "speed_mps": 0.0026532019792350463,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e072_completion.json",
+        "sha256": "3117bf9c85de62ce16a72dd92746f7df8ca4d2b7ab0c87177b8eb2ca774d1041",
+        "xy_error_m": 0.0025323113947672343,
+        "speed_mps": 0.0017817563725573617,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e073_completion.json",
+        "sha256": "3ce0d89a4f3c8726dae154f08bb1b313741f815e95918a0ab5682cd81e4a934b",
+        "xy_error_m": 0.002250430181085885,
+        "speed_mps": 0.0023499517271678137,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e074_completion.json",
+        "sha256": "991e05047e1acfdbff93fa263c672aa511a956c84d5c5eb884a2304a8badefe9",
+        "xy_error_m": 0.002132871538558694,
+        "speed_mps": 0.0026299527732932862,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e075_completion.json",
+        "sha256": "b0d3e475b14d675537b21a592fb9e9e0882c115e5348cee76552903448cd660a",
+        "xy_error_m": 0.002334173301200618,
+        "speed_mps": 0.0031484890551687537,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e076_completion.json",
+        "sha256": "901caad96e2f5261422ad17a3460439f979d58c010d2715ca31127c574c3d5ca",
+        "xy_error_m": 0.002328194364732643,
+        "speed_mps": 0.0026320542652135547,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e077_completion.json",
+        "sha256": "77958d85726619cc23760852eb2fd7d569cdf0fbfd90574de761fd0483765371",
+        "xy_error_m": 0.0026895153838568664,
+        "speed_mps": 0.0035162634073744774,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e078_completion.json",
+        "sha256": "8de8170f55ef89fbfefc929a2c145233a40c4f4f8e2e33ec2f9d49b5b0289ef3",
+        "xy_error_m": 0.002656393231425017,
+        "speed_mps": 0.005521229217377516,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e079_completion.json",
+        "sha256": "f0844c30603c7447f3f278a05e5726485b60fc4f9cfc78f4a781bbd776bf6676",
+        "xy_error_m": 0.0026792485887040213,
+        "speed_mps": 0.00537194238773308,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e080_completion.json",
+        "sha256": "d0c79c70a5b4a30f3d8383589bb217ca147d6e5687cc013666b19ab8f4f91e17",
+        "xy_error_m": 0.002353538612380659,
+        "speed_mps": 0.0031610628413007284,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e081_completion.json",
+        "sha256": "6fd58333c31b6250366cf0d4c07e0ff43d69ebd80da888ed083a26951619c2e3",
+        "xy_error_m": 0.0024240614678642776,
+        "speed_mps": 0.005491029351372216,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e082_completion.json",
+        "sha256": "fef5153f918b4e138ae40ab0f4073c01943f636d04aa1133cf49d84e852c39ea",
+        "xy_error_m": 0.0026521153820855815,
+        "speed_mps": 0.002070612136116473,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e083_completion.json",
+        "sha256": "db4620b759fc1b729dcfb486c22cf8f5d4a93250f9b355c244626d3f476c8121",
+        "xy_error_m": 0.002347008734534615,
+        "speed_mps": 0.0014770797044595264,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e084_completion.json",
+        "sha256": "6d8577716bfc0a8f66fe42417b7a6744ac0ce833174e8fcae7a0dd1efdf4b986",
+        "xy_error_m": 0.002138369706118597,
+        "speed_mps": 0.002607806877904332,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e085_completion.json",
+        "sha256": "eb92451feb95ebd039452cb5d60c2b1d200f39ffb0411736348739cb2ab99b15",
+        "xy_error_m": 0.0022107415045649584,
+        "speed_mps": 0.0017802191420498179,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e086_completion.json",
+        "sha256": "0ceeeb7389bbd5321195313e77f2e6211ee2aa19aa4a2037dd2f77fe7029ceda",
+        "xy_error_m": 0.0025813318267862415,
+        "speed_mps": 0.00406855069594237,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e087_completion.json",
+        "sha256": "4915f33f640e94560141ed911cb465af8d8715b3dc864fb6418e3713f204d2b6",
+        "xy_error_m": 0.0022668570753474997,
+        "speed_mps": 0.004910416086324625,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e088_completion.json",
+        "sha256": "cf6a10967753ddf6a155941b32e31f4a36e4a642e2758c31ac46769d7f9213c0",
+        "xy_error_m": 0.0025594726019097006,
+        "speed_mps": 0.001753616058526309,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e089_completion.json",
+        "sha256": "fafe12e6d91961cf74e419d92d89c0ae07597bff058839a672cda1e61677238d",
+        "xy_error_m": 0.002576867090098482,
+        "speed_mps": 0.001799957131101823,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e090_completion.json",
+        "sha256": "2c9265225858688a76dd0b6f02a8b33ebdd6df95a8ff669500a1b4985024b03e",
+        "xy_error_m": 0.0027271965458969547,
+        "speed_mps": 0.003522234690501878,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e091_completion.json",
+        "sha256": "da5039a329029231805a7046cb2371db5a70ad718d77c88446078c03e682dc1e",
+        "xy_error_m": 0.002730008974329171,
+        "speed_mps": 0.0034983270909254636,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e092_completion.json",
+        "sha256": "f5f5aa1b0e8c3217a701d2f422fcaa6d958534846b238541ec5631135e9364dc",
+        "xy_error_m": 0.002550882396341351,
+        "speed_mps": 0.001542172335148442,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e093_completion.json",
+        "sha256": "233de2e1e93830487f439c905dfe581f8d773eb3b69c9c1438a2866debee5de8",
+        "xy_error_m": 0.0021877077044199517,
+        "speed_mps": 0.0026168158553768893,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e094_completion.json",
+        "sha256": "1ea2e1f4d0c8170fcce7086837c41319e8f710d282777fa8d9e91aa3351289b8",
+        "xy_error_m": 0.0023086013081657594,
+        "speed_mps": 0.004890312211706283,
+        "verified": true
+      },
+      {
+        "receipt": "confirmation28e095_completion.json",
+        "sha256": "ad6657578c6f1b42a022519d8279fafc5cd742c42c54334145dca9ff765012dc",
+        "xy_error_m": 0.002562229107627816,
+        "speed_mps": 0.004050793836556991,
+        "verified": true
+      }
+    ]
+  },
+  "publication_projection": {
+    "original_sha256": "188494d37a7449bc24b178b53c0829b87ec975c25c6d7b6b8385f8d30561a233",
+    "source_alias": "STUDY/reports/simulator_restoration_all.json",
+    "private_paths_replaced": true
+  }
+}

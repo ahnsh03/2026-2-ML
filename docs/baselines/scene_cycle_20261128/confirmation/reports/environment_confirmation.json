@@ -1,0 +1,740 @@
+{
+  "evidence": {
+    "version": "frozen-environment-context-confirmation-1",
+    "results": {
+      "primary": {
+        "rows": 590,
+        "representation": "photo12",
+        "method": "official_e_means_ep20",
+        "k": 16,
+        "seed": 281128,
+        "classifier": {
+          "weather": {
+            "balanced_accuracy": 0.9756473102061337,
+            "accuracy": 0.9745762711864406,
+            "recall_by_supported_class": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 0.9519230769230769,
+              "4": 0.9019607843137255,
+              "5": 1.0
+            },
+            "supported_classes": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "class_order": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "confusion_matrix": [
+              [
+                96,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                96,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                96,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                0,
+                99,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                10,
+                92,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                96
+              ]
+            ]
+          },
+          "lighting": {
+            "balanced_accuracy": 0.9843400447427294,
+            "accuracy": 0.988135593220339,
+            "recall_by_supported_class": {
+              "0": 1.0,
+              "1": 0.9530201342281879,
+              "2": 1.0
+            },
+            "supported_classes": [
+              0,
+              1,
+              2
+            ],
+            "class_order": [
+              0,
+              1,
+              2
+            ],
+            "confusion_matrix": [
+              [
+                150,
+                0,
+                0
+              ],
+              [
+                7,
+                142,
+                0
+              ],
+              [
+                0,
+                0,
+                291
+              ]
+            ]
+          },
+          "presence": {
+            "balanced_accuracy": 0.9115265793118141,
+            "accuracy": 0.9474576271186441,
+            "recall_by_supported_class": {
+              "0": 0.8389261744966443,
+              "1": 0.9841269841269841
+            },
+            "supported_classes": [
+              0,
+              1
+            ],
+            "class_order": [
+              0,
+              1
+            ],
+            "confusion_matrix": [
+              [
+                125,
+                24
+              ],
+              [
+                7,
+                434
+              ]
+            ]
+          }
+        },
+        "cluster_semantic": {
+          "weather": {
+            "balanced_accuracy": 0.9067449095022625,
+            "accuracy": 0.9050847457627119,
+            "recall_by_supported_class": {
+              "0": 1.0,
+              "1": 0.9895833333333334,
+              "2": 1.0,
+              "3": 0.9423076923076923,
+              "4": 0.696078431372549,
+              "5": 0.8125
+            },
+            "supported_classes": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "class_order": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "confusion_matrix": [
+              [
+                96,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                1,
+                95,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                96,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                5,
+                1,
+                98,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                31,
+                71,
+                0
+              ],
+              [
+                0,
+                0,
+                12,
+                6,
+                0,
+                78
+              ]
+            ]
+          },
+          "lighting": {
+            "balanced_accuracy": 0.6215635354443907,
+            "accuracy": 0.6796610169491526,
+            "recall_by_supported_class": {
+              "0": 0.68,
+              "1": 0.3221476510067114,
+              "2": 0.8625429553264605
+            },
+            "supported_classes": [
+              0,
+              1,
+              2
+            ],
+            "class_order": [
+              0,
+              1,
+              2
+            ],
+            "confusion_matrix": [
+              [
+                102,
+                34,
+                14
+              ],
+              [
+                84,
+                48,
+                17
+              ],
+              [
+                0,
+                40,
+                251
+              ]
+            ]
+          },
+          "presence": {
+            "balanced_accuracy": 0.8488943675904366,
+            "accuracy": 0.8338983050847457,
+            "recall_by_supported_class": {
+              "0": 0.8791946308724832,
+              "1": 0.81859410430839
+            },
+            "supported_classes": [
+              0,
+              1
+            ],
+            "class_order": [
+              0,
+              1
+            ],
+            "confusion_matrix": [
+              [
+                131,
+                18
+              ],
+              [
+                80,
+                361
+              ]
+            ]
+          },
+          "appearance": {
+            "balanced_accuracy": 0.7156851494112172,
+            "accuracy": 0.6457627118644068,
+            "recall_by_supported_class": {
+              "0": 0.865979381443299,
+              "1": 0.45454545454545453,
+              "2": 0.826530612244898
+            },
+            "supported_classes": [
+              0,
+              1,
+              2
+            ],
+            "class_order": [
+              0,
+              1,
+              2
+            ],
+            "confusion_matrix": [
+              [
+                84,
+                7,
+                6
+              ],
+              [
+                83,
+                135,
+                79
+              ],
+              [
+                0,
+                34,
+                162
+              ]
+            ]
+          }
+        },
+        "cluster_ami": {
+          "weather": 0.7169819067983257,
+          "lighting": 0.2661945055504912,
+          "presence": 0.19670881974181278,
+          "appearance": 0.23282114157964232
+        },
+        "cluster_counts": [
+          47,
+          48,
+          37,
+          48,
+          30,
+          28,
+          30,
+          25,
+          36,
+          50,
+          13,
+          67,
+          29,
+          31,
+          41,
+          30
+        ],
+        "ood_fraction": 0.13050847457627118,
+        "weather_accuracy_by_segment": {
+          "scene28_s01": 0.9931972789115646,
+          "scene28_s04": 0.9793103448275862,
+          "scene28_s05": 0.9530201342281879,
+          "scene28_s10": 0.9731543624161074
+        },
+        "environment_manifest_sha256": "a583e5d074499ca8dec8e18a94b2b5b68259711a2b3f741341e0eef4dfcb2f32",
+        "source_pack_sha256": "1cd98fba01e34ad65163b93eaa5e0d3aa7bc8f232244a30990dcf9398c4a0a2b",
+        "scope": "RGB classifiers use offline SDK/native-GT training labels. Cluster semantic maps were fixed on fit, not relabeled on confirmation. Appearance bins are measured image brightness, not SDK clock ground truth."
+      },
+      "Lloyd_environment_control": {
+        "rows": 590,
+        "representation": "photo12",
+        "method": "lloyd",
+        "k": 16,
+        "seed": 281128,
+        "classifier": {
+          "weather": {
+            "balanced_accuracy": 0.9756473102061337,
+            "accuracy": 0.9745762711864406,
+            "recall_by_supported_class": {
+              "0": 1.0,
+              "1": 1.0,
+              "2": 1.0,
+              "3": 0.9519230769230769,
+              "4": 0.9019607843137255,
+              "5": 1.0
+            },
+            "supported_classes": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "class_order": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "confusion_matrix": [
+              [
+                96,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                96,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                96,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                0,
+                99,
+                0,
+                1
+              ],
+              [
+                0,
+                0,
+                0,
+                10,
+                92,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                96
+              ]
+            ]
+          },
+          "lighting": {
+            "balanced_accuracy": 0.9843400447427294,
+            "accuracy": 0.988135593220339,
+            "recall_by_supported_class": {
+              "0": 1.0,
+              "1": 0.9530201342281879,
+              "2": 1.0
+            },
+            "supported_classes": [
+              0,
+              1,
+              2
+            ],
+            "class_order": [
+              0,
+              1,
+              2
+            ],
+            "confusion_matrix": [
+              [
+                150,
+                0,
+                0
+              ],
+              [
+                7,
+                142,
+                0
+              ],
+              [
+                0,
+                0,
+                291
+              ]
+            ]
+          },
+          "presence": {
+            "balanced_accuracy": 0.9115265793118141,
+            "accuracy": 0.9474576271186441,
+            "recall_by_supported_class": {
+              "0": 0.8389261744966443,
+              "1": 0.9841269841269841
+            },
+            "supported_classes": [
+              0,
+              1
+            ],
+            "class_order": [
+              0,
+              1
+            ],
+            "confusion_matrix": [
+              [
+                125,
+                24
+              ],
+              [
+                7,
+                434
+              ]
+            ]
+          }
+        },
+        "cluster_semantic": {
+          "weather": {
+            "balanced_accuracy": 0.972143665158371,
+            "accuracy": 0.9711864406779661,
+            "recall_by_supported_class": {
+              "0": 1.0,
+              "1": 0.9791666666666666,
+              "2": 1.0,
+              "3": 0.9615384615384616,
+              "4": 0.8921568627450981,
+              "5": 1.0
+            },
+            "supported_classes": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "class_order": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "confusion_matrix": [
+              [
+                96,
+                0,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                2,
+                94,
+                0,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                96,
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                4,
+                0,
+                100,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                11,
+                91,
+                0
+              ],
+              [
+                0,
+                0,
+                0,
+                0,
+                0,
+                96
+              ]
+            ]
+          },
+          "lighting": {
+            "balanced_accuracy": 0.578845914343043,
+            "accuracy": 0.6440677966101694,
+            "recall_by_supported_class": {
+              "0": 0.7266666666666667,
+              "1": 0.1610738255033557,
+              "2": 0.8487972508591065
+            },
+            "supported_classes": [
+              0,
+              1,
+              2
+            ],
+            "class_order": [
+              0,
+              1,
+              2
+            ],
+            "confusion_matrix": [
+              [
+                109,
+                27,
+                14
+              ],
+              [
+                108,
+                24,
+                17
+              ],
+              [
+                18,
+                26,
+                247
+              ]
+            ]
+          },
+          "presence": {
+            "balanced_accuracy": 0.7781049780091007,
+            "accuracy": 0.7745762711864407,
+            "recall_by_supported_class": {
+              "0": 0.785234899328859,
+              "1": 0.7709750566893424
+            },
+            "supported_classes": [
+              0,
+              1
+            ],
+            "class_order": [
+              0,
+              1
+            ],
+            "confusion_matrix": [
+              [
+                117,
+                32
+              ],
+              [
+                101,
+                340
+              ]
+            ]
+          },
+          "appearance": {
+            "balanced_accuracy": 0.7075847660040099,
+            "accuracy": 0.6457627118644068,
+            "recall_by_supported_class": {
+              "0": 0.8144329896907216,
+              "1": 0.4511784511784512,
+              "2": 0.8571428571428571
+            },
+            "supported_classes": [
+              0,
+              1,
+              2
+            ],
+            "class_order": [
+              0,
+              1,
+              2
+            ],
+            "confusion_matrix": [
+              [
+                79,
+                12,
+                6
+              ],
+              [
+                85,
+                134,
+                78
+              ],
+              [
+                0,
+                28,
+                168
+              ]
+            ]
+          }
+        },
+        "cluster_ami": {
+          "weather": 0.7594570043097663,
+          "lighting": 0.25074927964041804,
+          "presence": 0.15642245703501775,
+          "appearance": 0.24070284002217004
+        },
+        "cluster_counts": [
+          52,
+          31,
+          30,
+          35,
+          36,
+          46,
+          36,
+          3,
+          31,
+          28,
+          40,
+          48,
+          66,
+          68,
+          13,
+          27
+        ],
+        "ood_fraction": 0.1440677966101695,
+        "weather_accuracy_by_segment": {
+          "scene28_s01": 0.9931972789115646,
+          "scene28_s04": 0.9793103448275862,
+          "scene28_s05": 0.9530201342281879,
+          "scene28_s10": 0.9731543624161074
+        },
+        "environment_manifest_sha256": "16c5f231eb2fcfb256d215e75eba491e0acb1d7ae90e580d86e4d4076ddbcfdb",
+        "source_pack_sha256": "1cd98fba01e34ad65163b93eaa5e0d3aa7bc8f232244a30990dcf9398c4a0a2b",
+        "scope": "RGB classifiers use offline SDK/native-GT training labels. Cluster semantic maps were fixed on fit, not relabeled on confirmation. Appearance bins are measured image brightness, not SDK clock ground truth."
+      }
+    },
+    "confirmation_freeze_sha256": "10494ffbc6f47881fc88d265b9feb05c2eefc9a55062391f884242e5c1d0859f",
+    "review_assessment_sha256": "1e9b5f17d7ea0de4155bc5fddd66356d3c1a1996864fbb3c3a0a38e7fcd330bb",
+    "source_sha256": "346ac7795c7724a78811b49a267c463b20919494372e5cb699db7a79c2bc829d",
+    "no_confirmation_refit": true,
+    "automatic_method_replacement": false,
+    "scope": "Semantic context diagnostics separate from the utility of review selection. A better diagnostic control is not substituted after confirmation."
+  },
+  "publication_projection": {
+    "original_sha256": "a5e374ba2b4cec9b37a66e663c6ec820c46a0339f06a1da71793aab3d40f94e7",
+    "source_alias": "STUDY/confirmation/environment_confirmation.json",
+    "private_paths_replaced": true
+  }
+}

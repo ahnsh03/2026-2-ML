@@ -1,0 +1,123 @@
+{
+  "evidence": {
+    "status": "verified",
+    "completed_utc": "2026-11-28T07:04:53.900127+00:00",
+    "selected_perception_identity": {
+      "schema_version": "ml-perception-identity-1",
+      "kind": "adaptation",
+      "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+      "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+      "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+      "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+    },
+    "original_retention_passes": true,
+    "development_passes": true,
+    "failed_gates": [],
+    "scores": {
+      "v6": {
+        "marked_by_segment": {
+          "scene28_s00": 0.647152290787168,
+          "scene28_s02": 0.605632101876529
+        },
+        "marked_macro": 0.6263921963318485,
+        "retention": {
+          "lane": 0.8954646713489917,
+          "drivable": 0.9834368234593323,
+          "white": 0.8785737753913604,
+          "yellow": 0.9328158678155382,
+          "stopline": 0.8753190097066201
+        },
+        "retention_by_view": {
+          "front": {
+            "lane": 0.800162597760087,
+            "drivable": 0.9775185907940253
+          },
+          "left": {
+            "lane": 0.9192661165624247,
+            "drivable": 0.9860631814267609
+          },
+          "right": {
+            "lane": 0.9316179599717986,
+            "drivable": 0.9868395902927654
+          }
+        }
+      },
+      "r1": {
+        "marked_by_segment": {
+          "scene28_s00": 0.8401042280531597,
+          "scene28_s02": 0.7394838216997405
+        },
+        "marked_macro": 0.7897940248764501,
+        "retention": {
+          "lane": 0.8921563084256029,
+          "drivable": 0.982954353787601,
+          "white": 0.8749513776318606,
+          "yellow": 0.9301765621584114,
+          "stopline": 0.8654014134836814
+        },
+        "retention_by_view": {
+          "front": {
+            "lane": 0.8000454289136547,
+            "drivable": 0.9767893243785087
+          },
+          "left": {
+            "lane": 0.9150021091488574,
+            "drivable": 0.9857535135162813
+          },
+          "right": {
+            "lane": 0.9273065865548604,
+            "drivable": 0.9864272666820556
+          }
+        }
+      },
+      "selected": {
+        "marked_by_segment": {
+          "scene28_s00": 0.844584876728422,
+          "scene28_s02": 0.7417182899401077
+        },
+        "marked_macro": 0.7931515833342648,
+        "retention": {
+          "lane": 0.893040614259782,
+          "drivable": 0.9825445017606497,
+          "white": 0.8760219209053993,
+          "yellow": 0.9306734624312172,
+          "stopline": 0.8678567651413664
+        },
+        "retention_by_view": {
+          "front": {
+            "lane": 0.8034289387064504,
+            "drivable": 0.9761026663972426
+          },
+          "left": {
+            "lane": 0.9147038757084649,
+            "drivable": 0.9854366502606575
+          },
+          "right": {
+            "lane": 0.9278468599555643,
+            "drivable": 0.9862090605633869
+          }
+        }
+      }
+    },
+    "marked_gain_vs_parent": 0.0033575584578147133,
+    "segment_deltas": {
+      "scene28_s00": 0.004480648675262322,
+      "scene28_s02": 0.0022344682403672156
+    },
+    "selected_is_parent": false,
+    "cpu_choice_sha256": "81dc07627e111ec879af7081b821caec7da6b0d83a80fca5445fefab92eddf8d",
+    "study_design_sha256": "f3770d0e6db0a5fd88cb7b0be766d3008adee23f3af3876851570f05615ef02c",
+    "source_sha256": "2abeab1d99a657af56159ebdd29ada5f327563cbf6b726cc6235f15fa3498bcc",
+    "evaluation_summary_sha256": {
+      "v6": "383ba9e9a8a6aa81963dd6ea3b4292a3e2266c6c6fc585cc4c690d6e3f464f74",
+      "r1": "4ae70f70f915b4f9c8bf000842580d465a303d2e5136d306a417baedb5daf119",
+      "selected": "173b198d6a4bf943c2673a26291fffd7e63d4705d8f15443eac94aca468f4c4f"
+    },
+    "scope": "Actual5070Ti FP32 deterministic paired development/original-retention check. No new independent confirmation accessed."
+  },
+  "publication_projection": {
+    "original_sha256": "bd8391271941e1487db741439e023f594446451bb9ec73c3bb50c328f114d43d",
+    "source_alias": "STUDY/reports/selected_gpu_retention_verification.json",
+    "private_paths_replaced": true
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "evidence": {
+    "created_utc": "2026-11-28T08:08:23.196273+00:00",
+    "cohort": "confirmation",
+    "conditions": 96,
+    "raw_frames": 1674,
+    "thinned_frames": 590,
+    "four_channel_files_verified": 6696,
+    "minimum_quality_fit_distance_m": 46.24643934819614,
+    "minimum_original_perception_ego_distance_m": 0.10275990107861341,
+    "maximum_cte_m": 0.11886429462449698,
+    "maximum_speed_mps": 1.5705939377549671,
+    "all_successful_epochs_restored": true,
+    "index_sha256": "48d9d8378f1ba7a70b93dbe7f67401002d5a19a8c2b9380a97b63dc95bcd064c",
+    "plan_sha256": "bcbaff574bc30c6d6e446af501f50dd909ba39e6aa8ccc1fa5a206bd82ea3f84",
+    "source_sha256": "aa54975baa4daed58a1eca8b14ad9a0ca840921a728cb99aed90950a571f56ac",
+    "semantic_labels_inspected_for_membership": false,
+    "model_predictions_inspected_for_membership": false,
+    "scope": "3m XY thinning only. Same-map qualified segments; original perception-training proximity is reported without claiming complete geographic/FOV independence. Scout frames are excluded."
+  },
+  "publication_projection": {
+    "original_sha256": "818e65c742b21f5a2dce133599f87d2dc13e6ff2a43c51cc0b9386800d7c0d7e",
+    "source_alias": "STUDY/confirmation/registry/audit.json",
+    "private_paths_replaced": true
+  }
+}

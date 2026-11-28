@@ -1,0 +1,162 @@
+{
+  "evidence": {
+    "cases": [
+      {
+        "case": "fresh_05h_near_fn",
+        "sample_id": "confirmation28e044_scene28_s04_w5_h05_f0015",
+        "site": "scene28_s04",
+        "weather": 5,
+        "hour": 5,
+        "display_hw": [
+          360,
+          640
+        ],
+        "source_camera_hw": [
+          720,
+          1280
+        ],
+        "display_grid": "model-input crop12:372; true GT nearest-neighbor target raster",
+        "recommended_aspect_ratio": "16:9; preserve proportions",
+        "true_gt_pixels": 3755,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "recomputed_lane_iou": 0.15421303656597773,
+        "source_manifest_sha256": "70450f7611adb63ef83d2c0e0d595a7d7abcf531a5997edc31c2706a71b0e02d",
+        "source_pack_sha256": "1cd98fba01e34ad65163b93eaa5e0d3aa7bc8f232244a30990dcf9398c4a0a2b",
+        "image_sha256": {
+          "fresh_05h_near_fn/errors.png": "91cd41997644a643f6de6f62412548eaff2642909fd91477f7a0293936b281d4",
+          "fresh_05h_near_fn/gt.png": "a295de0a8cf1caf8c503c555919527ab3d4c757d0ae432a867559b311d620969",
+          "fresh_05h_near_fn/gt_mask.png": "7ff9a523e32f0018b510921da3db7563bef10e3f38ba1756a23d74069b85a917",
+          "fresh_05h_near_fn/prediction.png": "73e075a664e3767afaa8674ffec80630439bffa61143fa6df667f85b3eec418d",
+          "fresh_05h_near_fn/rgb.png": "3ed07a31bfe7b2a0e97b73139f874c2a239148b54fac1ecd471024e8dfe1945e"
+        },
+        "scope": "Frozen confirmation05h post-audit illustration, not visibility or safety truth, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim."
+      },
+      {
+        "case": "fresh_05h_near_fp",
+        "sample_id": "confirmation28e020_scene28_s01_w5_h05_f0000",
+        "site": "scene28_s01",
+        "weather": 5,
+        "hour": 5,
+        "display_hw": [
+          360,
+          640
+        ],
+        "source_camera_hw": [
+          720,
+          1280
+        ],
+        "display_grid": "model-input crop12:372; true GT nearest-neighbor target raster",
+        "recommended_aspect_ratio": "16:9; preserve proportions",
+        "true_gt_pixels": 3535,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "recomputed_lane_iou": 0.16422513492675406,
+        "source_manifest_sha256": "70450f7611adb63ef83d2c0e0d595a7d7abcf531a5997edc31c2706a71b0e02d",
+        "source_pack_sha256": "1cd98fba01e34ad65163b93eaa5e0d3aa7bc8f232244a30990dcf9398c4a0a2b",
+        "image_sha256": {
+          "fresh_05h_near_fp/errors.png": "cc09704ade50e320bc61122f373490ae9555bc76e2c37f8dcfefe72d7f5e8790",
+          "fresh_05h_near_fp/gt.png": "e6ca860b5cb26e4f679513e6929708df065ca7b0364a0444e2384b3a354bc0e0",
+          "fresh_05h_near_fp/gt_mask.png": "f9d43cb66d413d16fc0cf061e581bca33a0e745a21638953a761fcaa4b1281a4",
+          "fresh_05h_near_fp/prediction.png": "52e3aaf19b3dee0e65a51350882a1d0b5e0c02cd1925225358f4c407ac4f35c5",
+          "fresh_05h_near_fp/rgb.png": "ecc8c576391421a279a14cd0747811bf782b66b09c88a5bdde2ee2cee37f33f8"
+        },
+        "scope": "Frozen confirmation05h post-audit illustration, not visibility or safety truth, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim."
+      },
+      {
+        "case": "fresh_05h_near_retained_far_error",
+        "sample_id": "confirmation28e040_scene28_s04_w4_h05_f0015",
+        "site": "scene28_s04",
+        "weather": 4,
+        "hour": 5,
+        "display_hw": [
+          360,
+          640
+        ],
+        "source_camera_hw": [
+          720,
+          1280
+        ],
+        "display_grid": "model-input crop12:372; true GT nearest-neighbor target raster",
+        "recommended_aspect_ratio": "16:9; preserve proportions",
+        "true_gt_pixels": 3838,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "recomputed_lane_iou": 0.8316035288012454,
+        "source_manifest_sha256": "70450f7611adb63ef83d2c0e0d595a7d7abcf531a5997edc31c2706a71b0e02d",
+        "source_pack_sha256": "1cd98fba01e34ad65163b93eaa5e0d3aa7bc8f232244a30990dcf9398c4a0a2b",
+        "image_sha256": {
+          "fresh_05h_near_retained_far_error/errors.png": "ef9b30a6573f5315a3079ae03d160251e36b88b248c9b0e3a0c94b6d156f1f2f",
+          "fresh_05h_near_retained_far_error/gt.png": "61d7a8d80d23da881b6a862f3fa9b7f294b621d486ab73a80dca12ee3a71ab81",
+          "fresh_05h_near_retained_far_error/gt_mask.png": "7ed5307ede6f37d6c7acdb47c952c7c91140d3c9552a2320dcc166b5bb5e93af",
+          "fresh_05h_near_retained_far_error/prediction.png": "d1305d3e1f2ba79ed8f126942fccdd4eb27e1b8bce58b2fffd5da6ddd636c126",
+          "fresh_05h_near_retained_far_error/rgb.png": "77188a575eab1ed57f43a6c2cb0273b9d129493df5b0b89f9a7d87d9f530451e"
+        },
+        "scope": "Frozen confirmation05h post-audit illustration, not visibility or safety truth, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim."
+      },
+      {
+        "case": "fresh_05h_near_retained",
+        "sample_id": "confirmation28e064_scene28_s05_w4_h05_f0012",
+        "site": "scene28_s05",
+        "weather": 4,
+        "hour": 5,
+        "display_hw": [
+          360,
+          640
+        ],
+        "source_camera_hw": [
+          720,
+          1280
+        ],
+        "display_grid": "model-input crop12:372; true GT nearest-neighbor target raster",
+        "recommended_aspect_ratio": "16:9; preserve proportions",
+        "true_gt_pixels": 3116,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "recomputed_lane_iou": 0.8743622448979592,
+        "source_manifest_sha256": "70450f7611adb63ef83d2c0e0d595a7d7abcf531a5997edc31c2706a71b0e02d",
+        "source_pack_sha256": "1cd98fba01e34ad65163b93eaa5e0d3aa7bc8f232244a30990dcf9398c4a0a2b",
+        "image_sha256": {
+          "fresh_05h_near_retained/errors.png": "035551e721e1bf8b9e55f4e260d5fb8fcf43a99b035835ed910ad8ce52aedacd",
+          "fresh_05h_near_retained/gt.png": "4fffe5a24bb146ee925410eb612fd8e831131eb9674933209f8f1c8b114a5517",
+          "fresh_05h_near_retained/gt_mask.png": "8e0c0ce1df50c94fd8b3d92eb40d8627dcfa5e1da54f161bfad250d0326596f9",
+          "fresh_05h_near_retained/prediction.png": "8267b38e587db0b95badbc4ddf2f277ae9097a60e555c7a482c44233de234c10",
+          "fresh_05h_near_retained/rgb.png": "90b6b36dde10664265e9b1a8d996156372533bd5b9a4e9a01c126ca340a5614b"
+        },
+        "scope": "Frozen confirmation05h post-audit illustration, not visibility or safety truth, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim."
+      }
+    ],
+    "source_sha256": "f8f3c69eb0f65af752b4f4c1ddb81164f94bf4641ccf5834109baeb8e64fff87",
+    "baseline_case_index_sha256": "d821dca0375894e3da5f022db64455dda1684b625bd477cf846891bb86e9e62f",
+    "case_index_sha256": "d821dca0375894e3da5f022db64455dda1684b625bd477cf846891bb86e9e62f"
+  },
+  "publication_projection": {
+    "original_sha256": "249256df63a83b5a1aaf0849e4365340a3ea454d207ad50f88ad4971d5048eee",
+    "source_alias": "STUDY/confirmation/illustrations/cases.json",
+    "private_paths_replaced": true
+  }
+}

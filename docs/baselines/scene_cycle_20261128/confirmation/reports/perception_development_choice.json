@@ -1,0 +1,760 @@
+{
+  "evidence": {
+    "version": "cumulative-perception-dev-selection-1",
+    "baseline": {
+      "marked_by_segment": {
+        "scene28_s00": 0.647152290787168,
+        "scene28_s02": 0.605632101876529
+      },
+      "marked_macro": 0.6263921963318485,
+      "retention": {
+        "lane": 0.8954648287945199,
+        "drivable": 0.983436845081521,
+        "white": 0.8785740037129659,
+        "yellow": 0.9328158678155382,
+        "stopline": 0.8753190097066201
+      },
+      "retention_by_view": {
+        "front": {
+          "lane": 0.800162597760087,
+          "drivable": 0.9775186548074387
+        },
+        "left": {
+          "lane": 0.9192665204964188,
+          "drivable": 0.9860631814267609
+        },
+        "right": {
+          "lane": 0.9316179599717986,
+          "drivable": 0.9868395902927654
+        }
+      }
+    },
+    "parent": {
+      "marked_by_segment": {
+        "scene28_s00": 0.8401042280531597,
+        "scene28_s02": 0.7394838216997405
+      },
+      "marked_macro": 0.7897940248764501,
+      "retention": {
+        "lane": 0.8921564659202784,
+        "drivable": 0.9829543753961872,
+        "white": 0.8749516060399317,
+        "yellow": 0.9301765621584114,
+        "stopline": 0.8654014134836814
+      },
+      "retention_by_view": {
+        "front": {
+          "lane": 0.8000454289136547,
+          "drivable": 0.976789323618595
+        },
+        "left": {
+          "lane": 0.9150025132003626,
+          "drivable": 0.985753575515535
+        },
+        "right": {
+          "lane": 0.9273065865548604,
+          "drivable": 0.9864272666820556
+        }
+      }
+    },
+    "records": [
+      {
+        "arm": "Coverage2048",
+        "alpha": 1.0,
+        "run": "STUDY/runs/Coverage2048_s281128",
+        "evaluation": "STUDY/perception_evaluations/Coverage2048_s281128",
+        "metrics": {
+          "marked_by_segment": {
+            "scene28_s00": 0.844584876728422,
+            "scene28_s02": 0.7417182899401077
+          },
+          "marked_macro": 0.7931515833342648,
+          "retention": {
+            "lane": 0.8930407716977004,
+            "drivable": 0.9825445017606497,
+            "white": 0.8760221491910924,
+            "yellow": 0.9306734624312172,
+            "stopline": 0.8678567651413664
+          },
+          "retention_by_view": {
+            "front": {
+              "lane": 0.8034289387064504,
+              "drivable": 0.9761026983595064
+            },
+            "left": {
+              "lane": 0.9147038757084649,
+              "drivable": 0.9854366502606575
+            },
+            "right": {
+              "lane": 0.9278472835560413,
+              "drivable": 0.9862090258439505
+            }
+          }
+        },
+        "marked_gain_vs_parent": 0.0033575584578147133,
+        "segment_deltas": {
+          "scene28_s00": 0.004480648675262322,
+          "scene28_s02": 0.0022344682403672156
+        },
+        "passes": true,
+        "failed_gates": [],
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "per_frame_sha256": "a18fb6bd5f6529862f7d13ab4c6531c547928ad134773cb23a42a3a340f499e2"
+      },
+      {
+        "arm": "Coverage2048",
+        "alpha": 0.95,
+        "run": "STUDY/runs/Coverage2048_s281128_alpha0p95",
+        "evaluation": "STUDY/perception_evaluations/Coverage2048_s281128_alpha0p95",
+        "metrics": {
+          "marked_by_segment": {
+            "scene28_s00": 0.841276335022785,
+            "scene28_s02": 0.7381157430365148
+          },
+          "marked_macro": 0.7896960390296499,
+          "retention": {
+            "lane": 0.8931036155034815,
+            "drivable": 0.9826506437510465,
+            "white": 0.8759904471396215,
+            "yellow": 0.9309454677526042,
+            "stopline": 0.8686489963519729
+          },
+          "retention_by_view": {
+            "front": {
+              "lane": 0.8030718255382625,
+              "drivable": 0.9762556080316214
+            },
+            "left": {
+              "lane": 0.915172486784456,
+              "drivable": 0.9855223890429319
+            },
+            "right": {
+              "lane": 0.9277457504477895,
+              "drivable": 0.9862878983001345
+            }
+          }
+        },
+        "marked_gain_vs_parent": -9.798584680020817e-05,
+        "segment_deltas": {
+          "scene28_s00": 0.0011721069696253306,
+          "scene28_s02": -0.0013680786632256359
+        },
+        "passes": false,
+        "failed_gates": [
+          "marked_macro_gain",
+          "marked_positive_segments"
+        ],
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "3368268a15f50e065b9251088a41dd2cfeef990951a3bd1ff339991524b1849c",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "fd3bf9a76f5df1e08435706e00063ed1056d07f7a9bc3cef19a13e9259b3bb16"
+        },
+        "per_frame_sha256": "b34c2e01683c4b262c676eb4bddc6feff4f92e7d35ce0132396441e1193cad6f"
+      },
+      {
+        "arm": "Coverage2048",
+        "alpha": 0.9,
+        "run": "STUDY/runs/Coverage2048_s281128_alpha0p9",
+        "evaluation": "STUDY/perception_evaluations/Coverage2048_s281128_alpha0p9",
+        "metrics": {
+          "marked_by_segment": {
+            "scene28_s00": 0.8375203558561849,
+            "scene28_s02": 0.7327999561931361
+          },
+          "marked_macro": 0.7851601560246605,
+          "retention": {
+            "lane": 0.8932047533909939,
+            "drivable": 0.9827486845285097,
+            "white": 0.8760574553298124,
+            "yellow": 0.9311235488842019,
+            "stopline": 0.8695508528333803
+          },
+          "retention_by_view": {
+            "front": {
+              "lane": 0.8027923821796663,
+              "drivable": 0.9763943126457342
+            },
+            "left": {
+              "lane": 0.9155928360842626,
+              "drivable": 0.9856041238174298
+            },
+            "right": {
+              "lane": 0.9277481773719585,
+              "drivable": 0.9863606293370709
+            }
+          }
+        },
+        "marked_gain_vs_parent": -0.004633868851789624,
+        "segment_deltas": {
+          "scene28_s00": -0.002583872196974757,
+          "scene28_s02": -0.006683865506604381
+        },
+        "passes": false,
+        "failed_gates": [
+          "marked_macro_gain",
+          "marked_positive_segments"
+        ],
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "968d46ff9294edea8a36bbab0ecd7ae2c7d43d3d92140e6a9ac27ea8181764d9",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "bd0d62435016e7d2901952c3bf45488df2ef7a75721731433111136e6bb0680c"
+        },
+        "per_frame_sha256": "708e60f7d383c6faab33f7ec46350a7b4ae2f7e86e4be10c4eda1e0462f25299"
+      },
+      {
+        "arm": "Coverage2048",
+        "alpha": 0.8,
+        "run": "STUDY/runs/Coverage2048_s281128_alpha0p8",
+        "evaluation": "STUDY/perception_evaluations/Coverage2048_s281128_alpha0p8",
+        "metrics": {
+          "marked_by_segment": {
+            "scene28_s00": 0.8279083113384442,
+            "scene28_s02": 0.7187630670801596
+          },
+          "marked_macro": 0.773335689209302,
+          "retention": {
+            "lane": 0.8934350225151805,
+            "drivable": 0.982918005843244,
+            "white": 0.8761826047198678,
+            "yellow": 0.931583776877023,
+            "stopline": 0.8713949822556073
+          },
+          "retention_by_view": {
+            "front": {
+              "lane": 0.8023137258527399,
+              "drivable": 0.9766464151112068
+            },
+            "left": {
+              "lane": 0.9163986631671691,
+              "drivable": 0.9857376167723202
+            },
+            "right": {
+              "lane": 0.9278161293561807,
+              "drivable": 0.9864814682467455
+            }
+          }
+        },
+        "marked_gain_vs_parent": -0.01645833566714816,
+        "segment_deltas": {
+          "scene28_s00": -0.012195916714715427,
+          "scene28_s02": -0.020720754619580894
+        },
+        "passes": false,
+        "failed_gates": [
+          "marked_macro_gain",
+          "marked_positive_segments",
+          "marked_worst_segment"
+        ],
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "daf605f632b14954e411263fd56c107832917392c23b51f95f549c125cd679fe",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "4e95253518ad67855e0d313abcc2dc534fac4e086ce3fe34a138c2f18d1d6f26"
+        },
+        "per_frame_sha256": "2cde211e0e1b0d9630ecfdc3756f9b6b3c7105bf21e6991ad6dd0bce30d7c80d"
+      },
+      {
+        "arm": "Risk2048",
+        "alpha": 1.0,
+        "run": "STUDY/runs/Risk2048_s281128",
+        "evaluation": "STUDY/perception_evaluations/Risk2048_s281128",
+        "metrics": {
+          "marked_by_segment": {
+            "scene28_s00": 0.8395087033641607,
+            "scene28_s02": 0.7354721765544766
+          },
+          "marked_macro": 0.7874904399593187,
+          "retention": {
+            "lane": 0.8916527484906313,
+            "drivable": 0.9826917405934829,
+            "white": 0.8745704781317295,
+            "yellow": 0.9294161815253098,
+            "stopline": 0.8659071454415489
+          },
+          "retention_by_view": {
+            "front": {
+              "lane": 0.8001230101684883,
+              "drivable": 0.9762619155033283
+            },
+            "left": {
+              "lane": 0.9140866297628187,
+              "drivable": 0.9856725200877081
+            },
+            "right": {
+              "lane": 0.9268273050174206,
+              "drivable": 0.9862448158130493
+            }
+          }
+        },
+        "marked_gain_vs_parent": -0.0023035849171314515,
+        "segment_deltas": {
+          "scene28_s00": -0.0005955246889989274,
+          "scene28_s02": -0.004011645145263865
+        },
+        "passes": false,
+        "failed_gates": [
+          "marked_macro_gain",
+          "marked_positive_segments"
+        ],
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "4ef4c56b19b4701ea62b5a2a80f58b10d76b52a841bf466b0aa49bc934d9c03d",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "be6d69cfc9c99f578e1ca0ff3ae6d185877398f98bf15f8c9f7409261d119351"
+        },
+        "per_frame_sha256": "4a2e8f9b27b474fc550340d617bb51744d04b6a5622365ff0db71a18577cba3d"
+      },
+      {
+        "arm": "Risk2048",
+        "alpha": 0.95,
+        "run": "STUDY/runs/Risk2048_s281128_alpha0p95",
+        "evaluation": "STUDY/perception_evaluations/Risk2048_s281128_alpha0p95",
+        "metrics": {
+          "marked_by_segment": {
+            "scene28_s00": 0.836570559342995,
+            "scene28_s02": 0.7316581076989818
+          },
+          "marked_macro": 0.7841143335209884,
+          "retention": {
+            "lane": 0.8918735352263156,
+            "drivable": 0.9827786914831086,
+            "white": 0.8747401636820326,
+            "yellow": 0.9297485777020617,
+            "stopline": 0.8671675107197685
+          },
+          "retention_by_view": {
+            "front": {
+              "lane": 0.8001076963227982,
+              "drivable": 0.9763869445875595
+            },
+            "left": {
+              "lane": 0.9146384234574226,
+              "drivable": 0.9857368428906713
+            },
+            "right": {
+              "lane": 0.9268476001555749,
+              "drivable": 0.986316285798612
+            }
+          }
+        },
+        "marked_gain_vs_parent": -0.005679691355461758,
+        "segment_deltas": {
+          "scene28_s00": -0.0035336687101646946,
+          "scene28_s02": -0.00782571400075871
+        },
+        "passes": false,
+        "failed_gates": [
+          "marked_macro_gain",
+          "marked_positive_segments"
+        ],
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "75779ab1a3a12ff062a32273f35237d5e807209fb5f445005f663a0d9622a938",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "cd9c5d8e19ffb8858f786b6f3779bc5e4d86f36539a7ec1107ebac65004bdbe4"
+        },
+        "per_frame_sha256": "ab1ff47a08a41a969bd22d414e0da5ea9467f08fc2c36f6d9b5c7fea9b7d6dfd"
+      },
+      {
+        "arm": "Risk2048",
+        "alpha": 0.9,
+        "run": "STUDY/runs/Risk2048_s281128_alpha0p9",
+        "evaluation": "STUDY/perception_evaluations/Risk2048_s281128_alpha0p9",
+        "metrics": {
+          "marked_by_segment": {
+            "scene28_s00": 0.8330452931537817,
+            "scene28_s02": 0.7268936941906298
+          },
+          "marked_macro": 0.7799694936722057,
+          "retention": {
+            "lane": 0.8920950443320951,
+            "drivable": 0.9828581054182075,
+            "white": 0.8749184466764622,
+            "yellow": 0.9300653889881271,
+            "stopline": 0.8682784199408161
+          },
+          "retention_by_view": {
+            "front": {
+              "lane": 0.8000856359560006,
+              "drivable": 0.9765032402443279
+            },
+            "left": {
+              "lane": 0.9151481137133827,
+              "drivable": 0.9857948768909
+            },
+            "right": {
+              "lane": 0.9269194331270211,
+              "drivable": 0.9863801189932343
+            }
+          }
+        },
+        "marked_gain_vs_parent": -0.009824531204244424,
+        "segment_deltas": {
+          "scene28_s00": -0.007058934899377922,
+          "scene28_s02": -0.012590127509110705
+        },
+        "passes": false,
+        "failed_gates": [
+          "marked_macro_gain",
+          "marked_positive_segments"
+        ],
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "d3e1a5c8735cbd78efd3efd8a5b40bb9f2165bb64a0a356f7a72dcdf6b793693",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "5f695a564d3046afdc549b5b59ea972a1c6ea84853c7061c54892d594dd44084"
+        },
+        "per_frame_sha256": "36224b05940c548c63d7ab14c5cbccc051c672711920bea15877452df98a2b7d"
+      },
+      {
+        "arm": "Risk2048",
+        "alpha": 0.8,
+        "run": "STUDY/runs/Risk2048_s281128_alpha0p8",
+        "evaluation": "STUDY/perception_evaluations/Risk2048_s281128_alpha0p8",
+        "metrics": {
+          "marked_by_segment": {
+            "scene28_s00": 0.8241995059571642,
+            "scene28_s02": 0.7133564169651843
+          },
+          "marked_macro": 0.7687779614611743,
+          "retention": {
+            "lane": 0.8925336077124387,
+            "drivable": 0.9830005860892809,
+            "white": 0.8752789052271642,
+            "yellow": 0.9306740327567795,
+            "stopline": 0.8702433735576965
+          },
+          "retention_by_view": {
+            "front": {
+              "lane": 0.800075467408917,
+              "drivable": 0.9767204444491588
+            },
+            "left": {
+              "lane": 0.9160741825051888,
+              "drivable": 0.9858952358639838
+            },
+            "right": {
+              "lane": 0.9271280740400835,
+              "drivable": 0.9864896619395023
+            }
+          }
+        },
+        "marked_gain_vs_parent": -0.021016063415275843,
+        "segment_deltas": {
+          "scene28_s00": -0.01590472209599547,
+          "scene28_s02": -0.026127404734556214
+        },
+        "passes": false,
+        "failed_gates": [
+          "marked_macro_gain",
+          "marked_positive_segments",
+          "marked_worst_segment"
+        ],
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "7aa96f7b3209c3812bb809071ad6835a38d0ad68624f300137c6e6e90fad8f43",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "e2ef9b8b9c7b31b15df1b40af0588d4f71a79076beed2cd7838ac638f302b280"
+        },
+        "per_frame_sha256": "bc41aed9f4b1fa3764b74b809a67e5b9331f9feb94f0abed384c764d98286023"
+      },
+      {
+        "arm": "Random2048",
+        "alpha": 1.0,
+        "run": "STUDY/runs/Random2048_s281128",
+        "evaluation": "STUDY/perception_evaluations/Random2048_s281128",
+        "metrics": {
+          "marked_by_segment": {
+            "scene28_s00": 0.840495776500663,
+            "scene28_s02": 0.7388182461434631
+          },
+          "marked_macro": 0.7896570113220631,
+          "retention": {
+            "lane": 0.8927569833712984,
+            "drivable": 0.9823808236623575,
+            "white": 0.875657298805314,
+            "yellow": 0.9305625729214224,
+            "stopline": 0.8665508054413606
+          },
+          "retention_by_view": {
+            "front": {
+              "lane": 0.8016649366222666,
+              "drivable": 0.9759743880867607
+            },
+            "left": {
+              "lane": 0.9149119862057653,
+              "drivable": 0.9852947233480132
+            },
+            "right": {
+              "lane": 0.9279599582708052,
+              "drivable": 0.9859825606527169
+            }
+          }
+        },
+        "marked_gain_vs_parent": -0.00013701355438699991,
+        "segment_deltas": {
+          "scene28_s00": 0.0003915484475033315,
+          "scene28_s02": -0.0006655755562773313
+        },
+        "passes": false,
+        "failed_gates": [
+          "marked_macro_gain",
+          "marked_positive_segments"
+        ],
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "96c0c181e5684868b1ea0f4155b8484041c102eafd74afa45f9ce358305963d9",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "3214d059c66213d9611cb969eb3ad393073474bcaece604ba250aa8818022534"
+        },
+        "per_frame_sha256": "b77201cb356dc1b7626beda4653c58f44a7ecb5f4b0947e0d9276e08b0b921c3"
+      },
+      {
+        "arm": "Random2048",
+        "alpha": 0.95,
+        "run": "STUDY/runs/Random2048_s281128_alpha0p95",
+        "evaluation": "STUDY/perception_evaluations/Random2048_s281128_alpha0p95",
+        "metrics": {
+          "marked_by_segment": {
+            "scene28_s00": 0.8374073160475212,
+            "scene28_s02": 0.7353832357301988
+          },
+          "marked_macro": 0.7863952758888599,
+          "retention": {
+            "lane": 0.8928992454027013,
+            "drivable": 0.982497500334738,
+            "white": 0.875748571365935,
+            "yellow": 0.930815498018336,
+            "stopline": 0.8677546376933015
+          },
+          "retention_by_view": {
+            "front": {
+              "lane": 0.8014862395379079,
+              "drivable": 0.9761331488759518
+            },
+            "left": {
+              "lane": 0.9154005329558365,
+              "drivable": 0.9853946440418543
+            },
+            "right": {
+              "lane": 0.9279380599161362,
+              "drivable": 0.9860729246650468
+            }
+          }
+        },
+        "marked_gain_vs_parent": -0.0033987489875901833,
+        "segment_deltas": {
+          "scene28_s00": -0.0026969120056384854,
+          "scene28_s02": -0.004100585969541659
+        },
+        "passes": false,
+        "failed_gates": [
+          "marked_macro_gain",
+          "marked_positive_segments"
+        ],
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "9a00e36a232f88a7bd76d8b2153dfa9ef323914746ed16f2fe6a734343a17880",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "ccbbebff9b5ac46409062fd6bb6154428c19e4cb89568975d6d9ca13c2035d55"
+        },
+        "per_frame_sha256": "c77222453f3f6d3787d412f2547e7729babca614e708cbbebfb943bb37b61805"
+      },
+      {
+        "arm": "Random2048",
+        "alpha": 0.9,
+        "run": "STUDY/runs/Random2048_s281128_alpha0p9",
+        "evaluation": "STUDY/perception_evaluations/Random2048_s281128_alpha0p9",
+        "metrics": {
+          "marked_by_segment": {
+            "scene28_s00": 0.8338299252611838,
+            "scene28_s02": 0.7303412181425275
+          },
+          "marked_macro": 0.7820855717018557,
+          "retention": {
+            "lane": 0.8930310113765233,
+            "drivable": 0.9826036235438673,
+            "white": 0.87583692517169,
+            "yellow": 0.9310394329959663,
+            "stopline": 0.8686862452941643
+          },
+          "retention_by_view": {
+            "front": {
+              "lane": 0.8013143024348743,
+              "drivable": 0.9762797294718849
+            },
+            "left": {
+              "lane": 0.9158252463661672,
+              "drivable": 0.9854809490658786
+            },
+            "right": {
+              "lane": 0.9279515782686808,
+              "drivable": 0.9861579377197156
+            }
+          }
+        },
+        "marked_gain_vs_parent": -0.007708453174594454,
+        "segment_deltas": {
+          "scene28_s00": -0.006274302791975828,
+          "scene28_s02": -0.00914260355721297
+        },
+        "passes": false,
+        "failed_gates": [
+          "marked_macro_gain",
+          "marked_positive_segments"
+        ],
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "37fddfd835d1d2e1bd8c86018c0d15e6f1b72847a70c964340480c394911e758",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "2180f6a4c32b0d11acb5951f6b56bbd6fe85d86fca45b212b60093f2753b7193"
+        },
+        "per_frame_sha256": "2b01ef024a6311030ebeb68e099b40b7137d0388e2f12319918fa09b02cb8d28"
+      },
+      {
+        "arm": "Random2048",
+        "alpha": 0.8,
+        "run": "STUDY/runs/Random2048_s281128_alpha0p8",
+        "evaluation": "STUDY/perception_evaluations/Random2048_s281128_alpha0p8",
+        "metrics": {
+          "marked_by_segment": {
+            "scene28_s00": 0.8246285418375862,
+            "scene28_s02": 0.716711286798516
+          },
+          "marked_macro": 0.7706699143180511,
+          "retention": {
+            "lane": 0.8933584878203429,
+            "drivable": 0.9827884432369747,
+            "white": 0.8761115448091822,
+            "yellow": 0.9314866076116185,
+            "stopline": 0.8707710204189543
+          },
+          "retention_by_view": {
+            "front": {
+              "lane": 0.8011650629104905,
+              "drivable": 0.976536149173155
+            },
+            "left": {
+              "lane": 0.9166650844058705,
+              "drivable": 0.9856267388803697
+            },
+            "right": {
+              "lane": 0.9280399955263033,
+              "drivable": 0.9863099265294074
+            }
+          }
+        },
+        "marked_gain_vs_parent": -0.01912411055839902,
+        "segment_deltas": {
+          "scene28_s00": -0.015475686215573492,
+          "scene28_s02": -0.02277253490122444
+        },
+        "passes": false,
+        "failed_gates": [
+          "marked_macro_gain",
+          "marked_positive_segments",
+          "marked_worst_segment"
+        ],
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "bde6c8fd7bfa47a7dc836e2e0b2d0efcbbebcc49bb91b3d15df7345b2dd77852",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "a635f718ff982505d22814f6ddc1327b38720ffcf19dddb26cff54d71c7214bd"
+        },
+        "per_frame_sha256": "536f7c3370c64b2b61480706b85ae760cc32cec3ae40b94d6e80e20f05124d8b"
+      }
+    ],
+    "selected": {
+      "arm": "Coverage2048",
+      "alpha": 1.0,
+      "run": "STUDY/runs/Coverage2048_s281128",
+      "evaluation": "STUDY/perception_evaluations/Coverage2048_s281128",
+      "metrics": {
+        "marked_by_segment": {
+          "scene28_s00": 0.844584876728422,
+          "scene28_s02": 0.7417182899401077
+        },
+        "marked_macro": 0.7931515833342648,
+        "retention": {
+          "lane": 0.8930407716977004,
+          "drivable": 0.9825445017606497,
+          "white": 0.8760221491910924,
+          "yellow": 0.9306734624312172,
+          "stopline": 0.8678567651413664
+        },
+        "retention_by_view": {
+          "front": {
+            "lane": 0.8034289387064504,
+            "drivable": 0.9761026983595064
+          },
+          "left": {
+            "lane": 0.9147038757084649,
+            "drivable": 0.9854366502606575
+          },
+          "right": {
+            "lane": 0.9278472835560413,
+            "drivable": 0.9862090258439505
+          }
+        }
+      },
+      "marked_gain_vs_parent": 0.0033575584578147133,
+      "segment_deltas": {
+        "scene28_s00": 0.004480648675262322,
+        "scene28_s02": 0.0022344682403672156
+      },
+      "passes": true,
+      "failed_gates": [],
+      "perception_identity": {
+        "schema_version": "ml-perception-identity-1",
+        "kind": "adaptation",
+        "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+        "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+        "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+      },
+      "per_frame_sha256": "a18fb6bd5f6529862f7d13ab4c6531c547928ad134773cb23a42a3a340f499e2"
+    },
+    "candidate_selected_from_passing": true,
+    "source_sha256": "c0f774aa4c8f7e5152842fe87fe4dbf0e910f762da05a8174dcdb75d11a6a941",
+    "queue_sha256": "6e18519b06cb3663447dc727c4eeafca7411e48e97542c1e67065393abe2e0c6",
+    "design_sha256": "f3770d0e6db0a5fd88cb7b0be766d3008adee23f3af3876851570f05615ef02c",
+    "confirmation_accessed": false,
+    "scope": "Paired same-backend development/retention decision only. Coverage24k differs from the matched18k selection controls. A new independent confirmation is still required."
+  },
+  "publication_projection": {
+    "original_sha256": "81dc07627e111ec879af7081b821caec7da6b0d83a80fca5445fefab92eddf8d",
+    "source_alias": "STUDY/protocol/perception_development_choice.json",
+    "private_paths_replaced": true
+  }
+}

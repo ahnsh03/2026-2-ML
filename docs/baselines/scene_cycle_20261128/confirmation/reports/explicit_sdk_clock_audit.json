@@ -1,0 +1,317 @@
+{
+  "evidence": {
+    "version": "explicit-sdk-clock-audit-1",
+    "results": {
+      "primary": {
+        "sdk_hours": {
+          "5": {
+            "rows": 146,
+            "selected": 18,
+            "near_errors": 50,
+            "near_errors_selected": 18,
+            "near_error_recall": 0.36,
+            "near_fn_recall": 0.375,
+            "near_fp_recall": 0.5714285714285714
+          },
+          "7": {
+            "rows": 149,
+            "selected": 3,
+            "near_errors": 4,
+            "near_errors_selected": 0,
+            "near_error_recall": 0.0,
+            "near_fn_recall": null,
+            "near_fp_recall": 0.0
+          },
+          "13": {
+            "rows": 150,
+            "selected": 0,
+            "near_errors": 1,
+            "near_errors_selected": 0,
+            "near_error_recall": 0.0,
+            "near_fn_recall": 0.0,
+            "near_fp_recall": null
+          },
+          "20": {
+            "rows": 145,
+            "selected": 38,
+            "near_errors": 52,
+            "near_errors_selected": 35,
+            "near_error_recall": 0.6730769230769231,
+            "near_fn_recall": 0.66,
+            "near_fp_recall": 1.0
+          }
+        },
+        "legacy_dawn_near_error_recall": 0.0,
+        "legacy_dawn_metric_sdk_hour": 7,
+        "legacy_definition_verified": true
+      },
+      "Lloyd_environment_control": {
+        "sdk_hours": {
+          "5": {
+            "rows": 146,
+            "selected": 18,
+            "near_errors": 50,
+            "near_errors_selected": 18,
+            "near_error_recall": 0.36,
+            "near_fn_recall": 0.375,
+            "near_fp_recall": 0.5714285714285714
+          },
+          "7": {
+            "rows": 149,
+            "selected": 3,
+            "near_errors": 4,
+            "near_errors_selected": 0,
+            "near_error_recall": 0.0,
+            "near_fn_recall": null,
+            "near_fp_recall": 0.0
+          },
+          "13": {
+            "rows": 150,
+            "selected": 0,
+            "near_errors": 1,
+            "near_errors_selected": 0,
+            "near_error_recall": 0.0,
+            "near_fn_recall": 0.0,
+            "near_fp_recall": null
+          },
+          "20": {
+            "rows": 145,
+            "selected": 38,
+            "near_errors": 52,
+            "near_errors_selected": 35,
+            "near_error_recall": 0.6730769230769231,
+            "near_fn_recall": 0.66,
+            "near_fp_recall": 1.0
+          }
+        },
+        "legacy_dawn_near_error_recall": 0.0,
+        "legacy_dawn_metric_sdk_hour": 7,
+        "legacy_definition_verified": true
+      },
+      "RF_only": {
+        "sdk_hours": {
+          "5": {
+            "rows": 146,
+            "selected": 18,
+            "near_errors": 50,
+            "near_errors_selected": 18,
+            "near_error_recall": 0.36,
+            "near_fn_recall": 0.375,
+            "near_fp_recall": 0.5714285714285714
+          },
+          "7": {
+            "rows": 149,
+            "selected": 3,
+            "near_errors": 4,
+            "near_errors_selected": 0,
+            "near_error_recall": 0.0,
+            "near_fn_recall": null,
+            "near_fp_recall": 0.0
+          },
+          "13": {
+            "rows": 150,
+            "selected": 0,
+            "near_errors": 1,
+            "near_errors_selected": 0,
+            "near_error_recall": 0.0,
+            "near_fn_recall": 0.0,
+            "near_fp_recall": null
+          },
+          "20": {
+            "rows": 145,
+            "selected": 38,
+            "near_errors": 52,
+            "near_errors_selected": 34,
+            "near_error_recall": 0.6538461538461539,
+            "near_fn_recall": 0.64,
+            "near_fp_recall": 1.0
+          }
+        },
+        "legacy_dawn_near_error_recall": 0.0,
+        "legacy_dawn_metric_sdk_hour": 7,
+        "legacy_definition_verified": true
+      },
+      "GP_only": {
+        "sdk_hours": {
+          "5": {
+            "rows": 146,
+            "selected": 23,
+            "near_errors": 50,
+            "near_errors_selected": 21,
+            "near_error_recall": 0.42,
+            "near_fn_recall": 0.3958333333333333,
+            "near_fp_recall": 1.0
+          },
+          "7": {
+            "rows": 149,
+            "selected": 2,
+            "near_errors": 4,
+            "near_errors_selected": 0,
+            "near_error_recall": 0.0,
+            "near_fn_recall": null,
+            "near_fp_recall": 0.0
+          },
+          "13": {
+            "rows": 150,
+            "selected": 0,
+            "near_errors": 1,
+            "near_errors_selected": 0,
+            "near_error_recall": 0.0,
+            "near_fn_recall": 0.0,
+            "near_fp_recall": null
+          },
+          "20": {
+            "rows": 145,
+            "selected": 34,
+            "near_errors": 52,
+            "near_errors_selected": 32,
+            "near_error_recall": 0.6153846153846154,
+            "near_fn_recall": 0.6,
+            "near_fp_recall": 1.0
+          }
+        },
+        "legacy_dawn_near_error_recall": 0.0,
+        "legacy_dawn_metric_sdk_hour": 7,
+        "legacy_definition_verified": true
+      },
+      "GP_information_control": {
+        "sdk_hours": {
+          "5": {
+            "rows": 146,
+            "selected": 24,
+            "near_errors": 50,
+            "near_errors_selected": 21,
+            "near_error_recall": 0.42,
+            "near_fn_recall": 0.3958333333333333,
+            "near_fp_recall": 1.0
+          },
+          "7": {
+            "rows": 149,
+            "selected": 4,
+            "near_errors": 4,
+            "near_errors_selected": 0,
+            "near_error_recall": 0.0,
+            "near_fn_recall": null,
+            "near_fp_recall": 0.0
+          },
+          "13": {
+            "rows": 150,
+            "selected": 1,
+            "near_errors": 1,
+            "near_errors_selected": 0,
+            "near_error_recall": 0.0,
+            "near_fn_recall": 0.0,
+            "near_fp_recall": null
+          },
+          "20": {
+            "rows": 145,
+            "selected": 30,
+            "near_errors": 52,
+            "near_errors_selected": 28,
+            "near_error_recall": 0.5384615384615384,
+            "near_fn_recall": 0.52,
+            "near_fp_recall": 1.0
+          }
+        },
+        "legacy_dawn_near_error_recall": 0.0,
+        "legacy_dawn_metric_sdk_hour": 7,
+        "legacy_definition_verified": true
+      },
+      "global_q07_control": {
+        "sdk_hours": {
+          "5": {
+            "rows": 146,
+            "selected": 26,
+            "near_errors": 50,
+            "near_errors_selected": 19,
+            "near_error_recall": 0.38,
+            "near_fn_recall": 0.3958333333333333,
+            "near_fp_recall": 0.7142857142857143
+          },
+          "7": {
+            "rows": 149,
+            "selected": 7,
+            "near_errors": 4,
+            "near_errors_selected": 1,
+            "near_error_recall": 0.25,
+            "near_fn_recall": null,
+            "near_fp_recall": 0.25
+          },
+          "13": {
+            "rows": 150,
+            "selected": 4,
+            "near_errors": 1,
+            "near_errors_selected": 1,
+            "near_error_recall": 1.0,
+            "near_fn_recall": 1.0,
+            "near_fp_recall": null
+          },
+          "20": {
+            "rows": 145,
+            "selected": 22,
+            "near_errors": 52,
+            "near_errors_selected": 22,
+            "near_error_recall": 0.4230769230769231,
+            "near_fn_recall": 0.44,
+            "near_fp_recall": 0.6666666666666666
+          }
+        },
+        "legacy_dawn_near_error_recall": 0.25,
+        "legacy_dawn_metric_sdk_hour": 7,
+        "legacy_definition_verified": true
+      },
+      "parent_r1": {
+        "sdk_hours": {
+          "5": {
+            "rows": 146,
+            "selected": 19,
+            "near_errors": 74,
+            "near_errors_selected": 18,
+            "near_error_recall": 0.24324324324324326,
+            "near_fn_recall": 0.2361111111111111,
+            "near_fp_recall": 0.7142857142857143
+          },
+          "7": {
+            "rows": 149,
+            "selected": 2,
+            "near_errors": 0,
+            "near_errors_selected": 0,
+            "near_error_recall": null,
+            "near_fn_recall": null,
+            "near_fp_recall": null
+          },
+          "13": {
+            "rows": 150,
+            "selected": 0,
+            "near_errors": 1,
+            "near_errors_selected": 0,
+            "near_error_recall": 0.0,
+            "near_fn_recall": 0.0,
+            "near_fp_recall": null
+          },
+          "20": {
+            "rows": 145,
+            "selected": 38,
+            "near_errors": 60,
+            "near_errors_selected": 35,
+            "near_error_recall": 0.5833333333333334,
+            "near_fn_recall": 0.5789473684210527,
+            "near_fp_recall": 0.8571428571428571
+          }
+        },
+        "legacy_dawn_near_error_recall": null,
+        "legacy_dawn_metric_sdk_hour": 7,
+        "legacy_definition_verified": true
+      }
+    },
+    "acceptance_gates_or_selection_changed": false,
+    "scope": "Post-assessment label clarification. The legacy dawn field denotes SDK07h only; SDK05h is reported separately. Clock hour is not a physical visibility label. All original reports and frozen decisions remain unchanged.",
+    "review_assessment_sha256": "1e9b5f17d7ea0de4155bc5fddd66356d3c1a1996864fbb3c3a0a38e7fcd330bb",
+    "source_sha256": "3ed49f38a14581954a5089b91e119a024ad1ef3b8f14e77d77ac21b3440283d0"
+  },
+  "publication_projection": {
+    "original_sha256": "5f9f3a67db11784e201d805cd07ffba656044d0109e70f81c113ad2279aa0505",
+    "source_alias": "STUDY/confirmation/explicit_clock_audit.json",
+    "private_paths_replaced": true
+  }
+}

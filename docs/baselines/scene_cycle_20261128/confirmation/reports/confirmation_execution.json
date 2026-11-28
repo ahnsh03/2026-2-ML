@@ -1,0 +1,18 @@
+{
+  "evidence": {
+    "status": "completed",
+    "completed_utc": "2026-11-28T08:18:38.713097+00:00",
+    "confirmation_freeze_sha256": "10494ffbc6f47881fc88d265b9feb05c2eefc9a55062391f884242e5c1d0859f",
+    "source_index_sha256": "48d9d8378f1ba7a70b93dbe7f67401002d5a19a8c2b9380a97b63dc95bcd064c",
+    "neural_report_sha256": "6587908679b4a8a0204fc63b8b80934aa37435f621d2eb1ecfa99bd0af08c429",
+    "review_report_sha256": "1e9b5f17d7ea0de4155bc5fddd66356d3c1a1996864fbb3c3a0a38e7fcd330bb",
+    "source_sha256": "c4f25e08decbd07d6647de88a7af74f29a778e6c4567d1eaea59143e573dbe7f",
+    "automatic_adoption_performed": false,
+    "scope": "Frozen new same-map confirmation completed. Adoption requires explicit predeclared hierarchy; no post-test retuning."
+  },
+  "publication_projection": {
+    "original_sha256": "a1dbf10021bc218f2ac66c5fc1b46439a56ed042f76d205131aee6cc9cc820cc",
+    "source_alias": "STUDY/reports/confirmation_execution_complete.json",
+    "private_paths_replaced": true
+  }
+}

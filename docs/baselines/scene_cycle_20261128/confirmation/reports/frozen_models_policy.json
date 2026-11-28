@@ -1,0 +1,221 @@
+{
+  "evidence": {
+    "version": "scene-cycle-confirmation-freeze-1",
+    "frozen_utc": "2026-11-28T07:05:30.435420+00:00",
+    "confirmation_not_collected_at_freeze": true,
+    "study_design_sha256": "f3770d0e6db0a5fd88cb7b0be766d3008adee23f3af3876851570f05615ef02c",
+    "confirmation_plan_sha256": "bcbaff574bc30c6d6e446af501f50dd909ba39e6aa8ccc1fa5a206bd82ea3f84",
+    "source_git": "c3243899c6dea8d06f6d9fb413b5bab2be95aacc",
+    "source_sha256": "64961dea08df5dd8db1648139af7fb52c6ef7d81f17c45b90d779f20eb1aa80d",
+    "primary_review_name": "primary",
+    "parent_review_name": "parent_r1",
+    "review_candidates": [
+      {
+        "name": "primary",
+        "bundle": "STUDY/frozen_confirmation_bundles/primary",
+        "pack": "STUDY/confirmation/packs_selected/confirmation.npz",
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "bundle_manifest_sha256": "874cd2c15d39b41fe80beb61ece0619bbb95c3f47fa02b846ddcb4141cb60a14"
+      },
+      {
+        "name": "Lloyd_environment_control",
+        "bundle": "STUDY/frozen_confirmation_bundles/Lloyd_environment_control",
+        "pack": "STUDY/confirmation/packs_selected/confirmation.npz",
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "bundle_manifest_sha256": "3d0ff4f7dd15744a85b7524b1d0d92476316d4bf098177365e71cbed2408a25e",
+        "diagnostic_scope": "Environment semantic comparator with global policy; not a matched review-ranking comparison to a grouped primary policy."
+      },
+      {
+        "name": "RF_only",
+        "bundle": "STUDY/frozen_confirmation_bundles/RF_only",
+        "pack": "STUDY/confirmation/packs_selected/confirmation.npz",
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "bundle_manifest_sha256": "1355653335a1e0d2ddc77efe23cf81b2424555174b74dc4a5bbe5b914d311efd"
+      },
+      {
+        "name": "GP_only",
+        "bundle": "STUDY/frozen_confirmation_bundles/GP_only",
+        "pack": "STUDY/confirmation/packs_selected/confirmation.npz",
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "bundle_manifest_sha256": "84a27354b1bcba4dd1908e1a0b5f211633dda1dd653a7820371834a75a6cbdfa"
+      },
+      {
+        "name": "GP_information_control",
+        "bundle": "STUDY/frozen_confirmation_bundles/GP_information_control",
+        "pack": "STUDY/confirmation/packs_selected/confirmation.npz",
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "bundle_manifest_sha256": "55e6b0317885cf512930a0d5ec3226ef13847c84a29e97aec4e84571b737d8be"
+      },
+      {
+        "name": "global_q07_control",
+        "bundle": "STUDY/frozen_confirmation_bundles/global_q07_control",
+        "pack": "STUDY/confirmation/packs_selected/confirmation.npz",
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "bundle_manifest_sha256": "986db99970ad44ff443bc3de8ecc9fe6f43a8ddf57e878f0ef0a78f22db8cf9a"
+      },
+      {
+        "name": "parent_r1",
+        "bundle": "STUDY/frozen_confirmation_bundles/parent_r1",
+        "pack": "STUDY/confirmation/packs_parent/confirmation.npz",
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+        },
+        "bundle_manifest_sha256": "1ef1fa1eb9b5fe3c2d5b98e245d198fcd43642270007b325695ebad68be4b51c"
+      }
+    ],
+    "perception_models": {
+      "v6": {
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "baseline",
+          "checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": null
+        },
+        "checkpoint": "WORKSPACE/checkpoints/twinlite_medium_morai_v6_road_marking_init_b_b12_e18_20260908/best_mean.pt"
+      },
+      "r1": {
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+        },
+        "run": "PARENT_STUDY/runs/GPGlobalFull_s271127"
+      },
+      "selected": {
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "run": "STUDY/runs/Coverage2048_s281128"
+      },
+      "risk_raw": {
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "4ef4c56b19b4701ea62b5a2a80f58b10d76b52a841bf466b0aa49bc934d9c03d",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "be6d69cfc9c99f578e1ca0ff3ae6d185877398f98bf15f8c9f7409261d119351"
+        },
+        "run": "STUDY/runs/Risk2048_s281128"
+      },
+      "random_raw": {
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "96c0c181e5684868b1ea0f4155b8484041c102eafd74afa45f9ce358305963d9",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "3214d059c66213d9611cb969eb3ad393073474bcaece604ba250aa8818022534"
+        },
+        "run": "STUDY/runs/Random2048_s281128"
+      }
+    },
+    "matched_training_controls": {
+      "risk_raw": {
+        "status": "frozen",
+        "arm": "Risk2048",
+        "alpha": 1.0,
+        "run_sha256": "be6d69cfc9c99f578e1ca0ff3ae6d185877398f98bf15f8c9f7409261d119351"
+      },
+      "random_raw": {
+        "status": "frozen",
+        "arm": "Random2048",
+        "alpha": 1.0,
+        "run_sha256": "3214d059c66213d9611cb969eb3ad393073474bcaece604ba250aa8818022534"
+      }
+    },
+    "marked_confirmation_sites": [
+      "scene28_s01",
+      "scene28_s04",
+      "scene28_s05"
+    ],
+    "preconfirmation_perception_checks": {
+      "cpu_development_passes": true,
+      "gpu_original_retention_passes": true,
+      "gpu_report_sha256": "bd8391271941e1487db741439e023f594446451bb9ec73c3bb50c328f114d43d"
+    },
+    "development_choice_sha256": "81dc07627e111ec879af7081b821caec7da6b0d83a80fca5445fefab92eddf8d",
+    "models_ready_sha256": "9bbbcaef033cecd5a912a4301d813f6aaf40884a62bfaed529d5985291150b9a",
+    "preconfirmation_fallback": null,
+    "quality_handoff_gate": {
+      "created_utc": "2026-11-28T03:42:03.124116+00:00",
+      "reason": "Before any cumulative endpoint or independent confirmation is opened, make cross-version quality denominators independent of model predictions. Removing FP on an empty-GT frame makes Q undefined; never let this alone alter the retention population. All-defined Q metrics and unmarked FP review metrics remain reported.",
+      "maximum_macro_mae_increase_vs_parent_pipeline": 0.01,
+      "minimum_interval90_macro_coverage": 0.8,
+      "parent_reference": "Frozen r1 perception plus its own new74-column GP quality head; never apply old quality model to changed perception outputs.",
+      "scope": "Additional conservative handoff guard on identical GT-supported frames. Training Q still uses all defined labels; review still includes GT-empty FP. No neural or review acceptance gate is relaxed.",
+      "supersedes_guard_sha256": "b2ea4afe29c5166cec90470634b5d9467b05f5af6d30aa49ad53e8169536e276",
+      "population": "whole_gt_pixels_at_least50",
+      "minimum_whole_gt_pixels": 50
+    },
+    "quality_handoff_gate_sha256": "fbc36eb689b77e6c9a4ce1ad2dccfba336f947a0adb0be780fae1834a2294f48",
+    "adoption_hierarchy": [
+      "Promote the selected neural child only if frozen independent neural gates pass; otherwise retain already promoted r1.",
+      "Review policy acceptance is separate. On retained r1 use only its already frozen parent_r1 policy if its own review/quality gates pass; never choose a better control after the test.",
+      "A neural-only promotion does not enable automatic training admission or live ROS."
+    ],
+    "scope": "All candidates fixed before new confirmation collection. Family and uncertainty controls are diagnostics, not a post-test model-selection pool."
+  },
+  "publication_projection": {
+    "original_sha256": "10494ffbc6f47881fc88d265b9feb05c2eefc9a55062391f884242e5c1d0859f",
+    "source_alias": "STUDY/protocol/confirmation_models_policy_frozen.json",
+    "private_paths_replaced": true
+  }
+}

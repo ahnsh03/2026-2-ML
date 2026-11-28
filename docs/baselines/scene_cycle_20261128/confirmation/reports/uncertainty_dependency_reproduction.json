@@ -1,0 +1,27 @@
+{
+  "evidence": {
+    "completed_utc": "2026-11-28T08:39:48.635857+00:00",
+    "runs": [
+      {
+        "profile": "rtx40-cu118",
+        "mode": "CPU diagnostic of already-frozen GP/RF outputs",
+        "summary_sha256": "e34b8aec8551fb41632fb5c6a6c37b2181fe1803269f0e4d1bf902c77c3683c1",
+        "all_statistical_values_identical": true
+      },
+      {
+        "profile": "rtx50-cu128",
+        "mode": "CPU diagnostic of already-frozen GP/RF outputs",
+        "summary_sha256": "8372dd39c41540f8172a281779c326ba1c43edae01f8489a48cce734199d03dc",
+        "all_statistical_values_identical": true
+      }
+    ],
+    "original_summary_sha256": "3111059e023413641c890d3de707aeaf89b6b8ff259742e78f9a20ef727fbef0",
+    "policy_or_adoption_changed": false,
+    "scope": "Additional descriptive analysis only; Matplotlib labels API compatibility exercised in both dependency images. No new threshold fitted."
+  },
+  "publication_projection": {
+    "original_sha256": "f2ac595721a1c66c3c4e2b7ea114b11ec6d4f6af0d3aaa78df8132046d42acdf",
+    "source_alias": "STUDY/reports/uncertainty_compatibility.json",
+    "private_paths_replaced": false
+  }
+}

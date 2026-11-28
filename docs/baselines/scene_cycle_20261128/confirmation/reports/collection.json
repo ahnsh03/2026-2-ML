@@ -1,0 +1,15 @@
+{
+  "evidence": {
+    "status": "complete",
+    "conditions": 96,
+    "frames": 1674,
+    "role": "confirmation",
+    "finished_utc": "2026-11-28T08:06:56.603396+00:00",
+    "plan_sha256": "bcbaff574bc30c6d6e446af501f50dd909ba39e6aa8ccc1fa5a206bd82ea3f84"
+  },
+  "publication_projection": {
+    "original_sha256": "c544159cb3897163e37e778ecfc73277ae7330cc5624bfefdf62808f27215302",
+    "source_alias": "STUDY/confirmation/COLLECTION_COMPLETE.json",
+    "private_paths_replaced": true
+  }
+}

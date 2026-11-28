@@ -1,0 +1,33 @@
+{
+  "evidence": {
+    "cases": [
+      {
+        "case": "05h_near_fn",
+        "sample_id": "confirmation28e044_scene28_s04_w5_h05_f0015",
+        "source_manifest_sha256": "70450f7611adb63ef83d2c0e0d595a7d7abcf531a5997edc31c2706a71b0e02d"
+      },
+      {
+        "case": "05h_near_fp",
+        "sample_id": "confirmation28e020_scene28_s01_w5_h05_f0000",
+        "source_manifest_sha256": "70450f7611adb63ef83d2c0e0d595a7d7abcf531a5997edc31c2706a71b0e02d"
+      },
+      {
+        "case": "05h_near_retained_far_error",
+        "sample_id": "confirmation28e040_scene28_s04_w4_h05_f0015",
+        "source_manifest_sha256": "70450f7611adb63ef83d2c0e0d595a7d7abcf531a5997edc31c2706a71b0e02d"
+      },
+      {
+        "case": "05h_near_retained",
+        "sample_id": "confirmation28e064_scene28_s05_w4_h05_f0012",
+        "source_manifest_sha256": "70450f7611adb63ef83d2c0e0d595a7d7abcf531a5997edc31c2706a71b0e02d"
+      }
+    ],
+    "missing_supported_examples": [],
+    "scope": "Post-assessment illustrations only; no model or policy selection"
+  },
+  "publication_projection": {
+    "original_sha256": "d821dca0375894e3da5f022db64455dda1684b625bd477cf846891bb86e9e62f",
+    "source_alias": "STUDY/confirmation/illustration_cases_post_audit.json",
+    "private_paths_replaced": true
+  }
+}

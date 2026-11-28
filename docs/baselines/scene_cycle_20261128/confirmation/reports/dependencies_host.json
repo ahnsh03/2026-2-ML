@@ -1,0 +1,80 @@
+{
+  "evidence": {
+    "observed_utc": "2026-11-28T04:30:43.058505+00:00",
+    "mode": "host-scientific",
+    "python": "3.12.13",
+    "packages": {
+      "numpy": {
+        "version": "2.5.5",
+        "entrypoint_filename": "__init__.py",
+        "entrypoint_sha256": "09295a80660f17925ae23765ce8cbd7ff7ceae968d5f2f89349f1cb74c0b9e11",
+        "wheel_record_sha256": "23e345de139a5c75ee0dcde5b42ad17101a2672280e7ad7df053d98b4354a6f4"
+      },
+      "scipy": {
+        "version": "1.18.1",
+        "entrypoint_filename": "__init__.py",
+        "entrypoint_sha256": "39ccae300a4739cc53719bd3b39ce3f8f66e736c6eb672006e338a4c5cc3dc76",
+        "wheel_record_sha256": "cda958e21648ffe0b8528473532ef59f89db82bf1fa7d4a9a47161785046e979"
+      },
+      "sklearn": {
+        "version": "1.9.1",
+        "entrypoint_filename": "__init__.py",
+        "entrypoint_sha256": "66a78bb27706626c4cc8ef424a5479f6301204baacd85986e8002c16b751fef1",
+        "wheel_record_sha256": "c02d3c24fc123209db65a16586dba4f7f91f07c5cbe59dcc7562e827455c5637"
+      },
+      "cv2": {
+        "version": "5.1.0",
+        "entrypoint_filename": "__init__.py",
+        "entrypoint_sha256": "d96175c67148f49b0c3265dc22728e89e34a39218eb755c666138f42074079dd"
+      },
+      "torch": {
+        "installed": false
+      },
+      "botorch": {
+        "installed": false
+      },
+      "gpytorch": {
+        "installed": false
+      },
+      "faiss": {
+        "version": "1.16.0",
+        "entrypoint_filename": "__init__.py",
+        "entrypoint_sha256": "7f5d186cffec82ae40f82f49891add3f198e7cab8698cc43c0890c773b23d095",
+        "wheel_record_sha256": "b9de1c170784fea2aae1f456e3f3849188f81750be022943b9d850b624fee1dc"
+      },
+      "e_means_implementation": {
+        "class_signature": "(d, k, nepochs=5, batch_size=None, alpha0=None, batch_law='auto', seed=1234, verbose=False, assignment_chunk_size=None, capture_assignments=True, spherical=False, *, unused_threshold=None, max_points_per_centroid=None)",
+        "module_sha256": {
+          "__init__.py": "ad196786de8eb8ab7a229908b86ad8548a72459ade95e9e9c3275943dd50bb78",
+          "base.py": "bcffd7829ebfc25e1354308770b49e6f99d8566ba5e474a41a22e9ec414b17cd",
+          "cute.py": "7176be6a594b379efe43a8e4bc5d56a5471d6b7e99570d8742315209fdad5caa",
+          "cute_argmin.py": "b3282af1e73348dfc5034f9dc0c11994ede0937dfcef287bf66d5ecd06ac8314",
+          "cute_grouped.py": "b0eab37830a1b317e45f2d04e12cfce05f1f418b266afedbbaa10611d483d770",
+          "cute_kernel.py": "cac5aeb15c1defaac371d4dc300f994994ccb5de85f379cc34c8032b88f5ceed",
+          "cute_row_owned.py": "2532b14a46003d560450d1f506a7529f85f887186e7dd1e5905ee05c16f3d4ee",
+          "e_means.py": "fc7750ba735b502d7831a27ccebb8c22b91c0405d74717a12c90df22eb85e06b",
+          "e_means_distributed.py": "798c4cba0ce0b782775d43a7e9667ee2be4e30592defb9008e08b0a0464c720c",
+          "e_means_grouping.py": "673bdefbc970aa55989412829360e3879d8bf38c087ecd656dc3db6b77b5b712",
+          "e_means_quantized.py": "139bca86d17e1dcdbeca68930059f35c9240f5a6374a9baac645442476f62d63",
+          "e_means_spherical.py": "d4e4177593f70e284bd2f6ad8812170e2a830ea62c697c514edc6298a00ea7a6",
+          "e_means_torch.py": "cddc5ed1f1121c96406055fe6f50e93c049d0e09be27dc07dbe03e5c8e7ef4d3",
+          "ivf_flat.py": "ca5fdcc1520f7890d98cbcf521ecb157fb36d125b7cec8366a183ea6ed211193",
+          "quantizer.py": "f984e56b53711878971788a2a6aa5e27c5fb1f9e11943fb8d84b4c6b70357ab1",
+          "quantizer_fp8.py": "4a79b10d3fa5f2d261a4f59183a06acd03e59e8df4795091753906947f1dfeae",
+          "quantizer_int8.py": "1da372bf2fac0f786bc8392b8cf08cf333363a7da9976f7d37c71b8d5241d9e8",
+          "sharded_centroids.py": "c1324c5f12cdfe48c508eb24779dbff04d55c0c92e2f4478563ecc8c26db5579",
+          "sharded_centroids_ivf.py": "5e7e703650c60ea1a5ddc725d7b2b9a900e568825afd01d2a41a0ed034066197",
+          "torch_backend.py": "55757d984d9b6fcf8ac905c4ffd7b74b84467351dd7b212aa46cee91bbc044d2",
+          "triton_assignment.py": "68ee1c21d5cb4ca7b33cc12a14dfa0fc560a0e830cfb6a04866d197e67d88af9"
+        }
+      }
+    },
+    "source_sha256": "ca5aaeacc19981099f50ab0d9888fd68e7adbb7dad708ca7606c200c0a21dce5",
+    "scope": "Read-only inspection after parent fits and before confirmation. BO query reports independently record the executed version. No package installation or upgrade performed."
+  },
+  "publication_projection": {
+    "original_sha256": "b8fd8086fb286b78edfffd4b7e2598e0091fb813d4633b0e984dd21a9d759e2c",
+    "source_alias": "STUDY/reports/dependencies_host.json",
+    "private_paths_replaced": true
+  }
+}

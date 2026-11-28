@@ -1,0 +1,6 @@
+model,marked_segment_macro_iou,near_fn_frames,near_fp_frames,scope
+v6,0.5835328426529388,226,7,same-map fixed590frames; one optimizer seed
+r1,0.764530853441113,130,14,same-map fixed590frames; one optimizer seed
+selected,0.7841498585345463,99,17,same-map fixed590frames; one optimizer seed
+risk_raw,0.7773866223571426,113,13,same-map fixed590frames; one optimizer seed
+random_raw,0.7721738962491993,121,13,same-map fixed590frames; one optimizer seed

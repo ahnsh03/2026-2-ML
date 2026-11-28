@@ -1,0 +1,3088 @@
+{
+  "evidence": {
+    "records": [
+      {
+        "tag": "env52_quality_GP",
+        "view": "env52",
+        "task": "quality",
+        "kind": "GP",
+        "columns": [
+          "near_left.chroma",
+          "near_left.blue_minus_red",
+          "near_left.edge_density",
+          "near_right.median_residual",
+          "hood.intensity",
+          "hood.dark_channel",
+          "hood.dark_fraction",
+          "hood.intensity_median",
+          "hood.blue_minus_red",
+          "hood.edge_density",
+          "near_left.drivable_fraction",
+          "near_left.lane_fraction",
+          "near_left.lane_probability",
+          "near_left.lane_weighted_entropy",
+          "near_left.lane_weighted_probability",
+          "near_right.drivable_fraction",
+          "near_right.lane_fraction",
+          "near_right.lane_probability",
+          "near_right.lane_weighted_entropy",
+          "near_right.lane_weighted_probability",
+          "global.lane_fraction",
+          "global.lane_probability",
+          "global.lane_weighted_entropy",
+          "global.lane_weighted_probability",
+          "global.top_entropy",
+          "near_minus_far.lane_fraction",
+          "near_minus_far.lane_probability",
+          "near_minus_far.lane_drivable_disagreement",
+          "upper_top_left.intensity",
+          "upper_top_left.intensity_std",
+          "upper_top_left.glare_fraction",
+          "upper_top_left.dark_fraction",
+          "upper_top_left.intensity_p90_minus_p10",
+          "upper_top_left.saturation_median",
+          "upper_top_left.blue_minus_red",
+          "upper_top_left.hue_cos",
+          "upper_top_left.hue_sin",
+          "upper_top_right.intensity",
+          "upper_top_right.intensity_std",
+          "upper_top_right.glare_fraction",
+          "upper_top_right.dark_fraction",
+          "upper_top_right.intensity_p90_minus_p10",
+          "upper_top_right.saturation_median",
+          "upper_top_right.blue_minus_red",
+          "upper_top_right.hue_cos",
+          "upper_top_right.hue_sin",
+          "hood.intensity_std",
+          "hood.glare_fraction",
+          "hood.intensity_p90_minus_p10",
+          "hood.saturation_median",
+          "hood.hue_cos",
+          "hood.hue_sin"
+        ],
+        "targets": [
+          "whole_frame_lane_iou"
+        ],
+        "parameters": {
+          "length_multiplier": 2.8,
+          "noise_variance": 0.03,
+          "task_correlation": 0.0,
+          "kernel_mode": "isotropic"
+        },
+        "cv_loss": 0.060848769593173674,
+        "fitted_rows": 2500,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "models": [
+          "models/env52_quality_GP.npz"
+        ],
+        "model_sha256": {
+          "models/env52_quality_GP.npz": "73fb8eac76ce8cea677776bfe0a00b05b5c06318887cb98ea70210b9b0c1f893"
+        },
+        "fit_pack_sha256": "86d8018836390c11f6ba5cbb50e9b64d86810ad6af3ff0ff81c21b64fd4a459a",
+        "source_sha256": "3066668b6cb4125168a9c2484a32e3030307ac24e28b83b91a050a1f073cf4a1"
+      },
+      {
+        "tag": "env52_quality_RF",
+        "view": "env52",
+        "task": "quality",
+        "kind": "RF",
+        "columns": [
+          "near_left.chroma",
+          "near_left.blue_minus_red",
+          "near_left.edge_density",
+          "near_right.median_residual",
+          "hood.intensity",
+          "hood.dark_channel",
+          "hood.dark_fraction",
+          "hood.intensity_median",
+          "hood.blue_minus_red",
+          "hood.edge_density",
+          "near_left.drivable_fraction",
+          "near_left.lane_fraction",
+          "near_left.lane_probability",
+          "near_left.lane_weighted_entropy",
+          "near_left.lane_weighted_probability",
+          "near_right.drivable_fraction",
+          "near_right.lane_fraction",
+          "near_right.lane_probability",
+          "near_right.lane_weighted_entropy",
+          "near_right.lane_weighted_probability",
+          "global.lane_fraction",
+          "global.lane_probability",
+          "global.lane_weighted_entropy",
+          "global.lane_weighted_probability",
+          "global.top_entropy",
+          "near_minus_far.lane_fraction",
+          "near_minus_far.lane_probability",
+          "near_minus_far.lane_drivable_disagreement",
+          "upper_top_left.intensity",
+          "upper_top_left.intensity_std",
+          "upper_top_left.glare_fraction",
+          "upper_top_left.dark_fraction",
+          "upper_top_left.intensity_p90_minus_p10",
+          "upper_top_left.saturation_median",
+          "upper_top_left.blue_minus_red",
+          "upper_top_left.hue_cos",
+          "upper_top_left.hue_sin",
+          "upper_top_right.intensity",
+          "upper_top_right.intensity_std",
+          "upper_top_right.glare_fraction",
+          "upper_top_right.dark_fraction",
+          "upper_top_right.intensity_p90_minus_p10",
+          "upper_top_right.saturation_median",
+          "upper_top_right.blue_minus_red",
+          "upper_top_right.hue_cos",
+          "upper_top_right.hue_sin",
+          "hood.intensity_std",
+          "hood.glare_fraction",
+          "hood.intensity_p90_minus_p10",
+          "hood.saturation_median",
+          "hood.hue_cos",
+          "hood.hue_sin"
+        ],
+        "targets": [
+          "whole_frame_lane_iou"
+        ],
+        "parameters": {
+          "n_estimators": 160,
+          "max_depth": null,
+          "min_samples_leaf": 1,
+          "max_features": 0.5
+        },
+        "cv_loss": 0.07639473390674222,
+        "fitted_rows": 2500,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "models": [
+          "models/env52_quality_RF_0.npz"
+        ],
+        "model_sha256": {
+          "models/env52_quality_RF_0.npz": "e4bbf89ef62ea2bc92078b0342eb86c22d000779c5d8fb9ca206f7e5e6ab367d"
+        },
+        "fit_pack_sha256": "86d8018836390c11f6ba5cbb50e9b64d86810ad6af3ff0ff81c21b64fd4a459a",
+        "source_sha256": "3066668b6cb4125168a9c2484a32e3030307ac24e28b83b91a050a1f073cf4a1"
+      },
+      {
+        "tag": "env52_errors_GP",
+        "view": "env52",
+        "task": "errors",
+        "kind": "GP",
+        "columns": [
+          "near_left.chroma",
+          "near_left.blue_minus_red",
+          "near_left.edge_density",
+          "near_right.median_residual",
+          "hood.intensity",
+          "hood.dark_channel",
+          "hood.dark_fraction",
+          "hood.intensity_median",
+          "hood.blue_minus_red",
+          "hood.edge_density",
+          "near_left.drivable_fraction",
+          "near_left.lane_fraction",
+          "near_left.lane_probability",
+          "near_left.lane_weighted_entropy",
+          "near_left.lane_weighted_probability",
+          "near_right.drivable_fraction",
+          "near_right.lane_fraction",
+          "near_right.lane_probability",
+          "near_right.lane_weighted_entropy",
+          "near_right.lane_weighted_probability",
+          "global.lane_fraction",
+          "global.lane_probability",
+          "global.lane_weighted_entropy",
+          "global.lane_weighted_probability",
+          "global.top_entropy",
+          "near_minus_far.lane_fraction",
+          "near_minus_far.lane_probability",
+          "near_minus_far.lane_drivable_disagreement",
+          "upper_top_left.intensity",
+          "upper_top_left.intensity_std",
+          "upper_top_left.glare_fraction",
+          "upper_top_left.dark_fraction",
+          "upper_top_left.intensity_p90_minus_p10",
+          "upper_top_left.saturation_median",
+          "upper_top_left.blue_minus_red",
+          "upper_top_left.hue_cos",
+          "upper_top_left.hue_sin",
+          "upper_top_right.intensity",
+          "upper_top_right.intensity_std",
+          "upper_top_right.glare_fraction",
+          "upper_top_right.dark_fraction",
+          "upper_top_right.intensity_p90_minus_p10",
+          "upper_top_right.saturation_median",
+          "upper_top_right.blue_minus_red",
+          "upper_top_right.hue_cos",
+          "upper_top_right.hue_sin",
+          "hood.intensity_std",
+          "hood.glare_fraction",
+          "hood.intensity_p90_minus_p10",
+          "hood.saturation_median",
+          "hood.hue_cos",
+          "hood.hue_sin"
+        ],
+        "targets": [
+          "near_supported_error",
+          "far_supported_error",
+          "offroad_supported_fp"
+        ],
+        "parameters": {
+          "length_multiplier": 2.8,
+          "noise_variance": 0.03,
+          "task_correlation": 0.5,
+          "kernel_mode": "isotropic"
+        },
+        "cv_loss": 0.22394391880977715,
+        "fitted_rows": 2500,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "models": [
+          "models/env52_errors_GP.npz"
+        ],
+        "model_sha256": {
+          "models/env52_errors_GP.npz": "464ce10e04735ee884b629fb4603602dc486f5effaf956fc34ad98314857128a"
+        },
+        "fit_pack_sha256": "86d8018836390c11f6ba5cbb50e9b64d86810ad6af3ff0ff81c21b64fd4a459a",
+        "source_sha256": "3066668b6cb4125168a9c2484a32e3030307ac24e28b83b91a050a1f073cf4a1"
+      },
+      {
+        "tag": "env52_errors_RF",
+        "view": "env52",
+        "task": "errors",
+        "kind": "RF",
+        "columns": [
+          "near_left.chroma",
+          "near_left.blue_minus_red",
+          "near_left.edge_density",
+          "near_right.median_residual",
+          "hood.intensity",
+          "hood.dark_channel",
+          "hood.dark_fraction",
+          "hood.intensity_median",
+          "hood.blue_minus_red",
+          "hood.edge_density",
+          "near_left.drivable_fraction",
+          "near_left.lane_fraction",
+          "near_left.lane_probability",
+          "near_left.lane_weighted_entropy",
+          "near_left.lane_weighted_probability",
+          "near_right.drivable_fraction",
+          "near_right.lane_fraction",
+          "near_right.lane_probability",
+          "near_right.lane_weighted_entropy",
+          "near_right.lane_weighted_probability",
+          "global.lane_fraction",
+          "global.lane_probability",
+          "global.lane_weighted_entropy",
+          "global.lane_weighted_probability",
+          "global.top_entropy",
+          "near_minus_far.lane_fraction",
+          "near_minus_far.lane_probability",
+          "near_minus_far.lane_drivable_disagreement",
+          "upper_top_left.intensity",
+          "upper_top_left.intensity_std",
+          "upper_top_left.glare_fraction",
+          "upper_top_left.dark_fraction",
+          "upper_top_left.intensity_p90_minus_p10",
+          "upper_top_left.saturation_median",
+          "upper_top_left.blue_minus_red",
+          "upper_top_left.hue_cos",
+          "upper_top_left.hue_sin",
+          "upper_top_right.intensity",
+          "upper_top_right.intensity_std",
+          "upper_top_right.glare_fraction",
+          "upper_top_right.dark_fraction",
+          "upper_top_right.intensity_p90_minus_p10",
+          "upper_top_right.saturation_median",
+          "upper_top_right.blue_minus_red",
+          "upper_top_right.hue_cos",
+          "upper_top_right.hue_sin",
+          "hood.intensity_std",
+          "hood.glare_fraction",
+          "hood.intensity_p90_minus_p10",
+          "hood.saturation_median",
+          "hood.hue_cos",
+          "hood.hue_sin"
+        ],
+        "targets": [
+          "near_supported_error",
+          "far_supported_error",
+          "offroad_supported_fp"
+        ],
+        "parameters": {
+          "n_estimators": 160,
+          "max_depth": null,
+          "min_samples_leaf": 1,
+          "max_features": 0.5
+        },
+        "cv_loss": 0.22491781935109642,
+        "fitted_rows": 2500,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "models": [
+          "models/env52_errors_RF_0.npz",
+          "models/env52_errors_RF_1.npz",
+          "models/env52_errors_RF_2.npz"
+        ],
+        "model_sha256": {
+          "models/env52_errors_RF_0.npz": "55813be7e19978748a945f1d927dee36613effb64366c0e3dbeb664666a17817",
+          "models/env52_errors_RF_1.npz": "0322ddeb1cd21a1ace706279121e39867266255fc68a03742cb637c0321a4234",
+          "models/env52_errors_RF_2.npz": "44b8f28498f70d512fbfe148f9801aa5e36705e143444bdac97ce8212a472e5f"
+        },
+        "fit_pack_sha256": "86d8018836390c11f6ba5cbb50e9b64d86810ad6af3ff0ff81c21b64fd4a459a",
+        "source_sha256": "3066668b6cb4125168a9c2484a32e3030307ac24e28b83b91a050a1f073cf4a1"
+      },
+      {
+        "tag": "review_support_quality_GP",
+        "view": "review_support",
+        "task": "quality",
+        "kind": "GP",
+        "columns": [
+          "near_left.chroma",
+          "near_left.blue_minus_red",
+          "near_left.edge_density",
+          "near_right.median_residual",
+          "hood.intensity",
+          "hood.dark_channel",
+          "hood.dark_fraction",
+          "hood.intensity_median",
+          "hood.blue_minus_red",
+          "hood.edge_density",
+          "near_left.drivable_fraction",
+          "near_left.lane_fraction",
+          "near_left.lane_probability",
+          "near_left.lane_weighted_entropy",
+          "near_left.lane_weighted_probability",
+          "near_right.drivable_fraction",
+          "near_right.lane_fraction",
+          "near_right.lane_probability",
+          "near_right.lane_weighted_entropy",
+          "near_right.lane_weighted_probability",
+          "global.lane_fraction",
+          "global.lane_probability",
+          "global.lane_weighted_entropy",
+          "global.lane_weighted_probability",
+          "global.top_entropy",
+          "near_minus_far.lane_fraction",
+          "near_minus_far.lane_probability",
+          "near_minus_far.lane_drivable_disagreement",
+          "upper_top_left.intensity",
+          "upper_top_left.intensity_std",
+          "upper_top_left.glare_fraction",
+          "upper_top_left.dark_fraction",
+          "upper_top_left.intensity_p90_minus_p10",
+          "upper_top_left.saturation_median",
+          "upper_top_left.blue_minus_red",
+          "upper_top_left.hue_cos",
+          "upper_top_left.hue_sin",
+          "upper_top_right.intensity",
+          "upper_top_right.intensity_std",
+          "upper_top_right.glare_fraction",
+          "upper_top_right.dark_fraction",
+          "upper_top_right.intensity_p90_minus_p10",
+          "upper_top_right.saturation_median",
+          "upper_top_right.blue_minus_red",
+          "upper_top_right.hue_cos",
+          "upper_top_right.hue_sin",
+          "hood.intensity_std",
+          "hood.glare_fraction",
+          "hood.intensity_p90_minus_p10",
+          "hood.saturation_median",
+          "hood.hue_cos",
+          "hood.hue_sin",
+          "upper_top_left.lane_fraction",
+          "upper_top_left.lane_weighted_probability",
+          "upper_top_right.lane_fraction",
+          "upper_top_right.lane_weighted_probability",
+          "upper_bottom_left.lane_fraction",
+          "upper_bottom_left.lane_weighted_probability",
+          "upper_bottom_right.lane_fraction",
+          "upper_bottom_right.lane_weighted_probability",
+          "hood.lane_fraction",
+          "hood.lane_weighted_probability",
+          "far_left.lane_fraction",
+          "far_left.lane_weighted_entropy",
+          "far_left.lane_weighted_probability",
+          "far_right.lane_fraction",
+          "far_right.lane_weighted_entropy",
+          "far_right.lane_weighted_probability",
+          "near_left.lane_drivable_disagreement",
+          "near_right.lane_drivable_disagreement",
+          "global.lane_drivable_disagreement",
+          "near.internal_gap",
+          "far.internal_gap",
+          "near.soft_outside"
+        ],
+        "targets": [
+          "whole_frame_lane_iou"
+        ],
+        "parameters": {
+          "length_multiplier": 2.8,
+          "noise_variance": 0.03,
+          "task_correlation": 0.0,
+          "kernel_mode": "isotropic"
+        },
+        "cv_loss": 0.0636897378467317,
+        "fitted_rows": 2500,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "models": [
+          "models/review_support_quality_GP.npz"
+        ],
+        "model_sha256": {
+          "models/review_support_quality_GP.npz": "6563d316c310b3d38bf067afe57dff6950116bdb130e2a7e9a3c1a732ec273c8"
+        },
+        "fit_pack_sha256": "86d8018836390c11f6ba5cbb50e9b64d86810ad6af3ff0ff81c21b64fd4a459a",
+        "source_sha256": "3066668b6cb4125168a9c2484a32e3030307ac24e28b83b91a050a1f073cf4a1"
+      },
+      {
+        "tag": "review_support_quality_RF",
+        "view": "review_support",
+        "task": "quality",
+        "kind": "RF",
+        "columns": [
+          "near_left.chroma",
+          "near_left.blue_minus_red",
+          "near_left.edge_density",
+          "near_right.median_residual",
+          "hood.intensity",
+          "hood.dark_channel",
+          "hood.dark_fraction",
+          "hood.intensity_median",
+          "hood.blue_minus_red",
+          "hood.edge_density",
+          "near_left.drivable_fraction",
+          "near_left.lane_fraction",
+          "near_left.lane_probability",
+          "near_left.lane_weighted_entropy",
+          "near_left.lane_weighted_probability",
+          "near_right.drivable_fraction",
+          "near_right.lane_fraction",
+          "near_right.lane_probability",
+          "near_right.lane_weighted_entropy",
+          "near_right.lane_weighted_probability",
+          "global.lane_fraction",
+          "global.lane_probability",
+          "global.lane_weighted_entropy",
+          "global.lane_weighted_probability",
+          "global.top_entropy",
+          "near_minus_far.lane_fraction",
+          "near_minus_far.lane_probability",
+          "near_minus_far.lane_drivable_disagreement",
+          "upper_top_left.intensity",
+          "upper_top_left.intensity_std",
+          "upper_top_left.glare_fraction",
+          "upper_top_left.dark_fraction",
+          "upper_top_left.intensity_p90_minus_p10",
+          "upper_top_left.saturation_median",
+          "upper_top_left.blue_minus_red",
+          "upper_top_left.hue_cos",
+          "upper_top_left.hue_sin",
+          "upper_top_right.intensity",
+          "upper_top_right.intensity_std",
+          "upper_top_right.glare_fraction",
+          "upper_top_right.dark_fraction",
+          "upper_top_right.intensity_p90_minus_p10",
+          "upper_top_right.saturation_median",
+          "upper_top_right.blue_minus_red",
+          "upper_top_right.hue_cos",
+          "upper_top_right.hue_sin",
+          "hood.intensity_std",
+          "hood.glare_fraction",
+          "hood.intensity_p90_minus_p10",
+          "hood.saturation_median",
+          "hood.hue_cos",
+          "hood.hue_sin",
+          "upper_top_left.lane_fraction",
+          "upper_top_left.lane_weighted_probability",
+          "upper_top_right.lane_fraction",
+          "upper_top_right.lane_weighted_probability",
+          "upper_bottom_left.lane_fraction",
+          "upper_bottom_left.lane_weighted_probability",
+          "upper_bottom_right.lane_fraction",
+          "upper_bottom_right.lane_weighted_probability",
+          "hood.lane_fraction",
+          "hood.lane_weighted_probability",
+          "far_left.lane_fraction",
+          "far_left.lane_weighted_entropy",
+          "far_left.lane_weighted_probability",
+          "far_right.lane_fraction",
+          "far_right.lane_weighted_entropy",
+          "far_right.lane_weighted_probability",
+          "near_left.lane_drivable_disagreement",
+          "near_right.lane_drivable_disagreement",
+          "global.lane_drivable_disagreement",
+          "near.internal_gap",
+          "far.internal_gap",
+          "near.soft_outside"
+        ],
+        "targets": [
+          "whole_frame_lane_iou"
+        ],
+        "parameters": {
+          "n_estimators": 160,
+          "max_depth": null,
+          "min_samples_leaf": 1,
+          "max_features": 0.5
+        },
+        "cv_loss": 0.07754008499961697,
+        "fitted_rows": 2500,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "models": [
+          "models/review_support_quality_RF_0.npz"
+        ],
+        "model_sha256": {
+          "models/review_support_quality_RF_0.npz": "be46bd6d1d0709c2976ae91672b8809d03eceb9d01ea38705f4b4f89e78bf2fa"
+        },
+        "fit_pack_sha256": "86d8018836390c11f6ba5cbb50e9b64d86810ad6af3ff0ff81c21b64fd4a459a",
+        "source_sha256": "3066668b6cb4125168a9c2484a32e3030307ac24e28b83b91a050a1f073cf4a1"
+      },
+      {
+        "tag": "review_support_errors_GP",
+        "view": "review_support",
+        "task": "errors",
+        "kind": "GP",
+        "columns": [
+          "near_left.chroma",
+          "near_left.blue_minus_red",
+          "near_left.edge_density",
+          "near_right.median_residual",
+          "hood.intensity",
+          "hood.dark_channel",
+          "hood.dark_fraction",
+          "hood.intensity_median",
+          "hood.blue_minus_red",
+          "hood.edge_density",
+          "near_left.drivable_fraction",
+          "near_left.lane_fraction",
+          "near_left.lane_probability",
+          "near_left.lane_weighted_entropy",
+          "near_left.lane_weighted_probability",
+          "near_right.drivable_fraction",
+          "near_right.lane_fraction",
+          "near_right.lane_probability",
+          "near_right.lane_weighted_entropy",
+          "near_right.lane_weighted_probability",
+          "global.lane_fraction",
+          "global.lane_probability",
+          "global.lane_weighted_entropy",
+          "global.lane_weighted_probability",
+          "global.top_entropy",
+          "near_minus_far.lane_fraction",
+          "near_minus_far.lane_probability",
+          "near_minus_far.lane_drivable_disagreement",
+          "upper_top_left.intensity",
+          "upper_top_left.intensity_std",
+          "upper_top_left.glare_fraction",
+          "upper_top_left.dark_fraction",
+          "upper_top_left.intensity_p90_minus_p10",
+          "upper_top_left.saturation_median",
+          "upper_top_left.blue_minus_red",
+          "upper_top_left.hue_cos",
+          "upper_top_left.hue_sin",
+          "upper_top_right.intensity",
+          "upper_top_right.intensity_std",
+          "upper_top_right.glare_fraction",
+          "upper_top_right.dark_fraction",
+          "upper_top_right.intensity_p90_minus_p10",
+          "upper_top_right.saturation_median",
+          "upper_top_right.blue_minus_red",
+          "upper_top_right.hue_cos",
+          "upper_top_right.hue_sin",
+          "hood.intensity_std",
+          "hood.glare_fraction",
+          "hood.intensity_p90_minus_p10",
+          "hood.saturation_median",
+          "hood.hue_cos",
+          "hood.hue_sin",
+          "upper_top_left.lane_fraction",
+          "upper_top_left.lane_weighted_probability",
+          "upper_top_right.lane_fraction",
+          "upper_top_right.lane_weighted_probability",
+          "upper_bottom_left.lane_fraction",
+          "upper_bottom_left.lane_weighted_probability",
+          "upper_bottom_right.lane_fraction",
+          "upper_bottom_right.lane_weighted_probability",
+          "hood.lane_fraction",
+          "hood.lane_weighted_probability",
+          "far_left.lane_fraction",
+          "far_left.lane_weighted_entropy",
+          "far_left.lane_weighted_probability",
+          "far_right.lane_fraction",
+          "far_right.lane_weighted_entropy",
+          "far_right.lane_weighted_probability",
+          "near_left.lane_drivable_disagreement",
+          "near_right.lane_drivable_disagreement",
+          "global.lane_drivable_disagreement",
+          "near.internal_gap",
+          "far.internal_gap",
+          "near.soft_outside"
+        ],
+        "targets": [
+          "near_supported_error",
+          "far_supported_error",
+          "offroad_supported_fp"
+        ],
+        "parameters": {
+          "length_multiplier": 2.8,
+          "noise_variance": 0.03,
+          "task_correlation": 0.0,
+          "kernel_mode": "additive"
+        },
+        "cv_loss": 0.17250930576790469,
+        "fitted_rows": 2500,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "models": [
+          "models/review_support_errors_GP.npz"
+        ],
+        "model_sha256": {
+          "models/review_support_errors_GP.npz": "46713dde595379d891c671910ebeb7058d4e36d240e47f823b21f546f8babaee"
+        },
+        "fit_pack_sha256": "86d8018836390c11f6ba5cbb50e9b64d86810ad6af3ff0ff81c21b64fd4a459a",
+        "source_sha256": "3066668b6cb4125168a9c2484a32e3030307ac24e28b83b91a050a1f073cf4a1"
+      },
+      {
+        "tag": "review_support_errors_RF",
+        "view": "review_support",
+        "task": "errors",
+        "kind": "RF",
+        "columns": [
+          "near_left.chroma",
+          "near_left.blue_minus_red",
+          "near_left.edge_density",
+          "near_right.median_residual",
+          "hood.intensity",
+          "hood.dark_channel",
+          "hood.dark_fraction",
+          "hood.intensity_median",
+          "hood.blue_minus_red",
+          "hood.edge_density",
+          "near_left.drivable_fraction",
+          "near_left.lane_fraction",
+          "near_left.lane_probability",
+          "near_left.lane_weighted_entropy",
+          "near_left.lane_weighted_probability",
+          "near_right.drivable_fraction",
+          "near_right.lane_fraction",
+          "near_right.lane_probability",
+          "near_right.lane_weighted_entropy",
+          "near_right.lane_weighted_probability",
+          "global.lane_fraction",
+          "global.lane_probability",
+          "global.lane_weighted_entropy",
+          "global.lane_weighted_probability",
+          "global.top_entropy",
+          "near_minus_far.lane_fraction",
+          "near_minus_far.lane_probability",
+          "near_minus_far.lane_drivable_disagreement",
+          "upper_top_left.intensity",
+          "upper_top_left.intensity_std",
+          "upper_top_left.glare_fraction",
+          "upper_top_left.dark_fraction",
+          "upper_top_left.intensity_p90_minus_p10",
+          "upper_top_left.saturation_median",
+          "upper_top_left.blue_minus_red",
+          "upper_top_left.hue_cos",
+          "upper_top_left.hue_sin",
+          "upper_top_right.intensity",
+          "upper_top_right.intensity_std",
+          "upper_top_right.glare_fraction",
+          "upper_top_right.dark_fraction",
+          "upper_top_right.intensity_p90_minus_p10",
+          "upper_top_right.saturation_median",
+          "upper_top_right.blue_minus_red",
+          "upper_top_right.hue_cos",
+          "upper_top_right.hue_sin",
+          "hood.intensity_std",
+          "hood.glare_fraction",
+          "hood.intensity_p90_minus_p10",
+          "hood.saturation_median",
+          "hood.hue_cos",
+          "hood.hue_sin",
+          "upper_top_left.lane_fraction",
+          "upper_top_left.lane_weighted_probability",
+          "upper_top_right.lane_fraction",
+          "upper_top_right.lane_weighted_probability",
+          "upper_bottom_left.lane_fraction",
+          "upper_bottom_left.lane_weighted_probability",
+          "upper_bottom_right.lane_fraction",
+          "upper_bottom_right.lane_weighted_probability",
+          "hood.lane_fraction",
+          "hood.lane_weighted_probability",
+          "far_left.lane_fraction",
+          "far_left.lane_weighted_entropy",
+          "far_left.lane_weighted_probability",
+          "far_right.lane_fraction",
+          "far_right.lane_weighted_entropy",
+          "far_right.lane_weighted_probability",
+          "near_left.lane_drivable_disagreement",
+          "near_right.lane_drivable_disagreement",
+          "global.lane_drivable_disagreement",
+          "near.internal_gap",
+          "far.internal_gap",
+          "near.soft_outside"
+        ],
+        "targets": [
+          "near_supported_error",
+          "far_supported_error",
+          "offroad_supported_fp"
+        ],
+        "parameters": {
+          "n_estimators": 160,
+          "max_depth": 12,
+          "min_samples_leaf": 3,
+          "max_features": 0.5
+        },
+        "cv_loss": 0.15401569617378183,
+        "fitted_rows": 2500,
+        "perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+        },
+        "models": [
+          "models/review_support_errors_RF_0.npz",
+          "models/review_support_errors_RF_1.npz",
+          "models/review_support_errors_RF_2.npz"
+        ],
+        "model_sha256": {
+          "models/review_support_errors_RF_0.npz": "4a86d54ae91009cc72888d389012468eb57ca0285ad59ba9c9c3205d74d0585e",
+          "models/review_support_errors_RF_1.npz": "1130608081319ecc8225f37c169128d9b95358d3ea5c2956d5babae278a649aa",
+          "models/review_support_errors_RF_2.npz": "a6ed701e18638572953fa8ecd0a3d43507b3bfc27e1f061942c028b73926e8a0"
+        },
+        "fit_pack_sha256": "86d8018836390c11f6ba5cbb50e9b64d86810ad6af3ff0ff81c21b64fd4a459a",
+        "source_sha256": "3066668b6cb4125168a9c2484a32e3030307ac24e28b83b91a050a1f073cf4a1"
+      }
+    ],
+    "search": {
+      "env52_quality_GP": {
+        "query_budget_per_method_per_seed": 12,
+        "search_seeds": [
+          281128,
+          281129,
+          281130
+        ],
+        "histories": [
+          {
+            "method": "random",
+            "seed": 281128,
+            "initial": [
+              3,
+              5,
+              4,
+              0
+            ],
+            "indices": [
+              3,
+              5,
+              4,
+              0,
+              10,
+              2,
+              6,
+              7,
+              1,
+              8,
+              9,
+              11
+            ],
+            "losses": [
+              0.06489643593365978,
+              0.06423669105087264,
+              0.060848769593173674,
+              0.06240241192818905,
+              0.0680354304944663,
+              0.06194406612710399,
+              0.06275779290216608,
+              0.06576560077769451,
+              0.06603426693335362,
+              0.06428512965896209,
+              0.06632483465405475,
+              0.06828372993132537
+            ],
+            "incumbent": [
+              0.06489643593365978,
+              0.06423669105087264,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281129,
+            "initial": [
+              8,
+              2,
+              7,
+              5
+            ],
+            "indices": [
+              8,
+              2,
+              7,
+              5,
+              1,
+              4,
+              6,
+              11,
+              3,
+              10,
+              0,
+              9
+            ],
+            "losses": [
+              0.06428512965896209,
+              0.06194406612710399,
+              0.06576560077769451,
+              0.06423669105087264,
+              0.06603426693335362,
+              0.060848769593173674,
+              0.06275779290216608,
+              0.06828372993132537,
+              0.06489643593365978,
+              0.0680354304944663,
+              0.06240241192818905,
+              0.06632483465405475
+            ],
+            "incumbent": [
+              0.06428512965896209,
+              0.06194406612710399,
+              0.06194406612710399,
+              0.06194406612710399,
+              0.06194406612710399,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281130,
+            "initial": [
+              0,
+              7,
+              6,
+              9
+            ],
+            "indices": [
+              0,
+              7,
+              6,
+              9,
+              11,
+              10,
+              8,
+              1,
+              4,
+              3,
+              2,
+              5
+            ],
+            "losses": [
+              0.06240241192818905,
+              0.06576560077769451,
+              0.06275779290216608,
+              0.06632483465405475,
+              0.06828372993132537,
+              0.0680354304944663,
+              0.06428512965896209,
+              0.06603426693335362,
+              0.060848769593173674,
+              0.06489643593365978,
+              0.06194406612710399,
+              0.06423669105087264
+            ],
+            "incumbent": [
+              0.06240241192818905,
+              0.06240241192818905,
+              0.06240241192818905,
+              0.06240241192818905,
+              0.06240241192818905,
+              0.06240241192818905,
+              0.06240241192818905,
+              0.06240241192818905,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674,
+              0.060848769593173674
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          }
+        ],
+        "selected_index": 4,
+        "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+        "unique_cv_trials": 12
+      },
+      "env52_quality_RF": {
+        "query_budget_per_method_per_seed": 12,
+        "search_seeds": [
+          281128,
+          281129,
+          281130
+        ],
+        "histories": [
+          {
+            "method": "random",
+            "seed": 281128,
+            "initial": [
+              3,
+              5,
+              4,
+              0
+            ],
+            "indices": [
+              3,
+              5,
+              4,
+              0,
+              10,
+              2,
+              6,
+              7,
+              1,
+              8,
+              9,
+              11
+            ],
+            "losses": [
+              0.08209241469903611,
+              0.08269243145833428,
+              0.07904812464902233,
+              0.07653807230229054,
+              0.07911450798281865,
+              0.07718708241286666,
+              0.07639473390674222,
+              0.08198511813925725,
+              0.08154437476385246,
+              0.07725112420228458,
+              0.08229337456814297,
+              0.08274505129085892
+            ],
+            "incumbent": [
+              0.08209241469903611,
+              0.08209241469903611,
+              0.07904812464902233,
+              0.07653807230229054,
+              0.07653807230229054,
+              0.07653807230229054,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281129,
+            "initial": [
+              8,
+              2,
+              7,
+              5
+            ],
+            "indices": [
+              8,
+              2,
+              7,
+              5,
+              1,
+              4,
+              6,
+              11,
+              3,
+              10,
+              0,
+              9
+            ],
+            "losses": [
+              0.07725112420228458,
+              0.07718708241286666,
+              0.08198511813925725,
+              0.08269243145833428,
+              0.08154437476385246,
+              0.07904812464902233,
+              0.07639473390674222,
+              0.08274505129085892,
+              0.08209241469903611,
+              0.07911450798281865,
+              0.07653807230229054,
+              0.08229337456814297
+            ],
+            "incumbent": [
+              0.07725112420228458,
+              0.07718708241286666,
+              0.07718708241286666,
+              0.07718708241286666,
+              0.07718708241286666,
+              0.07718708241286666,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281130,
+            "initial": [
+              0,
+              7,
+              6,
+              9
+            ],
+            "indices": [
+              0,
+              7,
+              6,
+              9,
+              11,
+              10,
+              8,
+              1,
+              4,
+              3,
+              2,
+              5
+            ],
+            "losses": [
+              0.07653807230229054,
+              0.08198511813925725,
+              0.07639473390674222,
+              0.08229337456814297,
+              0.08274505129085892,
+              0.07911450798281865,
+              0.07725112420228458,
+              0.08154437476385246,
+              0.07904812464902233,
+              0.08209241469903611,
+              0.07718708241286666,
+              0.08269243145833428
+            ],
+            "incumbent": [
+              0.07653807230229054,
+              0.07653807230229054,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222,
+              0.07639473390674222
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          }
+        ],
+        "selected_index": 6,
+        "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+        "unique_cv_trials": 12
+      },
+      "env52_errors_GP": {
+        "query_budget_per_method_per_seed": 12,
+        "search_seeds": [
+          281128,
+          281129,
+          281130
+        ],
+        "histories": [
+          {
+            "method": "random",
+            "seed": 281128,
+            "initial": [
+              7,
+              11,
+              9,
+              0
+            ],
+            "indices": [
+              7,
+              11,
+              9,
+              0,
+              10,
+              4,
+              18,
+              13,
+              5,
+              21,
+              14,
+              6
+            ],
+            "losses": [
+              0.22860894977789792,
+              0.22465096747049115,
+              0.22469938278248258,
+              0.2263253207992593,
+              0.22394391880977715,
+              0.2286448370374781,
+              0.23104284945949904,
+              0.2303525956982365,
+              0.22864807440547485,
+              0.23960142934004847,
+              0.2310940652841675,
+              0.22861880495632625
+            ],
+            "incumbent": [
+              0.22860894977789792,
+              0.22465096747049115,
+              0.22465096747049115,
+              0.22465096747049115,
+              0.22394391880977715,
+              0.22394391880977715,
+              0.22394391880977715,
+              0.22394391880977715,
+              0.22394391880977715,
+              0.22394391880977715,
+              0.22394391880977715,
+              0.22394391880977715
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281129,
+            "initial": [
+              22,
+              5,
+              17,
+              11
+            ],
+            "indices": [
+              22,
+              5,
+              17,
+              11,
+              23,
+              15,
+              1,
+              13,
+              14,
+              8,
+              3,
+              2
+            ],
+            "losses": [
+              0.24142031416398957,
+              0.22864807440547485,
+              0.23082279214970236,
+              0.22465096747049115,
+              0.23945021288078738,
+              0.23031365077735097,
+              0.228157192938206,
+              0.2303525956982365,
+              0.2310940652841675,
+              0.22398601681160102,
+              0.22810253066264907,
+              0.22632460453956463
+            ],
+            "incumbent": [
+              0.24142031416398957,
+              0.22864807440547485,
+              0.22864807440547485,
+              0.22465096747049115,
+              0.22465096747049115,
+              0.22465096747049115,
+              0.22465096747049115,
+              0.22465096747049115,
+              0.22465096747049115,
+              0.22398601681160102,
+              0.22398601681160102,
+              0.22398601681160102
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281130,
+            "initial": [
+              1,
+              23,
+              15,
+              18
+            ],
+            "indices": [
+              1,
+              23,
+              15,
+              18,
+              14,
+              21,
+              10,
+              13,
+              20,
+              8,
+              4,
+              16
+            ],
+            "losses": [
+              0.228157192938206,
+              0.23945021288078738,
+              0.23031365077735097,
+              0.23104284945949904,
+              0.2310940652841675,
+              0.23960142934004847,
+              0.22394391880977715,
+              0.2303525956982365,
+              0.2415363829068878,
+              0.22398601681160102,
+              0.2286448370374781,
+              0.23112953452529109
+            ],
+            "incumbent": [
+              0.228157192938206,
+              0.228157192938206,
+              0.228157192938206,
+              0.228157192938206,
+              0.228157192938206,
+              0.228157192938206,
+              0.22394391880977715,
+              0.22394391880977715,
+              0.22394391880977715,
+              0.22394391880977715,
+              0.22394391880977715,
+              0.22394391880977715
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          }
+        ],
+        "selected_index": 10,
+        "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+        "unique_cv_trials": 22
+      },
+      "env52_errors_RF": {
+        "query_budget_per_method_per_seed": 12,
+        "search_seeds": [
+          281128,
+          281129,
+          281130
+        ],
+        "histories": [
+          {
+            "method": "random",
+            "seed": 281128,
+            "initial": [
+              3,
+              5,
+              4,
+              0
+            ],
+            "indices": [
+              3,
+              5,
+              4,
+              0,
+              10,
+              2,
+              6,
+              7,
+              1,
+              8,
+              9,
+              11
+            ],
+            "losses": [
+              0.23145472263505518,
+              0.23113755008276785,
+              0.22654028055828312,
+              0.22527610218054347,
+              0.22654028055828312,
+              0.22513013138751906,
+              0.22491781935109642,
+              0.23448068341012543,
+              0.23425234864527045,
+              0.2251893262992181,
+              0.23143206080479548,
+              0.23113735108563813
+            ],
+            "incumbent": [
+              0.23145472263505518,
+              0.23113755008276785,
+              0.22654028055828312,
+              0.22527610218054347,
+              0.22527610218054347,
+              0.22513013138751906,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281129,
+            "initial": [
+              8,
+              2,
+              7,
+              5
+            ],
+            "indices": [
+              8,
+              2,
+              7,
+              5,
+              1,
+              4,
+              6,
+              11,
+              3,
+              10,
+              0,
+              9
+            ],
+            "losses": [
+              0.2251893262992181,
+              0.22513013138751906,
+              0.23448068341012543,
+              0.23113755008276785,
+              0.23425234864527045,
+              0.22654028055828312,
+              0.22491781935109642,
+              0.23113735108563813,
+              0.23145472263505518,
+              0.22654028055828312,
+              0.22527610218054347,
+              0.23143206080479548
+            ],
+            "incumbent": [
+              0.2251893262992181,
+              0.22513013138751906,
+              0.22513013138751906,
+              0.22513013138751906,
+              0.22513013138751906,
+              0.22513013138751906,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281130,
+            "initial": [
+              0,
+              7,
+              6,
+              9
+            ],
+            "indices": [
+              0,
+              7,
+              6,
+              9,
+              11,
+              10,
+              8,
+              1,
+              4,
+              3,
+              2,
+              5
+            ],
+            "losses": [
+              0.22527610218054347,
+              0.23448068341012543,
+              0.22491781935109642,
+              0.23143206080479548,
+              0.23113735108563813,
+              0.22654028055828312,
+              0.2251893262992181,
+              0.23425234864527045,
+              0.22654028055828312,
+              0.23145472263505518,
+              0.22513013138751906,
+              0.23113755008276785
+            ],
+            "incumbent": [
+              0.22527610218054347,
+              0.22527610218054347,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642,
+              0.22491781935109642
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          }
+        ],
+        "selected_index": 6,
+        "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+        "unique_cv_trials": 12
+      },
+      "review_support_quality_GP": {
+        "query_budget_per_method_per_seed": 12,
+        "search_seeds": [
+          281128,
+          281129,
+          281130
+        ],
+        "histories": [
+          {
+            "method": "random",
+            "seed": 281128,
+            "initial": [
+              3,
+              5,
+              4,
+              0
+            ],
+            "indices": [
+              3,
+              5,
+              4,
+              0,
+              10,
+              2,
+              6,
+              7,
+              1,
+              8,
+              9,
+              11
+            ],
+            "losses": [
+              0.06833283342587533,
+              0.06719454730474334,
+              0.0636897378467317,
+              0.0644012488540029,
+              0.07344390002693808,
+              0.06508315412331274,
+              0.06701585478324724,
+              0.07046447232785223,
+              0.06664485139026094,
+              0.0684462189075657,
+              0.07136177829080746,
+              0.07471635065139105
+            ],
+            "incumbent": [
+              0.06833283342587533,
+              0.06719454730474334,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281129,
+            "initial": [
+              8,
+              2,
+              7,
+              5
+            ],
+            "indices": [
+              8,
+              2,
+              7,
+              5,
+              1,
+              4,
+              6,
+              11,
+              3,
+              10,
+              0,
+              9
+            ],
+            "losses": [
+              0.0684462189075657,
+              0.06508315412331274,
+              0.07046447232785223,
+              0.06719454730474334,
+              0.06664485139026094,
+              0.0636897378467317,
+              0.06701585478324724,
+              0.07471635065139105,
+              0.06833283342587533,
+              0.07344390002693808,
+              0.0644012488540029,
+              0.07136177829080746
+            ],
+            "incumbent": [
+              0.0684462189075657,
+              0.06508315412331274,
+              0.06508315412331274,
+              0.06508315412331274,
+              0.06508315412331274,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281130,
+            "initial": [
+              0,
+              7,
+              6,
+              9
+            ],
+            "indices": [
+              0,
+              7,
+              6,
+              9,
+              11,
+              10,
+              8,
+              1,
+              4,
+              3,
+              2,
+              5
+            ],
+            "losses": [
+              0.0644012488540029,
+              0.07046447232785223,
+              0.06701585478324724,
+              0.07136177829080746,
+              0.07471635065139105,
+              0.07344390002693808,
+              0.0684462189075657,
+              0.06664485139026094,
+              0.0636897378467317,
+              0.06833283342587533,
+              0.06508315412331274,
+              0.06719454730474334
+            ],
+            "incumbent": [
+              0.0644012488540029,
+              0.0644012488540029,
+              0.0644012488540029,
+              0.0644012488540029,
+              0.0644012488540029,
+              0.0644012488540029,
+              0.0644012488540029,
+              0.0644012488540029,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317,
+              0.0636897378467317
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          }
+        ],
+        "selected_index": 4,
+        "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+        "unique_cv_trials": 12
+      },
+      "review_support_quality_RF": {
+        "query_budget_per_method_per_seed": 12,
+        "search_seeds": [
+          281128,
+          281129,
+          281130
+        ],
+        "histories": [
+          {
+            "method": "random",
+            "seed": 281128,
+            "initial": [
+              3,
+              5,
+              4,
+              0
+            ],
+            "indices": [
+              3,
+              5,
+              4,
+              0,
+              10,
+              2,
+              6,
+              7,
+              1,
+              8,
+              9,
+              11
+            ],
+            "losses": [
+              0.0834276585786532,
+              0.08392996238112627,
+              0.07959172570851596,
+              0.07805125056199193,
+              0.08001656274071885,
+              0.07869385602374397,
+              0.07754008499961697,
+              0.08289885607161068,
+              0.08296155469877432,
+              0.07948826998014898,
+              0.0831776657830612,
+              0.0838950737543311
+            ],
+            "incumbent": [
+              0.0834276585786532,
+              0.0834276585786532,
+              0.07959172570851596,
+              0.07805125056199193,
+              0.07805125056199193,
+              0.07805125056199193,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281129,
+            "initial": [
+              8,
+              2,
+              7,
+              5
+            ],
+            "indices": [
+              8,
+              2,
+              7,
+              5,
+              1,
+              4,
+              6,
+              11,
+              3,
+              10,
+              0,
+              9
+            ],
+            "losses": [
+              0.07948826998014898,
+              0.07869385602374397,
+              0.08289885607161068,
+              0.08392996238112627,
+              0.08296155469877432,
+              0.07959172570851596,
+              0.07754008499961697,
+              0.0838950737543311,
+              0.0834276585786532,
+              0.08001656274071885,
+              0.07805125056199193,
+              0.0831776657830612
+            ],
+            "incumbent": [
+              0.07948826998014898,
+              0.07869385602374397,
+              0.07869385602374397,
+              0.07869385602374397,
+              0.07869385602374397,
+              0.07869385602374397,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281130,
+            "initial": [
+              0,
+              7,
+              6,
+              9
+            ],
+            "indices": [
+              0,
+              7,
+              6,
+              9,
+              11,
+              10,
+              8,
+              1,
+              4,
+              3,
+              2,
+              5
+            ],
+            "losses": [
+              0.07805125056199193,
+              0.08289885607161068,
+              0.07754008499961697,
+              0.0831776657830612,
+              0.0838950737543311,
+              0.08001656274071885,
+              0.07948826998014898,
+              0.08296155469877432,
+              0.07959172570851596,
+              0.0834276585786532,
+              0.07869385602374397,
+              0.08392996238112627
+            ],
+            "incumbent": [
+              0.07805125056199193,
+              0.07805125056199193,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697,
+              0.07754008499961697
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          }
+        ],
+        "selected_index": 6,
+        "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+        "unique_cv_trials": 12
+      },
+      "review_support_errors_GP": {
+        "query_budget_per_method_per_seed": 12,
+        "search_seeds": [
+          281128,
+          281129,
+          281130
+        ],
+        "histories": [
+          {
+            "method": "random",
+            "seed": 281128,
+            "initial": [
+              7,
+              11,
+              9,
+              0
+            ],
+            "indices": [
+              7,
+              11,
+              9,
+              0,
+              10,
+              4,
+              18,
+              13,
+              5,
+              21,
+              14,
+              6
+            ],
+            "losses": [
+              0.1758843419030327,
+              0.17255332855756655,
+              0.17250930576790469,
+              0.17679817785320062,
+              0.1734560065010878,
+              0.17846088945647895,
+              0.17777723030061185,
+              0.1759642212925431,
+              0.17585107639783737,
+              0.18538057325576415,
+              0.1789668729865014,
+              0.17843601883448656
+            ],
+            "incumbent": [
+              0.1758843419030327,
+              0.17255332855756655,
+              0.17250930576790469,
+              0.17250930576790469,
+              0.17250930576790469,
+              0.17250930576790469,
+              0.17250930576790469,
+              0.17250930576790469,
+              0.17250930576790469,
+              0.17250930576790469,
+              0.17250930576790469,
+              0.17250930576790469
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281129,
+            "initial": [
+              22,
+              5,
+              17,
+              11
+            ],
+            "indices": [
+              22,
+              5,
+              17,
+              11,
+              23,
+              15,
+              1,
+              13,
+              14,
+              8,
+              3,
+              2
+            ],
+            "losses": [
+              0.18717222165589953,
+              0.17585107639783737,
+              0.17605176086897642,
+              0.17255332855756655,
+              0.18524030564197455,
+              0.1759045629127829,
+              0.1759064738364139,
+              0.1759642212925431,
+              0.1789668729865014,
+              0.1735101053159177,
+              0.17598359521165682,
+              0.1768242991236931
+            ],
+            "incumbent": [
+              0.18717222165589953,
+              0.17585107639783737,
+              0.17585107639783737,
+              0.17255332855756655,
+              0.17255332855756655,
+              0.17255332855756655,
+              0.17255332855756655,
+              0.17255332855756655,
+              0.17255332855756655,
+              0.17255332855756655,
+              0.17255332855756655,
+              0.17255332855756655
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281130,
+            "initial": [
+              1,
+              23,
+              15,
+              18
+            ],
+            "indices": [
+              1,
+              23,
+              15,
+              18,
+              14,
+              21,
+              10,
+              13,
+              20,
+              8,
+              4,
+              16
+            ],
+            "losses": [
+              0.1759064738364139,
+              0.18524030564197455,
+              0.1759045629127829,
+              0.17777723030061185,
+              0.1789668729865014,
+              0.18538057325576415,
+              0.1734560065010878,
+              0.1759642212925431,
+              0.1872395993776389,
+              0.1735101053159177,
+              0.17846088945647895,
+              0.17785251716489672
+            ],
+            "incumbent": [
+              0.1759064738364139,
+              0.1759064738364139,
+              0.1759045629127829,
+              0.1759045629127829,
+              0.1759045629127829,
+              0.1759045629127829,
+              0.1734560065010878,
+              0.1734560065010878,
+              0.1734560065010878,
+              0.1734560065010878,
+              0.1734560065010878,
+              0.1734560065010878
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          }
+        ],
+        "selected_index": 9,
+        "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+        "unique_cv_trials": 22
+      },
+      "review_support_errors_RF": {
+        "query_budget_per_method_per_seed": 12,
+        "search_seeds": [
+          281128,
+          281129,
+          281130
+        ],
+        "histories": [
+          {
+            "method": "random",
+            "seed": 281128,
+            "initial": [
+              3,
+              5,
+              4,
+              0
+            ],
+            "indices": [
+              3,
+              5,
+              4,
+              0,
+              10,
+              2,
+              6,
+              7,
+              1,
+              8,
+              9,
+              11
+            ],
+            "losses": [
+              0.16193518311224966,
+              0.16372557172174798,
+              0.1604775976112223,
+              0.1560731347902797,
+              0.16049370115129138,
+              0.15401569617378183,
+              0.15558542837193715,
+              0.16372999195221558,
+              0.16378350346404313,
+              0.15415398418146642,
+              0.16186052852018748,
+              0.1637447705852117
+            ],
+            "incumbent": [
+              0.16193518311224966,
+              0.16193518311224966,
+              0.1604775976112223,
+              0.1560731347902797,
+              0.1560731347902797,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281129,
+            "initial": [
+              8,
+              2,
+              7,
+              5
+            ],
+            "indices": [
+              8,
+              2,
+              7,
+              5,
+              1,
+              4,
+              6,
+              11,
+              3,
+              10,
+              0,
+              9
+            ],
+            "losses": [
+              0.15415398418146642,
+              0.15401569617378183,
+              0.16372999195221558,
+              0.16372557172174798,
+              0.16378350346404313,
+              0.1604775976112223,
+              0.15558542837193715,
+              0.1637447705852117,
+              0.16193518311224966,
+              0.16049370115129138,
+              0.1560731347902797,
+              0.16186052852018748
+            ],
+            "incumbent": [
+              0.15415398418146642,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183,
+              0.15401569617378183
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          },
+          {
+            "method": "random",
+            "seed": 281130,
+            "initial": [
+              0,
+              7,
+              6,
+              9
+            ],
+            "indices": [
+              0,
+              7,
+              6,
+              9,
+              11,
+              10,
+              8,
+              1,
+              4,
+              3,
+              2,
+              5
+            ],
+            "losses": [
+              0.1560731347902797,
+              0.16372999195221558,
+              0.15558542837193715,
+              0.16186052852018748,
+              0.1637447705852117,
+              0.16049370115129138,
+              0.15415398418146642,
+              0.16378350346404313,
+              0.1604775976112223,
+              0.16193518311224966,
+              0.15401569617378183,
+              0.16372557172174798
+            ],
+            "incumbent": [
+              0.1560731347902797,
+              0.1560731347902797,
+              0.15558542837193715,
+              0.15558542837193715,
+              0.15558542837193715,
+              0.15558542837193715,
+              0.15415398418146642,
+              0.15415398418146642,
+              0.15415398418146642,
+              0.15415398418146642,
+              0.15401569617378183,
+              0.15401569617378183
+            ],
+            "proposals": [
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              },
+              {
+                "stage": "matched_random"
+              }
+            ]
+          }
+        ],
+        "selected_index": 2,
+        "selected_from": "All evaluated BO/random controls; original frozen policy is never overwritten.",
+        "unique_cv_trials": 12
+      }
+    },
+    "perception_identity": {
+      "schema_version": "ml-perception-identity-1",
+      "kind": "adaptation",
+      "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+      "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+      "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+      "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+    },
+    "fit_pack_sha256": "86d8018836390c11f6ba5cbb50e9b64d86810ad6af3ff0ff81c21b64fd4a459a",
+    "scope": "Fit/CV only. New Dev/Cal selection and independent confirmation remain separate.",
+    "source_sha256": "3066668b6cb4125168a9c2484a32e3030307ac24e28b83b91a050a1f073cf4a1"
+  },
+  "publication_projection": {
+    "original_sha256": "c91aadc148f7861e60fb57023318d0281324ac044fe13a1eb8da65448f064c69",
+    "source_alias": "STUDY/provisional_Coverage2048_refit/models/fit_complete.json",
+    "private_paths_replaced": true
+  }
+}

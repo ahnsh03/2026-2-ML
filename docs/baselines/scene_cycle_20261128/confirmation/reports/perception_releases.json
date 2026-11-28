@@ -1,0 +1,42 @@
+{
+  "evidence": {
+    "schema_version": "perception-development-releases-1",
+    "active_development_version": "m-v6-r2-20261128",
+    "releases": {
+      "m-v6": {
+        "kind": "baseline",
+        "checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+        "parent_version": null,
+        "scope": "Immutable original reference. Original weather/time restriction reported by the project owner: Sunny/Foggy, 11\u201317h."
+      },
+      "m-v6-r1-20261128": {
+        "kind": "adaptation",
+        "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+        "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0",
+        "parent_version": "m-v6",
+        "selection": "Best original-retention-pass raw endpoint across three marked Dev roads and one supported previously opened road.",
+        "scope": "Perception-only development promotion authorized on 2026-11-28. Review policy and live deployment require separate acceptance."
+      },
+      "m-v6-r2-20261128": {
+        "kind": "adaptation",
+        "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+        "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421",
+        "parent_version": "m-v6-r1-20261128",
+        "selection": "Frozen Coverage2048/24k endpoint selected on development, passed original retention on paired GPU and prospective96-condition confirmation.",
+        "scope": "Same-map development release. Source perception-training positions may overlap; not new-city or complete geographic generalization. Review acceptance and live deployment are separate.",
+        "confirmation": {
+          "freeze_sha256": "10494ffbc6f47881fc88d265b9feb05c2eefc9a55062391f884242e5c1d0859f",
+          "neural_report_sha256": "6587908679b4a8a0204fc63b8b80934aa37435f621d2eb1ecfa99bd0af08c429",
+          "adoption_decision_sha256": "293b5ca3557bff437d543751cb38eb87d41e1a4a6bb12c2d6680651c60e8e60c",
+          "review_criteria_pass": true,
+          "live_connection_completed": false
+        }
+      }
+    }
+  },
+  "publication_projection": {
+    "original_sha256": "f1e0b81acbf43c20916e82695dfa9593f2f1ed3709cce4e70deb12bcccae9869",
+    "source_alias": "REPOSITORY/config/perception_releases.json",
+    "private_paths_replaced": true
+  }
+}

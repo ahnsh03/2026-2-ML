@@ -1,0 +1,74 @@
+{
+  "evidence": {
+    "records": [
+      {
+        "arm": "Coverage2048",
+        "steps": 24000,
+        "seed": 281128,
+        "new_rows": 2048,
+        "replay_rows": 29073,
+        "parent_perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+        },
+        "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+        "run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421",
+        "training_steps_sha256": "e0e43084c6c6faa44ba5ae1a32be3bb853f45de6b7d8029006b0554276cc0929",
+        "elapsed_seconds_in_run": 9039.059827816003
+      },
+      {
+        "arm": "Risk2048",
+        "steps": 18000,
+        "seed": 281128,
+        "new_rows": 2048,
+        "replay_rows": 29073,
+        "parent_perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+        },
+        "checkpoint_sha256": "4ef4c56b19b4701ea62b5a2a80f58b10d76b52a841bf466b0aa49bc934d9c03d",
+        "run_sha256": "be6d69cfc9c99f578e1ca0ff3ae6d185877398f98bf15f8c9f7409261d119351",
+        "training_steps_sha256": "3cd687948aebe31bb60165abb55a3b18314109d8b36768e14c3fa3cd46063f6e",
+        "elapsed_seconds_in_run": 4315.326047876006
+      },
+      {
+        "arm": "Random2048",
+        "steps": 18000,
+        "seed": 281128,
+        "new_rows": 2048,
+        "replay_rows": 29073,
+        "parent_perception_identity": {
+          "schema_version": "ml-perception-identity-1",
+          "kind": "adaptation",
+          "checkpoint_sha256": "dddcc0164ea5b6782049605318c235166dbacc94153406c6dbcac8c170504e2a",
+          "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+          "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+          "adaptation_run_sha256": "b53524b0869ac0726355634ee83dd797525c70540eb2252b61caef78699e8eb0"
+        },
+        "checkpoint_sha256": "96c0c181e5684868b1ea0f4155b8484041c102eafd74afa45f9ce358305963d9",
+        "run_sha256": "3214d059c66213d9611cb969eb3ad393073474bcaece604ba250aa8818022534",
+        "training_steps_sha256": "5e4fe0f2f7fa27fa7807d86a03ee7a9e9d651e07ca5df863e357e71be5ee00f9",
+        "elapsed_seconds_in_run": 4293.956112125015
+      }
+    ],
+    "files": {
+      "15_training_traces.png": "16bc64ab9181debae28701f0f42ca136b96aaf4b9087bf68544f6ff37a78e9a1",
+      "15_training_traces.svg": "63e9ef4434447544a40dffacc638ca4f393625b00e65b29c481af15023dc410c"
+    },
+    "source_sha256": "445e78a42e4d9a3cfd2650aec786750520b0a7105b9272045a60c6213d022a85",
+    "scope": "Optimizer-update axis avoids mixing the55minute simulator-collection pause into training progress. Logged wall elapsed is preserved separately. Equal training loss does not imply equal held-out perception quality."
+  },
+  "publication_projection": {
+    "original_sha256": "ed2c599c31ea0fba3d3a16bc00db6638c9c57a98a3a990e7706879a90d4bcb01",
+    "source_alias": "STUDY/figures/training_traces/training_trace_manifest.json",
+    "private_paths_replaced": true
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "evidence": {
+    "status": "verified",
+    "utc": "2026-11-28T08:51:27.997302+00:00",
+    "before_mode": {
+      "mode": "VEHICLE_CONTROL_KEYBOARD"
+    },
+    "after_mode": {
+      "mode": "VEHICLE_CONTROL_KEYBOARD"
+    },
+    "gear": 1,
+    "speed_mps": 1.1026651760247874e-05,
+    "initial_pose_error_m": 0.0027469796916527876,
+    "weather": {
+      "type": "WEATHER_TYPE_SUNNY",
+      "instantly": false
+    },
+    "time": {
+      "hour": 13,
+      "data_only": false,
+      "instantly": false
+    },
+    "relay_stopped_sha256": "9cfbe74caf0f159297112b196c2f8ff1ea5b8f593261ddf9d4c6c74d8acdd06f",
+    "native_receipt_sha256": "8f6c82dc64727a7dd5584175b3d30b2925fd4c5481c48ac13b82fbf19c616745",
+    "initial_state_sha256": "3baeced8926dc59ba357d822e5e2ad03cf25eb2ebf09592c21f09fec0d88f0fc",
+    "source_sha256": "4079f2891f89749c1497f629c62466ea35dc451bf976d66d144ed9c806b4af64",
+    "scene_or_pose_reset": false,
+    "scope": "Final SDK Keyboard/Park restoration after all UDP senders stop; zero velocity only, no throttle/steering drive or weather/time/pose change."
+  },
+  "publication_projection": {
+    "original_sha256": "f3de1828814afc99ff5772129d351c39e75f9187bccd35e1d646fa7b9ff74d39",
+    "source_alias": "STUDY/reports/final_sdk_shutdown_restoration.json",
+    "private_paths_replaced": false
+  }
+}

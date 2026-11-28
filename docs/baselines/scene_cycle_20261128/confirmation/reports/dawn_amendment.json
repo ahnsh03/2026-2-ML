@@ -1,0 +1,33 @@
+{
+  "evidence": {
+    "amended_utc": "2026-11-28T05:00:42.025305+00:00",
+    "old_hours": [
+      7,
+      13,
+      20
+    ],
+    "new_hours": [
+      5,
+      7,
+      13,
+      20
+    ],
+    "old_conditions": 72,
+    "new_conditions": 96,
+    "reason": "07h development examples are often bright; the owner requested dawn verification. Before candidate freeze and any confirmation capture, add05h to all four already qualified segments and all six SDK weather presets. This is a prospective clock-coverage extension, not model-dependent frame selection. No training/Dev/Cal membership or acceptance threshold changes.",
+    "original_plan_sha256": "2aa544b4a0266dded7a0f5e9ccc4080df1287b5bfee04bc5e7b1703e6c97ca75",
+    "original_design_sha256": "00b487186af979548f8bad496add1db186cd3a413b24ef8ce3880974b24e547f",
+    "final_plan_sha256": "bcbaff574bc30c6d6e446af501f50dd909ba39e6aa8ccc1fa5a206bd82ea3f84",
+    "final_design_sha256": "f3770d0e6db0a5fd88cb7b0be766d3008adee23f3af3876851570f05615ef02c",
+    "original_files_preserved_verbatim": true,
+    "confirmation_not_collected": true,
+    "acceptance_thresholds_unchanged": true,
+    "training_development_calibration_unchanged": true,
+    "source_sha256": "94877667fe52b7e854eab935b4dd89efbb013799c6cc6f084fd7ef1fd559927d"
+  },
+  "publication_projection": {
+    "original_sha256": "c05198809ecd91f2db4065ebdee88bc590f866de64a933468625617bcafb81ed",
+    "source_alias": "STUDY/protocol/confirmation_hours_amendment.json",
+    "private_paths_replaced": true
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "evidence": {
+    "completed_utc": "2026-11-28T08:56:36.792324+00:00",
+    "source_git": "f3d6f71776fc079d85928827f5b1c4e2eb9c2028",
+    "runs": [
+      {
+        "profile": "rtx40-cu118",
+        "tests": 331,
+        "result": "pass",
+        "mode": "CPU dependency-profile validation",
+        "log_sha256": "e41294c0fae08e9abfc820c63ec20b72ae9c870005ae3b79537d0d336340e218"
+      },
+      {
+        "profile": "rtx50-cu128",
+        "tests": 331,
+        "result": "pass",
+        "mode": "CPU dependency-profile validation",
+        "log_sha256": "28240cc664447ddb5a65a2890e98a536cbc96e5e6ddec803ce84cd763ff56298"
+      }
+    ],
+    "actual_40_gpu_tested": false,
+    "actual_50_gpu_perception_verified": true,
+    "additional_uncertainty_diagnostic_executed_both_cpu_profiles": true,
+    "additional_diagnostic_reproduction_sha256": "f2ac595721a1c66c3c4e2b7ea114b11ec6d4f6af0d3aaa78df8132046d42acdf",
+    "all35frozen_fit_artifact_hashes_still_match": true,
+    "scope": "Full331tests after final SDK cleanup tools. Real26R1 SDK/native cleanup and both CPU diagnostic profiles separately executed. Main runtime/config/docker/submodule code unchanged from independently replayed287b1b5handoff; only experiment diagnostics/cleanup tools and docs added.",
+    "additional_sdk_shutdown_helper_executed": true,
+    "additional_readonly_native_probe_executed": true,
+    "post_shutdown_verification_sha256": "ecc2cf0280b3100e7867f03ea44dd007b8fc3d9ed5baaf003eee083ab1b3e19f",
+    "runtime_src_config_docker_unchanged_vs_packaged287b1b5": true
+  },
+  "publication_projection": {
+    "original_sha256": "d211a1899a3e269bae837d7fb5c82128d9a2be61ea439d3cbc8da1b56a27935e",
+    "source_alias": "STUDY/reports/final_code_validation.json",
+    "private_paths_replaced": false
+  }
+}

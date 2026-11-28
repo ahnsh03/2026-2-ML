@@ -1,0 +1,30 @@
+{
+  "evidence": {
+    "completed_utc": "2026-11-28T08:21:40.578678+00:00",
+    "source_git": "287b1b54551b12d5df983be37c13258f1ecce2c0",
+    "runs": [
+      {
+        "profile": "rtx40-cu118",
+        "tests": 331,
+        "result": "pass",
+        "mode": "CPU dependency-profile validation",
+        "log_sha256": "181471997aee5d2860b923ea86f98ca260e966fcd5418f54059ae7ca28fae70d"
+      },
+      {
+        "profile": "rtx50-cu128",
+        "tests": 331,
+        "result": "pass",
+        "mode": "CPU dependency-profile validation",
+        "log_sha256": "e96b0a134483e8c33293266e73ca28e9c98c2cc0e48f81d93156685d7cf4d8da"
+      }
+    ],
+    "actual_40_gpu_tested": false,
+    "actual_50_gpu_perception_verified": true,
+    "scope": "Full current suite after registry promotion and explicit clock audit. Frozenfit/selection/confirmation original scripts unchanged; new diagnostics do not retune any gate or policy."
+  },
+  "publication_projection": {
+    "original_sha256": "2153b6d65c7d5e3ee3e6d40f0c1a1209d495239ef4abc41670e448163c8a06b4",
+    "source_alias": "STUDY/reports/final_code_validation.json",
+    "private_paths_replaced": true
+  }
+}

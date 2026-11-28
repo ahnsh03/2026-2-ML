@@ -1,0 +1,50 @@
+{
+  "\uac1c\ubc1c\ud658\uacbd.md": {
+    "original_sha256": "afcb5de444582ddd4401888f12523e244db83f3aaa8957b00a52533e067c92e0",
+    "archived_sha256": "9d07398eef063ef429ba9548ecc9b6650c5ba51a377db4eb93b30376ea365465",
+    "original_git": "c3243899c6dea8d06f6d9fb413b5bab2be95aacc",
+    "changes": "Relative Markdown paths adjusted for archive location only."
+  },
+  "\uc77c\uc815\uacfc_\uc5ed\ud560.md": {
+    "original_sha256": "47700a695511757ea278ddf8f2764e20a8279b5d037a244dbf65122638da134f",
+    "archived_sha256": "780e9c7bf2553eedd0ac462df04db3f0dc6a93e737259cc3966fb5330dd9784c",
+    "original_git": "c3243899c6dea8d06f6d9fb413b5bab2be95aacc",
+    "changes": "Relative Markdown paths adjusted for archive location only."
+  },
+  "\ud658\uacbd\uad70\uc9d1\uacfc_\uac80\uc218\uc815\ucc45.md": {
+    "original_sha256": "738a7b70721108919f1205576a8d1c0fa1edcf3f8f72ce7bb4f9dc70c18c63eb",
+    "archived_sha256": "01817ccd30ab6509368d40d239478248ae3d7c12902a6847a8333f249958b550",
+    "original_git": "c3243899c6dea8d06f6d9fb413b5bab2be95aacc",
+    "changes": "Relative Markdown paths adjusted for archive location only."
+  },
+  "\ud488\uc9c8\ubaa8\ub378_\ud559\uc2b5\uacfc_\ubd88\ud655\uc2e4\uc131.md": {
+    "original_sha256": "f914e9c2dc1b5006b47a368a8900e83c9372f33198f892b2ba8b096b8dc9b01b",
+    "archived_sha256": "75987f5bd26508f834c68fee0e8c4bd5aac607b1a915fc12b078519b885e175b",
+    "original_git": "c3243899c6dea8d06f6d9fb413b5bab2be95aacc",
+    "changes": "Relative Markdown paths adjusted for archive location only."
+  },
+  "\uc778\uc9c0\ubaa8\ub378_\uc7ac\ud559\uc2b5\uacfc_\uac31\uc2e0\ud310\uc815.md": {
+    "original_sha256": "48c59614810c01f76ca3bda56d10e587185992c60fad1f3beb13e224c410925c",
+    "archived_sha256": "f220bcdc5335034a0c00bda79fe520c52c9d03c8fd8111c8150de795f3e19f41",
+    "original_git": "c3243899c6dea8d06f6d9fb413b5bab2be95aacc",
+    "changes": "Relative Markdown paths adjusted for archive location only."
+  },
+  "\uc628\ub77c\uc778_\uc5f0\uacb0\uacfc_\ucd5c\uc885\uc81c\ucd9c.md": {
+    "original_sha256": "2febcf7a05347f77ba74c6af691c6262d60d4a83d17bc4173b8d1dbdbe5fd63f",
+    "archived_sha256": "3a8e919d34936b46139d63d9986576efb90086d48d741ecf1bf851eda6d034f3",
+    "original_git": "c3243899c6dea8d06f6d9fb413b5bab2be95aacc",
+    "changes": "Relative Markdown paths adjusted for archive location only."
+  },
+  "\ub370\uc774\ud130_\ub4f1\ub85d\uacfc_\ud2b9\uc9d5\uc815\ub2f5.md": {
+    "original_sha256": "3dc5cc668231d60bfee802afa5dc12e9a8bd0199e18c0fa52bc66c1a63a696d6",
+    "archived_sha256": "04ca43fb4414d42d983f75f018c265d747a9ed32193f8a3a7f0c3d7ca8e42d19",
+    "original_git": "c3243899c6dea8d06f6d9fb413b5bab2be95aacc",
+    "changes": "Relative Markdown paths adjusted for archive location only."
+  },
+  "ROI\uc640_\ud2b9\uc9d5\ucd94\ucd9c.md": {
+    "original_sha256": "9b3e12abdcb6a78757708f1072493a12b7c42a230196f43a5c5d7d62abbd66a5",
+    "archived_sha256": "272506e96a6615e2bf5fa41dde32ceba792c1cda17edeebfdfdadf38b433060b",
+    "original_git": "c3243899c6dea8d06f6d9fb413b5bab2be95aacc",
+    "changes": "Relative Markdown paths adjusted for archive location only."
+  }
+}

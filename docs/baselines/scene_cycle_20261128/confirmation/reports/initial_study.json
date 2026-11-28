@@ -1,0 +1,137 @@
+{
+  "evidence": {
+    "created_utc": "2026-11-28T01:41:44.167726+00:00",
+    "deadline_utc": "2026-11-28T10:00:00+00:00",
+    "parent_version": "m-v6-r1-20261128",
+    "roi_profile": "roi9-front-v1",
+    "original_replay": 26001,
+    "parent_admitted_replay": 3072,
+    "new_bank_budget": 2048,
+    "role_transition": {
+      "previous_confirmation_rows": 618,
+      "now": "quality/environment fit",
+      "previous_test_status_retired": true,
+      "new_confirmation_required": true
+    },
+    "review_targets": {
+      "whole_iou": "Q, unchanged white/yellow marking union",
+      "supported_error_denominator_pixels": 50,
+      "correct_precision_recall_min": 0.8,
+      "near_error_weight": 1.0,
+      "far_error_weight": 0.25,
+      "offroad_fp_weight": 0.5,
+      "unsupported": "No supported event under the review definition; never a safety/normality label.",
+      "online_roi_iou": false
+    },
+    "ml_comparison": {
+      "common_fit_rows": 2500,
+      "quality_target": "Q on defined rows",
+      "error_targets": [
+        "near_supported_error",
+        "far_supported_error",
+        "offroad_supported_fp"
+      ],
+      "feature_views": [
+        "env52",
+        "review_support"
+      ],
+      "families": [
+        "RF",
+        "GP"
+      ],
+      "quality_gate": "Dev whole-Q MAE no more than0.01 above best same-view family.",
+      "family_selection": "Highest supported-error utility capture at10% budget subject to quality gate; practical ties within0.01 use lower Q MAE then lower runtime cost. No preference can override measured inferiority."
+    },
+    "gp_uncertainty": {
+      "linear_utility": "mean=wTmu, variance=wTSigmaw; covariance retained",
+      "spatial_contrast": "near error minus far error, with full posterior covariance",
+      "policies": [
+        "mean_only",
+        "mean_plus_beta_sd",
+        "mean_minus_beta_sd",
+        "mean_priority_with_uncertainty_audit"
+      ],
+      "adopt_only_if_dev_utility_recall_gain_at_least": 0.01,
+      "interpretation": "Gaussian regression of error event indicators, not a calibrated Bernoulli probability. SD is a novelty/selection diagnostic, not proof of poor perception."
+    },
+    "bo_comparison": {
+      "methods": [
+        "matched_random",
+        "legacy_fixed_Matern_EI",
+        "official_BoTorch_LogEI_default_SingleTaskGP"
+      ],
+      "queries_each": 8,
+      "seeds": [
+        281128,
+        281129,
+        281130
+      ],
+      "source": "BoTorch0.18.1, GPyTorch1.15.2 with default dimension-scaled priors; explicit failed custom-Matern pilot retained.",
+      "selection": "Best evaluated union; failures/fallbacks logged; no online BO.",
+      "keep_for_future_if": "Improves mean incumbent Dev/CV objective by>=0.001 over random and wins at least2of3search seeds; otherwise use random/default settings."
+    },
+    "cluster_comparison": {
+      "representations": [
+        "rgb_hist_pca16",
+        "weather_lighting_near_presence_prob11",
+        "weather_near_presence_photo12"
+      ],
+      "k": [
+        8,
+        12,
+        16
+      ],
+      "seeds": [
+        281128,
+        281129,
+        281130
+      ],
+      "methods": [
+        "official_e_means",
+        "lloyd"
+      ],
+      "fit_representation": "Geographically out-of-fold RGB classifier probabilities; full classifiers only for new images.",
+      "scope": "Semantic grouping accuracy/stability separate from threshold/selection improvement. SDK clock bins and observable image illumination reported separately."
+    },
+    "confirmation": {
+      "plan_sha256": "2aa544b4a0266dded7a0f5e9ccc4080df1287b5bfee04bc5e7b1703e6c97ca75",
+      "marked_segments": 3,
+      "sparse_segment": 1,
+      "weather_presets": 6,
+      "hours": [
+        7,
+        13,
+        20
+      ],
+      "capture_after_model_policy_freeze": true,
+      "cohort_membership": "Qualified for target presence using scout GT counts without model predictions; scout frames never enter fit/tuning/final scoring.",
+      "geography": "At least25m from previous quality/adaptation captures and35m between chosen segments. Same-map and original perception-training location proximity reported, not claimed absent."
+    },
+    "review_acceptance": {
+      "budget": 0.1,
+      "random_trials": 100,
+      "minimum_near_error_support": 20,
+      "minimum_error_roads": 2,
+      "minimum_utility_recall_ratio_vs_random": 1.25,
+      "minimum_near_error_road_macro_recall_gain_vs_random": 0.02,
+      "report_all_supported_fn_fp": true,
+      "no_confirmation_retuning": true
+    },
+    "neural_acceptance": {
+      "reference": "parent r1; originalv6 remains retention anchor",
+      "marked_macro_gain_min": 0.003,
+      "marked_positive_segments_min": 2,
+      "per_segment_gain_min": 0.002,
+      "per_segment_loss_max": 0.02,
+      "original_pooled_loss_max": 0.005,
+      "original_class_view_loss_max": 0.01,
+      "independent_of_review_policy_adoption": true
+    },
+    "restoration": "Park/Keyboard/pose/weather/time and original simulator window after collection/training; retain failure/orphan manifests"
+  },
+  "publication_projection": {
+    "original_sha256": "00b487186af979548f8bad496add1db186cd3a413b24ef8ce3880974b24e547f",
+    "source_alias": "STUDY/protocol/study_design_initial_frozen.json",
+    "private_paths_replaced": true
+  }
+}

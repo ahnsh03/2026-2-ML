@@ -1,0 +1,36 @@
+{
+  "evidence": {
+    "status": "verified",
+    "verified_utc": "2026-11-28T08:52:17.365227+00:00",
+    "final_native": {
+      "gear": 1,
+      "position": {
+        "y": -392.943939,
+        "z": 28.8936386,
+        "x": -111.603752
+      },
+      "ctrl_mode": 1,
+      "window_minimized": false,
+      "utc": "2026-11-28T08:52:17.2458749Z",
+      "responding": true,
+      "window_maximized": false,
+      "packet_length": 245,
+      "signed_speed_kph": 8.37306e-06,
+      "scope": "Read-only UDP/window observation after relay and collector shutdown",
+      "simulator_pid": 26040,
+      "control_commands_sent": 0
+    },
+    "pose_error_vs_confirmation_start_m": 0.0027228705441169213,
+    "final_sdk_restoration_sha256": "f3de1828814afc99ff5772129d351c39e75f9187bccd35e1d646fa7b9ff74d39",
+    "whole_cohort_restore_sha256": "0c1c215b8a05093ed83e28126d84763e5eab64947db97f1cb4cf8e733f7ce34b",
+    "prior_closeout_sha256": "716c2b56b80c0aaabade22ca51614f497e97053e7ccd100a7fd1510e1a4985f7",
+    "relay_stopped": true,
+    "collector_stopped": true,
+    "scope": "Additional final shutdown check: a relay finalPark packet reselected UDP mode. Stop all UDP senders first, restore SDK Keyboard/Park and whole-cohort pose, stop collector, then independently observe nativeKeyboard/Park and normal window. Corrected0.24349m accumulated per-epoch Park settling drift; no new experiment or scoring change."
+  },
+  "publication_projection": {
+    "original_sha256": "ecc2cf0280b3100e7867f03ea44dd007b8fc3d9ed5baaf003eee083ab1b3e19f",
+    "source_alias": "STUDY/reports/post_shutdown_cleanup.json",
+    "private_paths_replaced": false
+  }
+}

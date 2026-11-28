@@ -1,0 +1,28 @@
+{
+  "evidence": {
+    "records": [
+      {
+        "arm": "Risk2048",
+        "status": "complete",
+        "returncode": 0,
+        "started_utc": "2026-11-28T04:01:48.026383+00:00",
+        "ended_utc": "2026-11-28T05:18:40.772183+00:00",
+        "run": "STUDY/runs/Risk2048_s281128"
+      },
+      {
+        "arm": "Random2048",
+        "status": "complete",
+        "returncode": 0,
+        "started_utc": "2026-11-28T05:18:40.777071+00:00",
+        "ended_utc": "2026-11-28T06:35:15.969342+00:00",
+        "run": "STUDY/runs/Random2048_s281128"
+      }
+    ],
+    "scope": "One seed per arm, same parent and matched environment counts. No independent confirmation accessed."
+  },
+  "publication_projection": {
+    "original_sha256": "4fefcb579f96b7068e3f3ed5812c88ca6b05636d86450c6ffa71bbcf0426da31",
+    "source_alias": "STUDY/reports/matched_training_complete.json",
+    "private_paths_replaced": true
+  }
+}

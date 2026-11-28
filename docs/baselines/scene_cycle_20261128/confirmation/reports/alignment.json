@@ -1,0 +1,784 @@
+{
+  "evidence": {
+    "frames": 58,
+    "supported_segments": 4,
+    "own_better_than_neighbor_fraction": 1.0,
+    "median_own_cost_px": 0.5491966903209686,
+    "median_neighbor_cost_px": 1.8087228536605835,
+    "median_best_shift_linf_px": 0.0,
+    "records": [
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0001",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.5751704573631287,
+        "neighbor_mean_cost_px": 1.457447111606598,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.01377338171005249,
+        "boundary_pixels": 4224
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0002",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.5597102642059326,
+        "neighbor_mean_cost_px": 1.3182283639907837,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4211
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0003",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.5760498046875,
+        "neighbor_mean_cost_px": 2.3598413169384003,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.010283946990966797,
+        "boundary_pixels": 4196
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0004",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.5613530874252319,
+        "neighbor_mean_cost_px": 4.000465154647827,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.00303572416305542,
+        "boundary_pixels": 4231
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0005",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.569752037525177,
+        "neighbor_mean_cost_px": 2.325020879507065,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.014958202838897705,
+        "boundary_pixels": 4234
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0006",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.5644604563713074,
+        "neighbor_mean_cost_px": 0.9639158248901367,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.009742677211761475,
+        "boundary_pixels": 4272
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0007",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.5658101439476013,
+        "neighbor_mean_cost_px": 0.8447323739528656,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.012604475021362305,
+        "boundary_pixels": 4277
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0008",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.5667106509208679,
+        "neighbor_mean_cost_px": 1.7879888713359833,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.013452291488647461,
+        "boundary_pixels": 4282
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0009",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.568226158618927,
+        "neighbor_mean_cost_px": 3.169585108757019,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.01699233055114746,
+        "boundary_pixels": 4321
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0010",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.5697574019432068,
+        "neighbor_mean_cost_px": 1.8294568359851837,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.019652128219604492,
+        "boundary_pixels": 4290
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0011",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.5596672296524048,
+        "neighbor_mean_cost_px": 0.6774761378765106,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.010826408863067627,
+        "boundary_pixels": 4312
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0012",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.5633701682090759,
+        "neighbor_mean_cost_px": 0.7933518588542938,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.013731122016906738,
+        "boundary_pixels": 4304
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0013",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.558922290802002,
+        "neighbor_mean_cost_px": 2.0992802679538727,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.015710175037384033,
+        "boundary_pixels": 4380
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0014",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.573881208896637,
+        "neighbor_mean_cost_px": 3.066397547721863,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.028642475605010986,
+        "boundary_pixels": 4335
+      },
+      {
+        "sample_id": "confirmation28e002_scene28_s01_w0_h13_f0015",
+        "site": "scene28_s01",
+        "epoch": "confirmation28e002_scene28_s01_w0_h13",
+        "own_cost_px": 0.5606961846351624,
+        "neighbor_mean_cost_px": 3.091598629951477,
+        "best_shift_xy": [
+          0,
+          -1
+        ],
+        "translation_gain_px": 0.013260304927825928,
+        "boundary_pixels": 4344
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0001",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5257617235183716,
+        "neighbor_mean_cost_px": 1.0195611417293549,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4114
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0002",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5352829694747925,
+        "neighbor_mean_cost_px": 1.9570267498493195,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4100
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0003",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5325406789779663,
+        "neighbor_mean_cost_px": 3.620527148246765,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4136
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0004",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5395397543907166,
+        "neighbor_mean_cost_px": 2.4503374099731445,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4145
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0005",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.529392421245575,
+        "neighbor_mean_cost_px": 2.4277023673057556,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4201
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0006",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5488806962966919,
+        "neighbor_mean_cost_px": 3.4873560667037964,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4243
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0007",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5453329682350159,
+        "neighbor_mean_cost_px": 2.800172209739685,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4188
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0008",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5432167053222656,
+        "neighbor_mean_cost_px": 2.010679543018341,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4194
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0009",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5492283701896667,
+        "neighbor_mean_cost_px": 2.237127423286438,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4210
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0010",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5445048809051514,
+        "neighbor_mean_cost_px": 2.4175864458084106,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4245
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0011",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5394575595855713,
+        "neighbor_mean_cost_px": 2.6601762771606445,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4244
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0012",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5473232865333557,
+        "neighbor_mean_cost_px": 2.4671847820281982,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4277
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0013",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.537425696849823,
+        "neighbor_mean_cost_px": 2.299410104751587,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4304
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0014",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5491650104522705,
+        "neighbor_mean_cost_px": 3.1475772857666016,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4283
+      },
+      {
+        "sample_id": "confirmation28e026_scene28_s04_w0_h13_f0015",
+        "site": "scene28_s04",
+        "epoch": "confirmation28e026_scene28_s04_w0_h13",
+        "own_cost_px": 0.5443654656410217,
+        "neighbor_mean_cost_px": 3.722971796989441,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 4301
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0001",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.5076554417610168,
+        "neighbor_mean_cost_px": 0.8515704870223999,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3509
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0002",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.5139314532279968,
+        "neighbor_mean_cost_px": 0.9848804473876953,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3476
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0003",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.5057132840156555,
+        "neighbor_mean_cost_px": 1.3288766741752625,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3482
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0004",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.507257878780365,
+        "neighbor_mean_cost_px": 2.0575064420700073,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3558
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0005",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.5083722472190857,
+        "neighbor_mean_cost_px": 1.4451414942741394,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3511
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0006",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.513809323310852,
+        "neighbor_mean_cost_px": 0.7523819804191589,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3549
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0007",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.5103482604026794,
+        "neighbor_mean_cost_px": 0.7492246627807617,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3514
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0008",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.5203543305397034,
+        "neighbor_mean_cost_px": 1.3397817611694336,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3550
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0009",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.50701904296875,
+        "neighbor_mean_cost_px": 1.2767785489559174,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3617
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0010",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.5152875781059265,
+        "neighbor_mean_cost_px": 1.4694991409778595,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3609
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0011",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.5084146857261658,
+        "neighbor_mean_cost_px": 1.7667070627212524,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3672
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0012",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.5166628360748291,
+        "neighbor_mean_cost_px": 2.0813311338424683,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3644
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0013",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.5135401487350464,
+        "neighbor_mean_cost_px": 3.2888360023498535,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3557
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0014",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.5076314806938171,
+        "neighbor_mean_cost_px": 3.799981713294983,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3722
+      },
+      {
+        "sample_id": "confirmation28e050_scene28_s05_w0_h13_f0015",
+        "site": "scene28_s05",
+        "epoch": "confirmation28e050_scene28_s05_w0_h13",
+        "own_cost_px": 0.5166082978248596,
+        "neighbor_mean_cost_px": 2.1293845176696777,
+        "best_shift_xy": [
+          0,
+          0
+        ],
+        "translation_gain_px": 0.0,
+        "boundary_pixels": 3562
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0001",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.6810246706008911,
+        "neighbor_mean_cost_px": 1.2392510771751404,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.3879976272583008,
+        "boundary_pixels": 122
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0002",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.7284759283065796,
+        "neighbor_mean_cost_px": 1.012886255979538,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.4823277145624161,
+        "boundary_pixels": 112
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0003",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.7407944798469543,
+        "neighbor_mean_cost_px": 1.1160753071308136,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.5227168947458267,
+        "boundary_pixels": 107
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0004",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.7304804921150208,
+        "neighbor_mean_cost_px": 0.8843904137611389,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.5214344710111618,
+        "boundary_pixels": 113
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0005",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.7104268670082092,
+        "neighbor_mean_cost_px": 2.407082498073578,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.5473780930042267,
+        "boundary_pixels": 82
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0006",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.7598926424980164,
+        "neighbor_mean_cost_px": 0.9547525644302368,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.5955915600061417,
+        "boundary_pixels": 93
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0007",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.7663580775260925,
+        "neighbor_mean_cost_px": 1.278599113225937,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.6838272139430046,
+        "boundary_pixels": 81
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0008",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.7069481611251831,
+        "neighbor_mean_cost_px": 2.1802693009376526,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.5527364760637283,
+        "boundary_pixels": 77
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0009",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.7697580456733704,
+        "neighbor_mean_cost_px": 0.8608076870441437,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.48325803875923157,
+        "boundary_pixels": 100
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0010",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.7603573799133301,
+        "neighbor_mean_cost_px": 0.9746604561805725,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.6210865527391434,
+        "boundary_pixels": 96
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0011",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.7870348691940308,
+        "neighbor_mean_cost_px": 1.1498770713806152,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.5786928981542587,
+        "boundary_pixels": 112
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0012",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.7249932289123535,
+        "neighbor_mean_cost_px": 1.0675682425498962,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.5055883377790451,
+        "boundary_pixels": 102
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0013",
+        "site": "scene28_s10",
+        "epoch": "confirmation28e074_scene28_s10_w0_h13",
+        "own_cost_px": 0.7518086433410645,
+        "neighbor_mean_cost_px": 1.5251522064208984,
+        "best_shift_xy": [
+          0,
+          1
+        ],
+        "translation_gain_px": 0.5486171543598175,
+        "boundary_pixels": 94
+      }
+    ],
+    "skipped": [
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0014",
+        "reason": "insufficient_same_epoch_neighbors"
+      },
+      {
+        "sample_id": "confirmation28e074_scene28_s10_w0_h13_f0015",
+        "reason": "insufficient_native_boundary"
+      }
+    ],
+    "index_sha256": "bfc74732e7382497ab431d723e4f3bb8d1136be8859654e76c880e2bbb7ac1b2",
+    "source_sha256": "48dde6f13be9afcb50ca44b00d9b80c742e6bb53ecc3743b502f81368f549a0f",
+    "scope": "Sunny13 moving content-edge evidence only. Same epoch and <=5m neighbors; white/yellow GT, no perception predictions. Does not certify exposure synchronization, visibility or all-weather GT correctness."
+  },
+  "publication_projection": {
+    "original_sha256": "1244ed77fd0e507b5104e76308d4095f66e46ef72b2d6478a5059302123e7b9c",
+    "source_alias": "STUDY/confirmation/alignment/summary.json",
+    "private_paths_replaced": true
+  }
+}

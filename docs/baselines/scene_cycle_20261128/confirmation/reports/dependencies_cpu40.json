@@ -1,0 +1,54 @@
+{
+  "evidence": {
+    "observed_utc": "2026-11-28T04:30:44.635248+00:00",
+    "mode": "deployment-cpu40",
+    "python": "3.10.13",
+    "packages": {
+      "numpy": {
+        "version": "1.24.4",
+        "entrypoint_filename": "__init__.py",
+        "entrypoint_sha256": "edd18feff93348beb02f392959e80b9fda1875a842d7f9760847f32386fdfd48",
+        "wheel_record_sha256": "8d29c2c99aee7776cf695037f836549bed2096e40cdfc2475b0055ff3e1d2c89"
+      },
+      "scipy": {
+        "version": "1.10.1",
+        "entrypoint_filename": "__init__.py",
+        "entrypoint_sha256": "7b52b07fd3c9c9e9425b3c4deddda6fb67c64aae4e08f122224867d0e75fddaf",
+        "wheel_record_sha256": "22a298888bfdaf65160a95ba1fa5f12330e861a6f232eba79d3574d840324cf3"
+      },
+      "sklearn": {
+        "version": "1.3.2",
+        "entrypoint_filename": "__init__.py",
+        "entrypoint_sha256": "bdcdef0b00185fbf1359bd8690afa64274e3aa80433d23940b852e47fe9fcf15",
+        "wheel_record_sha256": "3af7a63059142ccf47a55d98994e0c867606467bc6d976fb5a4e6ace0d2fa7ff"
+      },
+      "cv2": {
+        "version": "4.9.0",
+        "entrypoint_filename": "__init__.py",
+        "entrypoint_sha256": "d6d44be0f0f981cc057abc0c152377b496edb478d1fa6355ce035f711dc94b25",
+        "wheel_record_sha256": "082e4ec4719698725401e55f58922f88698c7e9ba091a95f7109d4e52cd95aaf"
+      },
+      "torch": {
+        "version": "2.1.2",
+        "entrypoint_filename": "__init__.py",
+        "entrypoint_sha256": "7261130fcc9dae49bb38843604ae2d0cab8d6b7277eb57b5dbc1559e35e34be1"
+      },
+      "botorch": {
+        "installed": false
+      },
+      "gpytorch": {
+        "installed": false
+      },
+      "faiss": {
+        "installed": false
+      }
+    },
+    "source_sha256": "ca5aaeacc19981099f50ab0d9888fd68e7adbb7dad708ca7606c200c0a21dce5",
+    "scope": "Read-only inspection after parent fits and before confirmation. BO query reports independently record the executed version. No package installation or upgrade performed."
+  },
+  "publication_projection": {
+    "original_sha256": "3a1541dacb57e52573a37eb2b59e7d1e3fc233850569f6f538699120a413525e",
+    "source_alias": "STUDY/reports/dependencies_cpu40.json",
+    "private_paths_replaced": true
+  }
+}

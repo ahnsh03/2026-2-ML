@@ -1,0 +1,136 @@
+{
+  "evidence": {
+    "version": "frozen-uncertainty-semantics-diagnostic-1",
+    "rows": 590,
+    "perception_identity": {
+      "schema_version": "ml-perception-identity-1",
+      "kind": "adaptation",
+      "checkpoint_sha256": "c5ffd0fb2d500d858affca02cc3b107bd2ca995bde3b338ed64088146fcbbfa1",
+      "initial_checkpoint_sha256": "a26311b3af4e92880f632509eff3c81defc1b95135f5b463c7a08e5b6e23d24b",
+      "target_policy_sha256": "21521b2b87962bdfdc8c616221826616f4691431689088a2b33c960bb85f75e7",
+      "adaptation_run_sha256": "1cc9c56fd61b8366a66de6838145b2bf1a0e84eb38e2bcd478c7f8f0d55c3421"
+    },
+    "comparisons": {
+      "quality_predictive_sd": {
+        "near_error_auc": 0.4564733654534548,
+        "near_and_far_vs_near_retained_far_auc": 0.4681316084824857,
+        "spearman_vs_absolute_q_error": 0.11480400634335919
+      },
+      "gp_utility_latent_sd": {
+        "near_error_auc": 0.6158743058377353,
+        "near_and_far_vs_near_retained_far_auc": 0.6351822316734599,
+        "spearman_vs_absolute_q_error": 0.21588141145974415
+      },
+      "gp_near_minus_far_mean": {
+        "near_error_auc": 0.7504885741374974,
+        "near_and_far_vs_near_retained_far_auc": 0.8779018252702464,
+        "spearman_vs_absolute_q_error": -0.042492910467971656
+      },
+      "rf_near_minus_far_mean": {
+        "near_error_auc": 0.7842727501402837,
+        "near_and_far_vs_near_retained_far_auc": 0.8773111229251579,
+        "spearman_vs_absolute_q_error": 0.0447752950079282
+      },
+      "gp_near_minus_far_z": {
+        "near_error_auc": 0.7862657456318569,
+        "near_and_far_vs_near_retained_far_auc": 0.9280819894854982,
+        "spearman_vs_absolute_q_error": 0.11216400227010678
+      }
+    },
+    "pair_counts": {
+      "near_and_far_error": 99,
+      "near_retained_far_error": 342
+    },
+    "groups": {
+      "near_and_far_error": {
+        "rows": 99,
+        "medians": {
+          "quality_predictive_sd": 0.06714346964126278,
+          "gp_utility_latent_sd": 0.033900226433707,
+          "gp_near_minus_far_mean": -0.43579051128209223,
+          "rf_near_minus_far_mean": -0.18432614525641855,
+          "gp_near_minus_far_z": -9.58190307856772
+        }
+      },
+      "near_error_only": {
+        "rows": 8,
+        "medians": {
+          "quality_predictive_sd": 0.06942851647932738,
+          "gp_utility_latent_sd": 0.04539778043393087,
+          "gp_near_minus_far_mean": 0.22553615507995478,
+          "rf_near_minus_far_mean": 0.3906384402947078,
+          "gp_near_minus_far_z": 3.7742899546333573
+        }
+      },
+      "near_retained_far_error": {
+        "rows": 342,
+        "medians": {
+          "quality_predictive_sd": 0.06652894961267909,
+          "gp_utility_latent_sd": 0.02957508724252217,
+          "gp_near_minus_far_mean": -1.0280827882577102,
+          "rf_near_minus_far_mean": -0.9686264049731507,
+          "gp_near_minus_far_z": -28.148461363433505
+        }
+      },
+      "no_supported_error": {
+        "rows": 139,
+        "medians": {
+          "quality_predictive_sd": 0.06911174507188096,
+          "gp_utility_latent_sd": 0.035201177451886306,
+          "gp_near_minus_far_mean": -0.1921057331644737,
+          "rf_near_minus_far_mean": -0.2306428244349972,
+          "gp_near_minus_far_z": -5.7418361184469076
+        }
+      }
+    },
+    "sdk_hours": {
+      "5": {
+        "rows": 146,
+        "near_errors": 50
+      },
+      "7": {
+        "rows": 149,
+        "near_errors": 4
+      },
+      "13": {
+        "rows": 150,
+        "near_errors": 1
+      },
+      "20": {
+        "rows": 145,
+        "near_errors": 52
+      }
+    },
+    "inputs": {
+      "freeze_sha256": "10494ffbc6f47881fc88d265b9feb05c2eefc9a55062391f884242e5c1d0859f",
+      "review_assessment_sha256": "1e9b5f17d7ea0de4155bc5fddd66356d3c1a1996864fbb3c3a0a38e7fcd330bb",
+      "pack_sha256": "1cd98fba01e34ad65163b93eaa5e0d3aa7bc8f232244a30990dcf9398c4a0a2b",
+      "prediction_sha256": {
+        "primary": "08034d255eeeaa9044715b1c19fb59d5c79d8b7672959f20d4a63b7e72c2b0ee",
+        "GP_only": "64fb68f3e6f6dc89ab7db16c1553b39242525b3b2d1d37538b3eea3580b77215"
+      }
+    },
+    "fitted_on_confirmation": false,
+    "adoption_or_policy_changed": false,
+    "source_sha256": "56ee4fa032789548cebcc095601c0b7a5c23351222069500384985e294c34dab",
+    "scope": "Descriptive post-assessment diagnosis of fixed GP/RF outputs, not a new validated selector. Higher SD is tested as the proposed near-and-far-error indicator; AUC direction is never flipped. Gaussian latent contrast/z is not a calibrated failure probability. Supported error is not physical visibility or safety truth. No thresholds are fitted.",
+    "figures": {
+      "16_gp_uncertainty_semantics.png": "dd30afbe5b462e941740f3462c834587163411600606c089ee9f9958d32d47a6",
+      "16_gp_uncertainty_semantics.svg": "364e2be5c9d6fe6c914d7f8d378d38e4bf5bb81ed4179b7701ad4899c3fb878c"
+    }
+  },
+  "publication_projection": {
+    "original_sha256": "3111059e023413641c890d3de707aeaf89b6b8ff259742e78f9a20ef727fbef0",
+    "source_alias": "STUDY/confirmation/uncertainty_semantics/summary.json",
+    "private_paths_replaced": false
+  },
+  "publication_context": {
+    "primary_error_head": "RF74",
+    "diagnostic_error_head": "GP74 from frozenGP_only comparator",
+    "quality_head": "Shared GP52; observation predictive SD differs from error latent SD",
+    "ordered74error_input_columns_equal": true,
+    "primary_bundle_manifest_sha256": "874cd2c15d39b41fe80beb61ece0619bbb95c3f47fa02b846ddcb4141cb60a14",
+    "gp_only_bundle_manifest_sha256": "84a27354b1bcba4dd1908e1a0b5f211633dda1dd653a7820371834a75a6cbdfa",
+    "policy_or_adoption_changed": false
+  }
+}
