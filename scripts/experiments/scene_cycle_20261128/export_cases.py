@@ -19,6 +19,8 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     for n in ['pack','manifest','cache','adaptation-run','output']:p.add_argument('--'+n,type=Path,required=True)
     p.add_argument('--case-index',type=Path,help='Reuse baseline case IDs for a paired before/after illustration')
+    p.add_argument('--case-label-prefix',default='baseline_',help='Display label prefix for explicitly fixed cases; use fresh_ for new confirmation illustrations')
+    p.add_argument('--case-scope',default='Opened Dev case illustration',help='Describe the cohort used for post-audit illustrations; never changes selection or adoption')
     a=p.parse_args();cv2.setNumThreads(1);torch.set_num_threads(2)
     checkpoint,identity,_=resolve_quality_perception(a.adaptation_run,None)
     receipt=json.loads(a.pack.with_suffix('.json').read_text())
@@ -43,7 +45,7 @@ def main():
         baseline=json.loads(a.case_index.read_text());indices={str(s):i for i,s in enumerate(data['ids'])};chosen=[]
         for case in baseline['cases']:
             if case['source_manifest_sha256']!=sha256_file(a.manifest):raise ValueError('paired case source membership differs')
-            chosen.append(('baseline_'+case['case'],indices[case['sample_id']]))
+            chosen.append((a.case_label_prefix+case['case'],indices[case['sample_id']]))
     selected=[lookup[str(data['ids'][i])]for _,i in chosen];dataset=CachedAdaptationSamples(a.cache,selected,verify=True)
     model=load_target_model(checkpoint,torch.device('cpu'),weights='model')
     plt.rcParams.update({'font.family':'DejaVu Sans'});images=[];records=[]
@@ -63,9 +65,9 @@ def main():
                 display_hw=[360,640],source_camera_hw=[720,1280],display_grid='model-input crop12:372; true GT nearest-neighbor target raster',recommended_aspect_ratio='16:9; preserve proportions',true_gt_pixels=int(gt.sum()),perception_identity=identity,
                 recomputed_lane_iou=quality,source_manifest_sha256=sha256_file(a.manifest),source_pack_sha256=sha256_file(a.pack),
                 image_sha256={str(path.relative_to(a.output)):sha256_file(path)for path in folder.glob('*.png')},
-                scope='Opened Dev case illustration, selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim.')
+                scope=a.case_scope+', selected after GT audit. GT panel is decoded source target, never perception output; no safety/normality claim.')
             records.append(record);images.append((record,panels))
-    for start,title in [(0,'Near-field FP and FN'),(2,'Distance and07h context')]:
+    for start,title in [(0,'Supported error examples'),(2,'Distance and illumination context')]:
         group=images[start:start+2]
         if not group:continue
         fig,axes=plt.subplots(len(group),4,figsize=(16,2.6*len(group)),squeeze=False,layout='constrained')
@@ -77,7 +79,7 @@ def main():
         fig.suptitle(title+' — same frame and preserved16:9 panels',fontsize=13)
         for ext in ['png','svg']:fig.savefig(a.output/(('05_near_errors'if start==0 else'06_distance_dawn')+'.'+ext),dpi=180,bbox_inches='tight')
         plt.close(fig)
-    (a.output/'cases.json').write_text(json.dumps(dict(cases=records,source_sha256=sha256_file(Path(__file__)),baseline_case_index_sha256=sha256_file(a.case_index)if a.case_index is not None else None),indent=2,allow_nan=False)+'\n')
+    (a.output/'cases.json').write_text(json.dumps(dict(cases=records,source_sha256=sha256_file(Path(__file__)),baseline_case_index_sha256=sha256_file(a.case_index)if a.case_index is not None else None,case_index_sha256=sha256_file(a.case_index)if a.case_index is not None else None),indent=2,allow_nan=False)+'\n')
     print('EXPORTED VERIFIED TRUE-GT CASES',len(records),flush=True)
 
 
