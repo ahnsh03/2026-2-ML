@@ -5,6 +5,7 @@ import argparse
 import json
 import numpy as np
 from common.bridge import sha256_file
+from quality_estimation.review_targets import support_aware_targets
 
 
 def read(path):return json.loads(Path(path).read_text())
@@ -18,6 +19,20 @@ def validate_source_membership(rows,source):
             raise ValueError('neural confirmation membership is not the newly frozen RGB population')
 
 
+def band_summary(counts):
+    counts=np.asarray(counts,np.int64);target=support_aware_targets(counts);summary={}
+    for name,regions in [('near',[6,7]),('far',[4,5]),('offroad',[0,1,2,3,8])]:
+        band=target[name];tp,fp,fn=counts[:,regions].sum((0,1));n=len(counts)
+        summary[name]=dict(rows=n,pooled_tp=int(tp),pooled_fp=int(fp),pooled_fn=int(fn),
+            pooled_precision=float(tp/(tp+fp))if tp+fp else None,pooled_recall=float(tp/(tp+fn))if tp+fn else None,
+            gt_supported_rows=int((band['gt_pixels']>=50).sum()),prediction_supported_rows=int((band['predicted_pixels']>=50).sum()),
+            supported_fn_frames=int(band['false_negative'].sum()),supported_fp_frames=int(band['false_positive'].sum()),
+            supported_error_frames=int(band['error'].sum()),supported_error_frame_rate=float(band['error'].mean()),
+            empty_gt_fp_frames=int((band['false_positive']&(band['gt_pixels']==0)).sum()),
+            missing_output_fn_frames=int((band['false_negative']&(band['predicted_pixels']==0)).sum()))
+    return summary
+
+
 def supported_metrics(rows,marked):
     values={};per_head={}
     for site in marked:
@@ -26,7 +41,11 @@ def supported_metrics(rows,marked):
         values[site]=float(np.mean([r['counts']['lane'][0]/sum(r['counts']['lane'])for r in current]))
     for head in ['lane','drivable','white','yellow','stopline']:
         counts=np.asarray([r['counts'][head]for r in rows],np.int64).sum(0);per_head[head]=float(counts[0]/counts.sum())if counts.sum()else None
-    return dict(marked_macro=float(np.mean(list(values.values()))),marked_by_segment=values,all_frame_pooled=per_head)
+    counts=np.asarray([r['region_counts']for r in rows],np.int64)
+    return dict(marked_macro=float(np.mean(list(values.values()))),marked_by_segment=values,all_frame_pooled=per_head,
+        image_band_errors=band_summary(counts),
+        image_band_errors_by_hour={str(int(hour)):band_summary(counts[np.array([r['hour']==hour for r in rows])])for hour in sorted({r['hour']for r in rows})},
+        image_band_scope='Fixed offline support50px/precision-recall0.8 definition; near/far are image bands, not metric distance or safety/visibility labels. No online ROI IoU is used.')
 
 
 def condition_bootstrap(selected,parent,marked):

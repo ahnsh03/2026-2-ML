@@ -51,6 +51,14 @@ def main():
         interval=matched['paired_condition_bootstrap']['gain95_interval'];gain=matched['marked_macro_risk_minus_random']
         fig.suptitle(f'Matched data-selection experiment | marking gain {gain:+.4f} (conditional CI {interval[0]:+.4f}, {interval[1]:+.4f})\nSame parent,2048 new images,full replay,18000updates; one training seed; not a post-test adoption pool',fontsize=12)
         save(fig,'13_matched_retraining_fresh_confirmation')
+    names=['v6','r1','selected']+(['risk_raw','random_raw']if matched is not None else[])
+    labels=['v6','Parent','Candidate']+(['Risk raw','Random raw']if matched is not None else[])
+    fig,axes=plt.subplots(1,3,figsize=(13,4.5),layout='constrained')
+    for ax,band,key,title in [(axes[0],'near','supported_fn_frames','Near-band FN events'),(axes[1],'near','supported_fp_frames','Near-band FP events'),(axes[2],'far','supported_error_frames','Far-band FP or FN events')]:
+        values=[100*scores[n]['image_band_errors'][band][key]/scores[n]['image_band_errors'][band]['rows']for n in names]
+        ax.bar(labels,values,color=['#9299A2','#3F7EA6','#528459','#BA7447','#9B8CAA'][:len(names)]);ax.tick_params(axis='x',rotation=15);ax.set_title(title);ax.set_ylabel('Frames with supported event / all frames (%)')
+    fig.suptitle('Perception image-band error audit on identical new confirmation images\nFixed support50px and precision/recall0.8; FP/FN can overlap; absence of an event is not a safety label',fontsize=12)
+    save(fig,'14_neural_band_errors_fresh_confirmation')
     results=review['results'];names=['RF_only','GP_only','primary','parent_r1'];labels=['RF quality','GP quality','Primary pair','Parent pair']
     fig,axes=plt.subplots(1,2,figsize=(12,4.5),layout='constrained');colors=['#B38145','#357BAC','#528459','#9299A2']
     axes[0].bar(labels,[results[n]['gt_supported_quality_segment_macro_mae']for n in names],color=colors)
