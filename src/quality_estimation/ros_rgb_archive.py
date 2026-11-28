@@ -4,7 +4,7 @@ A single latest slot decouples the ROS callback from disk writes. All deliberate
 sampling, sequence gaps and overwritten slots are counted separately. RGB only.
 """
 from pathlib import Path
-import argparse,hashlib,json,shutil,threading,time
+import argparse,hashlib,json,shutil,threading,time,uuid
 from .camera_udp import atomic_json,jpeg_size,utc
 
 
@@ -16,7 +16,8 @@ def main():
     root=a.output.resolve();root.mkdir(parents=True,exist_ok=False);(root/'rgb').mkdir()
     from collections import Counter
     counts=Counter();lock=threading.Lock();pending=[None];prior=[None];started=time.monotonic();total=0;saved=0;last_saved=-float('inf');reason='duration';error=None
-    context=dict(schema='camera-rgb-archive-1',transport='ros1_compressed_image',topic=a.topic,frame_id=a.frame_id,camera='front',width=1280,height=720,
+    archive_id='rgb_'+uuid.uuid4().hex
+    context=dict(archive_id=archive_id,schema='camera-rgb-archive-1',transport='ros1_compressed_image',topic=a.topic,frame_id=a.frame_id,camera='front',width=1280,height=720,
                  capture_hz=a.capture_hz,max_seconds=a.seconds,max_bytes=a.max_bytes,min_free_bytes=a.min_free_bytes,original_jpeg_preserved=True,
                  native_timestamp_semantics='ros_header_verbatim_not_calibrated_exposure_utc',uses_ground_truth=False,emits_vehicle_commands=False,
                  started_utc=utc(),source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
@@ -50,7 +51,7 @@ def main():
                 if(w,h)!=(1280,720):counts['wrong_geometry_frames']+=1;continue
                 if total+len(data)>a.max_bytes:reason='archive_byte_limit';break
                 if shutil.disk_usage(root).free<a.min_free_bytes:reason='low_disk';break
-                sample='front_'+str(saved).zfill(8);name='rgb/'+sample+'.jpg';path=root/name;tmp=path.with_suffix('.tmp');tmp.write_bytes(data);tmp.replace(path)
+                sample=archive_id+'_'+str(saved).zfill(8);name='rgb/front_'+str(saved).zfill(8)+'.jpg';path=root/name;tmp=path.with_suffix('.tmp');tmp.write_bytes(data);tmp.replace(path)
                 row=dict(sample_id=sample,image=name,view='front',expected_sha256=dict(rgb=hashlib.sha256(data).hexdigest()),received_utc=received,
                          receiver_elapsed_seconds=arrival-started,width=w,height=h,ros_header_seq=int(msg.header.seq),ros_frame_id=msg.header.frame_id,
                          ros_stamp_seconds=int(msg.header.stamp.secs),ros_stamp_nanoseconds=int(msg.header.stamp.nsecs),format=msg.format)

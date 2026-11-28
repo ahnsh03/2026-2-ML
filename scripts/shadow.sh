@@ -19,6 +19,7 @@ usage() {
 ./scripts/shadow.sh status
 ./scripts/shadow.sh stop                       # flush last review window
 ./scripts/shadow.sh replay /path/to/session    # all original RGB offline
+./scripts/shadow.sh replay /path/to/session --processed-only # same live IDs/windows
 ./scripts/shadow.sh bridge                     # start ROS bridge before GUI setup
 
 One-time: set ML_SHADOW_ROOT in config/local.env to your output drive.
@@ -64,10 +65,24 @@ demo)
   resolve_runtime;mkdir -p "$root";out="$root/demo-$(date -u +%Y%m%dT%H%M%S)-$$";mkdir "$out"
   run_worker "$repo/models/examples" "$out";echo "Output: $out" ;;
 replay)
-  [[ $# == 1 ]] || { usage;exit 2; };resolve_runtime
-  source_session="$(realpath "$1")";archive="$source_session/archive";[[ -f "$source_session/rgb.jsonl" ]] && archive="$source_session"
+  [[ $# -ge 1 && $# -le 2 ]] || { usage;exit 2; };resolve_runtime
+  source_session="$(realpath "$1")";processed=false
+  if [[ $# == 2 ]]; then [[ "$2" == --processed-only ]] || { usage;exit 2; };processed=true;fi
+  archive="$source_session/archive";[[ -f "$source_session/rgb.jsonl" ]] && archive="$source_session"
   [[ -f "$archive/rgb.jsonl" ]] || { echo '[ERROR] RGB archive missing' >&2;exit 1; }
-  mkdir -p "$root";out="$root/replay-$(date -u +%Y%m%dT%H%M%S)-$$";mkdir "$out";run_worker "$archive" "$out";echo "Output: $out" ;;
+  context="$source_session/review/context.json"
+  if [[ ! -f "$context" && -f "$source_session/../review/context.json" ]]; then source_session="$(realpath "$source_session/..")";context="$source_session/review/context.json";fi
+  replay_window=100;replay_fraction=.1
+  if [[ -f "$context" ]]; then
+    read -r replay_window replay_fraction < <(python3 -c 'import json,sys;d=json.load(open(sys.argv[1]));print(d["window"],d["budget_fraction"])' "$context")
+  fi
+  mkdir -p "$root";out="$root/replay-$(date -u +%Y%m%dT%H%M%S)-$$";mkdir "$out";manifest_flags=()
+  if [[ "$processed" == true ]]; then
+    [[ -f "$source_session/review/processed_rgb.jsonl" ]] || { echo '[ERROR] Exact live population missing' >&2;exit 1; }
+    cp "$source_session/review/processed_rgb.jsonl" "$out/processed_source.jsonl";manifest_flags=(--manifest /result/processed_source.jsonl)
+  fi
+  run_worker "$archive" "$out" --window "$replay_window" --fraction "$replay_fraction" "${manifest_flags[@]}";echo "Output: $out" ;;
+
 status|stop)
   [[ -f "$root/active.json" ]] || { echo 'No recorded shadow session.';exit 0; }
   mapfile -t state < <(python3 - "$root/active.json" <<'PY'
@@ -122,7 +137,7 @@ PY
   docker run -d --name "$worker" --label org.ml-shadow.owner=team-repo "${gpu[@]}" --user "$(id -u):$(id -g)" \
     -e HOME=/tmp -e PYTHONDONTWRITEBYTECODE=1 -e PYTHONPATH=/workspace/src -e OPENBLAS_NUM_THREADS=2 -e OMP_NUM_THREADS=2 \
     -v "$repo":/workspace:ro -v "$session":/session -w /workspace "$ML_RESOLVED_IMAGE" \
-    python -m quality_estimation.shadow_worker --archive /session/archive --output /session/review --perception-release models/perception/m-v6-r2-20261128 \
+    python3 -m quality_estimation.shadow_worker --archive /session/archive --output /session/review --perception-release models/perception/m-v6-r2-20261128 \
     --bundle models/review/m-v6-r2-20261128/primary --gp-bundle models/review/m-v6-r2-20261128/GP_only --rf-bundle models/review/m-v6-r2-20261128/RF_only \
     --device "$device" --watch --maximum-seconds "$maximum" --window "$window" >/dev/null
   python3 - "$root/active.json" "$session" "$worker" "$transport" <<'PY'
@@ -139,14 +154,13 @@ PY
   if [[ "$ready" != true ]]; then docker logs "$worker" >&2;echo 'Worker did not become ready. Inspect status before restarting.' >&2;exit 1;fi
   if [[ "$transport" == ros ]]; then
     relative="${session#"$root"/}"
-    nohup docker exec "$bridge" bash -lc 'source /opt/ros/noetic/setup.bash; export PYTHONPATH=/workspace/src:$PYTHONPATH; exec python3 -m quality_estimation.ros_rgb_archive "$@"' _ \
-      --output "/shadow/$relative/archive" --seconds "$seconds" --capture-hz "$hz" >"$session/receiver.log" 2>&1 </dev/null &
+    docker exec -d "$bridge" bash -lc 'source /opt/ros/noetic/setup.bash; export PYTHONPATH=/workspace/src:$PYTHONPATH; log="$1";shift; exec python3 -m quality_estimation.ros_rgb_archive "$@" >"$log" 2>&1' _ \
+      "/shadow/$relative/receiver.log" --output "/shadow/$relative/archive" --seconds "$seconds" --capture-hz "$hz" --topic "${ML_SHADOW_TOPIC:-/image_jpeg/compressed}"
   else
     cp "$repo/src/quality_estimation/camera_udp.py" "$session/camera_udp.py"
-    nohup py.exe -3 "$(wslpath -w "$session/camera_udp.py")" --output "$(wslpath -w "$session/archive")" --seconds "$seconds" --capture-hz "$hz" \
-      >"$session/receiver.log" 2>&1 </dev/null &
+    cp "$repo/scripts/launch_windows_receiver.py" "$session/launch_receiver.py"
+    py.exe -3 "$(wslpath -w "$session/launch_receiver.py")" --session "$(wslpath -w "$session")" --seconds "$seconds" --hz "$hz" >"$session/receiver_launcher.pid"
   fi
-  echo "$!" >"$session/receiver_launcher.pid"
   for ((i=0;i<40;i++)); do [[ -f "$session/archive/archive.json" ]] && break;sleep .1;done
   echo "Started $transport shadow: $session";echo './scripts/shadow.sh status   |   ./scripts/shadow.sh stop' ;;
 *)usage;exit 2;;

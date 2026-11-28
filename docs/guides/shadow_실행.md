@@ -48,6 +48,7 @@ ML_GPU_PROFILE=rtx40 ML_SHADOW_DEVICE=cpu ./scripts/shadow.sh demo
 ./scripts/shadow.sh status                   # 수신·추론·생략·선별 상태
 ./scripts/shadow.sh stop                     # 수신 종료, 마지막 버퍼 선별
 ./scripts/shadow.sh replay /path/to/session  # 보존한 RGB 전체를 재생
+./scripts/shadow.sh replay /path/to/session --processed-only  # 실시간 처리 모집단만
 ```
 
 기간·수집률·버퍼는 필요한 경우만 지정한다.
@@ -74,7 +75,7 @@ ML_GPU_PROFILE=rtx40 ML_SHADOW_DEVICE=cpu ./scripts/shadow.sh demo
 
 | 위치 | 용도 |
 |---|---|
-| `archive/rgb/`, `rgb.jsonl` | 원본 JPEG와 SHA, 카메라·수신 시각·native/ROS stamp. 재가공 입력 |
+| `archive/rgb/`, `rgb.jsonl` | 세션 UUID를 포함한 전역 프레임 ID, 원본 JPEG와 SHA, 카메라·수신 시각·native/ROS stamp. 재가공 입력 |
 | `archive/receiver_*.json` | 수신량, 의도한 표본화, 시퀀스 누락/리셋, 저장 한도와 종료 이유 |
 | `review/context.json` | 인지·품질 번들·ROI·특징 순서·코드·런타임·선별 창의 고정 정보 |
 | `review/predictions.jsonl`, `features.npz` | GT 없는 예측과 특징. RF/GP 결과를 분리 기록 |
@@ -82,6 +83,8 @@ ML_GPU_PROFILE=rtx40 ML_SHADOW_DEVICE=cpu ./scripts/shadow.sh demo
 | `review/inference_skipped.jsonl` | 원본은 보존했으나 실시간 추론에서 생략한 ID |
 | `review/processed_rgb.jsonl` | 실시간에 처리한 정확한 모집단. 같은 모집단의 오프라인 대조에 사용 |
 | `review/run.json`, `_SUCCESS` | 완료 상태와 해시. 입력0장은 성공 근거로 삼지 않음 |
+
+replay는 원래 세션의 버퍼 크기·예산을 이어받는다. 전체 원본 재생에는 실시간 생략 프레임도 포함되므로 선택 ID가 달라질 수 있다. 정확한 실시간 선별 대조에는 --processed-only를 사용하며 영상은 복사하지 않는다.
 
 센서 stamp를 저장했다는 이유로 카메라 노출 시각이나 UTC 동기 오차를 검증한 것으로 해석하지 않는다. 처리 시간과 원본 수신 이후 대기 시간도 분리한다. 단일 ROI 오류 점수와 GP z는 실패 확률이나 안전 판정이 아니다.
 

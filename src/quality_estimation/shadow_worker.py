@@ -7,13 +7,14 @@ from __future__ import annotations
 import argparse,json,math,time
 from pathlib import Path
 import cv2,numpy as np,torch
-from common.bridge import load_target_model,sha256_file
+from common.bridge import load_target_model,sha256_file,git_head
 from .camera_udp import atomic_json,utc
 from .perception_identity import resolve_public_perception
 from .support_aware_review import SupportAwareReview
 from .infer_images import load_rgb_row
 from .roi10 import reduce_heads
 from .selected_region_features import extract_selected_features
+from .runtime_catalog import verify_repository_bundle
 
 
 class PersistentReviewScorer:
@@ -21,6 +22,7 @@ class PersistentReviewScorer:
         cv2.setNumThreads(1);torch.set_num_threads(2);torch.backends.cudnn.benchmark=False;torch.backends.cudnn.deterministic=True;torch.backends.cudnn.allow_tf32=False;torch.backends.cuda.matmul.allow_tf32=False
         checkpoint,self.identity,_=resolve_public_perception(release)
         self.device=torch.device(device);self.perception=load_target_model(checkpoint,self.device,weights='model')
+        for path in bundles.values():verify_repository_bundle(path)
         self.reviews={name:SupportAwareReview(path,perception_identity=self.identity)for name,path in bundles.items()}
         if 'primary'not in self.reviews:raise ValueError('primary reference bundle required')
         self.columns=list(dict.fromkeys(n for r in self.reviews.values()for n in r.columns+r.environment.columns));self.lookup={n:i for i,n in enumerate(self.columns)}
@@ -40,7 +42,7 @@ class PersistentReviewScorer:
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for k in ['archive','output','perception-release','bundle']:p.add_argument('--'+k,type=Path,required=True)
-    p.add_argument('--gp-bundle',type=Path);p.add_argument('--rf-bundle',type=Path);p.add_argument('--device',default='cuda');p.add_argument('--batch-size',type=int,default=4);p.add_argument('--window',type=int,default=100);p.add_argument('--fraction',type=float,default=.1);p.add_argument('--watch',action='store_true');p.add_argument('--maximum-seconds',type=float,default=3600);p.add_argument('--input-timeout',type=float,default=60)
+    p.add_argument('--manifest',type=Path,help='Optional immutable RGB subset for exact processed-population replay');p.add_argument('--gp-bundle',type=Path);p.add_argument('--rf-bundle',type=Path);p.add_argument('--device',default='cuda');p.add_argument('--batch-size',type=int,default=4);p.add_argument('--window',type=int,default=100);p.add_argument('--fraction',type=float,default=.1);p.add_argument('--watch',action='store_true');p.add_argument('--maximum-seconds',type=float,default=3600);p.add_argument('--input-timeout',type=float,default=60)
     a=p.parse_args()
     if a.batch_size<1 or a.window<1 or not 0<a.fraction<=1 or a.maximum_seconds<=0 or a.input_timeout<=0:raise ValueError('invalid runtime bounds')
     a.output.mkdir(parents=True,exist_ok=False);started=time.monotonic();atomic_json(a.output/'status.json',dict(status='initializing',updated_utc=utc()))
@@ -54,11 +56,19 @@ def main():
     for batch in [1,a.batch_size]:scorer.score(demo_root,[demo_row]*batch)
     warmup_seconds=time.monotonic()-warmup_started
     source_digest=sha256_file(Path(__file__));identity=scorer.identity
-    context=dict(schema='persistent-review-shadow-1',started_utc=utc(),perception_identity=identity,bundle_manifest_sha256=scorer.bundle_hashes,
+    repo_root=Path(__file__).resolve().parents[2]
+    components=['src/quality_estimation/selected_region_features.py','src/quality_estimation/region_candidates.py',
+                'src/quality_estimation/support_aware_review.py','src/quality_estimation/support_review_selection.py',
+                'src/quality_estimation/scene_environment.py','src/quality_estimation/spatial_gp.py',
+                'src/quality_estimation/portable_forest.py','src/quality_estimation/roi10.py',
+                'src/quality_estimation/road_structure_features.py','src/camera_semantic_perception/geometry.py']
+    implementation_sha256={name:sha256_file(repo_root/name)for name in components}
+    context=dict(code_git_head=git_head(repo_root),implementation_sha256=implementation_sha256,schema='persistent-review-shadow-1',started_utc=utc(),perception_identity=identity,bundle_manifest_sha256=scorer.bundle_hashes,
         warmup_seconds=warmup_seconds,feature_columns=scorer.columns,window=a.window,budget_fraction=a.fraction,device=a.device,torch=torch.__version__,numpy=np.__version__,opencv=cv2.__version__,
         camera=dict(view='front',width=1280,height=720,profile=scorer.reviews['primary'].profile.version,regions_sha256=scorer.reviews['primary'].profile.regions_sha256),
         uses_ground_truth=False,emits_vehicle_commands=False,automatic_training_admission=False,queue='bounded_latest_batch'if a.watch else'complete_replay',source_sha256=source_digest)
     atomic_json(a.output/'context.json',context);atomic_json(a.output/'READY.json',dict(utc=utc(),context_sha256=sha256_file(a.output/'context.json')))
+    atomic_json(a.output/'status.json',dict(status='waiting_input',updated_utc=utc(),context_sha256=sha256_file(a.output/'context.json')))
     seen=0;processed=0;skipped=0;windows=0;buffer=[];features=[];all_features=[];ids=[];latencies=[];reason='end_of_archive';error=None
     streams={name:(a.output/(name+'.jsonl')).open('x',buffering=1)for name in ['predictions','candidates','inference_skipped','processed_rgb']}
     def flush():
@@ -76,7 +86,7 @@ def main():
         windows+=1;buffer=[];features=[]
     try:
         while time.monotonic()-started<a.maximum_seconds:
-            manifest=a.archive/'rgb.jsonl'
+            manifest=a.manifest or a.archive/'rgb.jsonl'
             lines=manifest.read_text().splitlines()if manifest.exists()else[]
             # Writers commit a complete row with newline after the immutable JPEG.
             rows=[]
@@ -85,6 +95,7 @@ def main():
                 except json.JSONDecodeError:
                     if line!=lines[-1]:raise
             if len(rows)<seen:raise ValueError('archive manifest truncated')
+            if len({row['sample_id']for row in rows})!=len(rows):raise ValueError('archive has duplicate frame identifiers')
             pending=rows[seen:]
             done=not a.watch or(a.archive/'receiver_done.json').exists()or(a.archive/'STOP_WORKER').exists()
             if pending:
@@ -111,12 +122,13 @@ def main():
         flush()
         if all_features:np.savez_compressed(a.output/'features.npz',X=np.concatenate(all_features),ids=np.array(ids),ordered_features=np.array(scorer.columns))
         for r in scorer.reviews.values():r.verify_unchanged()
+        if any(sha256_file(repo_root/name)!=value for name,value in implementation_sha256.items()):raise ValueError('runtime implementation changed during session')
         if sha256_file(Path(__file__))!=source_digest:raise ValueError('worker source changed during execution')
     except BaseException as e:error=dict(type=type(e).__name__,message=str(e));reason='worker_error';raise
     finally:
         for s in streams.values():s.close()
         status=dict(status='failed'if error else'complete'if processed else'no_input',reason=reason,processed=processed,inference_skipped=skipped,archive_rows_seen=seen,selection_windows=windows,seconds=time.monotonic()-started,
-                    mean_processing_seconds_per_frame=float(np.mean(latencies))if latencies else None,error=error,finished_utc=utc(),context_sha256=sha256_file(a.output/'context.json'))
+                    mean_processing_seconds_per_frame=float(np.mean(latencies))if latencies else None,error=error,finished_utc=utc(),context_sha256=sha256_file(a.output/'context.json'),input_manifest_sha256=sha256_file(a.manifest or a.archive/'rgb.jsonl')if(a.manifest or a.archive/'rgb.jsonl').exists()else None)
         atomic_json(a.output/'status.json',status);atomic_json(a.output/'run.json',status)
         if error is None and processed:(a.output/'_SUCCESS').write_text(sha256_file(a.output/'run.json')+'\n')
     print(json.dumps(status))
