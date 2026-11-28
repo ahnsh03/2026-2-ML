@@ -47,6 +47,11 @@ def main():
         return max(values,key=lambda r:(r['metrics']['utility_road_macro'],r['metrics']['near_error_road_macro']or 0.))
     key=read(Path(ready['selection'])/'environment_key.json')['key'];chosen=selection['selected']
     build('primary',selection['selected_quality_tag'],chosen['error_tag'],chosen['policy'],models,cal,envfit,key,selected_pack)
+    # Same representation/K/seed, fitted on the same data. This is a diagnostic
+    # comparator fixed before capture, never a post-confirmation replacement.
+    rep,_,k,seed=key.split(',')
+    lloyd_key=','.join([rep,'lloyd',k,seed])
+    build('Lloyd_environment_control',selection['selected_quality_tag'],chosen['error_tag'],chosen['policy'],models,cal,envfit,lloyd_key,selected_pack)
     for family in ['RF','GP']:
         error=error_policy(family);build(family+'_only',qhead(family),error['error_tag'],error['policy'],models,cal,envfit,key,selected_pack)
         if family=='GP':
